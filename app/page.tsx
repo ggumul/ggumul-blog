@@ -22,7 +22,7 @@ export default async function HomePage() {
       />
 
       {snapshot.latest ? (
-        <section className="grid gap-8 border-b border-line/80 pb-12 md:grid-cols-[120px_minmax(0,1fr)_240px] md:gap-10 md:pb-16">
+        <section className="panel-section grid gap-8 md:grid-cols-[120px_minmax(0,1fr)_280px] md:gap-12">
           <div className="text-[10px] uppercase tracking-[0.34em] text-point">최신<br />개발기록</div>
 
           <div className="space-y-5">
@@ -44,14 +44,14 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <aside className="space-y-4 border-l border-line/60 pl-0 md:pl-5">
+          <aside className="aside-rail panel-aside space-y-4 md:self-start">
             <div className="text-[10px] uppercase tracking-[0.3em] text-point">관련 프로젝트</div>
             <p className="text-[13px] leading-6 text-subtext">
               이 글과 이어진 프로젝트를 같이 볼 수 있어요.
             </p>
             <div className="space-y-3">
               {snapshot.latestProjects.map((project) => (
-                <Link key={project.slug} href={`/projects/${project.slug}`} className="block border-t border-line/60 pt-3 transition hover:border-point/60">
+                <Link key={project.slug} href={`/projects/${project.slug}`} className="block rounded-2xl border border-line/70 bg-white/45 px-4 py-4 transition hover:border-point/60 hover:bg-white/70">
                   <div className="text-[11px] uppercase tracking-[0.24em] text-subtext">프로젝트</div>
                   <div className="mt-2 font-medium text-text">{project.title}</div>
                   <p className="mt-1 text-[13px] leading-6 text-subtext">{project.summary}</p>
@@ -62,7 +62,7 @@ export default async function HomePage() {
         </section>
       ) : null}
 
-      <section className="space-y-6">
+      <section className="panel-section space-y-6">
         <div className="grid gap-4 md:grid-cols-[120px_minmax(0,1fr)] md:gap-8">
           <div className="text-[10px] uppercase tracking-[0.34em] text-point">진행 중인<br />프로젝트</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
@@ -76,14 +76,14 @@ export default async function HomePage() {
           </div>
         </div>
 
-        <div>
+        <div className="space-y-4">
           {snapshot.worklines.map((project) => (
             <ProjectCard key={project.slug} project={project} records={project.previewRecords} />
           ))}
         </div>
       </section>
 
-      <section className="space-y-6 border-t border-line/80 pt-10 md:pt-14">
+      <section className="panel-section space-y-6">
         <div className="grid gap-4 md:grid-cols-[120px_minmax(0,1fr)] md:gap-8">
           <div className="text-[10px] uppercase tracking-[0.34em] text-point">최근 개발기록</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
@@ -96,7 +96,7 @@ export default async function HomePage() {
           </div>
         </div>
 
-        <div>
+        <div className="space-y-4">
           {snapshot.moreEntries.map((post) => (
             <PostCard key={post.slug} post={post} />
           ))}

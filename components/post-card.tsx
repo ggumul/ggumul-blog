@@ -5,9 +5,9 @@ export function PostCard({ post }: { post: WritingEntry }) {
   return (
     <Link
       href={`/writing/${post.slug}`}
-      className="group grid gap-4 border-t border-line/80 py-6 transition first:border-t-0 hover:border-point/70 md:grid-cols-[170px_minmax(0,1fr)] md:gap-7"
+      className="group grid gap-4 rounded-[1.6rem] border border-line/80 bg-white/45 px-5 py-5 shadow-[0_16px_36px_rgba(68,49,33,0.03)] transition hover:border-point/70 hover:bg-white/70 md:grid-cols-[170px_minmax(0,1fr)] md:gap-7 md:px-6 md:py-6"
     >
-      <div className="space-y-1 text-sm text-subtext">
+      <div className="rounded-2xl bg-background/70 px-4 py-3 text-sm text-subtext">
         <div className="text-[10px] uppercase tracking-[0.3em] text-point">{post.publishedAt}</div>
         <div className="text-[13px] leading-6">{post.category}</div>
         {post.series ? <div className="text-[12px] leading-6">시리즈 · {post.series}</div> : null}
@@ -25,7 +25,7 @@ export function PostCard({ post }: { post: WritingEntry }) {
         </div>
       </div>
 
-      <div className="md:col-start-2 flex flex-wrap gap-x-4 gap-y-2 text-[12px] text-subtext">
+      <div className="md:col-start-2 flex flex-wrap gap-x-4 gap-y-2 border-t border-line/60 pt-3 text-[12px] text-subtext">
         <span>{post.status}</span>
         {post.relatedProjects.length > 0 ? <span>관련 프로젝트 {post.relatedProjects.length}개</span> : null}
         {post.tags.slice(0, 2).map((tag) => (

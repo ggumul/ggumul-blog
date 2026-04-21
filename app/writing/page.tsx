@@ -14,7 +14,7 @@ export default async function WritingPage() {
 
   return (
     <div className="archive-surface space-y-14 md:space-y-18">
-      <section className="grid gap-8 border-b border-line/80 pb-12 md:grid-cols-[120px_minmax(0,1fr)_240px] md:gap-10 md:pb-16">
+      <section className="panel-section grid gap-8 md:grid-cols-[120px_minmax(0,1fr)_260px] md:gap-12">
         <div className="text-[10px] uppercase tracking-[0.34em] text-point">개발기록</div>
 
         <div className="space-y-5">
@@ -35,7 +35,7 @@ export default async function WritingPage() {
           </div>
         </div>
 
-        <aside className="space-y-4 border-l border-line/60 pl-0 md:pl-5">
+        <aside className="aside-rail panel-aside space-y-4 md:self-start">
           <div className="text-[10px] uppercase tracking-[0.3em] text-point">기록 개요</div>
           <div className="space-y-3 text-[13px] leading-6 text-subtext">
             <p>시리즈 {sections.index.seriesCount}개</p>
@@ -48,14 +48,16 @@ export default async function WritingPage() {
         </aside>
       </section>
 
-      <section className="grid gap-10 md:grid-cols-[minmax(0,1fr)_220px] md:items-start">
+      <section className="grid gap-10 md:grid-cols-[minmax(0,1fr)_260px] md:items-start md:gap-12">
         <div>
-          {sections.timeline.map((post) => (
+          <div className="space-y-4">
+            {sections.timeline.map((post) => (
             <PostCard key={post.slug} post={post} />
-          ))}
+            ))}
+          </div>
         </div>
 
-        <aside className="space-y-7 border-l border-line/60 pl-0 text-sm text-subtext md:sticky md:top-24 md:pl-5">
+        <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext md:sticky md:top-24">
           <div>
             <div className="text-[10px] uppercase tracking-[0.3em] text-point">시리즈</div>
             <div className="mt-3 space-y-2 text-[13px] leading-6">
