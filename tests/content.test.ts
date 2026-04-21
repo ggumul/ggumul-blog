@@ -40,14 +40,14 @@ describe('content loader', () => {
   it('finds writing by slug and exposes related projects', async () => {
     const post = await getWritingBySlug('요즘-이런-게임들을-만들고-있어요');
 
-    expect(post?.title).toBe('현재 진행 중인 프로젝트 소개');
+    expect(post?.title).toBe('요즘 만들고 있는 것들');
     expect(post?.relatedProjects).toContain('trpg');
   });
 
   it('supports url-encoded slugs for writing detail routes', async () => {
     const post = await getWritingBySlug('wanderer%EB%8A%94-%EA%BC%AC%EB%AC%BC%EC%9D%98-%EC%B6%9C%EB%B0%9C%EC%A0%90-%EA%B0%99%EC%9D%80-%EA%B2%8C%EC%9E%84%EC%9D%B4%EC%97%88%EB%8B%A4');
 
-    expect(post?.title).toBe('Wanderer가 꼬물의 출발점으로 남아 있는 이유');
+    expect(post?.title).toBe('Wanderer는 아직도 출발점 같은 게임이에요');
   });
 
   it('returns category, tags, and series data for writing taxonomy', async () => {
@@ -66,7 +66,7 @@ describe('content loader', () => {
 
     expect(summary.totalProjects).toBe(4);
     expect(summary.totalPosts).toBe(4);
-    expect(summary.latestPostTitle).toBe('Wanderer sync 연결 문제 분석');
+    expect(summary.latestPostTitle).toBe('Wanderer sync가 어긋난 이유');
   });
 
   it('builds a home archive snapshot with latest trace, related projects, richer worklines, and remaining entries', async () => {
@@ -82,8 +82,8 @@ describe('content loader', () => {
     ]);
     expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual([
       'wanderer는-꼬물의-출발점-같은-게임이었다',
-      '요즘-이런-게임들을-만들고-있어요',
       '우리는-왜-이렇게-천천히-만들고-있냐',
+      '요즘-이런-게임들을-만들고-있어요',
     ]);
   });
 

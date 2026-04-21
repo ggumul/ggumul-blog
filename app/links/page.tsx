@@ -17,7 +17,7 @@ export default function LinksPage() {
     <div className="space-y-10">
       <section className="space-y-4 rounded-[28px] border border-line bg-white/65 p-8 md:p-10">
         <p className="text-sm uppercase tracking-[0.24em] text-point">링크</p>
-        <h1 className="text-4xl font-semibold tracking-tight">여기서 더 이어 보실 수 있어요</h1>
+        <h1 className="text-4xl font-semibold tracking-tight">여기에서 더 보실 수 있어요</h1>
         <p className="max-w-2xl text-base leading-7 text-subtext md:text-lg">
           꼬물과 연결되는 곳들을 한자리에 모아 두었어요. 코드, 정리 문서, 메일을 여기서 바로 확인하실 수 있어요.
         </p>

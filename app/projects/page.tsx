@@ -25,7 +25,7 @@ export default async function ProjectsPage() {
           </p>
         </div>
         <div className="border-l border-line/60 pl-0 text-[13px] leading-6 text-subtext md:pl-5">
-          상태와 관련 기록을 같이 붙여서, 각 프로젝트의 흐름이 바로 읽히도록 구성했어요.
+          상태와 관련 기록을 같이 붙여서, 각 프로젝트가 지금 어떤 단계에 있는지 바로 읽히도록 구성했어요.
         </div>
       </section>
 

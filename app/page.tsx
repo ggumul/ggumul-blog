@@ -88,7 +88,7 @@ export default async function HomePage() {
           <div className="text-[10px] uppercase tracking-[0.34em] text-point">최근 개발기록</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
             <h2 className="max-w-3xl text-[32px] font-semibold tracking-[-0.05em] leading-[1.02] text-text md:text-[54px]">
-              최근에 남긴 개발기록이에요.
+              최근에 남긴 기록들이에요.
             </h2>
             <p className="text-[14px] leading-7 text-subtext md:text-[15px]">
               최근에 어떤 작업을 했고 어떤 판단을 했는지 자연스럽게 이어서 볼 수 있게 정리해 두었어요.

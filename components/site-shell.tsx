@@ -2,8 +2,8 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 const NAV_ITEMS = [
-  { href: '/', label: '홈', note: '최근 개발기록과 프로젝트' },
-  { href: '/writing', label: '개발기록', note: '업데이트와 작업 노트' },
+  { href: '/', label: '홈', note: '최근 글과 프로젝트' },
+  { href: '/writing', label: '개발기록', note: '새 글과 작업 기록' },
   { href: '/projects', label: '프로젝트', note: '진행 중인 프로젝트' },
   { href: '/about', label: '소개', note: '꼬물 소개' },
   { href: '/links', label: '링크', note: '깃허브와 외부 채널' },
@@ -47,7 +47,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-line/80 bg-white/20">
         <div className="mx-auto grid max-w-6xl gap-6 px-6 py-8 text-sm text-subtext md:grid-cols-[minmax(0,1fr)_auto] md:px-8 md:items-end">
           <div className="space-y-2">
-            <p className="text-[10px] uppercase tracking-[0.32em] text-point">한마디</p>
+            <p className="text-[10px] uppercase tracking-[0.32em] text-point">마지막으로</p>
             <p className="max-w-2xl leading-7">
               꼬물은 빠르게 많이 만들기보다, 천천히 오래 이어 가는 쪽을 선택하고 있어요. 그래서 결과보다 만드는 과정의 기록을 먼저 남기고 있어요.
             </p>

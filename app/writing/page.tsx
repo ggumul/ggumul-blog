@@ -5,7 +5,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '개발기록',
-  description: '꼬물이 프로젝트를 만들면서 남긴 업데이트와 작업 노트를 정리한 페이지.',
+  description: '꼬물이 프로젝트를 만들면서 남긴 글과 작업 기록을 모아 둔 페이지예요.',
   path: '/writing',
 });
 
@@ -43,7 +43,7 @@ export default async function WritingPage() {
             <p>태그 {sections.index.tagCount}개</p>
           </div>
           <p className="text-[13px] leading-6 text-subtext">
-            최근 글만 따로 강조하기보다, 기록이 어떤 흐름으로 이어졌는지 함께 볼 수 있도록 구성했습니다.
+            최근 글 하나만 따로 세우기보다, 기록이 어떤 흐름으로 이어지는지 함께 보실 수 있게 정리해 두었어요.
           </p>
         </aside>
       </section>

@@ -12,7 +12,7 @@ export default function AboutPage() {
     <div className="space-y-12">
       <section className="space-y-4 rounded-[28px] border border-line bg-white/65 p-8 md:p-10">
         <p className="text-sm uppercase tracking-[0.24em] text-point">꼬물 소개</p>
-        <h1 className="text-4xl font-semibold tracking-tight">꼬물을 소개할게요</h1>
+        <h1 className="text-4xl font-semibold tracking-tight">꼬물은 이런 곳이에요</h1>
         <p className="max-w-3xl text-base leading-7 text-subtext md:text-lg">
           꼬물은 빠르게 많이 만들기보다, 천천히 오래 이어 가는 쪽에 더 가까운 이름이에요.
         </p>

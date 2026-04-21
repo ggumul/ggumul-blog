@@ -95,7 +95,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
                 ))}
               </div>
             ) : (
-              <p className="text-xs leading-6">아직 직접 연결한 프로젝트는 없지만, 이 글도 같은 작업 흐름 안에서 나온 기록이다.</p>
+              <p className="text-xs leading-6">아직 직접 연결한 프로젝트는 없지만, 이 글도 같은 흐름 안에서 나온 기록이에요.</p>
             )}
           </div>
 
