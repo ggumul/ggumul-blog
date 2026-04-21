@@ -3,9 +3,9 @@ import type { ReactNode } from 'react';
 
 const NAV_ITEMS = [
   { href: '/', label: '첫 장면', note: '가장 최근 기록' },
-  { href: '/writing', label: '기록', note: '작업 노트와 시리즈' },
-  { href: '/projects', label: '프로젝트', note: '지금 만들고 있는 것들' },
-  { href: '/about', label: '작업실', note: '꼬물이 어떻게 만들고 있는지' },
+  { href: '/writing', label: '개발기록', note: '업데이트와 작업 노트' },
+  { href: '/projects', label: '프로젝트', note: '진행 중인 프로젝트' },
+  { href: '/about', label: '소개', note: '꼬물 스튜디오 소개' },
   { href: '/links', label: '바깥 링크', note: '깃허브와 외부 연결' },
 ];
 
@@ -22,7 +22,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   ggumul / 꼬물
                 </Link>
                 <p className="max-w-xl text-[15px] leading-7 text-subtext md:text-base md:leading-8">
-                  완성된 결과보다, 만들면서 남긴 기록과 그 기록이 어떻게 이어지는지를 먼저 보여주는 작은 작업실.
+                  작은 게임과 인터랙티브 프로젝트를 만들고, 그 과정을 개발기록으로 정리하는 스튜디오입니다.
                 </p>
               </div>
             </div>
@@ -49,14 +49,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <div className="space-y-2">
             <p className="text-[10px] uppercase tracking-[0.32em] text-point">끝맺는 메모</p>
             <p className="max-w-2xl leading-7">
-              꼬물은 빠르게 많이 만들기보다, 오래 이어 가는 쪽에 가깝다. 그래서 결과보다 지금 만들고 있는 기록을 먼저 남긴다.
+              꼬물은 빠르게 많이 만들기보다 오래 이어 가는 방식을 택하고 있습니다. 그래서 결과보다 작업 과정의 기록을 먼저 남깁니다.
             </p>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-subtext">
             <Link href="/feed.xml" className="transition hover:text-text">rss</Link>
-            <Link href="/writing" className="transition hover:text-text">기록</Link>
+            <Link href="/writing" className="transition hover:text-text">개발기록</Link>
             <Link href="/projects" className="transition hover:text-text">프로젝트</Link>
-            <Link href="/about" className="transition hover:text-text">작업실</Link>
+            <Link href="/about" className="transition hover:text-text">소개</Link>
           </div>
         </div>
       </footer>

@@ -6,7 +6,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '오래 쌓아가는 작업실',
-  description: '꼬물이 최근에 남긴 글과 지금 만들고 있는 프로젝트를 먼저 보여주는 작업실 홈페이지.',
+  description: '꼬물의 진행 중인 프로젝트와 최근 개발기록을 함께 정리한 홈페이지.',
   path: '/',
 });
 
@@ -23,7 +23,7 @@ export default async function HomePage() {
 
       {snapshot.latest ? (
         <section className="grid gap-8 border-b border-line/80 pb-12 md:grid-cols-[120px_minmax(0,1fr)_240px] md:gap-10 md:pb-16">
-          <div className="text-[10px] uppercase tracking-[0.34em] text-point">가장 최근<br />기록</div>
+          <div className="text-[10px] uppercase tracking-[0.34em] text-point">최신<br />개발기록</div>
 
           <div className="space-y-5">
             <div className="space-y-3">
@@ -45,9 +45,9 @@ export default async function HomePage() {
           </div>
 
           <aside className="space-y-4 border-l border-line/60 pl-0 md:pl-5">
-            <div className="text-[10px] uppercase tracking-[0.3em] text-point">이어진 작업</div>
+            <div className="text-[10px] uppercase tracking-[0.3em] text-point">관련 프로젝트</div>
             <p className="text-[13px] leading-6 text-subtext">
-              지금 이 기록이 어떤 프로젝트와 이어져 있는지 바로 보이게 두었다.
+              이 기록이 어떤 프로젝트와 연결되는지 함께 볼 수 있도록 구성했습니다.
             </p>
             <div className="space-y-3">
               {snapshot.latestProjects.map((project) => (
@@ -64,14 +64,14 @@ export default async function HomePage() {
 
       <section className="space-y-6">
         <div className="grid gap-4 md:grid-cols-[120px_minmax(0,1fr)] md:gap-8">
-          <div className="text-[10px] uppercase tracking-[0.34em] text-point">지금 하는<br />작업</div>
+          <div className="text-[10px] uppercase tracking-[0.34em] text-point">진행 중인<br />프로젝트</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
             <h2 className="max-w-3xl text-[32px] font-semibold tracking-[-0.05em] leading-[1.02] text-text md:text-[54px]">
-              지금 만드는 작업과,
-              <br className="hidden md:block" /> 그 곁에 쌓인 기록들.
+              진행 중인 프로젝트와
+              <br className="hidden md:block" /> 관련 기록을 함께 정리했습니다.
             </h2>
             <p className="text-[14px] leading-7 text-subtext md:text-[15px]">
-              번호, 제목, 관련 기록을 한 화면에서 같이 보이게 해서 각 작업이 어디까지 와 있는지 바로 읽히게 했다.
+              각 프로젝트의 현재 상태와 관련 기록을 한 화면에서 확인할 수 있도록 구성했습니다.
             </p>
           </div>
         </div>
@@ -85,13 +85,13 @@ export default async function HomePage() {
 
       <section className="space-y-6 border-t border-line/80 pt-10 md:pt-14">
         <div className="grid gap-4 md:grid-cols-[120px_minmax(0,1fr)] md:gap-8">
-          <div className="text-[10px] uppercase tracking-[0.34em] text-point">이어진 기록</div>
+          <div className="text-[10px] uppercase tracking-[0.34em] text-point">최근 개발기록</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
             <h2 className="max-w-3xl text-[32px] font-semibold tracking-[-0.05em] leading-[1.02] text-text md:text-[54px]">
-              최근에 이어진 메모와 질문들.
+              최근에 정리한 글과 메모입니다.
             </h2>
             <p className="text-[14px] leading-7 text-subtext md:text-[15px]">
-              각각의 글을 따로 떼어 두기보다, 최근에 어떤 생각과 문제가 이어졌는지 한 번에 보이게 두었다.
+              최근에 어떤 작업과 판단이 이어졌는지 한눈에 확인할 수 있도록 정리했습니다.
             </p>
           </div>
         </div>
@@ -104,7 +104,7 @@ export default async function HomePage() {
 
         <div className="pt-1 text-sm text-subtext">
           <Link href="/writing" className="transition hover:text-text">
-            기록 전체 보기 →
+            개발기록 전체 보기 →
           </Link>
         </div>
       </section>
