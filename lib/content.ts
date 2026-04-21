@@ -22,6 +22,8 @@ export type ProjectEntry = BaseEntry & {
 
 export type WritingEntry = BaseEntry & {
   publishedAt: string;
+  updatedAt: string;
+  readingTimeMinutes: number;
   status: string;
   category: string;
   series?: string;
@@ -87,6 +89,12 @@ async function renderMarkdown(content: string) {
   return String(result);
 }
 
+function estimateReadingTimeMinutes(content: string) {
+  const plain = content.replace(/[`#*_[\]()>-]/g, ' ').replace(/\s+/g, ' ').trim();
+  const units = Math.max(plain.length, plain.split(' ').filter(Boolean).length * 4);
+  return Math.max(1, Math.ceil(units / 500));
+}
+
 async function readEntries<T>(dirName: 'projects' | 'writing'): Promise<T[]> {
   const directory = path.join(CONTENT_ROOT, dirName);
   const fileNames = await fs.readdir(directory);
@@ -100,6 +108,8 @@ async function readEntries<T>(dirName: 'projects' | 'writing'): Promise<T[]> {
         const html = await renderMarkdown(content);
         return {
           ...data,
+          updatedAt: typeof data.updatedAt === 'string' ? data.updatedAt : data.publishedAt,
+          readingTimeMinutes: estimateReadingTimeMinutes(content),
           content,
           html,
         } as T;

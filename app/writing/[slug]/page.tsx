@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { PostEngagement } from '@/components/post-engagement';
 import { getProjects, getWriting, getWritingBySlug } from '@/lib/content';
 import { createArticleJsonLd, createMetadata } from '@/lib/site';
 
@@ -67,6 +68,8 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
         </div>
         <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-subtext">
           <span>{post.publishedAt}</span>
+          <span>수정 {post.updatedAt}</span>
+          <span>{post.readingTimeMinutes}분 읽기</span>
           <span>{post.status}</span>
           {post.series ? <span>시리즈 · {post.series}</span> : null}
         </div>
@@ -83,6 +86,8 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
         </section>
 
         <aside className="space-y-8 border-l border-line/70 pl-0 text-sm text-subtext md:sticky md:top-24 md:pl-5">
+          <PostEngagement slug={post.slug} title={post.title} />
+
           <div className="space-y-3">
             <h2 className="text-[11px] uppercase tracking-[0.24em] text-point">관련 프로젝트</h2>
             {relatedProjects.length > 0 ? (

@@ -42,6 +42,8 @@ describe('content loader', () => {
 
     expect(post?.title).toBe('요즘 만들고 있는 것들');
     expect(post?.relatedProjects).toContain('trpg');
+    expect(post?.readingTimeMinutes).toBeGreaterThan(0);
+    expect(post?.updatedAt).toBe('2026-04-20');
   });
 
   it('supports url-encoded slugs for writing detail routes', async () => {
