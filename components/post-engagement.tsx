@@ -62,21 +62,24 @@ export function PostEngagement({ title, slug }: PostEngagementProps) {
   const commentLink = `${REPO_ISSUES_URL}?title=${encodeURIComponent(`[comment] ${title}`)}&body=${encodeURIComponent(`글 링크: ${postUrl}\n\n의견을 남겨 주세요.`)}`;
 
   return (
-    <div className="space-y-3 rounded-[20px] border border-line/80 bg-white/70 p-4 text-sm text-subtext">
-      <div className="text-[10px] uppercase tracking-[0.28em] text-point">반응</div>
-      <div className="grid gap-2 text-[13px] leading-6">
-        <div>조회수 {views?.toLocaleString('ko-KR') ?? '집계 중'}</div>
+    <div className="panel-aside space-y-4 text-sm text-subtext">
+      <div className="space-y-2">
+        <div className="text-[10px] uppercase tracking-[0.28em] text-point">반응</div>
+        <div className="rounded-[1.15rem] border border-line/70 bg-white/65 px-4 py-3">
+          <div className="text-[10px] uppercase tracking-[0.24em] text-point">조회수</div>
+          <div className="mt-2 text-sm text-text">{views?.toLocaleString('ko-KR') ?? '집계 중'}</div>
+        </div>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="grid gap-2">
         <button
-          className="rounded-full border border-line/80 px-3 py-1.5 text-[13px] transition hover:border-point hover:text-text"
+          className="rounded-full border border-line/80 bg-white/70 px-3 py-2 text-[13px] transition hover:border-point hover:text-text"
           onClick={() => void handleShare()}
           type="button"
         >
           {copied ? '링크 복사됨' : '공유하기'}
         </button>
         <a
-          className="rounded-full border border-line/80 px-3 py-1.5 text-[13px] transition hover:border-point hover:text-text"
+          className="rounded-full border border-line/80 bg-white/70 px-3 py-2 text-center text-[13px] transition hover:border-point hover:text-text"
           href={commentLink}
           rel="noreferrer"
           target="_blank"
