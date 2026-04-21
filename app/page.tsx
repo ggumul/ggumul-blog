@@ -47,7 +47,7 @@ export default async function HomePage() {
           <aside className="space-y-4 border-l border-line/60 pl-0 md:pl-5">
             <div className="text-[10px] uppercase tracking-[0.3em] text-point">이어진 작업</div>
             <p className="text-[13px] leading-6 text-subtext">
-              브랜드 소개보다 먼저, 지금 이 기록이 어떤 프로젝트와 이어져 있는지 바로 보이게 둔다.
+              지금 이 기록이 어떤 프로젝트와 이어져 있는지 바로 보이게 두었다.
             </p>
             <div className="space-y-3">
               {snapshot.latestProjects.map((project) => (
@@ -71,7 +71,7 @@ export default async function HomePage() {
               <br className="hidden md:block" /> 그 곁에 쌓인 기록들.
             </h2>
             <p className="text-[14px] leading-7 text-subtext md:text-[15px]">
-              번호, 제목, 연결 기록이 같은 그리드 위에 보이도록 정리해서 프로젝트 흐름이 먼저 읽히게 했다.
+              번호, 제목, 관련 기록을 한 화면에서 같이 보이게 해서 각 작업이 어디까지 와 있는지 바로 읽히게 했다.
             </p>
           </div>
         </div>

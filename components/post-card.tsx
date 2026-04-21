@@ -29,7 +29,7 @@ export function PostCard({ post }: { post: WritingEntry }) {
         <div className="text-[10px] uppercase tracking-[0.28em] text-point">작업 메모</div>
         <div className="space-y-2 text-[13px] leading-6">
           <div>{post.status}</div>
-          {post.relatedProjects.length > 0 ? <div>연결 작업 {post.relatedProjects.length}개</div> : null}
+          {post.relatedProjects.length > 0 ? <div>관련 프로젝트 {post.relatedProjects.length}개</div> : null}
         </div>
         <div className="flex flex-wrap gap-x-3 gap-y-2 text-[12px] text-subtext">
           {post.tags.slice(0, 3).map((tag) => (
