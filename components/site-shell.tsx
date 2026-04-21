@@ -27,14 +27,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
               </div>
             </div>
 
-            <nav className="grid gap-x-8 gap-y-4 border-t border-line/70 pt-4 text-sm text-subtext md:grid-cols-2 md:pt-0">
+            <nav className="flex flex-wrap gap-x-6 gap-y-3 border-t border-line/70 pt-4 text-sm text-subtext md:justify-end md:pt-0">
               {NAV_ITEMS.map((item, index) => (
-                <Link key={item.href} href={item.href} className="group grid grid-cols-[28px_minmax(0,1fr)] gap-3 border-b border-line/50 pb-3 transition hover:border-point/60 md:border-b-0 md:pb-0">
-                  <span className="text-[10px] uppercase tracking-[0.28em] text-point">{String(index + 1).padStart(2, '0')}</span>
-                  <span className="space-y-1">
-                    <span className="block font-medium text-text transition group-hover:text-point">{item.label}</span>
-                    <span className="block text-xs leading-6 text-subtext transition group-hover:text-text/80">{item.note}</span>
-                  </span>
+                <Link key={item.href} href={item.href} className="group border-b border-line/50 pb-2 transition hover:border-point/60 md:border-b-0 md:pb-0">
+                  <span className="block font-medium text-text transition group-hover:text-point">{item.label}</span>
                 </Link>
               ))}
             </nav>

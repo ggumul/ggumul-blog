@@ -21,11 +21,11 @@ export default async function ProjectsPage() {
             지금 만들고 있는 프로젝트예요.
           </h1>
           <p className="max-w-3xl text-[18px] leading-9 text-subtext md:text-[20px]">
-            프로젝트 소개만 따로 두기보다, 지금 어떤 작업을 하고 있고 어떤 기록이 쌓이고 있는지 함께 보이게 했어요.
+            지금 어떤 프로젝트를 만들고 있는지 바로 보이게 정리했어요.
           </p>
         </div>
         <div className="border-l border-line/60 pl-0 text-[13px] leading-6 text-subtext md:pl-5">
-          상태와 관련 기록을 같이 붙여서, 각 프로젝트가 지금 어떤 단계에 있는지 바로 읽히도록 구성했어요.
+          상태와 관련 기록을 같이 붙여서 흐름이 한 번에 보이게 했어요.
         </div>
       </section>
 

@@ -43,7 +43,7 @@ export default async function WritingPage() {
             <p>태그 {sections.index.tagCount}개</p>
           </div>
           <p className="text-[13px] leading-6 text-subtext">
-            최근 글 하나만 따로 세우기보다, 기록이 어떤 흐름으로 이어지는지 함께 보실 수 있게 정리해 두었어요.
+            최근 글 하나만 보이기보다, 기록이 어떻게 이어지는지 같이 읽히도록 정리했어요.
           </p>
         </aside>
       </section>
