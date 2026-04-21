@@ -64,11 +64,11 @@ export default async function HomePage() {
 
       <section className="space-y-6">
         <div className="grid gap-4 md:grid-cols-[120px_minmax(0,1fr)] md:gap-8">
-          <div className="text-[10px] uppercase tracking-[0.34em] text-point">붙들고 있는<br />작업</div>
+          <div className="text-[10px] uppercase tracking-[0.34em] text-point">지금 하는<br />작업</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
             <h2 className="max-w-3xl text-[32px] font-semibold tracking-[-0.05em] leading-[1.02] text-text md:text-[54px]">
-              지금 붙들고 있는 작업은 결과물이 아니라,
-              <br className="hidden md:block" /> 감각의 선에 가깝다.
+              지금 만드는 작업과,
+              <br className="hidden md:block" /> 그 곁에 쌓인 기록들.
             </h2>
             <p className="text-[14px] leading-7 text-subtext md:text-[15px]">
               번호, 제목, 연결 기록이 같은 그리드 위에 보이도록 정리해서 프로젝트 흐름이 먼저 읽히게 했다.
@@ -91,7 +91,7 @@ export default async function HomePage() {
               최근에 이어진 메모와 질문들.
             </h2>
             <p className="text-[14px] leading-7 text-subtext md:text-[15px]">
-              설명을 길게 늘어놓기보다, 이어지는 기록을 같은 화면 안에 붙여서 축적감이 먼저 드러나게 한다.
+              각각의 글을 따로 떼어 두기보다, 최근에 어떤 생각과 문제가 이어졌는지 한 번에 보이게 두었다.
             </p>
           </div>
         </div>

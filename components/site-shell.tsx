@@ -22,7 +22,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   ggumul / 꼬물
                 </Link>
                 <p className="max-w-xl text-[15px] leading-7 text-subtext md:text-base md:leading-8">
-                  완성본을 정리하기 전에 먼저 흔적을 꺼내 두고, 그 흔적이 어떻게 이어지는지 천천히 쌓아두는 작은 작업실 아카이브.
+                  완성된 결과보다, 만들면서 남긴 기록과 그 기록이 어떻게 이어지는지를 먼저 보여주는 작은 작업실.
                 </p>
               </div>
             </div>
@@ -49,7 +49,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <div className="space-y-2">
             <p className="text-[10px] uppercase tracking-[0.32em] text-point">끝맺는 메모</p>
             <p className="max-w-2xl leading-7">
-              꼬물은 느린 팀처럼 보일 수 있어도, 실제로는 오래 쌓이는 쪽을 고른다. 그래서 결과보다 작업 노트와 기록을 먼저 남긴다.
+              꼬물은 빠르게 많이 만들기보다, 오래 이어 가는 쪽에 가깝다. 그래서 결과보다 지금 만들고 있는 기록을 먼저 남긴다.
             </p>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-subtext">
