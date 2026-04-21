@@ -15,7 +15,7 @@ export function ProjectCard({ project, records = [] }: { project: ProjectEntry; 
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] uppercase tracking-[0.32em] text-point">
             <span>작업선</span>
             <span className="text-subtext">{project.status}</span>
-            <span className="text-subtext">trace {records.length}</span>
+            <span className="text-subtext">기록 {records.length}</span>
           </div>
 
           <div className="space-y-3">
