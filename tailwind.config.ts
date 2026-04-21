@@ -5,11 +5,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#F7F4EE',
-        text: '#222222',
-        subtext: '#5E5A54',
-        line: '#DDD6CC',
-        point: '#68755B',
+        background: '#F6F0E6',
+        text: '#2A1F18',
+        subtext: '#6E5D4F',
+        line: '#D8CABB',
+        point: '#9A6738',
       },
     },
   },

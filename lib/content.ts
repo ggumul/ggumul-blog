@@ -23,10 +23,64 @@ export type ProjectEntry = BaseEntry & {
 export type WritingEntry = BaseEntry & {
   publishedAt: string;
   status: string;
+  category: string;
+  series?: string;
+  tags: string[];
   relatedProjects: string[];
 };
 
+export type WritingTaxonomy = {
+  categories: string[];
+  series: string[];
+  tags: string[];
+};
+
+export type SiteSummary = {
+  totalProjects: number;
+  totalPosts: number;
+  latestPostTitle: string | null;
+};
+
+export type ProjectRecordLink = {
+  project: ProjectEntry;
+  records: WritingEntry[];
+};
+
+export type ProjectRecordMap = Record<string, ProjectRecordLink>;
+
+export type WritingArchiveSections = {
+  latest: WritingEntry;
+  timeline: WritingEntry[];
+  taxonomy: WritingTaxonomy;
+  index: {
+    seriesCount: number;
+    categoryCount: number;
+    tagCount: number;
+  };
+};
+
+export type HomeArchiveSnapshot = {
+  latest: WritingEntry | null;
+  latestProjects: ProjectEntry[];
+  worklines: Array<
+    ProjectEntry & {
+      recordCount: number;
+      latestRecord: WritingEntry | null;
+      previewRecords: WritingEntry[];
+    }
+  >;
+  moreEntries: WritingEntry[];
+};
+
 const CONTENT_ROOT = path.join(process.cwd(), 'content');
+
+function normalizeSlug(slug: string) {
+  try {
+    return decodeURIComponent(slug);
+  } catch {
+    return slug;
+  }
+}
 
 async function renderMarkdown(content: string) {
   const result = await remark().use(remarkGfm).use(remarkHtml).process(content);
@@ -67,12 +121,21 @@ export async function getFeaturedProjects() {
 
 export async function getProjectBySlug(slug: string) {
   const projects = await getProjects();
-  return projects.find((project) => project.slug === slug) ?? null;
+  const normalizedSlug = normalizeSlug(slug);
+  return projects.find((project) => project.slug === normalizedSlug) ?? null;
 }
 
 export async function getWriting() {
   const posts = await readEntries<WritingEntry>('writing');
-  return posts.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+  return posts.sort((a, b) => {
+    const byDate = b.publishedAt.localeCompare(a.publishedAt);
+
+    if (byDate !== 0) {
+      return byDate;
+    }
+
+    return b.title.localeCompare(a.title, 'ko');
+  });
 }
 
 export async function getFeaturedWriting() {
@@ -80,7 +143,85 @@ export async function getFeaturedWriting() {
   return posts.filter((post) => post.featured);
 }
 
+export async function getWritingTaxonomy(): Promise<WritingTaxonomy> {
+  const posts = await getWriting();
+
+  return {
+    categories: Array.from(new Set(posts.map((post) => post.category))).sort((a, b) => a.localeCompare(b, 'ko')),
+    series: Array.from(new Set(posts.map((post) => post.series).filter(Boolean) as string[])).sort((a, b) => a.localeCompare(b, 'ko')),
+    tags: Array.from(new Set(posts.flatMap((post) => post.tags))).sort((a, b) => a.localeCompare(b, 'ko')),
+  };
+}
+
+export async function getSiteSummary(): Promise<SiteSummary> {
+  const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
+
+  return {
+    totalProjects: projects.length,
+    totalPosts: posts.length,
+    latestPostTitle: posts[0]?.title ?? null,
+  };
+}
+
 export async function getWritingBySlug(slug: string) {
   const posts = await getWriting();
-  return posts.find((post) => post.slug === slug) ?? null;
+  const normalizedSlug = normalizeSlug(slug);
+  return posts.find((post) => post.slug === normalizedSlug) ?? null;
+}
+
+export async function getProjectRecordMap(): Promise<ProjectRecordMap> {
+  const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
+
+  const projectRecordEntries = projects.map((project) => {
+    const explicitRecords = posts.filter((post) => project.relatedPosts.includes(post.slug));
+    const fallbackRecords = posts.filter((post) => post.relatedProjects.includes(project.slug));
+    const records = explicitRecords.length > 0 ? explicitRecords : fallbackRecords;
+
+    return [project.slug, { project, records }] as const;
+  });
+
+  return Object.fromEntries(projectRecordEntries);
+}
+
+export async function getWritingArchiveSections(): Promise<WritingArchiveSections> {
+  const [posts, taxonomy] = await Promise.all([getWriting(), getWritingTaxonomy()]);
+  const [latest, ...timeline] = posts;
+
+  if (!latest) {
+    throw new Error('Writing archive requires at least one post');
+  }
+
+  return {
+    latest,
+    timeline,
+    taxonomy,
+    index: {
+      seriesCount: taxonomy.series.length,
+      categoryCount: taxonomy.categories.length,
+      tagCount: taxonomy.tags.length,
+    },
+  };
+}
+
+export async function getHomeArchiveSnapshot(): Promise<HomeArchiveSnapshot> {
+  const [projects, posts, projectRecordMap] = await Promise.all([getProjects(), getWriting(), getProjectRecordMap()]);
+  const [latest, ...moreEntries] = posts;
+
+  const latestProjects = latest
+    ? projects.filter((project) => latest.relatedProjects.includes(project.slug))
+    : [];
+
+  const worklines = Object.values(projectRecordMap).map(({ project, records }) => ({
+    ...project,
+    recordCount: records.length,
+    latestRecord: records[0] ?? null,
+    previewRecords: records.slice(0, 2),
+  }));
+
+  return {
+    latest: latest ?? null,
+    latestProjects,
+    worklines,
+    moreEntries,
+  };
 }
