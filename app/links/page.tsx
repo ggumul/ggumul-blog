@@ -7,8 +7,8 @@ const links = [
 ];
 
 export const metadata = createMetadata({
-  title: '바깥 링크',
-  description: 'GitHub, Notion, 메일 등 꼬물과 연결되는 바깥 링크 모음.',
+  title: '링크',
+  description: '꼬물과 연결되는 깃허브, 노션, 메일을 모아 둔 페이지예요.',
   path: '/links',
 });
 
@@ -16,10 +16,10 @@ export default function LinksPage() {
   return (
     <div className="space-y-10">
       <section className="space-y-4 rounded-[28px] border border-line bg-white/65 p-8 md:p-10">
-        <p className="text-sm uppercase tracking-[0.24em] text-point">바깥 링크</p>
-        <h1 className="text-4xl font-semibold tracking-tight">바깥으로 연결되는 곳</h1>
+        <p className="text-sm uppercase tracking-[0.24em] text-point">링크</p>
+        <h1 className="text-4xl font-semibold tracking-tight">여기서 더 이어 보실 수 있어요</h1>
         <p className="max-w-2xl text-base leading-7 text-subtext md:text-lg">
-          꼬물과 연결되는 바깥 링크를 한곳에 모아두었다. 코드, 정리 문서, 메일을 여기서 바로 확인할 수 있다.
+          꼬물과 연결되는 곳들을 한자리에 모아 두었어요. 코드, 정리 문서, 메일을 여기서 바로 확인하실 수 있어요.
         </p>
       </section>
 

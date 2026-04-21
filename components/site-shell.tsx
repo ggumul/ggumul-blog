@@ -2,11 +2,11 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 const NAV_ITEMS = [
-  { href: '/', label: '첫 장면', note: '가장 최근 기록' },
+  { href: '/', label: '홈', note: '최근 개발기록과 프로젝트' },
   { href: '/writing', label: '개발기록', note: '업데이트와 작업 노트' },
   { href: '/projects', label: '프로젝트', note: '진행 중인 프로젝트' },
-  { href: '/about', label: '소개', note: '꼬물 스튜디오 소개' },
-  { href: '/links', label: '바깥 링크', note: '깃허브와 외부 연결' },
+  { href: '/about', label: '소개', note: '꼬물 소개' },
+  { href: '/links', label: '링크', note: '깃허브와 외부 채널' },
 ];
 
 export function SiteShell({ children }: { children: ReactNode }) {
@@ -16,13 +16,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto max-w-6xl px-6 py-6 md:px-8 md:py-8">
           <div className="grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(320px,420px)] md:items-start">
             <div className="space-y-4">
-              <p className="text-[10px] uppercase tracking-[0.34em] text-point">꼬물 작업실 입구</p>
+              <p className="text-[10px] uppercase tracking-[0.34em] text-point">ggumul / 꼬물</p>
               <div className="space-y-3 border-l border-line/70 pl-4 md:pl-5">
                 <Link href="/" className="inline-block text-[30px] font-semibold tracking-[-0.05em] leading-none md:text-[42px]">
                   ggumul / 꼬물
                 </Link>
                 <p className="max-w-xl text-[15px] leading-7 text-subtext md:text-base md:leading-8">
-                  작은 게임과 인터랙티브 프로젝트를 만들고, 그 과정을 개발기록으로 정리하는 스튜디오입니다.
+                  작은 게임과 인터랙티브 프로젝트를 만들고 있어요. 그리고 그 과정을 개발기록으로 남기고 있어요.
                 </p>
               </div>
             </div>
@@ -47,9 +47,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-line/80 bg-white/20">
         <div className="mx-auto grid max-w-6xl gap-6 px-6 py-8 text-sm text-subtext md:grid-cols-[minmax(0,1fr)_auto] md:px-8 md:items-end">
           <div className="space-y-2">
-            <p className="text-[10px] uppercase tracking-[0.32em] text-point">끝맺는 메모</p>
+            <p className="text-[10px] uppercase tracking-[0.32em] text-point">한마디</p>
             <p className="max-w-2xl leading-7">
-              꼬물은 빠르게 많이 만들기보다 오래 이어 가는 방식을 택하고 있습니다. 그래서 결과보다 작업 과정의 기록을 먼저 남깁니다.
+              꼬물은 빠르게 많이 만들기보다, 천천히 오래 이어 가는 쪽을 선택하고 있어요. 그래서 결과보다 만드는 과정의 기록을 먼저 남기고 있어요.
             </p>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-subtext">

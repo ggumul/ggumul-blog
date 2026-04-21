@@ -36,7 +36,7 @@ export default function OpenGraphImage() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '22px', maxWidth: '860px' }}>
           <div style={{ fontSize: 72, fontWeight: 700, lineHeight: 1.18 }}>
-            느리더라도 오래 쌓아가는 작은 작업실
+            천천히 오래 이어 가는 게임 작업실
           </div>
           <div style={{ fontSize: 30, lineHeight: 1.5, color: '#5f574f' }}>
             완성본보다 먼저 작업 기록을 남기는 꼬물의 게임 개발 블로그
@@ -45,7 +45,7 @@ export default function OpenGraphImage() {
         <div style={{ display: 'flex', gap: '16px', fontSize: 22, color: '#6a6159' }}>
           <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>기록</div>
           <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>프로젝트</div>
-          <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>작업실</div>
+          <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>개발기록</div>
         </div>
       </div>
     ),

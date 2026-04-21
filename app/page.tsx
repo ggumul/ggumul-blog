@@ -5,8 +5,8 @@ import { getHomeArchiveSnapshot } from '@/lib/content';
 import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
-  title: '오래 쌓아가는 작업실',
-  description: '꼬물의 진행 중인 프로젝트와 최근 개발기록을 함께 정리한 홈페이지.',
+  title: '꼬물',
+  description: '꼬물의 프로젝트와 최근 개발기록을 함께 볼 수 있는 홈페이지예요.',
   path: '/',
 });
 
@@ -47,7 +47,7 @@ export default async function HomePage() {
           <aside className="space-y-4 border-l border-line/60 pl-0 md:pl-5">
             <div className="text-[10px] uppercase tracking-[0.3em] text-point">관련 프로젝트</div>
             <p className="text-[13px] leading-6 text-subtext">
-              이 기록이 어떤 프로젝트와 연결되는지 함께 볼 수 있도록 구성했습니다.
+              이 기록이 어떤 프로젝트와 이어져 있는지 바로 볼 수 있게 정리해 두었어요.
             </p>
             <div className="space-y-3">
               {snapshot.latestProjects.map((project) => (
@@ -67,11 +67,11 @@ export default async function HomePage() {
           <div className="text-[10px] uppercase tracking-[0.34em] text-point">진행 중인<br />프로젝트</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
             <h2 className="max-w-3xl text-[32px] font-semibold tracking-[-0.05em] leading-[1.02] text-text md:text-[54px]">
-              진행 중인 프로젝트와
-              <br className="hidden md:block" /> 관련 기록을 함께 정리했습니다.
+              지금 만들고 있는 프로젝트와
+              <br className="hidden md:block" /> 관련 기록을 함께 보여드리고 있어요.
             </h2>
             <p className="text-[14px] leading-7 text-subtext md:text-[15px]">
-              각 프로젝트의 현재 상태와 관련 기록을 한 화면에서 확인할 수 있도록 구성했습니다.
+              각 프로젝트가 어디까지 와 있는지, 어떤 기록이 쌓였는지 한 화면에서 볼 수 있게 구성했어요.
             </p>
           </div>
         </div>
@@ -88,10 +88,10 @@ export default async function HomePage() {
           <div className="text-[10px] uppercase tracking-[0.34em] text-point">최근 개발기록</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
             <h2 className="max-w-3xl text-[32px] font-semibold tracking-[-0.05em] leading-[1.02] text-text md:text-[54px]">
-              최근에 정리한 글과 메모입니다.
+              최근에 남긴 개발기록이에요.
             </h2>
             <p className="text-[14px] leading-7 text-subtext md:text-[15px]">
-              최근에 어떤 작업과 판단이 이어졌는지 한눈에 확인할 수 있도록 정리했습니다.
+              최근에 어떤 작업을 했고 어떤 판단을 했는지 자연스럽게 이어서 볼 수 있게 정리해 두었어요.
             </p>
           </div>
         </div>

@@ -3,8 +3,8 @@ import { getProjectRecordMap } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
-  title: '작업 중인 프로젝트',
-  description: '꼬물이 지금 만들고 있는 프로젝트와, 거기에 딸린 기록을 같이 모아 둔 곳.',
+  title: '프로젝트',
+  description: '꼬물이 만들고 있는 프로젝트와 관련 개발기록을 함께 모아 둔 페이지예요.',
   path: '/projects',
 });
 
@@ -15,17 +15,17 @@ export default async function ProjectsPage() {
   return (
     <div className="archive-surface space-y-14 md:space-y-18">
       <section className="grid gap-8 border-b border-line/80 pb-12 md:grid-cols-[120px_minmax(0,1fr)_220px] md:gap-10 md:pb-16">
-        <div className="text-[10px] uppercase tracking-[0.34em] text-point">지금 하는<br />작업</div>
+        <div className="text-[10px] uppercase tracking-[0.34em] text-point">프로젝트</div>
         <div className="space-y-4">
           <h1 className="max-w-4xl text-[40px] font-semibold tracking-[-0.06em] leading-[0.97] text-text md:text-[74px]">
-            지금 만들고 있는 작업.
+            지금 만들고 있는 프로젝트예요.
           </h1>
           <p className="max-w-3xl text-[18px] leading-9 text-subtext md:text-[20px]">
-            완성된 소개보다, 지금 뭘 만들고 있고 어떤 기록이 같이 쌓이고 있는지가 먼저 보이게 했다.
+            프로젝트 소개만 따로 두기보다, 지금 어떤 작업을 하고 있고 어떤 기록이 쌓이고 있는지 함께 보이게 했어요.
           </p>
         </div>
         <div className="border-l border-line/60 pl-0 text-[13px] leading-6 text-subtext md:pl-5">
-          프로젝트 설명만 따로 떼어 두기보다, 상태와 관련 기록을 같이 붙여서 지금 어디까지 와 있는지 바로 읽히게 했다.
+          상태와 관련 기록을 같이 붙여서, 각 프로젝트의 흐름이 바로 읽히도록 구성했어요.
         </div>
       </section>
 
