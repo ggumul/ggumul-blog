@@ -18,6 +18,7 @@ export type ProjectEntry = BaseEntry & {
   status: string;
   order: number;
   relatedPosts: string[];
+  coverImage?: string;
 };
 
 export type WritingEntry = BaseEntry & {

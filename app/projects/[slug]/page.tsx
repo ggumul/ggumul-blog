@@ -42,7 +42,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   return (
     <article className="space-y-10 md:space-y-12">
-      <header className="space-y-5 border-b border-line/80 pb-8 md:pb-10">
+      <header className="space-y-4 border-b border-line/80 pb-6 md:pb-8">
         <Link href="/projects" className="inline-flex text-sm text-subtext transition hover:text-text">
           ← 프로젝트 목록으로
         </Link>
@@ -51,6 +51,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <h1 className="max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-text md:text-6xl md:leading-[1.08]">{project.title}</h1>
           <p className="max-w-3xl text-base leading-8 text-subtext md:text-[17px]">{project.summary}</p>
         </div>
+        {project.coverImage ? (
+          <img alt={`${project.title} 대표 이미지`} className="h-auto w-full rounded-xl border border-line/80 object-cover" src={project.coverImage} />
+        ) : null}
         <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-subtext">
           <span>순서 {String(project.order).padStart(2, '0')}</span>
           <span>상태 {project.status}</span>

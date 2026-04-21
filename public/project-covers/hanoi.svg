@@ -1,0 +1,18 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#2E4A45"/>
+  <rect x="70" y="70" width="1060" height="760" rx="40" fill="#7E8B63"/>
+  <rect x="120" y="120" width="960" height="640" rx="32" fill="#243B37"/>
+  <text x="130" y="150" fill="white" font-size="64" font-family="Inter, Arial, sans-serif" font-weight="700">Hanoi</text>
+  <text x="130" y="205" fill="#F0E1B9" font-size="30" font-family="Inter, Arial, sans-serif">하노이 탑 퍼즐 게임</text>
+  <rect x="312" y="260" width="16" height="390" fill="#F0E1B9"/>
+  <rect x="552" y="260" width="16" height="390" fill="#F0E1B9"/>
+  <rect x="792" y="260" width="16" height="390" fill="#F0E1B9"/>
+  <rect x="230" y="650" width="180" height="20" rx="10" fill="#F0E1B9"/>
+  <rect x="470" y="650" width="180" height="20" rx="10" fill="#F0E1B9"/>
+  <rect x="710" y="650" width="180" height="20" rx="10" fill="#F0E1B9"/>
+  <rect x="235" y="560" width="170" height="34" rx="14" fill="#E7C27D"/>
+  <rect x="255" y="500" width="130" height="34" rx="14" fill="#D99C63"/>
+  <rect x="275" y="440" width="90" height="34" rx="14" fill="#B9D48B"/>
+  <rect x="495" y="590" width="130" height="34" rx="14" fill="#D99C63"/>
+  <rect x="755" y="610" width="90" height="34" rx="14" fill="#B9D48B"/>
+</svg>

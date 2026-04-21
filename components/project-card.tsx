@@ -5,8 +5,11 @@ export function ProjectCard({ project, records = [] }: { project: ProjectEntry; 
   const latestRecord = records[0];
 
   return (
-    <div className="rounded-xl border border-line/80 bg-white/40 px-4 py-4">
-      <div className="space-y-3">
+    <div className="overflow-hidden rounded-xl border border-line/80 bg-white/40">
+      {project.coverImage ? (
+        <img alt={`${project.title} 대표 이미지`} className="h-48 w-full border-b border-line/80 object-cover" src={project.coverImage} />
+      ) : null}
+      <div className="space-y-3 px-4 py-4">
         <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-subtext">
           <span>{project.status}</span>
           <span>기록 {records.length}</span>
