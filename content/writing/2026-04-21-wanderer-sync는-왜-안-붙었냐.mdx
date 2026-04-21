@@ -1,0 +1,237 @@
+---
+title: "Wanderer sync는 왜 안 붙었냐"
+slug: "wanderer-sync는-왜-안-붙었냐"
+summary: "Wanderer mobile과 WAS를 다시 맞춰보며, websocket이 없는 문제가 아니라 sync 모델이 어긋나 있었다는 걸 정리한 글"
+publishedAt: "2026-04-21"
+status: "published"
+featured: false
+category: "작업 기록"
+series: "작업실 노트"
+tags:
+  - "wanderer"
+  - "sync"
+  - "websocket"
+  - "계약 정렬"
+  - "server compatibility"
+relatedProjects:
+  - "wanderer"
+---
+
+Wanderer를 다시 맞춰보면서 처음엔 서버가 realtime을 거의 안 갖고 있는 줄 알았다. 그런데 실제 코드를 다시 뜯어보니 문제는 websocket 유무가 아니었다. **sync를 어떤 모델로 복구하느냐**가 모바일과 서버에서 서로 달랐다.
+
+이 글은 그 차이를 어떻게 이해했고, 왜 지금 단계에서는 **모바일을 크게 뜯는 것보다 서버에 compatibility layer를 추가하는 쪽이 현실적인지**를 정리한 기록이다.
+
+## 처음 착각했던 지점
+
+처음엔 아주 단순하게 봤다.
+
+- mobile은 `/ws/v1` 을 쓰고 있고
+- 서버는 그걸 제대로 못 받거나
+- game websocket surface가 비어 있을 거라고 생각했다
+
+그런데 최신 `wanderer-was@chore/ai-constitution-guardrails` 브랜치를 실제로 다시 확인해보니 다음이 이미 다 들어 있었다.
+
+- `/ws/v1`
+- `/app`
+- `/topic`
+- `@MessageMapping`
+- room / game / match queue 관련 ws action
+
+즉 문제는 **웹소켓이 없어서**가 아니었다.
+
+## 진짜 문제는 sync 모델 차이였다
+
+핵심은 sync 요청 이후에 **무슨 이벤트를 어떤 형태로 보내느냐**였다.
+
+### mobile이 기대하는 것
+mobile은 sync를 거의 이렇게 본다.
+
+- `/app/room/sync/request` 를 보낸다
+- 응답으로 `SYNC_SNAPSHOT` 단일 이벤트를 기다린다
+- 그 snapshot 하나로 현재 game state를 다시 덮어쓴다
+
+즉 mobile 쪽 모델은 **snapshot-first** 다.
+
+한 번의 snapshot 안에 들어가는 정보도 꽤 넓다.
+
+- game 메타
+- players
+- currentTurn
+- currentTurn.submissions
+- winner / deadline / endedAt 같은 전체 상태
+
+이 구조에 맞춰 `GamesViewModel` 도 상태를 복구한다.
+
+### WAS가 실제로 하는 것
+반대로 WAS는 sync 요청을 받으면 단일 snapshot을 주지 않는다.
+
+대신 user topic으로 분리된 update event를 보낸다.
+
+- `ROOM.UPDATED`
+- `GAME.UPDATED`
+- `TURN.SUBMISSIONS_UPDATED`
+
+즉 WAS 쪽 모델은 **event-stream-first** 에 가깝다.
+
+이 구조에서는 sync도 “현재 canonical view를 분리 이벤트로 다시 흘려보내는 것”에 가깝다.
+
+## 왜 이 차이가 크게 보이냐
+
+겉으로 보면 그냥 이벤트 이름이 다른 것처럼 보인다.
+
+- mobile: `SYNC_SNAPSHOT`
+- WAS: `ROOM.UPDATED`, `GAME.UPDATED`, `TURN.SUBMISSIONS_UPDATED`
+
+하지만 실제로는 이름이 아니라 **상태를 복구하는 방식 전체**가 다르다.
+
+### mobile 관점
+- sync = 한번에 현재 상태를 복구하는 스냅샷
+- decoder와 viewmodel도 이 전제를 깔고 짜여 있음
+
+### WAS 관점
+- sync = 현재 canonical room/game/submission view를 분리 업데이트로 publish
+- 일반 realtime event 체계 안에 sync를 넣어버린 구조
+
+그래서 이 문제는 “event enum 하나 바꾸면 붙겠지” 같은 류가 아니었다.
+
+## 그러면 어느 쪽을 바꾸는 게 맞냐
+
+선택지는 두 개였다.
+
+### 1) mobile을 서버 모델에 맞춘다
+즉 mobile이 아래를 직접 소비하게 만든다.
+
+- `ROOM.UPDATED`
+- `GAME.UPDATED`
+- `TURN.SUBMISSIONS_UPDATED`
+
+이 방향은 이론적으로 더 정교해 보일 수 있다. 서버가 이미 event-stream-first 구조를 갖고 있으니까.
+
+하지만 실제 수정 반경을 보면 얘기가 달라진다.
+
+- `games_session_client.dart`
+- `realtime_payload_factory.dart`
+- `games_event_decoder.dart`
+- `games_repository.dart`
+- `games_viewmodel.dart`
+- reconnect / fallback sync 정책
+
+즉 decoder 몇 줄이 아니라 **상태 복구 모델 전체**를 다시 맞춰야 한다.
+
+### 2) 서버가 `SYNC_SNAPSHOT` 호환 이벤트를 추가한다
+이 방향은 기존 split event는 유지하면서, sync 요청에 한해서 mobile이 이미 이해하는 wrapper event를 하나 더 주는 방식이다.
+
+예를 들면 이런 식이다.
+
+```json
+{
+  "event": "SYNC_SNAPSHOT",
+  "payload": {
+    "hasGame": true,
+    "game": {
+      "gameId": "...",
+      "roomId": "...",
+      "mode": "...",
+      "status": "...",
+      "players": [...],
+      "currentTurn": {
+        "turnNo": 1,
+        "submissions": [...]
+      }
+    }
+  },
+  "at": "..."
+}
+```
+
+이 방식의 장점은 단순하다.
+
+- mobile은 거의 안 건드려도 됨
+- 현재 decoder / viewmodel 구조를 보존 가능
+- 빠르게 E2E 기준선을 복구할 수 있음
+
+## 왜 지금은 서버 compatibility가 더 현실적이냐
+
+나는 지금 단계에서는 2번이 더 현실적이라고 본다.
+
+### 이유 1. mobile은 이미 받을 준비가 되어 있다
+mobile은 이미
+
+- `/app/room/sync/request` 를 보내고
+- `/topic/user/{userId}` 를 구독하고
+- `SYNC_SNAPSHOT` decoder branch를 갖고 있고
+- snapshot을 `GamesViewModel._applyGameSnapshot(...)` 로 반영한다
+
+즉 **받는 쪽은 이미 열려 있다.**
+
+### 이유 2. 서버도 재료는 다 갖고 있다
+`RequestRoomSyncWsUseCase` 는 이미
+
+- room view
+- game view
+- turn submissions view
+
+를 canonical하게 만들어서 publish 한다.
+
+즉 서버는 snapshot compatibility payload를 조립할 수 있는 재료를 이미 가지고 있다. 없는 건 그걸 감싸는 wrapper와 새 event뿐이다.
+
+### 이유 3. 지금 목표는 철학 통일보다 복구다
+장기적으로는 snapshot-first 와 event-stream-first 중 하나를 공식 SSOT로 정해야 한다.
+
+하지만 지금은 그보다 먼저,
+**latest mobile과 latest WAS가 실제로 다시 붙는 최소 경로**를 만드는 게 중요하다.
+
+## 실제 구현 후보도 꽤 좁혀졌다
+문서 기준으로 정리한 server-side 최소 변경 후보는 이 정도다.
+
+- `RealtimeEventType` 에 `SYNC_SNAPSHOT` 추가
+- `WsEventType` 에 `SYNC_SNAPSHOT("SYNC_SNAPSHOT")` 추가
+- `NotificationRepository`, `EventRepository` 에 event mapping 추가
+- `WsSyncSnapshotResponse(hasGame, game)` wrapper DTO 추가
+- `RequestRoomSyncWsUseCase` 에 compatibility emit 추가
+
+좋은 점은 nested `game` payload는 상당 부분 기존 `WsGameStateResponse` 를 재사용할 수 있다는 점이다.
+
+즉 핵심은 **top-level wrapper와 event name** 이다.
+
+## dual-publish는 위험하지 않냐
+이 부분도 따로 봤다.
+
+현재 repo 내부 기준으로는 **Low-Medium risk** 로 보인다.
+
+가장 먼저 깨질 가능성이 높은 건 오히려 테스트다.
+
+- `RequestRoomSyncWsUseCaseTest` 에서 sync publish count 를 3으로 기대하고 있음
+
+즉 dual-publish 자체가 서버 내부를 무너뜨리는 종류의 위험이라기보다,
+**의도된 계약 변경 때문에 테스트를 갱신해야 하는 단계**에 가깝다.
+
+더 큰 불확실성은 repo 밖 external consumer 여부다. 만약 밖에서 정확히 3개 이벤트만 기대하고 있으면 영향이 있을 수 있다. 그래서 이건 additive compatibility change로 넣고 실제 연결 검증을 붙이는 순서가 맞다.
+
+## 이번 정리에서 가장 중요했던 깨달음
+이번에 제일 크게 느낀 건,
+**계약은 endpoint 목록만 맞는다고 붙는 게 아니라는 점**이었다.
+
+REST에서는 endpoint가 있으면 어느 정도 진척처럼 보인다. 하지만 realtime은 다르다.
+
+- 어떤 topic으로 보내는가
+- 어떤 event 이름을 쓰는가
+- payload가 합쳐져 있는가, 쪼개져 있는가
+- viewmodel이 한 번에 덮어쓰는가, 흐름으로 축적하는가
+
+이런 것들이 다 맞아야 진짜 “붙는다”고 말할 수 있다.
+
+이번 Wanderer sync mismatch는 그걸 꽤 선명하게 보여줬다.
+
+## 지금 기준의 결론
+지금 단계에서 가장 현실적인 방향은 이거다.
+
+1. mobile을 크게 뜯지 않는다
+2. WAS에 `SYNC_SNAPSHOT` compatibility event를 추가한다
+3. split event는 유지한 채 additive change로 넣는다
+4. 실제 연결 검증으로 초기 state 복구가 되는지 확인한다
+5. 그 다음 장기적으로 snapshot-first / event-stream-first 중 하나를 공식화한다
+
+지금 필요한 건 멋있는 정답보다, **현재 구조를 존중하면서 다시 붙는 경로를 만드는 일**이다.
+
+Wanderer는 지금 딱 그 단계에 와 있다.
