@@ -36,11 +36,11 @@ export function ProjectCard({ project, records = [] }: { project: ProjectEntry; 
                 <p className="mt-2 text-[13px] leading-6 text-subtext">{latestRecord.summary}</p>
               </Link>
               {moreRecords.length > 0 ? (
-                <div className="text-[12px] leading-6 text-subtext">이 프로젝트와 이어진 기록이 {moreRecords.length}개 더 있다.</div>
+                <div className="text-[12px] leading-6 text-subtext">이 프로젝트와 관련된 기록이 {moreRecords.length}개 더 있습니다.</div>
               ) : null}
             </div>
           ) : (
-            <p className="text-[13px] leading-6 text-subtext">아직 연결한 기록은 적지만, 작업은 계속 진행 중이다.</p>
+            <p className="text-[13px] leading-6 text-subtext">아직 연결된 기록은 많지 않지만, 프로젝트는 계속 진행 중입니다.</p>
           )}
         </div>
       </div>

@@ -26,7 +26,7 @@ export function PostCard({ post }: { post: WritingEntry }) {
       </div>
 
       <div className="space-y-3 border-l border-line/60 pl-0 text-sm text-subtext md:pl-5">
-        <div className="text-[10px] uppercase tracking-[0.28em] text-point">작업 메모</div>
+        <div className="text-[10px] uppercase tracking-[0.28em] text-point">개발기록</div>
         <div className="space-y-2 text-[13px] leading-6">
           <div>{post.status}</div>
           {post.relatedProjects.length > 0 ? <div>관련 프로젝트 {post.relatedProjects.length}개</div> : null}
