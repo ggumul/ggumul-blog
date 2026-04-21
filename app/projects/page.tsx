@@ -15,7 +15,7 @@ export default async function ProjectsPage() {
   return (
     <div className="archive-surface space-y-14 md:space-y-18">
       <section className="grid gap-8 border-b border-line/80 pb-12 md:grid-cols-[120px_minmax(0,1fr)_220px] md:gap-10 md:pb-16">
-        <div className="text-[10px] uppercase tracking-[0.34em] text-point">work<br />archive</div>
+        <div className="text-[10px] uppercase tracking-[0.34em] text-point">붙들고 있는<br />작업</div>
         <div className="space-y-4">
           <h1 className="max-w-4xl text-[40px] font-semibold tracking-[-0.06em] leading-[0.97] text-text md:text-[74px]">
             지금 붙들고 있는 작업선.

@@ -65,7 +65,7 @@ describe('content loader', () => {
 
     expect(summary.totalProjects).toBe(4);
     expect(summary.totalPosts).toBe(4);
-    expect(summary.latestPostTitle).toBe('Wanderer sync는 왜 안 붙었냐');
+    expect(summary.latestPostTitle).toBe('Wanderer sync가 왜 안 붙었냐');
   });
 
   it('builds a home archive snapshot with latest trace, related projects, richer worklines, and remaining entries', async () => {

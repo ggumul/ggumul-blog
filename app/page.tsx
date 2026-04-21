@@ -23,7 +23,7 @@ export default async function HomePage() {
 
       {snapshot.latest ? (
         <section className="grid gap-8 border-b border-line/80 pb-12 md:grid-cols-[120px_minmax(0,1fr)_240px] md:gap-10 md:pb-16">
-          <div className="text-[10px] uppercase tracking-[0.34em] text-point">latest<br />trace</div>
+          <div className="text-[10px] uppercase tracking-[0.34em] text-point">가장 최근<br />발자국</div>
 
           <div className="space-y-5">
             <div className="space-y-3">
@@ -45,14 +45,14 @@ export default async function HomePage() {
           </div>
 
           <aside className="space-y-4 border-l border-line/60 pl-0 md:pl-5">
-            <div className="text-[10px] uppercase tracking-[0.3em] text-point">attached worklines</div>
+            <div className="text-[10px] uppercase tracking-[0.3em] text-point">이어진 작업</div>
             <p className="text-[13px] leading-6 text-subtext">
               브랜드 소개보다 먼저, 지금 이 발자국이 어떤 작업선과 이어져 있는지 바로 보이게 둔다.
             </p>
             <div className="space-y-3">
               {snapshot.latestProjects.map((project) => (
                 <Link key={project.slug} href={`/projects/${project.slug}`} className="block border-t border-line/60 pt-3 transition hover:border-point/60">
-                  <div className="text-[11px] uppercase tracking-[0.24em] text-subtext">workline</div>
+                  <div className="text-[11px] uppercase tracking-[0.24em] text-subtext">작업선</div>
                   <div className="mt-2 font-medium text-text">{project.title}</div>
                   <p className="mt-1 text-[13px] leading-6 text-subtext">{project.summary}</p>
                 </Link>
@@ -64,7 +64,7 @@ export default async function HomePage() {
 
       <section className="space-y-6">
         <div className="grid gap-4 md:grid-cols-[120px_minmax(0,1fr)] md:gap-8">
-          <div className="text-[10px] uppercase tracking-[0.34em] text-point">workline</div>
+          <div className="text-[10px] uppercase tracking-[0.34em] text-point">붙들고 있는<br />작업</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
             <h2 className="max-w-3xl text-[32px] font-semibold tracking-[-0.05em] leading-[1.02] text-text md:text-[54px]">
               지금 붙들고 있는 작업은 결과물이 아니라,
@@ -85,7 +85,7 @@ export default async function HomePage() {
 
       <section className="space-y-6 border-t border-line/80 pt-10 md:pt-14">
         <div className="grid gap-4 md:grid-cols-[120px_minmax(0,1fr)] md:gap-8">
-          <div className="text-[10px] uppercase tracking-[0.34em] text-point">archive</div>
+          <div className="text-[10px] uppercase tracking-[0.34em] text-point">이어진 기록</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
             <h2 className="max-w-3xl text-[32px] font-semibold tracking-[-0.05em] leading-[1.02] text-text md:text-[54px]">
               최근에 이어진 메모와 질문들.

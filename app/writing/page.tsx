@@ -15,7 +15,7 @@ export default async function WritingPage() {
   return (
     <div className="archive-surface space-y-14 md:space-y-18">
       <section className="grid gap-8 border-b border-line/80 pb-12 md:grid-cols-[120px_minmax(0,1fr)_240px] md:gap-10 md:pb-16">
-        <div className="text-[10px] uppercase tracking-[0.34em] text-point">writing<br />archive</div>
+        <div className="text-[10px] uppercase tracking-[0.34em] text-point">글과 기록</div>
 
         <div className="space-y-5">
           <div className="space-y-3">
@@ -36,7 +36,7 @@ export default async function WritingPage() {
         </div>
 
         <aside className="space-y-4 border-l border-line/60 pl-0 md:pl-5">
-          <div className="text-[10px] uppercase tracking-[0.3em] text-point">index density</div>
+          <div className="text-[10px] uppercase tracking-[0.3em] text-point">기록 밀도</div>
           <div className="space-y-3 text-[13px] leading-6 text-subtext">
             <p>시리즈 {sections.index.seriesCount}개</p>
             <p>카테고리 {sections.index.categoryCount}개</p>

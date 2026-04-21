@@ -16,7 +16,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto max-w-6xl px-6 py-6 md:px-8 md:py-8">
           <div className="grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(320px,420px)] md:items-start">
             <div className="space-y-4">
-              <p className="text-[10px] uppercase tracking-[0.34em] text-point">ggumul archive / 작업실 입구</p>
+              <p className="text-[10px] uppercase tracking-[0.34em] text-point">꼬물 작업실 입구</p>
               <div className="space-y-3 border-l border-line/70 pl-4 md:pl-5">
                 <Link href="/" className="inline-block text-[30px] font-semibold tracking-[-0.05em] leading-none md:text-[42px]">
                   ggumul / 꼬물
@@ -47,7 +47,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-line/80 bg-white/20">
         <div className="mx-auto grid max-w-6xl gap-6 px-6 py-8 text-sm text-subtext md:grid-cols-[minmax(0,1fr)_auto] md:px-8 md:items-end">
           <div className="space-y-2">
-            <p className="text-[10px] uppercase tracking-[0.32em] text-point">끝말 / closing note</p>
+            <p className="text-[10px] uppercase tracking-[0.32em] text-point">끝맺는 메모</p>
             <p className="max-w-2xl leading-7">
               꼬물은 느린 팀처럼 보일 수 있어도, 실제로는 오래 쌓이는 쪽을 고른다. 그래서 결과보다 작업 노트와 발자국을 먼저 남긴다.
             </p>

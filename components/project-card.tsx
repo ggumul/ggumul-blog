@@ -13,7 +13,7 @@ export function ProjectCard({ project, records = [] }: { project: ProjectEntry; 
 
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] uppercase tracking-[0.32em] text-point">
-            <span>workline</span>
+            <span>작업선</span>
             <span className="text-subtext">{project.status}</span>
             <span className="text-subtext">trace {records.length}</span>
           </div>
@@ -31,7 +31,7 @@ export function ProjectCard({ project, records = [] }: { project: ProjectEntry; 
           {latestRecord ? (
             <div className="space-y-3">
               <Link href={`/writing/${latestRecord.slug}`} className="block border-t border-line/60 pt-3 transition hover:border-point/60">
-                <div className="text-[11px] uppercase tracking-[0.24em] text-subtext">latest note</div>
+                <div className="text-[11px] uppercase tracking-[0.24em] text-subtext">최근 기록</div>
                 <div className="mt-2 font-medium text-text transition hover:text-point">{latestRecord.title}</div>
                 <p className="mt-2 text-[13px] leading-6 text-subtext">{latestRecord.summary}</p>
               </Link>
