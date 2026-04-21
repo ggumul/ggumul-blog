@@ -76,7 +76,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 ))}
               </div>
             ) : (
-              <p className="text-xs leading-6">아직 이 프로젝트에 직접 연결한 기록은 많지 않다. 그래도 작업은 계속 이어지고 있다.</p>
+              <p className="text-xs leading-6">아직 이 프로젝트와 직접 연결한 기록은 많지 않지만, 작업은 계속 이어지고 있어요.</p>
             )}
           </div>
         </aside>
