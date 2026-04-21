@@ -15,7 +15,7 @@ export default async function HomePage() {
   const websiteJsonLd = createWebsiteJsonLd();
 
   return (
-    <div className="archive-surface space-y-18 md:space-y-24">
+    <div className="archive-surface space-y-12 md:space-y-24">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
@@ -27,12 +27,12 @@ export default async function HomePage() {
 
           <div className="space-y-5">
             <div className="space-y-3">
-              <h1 className="max-w-4xl text-[42px] font-semibold tracking-[-0.06em] leading-[0.96] text-text md:text-[78px]">
+              <h1 className="max-w-4xl text-[32px] font-semibold tracking-[-0.06em] leading-[1.02] text-text md:text-[78px] md:leading-[0.96]">
                 <Link href={`/writing/${snapshot.latest.slug}`} className="transition hover:text-point">
                   {snapshot.latest.title}
                 </Link>
               </h1>
-              <p className="max-w-3xl text-[18px] leading-9 text-subtext md:text-[20px]">
+              <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[20px] md:leading-9">
                 {snapshot.latest.summary}
               </p>
             </div>
@@ -66,11 +66,11 @@ export default async function HomePage() {
         <div className="grid gap-4 md:grid-cols-[120px_minmax(0,1fr)] md:gap-8">
           <div className="text-[10px] uppercase tracking-[0.34em] text-point">진행 중인<br />프로젝트</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
-            <h2 className="max-w-3xl text-[32px] font-semibold tracking-[-0.05em] leading-[1.02] text-text md:text-[54px]">
+            <h2 className="max-w-3xl text-[26px] font-semibold tracking-[-0.05em] leading-[1.08] text-text md:text-[54px] md:leading-[1.02]">
               지금 만들고 있는 프로젝트를
               <br className="hidden md:block" /> 한눈에 볼 수 있어요.
             </h2>
-            <p className="text-[14px] leading-7 text-subtext md:text-[15px]">
+            <p className="text-[13px] leading-6 text-subtext md:text-[15px] md:leading-7">
               프로젝트 설명과 관련 기록을 한 화면에 같이 두었어요.
             </p>
           </div>
@@ -87,10 +87,10 @@ export default async function HomePage() {
         <div className="grid gap-4 md:grid-cols-[120px_minmax(0,1fr)] md:gap-8">
           <div className="text-[10px] uppercase tracking-[0.34em] text-point">최근 개발기록</div>
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
-            <h2 className="max-w-3xl text-[32px] font-semibold tracking-[-0.05em] leading-[1.02] text-text md:text-[54px]">
+            <h2 className="max-w-3xl text-[26px] font-semibold tracking-[-0.05em] leading-[1.08] text-text md:text-[54px] md:leading-[1.02]">
               최근에 쓴 글이에요.
             </h2>
-            <p className="text-[14px] leading-7 text-subtext md:text-[15px]">
+            <p className="text-[13px] leading-6 text-subtext md:text-[15px] md:leading-7">
               최근 작업 흐름이 자연스럽게 이어서 읽히도록 정리했어요.
             </p>
           </div>

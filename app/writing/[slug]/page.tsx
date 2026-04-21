@@ -57,8 +57,8 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
 
-      <header className="panel-section space-y-6 md:space-y-7">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+      <header className="panel-section space-y-5 md:space-y-7">
+        <div className="flex flex-col items-start gap-2.5 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-3">
           <Link href="/writing" className="inline-flex rounded-full border border-line/80 bg-white/70 px-4 py-2 text-sm text-subtext transition hover:border-point/60 hover:text-text">
             ← 글 목록으로
           </Link>
@@ -66,24 +66,24 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
         </div>
 
         <div className="space-y-4">
-          <h1 className="max-w-4xl text-[38px] font-semibold tracking-[-0.05em] leading-[1.02] text-text md:text-[68px] md:leading-[1.04]">{post.title}</h1>
-          <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">{post.summary}</p>
+          <h1 className="max-w-4xl text-[28px] font-semibold tracking-[-0.05em] leading-[1.08] text-text md:text-[68px] md:leading-[1.04]">{post.title}</h1>
+          <p className="max-w-3xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">{post.summary}</p>
         </div>
 
-        <div className="grid gap-3 md:grid-cols-[repeat(4,minmax(0,1fr))]">
-          <div className="rounded-[1.15rem] border border-line/70 bg-white/65 px-4 py-3">
+        <div className="grid gap-2.5 md:grid-cols-[repeat(4,minmax(0,1fr))] md:gap-3">
+          <div className="rounded-[1rem] border border-line/70 bg-white/65 px-3 py-2.5 md:rounded-[1.15rem] md:px-4 md:py-3">
             <div className="text-[10px] uppercase tracking-[0.24em] text-point">발행일</div>
             <div className="mt-2 text-sm text-text">{post.publishedAt}</div>
           </div>
-          <div className="rounded-[1.15rem] border border-line/70 bg-white/65 px-4 py-3">
+          <div className="rounded-[1rem] border border-line/70 bg-white/65 px-3 py-2.5 md:rounded-[1.15rem] md:px-4 md:py-3">
             <div className="text-[10px] uppercase tracking-[0.24em] text-point">수정일</div>
             <div className="mt-2 text-sm text-text">{post.updatedAt}</div>
           </div>
-          <div className="rounded-[1.15rem] border border-line/70 bg-white/65 px-4 py-3">
+          <div className="rounded-[1rem] border border-line/70 bg-white/65 px-3 py-2.5 md:rounded-[1.15rem] md:px-4 md:py-3">
             <div className="text-[10px] uppercase tracking-[0.24em] text-point">읽는 시간</div>
             <div className="mt-2 text-sm text-text">{post.readingTimeMinutes}분</div>
           </div>
-          <div className="rounded-[1.15rem] border border-line/70 bg-white/65 px-4 py-3">
+          <div className="rounded-[1rem] border border-line/70 bg-white/65 px-3 py-2.5 md:rounded-[1.15rem] md:px-4 md:py-3">
             <div className="text-[10px] uppercase tracking-[0.24em] text-point">상태</div>
             <div className="mt-2 text-sm text-text">{post.status}</div>
           </div>
@@ -97,9 +97,9 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
         </div>
       </header>
 
-      <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_280px] md:items-start md:gap-12">
+      <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_280px] md:items-start md:gap-12">
         <section className="space-y-6">
-          <div className="rounded-[1.6rem] border border-line/70 bg-white/55 px-6 py-6 md:px-8 md:py-8">
+          <div className="rounded-[1.35rem] border border-line/70 bg-white/55 px-4 py-5 md:rounded-[1.6rem] md:px-8 md:py-8">
             <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: post.html }} />
           </div>
         </section>

@@ -62,7 +62,7 @@ export function PostEngagement({ title, slug }: PostEngagementProps) {
   const commentLink = `${REPO_ISSUES_URL}?title=${encodeURIComponent(`[comment] ${title}`)}&body=${encodeURIComponent(`글 링크: ${postUrl}\n\n의견을 남겨 주세요.`)}`;
 
   return (
-    <div className="panel-aside space-y-4 text-sm text-subtext">
+    <div className="panel-aside space-y-3 text-sm text-subtext md:space-y-4">
       <div className="space-y-2">
         <div className="text-[10px] uppercase tracking-[0.28em] text-point">반응</div>
         <div className="rounded-[1.15rem] border border-line/70 bg-white/65 px-4 py-3">

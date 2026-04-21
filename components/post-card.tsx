@@ -5,9 +5,9 @@ export function PostCard({ post }: { post: WritingEntry }) {
   return (
     <Link
       href={`/writing/${post.slug}`}
-      className="group grid gap-4 rounded-[1.6rem] border border-line/80 bg-white/45 px-5 py-5 shadow-[0_16px_36px_rgba(68,49,33,0.03)] transition hover:border-point/70 hover:bg-white/70 md:grid-cols-[170px_minmax(0,1fr)] md:gap-7 md:px-6 md:py-6"
+      className="group grid gap-3 rounded-[1.35rem] border border-line/80 bg-white/45 px-4 py-4 shadow-[0_16px_36px_rgba(68,49,33,0.03)] transition hover:border-point/70 hover:bg-white/70 md:grid-cols-[170px_minmax(0,1fr)] md:gap-7 md:rounded-[1.6rem] md:px-6 md:py-6"
     >
-      <div className="rounded-2xl bg-background/70 px-4 py-3 text-sm text-subtext">
+      <div className="rounded-2xl bg-background/70 px-3 py-2.5 text-sm text-subtext md:px-4 md:py-3">
         <div className="text-[10px] uppercase tracking-[0.3em] text-point">{post.publishedAt}</div>
         <div className="text-[13px] leading-6">{post.category}</div>
         {post.series ? <div className="text-[12px] leading-6">시리즈 · {post.series}</div> : null}
@@ -17,10 +17,10 @@ export function PostCard({ post }: { post: WritingEntry }) {
         <div className="flex items-start gap-3">
           <span className="mt-3 h-px w-10 bg-point/45 transition group-hover:w-14 group-hover:bg-point" />
           <div className="space-y-2">
-            <h3 className="text-[28px] font-semibold tracking-[-0.04em] leading-[1.08] text-text transition group-hover:text-point md:text-[34px]">
+            <h3 className="text-[22px] font-semibold tracking-[-0.04em] leading-[1.12] text-text transition group-hover:text-point md:text-[34px] md:leading-[1.08]">
               {post.title}
             </h3>
-            <p className="max-w-2xl text-[16px] leading-8 text-subtext">{post.summary}</p>
+            <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[16px] md:leading-8">{post.summary}</p>
           </div>
         </div>
       </div>
