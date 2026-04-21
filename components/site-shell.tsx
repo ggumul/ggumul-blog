@@ -5,7 +5,7 @@ const NAV_ITEMS = [
   { href: '/', label: '첫 장면', note: '가장 최근 기록' },
   { href: '/writing', label: '기록', note: '작업 노트와 시리즈' },
   { href: '/projects', label: '프로젝트', note: '지금 만들고 있는 것들' },
-  { href: '/about', label: '작업실', note: '꼬물이 붙드는 태도' },
+  { href: '/about', label: '작업실', note: '꼬물이 어떻게 만들고 있는지' },
   { href: '/links', label: '바깥 링크', note: '깃허브와 외부 연결' },
 ];
 
