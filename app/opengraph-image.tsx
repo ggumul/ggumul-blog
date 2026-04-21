@@ -32,7 +32,7 @@ export default function OpenGraphImage() {
           }}
         >
           <div>ggumul / 꼬물</div>
-          <div>studio archive</div>
+          <div>ggumul studio</div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '22px', maxWidth: '860px' }}>
           <div style={{ fontSize: 72, fontWeight: 700, lineHeight: 1.18 }}>

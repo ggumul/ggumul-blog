@@ -58,7 +58,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
 
       <header className="space-y-5 border-b border-line/80 pb-8 md:pb-10">
         <Link href="/writing" className="inline-flex text-sm text-subtext transition hover:text-text">
-          ← 기록 선반으로
+          ← 글 목록으로
         </Link>
         <div className="space-y-4">
           <p className="text-[11px] uppercase tracking-[0.28em] text-point">{post.category}</p>
@@ -84,7 +84,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
 
         <aside className="space-y-8 border-l border-line/70 pl-0 text-sm text-subtext md:sticky md:top-24 md:pl-5">
           <div className="space-y-3">
-            <h2 className="text-[11px] uppercase tracking-[0.24em] text-point">관련 작업</h2>
+            <h2 className="text-[11px] uppercase tracking-[0.24em] text-point">관련 프로젝트</h2>
             {relatedProjects.length > 0 ? (
               <div className="space-y-3">
                 {relatedProjects.map((project) => (
@@ -95,13 +95,13 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
                 ))}
               </div>
             ) : (
-              <p className="text-xs leading-6">아직 직접 연결한 작업은 없지만, 이 기록은 작업실의 흐름 안에 놓여 있다.</p>
+              <p className="text-xs leading-6">아직 직접 연결한 프로젝트는 없지만, 이 글도 같은 작업 흐름 안에서 나온 기록이다.</p>
             )}
           </div>
 
           {siblingRecords.length > 0 ? (
             <div className="space-y-3">
-              <h2 className="text-[11px] uppercase tracking-[0.24em] text-point">이어지는 기록</h2>
+              <h2 className="text-[11px] uppercase tracking-[0.24em] text-point">같은 흐름의 글</h2>
               <div className="space-y-3">
                 {siblingRecords.map((entry) => (
                   <Link key={entry.slug} href={`/writing/${entry.slug}`} className="block transition hover:text-text">

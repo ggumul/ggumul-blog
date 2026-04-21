@@ -5,7 +5,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '글과 기록',
-  description: '꼬물이 오래 쌓아가는 작업 노트와 시리즈를 시간 흐름으로 정리한 기록 아카이브.',
+  description: '꼬물이 만들면서 적어 둔 글과 메모를 시간순으로 모아 둔 곳.',
   path: '/writing',
 });
 
@@ -43,7 +43,7 @@ export default async function WritingPage() {
             <p>태그 {sections.index.tagCount}개</p>
           </div>
           <p className="text-[13px] leading-6 text-subtext">
-            카드 그리드 대신 기록 선반처럼 보이도록, 인덱스는 작게 빼고 본문 흐름을 더 크게 세운다.
+            새 글 하나만 튀게 세우기보다, 어떤 흐름으로 글이 쌓였는지 한 번에 읽히게 두고 싶었다.
           </p>
         </aside>
       </section>
@@ -57,7 +57,7 @@ export default async function WritingPage() {
 
         <aside className="space-y-7 border-l border-line/60 pl-0 text-sm text-subtext md:sticky md:top-24 md:pl-5">
           <div>
-            <div className="text-[10px] uppercase tracking-[0.3em] text-point">series</div>
+            <div className="text-[10px] uppercase tracking-[0.3em] text-point">시리즈</div>
             <div className="mt-3 space-y-2 text-[13px] leading-6">
               {sections.taxonomy.series.map((series) => (
                 <div key={series}>{series}</div>
@@ -66,7 +66,7 @@ export default async function WritingPage() {
           </div>
 
           <div>
-            <div className="text-[10px] uppercase tracking-[0.3em] text-point">categories</div>
+            <div className="text-[10px] uppercase tracking-[0.3em] text-point">카테고리</div>
             <div className="mt-3 space-y-2 text-[13px] leading-6">
               {sections.taxonomy.categories.map((category) => (
                 <div key={category}>{category}</div>
@@ -75,7 +75,7 @@ export default async function WritingPage() {
           </div>
 
           <div>
-            <div className="text-[10px] uppercase tracking-[0.3em] text-point">tags</div>
+            <div className="text-[10px] uppercase tracking-[0.3em] text-point">태그</div>
             <div className="mt-3 flex flex-wrap gap-x-3 gap-y-2 text-[12px] leading-6">
               {sections.taxonomy.tags.map((tag) => (
                 <span key={tag}>#{tag}</span>

@@ -13,7 +13,7 @@ export function ProjectCard({ project, records = [] }: { project: ProjectEntry; 
 
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] uppercase tracking-[0.32em] text-point">
-            <span>작업선</span>
+            <span>프로젝트</span>
             <span className="text-subtext">{project.status}</span>
             <span className="text-subtext">기록 {records.length}</span>
           </div>
@@ -27,7 +27,7 @@ export function ProjectCard({ project, records = [] }: { project: ProjectEntry; 
         </div>
 
         <div className="space-y-4 border-l border-line/60 pl-0 md:pl-5">
-          <div className="text-[10px] uppercase tracking-[0.3em] text-point">연결된 흔적</div>
+          <div className="text-[10px] uppercase tracking-[0.3em] text-point">관련 기록</div>
           {latestRecord ? (
             <div className="space-y-3">
               <Link href={`/writing/${latestRecord.slug}`} className="block border-t border-line/60 pt-3 transition hover:border-point/60">
@@ -36,11 +36,11 @@ export function ProjectCard({ project, records = [] }: { project: ProjectEntry; 
                 <p className="mt-2 text-[13px] leading-6 text-subtext">{latestRecord.summary}</p>
               </Link>
               {moreRecords.length > 0 ? (
-                <div className="text-[12px] leading-6 text-subtext">그 밖에 {moreRecords.length}개의 기록이 같은 작업선 위에 더 이어져 있다.</div>
+                <div className="text-[12px] leading-6 text-subtext">이 프로젝트와 이어진 기록이 {moreRecords.length}개 더 있다.</div>
               ) : null}
             </div>
           ) : (
-            <p className="text-[13px] leading-6 text-subtext">아직 꺼낸 기록은 적지만, 이 작업선은 계속 이어지고 있다.</p>
+            <p className="text-[13px] leading-6 text-subtext">아직 연결한 기록은 적지만, 작업은 계속 진행 중이다.</p>
           )}
         </div>
       </div>

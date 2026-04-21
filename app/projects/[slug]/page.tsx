@@ -44,10 +44,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     <article className="space-y-10 md:space-y-12">
       <header className="space-y-5 border-b border-line/80 pb-8 md:pb-10">
         <Link href="/projects" className="inline-flex text-sm text-subtext transition hover:text-text">
-          ← 작업선으로
+          ← 프로젝트 목록으로
         </Link>
         <div className="space-y-4">
-          <p className="text-[11px] uppercase tracking-[0.28em] text-point">project / 작업 중</p>
+          <p className="text-[11px] uppercase tracking-[0.28em] text-point">프로젝트 / 진행 중</p>
           <h1 className="max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-text md:text-6xl md:leading-[1.08]">{project.title}</h1>
           <p className="max-w-3xl text-base leading-8 text-subtext md:text-[17px]">{project.summary}</p>
         </div>
@@ -65,7 +65,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
         <aside className="space-y-8 border-l border-line/70 pl-0 text-sm text-subtext md:sticky md:top-24 md:pl-5">
           <div className="space-y-3">
-            <h2 className="text-[11px] uppercase tracking-[0.24em] text-point">이 작업선 곁의 기록</h2>
+            <h2 className="text-[11px] uppercase tracking-[0.24em] text-point">이 프로젝트와 관련된 기록</h2>
             {relatedPosts.length > 0 ? (
               <div className="space-y-3">
                 {relatedPosts.map((post) => (
@@ -76,7 +76,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 ))}
               </div>
             ) : (
-              <p className="text-xs leading-6">아직 이 작업과 직접 이어 둔 기록은 적다. 그래도 작업선 자체는 계속 남아 있다.</p>
+              <p className="text-xs leading-6">아직 이 프로젝트에 직접 연결한 기록은 많지 않다. 그래도 작업은 계속 이어지고 있다.</p>
             )}
           </div>
         </aside>

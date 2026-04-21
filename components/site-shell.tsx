@@ -2,9 +2,9 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 const NAV_ITEMS = [
-  { href: '/', label: '첫 장면', note: '가장 최근 발자국' },
+  { href: '/', label: '첫 장면', note: '가장 최근 기록' },
   { href: '/writing', label: '기록', note: '작업 노트와 시리즈' },
-  { href: '/projects', label: '작업선', note: '붙들고 있는 작업들' },
+  { href: '/projects', label: '프로젝트', note: '지금 만들고 있는 것들' },
   { href: '/about', label: '작업실', note: '꼬물이 붙드는 태도' },
   { href: '/links', label: '바깥 링크', note: '깃허브와 외부 연결' },
 ];
@@ -49,13 +49,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <div className="space-y-2">
             <p className="text-[10px] uppercase tracking-[0.32em] text-point">끝맺는 메모</p>
             <p className="max-w-2xl leading-7">
-              꼬물은 느린 팀처럼 보일 수 있어도, 실제로는 오래 쌓이는 쪽을 고른다. 그래서 결과보다 작업 노트와 발자국을 먼저 남긴다.
+              꼬물은 느린 팀처럼 보일 수 있어도, 실제로는 오래 쌓이는 쪽을 고른다. 그래서 결과보다 작업 노트와 기록을 먼저 남긴다.
             </p>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-subtext">
             <Link href="/feed.xml" className="transition hover:text-text">rss</Link>
             <Link href="/writing" className="transition hover:text-text">기록</Link>
-            <Link href="/projects" className="transition hover:text-text">작업선</Link>
+            <Link href="/projects" className="transition hover:text-text">프로젝트</Link>
             <Link href="/about" className="transition hover:text-text">작업실</Link>
           </div>
         </div>
