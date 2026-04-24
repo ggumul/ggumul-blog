@@ -44,7 +44,7 @@ export function ProjectCard({ project, records = [] }: { project: ProjectEntry; 
         <div className="space-y-4">
           {latestRecord ? (
             <Link href={`/writing/${latestRecord.slug}`} className="block rounded-[20px] border border-line/70 bg-black/20 p-4 transition hover:border-point/50">
-              <div className="text-[11px] font-bold uppercase tracking-[0.22em] text-point">latest note</div>
+              <div className="text-[11px] font-bold tracking-[0.18em] text-point">최근 기록</div>
               <div className="mt-2 font-bold tracking-[-0.02em] text-text">{latestRecord.title}</div>
               <p className="mt-1 line-clamp-2 text-[13px] leading-6 text-subtext">{latestRecord.summary}</p>
             </Link>

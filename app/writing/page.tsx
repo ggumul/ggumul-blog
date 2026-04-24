@@ -31,7 +31,7 @@ export default async function WritingPage() {
 
       <section className="panel-section grid gap-8 md:grid-cols-[minmax(0,1fr)_280px] md:items-start">
         <div className="space-y-5">
-          <SectionHeader eyebrow="latest note" title={sections.latest.title} description={sections.latest.summary} />
+          <SectionHeader eyebrow="최근 기록" title={sections.latest.title} description={sections.latest.summary} />
           <div className="flex flex-wrap gap-2 text-[12px]">
             <Pill>{sections.latest.publishedAt}</Pill>
             <Pill tone="point">{sections.latest.category}</Pill>

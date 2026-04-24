@@ -22,14 +22,14 @@ export default async function ProjectsPage() {
         description="완성된 홍보 문구보다 실제로 돌아가는 화면, 현재 상태, 최근 개발 기록을 먼저 보여줍니다."
       >
         <div className="grid gap-3">
-          <MetricCard label="projects" value={worklines.length} description="현재 공개한 게임 작업 수" />
-          <MetricCard label="notes" value={recordTotal} description="프로젝트와 연결된 개발 기록" />
+          <MetricCard label="프로젝트" value={worklines.length} description="현재 공개한 게임 작업 수" />
+          <MetricCard label="기록" value={recordTotal} description="프로젝트와 연결된 개발 기록" />
         </div>
       </PageHero>
 
       <section className="space-y-5">
         <SectionHeader
-          eyebrow="current projects"
+          eyebrow="작업 중인 프로젝트"
           title="한 화면씩 실제로 확인할 수 있게"
           description="각 카드에는 대표 이미지, 진행 상태, 최근 개발 기록을 같이 묶었습니다. 목록에서 바로 현재 상태를 읽고 상세로 들어갈 수 있습니다."
         />
