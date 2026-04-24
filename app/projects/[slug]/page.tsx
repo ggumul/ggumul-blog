@@ -71,7 +71,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </section>
 
         <aside className="aside-rail panel-aside space-y-6 text-sm text-subtext md:sticky md:top-24">
-          <SectionHeader eyebrow="related notes" title="연결된 개발 기록" description="프로젝트가 어떤 판단으로 지금의 모습이 됐는지 글로 이어서 볼 수 있습니다." />
+          <SectionHeader eyebrow="related notes" title="연결된 개발 기록" description="프로젝트가 어떤 수정과 방향 변경을 거쳐 지금 상태가 됐는지 글로 이어서 볼 수 있습니다." />
           {relatedPosts.length > 0 ? (
             <div className="space-y-3">
               {relatedPosts.map((post) => (

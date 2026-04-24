@@ -32,14 +32,14 @@ export default function OpenGraphImage() {
           }}
         >
           <div>ggumul / 꼬물</div>
-          <div>ggumul studio</div>
+          <div>ggumul / 꼬물</div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '22px', maxWidth: '860px' }}>
           <div style={{ fontSize: 72, fontWeight: 700, lineHeight: 1.18 }}>
-            천천히 오래 이어 가는 게임 작업실
+            작은 게임과 실제 개발 기록
           </div>
           <div style={{ fontSize: 30, lineHeight: 1.5, color: '#5f574f' }}>
-            완성본보다 먼저 작업 기록을 남기는 꼬물의 게임 개발 블로그
+            실행 화면, 수정 이유, 남은 문제를 함께 보여주는 꼬물의 게임 개발 블로그
           </div>
         </div>
         <div style={{ display: 'flex', gap: '16px', fontSize: 22, color: '#6a6159' }}>

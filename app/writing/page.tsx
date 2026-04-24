@@ -17,8 +17,8 @@ export default async function WritingPage() {
     <div className="archive-surface space-y-12 md:space-y-16">
       <PageHero
         eyebrow="development notes"
-        title={<>만드는 중간의<br />판단까지 남깁니다.</>}
-        description="버그를 고친 이유, 방향을 바꾼 순간, 지금 만들고 있는 장면을 완성본과 분리하지 않고 기록합니다."
+        title={<>무엇을 고쳤는지<br />글로 남깁니다.</>}
+        description="버그를 고친 이유, 방향을 바꾼 순간, 지금 만들고 있는 장면을 실제 작업 단위로 기록합니다."
       >
         <div className="grid gap-3">
           <MetricCard label="series" value={sections.index.seriesCount} description="묶어서 읽을 수 있는 글 흐름" />
@@ -43,8 +43,8 @@ export default async function WritingPage() {
         </div>
 
         <aside className="aside-rail panel-aside space-y-4">
-          <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">archive index</div>
-          <p className="text-sm leading-7 text-subtext">태그와 묶음을 유지해서 시간이 지나도 왜 그런 결정을 했는지 다시 찾을 수 있게 정리했습니다.</p>
+          <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">writing index</div>
+          <p className="text-sm leading-7 text-subtext">태그와 묶음을 남겨 시간이 지나도 어떤 문제를 왜 고쳤는지 다시 찾을 수 있게 했습니다.</p>
           <div className="flex flex-wrap gap-2 text-[12px]">
             {sections.taxonomy.tags.slice(0, 12).map((tag) => (
               <span key={tag} className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-subtext">#{tag}</span>
@@ -55,7 +55,7 @@ export default async function WritingPage() {
 
       <section className="grid gap-10 md:grid-cols-[minmax(0,1fr)_280px] md:items-start md:gap-12">
         <div className="space-y-5">
-          <SectionHeader eyebrow="timeline" title="최근 기록부터 이어서 보기" description="글 목록도 단순 리스트가 아니라 날짜, 분류, 태그가 한 번에 읽히도록 정리했습니다." />
+          <SectionHeader eyebrow="timeline" title="최근 기록부터 이어서 보기" description="날짜, 분류, 태그를 함께 보여줘서 어떤 프로젝트의 어떤 수정인지 바로 확인할 수 있게 했습니다." />
           <div className="grid gap-4">
             {sections.timeline.map((post) => (
               <PostCard key={post.slug} post={post} />

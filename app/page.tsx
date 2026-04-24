@@ -6,7 +6,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '꼬물이 만들고 있는 작은 게임과 개발 과정을 소개합니다.',
+  description: '꼬물이 만들고 있는 작은 게임과 개발 기록을 모았습니다.',
   path: '/',
 });
 
@@ -31,7 +31,7 @@ export default async function HomePage() {
               짧게 플레이해도 오래 남는 작은 게임을 만듭니다.
             </h1>
             <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-              Wanderer 같은 카드 게임부터 퍼즐, 분기형 서사 게임까지 천천히 다듬고 있습니다. 이곳에는 지금 만드는 게임과 그 과정에서 남긴 기록을 함께 모았습니다.
+              Wanderer 같은 카드 게임부터 퍼즐, 분기형 서사 게임까지 직접 만들고 있습니다. 이곳에는 실행 화면, 최근 수정 내용, 남은 문제를 함께 모았습니다.
             </p>
           </div>
 
@@ -61,7 +61,7 @@ export default async function HomePage() {
             <div className="rounded-2xl border border-line/70 bg-white/10 px-4 py-4">
               <div className="text-[12px] font-semibold text-point">개발 기록</div>
               <div className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-text">{featuredWriting.length}</div>
-              <p className="mt-1 text-sm leading-6 text-subtext">만들면서 남긴 판단과 수정 기록입니다.</p>
+              <p className="mt-1 text-sm leading-6 text-subtext">만들면서 남긴 수정 이유와 회고입니다.</p>
             </div>
             <div className="rounded-2xl border border-line/70 bg-white/10 px-4 py-4">
               <div className="text-[12px] font-semibold text-point">화면 캡처</div>
@@ -110,7 +110,7 @@ export default async function HomePage() {
               </div>
               <div className="rounded-2xl border border-line/70 bg-white/[0.06] px-3 py-3">
                 <div className="text-[12px] font-medium text-text">퍼즐 실험</div>
-                <p className="mt-1 text-[12px] leading-5 text-subtext">단순한 규칙 안에서 판단의 리듬을 실험합니다.</p>
+                <p className="mt-1 text-[12px] leading-5 text-subtext">단순한 규칙 안에서 선택의 리듬을 실험합니다.</p>
               </div>
             </div>
           </div>
@@ -185,7 +185,7 @@ export default async function HomePage() {
         <div className="space-y-1">
           <p className="text-[12px] font-semibold text-point">제작 노트</p>
           <h2 className="text-[24px] font-semibold leading-tight tracking-[-0.02em] md:text-[32px]">개발 기록</h2>
-          <p className="text-sm leading-6 text-subtext">게임을 만들며 남긴 결정, 수정, 회고를 모았습니다. 완성된 결과뿐 아니라 만드는 중간의 흔적도 함께 남깁니다.</p>
+          <p className="text-sm leading-6 text-subtext">게임을 만들며 남긴 결정, 수정, 회고를 모았습니다. 완성 화면뿐 아니라 바꾸게 된 이유도 함께 남깁니다.</p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {featuredWriting.map((post) => (

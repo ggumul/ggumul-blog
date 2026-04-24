@@ -4,8 +4,9 @@ import { createArticleJsonLd, createMetadata, siteConfig, toAbsoluteUrl } from '
 describe('site branding and seo helpers', () => {
   it('exposes ggumul brand identity for metadata defaults', () => {
     expect(siteConfig.name).toBe('ggumul / 꼬물');
-    expect(siteConfig.description).toContain('작업실');
+    expect(siteConfig.description).toContain('작은 게임');
     expect(siteConfig.keywords).toContain('게임 개발 블로그');
+    expect(siteConfig.keywords).toContain('Wanderer');
   });
 
   it('creates page metadata with canonical url and open graph title', () => {

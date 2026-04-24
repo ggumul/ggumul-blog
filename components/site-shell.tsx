@@ -27,7 +27,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </span>
             <span className="leading-tight">
               <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[26px]">ggumul <span className="mx-1 text-point/70">/</span> 꼬물</span>
-              <span className="block text-[10px] font-bold uppercase tracking-[0.25em] text-subtext">playable tiny game archive</span>
+              <span className="block text-[10px] font-bold uppercase tracking-[0.25em] text-subtext">작은 게임과 개발 기록</span>
             </span>
           </Link>
 
@@ -59,7 +59,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 text-sm text-subtext md:grid-cols-[minmax(0,1fr)_auto] md:px-8">
           <div>
             <div className="text-lg font-black tracking-[-0.04em] text-text">ggumul / 꼬물</div>
-            <p className="mt-2 max-w-2xl leading-7">작은 게임을 실제 화면과 개발 기록으로 남기는 작업실입니다. 완성본만이 아니라 수정 과정과 판단의 흔적까지 같이 보관합니다.</p>
+            <p className="mt-2 max-w-2xl leading-7">꼬물은 만들고 있는 게임의 화면, 변경 이유, 남은 문제를 같이 남깁니다. 완성 소개보다 실제로 어떻게 바뀌었는지를 먼저 보여줍니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
             <Link href="/feed.xml" className="transition hover:text-text">RSS</Link>

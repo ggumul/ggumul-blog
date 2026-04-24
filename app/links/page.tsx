@@ -19,7 +19,7 @@ export default function LinksPage() {
       <PageHero
         eyebrow="links"
         title={<>코드, 문서, 연락처를<br />한 곳에 모았습니다.</>}
-        description="프로젝트 저장소와 작업 문서, 문의 채널을 빠르게 찾을 수 있게 정리했습니다."
+        description="프로젝트 저장소와 작업 문서, 문의 채널을 바로 찾을 수 있게 모았습니다."
       >
         <div className="space-y-3 text-sm leading-7 text-subtext">
           <p>외부 링크는 새 탭에서 열립니다.</p>
@@ -28,7 +28,7 @@ export default function LinksPage() {
       </PageHero>
 
       <section className="space-y-5">
-        <SectionHeader eyebrow="contact points" title="꼬물과 연결되는 곳" description="단순 링크 목록처럼 보이지 않도록 각 링크의 역할을 카드로 구분했습니다." />
+        <SectionHeader eyebrow="contact points" title="꼬물과 연결되는 곳" description="저장소, 문서, 연락처를 역할별로 구분해 바로 이동할 수 있게 했습니다." />
         <div className="grid gap-4 md:grid-cols-3">
           {links.map((link) => (
             <a key={link.label} href={link.href} target={link.href.startsWith('mailto:') ? undefined : '_blank'} rel={link.href.startsWith('mailto:') ? undefined : 'noreferrer'} className="story-card group rounded-[28px] border border-line/80 bg-white/[0.055] p-5 transition hover:border-point/60 hover:bg-white/[0.08]">
