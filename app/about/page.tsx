@@ -29,7 +29,7 @@ export default function AboutPage() {
 
       <section className="panel-section space-y-6">
         <SectionHeader
-          eyebrow="making principles"
+          eyebrow="만드는 기준"
           title="결과보다 과정이 먼저 보이는 이유"
           description="프로젝트 소개에는 가능한 한 실행 화면, 현재 상태, 최근에 바꾼 내용을 먼저 둡니다. 작은 게임이라도 어떤 문제를 고치고 있는지 보여주는 쪽이 더 정확하기 때문입니다."
         />

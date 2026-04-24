@@ -14,7 +14,7 @@ export default async function WritingOpenGraphImage({ params }: { params: Promis
 
   const title = post?.title ?? '꼬물의 기록';
   const summary = post?.summary ?? '꼬물이 게임을 만들며 남긴 개발 기록';
-  const category = post?.category ?? 'writing';
+  const category = post?.category ?? '개발 기록';
 
   return new ImageResponse(
     (

@@ -17,7 +17,7 @@ export default async function ProjectsPage() {
   return (
     <div className="archive-surface space-y-12 md:space-y-16">
       <PageHero
-        eyebrow="projects"
+        eyebrow="프로젝트"
         title={<>작업 중인 게임을<br />상태와 화면으로 봅니다.</>}
         description="완성된 홍보 문구보다 실제로 돌아가는 화면, 현재 상태, 최근 개발 기록을 먼저 보여줍니다."
       >

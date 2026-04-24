@@ -116,7 +116,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
           </div>
           {relatedProjects.length > 0 ? (
             <div className="space-y-3">
-              <SectionHeader eyebrow="related" title="관련 프로젝트" />
+              <SectionHeader eyebrow="관련" title="관련 프로젝트" />
               {relatedProjects.map((project) => (
                 <Link key={project.slug} href={`/projects/${project.slug}`} className="block rounded-[20px] border border-line/80 bg-white/[0.055] px-4 py-3 transition hover:border-point/60">
                   <div className="font-black tracking-[-0.03em] text-text">{project.title}</div>
@@ -128,7 +128,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
 
           {siblingRecords.length > 0 ? (
             <div className="space-y-3">
-              <SectionHeader eyebrow="same series" title="같은 묶음" />
+              <SectionHeader eyebrow="같은 묶음" title="같은 묶음" />
               {siblingRecords.map((entry) => (
                 <Link key={entry.slug} href={`/writing/${entry.slug}`} className="block rounded-[20px] border border-line/80 bg-white/[0.055] px-4 py-3 transition hover:border-point/60">
                   <div className="font-black tracking-[-0.03em] text-text">{entry.title}</div>
