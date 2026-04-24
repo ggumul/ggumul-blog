@@ -25,15 +25,15 @@ describe('site branding and seo helpers', () => {
 
   it('creates article json-ld with published date and absolute url', () => {
     const article = createArticleJsonLd({
-      title: '우리는 왜 이렇게 천천히 만들고 있냐',
-      description: '꼬물이 오래 쌓는 팀인 이유를 다룬 글',
-      path: '/writing/우리는-왜-이렇게-천천히-만들고-있냐',
+      title: '제작 리듬을 우선하는 이유',
+      description: '꼬물이 제작 속도보다 반복 가능한 개발 리듬을 우선하는 이유',
+      path: '/writing/제작-리듬을-우선하는-이유',
       publishedAt: '2026-04-20',
     });
 
     expect(article['@type']).toBe('BlogPosting');
-    expect(article.headline).toBe('우리는 왜 이렇게 천천히 만들고 있냐');
+    expect(article.headline).toBe('제작 리듬을 우선하는 이유');
     expect(article.datePublished).toBe('2026-04-20');
-    expect(article.mainEntityOfPage).toBe(toAbsoluteUrl('/writing/우리는-왜-이렇게-천천히-만들고-있냐'));
+    expect(article.mainEntityOfPage).toBe(toAbsoluteUrl('/writing/제작-리듬을-우선하는-이유'));
   });
 });

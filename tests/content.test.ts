@@ -38,22 +38,22 @@ describe('content loader', () => {
     const project = await getProjectBySlug('wanderer');
 
     expect(project?.title).toBe('Wanderer');
-    expect(project?.relatedPosts).toContain('wanderer는-꼬물의-출발점-같은-게임이었다');
+    expect(project?.relatedPosts).toContain('wanderer-초기-설계-회고');
   });
 
   it('finds writing by slug and exposes related projects', async () => {
-    const post = await getWritingBySlug('요즘-이런-게임들을-만들고-있어요');
+    const post = await getWritingBySlug('4월-프로젝트-개발-현황');
 
-    expect(post?.title).toBe('4월에 만들고 있는 것들');
+    expect(post?.title).toBe('4월 프로젝트 개발 현황');
     expect(post?.relatedProjects).toContain('trpg');
     expect(post?.readingTimeMinutes).toBeGreaterThan(0);
     expect(post?.updatedAt).toBe('2026-04-20');
   });
 
   it('supports url-encoded slugs for writing detail routes', async () => {
-    const post = await getWritingBySlug('wanderer%EB%8A%94-%EA%BC%AC%EB%AC%BC%EC%9D%98-%EC%B6%9C%EB%B0%9C%EC%A0%90-%EA%B0%99%EC%9D%80-%EA%B2%8C%EC%9E%84%EC%9D%B4%EC%97%88%EB%8B%A4');
+    const post = await getWritingBySlug('wanderer-%EC%B4%88%EA%B8%B0-%EC%84%A4%EA%B3%84-%ED%9A%8C%EA%B3%A0');
 
-    expect(post?.title).toBe('Wanderer는 아직도 출발점 같은 게임이에요');
+    expect(post?.title).toBe('Wanderer 초기 설계 회고');
   });
 
   it('returns category, tags, and series data for writing taxonomy', async () => {
@@ -74,33 +74,33 @@ describe('content loader', () => {
 
     expect(summary.totalProjects).toBe(4);
     expect(summary.totalPosts).toBe(4);
-    expect(summary.latestPostTitle).toBe('Wanderer sync가 어긋난 이유');
+    expect(summary.latestPostTitle).toBe('Wanderer sync 연결 문제 분석');
   });
 
   it('builds a home archive snapshot with latest post, related projects, project list, and remaining entries', async () => {
     const snapshot = await getHomeArchiveSnapshot();
 
-    expect(snapshot.latest?.slug).toBe('wanderer-sync는-왜-안-붙었냐');
+    expect(snapshot.latest?.slug).toBe('wanderer-sync-연결-문제-분석');
     expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['wanderer']);
     expect(snapshot.worklines).toHaveLength(4);
     expect(snapshot.worklines[0]?.recordCount).toBe(2);
     expect(snapshot.worklines[0]?.previewRecords.map((record) => record.slug)).toEqual([
-      'wanderer-sync는-왜-안-붙었냐',
-      'wanderer는-꼬물의-출발점-같은-게임이었다',
+      'wanderer-sync-연결-문제-분석',
+      'wanderer-초기-설계-회고',
     ]);
     expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual([
-      'wanderer는-꼬물의-출발점-같은-게임이었다',
-      '우리는-왜-이렇게-천천히-만들고-있냐',
-      '요즘-이런-게임들을-만들고-있어요',
+      'wanderer-초기-설계-회고',
+      '제작-리듬을-우선하는-이유',
+      '4월-프로젝트-개발-현황',
     ]);
   });
 
   it('builds writing archive sections with latest entry, timeline entries, and index density', async () => {
     const sections = await getWritingArchiveSections();
 
-    expect(sections.latest.slug).toBe('wanderer-sync는-왜-안-붙었냐');
+    expect(sections.latest.slug).toBe('wanderer-sync-연결-문제-분석');
     expect(sections.timeline).toHaveLength(3);
-    expect(sections.timeline[0]?.slug).toBe('wanderer는-꼬물의-출발점-같은-게임이었다');
+    expect(sections.timeline[0]?.slug).toBe('wanderer-초기-설계-회고');
     expect(sections.index.seriesCount).toBe(3);
     expect(sections.index.categoryCount).toBe(4);
     expect(sections.index.tagCount).toBeGreaterThan(7);
@@ -111,10 +111,22 @@ describe('content loader', () => {
 
     expect(projectRecordMap.wanderer.project.title).toBe('Wanderer');
     expect(projectRecordMap.wanderer.records.map((record) => record.slug)).toEqual([
-      'wanderer-sync는-왜-안-붙었냐',
-      'wanderer는-꼬물의-출발점-같은-게임이었다',
+      'wanderer-sync-연결-문제-분석',
+      'wanderer-초기-설계-회고',
     ]);
-    expect(projectRecordMap.trpg.records.map((record) => record.slug)).toContain('요즘-이런-게임들을-만들고-있어요');
+    expect(projectRecordMap.trpg.records.map((record) => record.slug)).toContain('4월-프로젝트-개발-현황');
+  });
+
+  it('keeps writing entries dense enough to read as development records', async () => {
+    const posts = await getWriting();
+
+    for (const post of posts) {
+      const paragraphCount = post.content.split(/\n{2,}/).filter((paragraph) => paragraph.trim().length > 0).length;
+
+      expect(post.content.length).toBeGreaterThanOrEqual(1200);
+      expect(paragraphCount).toBeGreaterThanOrEqual(8);
+      expect(post.content).toMatch(/## /);
+    }
   });
 
   it('keeps project/post relationships and cover assets resolvable', async () => {

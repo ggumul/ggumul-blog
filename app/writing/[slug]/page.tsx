@@ -1,9 +1,24 @@
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { PageHero, Pill, SectionHeader } from '@/components/brand-ui';
 import { PostEngagement } from '@/components/post-engagement';
 import { getProjects, getWriting, getWritingBySlug } from '@/lib/content';
 import { createArticleJsonLd, createMetadata } from '@/lib/site';
+
+const legacyWritingSlugMap: Record<string, string> = {
+  'wanderer-sync는-왜-안-붙었냐': 'wanderer-sync-연결-문제-분석',
+  'wanderer는-꼬물의-출발점-같은-게임이었다': 'wanderer-초기-설계-회고',
+  '우리는-왜-이렇게-천천히-만들고-있냐': '제작-리듬을-우선하는-이유',
+  '요즘-이런-게임들을-만들고-있어요': '4월-프로젝트-개발-현황',
+};
+
+function resolveLegacyWritingSlug(slug: string) {
+  try {
+    return legacyWritingSlugMap[decodeURIComponent(slug)] ?? null;
+  } catch {
+    return legacyWritingSlugMap[slug] ?? null;
+  }
+}
 
 export async function generateStaticParams() {
   const posts = await getWriting();
@@ -15,6 +30,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = await getWritingBySlug(slug);
 
   if (!post) {
+    const redirectSlug = resolveLegacyWritingSlug(slug);
+
+    if (redirectSlug) {
+      return createMetadata({
+        title: '글 주소가 변경됨',
+        description: '새 개발 기록 주소로 이동합니다.',
+        path: `/writing/${redirectSlug}`,
+        type: 'article',
+      });
+    }
+
     return createMetadata({
       title: '글을 찾을 수 없음',
       description: '요청한 글을 찾을 수 없습니다.',
@@ -38,6 +64,12 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
   const post = await getWritingBySlug(slug);
 
   if (!post) {
+    const redirectSlug = resolveLegacyWritingSlug(slug);
+
+    if (redirectSlug) {
+      permanentRedirect(`/writing/${encodeURIComponent(redirectSlug)}`);
+    }
+
     notFound();
   }
 

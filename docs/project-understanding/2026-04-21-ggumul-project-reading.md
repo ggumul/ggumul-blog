@@ -12,9 +12,9 @@
 - `content/projects/trpg.mdx`
 - `content/projects/hanoi.mdx`
 - `content/projects/color-hanoi.mdx`
-- `content/writing/2026-04-20-wanderer는-꼬물의-출발점-같은-게임이었다.mdx`
-- `content/writing/2026-04-20-요즘-이런-게임들을-만들고-있어요.mdx`
-- `content/writing/2026-04-20-우리는-왜-이렇게-천천히-만들고-있냐.mdx`
+- `content/writing/2026-04-20-wanderer-초기-설계-회고.mdx`
+- `content/writing/2026-04-20-4월-프로젝트-개발-현황.mdx`
+- `content/writing/2026-04-20-제작-리듬을-우선하는-이유.mdx`
 
 추가 확인:
 - `trpg`, `hanoi`, `color-hanoi`의 `relatedPosts`에 적힌 slug 일부는 **실제 글 파일이 아직 없음**
@@ -29,7 +29,7 @@
 ### 원문 기준 확정 정보
 - 대학 졸업 프로젝트로 만들었던 짧은 카드 게임
 - 꼬물의 출발점처럼 남아 있는 작업
-- 관련 글: `wanderer는-꼬물의-출발점-같은-게임이었다`
+- 관련 글: `wanderer-초기-설계-회고`
 
 ### 내가 현재 이해한 의미
 Wanderer는 지금의 꼬물이 어디서 시작됐는지를 보여주는 **원점 프로젝트**다.
