@@ -226,7 +226,30 @@ h3 {
 }
 
 .game-card-glow {
+  position: relative;
   box-shadow: 0 26px 80px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.story-card {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.story-card::before,
+.game-card-glow::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(circle at 20% 0%, rgba(255, 180, 95, 0.16), transparent 22rem);
+  transition: opacity 220ms ease;
+}
+
+.story-card:hover::before,
+.game-card-glow:hover::before {
+  opacity: 1;
 }
 
 @media (max-width: 767px) {

@@ -1,4 +1,5 @@
 import { ProjectCard } from '@/components/project-card';
+import { MetricCard, PageHero, SectionHeader } from '@/components/brand-ui';
 import { getProjectRecordMap } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
@@ -11,28 +12,32 @@ export const metadata = createMetadata({
 export default async function ProjectsPage() {
   const projectRecordMap = await getProjectRecordMap();
   const worklines = Object.values(projectRecordMap).sort((a, b) => a.project.order - b.project.order);
+  const recordTotal = worklines.reduce((sum, item) => sum + item.records.length, 0);
 
   return (
-    <div className="archive-surface space-y-14 md:space-y-18">
-      <section className="panel-section grid gap-8 md:grid-cols-[120px_minmax(0,1fr)_240px] md:gap-12">
-        <div className="text-[10px] uppercase tracking-[0.34em] text-point">프로젝트</div>
-        <div className="space-y-4">
-          <h1 className="max-w-4xl text-[40px] font-semibold tracking-[-0.06em] leading-[0.97] text-text md:text-[74px]">
-            지금 만들고 있는 게임들
-          </h1>
-          <p className="max-w-3xl text-[18px] leading-9 text-subtext md:text-[20px]">
-            각 프로젝트의 현재 상태와 실제 화면, 관련 기록을 함께 볼 수 있습니다.
-          </p>
+    <div className="archive-surface space-y-12 md:space-y-16">
+      <PageHero
+        eyebrow="project archive"
+        title={<>작업 중인 게임을<br />상태와 화면으로 봅니다.</>}
+        description="완성된 홍보 페이지처럼 포장하기보다, 실제로 돌아가는 화면과 지금의 판단을 함께 보여주는 프로젝트 아카이브입니다."
+      >
+        <div className="grid gap-3">
+          <MetricCard label="projects" value={worklines.length} description="현재 공개한 게임 작업 수" />
+          <MetricCard label="notes" value={recordTotal} description="프로젝트와 연결된 개발 기록" />
         </div>
-        <div className="aside-rail panel-aside text-[13px] leading-6 text-subtext md:self-start">
-          완성된 소개보다 현재 만들고 있는 모습에 가깝게 보여줍니다.
-        </div>
-      </section>
+      </PageHero>
 
-      <section className="space-y-4">
-        {worklines.map(({ project, records }) => (
-          <ProjectCard key={project.slug} project={project} records={records} />
-        ))}
+      <section className="space-y-5">
+        <SectionHeader
+          eyebrow="current worklines"
+          title="한 화면씩 실제로 확인할 수 있게"
+          description="각 카드에는 대표 이미지, 진행 상태, 최근 개발 기록을 같이 묶었습니다. 목록에서 바로 현재 상태를 읽고 상세로 들어갈 수 있습니다."
+        />
+        <div className="space-y-5">
+          {worklines.map(({ project, records }) => (
+            <ProjectCard key={project.slug} project={project} records={records} />
+          ))}
+        </div>
       </section>
     </div>
   );

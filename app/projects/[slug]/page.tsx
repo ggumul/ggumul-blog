@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { PageHero, Pill, SectionHeader } from '@/components/brand-ui';
 import { getProjectBySlug, getProjects, getWriting } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
@@ -41,47 +42,48 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const relatedPosts = explicitRecords.length > 0 ? explicitRecords : fallbackRecords;
 
   return (
-    <article className="space-y-10 md:space-y-12">
-      <header className="space-y-4 border-b border-line/80 pb-6 md:pb-8">
-        <Link href="/projects" className="inline-flex text-sm text-subtext transition hover:text-text">
-          ← 프로젝트 목록으로
-        </Link>
-        <div className="space-y-4">
-          <p className="text-[11px] uppercase tracking-[0.28em] text-point">프로젝트 / 진행 중</p>
-          <h1 className="max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-text md:text-6xl md:leading-[1.08]">{project.title}</h1>
-          <p className="max-w-3xl text-base leading-8 text-subtext md:text-[17px]">{project.summary}</p>
-        </div>
-        {project.coverImage ? (
-          <img alt={`${project.title} 대표 이미지`} className="h-auto w-full rounded-xl border border-line/80 object-cover" src={project.coverImage} />
-        ) : null}
-        <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-subtext">
-          <span>순서 {String(project.order).padStart(2, '0')}</span>
-          <span>상태 {project.status}</span>
-          <span>연결된 기록 {relatedPosts.length}개</span>
-        </div>
-      </header>
+    <article className="archive-surface space-y-10 md:space-y-14">
+      <Link href="/projects" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
+        ← 프로젝트 목록으로
+      </Link>
 
-      <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_240px] md:items-start">
-        <section>
+      <PageHero eyebrow="project detail" title={project.title} description={project.summary}>
+        <div className="space-y-3 text-sm text-subtext">
+          <Pill tone="point">{project.status}</Pill>
+          <Pill>순서 {String(project.order).padStart(2, '0')}</Pill>
+          <Pill>연결된 기록 {relatedPosts.length}개</Pill>
+        </div>
+      </PageHero>
+
+      {project.coverImage ? (
+        <figure className="studio-shot overflow-hidden rounded-[30px] border border-line/80 bg-white/[0.06] shadow-glow">
+          <img alt={`${project.title} 대표 이미지`} className="max-h-[620px] w-full object-cover" src={project.coverImage} />
+          <figcaption className="studio-caption">
+            <span>{project.title} · 실제 실행 화면</span>
+            <span>{project.status}</span>
+          </figcaption>
+        </figure>
+      ) : null}
+
+      <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_300px] md:items-start">
+        <section className="panel-section">
           <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: project.html }} />
         </section>
 
-        <aside className="space-y-8 border-l border-line/70 pl-0 text-sm text-subtext md:sticky md:top-24 md:pl-5">
-          <div className="space-y-3">
-            <h2 className="text-[11px] uppercase tracking-[0.24em] text-point">이 프로젝트와 관련된 기록</h2>
-            {relatedPosts.length > 0 ? (
-              <div className="space-y-3">
-                {relatedPosts.map((post) => (
-                  <Link key={post.slug} href={`/writing/${post.slug}`} className="block transition hover:text-text">
-                    <div className="font-medium text-text">{post.title}</div>
-                    <p className="mt-1 text-xs leading-6">{post.summary}</p>
-                  </Link>
-                ))}
-              </div>
-            ) : (
-              <p className="text-xs leading-6">아직 이 프로젝트와 직접 연결한 기록은 많지 않지만, 작업은 계속 이어지고 있어요.</p>
-            )}
-          </div>
+        <aside className="aside-rail panel-aside space-y-6 text-sm text-subtext md:sticky md:top-24">
+          <SectionHeader eyebrow="related notes" title="연결된 개발 기록" description="프로젝트가 어떤 판단으로 지금의 모습이 됐는지 글로 이어서 볼 수 있습니다." />
+          {relatedPosts.length > 0 ? (
+            <div className="space-y-3">
+              {relatedPosts.map((post) => (
+                <Link key={post.slug} href={`/writing/${post.slug}`} className="block rounded-[20px] border border-line/80 bg-white/[0.055] p-4 transition hover:border-point/60 hover:bg-white/[0.08]">
+                  <div className="font-black tracking-[-0.03em] text-text">{post.title}</div>
+                  <p className="mt-1 text-xs leading-6 text-subtext">{post.summary}</p>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p className="rounded-[20px] border border-line/80 bg-white/[0.055] p-4 text-xs leading-6">아직 이 프로젝트와 직접 연결한 기록은 많지 않지만, 작업은 계속 이어지고 있어요.</p>
+          )}
         </aside>
       </div>
     </article>

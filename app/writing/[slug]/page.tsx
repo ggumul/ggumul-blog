@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { PageHero, Pill, SectionHeader } from '@/components/brand-ui';
 import { PostEngagement } from '@/components/post-engagement';
 import { getProjects, getWriting, getWritingBySlug } from '@/lib/content';
 import { createArticleJsonLd, createMetadata } from '@/lib/site';
@@ -51,67 +52,65 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
   });
 
   return (
-    <article className="space-y-10 md:space-y-12">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
+    <article className="archive-surface space-y-10 md:space-y-14">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 
-      <header className="space-y-4 border-b border-line/80 pb-6 md:pb-8">
-        <Link href="/writing" className="inline-flex text-sm text-subtext transition hover:text-text">
-          ← 개발 기록으로
-        </Link>
+      <Link href="/writing" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
+        ← 개발 기록으로
+      </Link>
 
-        <div className="space-y-3">
-          <div className="text-sm text-subtext">{post.category}</div>
-          <h1 className="max-w-4xl text-[28px] font-semibold tracking-[-0.04em] leading-[1.15] text-text md:text-[48px] md:leading-[1.1]">{post.title}</h1>
-          <p className="max-w-3xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">{post.summary}</p>
+      <PageHero eyebrow={post.category} title={post.title} description={post.summary}>
+        <div className="space-y-3 text-sm text-subtext">
+          <Pill>{post.publishedAt}</Pill>
+          <Pill>수정 {post.updatedAt}</Pill>
+          <Pill tone="point">{post.readingTimeMinutes}분 읽기</Pill>
+          {post.series ? <Pill>{post.series}</Pill> : null}
         </div>
+      </PageHero>
 
-        <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-subtext">
-          <span>{post.publishedAt}</span>
-          <span>수정 {post.updatedAt}</span>
-          <span>{post.readingTimeMinutes}분 읽기</span>
-        </div>
-      </header>
-
-      <div className="space-y-8">
-        <section>
+      <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_300px] md:items-start">
+        <section className="panel-section">
           <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
 
-        <section className="space-y-6 border-t border-line/80 pt-6">
-          <PostEngagement slug={post.slug} title={post.title} />
-
+        <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext md:sticky md:top-24">
+          <div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">tags</div>
+            <div className="mt-3 flex flex-wrap gap-2 text-[12px]">
+              {post.tags.map((tag) => (
+                <span key={tag} className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-subtext">#{tag}</span>
+              ))}
+            </div>
+          </div>
           {relatedProjects.length > 0 ? (
             <div className="space-y-3">
-              <h2 className="text-base font-semibold text-text">관련 프로젝트</h2>
-              <div className="space-y-2">
-                {relatedProjects.map((project) => (
-                  <Link key={project.slug} href={`/projects/${project.slug}`} className="block rounded-xl border border-line/80 bg-white/[0.06] px-4 py-3 transition hover:border-point/60">
-                    <div className="font-medium text-text">{project.title}</div>
-                    <p className="mt-1 text-sm leading-6 text-subtext">{project.summary}</p>
-                  </Link>
-                ))}
-              </div>
+              <SectionHeader eyebrow="related" title="관련 프로젝트" />
+              {relatedProjects.map((project) => (
+                <Link key={project.slug} href={`/projects/${project.slug}`} className="block rounded-[20px] border border-line/80 bg-white/[0.055] px-4 py-3 transition hover:border-point/60">
+                  <div className="font-black tracking-[-0.03em] text-text">{project.title}</div>
+                  <p className="mt-1 text-sm leading-6 text-subtext">{project.summary}</p>
+                </Link>
+              ))}
             </div>
           ) : null}
 
           {siblingRecords.length > 0 ? (
             <div className="space-y-3">
-              <h2 className="text-base font-semibold text-text">같은 묶음의 글</h2>
-              <div className="space-y-2">
-                {siblingRecords.map((entry) => (
-                  <Link key={entry.slug} href={`/writing/${entry.slug}`} className="block rounded-xl border border-line/80 bg-white/[0.06] px-4 py-3 transition hover:border-point/60">
-                    <div className="font-medium text-text">{entry.title}</div>
-                    <p className="mt-1 text-sm leading-6 text-subtext">{entry.summary}</p>
-                  </Link>
-                ))}
-              </div>
+              <SectionHeader eyebrow="same series" title="같은 묶음" />
+              {siblingRecords.map((entry) => (
+                <Link key={entry.slug} href={`/writing/${entry.slug}`} className="block rounded-[20px] border border-line/80 bg-white/[0.055] px-4 py-3 transition hover:border-point/60">
+                  <div className="font-black tracking-[-0.03em] text-text">{entry.title}</div>
+                  <p className="mt-1 text-sm leading-6 text-subtext">{entry.summary}</p>
+                </Link>
+              ))}
             </div>
           ) : null}
-        </section>
+        </aside>
       </div>
+
+      <section className="panel-section space-y-6">
+        <PostEngagement slug={post.slug} title={post.title} />
+      </section>
     </article>
   );
 }
