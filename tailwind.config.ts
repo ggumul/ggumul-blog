@@ -5,11 +5,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#F6F0E6',
-        text: '#2A1F18',
-        subtext: '#6E5D4F',
-        line: '#D8CABB',
-        point: '#9A6738',
+        background: '#08070B',
+        text: '#FFF5E8',
+        subtext: '#D0C0B2',
+        line: '#322A27',
+        point: '#FFB45F',
+      },
+      boxShadow: {
+        glow: '0 24px 90px rgba(255, 139, 61, 0.16)',
       },
     },
   },

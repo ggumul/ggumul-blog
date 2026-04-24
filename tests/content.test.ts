@@ -1,11 +1,15 @@
 import { describe, expect, it } from 'vitest';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import {
   getFeaturedProjects,
   getFeaturedWriting,
   getHomeArchiveSnapshot,
   getProjectBySlug,
   getProjectRecordMap,
+  getProjects,
   getSiteSummary,
+  getWriting,
   getWritingArchiveSections,
   getWritingBySlug,
   getWritingTaxonomy,
@@ -40,7 +44,7 @@ describe('content loader', () => {
   it('finds writing by slug and exposes related projects', async () => {
     const post = await getWritingBySlug('요즘-이런-게임들을-만들고-있어요');
 
-    expect(post?.title).toBe('요즘 만들고 있는 것들');
+    expect(post?.title).toBe('4월에 만들고 있는 것들');
     expect(post?.relatedProjects).toContain('trpg');
     expect(post?.readingTimeMinutes).toBeGreaterThan(0);
     expect(post?.updatedAt).toBe('2026-04-20');
@@ -55,10 +59,12 @@ describe('content loader', () => {
   it('returns category, tags, and series data for writing taxonomy', async () => {
     const taxonomy = await getWritingTaxonomy();
 
-    expect(taxonomy.categories).toContain('작업 기록');
-    expect(taxonomy.categories).toContain('작업 철학');
-    expect(taxonomy.series).toContain('개발기록');
-    expect(taxonomy.series).toContain('프로젝트 회고');
+    expect(taxonomy.categories).toContain('프로젝트 소개');
+    expect(taxonomy.categories).toContain('스튜디오 노트');
+    expect(taxonomy.categories).toContain('시스템 노트');
+    expect(taxonomy.series).toContain('4월 작업');
+    expect(taxonomy.series).toContain('꼬물 노트');
+    expect(taxonomy.series).toContain('Wanderer 로그');
     expect(taxonomy.tags).toContain('게임 개발');
     expect(taxonomy.tags).toContain('제작 리듬');
   });
@@ -71,7 +77,7 @@ describe('content loader', () => {
     expect(summary.latestPostTitle).toBe('Wanderer sync가 어긋난 이유');
   });
 
-  it('builds a home archive snapshot with latest trace, related projects, richer worklines, and remaining entries', async () => {
+  it('builds a home archive snapshot with latest post, related projects, project list, and remaining entries', async () => {
     const snapshot = await getHomeArchiveSnapshot();
 
     expect(snapshot.latest?.slug).toBe('wanderer-sync는-왜-안-붙었냐');
@@ -95,8 +101,8 @@ describe('content loader', () => {
     expect(sections.latest.slug).toBe('wanderer-sync는-왜-안-붙었냐');
     expect(sections.timeline).toHaveLength(3);
     expect(sections.timeline[0]?.slug).toBe('wanderer는-꼬물의-출발점-같은-게임이었다');
-    expect(sections.index.seriesCount).toBe(2);
-    expect(sections.index.categoryCount).toBe(3);
+    expect(sections.index.seriesCount).toBe(3);
+    expect(sections.index.categoryCount).toBe(4);
     expect(sections.index.tagCount).toBeGreaterThan(7);
   });
 
@@ -109,5 +115,23 @@ describe('content loader', () => {
       'wanderer는-꼬물의-출발점-같은-게임이었다',
     ]);
     expect(projectRecordMap.trpg.records.map((record) => record.slug)).toContain('요즘-이런-게임들을-만들고-있어요');
+  });
+
+  it('keeps project/post relationships and cover assets resolvable', async () => {
+    const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
+    const projectSlugs = new Set(projects.map((project) => project.slug));
+    const postSlugs = new Set(posts.map((post) => post.slug));
+
+    for (const project of projects) {
+      expect(project.relatedPosts.every((slug) => postSlugs.has(slug))).toBe(true);
+
+      if (project.coverImage) {
+        expect(fs.existsSync(path.join(process.cwd(), 'public', project.coverImage.replace(/^\//, '')))).toBe(true);
+      }
+    }
+
+    for (const post of posts) {
+      expect(post.relatedProjects.every((slug) => projectSlugs.has(slug))).toBe(true);
+    }
   });
 });

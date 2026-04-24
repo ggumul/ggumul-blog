@@ -45,7 +45,7 @@ export default function OpenGraphImage() {
         <div style={{ display: 'flex', gap: '16px', fontSize: 22, color: '#6a6159' }}>
           <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>기록</div>
           <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>프로젝트</div>
-          <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>개발기록</div>
+          <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>개발 기록</div>
         </div>
       </div>
     ),

@@ -4,8 +4,8 @@ import { getWritingArchiveSections } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
-  title: '개발기록',
-  description: '꼬물이 프로젝트를 만들면서 남긴 글과 작업 기록을 모아 둔 페이지예요.',
+  title: '개발 기록',
+  description: '꼬물이 게임을 만들며 남긴 개발 기록을 모았습니다.',
   path: '/writing',
 });
 
@@ -15,7 +15,7 @@ export default async function WritingPage() {
   return (
     <div className="archive-surface space-y-14 md:space-y-18">
       <section className="panel-section grid gap-8 md:grid-cols-[120px_minmax(0,1fr)_260px] md:gap-12">
-        <div className="text-[10px] uppercase tracking-[0.34em] text-point">개발기록</div>
+        <div className="text-[10px] uppercase tracking-[0.34em] text-point">개발 기록</div>
 
         <div className="space-y-5">
           <div className="space-y-3">
@@ -36,14 +36,14 @@ export default async function WritingPage() {
         </div>
 
         <aside className="aside-rail panel-aside space-y-4 md:self-start">
-          <div className="text-[10px] uppercase tracking-[0.3em] text-point">기록 개요</div>
+          <div className="text-[10px] uppercase tracking-[0.3em] text-point">글 모아보기</div>
           <div className="space-y-3 text-[13px] leading-6 text-subtext">
-            <p>시리즈 {sections.index.seriesCount}개</p>
-            <p>카테고리 {sections.index.categoryCount}개</p>
+            <p>묶음 {sections.index.seriesCount}개</p>
+            <p>분류 {sections.index.categoryCount}개</p>
             <p>태그 {sections.index.tagCount}개</p>
           </div>
           <p className="text-[13px] leading-6 text-subtext">
-            최근 글 하나만 보이기보다, 기록이 어떻게 이어지는지 같이 읽히도록 정리했어요.
+            개발 중에 했던 결정, 실패, 수정 이유를 글마다 구분해 두었습니다.
           </p>
         </aside>
       </section>
@@ -59,19 +59,23 @@ export default async function WritingPage() {
 
         <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext md:sticky md:top-24">
           <div>
-            <div className="text-[10px] uppercase tracking-[0.3em] text-point">시리즈</div>
+            <div className="text-[10px] uppercase tracking-[0.3em] text-point">묶음</div>
             <div className="mt-3 space-y-2 text-[13px] leading-6">
               {sections.taxonomy.series.map((series) => (
-                <div key={series}>{series}</div>
+                <div key={series} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-text/90">
+                  {series}
+                </div>
               ))}
             </div>
           </div>
 
           <div>
-            <div className="text-[10px] uppercase tracking-[0.3em] text-point">카테고리</div>
+            <div className="text-[10px] uppercase tracking-[0.3em] text-point">분류</div>
             <div className="mt-3 space-y-2 text-[13px] leading-6">
               {sections.taxonomy.categories.map((category) => (
-                <div key={category}>{category}</div>
+                <div key={category} className="rounded-full border border-point/25 bg-point/10 px-3 py-1 text-point">
+                  {category}
+                </div>
               ))}
             </div>
           </div>
@@ -80,7 +84,7 @@ export default async function WritingPage() {
             <div className="text-[10px] uppercase tracking-[0.3em] text-point">태그</div>
             <div className="mt-3 flex flex-wrap gap-x-3 gap-y-2 text-[12px] leading-6">
               {sections.taxonomy.tags.map((tag) => (
-                <span key={tag}>#{tag}</span>
+                <span key={tag} className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-subtext">#{tag}</span>
               ))}
             </div>
           </div>

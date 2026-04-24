@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) {
     return createMetadata({
       title: '글을 찾을 수 없음',
-      description: '요청한 글을 찾을 수 없어.',
+      description: '요청한 글을 찾을 수 없습니다.',
       path: `/writing/${slug}`,
       type: 'article',
     });
@@ -59,7 +59,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
 
       <header className="space-y-4 border-b border-line/80 pb-6 md:pb-8">
         <Link href="/writing" className="inline-flex text-sm text-subtext transition hover:text-text">
-          ← 글 목록으로
+          ← 개발 기록으로
         </Link>
 
         <div className="space-y-3">
@@ -88,7 +88,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
               <h2 className="text-base font-semibold text-text">관련 프로젝트</h2>
               <div className="space-y-2">
                 {relatedProjects.map((project) => (
-                  <Link key={project.slug} href={`/projects/${project.slug}`} className="block rounded-xl border border-line/80 bg-white/40 px-4 py-3 transition hover:border-point/60">
+                  <Link key={project.slug} href={`/projects/${project.slug}`} className="block rounded-xl border border-line/80 bg-white/[0.06] px-4 py-3 transition hover:border-point/60">
                     <div className="font-medium text-text">{project.title}</div>
                     <p className="mt-1 text-sm leading-6 text-subtext">{project.summary}</p>
                   </Link>
@@ -99,10 +99,10 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
 
           {siblingRecords.length > 0 ? (
             <div className="space-y-3">
-              <h2 className="text-base font-semibold text-text">같은 흐름의 글</h2>
+              <h2 className="text-base font-semibold text-text">같은 묶음의 글</h2>
               <div className="space-y-2">
                 {siblingRecords.map((entry) => (
-                  <Link key={entry.slug} href={`/writing/${entry.slug}`} className="block rounded-xl border border-line/80 bg-white/40 px-4 py-3 transition hover:border-point/60">
+                  <Link key={entry.slug} href={`/writing/${entry.slug}`} className="block rounded-xl border border-line/80 bg-white/[0.06] px-4 py-3 transition hover:border-point/60">
                     <div className="font-medium text-text">{entry.title}</div>
                     <p className="mt-1 text-sm leading-6 text-subtext">{entry.summary}</p>
                   </Link>
