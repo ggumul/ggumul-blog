@@ -30,7 +30,7 @@ describe('content loader', () => {
   it('returns featured writing ordered by published date descending', async () => {
     const posts = await getFeaturedWriting();
 
-    expect(posts).toHaveLength(3);
+    expect(posts).toHaveLength(4);
     expect(posts.every((post) => post.featured)).toBe(true);
   });
 
@@ -73,22 +73,23 @@ describe('content loader', () => {
     const summary = await getSiteSummary();
 
     expect(summary.totalProjects).toBe(4);
-    expect(summary.totalPosts).toBe(4);
-    expect(summary.latestPostTitle).toBe('Wanderer sync 연결 문제 분석');
+    expect(summary.totalPosts).toBe(5);
+    expect(summary.latestPostTitle).toBe('실행 화면을 다시 확인한 기록');
   });
 
   it('builds a home archive snapshot with latest post, related projects, project list, and remaining entries', async () => {
     const snapshot = await getHomeArchiveSnapshot();
 
-    expect(snapshot.latest?.slug).toBe('wanderer-sync-연결-문제-분석');
-    expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['wanderer']);
+    expect(snapshot.latest?.slug).toBe('runtime-화면-확인-기록');
+    expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['wanderer', 'hanoi']);
     expect(snapshot.worklines).toHaveLength(4);
-    expect(snapshot.worklines[0]?.recordCount).toBe(2);
+    expect(snapshot.worklines[0]?.recordCount).toBe(3);
     expect(snapshot.worklines[0]?.previewRecords.map((record) => record.slug)).toEqual([
+      'runtime-화면-확인-기록',
       'wanderer-sync-연결-문제-분석',
-      'wanderer-초기-설계-회고',
     ]);
     expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual([
+      'wanderer-sync-연결-문제-분석',
       'wanderer-초기-설계-회고',
       '제작-리듬을-우선하는-이유',
       '4월-프로젝트-개발-현황',
@@ -98,11 +99,11 @@ describe('content loader', () => {
   it('builds writing archive sections with latest entry, timeline entries, and index density', async () => {
     const sections = await getWritingArchiveSections();
 
-    expect(sections.latest.slug).toBe('wanderer-sync-연결-문제-분석');
-    expect(sections.timeline).toHaveLength(3);
-    expect(sections.timeline[0]?.slug).toBe('wanderer-초기-설계-회고');
-    expect(sections.index.seriesCount).toBe(3);
-    expect(sections.index.categoryCount).toBe(4);
+    expect(sections.latest.slug).toBe('runtime-화면-확인-기록');
+    expect(sections.timeline).toHaveLength(4);
+    expect(sections.timeline[0]?.slug).toBe('wanderer-sync-연결-문제-분석');
+    expect(sections.index.seriesCount).toBe(4);
+    expect(sections.index.categoryCount).toBe(5);
     expect(sections.index.tagCount).toBeGreaterThan(7);
   });
 
@@ -111,9 +112,11 @@ describe('content loader', () => {
 
     expect(projectRecordMap.wanderer.project.title).toBe('Wanderer');
     expect(projectRecordMap.wanderer.records.map((record) => record.slug)).toEqual([
+      'runtime-화면-확인-기록',
       'wanderer-sync-연결-문제-분석',
       'wanderer-초기-설계-회고',
     ]);
+    expect(projectRecordMap.hanoi.records.map((record) => record.slug)).toContain('runtime-화면-확인-기록');
     expect(projectRecordMap.trpg.records.map((record) => record.slug)).toContain('4월-프로젝트-개발-현황');
   });
 

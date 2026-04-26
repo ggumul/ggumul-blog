@@ -86,7 +86,7 @@ function normalizeSlug(slug: string) {
 }
 
 async function renderMarkdown(content: string) {
-  const result = await remark().use(remarkGfm).use(remarkHtml).process(content);
+  const result = await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(content);
   return String(result);
 }
 
