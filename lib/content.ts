@@ -38,12 +38,6 @@ export type WritingTaxonomy = {
   tags: string[];
 };
 
-export type SiteSummary = {
-  totalProjects: number;
-  totalPosts: number;
-  latestPostTitle: string | null;
-};
-
 export type ProjectRecordLink = {
   project: ProjectEntry;
   records: WritingEntry[];
@@ -125,11 +119,6 @@ export async function getProjects() {
   return projects.sort((a, b) => a.order - b.order);
 }
 
-export async function getFeaturedProjects() {
-  const projects = await getProjects();
-  return projects.filter((project) => project.featured);
-}
-
 export async function getProjectBySlug(slug: string) {
   const projects = await getProjects();
   const normalizedSlug = normalizeSlug(slug);
@@ -149,11 +138,6 @@ export async function getWriting() {
   });
 }
 
-export async function getFeaturedWriting() {
-  const posts = await getWriting();
-  return posts.filter((post) => post.featured);
-}
-
 export async function getWritingTaxonomy(): Promise<WritingTaxonomy> {
   const posts = await getWriting();
 
@@ -164,31 +148,23 @@ export async function getWritingTaxonomy(): Promise<WritingTaxonomy> {
   };
 }
 
-export async function getSiteSummary(): Promise<SiteSummary> {
-  const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
-
-  return {
-    totalProjects: projects.length,
-    totalPosts: posts.length,
-    latestPostTitle: posts[0]?.title ?? null,
-  };
-}
-
 export async function getWritingBySlug(slug: string) {
   const posts = await getWriting();
   const normalizedSlug = normalizeSlug(slug);
   return posts.find((post) => post.slug === normalizedSlug) ?? null;
 }
 
+export function resolveProjectRecords(project: ProjectEntry, posts: WritingEntry[]) {
+  const explicitRecords = posts.filter((post) => project.relatedPosts.includes(post.slug));
+  const fallbackRecords = posts.filter((post) => post.relatedProjects.includes(project.slug));
+  return explicitRecords.length > 0 ? explicitRecords : fallbackRecords;
+}
+
 export async function getProjectRecordMap(): Promise<ProjectRecordMap> {
   const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
 
   const projectRecordEntries = projects.map((project) => {
-    const explicitRecords = posts.filter((post) => project.relatedPosts.includes(post.slug));
-    const fallbackRecords = posts.filter((post) => post.relatedProjects.includes(project.slug));
-    const records = explicitRecords.length > 0 ? explicitRecords : fallbackRecords;
-
-    return [project.slug, { project, records }] as const;
+    return [project.slug, { project, records: resolveProjectRecords(project, posts) }] as const;
   });
 
   return Object.fromEntries(projectRecordEntries);

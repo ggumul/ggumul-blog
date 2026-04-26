@@ -50,7 +50,6 @@
 - components/project-card.tsx
 - components/site-shell.tsx
 - app/globals.css
-- 필요 시 lib/archive-style.ts
 
 ## 구현 기준
 - 레퍼런스는 Panic의 아카이브 흐름, ustwo의 정돈된 콘텐츠 문법만 참고.

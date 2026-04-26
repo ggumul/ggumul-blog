@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PageHero, Pill, SectionHeader } from '@/components/brand-ui';
-import { getProjectBySlug, getProjects, getWriting } from '@/lib/content';
+import { getProjectBySlug, getProjects, getWriting, resolveProjectRecords } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
 export async function generateStaticParams() {
@@ -37,9 +37,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   }
 
   const posts = await getWriting();
-  const explicitRecords = posts.filter((post) => project.relatedPosts.includes(post.slug));
-  const fallbackRecords = posts.filter((post) => post.relatedProjects.includes(project.slug));
-  const relatedPosts = explicitRecords.length > 0 ? explicitRecords : fallbackRecords;
+  const relatedPosts = resolveProjectRecords(project, posts);
 
   return (
     <article className="archive-surface space-y-10 md:space-y-14">

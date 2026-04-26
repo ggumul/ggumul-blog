@@ -1,17 +1,17 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { toAbsoluteUrl } from '@/lib/site';
 
 type PostEngagementProps = {
   title: string;
   slug: string;
 };
 
-const SITE_URL = 'https://ggumul-blog.vercel.app';
 const REPO_ISSUES_URL = 'https://github.com/ggumul/ggumul-blog/issues/new';
 
 function buildPostUrl(slug: string) {
-  return `${SITE_URL}/writing/${slug}`;
+  return toAbsoluteUrl(`/writing/${slug}`);
 }
 
 export function PostEngagement({ title, slug }: PostEngagementProps) {
