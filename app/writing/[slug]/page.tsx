@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { Pill, SectionHeader } from '@/components/brand-ui';
+import { Pill } from '@/components/brand-ui';
+import { PostCard } from '@/components/post-card';
 import { PostEngagement } from '@/components/post-engagement';
 import { getProjects, getWriting, getWritingBySlug } from '@/lib/content';
 import { createArticleJsonLd, createMetadata } from '@/lib/site';
@@ -10,6 +11,13 @@ const legacyWritingSlugMap: Record<string, string> = {
   'wanderer는-꼬물의-출발점-같은-게임이었다': 'wanderer-초기-설계-회고',
   '우리는-왜-이렇게-천천히-만들고-있냐': '제작-리듬을-우선하는-이유',
   '요즘-이런-게임들을-만들고-있어요': '4월-프로젝트-개발-현황',
+};
+
+const projectThumbnails: Record<string, string> = {
+  wanderer: '/media/runtime-checks/wanderer-mobile-current.png',
+  hanoi: '/project-covers/hanoi.png',
+  'color-hanoi': '/project-covers/color-hanoi.png',
+  trpg: '/project-covers/trpg.png',
 };
 
 function resolveLegacyWritingSlug(slug: string) {
@@ -25,6 +33,15 @@ function extractHeadings(content: string) {
     .split('\n')
     .map((line) => line.match(/^##\s+(.+)$/)?.[1]?.trim())
     .filter((heading): heading is string => Boolean(heading));
+}
+
+function resolvePostImage(post: { slug: string; relatedProjects: string[] }) {
+  if (post.slug === 'runtime-화면-확인-기록') {
+    return '/media/runtime-checks/wanderer-mobile-current.png';
+  }
+
+  const firstProject = post.relatedProjects[0];
+  return firstProject ? projectThumbnails[firstProject] : '/studio/wanderer-home.png';
 }
 
 export async function generateStaticParams() {
@@ -83,7 +100,11 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
   const [projects, allPosts] = await Promise.all([getProjects(), getWriting()]);
   const relatedProjects = projects.filter((project) => post.relatedProjects.includes(project.slug));
   const siblingRecords = allPosts.filter((entry) => entry.slug !== post.slug && entry.series && entry.series === post.series);
+  const relatedRecords = siblingRecords.length > 0
+    ? siblingRecords
+    : allPosts.filter((entry) => entry.slug !== post.slug && entry.relatedProjects.some((project) => post.relatedProjects.includes(project))).slice(0, 3);
   const headings = extractHeadings(post.content);
+  const heroImage = resolvePostImage(post);
   const articleJsonLd = createArticleJsonLd({
     title: post.title,
     description: post.summary,
@@ -92,31 +113,49 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
   });
 
   return (
-    <article className="archive-surface space-y-8 md:space-y-10">
+    <article className="archive-surface space-y-10 md:space-y-14">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 
       <Link href="/writing" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
         ← 개발 기록으로
       </Link>
 
-      <header className="mx-auto max-w-3xl space-y-4 border-b border-line/70 pb-8">
-        <div className="flex flex-wrap items-center gap-2 text-[12px]">
-          <Pill tone="point">{post.category}</Pill>
-          {post.series ? <Pill>{post.series}</Pill> : null}
-          <Pill>{post.publishedAt}</Pill>
-          <Pill>{post.readingTimeMinutes}분 읽기</Pill>
+      <header className="studio-hero overflow-hidden rounded-[36px] border border-line/80 bg-white/[0.035] p-5 md:p-8">
+        <div className="grid gap-7 lg:grid-cols-[minmax(0,0.96fr)_minmax(380px,1.04fr)] lg:items-stretch">
+          <div className="flex flex-col justify-between gap-7 rounded-[28px] border border-line/70 bg-black/20 p-5 md:p-7">
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center gap-2 text-[12px]">
+                <Pill tone="point">{post.category}</Pill>
+                {post.series ? <Pill>{post.series}</Pill> : null}
+                <Pill>{post.publishedAt}</Pill>
+                <Pill>{post.readingTimeMinutes}분</Pill>
+              </div>
+              <h1 className="text-[38px] font-black leading-[1.02] tracking-[-0.065em] text-text md:text-[68px]">
+                {post.title}
+              </h1>
+              <p className="text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">{post.summary}</p>
+              {post.updatedAt !== post.publishedAt ? <p className="text-[12px] text-subtext/80">마지막 수정 {post.updatedAt}</p> : null}
+            </div>
+            <div className="flex flex-wrap gap-2 text-[12px]">
+              {post.relatedProjects.map((project) => <Pill key={project}>{project}</Pill>)}
+            </div>
+          </div>
+
+          <figure className="studio-shot min-h-[330px] overflow-hidden rounded-[30px] border border-line/80 bg-white/10 md:min-h-[520px]">
+            <img alt={`${post.title} 대표 화면`} className="h-full w-full object-cover" src={heroImage} />
+            <figcaption className="studio-caption">
+              <span>글과 연결된 실행 화면</span>
+              <span>{post.category}</span>
+            </figcaption>
+          </figure>
         </div>
-        <h1 className="text-[36px] font-black leading-[1.08] tracking-[-0.055em] text-text md:text-[56px]">
-          {post.title}
-        </h1>
-        <p className="text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">{post.summary}</p>
-        {post.updatedAt !== post.publishedAt ? (
-          <p className="text-[12px] text-subtext/80">마지막 수정 {post.updatedAt}</p>
-        ) : null}
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-start">
-        <section className="rounded-[28px] border border-line/70 bg-white/[0.025] px-5 py-7 md:px-8 md:py-9">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
+        <section className="rounded-[30px] border border-line/70 bg-white/[0.025] px-5 py-7 md:px-8 md:py-9">
+          <div className="mb-7 rounded-[22px] border border-line/70 bg-white/[0.045] p-4 text-sm leading-7 text-subtext">
+            <span className="font-bold text-point">읽기 전에</span> 이 글은 {post.relatedProjects.join(', ')} 작업과 연결된 기록입니다. 본문은 확인한 화면/문제/판단을 중심으로 읽히도록 정리했습니다.
+          </div>
           <div className="prose mx-auto max-w-3xl" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
 
@@ -126,11 +165,24 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
               <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">목차</div>
               <ol className="space-y-2 text-[13px] leading-6">
                 {headings.map((heading) => (
-                  <li key={heading} className="rounded-2xl border border-white/10 bg-white/[0.035] px-3 py-2 text-text/90">
-                    {heading}
-                  </li>
+                  <li key={heading} className="rounded-2xl border border-white/10 bg-white/[0.035] px-3 py-2 text-text/90">{heading}</li>
                 ))}
               </ol>
+            </div>
+          ) : null}
+
+          {relatedProjects.length > 0 ? (
+            <div className="space-y-3">
+              <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">관련 프로젝트</div>
+              {relatedProjects.map((project) => (
+                <Link key={project.slug} href={`/projects/${project.slug}`} className="block overflow-hidden rounded-[20px] border border-line/80 bg-white/[0.055] transition hover:border-point/60">
+                  {project.coverImage ? <img alt={`${project.title} 대표 화면`} className="h-28 w-full object-cover" src={project.coverImage} /> : null}
+                  <div className="p-4">
+                    <div className="font-black tracking-[-0.03em] text-text">{project.title}</div>
+                    <p className="mt-1 text-sm leading-6 text-subtext">{project.summary}</p>
+                  </div>
+                </Link>
+              ))}
             </div>
           ) : null}
 
@@ -142,31 +194,22 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
               ))}
             </div>
           </div>
-          {relatedProjects.length > 0 ? (
-            <div className="space-y-3">
-              <SectionHeader eyebrow="관련" title="관련 프로젝트" />
-              {relatedProjects.map((project) => (
-                <Link key={project.slug} href={`/projects/${project.slug}`} className="block rounded-[20px] border border-line/80 bg-white/[0.055] px-4 py-3 transition hover:border-point/60">
-                  <div className="font-black tracking-[-0.03em] text-text">{project.title}</div>
-                  <p className="mt-1 text-sm leading-6 text-subtext">{project.summary}</p>
-                </Link>
-              ))}
-            </div>
-          ) : null}
-
-          {siblingRecords.length > 0 ? (
-            <div className="space-y-3">
-              <SectionHeader eyebrow="같은 묶음" title="같은 묶음" />
-              {siblingRecords.map((entry) => (
-                <Link key={entry.slug} href={`/writing/${entry.slug}`} className="block rounded-[20px] border border-line/80 bg-white/[0.055] px-4 py-3 transition hover:border-point/60">
-                  <div className="font-black tracking-[-0.03em] text-text">{entry.title}</div>
-                  <p className="mt-1 text-sm leading-6 text-subtext">{entry.summary}</p>
-                </Link>
-              ))}
-            </div>
-          ) : null}
         </aside>
       </div>
+
+      {relatedRecords.length > 0 ? (
+        <section className="space-y-5">
+          <div>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">next records</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이어서 볼 기록</h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {relatedRecords.slice(0, 3).map((entry) => (
+              <PostCard key={entry.slug} post={entry} compact />
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="panel-section space-y-6">
         <PostEngagement slug={post.slug} title={post.title} />

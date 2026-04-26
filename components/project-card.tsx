@@ -1,70 +1,71 @@
 import Link from 'next/link';
 import type { ProjectEntry, WritingEntry } from '@/lib/content';
-import { Pill } from '@/components/brand-ui';
 
-export function ProjectCard({ project, records = [] }: { project: ProjectEntry; records?: WritingEntry[] }) {
+const projectKinds: Record<string, string> = {
+  wanderer: '카드 게임',
+  trpg: '분기형 서사',
+  hanoi: '퍼즐 게임',
+  'color-hanoi': '퍼즐 변형작',
+};
+
+export function ProjectCard({ project, records, compact = false }: { project: ProjectEntry; records: WritingEntry[]; compact?: boolean }) {
   const latestRecord = records[0];
-  const projectHref = `/projects/${project.slug}`;
+  const cover = project.coverImage ?? '/studio/wanderer-home.png';
+
+  if (compact) {
+    return (
+      <Link href={`/projects/${project.slug}`} className="group grid gap-3 rounded-[22px] border border-line/75 bg-white/[0.045] p-4 transition hover:-translate-y-0.5 hover:border-point/55 hover:bg-white/[0.07]">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">{projectKinds[project.slug] ?? '게임'}</p>
+            <h3 className="mt-1 text-xl font-black tracking-[-0.045em] text-text group-hover:text-point">{project.title}</h3>
+          </div>
+          <span className="rounded-full border border-line/70 px-3 py-1 text-[12px] text-subtext">{project.status}</span>
+        </div>
+        <p className="line-clamp-2 text-sm leading-6 text-subtext">{project.summary}</p>
+        <p className="text-[12px] text-subtext">개발기록 {records.length}개{latestRecord ? ` · 최근 ${latestRecord.title}` : ''}</p>
+      </Link>
+    );
+  }
 
   return (
-    <article className="game-card-glow group grid overflow-hidden rounded-[30px] border border-line/80 bg-white/[0.06] transition hover:border-point/55 hover:bg-white/[0.085] md:grid-cols-[minmax(300px,0.92fr)_minmax(0,1fr)]">
-      {project.coverImage ? (
-        <Link href={projectHref} className="shot-frame min-h-[260px] border-b border-line/80 md:border-b-0 md:border-r">
-          <img
-            alt={`${project.title} 대표 이미지`}
-            className="h-full min-h-[260px] w-full object-cover opacity-95"
-            src={project.coverImage}
-          />
-          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/90 via-black/34 to-transparent p-4">
-            <span className="rounded-full border border-point/35 bg-black/75 px-3 py-1 text-[12px] font-black text-point shadow-[0_10px_28px_rgba(0,0,0,0.45)] backdrop-blur-md">
-              실제 실행 화면
-            </span>
-            <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[12px] font-semibold text-text backdrop-blur-md">
-              {project.status}
-            </span>
+    <article className="game-card-glow overflow-hidden rounded-[30px] border border-line/80 bg-white/[0.05]">
+      <div className="grid gap-0 md:grid-cols-[minmax(280px,0.9fr)_minmax(0,1.1fr)]">
+        <Link href={`/projects/${project.slug}`} className="group relative min-h-[260px] overflow-hidden bg-white/[0.04]">
+          <img src={cover} alt={`${project.title} 대표 화면`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" />
+          <div className="absolute inset-x-0 top-0 flex items-center justify-between gap-3 p-4">
+            <span className="rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[11px] font-bold text-white/90 backdrop-blur">{projectKinds[project.slug] ?? '게임'}</span>
+            <span className="rounded-full border border-point/25 bg-point/90 px-3 py-1 text-[11px] font-black text-[#160d08]">{project.status}</span>
           </div>
         </Link>
-      ) : null}
 
-      <div className="flex min-h-full flex-col justify-between gap-6 px-5 py-5 md:px-6 md:py-6">
-        <div className="space-y-4">
-          <div className="flex flex-wrap items-center gap-2 text-[12px]">
-            <Pill tone="point">프로젝트 {String(project.order).padStart(2, '0')}</Pill>
-            <Pill>개발 기록 {records.length}개</Pill>
+        <div className="flex flex-col justify-between p-5 md:p-7">
+          <div>
+            <div className="flex flex-wrap items-center gap-2 text-[12px] text-subtext">
+              <span className="font-bold text-point">{projectKinds[project.slug] ?? '게임 프로젝트'}</span>
+              <span>·</span>
+              <span>개발기록 {records.length}개</span>
+            </div>
+            <Link href={`/projects/${project.slug}`} className="group/title">
+              <h3 className="mt-3 text-[30px] font-black leading-tight tracking-[-0.055em] text-text group-hover/title:text-point md:text-[42px]">{project.title}</h3>
+            </Link>
+            <p className="mt-3 text-base leading-8 text-subtext">{project.summary}</p>
           </div>
-          <Link
-            href={projectHref}
-            className="block rounded-2xl text-[28px] font-black leading-tight tracking-[-0.055em] text-text outline-none transition group-hover:text-point focus-visible:ring-2 focus-visible:ring-point/30 md:text-[42px]"
-          >
-            {project.title}
-          </Link>
-          <p className="text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">{project.summary}</p>
-        </div>
 
-        <div className="space-y-4">
-          {latestRecord ? (
-            <Link href={`/writing/${latestRecord.slug}`} className="block rounded-[20px] border border-line/70 bg-black/20 p-4 transition hover:border-point/50">
-              <div className="text-[11px] font-bold tracking-[0.18em] text-point">최근 기록</div>
-              <div className="mt-2 font-bold tracking-[-0.02em] text-text">{latestRecord.title}</div>
-              <p className="mt-1 line-clamp-2 text-[13px] leading-6 text-subtext">{latestRecord.summary}</p>
-            </Link>
-          ) : null}
-
-          <div className="flex flex-wrap gap-3 text-sm">
-            <Link
-              href={projectHref}
-              className="inline-flex min-h-[44px] items-center rounded-full border border-point/35 bg-point px-4 py-2 font-black text-[#160d08] transition hover:bg-[#ffc47f]"
-            >
-              프로젝트 보기
-            </Link>
+          <div className="mt-6 space-y-3">
             {latestRecord ? (
-              <Link
-                href={`/writing/${latestRecord.slug}`}
-                className="inline-flex min-h-[44px] items-center rounded-full border border-line/80 bg-white/[0.04] px-4 py-2 font-semibold text-subtext transition hover:border-point/60 hover:text-text"
-              >
-                최근 기록 읽기
+              <Link href={`/writing/${latestRecord.slug}`} className="block rounded-[20px] border border-line/75 bg-black/15 p-4 transition hover:border-point/55 hover:bg-white/[0.055]">
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">최근 개발기록</p>
+                <p className="mt-2 text-sm font-bold leading-6 text-text">{latestRecord.title}</p>
+                <p className="mt-1 line-clamp-2 text-[13px] leading-6 text-subtext">{latestRecord.summary}</p>
               </Link>
-            ) : null}
+            ) : (
+              <div className="rounded-[20px] border border-line/75 bg-black/15 p-4 text-sm leading-6 text-subtext">아직 연결된 개발기록이 없습니다.</div>
+            )}
+            <div className="flex flex-wrap gap-3 text-sm">
+              <Link href={`/projects/${project.slug}`} className="inline-flex rounded-full border border-point/30 bg-point px-4 py-2.5 font-semibold text-[#160d08] transition hover:bg-[#ffc47f]">프로젝트 보기</Link>
+              {latestRecord ? <Link href={`/writing/${latestRecord.slug}`} className="inline-flex rounded-full border border-line/90 bg-white/10 px-4 py-2.5 font-semibold text-text transition hover:border-point/60">기록 읽기</Link> : null}
+            </div>
           </div>
         </div>
       </div>

@@ -1,7 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import type { WritingEntry } from '@/lib/content';
-import { Pill } from '@/components/brand-ui';
 
 const projectThumbnails: Record<string, string> = {
   wanderer: '/media/runtime-checks/wanderer-mobile-current.png',
@@ -10,49 +8,90 @@ const projectThumbnails: Record<string, string> = {
   trpg: '/project-covers/trpg.png',
 };
 
-function getPostThumbnail(post: WritingEntry) {
+function resolvePostImage(post: WritingEntry) {
   if (post.slug === 'runtime-화면-확인-기록') {
     return '/media/runtime-checks/wanderer-mobile-current.png';
   }
 
-  const relatedProject = post.relatedProjects.find((project) => projectThumbnails[project]);
-  return relatedProject ? projectThumbnails[relatedProject] : null;
+  const firstProject = post.relatedProjects[0];
+  return firstProject ? projectThumbnails[firstProject] : '/studio/wanderer-home.png';
 }
 
-export function PostCard({ post }: { post: WritingEntry }) {
-  const thumbnail = getPostThumbnail(post);
+function formatDate(date: string) {
+  return date.replaceAll('-', '.');
+}
+
+export function PostCard({ post, compact = false, featured = false }: { post: WritingEntry; compact?: boolean; featured?: boolean }) {
+  const thumbnail = resolvePostImage(post);
+
+  if (compact) {
+    return (
+      <Link
+        href={`/writing/${post.slug}`}
+        className="group grid gap-3 rounded-[22px] border border-line/75 bg-white/[0.045] p-4 transition hover:-translate-y-0.5 hover:border-point/55 hover:bg-white/[0.07]"
+      >
+        <div className="flex items-center justify-between gap-4 text-[12px] text-subtext">
+          <span className="font-semibold text-point">{post.category}</span>
+          <span>{formatDate(post.publishedAt)}</span>
+        </div>
+        <div>
+          <h3 className="text-[18px] font-black leading-snug tracking-[-0.04em] text-text group-hover:text-point">{post.title}</h3>
+          <p className="mt-2 line-clamp-2 text-sm leading-6 text-subtext">{post.summary}</p>
+        </div>
+        <div className="flex flex-wrap gap-2 text-[11px] text-subtext">
+          {post.series ? <span className="rounded-full border border-line/70 px-2.5 py-1">{post.series}</span> : null}
+          <span className="rounded-full border border-line/70 px-2.5 py-1">{post.readingTimeMinutes}분</span>
+        </div>
+      </Link>
+    );
+  }
 
   return (
     <Link
       href={`/writing/${post.slug}`}
-      className={`story-card group grid gap-4 rounded-[22px] border border-line/80 bg-white/[0.045] p-4 transition hover:border-point/60 hover:bg-white/[0.075] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-point/30 ${thumbnail ? 'md:grid-cols-[150px_minmax(0,1fr)] md:items-stretch' : ''}`}
+      className={[
+        'group story-card grid overflow-hidden rounded-[28px] border border-line/80 bg-white/[0.055] transition hover:-translate-y-1 hover:border-point/55 hover:bg-white/[0.075]',
+        featured ? 'md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]' : '',
+      ].join(' ')}
     >
-      {thumbnail ? (
-        <div className="relative min-h-[130px] overflow-hidden rounded-[18px] border border-white/10 bg-black/30 md:min-h-0">
-          <Image
-            src={thumbnail}
-            alt={`${post.title} 썸네일`}
-            fill
-            sizes="(min-width: 768px) 150px, 100vw"
-            className="object-cover transition duration-300 group-hover:scale-[1.03]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+      <div className={featured ? 'relative min-h-[260px] overflow-hidden md:min-h-full' : 'relative h-48 overflow-hidden'}>
+        <img
+          src={thumbnail}
+          alt={`${post.title} 대표 화면`}
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]"
+        />
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+          <span className="rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[11px] font-bold text-white/90 backdrop-blur">
+            {post.series ?? post.category}
+          </span>
         </div>
-      ) : null}
+      </div>
 
-      <div className="min-w-0 space-y-3">
-        <div className="flex flex-wrap items-center gap-1.5 text-[11px]">
-          <Pill>{post.publishedAt}</Pill>
-          <Pill tone="point">{post.category}</Pill>
-          <Pill>{post.readingTimeMinutes}분</Pill>
+      <div className={featured ? 'flex min-h-[260px] flex-col justify-between p-6 md:p-8' : 'p-5'}>
+        <div>
+          <div className="flex flex-wrap items-center gap-2 text-[12px] text-subtext">
+            <span className="font-bold text-point">{post.category}</span>
+            <span>·</span>
+            <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+            <span>·</span>
+            <span>{post.readingTimeMinutes}분</span>
+          </div>
+          <h3 className={featured ? 'mt-4 text-[28px] font-black leading-tight tracking-[-0.055em] text-text md:text-[40px]' : 'mt-3 text-[22px] font-black leading-tight tracking-[-0.045em] text-text'}>
+            {post.title}
+          </h3>
+          <p className={featured ? 'mt-4 text-base leading-8 text-subtext' : 'mt-3 line-clamp-3 text-sm leading-7 text-subtext'}>{post.summary}</p>
         </div>
-        <h3 className="text-[20px] font-black tracking-[-0.04em] leading-[1.2] text-text transition group-hover:text-point md:text-[26px]">
-          {post.title}
-        </h3>
-        <p className="text-[14px] leading-6 text-subtext md:text-[15px]">{post.summary}</p>
-        <div className="flex flex-wrap gap-1.5 pt-0.5 text-[11px] text-subtext">
-          {post.tags.slice(0, 3).map((tag) => (
-            <span key={tag} className="rounded-full border border-white/10 bg-white/[0.035] px-2 py-0.5">#{tag}</span>
+
+        <div className="mt-5 flex flex-wrap gap-2 text-[11px] text-subtext">
+          {post.relatedProjects.slice(0, 3).map((project) => (
+            <span key={project} className="rounded-full border border-line/75 bg-white/[0.045] px-2.5 py-1">
+              {project}
+            </span>
+          ))}
+          {post.tags.slice(0, featured ? 4 : 2).map((tag) => (
+            <span key={tag} className="rounded-full border border-point/20 bg-point/10 px-2.5 py-1 text-point">
+              #{tag}
+            </span>
           ))}
         </div>
       </div>

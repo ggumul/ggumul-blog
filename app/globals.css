@@ -188,6 +188,22 @@ h3 {
   background: linear-gradient(135deg, rgba(26, 13, 16, 0.94), rgba(10, 8, 12, 0.94));
 }
 
+.studio-hero {
+  position: relative;
+  isolation: isolate;
+  box-shadow: 0 36px 120px rgba(0, 0, 0, 0.38), 0 22px 90px rgba(255, 122, 55, 0.1);
+}
+
+.studio-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 12%, rgba(255, 180, 95, 0.2), transparent 28rem),
+    radial-gradient(circle at 90% 6%, rgba(124, 78, 255, 0.18), transparent 30rem);
+}
+
 .studio-shot,
 .shot-frame {
   position: relative;
@@ -221,6 +237,15 @@ h3 {
 
 .studio-caption span:first-child {
   font-weight: 700;
+  color: #fff5e8;
+}
+
+.studio-caption a {
+  color: #ffcf8f;
+  font-weight: 700;
+}
+
+.studio-caption a:hover {
   color: #fff5e8;
 }
 
