@@ -54,8 +54,8 @@ export default async function WritingPage() {
           <section className="space-y-4">
             <SectionHeader
               eyebrow="all records"
-              title="전체 기록"
-              description="프로젝트, 글 유형, 읽는 시간을 한 줄로 줄이고 본문 목록의 밀도를 높였습니다."
+              title="이전 기록"
+              description="최신 글 아래로 이어지는 기록입니다. 프로젝트, 글 유형, 읽는 시간을 한 줄로 줄여서 훑어보기 쉽게 정리했습니다."
             />
             <div className="grid gap-3">
               {sections.timeline.map((post) => (
