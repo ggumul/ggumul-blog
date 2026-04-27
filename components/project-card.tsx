@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { ProjectEntry, WritingEntry } from '@/lib/content';
 
 const projectKinds: Record<string, string> = {
+  'ggumul-dinner-grocery': '생활 도구',
   wanderer: '카드 게임',
   trpg: '분기형 서사',
   hanoi: '퍼즐 게임',

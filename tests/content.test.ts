@@ -18,6 +18,7 @@ describe('content loader', () => {
     const projects = await getProjects();
 
     expect(projects.map((project) => project.slug)).toEqual([
+      'ggumul-dinner-grocery',
       'wanderer',
       'trpg',
       'hanoi',
@@ -30,13 +31,14 @@ describe('content loader', () => {
     const posts = await getWriting();
 
     expect(posts.map((post) => post.slug)).toEqual([
+      'ggumul-dinner-grocery-가격-계약-정리',
       'runtime-화면-확인-기록',
       'wanderer-sync-연결-문제-분석',
       'wanderer-초기-설계-회고',
       '제작-리듬을-우선하는-이유',
       '4월-프로젝트-개발-현황',
     ]);
-    expect(posts.filter((post) => post.featured)).toHaveLength(4);
+    expect(posts.filter((post) => post.featured)).toHaveLength(5);
   });
 
   it('finds project by slug and exposes related posts', async () => {
@@ -70,6 +72,7 @@ describe('content loader', () => {
     expect(taxonomy.series).toContain('4월 작업');
     expect(taxonomy.series).toContain('꼬물 노트');
     expect(taxonomy.series).toContain('Wanderer 로그');
+    expect(taxonomy.series).toContain('GGUMUL Dinner Grocery');
     expect(taxonomy.tags).toContain('게임 개발');
     expect(taxonomy.tags).toContain('제작 리듬');
   });
@@ -77,15 +80,15 @@ describe('content loader', () => {
   it('builds a home archive snapshot with latest post, related projects, project list, and remaining entries', async () => {
     const snapshot = await getHomeArchiveSnapshot();
 
-    expect(snapshot.latest?.slug).toBe('runtime-화면-확인-기록');
-    expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['wanderer', 'hanoi']);
-    expect(snapshot.worklines).toHaveLength(4);
-    expect(snapshot.worklines[0]?.recordCount).toBe(3);
+    expect(snapshot.latest?.slug).toBe('ggumul-dinner-grocery-가격-계약-정리');
+    expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['ggumul-dinner-grocery']);
+    expect(snapshot.worklines).toHaveLength(5);
+    expect(snapshot.worklines[0]?.recordCount).toBe(1);
     expect(snapshot.worklines[0]?.previewRecords.map((record) => record.slug)).toEqual([
-      'runtime-화면-확인-기록',
-      'wanderer-sync-연결-문제-분석',
+      'ggumul-dinner-grocery-가격-계약-정리',
     ]);
     expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual([
+      'runtime-화면-확인-기록',
       'wanderer-sync-연결-문제-분석',
       'wanderer-초기-설계-회고',
       '제작-리듬을-우선하는-이유',
@@ -96,10 +99,10 @@ describe('content loader', () => {
   it('builds writing archive sections with latest entry, timeline entries, and index density', async () => {
     const sections = await getWritingArchiveSections();
 
-    expect(sections.latest.slug).toBe('runtime-화면-확인-기록');
-    expect(sections.timeline).toHaveLength(4);
-    expect(sections.timeline[0]?.slug).toBe('wanderer-sync-연결-문제-분석');
-    expect(sections.index.seriesCount).toBe(4);
+    expect(sections.latest.slug).toBe('ggumul-dinner-grocery-가격-계약-정리');
+    expect(sections.timeline).toHaveLength(5);
+    expect(sections.timeline[0]?.slug).toBe('runtime-화면-확인-기록');
+    expect(sections.index.seriesCount).toBe(5);
     expect(sections.index.categoryCount).toBe(5);
     expect(sections.index.tagCount).toBeGreaterThan(7);
   });
@@ -107,6 +110,9 @@ describe('content loader', () => {
   it('builds project record map from related posts', async () => {
     const projectRecordMap = await getProjectRecordMap();
 
+    expect(projectRecordMap['ggumul-dinner-grocery'].records.map((record) => record.slug)).toEqual([
+      'ggumul-dinner-grocery-가격-계약-정리',
+    ]);
     expect(projectRecordMap.wanderer.project.title).toBe('Wanderer');
     expect(projectRecordMap.wanderer.records.map((record) => record.slug)).toEqual([
       'runtime-화면-확인-기록',
