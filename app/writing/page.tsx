@@ -17,6 +17,12 @@ const gameHooks: Record<string, string> = {
   trpg: '선택 하나가 다음 장면으로 이어지는 감각을 짧은 서사로 확인합니다.',
   'color-hanoi': '색 조건이 들어갔을 때 퍼즐 판단 리듬이 어떻게 바뀌는지 봅니다.',
 };
+const gameReadAngles: Record<string, string> = {
+  wanderer: 'Wanderer는 빠른 대전부터 결과 화면까지 이어지는 한 판의 리듬을 먼저 봅니다.',
+  hanoi: 'Hanoi는 같은 기록 안에서도 퍼즐 조작이 한 화면에서 바로 읽히는지 보는 쪽입니다.',
+  trpg: 'TRPG는 아직 전용 글이 적어서, 전체 프로젝트 소개에서 선택형 서사 실험의 위치부터 잡습니다.',
+  'color-hanoi': 'Color Hanoi는 Hanoi와 달리 색 조건이 들어간 퍼즐 변형이 어떤 역할인지 먼저 나눠 봅니다.',
+};
 
 function recordLabel(count: number) {
   return `${count}개 기록`;
@@ -36,6 +42,7 @@ export default async function WritingPage() {
       project,
       records,
       hook: gameHooks[project.slug] ?? project.summary,
+      readAngle: gameReadAngles[project.slug] ?? '이 게임과 연결된 기록에서 다음에 볼 문제를 고릅니다.',
       leadRecord: records[0] ?? null,
     }));
 
@@ -85,7 +92,7 @@ export default async function WritingPage() {
           <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">같은 글 카드를 반복하기보다, 각 게임에서 지금 무엇을 보고 있는지 먼저 보여줍니다. 필요한 기록만 바로 이어서 읽을 수 있습니다.</p>
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
-          {gameLanes.map(({ project, records, hook, leadRecord }) => (
+          {gameLanes.map(({ project, records, hook, readAngle, leadRecord }) => (
             <section key={project.slug} className="rounded-[28px] border border-line/80 bg-white/[0.045] p-5 transition hover:border-point/40 hover:bg-white/[0.06]">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -97,8 +104,9 @@ export default async function WritingPage() {
               <p className="mt-4 text-sm leading-7 text-subtext">{hook}</p>
               <div className="mt-5 rounded-2xl border border-white/10 bg-black/18 p-4">
                 <div className="text-[11px] font-black uppercase tracking-[0.2em] text-point">next read</div>
+                <p className="mt-2 text-[13px] leading-6 text-subtext">{readAngle}</p>
                 {leadRecord ? (
-                  <Link href={`/writing/${leadRecord.slug}`} className="mt-2 block text-[17px] font-black leading-snug tracking-[-0.035em] text-text hover:text-point">
+                  <Link href={`/writing/${leadRecord.slug}`} className="mt-3 block text-[17px] font-black leading-snug tracking-[-0.035em] text-text hover:text-point">
                     {leadRecord.title}
                     <span className="mt-2 block text-[13px] font-normal leading-6 text-subtext">{leadRecord.summary}</span>
                   </Link>
