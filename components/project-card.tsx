@@ -34,11 +34,11 @@ function StatusFacts({ project }: { project: ProjectEntry }) {
   return (
     <dl className="grid gap-2 text-[13px] leading-6 text-subtext">
       <div className="rounded-2xl border border-line/70 bg-black/15 p-3">
-        <dt className="font-bold text-text">최근 검증</dt>
+        <dt className="font-bold text-text">확인한 것</dt>
         <dd className="mt-1">{project.verificationNote}</dd>
       </div>
       <div className="rounded-2xl border border-line/70 bg-black/15 p-3">
-        <dt className="font-bold text-text">다음 작업</dt>
+        <dt className="font-bold text-text">다음에 볼 것</dt>
         <dd className="mt-1">{project.nextStep}</dd>
       </div>
     </dl>

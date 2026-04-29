@@ -34,9 +34,9 @@ describe('content loader', () => {
       'ggumul-dinner-grocery-가격-계약-정리',
       'runtime-화면-확인-기록',
       'wanderer-sync-연결-문제-분석',
+      '4월-프로젝트-개발-현황',
       'wanderer-초기-설계-회고',
       '제작-리듬을-우선하는-이유',
-      '4월-프로젝트-개발-현황',
     ]);
     expect(posts.filter((post) => post.featured)).toHaveLength(5);
   });
@@ -51,7 +51,7 @@ describe('content loader', () => {
   it('finds writing by slug and exposes related projects', async () => {
     const post = await getWritingBySlug('4월-프로젝트-개발-현황');
 
-    expect(post?.title).toBe('4월 프로젝트 개발 현황');
+    expect(post?.title).toBe('지금 만들고 있는 작은 게임들');
     expect(post?.relatedProjects).toContain('trpg');
     expect(post?.readingTimeMinutes).toBeGreaterThan(0);
     expect(post?.updatedAt).toBe('2026-04-20');
@@ -60,7 +60,7 @@ describe('content loader', () => {
   it('supports url-encoded slugs for writing detail routes', async () => {
     const post = await getWritingBySlug('wanderer-%EC%B4%88%EA%B8%B0-%EC%84%A4%EA%B3%84-%ED%9A%8C%EA%B3%A0');
 
-    expect(post?.title).toBe('Wanderer 초기 설계 회고');
+    expect(post?.title).toBe('왜 Wanderer는 짧은 카드 게임으로 남았나');
   });
 
   it('returns category, tags, and series data for writing taxonomy', async () => {
@@ -90,9 +90,9 @@ describe('content loader', () => {
     expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual([
       'runtime-화면-확인-기록',
       'wanderer-sync-연결-문제-분석',
+      '4월-프로젝트-개발-현황',
       'wanderer-초기-설계-회고',
       '제작-리듬을-우선하는-이유',
-      '4월-프로젝트-개발-현황',
     ]);
   });
 

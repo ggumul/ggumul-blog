@@ -13,12 +13,17 @@ export const metadata = createMetadata({
 export default async function HomePage() {
   const snapshot = await getHomeArchiveSnapshot();
   const websiteJsonLd = createWebsiteJsonLd();
-  const leadProject = snapshot.worklines.find((project) => project.slug === 'wanderer') ?? snapshot.worklines[0] ?? null;
-  const otherProjects = snapshot.worklines.filter((project) => project.slug !== leadProject?.slug);
-  const latestPosts = [snapshot.latest, ...snapshot.moreEntries]
-    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
+  const gameProjects = snapshot.worklines.filter((project) => project.slug !== 'ggumul-dinner-grocery');
+  const sideProjects = snapshot.worklines.filter((project) => project.slug === 'ggumul-dinner-grocery');
+  const leadProject = gameProjects.find((project) => project.slug === 'wanderer') ?? gameProjects[0] ?? snapshot.worklines[0] ?? null;
+  const otherProjects = [...gameProjects.filter((project) => project.slug !== leadProject?.slug), ...sideProjects];
+  const allPosts = [snapshot.latest, ...snapshot.moreEntries].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+  const latestGamePosts = allPosts
+    .filter((entry) => entry.relatedProjects.some((project) => project !== 'ggumul-dinner-grocery'))
     .slice(0, 4);
-  const totalPostCount = (snapshot.latest ? 1 : 0) + snapshot.moreEntries.length;
+  const totalPostCount = allPosts.length;
+  const latestGamePost = latestGamePosts[0] ?? snapshot.latest;
+  const moreGamePosts = latestGamePosts.slice(1, 4);
 
   return (
     <div className="archive-surface space-y-10 md:space-y-14">
@@ -46,8 +51,8 @@ export default async function HomePage() {
             <div className="grid gap-3 sm:grid-cols-3">
               <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">projects</p>
-                <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">{snapshot.worklines.length}</p>
-                <p className="mt-1 text-[13px] leading-6 text-subtext">공개한 게임 작업</p>
+                <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">{gameProjects.length}</p>
+                <p className="mt-1 text-[13px] leading-6 text-subtext">먼저 볼 게임</p>
               </div>
               <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">devlogs</p>
@@ -107,18 +112,18 @@ export default async function HomePage() {
         ))}
       </section>
 
-      {snapshot.latest ? (
+      {latestGamePost ? (
         <section className="space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">latest devlog</p>
-              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">최근 개발기록</h2>
+              <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">latest game devlog</p>
+              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">최근에 게임에서 확인한 것</h2>
             </div>
             <Link href="/writing" className="text-sm font-bold text-point hover:text-text">개발기록 전체 보기 →</Link>
           </div>
-          <PostCard post={snapshot.latest} featured />
+          <PostCard post={latestGamePost} featured />
           <div className="grid gap-4 md:grid-cols-3">
-            {snapshot.moreEntries.slice(0, 3).map((post) => (
+            {moreGamePosts.map((post) => (
               <PostCard key={post.slug} post={post} compact />
             ))}
           </div>
