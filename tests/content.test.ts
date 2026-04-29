@@ -63,6 +63,14 @@ describe('content loader', () => {
     expect(post?.title).toBe('왜 Wanderer는 짧은 카드 게임으로 남았나');
   });
 
+  it('keeps the first runtime writing title framed around a concrete gameplay problem', async () => {
+    const post = await getWritingBySlug('runtime-화면-확인-기록');
+
+    expect(post?.title).toBe('폰에서 돌려보니 게임 흐름이 생각보다 끊겼다');
+    expect(post?.summary).toContain('어디서 흐름이 끊겼고');
+    expect(post?.summary).not.toContain('정리했습니다');
+  });
+
   it('returns category, tags, and series data for writing taxonomy', async () => {
     const taxonomy = await getWritingTaxonomy();
 
