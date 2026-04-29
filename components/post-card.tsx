@@ -40,7 +40,7 @@ function resolvePostImage(post: WritingEntry): Thumbnail {
     return {
       src: '/media/runtime-checks/wanderer-mobile-current.png',
       label: 'Runtime check',
-      caption: '실제 화면 검증 기록',
+      caption: '실제 화면 확인 기록',
     };
   }
 
