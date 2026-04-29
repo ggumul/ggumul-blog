@@ -56,6 +56,6 @@ relatedProjects:
 
 ## 다음 작업
 
-다음 작업은 세 단계로 나눕니다. 첫째, 서버 테스트에서 sync request 이후 `SYNC_SNAPSHOT`이 한 번 발행되는지 확인합니다. 둘째, payload 안에 room, game, submissions가 모바일 decoder가 기대하는 이름과 형태로 들어가는지 고정합니다. 셋째, 모바일에서 reconnect 이후 해당 snapshot을 받아 화면 상태가 복구되는지 검증합니다.
+다음 작업은 세 단계로 나눕니다. 첫째, 서버 테스트에서 sync request 이후 `SYNC_SNAPSHOT`이 한 번 발행되는지 확인합니다. 둘째, payload 안에 room, game, submissions가 모바일 decoder가 기대하는 이름과 형태로 들어가는지 고정합니다. 셋째, 모바일에서 reconnect 이후 해당 snapshot을 받아 화면 상태가 복구되는지 확인합니다.
 
 이 기록의 결론은 단순합니다. realtime 기능은 endpoint가 열려 있다고 끝나는 작업이 아닙니다. topic, event 이름, payload, 복구 시점, 실패 후 재진입 방식까지 같은 계약으로 맞아야 실제 플레이가 이어집니다. Wanderer의 우선 과제는 이 기준을 문서와 테스트로 고정한 뒤, 모바일과 서버를 다시 같은 흐름에 올리는 것입니다.
