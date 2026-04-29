@@ -6,14 +6,15 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '꼬물이 만들고 있는 작은 게임과 개발 기록을 모았습니다.',
+  description: '작은 게임을 직접 만들고, 실제 화면과 바뀐 이유를 함께 남기는 개발 로그입니다.',
   path: '/',
 });
 
 export default async function HomePage() {
   const snapshot = await getHomeArchiveSnapshot();
   const websiteJsonLd = createWebsiteJsonLd();
-  const leadProject = snapshot.worklines[0] ?? null;
+  const leadProject = snapshot.worklines.find((project) => project.slug === 'wanderer') ?? snapshot.worklines[0] ?? null;
+  const otherProjects = snapshot.worklines.filter((project) => project.slug !== leadProject?.slug);
   const latestPosts = [snapshot.latest, ...snapshot.moreEntries]
     .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
     .slice(0, 4);
@@ -30,15 +31,15 @@ export default async function HomePage() {
               <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">ggumul / game studio log</p>
               <div className="space-y-4">
                 <h1 className="max-w-4xl text-[34px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[62px]">
-                  작은 게임을 만들고,<br />그 과정을 개발기록으로 남겨요.
+                  직접 만든 작은 게임과,<br />그 게임이 바뀌는 과정을 보여줘요.
                 </h1>
                 <p className="max-w-3xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                  Wanderer, TRPG, Hanoi처럼 짧게 플레이해도 구조가 분명한 게임을 만들고 있어요. 홈에서는 먼저 실제 화면과 프로젝트를 보여주고, 개발기록에서는 무엇을 확인했고 무엇이 남았는지 이어서 볼 수 있게 정리했습니다.
+                  먼저 실제로 돌린 화면과 플레이 가능한 프로젝트를 보여주고, 개발기록에서는 버그가 왜 생겼는지, 화면이 어떻게 바뀌었는지, 다음에 무엇을 고칠지 짧게 따라갈 수 있게 정리합니다.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
-                <Link href="/projects" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">프로젝트 보기</Link>
-                <Link href="/writing" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">개발기록 읽기</Link>
+                <Link href="/projects/wanderer" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">Wanderer 먼저 보기</Link>
+                <Link href="/writing/runtime-화면-확인-기록" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">실제 화면 기록 읽기</Link>
               </div>
             </div>
 
@@ -92,7 +93,7 @@ export default async function HomePage() {
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">representative project</p>
-              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">대표 프로젝트</h2>
+              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">먼저 볼 게임</h2>
             </div>
             <Link href="/projects" className="text-sm font-bold text-point hover:text-text">모든 프로젝트 보기 →</Link>
           </div>
@@ -101,7 +102,7 @@ export default async function HomePage() {
       ) : null}
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {snapshot.worklines.slice(1).map((project) => (
+        {otherProjects.map((project) => (
           <ProjectCard key={project.slug} project={project} records={project.previewRecords} compact />
         ))}
       </section>
