@@ -5,6 +5,47 @@ type Thumbnail = {
   src: string | null;
   label: string;
   caption: string;
+  badge?: string;
+  tone?: string;
+};
+
+const postThumbnails: Record<string, Thumbnail> = {
+  'runtime-화면-확인-기록': {
+    src: '/media/runtime-checks/wanderer-mobile-current.png',
+    label: 'Mobile flow',
+    caption: '버튼 뒤 흐름 끊김',
+  },
+  'wanderer-sync-연결-문제-분석': {
+    src: '/studio/wanderer-home.png',
+    label: 'Sync problem',
+    caption: '이어진다고 믿은 화면',
+  },
+  '4월-프로젝트-개발-현황': {
+    src: null,
+    label: '4 Games Map',
+    caption: '카드·퍼즐·서사 지도',
+    badge: '프로젝트 지도',
+    tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,180,95,0.28),transparent_18rem),radial-gradient(circle_at_80%_25%,rgba(108,92,231,0.22),transparent_16rem),linear-gradient(135deg,rgba(32,20,16,0.96),rgba(13,10,16,0.98))]',
+  },
+  'wanderer-초기-설계-회고': {
+    src: '/project-covers/wanderer.png',
+    label: 'Wanderer loop',
+    caption: '짧은 카드 전투의 기준',
+  },
+  '제작-리듬을-우선하는-이유': {
+    src: null,
+    label: 'Studio rhythm',
+    caption: '작업 기준을 잃지 않는 법',
+    badge: '스튜디오 노트',
+    tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(82,211,188,0.2),transparent_16rem),radial-gradient(circle_at_75%_70%,rgba(255,180,95,0.24),transparent_18rem),linear-gradient(135deg,rgba(18,27,27,0.96),rgba(13,10,16,0.98))]',
+  },
+  'ggumul-dinner-grocery-가격-계약-정리': {
+    src: null,
+    label: 'Dinner Grocery',
+    caption: '가격이 흔들리는 순간',
+    badge: '장보기 기록',
+    tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,180,95,0.25),transparent_18rem),radial-gradient(circle_at_80%_70%,rgba(100,181,246,0.18),transparent_16rem),linear-gradient(135deg,rgba(32,20,16,0.96),rgba(13,10,16,0.98))]',
+  },
 };
 
 const projectThumbnails: Record<string, Thumbnail> = {
@@ -36,12 +77,8 @@ const projectThumbnails: Record<string, Thumbnail> = {
 };
 
 function resolvePostImage(post: WritingEntry): Thumbnail {
-  if (post.slug === 'runtime-화면-확인-기록') {
-    return {
-      src: '/media/runtime-checks/wanderer-mobile-current.png',
-      label: 'Runtime check',
-      caption: '실제 화면 확인 기록',
-    };
+  if (postThumbnails[post.slug]) {
+    return postThumbnails[post.slug];
   }
 
   const firstProject = post.relatedProjects[0];
@@ -70,9 +107,9 @@ function ThumbnailFrame({ thumbnail, alt, featured }: { thumbnail: Thumbnail; al
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]"
         />
       ) : (
-        <div className="flex h-full min-h-[220px] flex-col justify-between bg-[radial-gradient(circle_at_20%_15%,rgba(255,180,95,0.28),transparent_18rem),linear-gradient(135deg,rgba(32,20,16,0.96),rgba(13,10,16,0.98))] p-5">
+        <div className={["flex h-full min-h-[220px] flex-col justify-between p-5", thumbnail.tone ?? 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,180,95,0.28),transparent_18rem),linear-gradient(135deg,rgba(32,20,16,0.96),rgba(13,10,16,0.98))]'].join(' ')}>
           <div className="inline-flex w-fit rounded-full border border-point/25 bg-point/15 px-3 py-1 text-[11px] font-black uppercase tracking-[0.2em] text-point">
-            기록 기반 카드
+            {thumbnail.badge ?? '기록 기반 카드'}
           </div>
           <div>
             <p className="text-[13px] font-bold text-point">{thumbnail.caption}</p>
