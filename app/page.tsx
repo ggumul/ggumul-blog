@@ -39,12 +39,12 @@ export default async function HomePage() {
                   직접 만든 작은 게임과,<br />그 게임이 바뀌는 과정을 보여줘요.
                 </h1>
                 <p className="max-w-3xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                  먼저 실제로 돌린 화면과 플레이 가능한 프로젝트를 보여주고, 개발기록에서는 버그가 왜 생겼는지, 화면이 어떻게 바뀌었는지, 다음에 무엇을 고칠지 짧게 따라갈 수 있게 정리합니다.
+                  먼저 바로 볼 수 있는 작은 게임을 보여주고, 그 아래에 실제 화면과 고친 이유를 짧은 기록으로 남깁니다. 처음 오면 Wanderer부터 보면 됩니다.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
-                <Link href="/projects/wanderer" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">Wanderer 먼저 보기</Link>
-                <Link href="/writing/runtime-화면-확인-기록" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">실제 화면 기록 읽기</Link>
+                <Link href="/projects/wanderer" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">1분 카드 게임 보기</Link>
+                <Link href="/writing/runtime-화면-확인-기록" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">실행 화면 보기</Link>
               </div>
             </div>
 
@@ -97,10 +97,10 @@ export default async function HomePage() {
         <section className="space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">representative project</p>
+              <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">대표 게임</p>
               <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">먼저 볼 게임</h2>
             </div>
-            <Link href="/projects" className="text-sm font-bold text-point hover:text-text">모든 프로젝트 보기 →</Link>
+            <Link href="/projects" className="text-sm font-bold text-point hover:text-text">프로젝트 전체 보기 →</Link>
           </div>
           <ProjectCard project={leadProject} records={leadProject.previewRecords} />
         </section>

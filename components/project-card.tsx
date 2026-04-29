@@ -63,7 +63,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
         </div>
         <p className="line-clamp-2 text-sm leading-6 text-subtext">{project.summary}</p>
         <div className="grid gap-2 text-[12px] leading-5 text-subtext">
-          <p><span className="font-bold text-text">검증</span> · {project.verificationNote}</p>
+          <p><span className="font-bold text-text">확인</span> · {project.verificationNote}</p>
           <p><span className="font-bold text-text">다음</span> · {project.nextStep}</p>
         </div>
         <p className="text-[12px] text-subtext">개발기록 {records.length}개{latestRecord ? ` · 최근 ${latestRecord.title}` : ''}</p>
@@ -113,8 +113,8 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
               <div className="rounded-[20px] border border-line/75 bg-black/15 p-4 text-sm leading-6 text-subtext">아직 연결된 개발기록이 없습니다.</div>
             )}
             <div className="flex flex-wrap gap-3 text-sm">
-              <Link href={`/projects/${project.slug}`} className="inline-flex rounded-full border border-point/30 bg-point px-4 py-2.5 font-semibold text-[#160d08] transition hover:bg-[#ffc47f]">프로젝트 보기</Link>
-              <Link href={project.evidenceHref} className="inline-flex rounded-full border border-line/90 bg-white/10 px-4 py-2.5 font-semibold text-text transition hover:border-point/60">검증 기록 보기</Link>
+              <Link href={`/projects/${project.slug}`} className="inline-flex rounded-full border border-point/30 bg-point px-4 py-2.5 font-semibold text-[#160d08] transition hover:bg-[#ffc47f]">자세히 보기</Link>
+              <Link href={project.evidenceHref} className="inline-flex rounded-full border border-line/90 bg-white/10 px-4 py-2.5 font-semibold text-text transition hover:border-point/60">확인 기록 보기</Link>
             </div>
           </div>
         </div>
