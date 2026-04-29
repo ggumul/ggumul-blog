@@ -23,6 +23,32 @@ const gameReadAngles: Record<string, string> = {
   trpg: 'TRPG는 아직 전용 글이 적어서, 전체 프로젝트 소개에서 선택형 서사 실험의 위치부터 잡습니다.',
   'color-hanoi': 'Color Hanoi는 Hanoi와 달리 색 조건이 들어간 퍼즐 변형이 어떤 역할인지 먼저 나눠 봅니다.',
 };
+const gameEntryOverrides: Record<string, { href: string; title: string; summary: string; cta: string }> = {
+  wanderer: {
+    href: '/writing/wanderer-초기-설계-회고',
+    title: '왜 Wanderer는 짧은 카드 게임으로 남았나',
+    summary: '한 판이 짧아야 살아나는 카드 전투의 기준과, 선택 뒤 결과가 바로 보여야 하는 이유를 먼저 봅니다.',
+    cta: '한 판 흐름 보기 →',
+  },
+  hanoi: {
+    href: '/writing/runtime-화면-확인-기록',
+    title: '폰에서 돌려보니 게임 흐름이 생각보다 끊겼다',
+    summary: '퍼즐 조작과 모바일 화면 흐름이 실제 화면에서 어디까지 바로 읽히는지 확인한 기록입니다.',
+    cta: '퍼즐 흐름 보기 →',
+  },
+  trpg: {
+    href: '/writing/4월-프로젝트-개발-현황',
+    title: '카드 전투, 퍼즐, 서사 실험을 한 화면에 나눴다',
+    summary: '선택형 서사 실험이 다른 게임들과 어떻게 분리되는지, 현재 보여줄 수 있는 화면 기준으로 봅니다.',
+    cta: '서사 실험 보기 →',
+  },
+  'color-hanoi': {
+    href: '/projects/color-hanoi',
+    title: 'Color Hanoi 프로젝트 상태',
+    summary: '색 조건이 들어간 퍼즐 변형이 Hanoi와 어떤 판단 리듬을 다르게 만드는지 프로젝트 상태에서 먼저 봅니다.',
+    cta: '색 조건 보기 →',
+  },
+};
 
 function recordLabel(count: number) {
   return `${count}개 기록`;
@@ -43,7 +69,14 @@ export default async function WritingPage() {
       records,
       hook: gameHooks[project.slug] ?? project.summary,
       readAngle: gameReadAngles[project.slug] ?? '이 게임과 연결된 기록에서 다음에 볼 문제를 고릅니다.',
-      leadRecord: records[0] ?? null,
+      entry: gameEntryOverrides[project.slug] ?? (records[0]
+        ? {
+            href: `/writing/${records[0].slug}`,
+            title: records[0].title,
+            summary: records[0].summary,
+            cta: '게임 상태 보기 →',
+          }
+        : null),
     }));
 
   return (
@@ -92,7 +125,7 @@ export default async function WritingPage() {
           <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">같은 글 카드를 반복하기보다, 각 게임에서 지금 무엇을 보고 있는지 먼저 보여줍니다. 필요한 기록만 바로 이어서 읽을 수 있습니다.</p>
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
-          {gameLanes.map(({ project, records, hook, readAngle, leadRecord }) => (
+          {gameLanes.map(({ project, records, hook, readAngle, entry }) => (
             <section key={project.slug} className="rounded-[28px] border border-line/80 bg-white/[0.045] p-5 transition hover:border-point/40 hover:bg-white/[0.06]">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -105,17 +138,17 @@ export default async function WritingPage() {
               <div className="mt-5 rounded-2xl border border-white/10 bg-black/18 p-4">
                 <div className="text-[11px] font-black uppercase tracking-[0.2em] text-point">next read</div>
                 <p className="mt-2 text-[13px] leading-6 text-subtext">{readAngle}</p>
-                {leadRecord ? (
-                  <Link href={`/writing/${leadRecord.slug}`} className="mt-3 block text-[17px] font-black leading-snug tracking-[-0.035em] text-text hover:text-point">
-                    {leadRecord.title}
-                    <span className="mt-2 block text-[13px] font-normal leading-6 text-subtext">{leadRecord.summary}</span>
+                {entry ? (
+                  <Link href={entry.href} className="mt-3 block text-[17px] font-black leading-snug tracking-[-0.035em] text-text hover:text-point">
+                    {entry.title}
+                    <span className="mt-2 block text-[13px] font-normal leading-6 text-subtext">{entry.summary}</span>
                   </Link>
                 ) : (
                   <p className="mt-2 text-sm text-subtext">연결된 기록을 준비 중입니다.</p>
                 )}
               </div>
               <Link href={`/projects/${project.slug}`} className="mt-4 inline-flex text-sm font-bold text-point hover:text-text">
-                게임 상태 보기 →
+                {entry?.cta ?? '게임 상태 보기 →'}
               </Link>
             </section>
           ))}
