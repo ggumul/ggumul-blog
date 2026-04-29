@@ -148,13 +148,19 @@ describe('content loader', () => {
     }
   });
 
-  it('keeps project/post relationships and cover assets resolvable', async () => {
+  it('keeps project/post relationships, cover assets, and operational card metadata resolvable', async () => {
     const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
     const projectSlugs = new Set(projects.map((project) => project.slug));
     const postSlugs = new Set(posts.map((post) => post.slug));
+    const allowedProgressStatuses = new Set(['플레이 확인', '개발 중', '계약 점검 중', '보류']);
 
     for (const project of projects) {
       expect(project.relatedPosts.every((slug) => postSlugs.has(slug))).toBe(true);
+      expect(allowedProgressStatuses.has(project.progressStatus)).toBe(true);
+      expect(project.verificationNote.length).toBeGreaterThanOrEqual(8);
+      expect(project.nextStep.length).toBeGreaterThanOrEqual(8);
+      expect(project.evidenceLabel.length).toBeGreaterThanOrEqual(4);
+      expect(project.evidenceHref).toMatch(/^\/(writing|projects)\//);
 
       if (project.coverImage) {
         expect(fs.existsSync(path.join(process.cwd(), 'public', project.coverImage.replace(/^\//, '')))).toBe(true);

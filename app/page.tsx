@@ -17,21 +17,22 @@ export default async function HomePage() {
   const latestPosts = [snapshot.latest, ...snapshot.moreEntries]
     .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
     .slice(0, 4);
+  const totalPostCount = (snapshot.latest ? 1 : 0) + snapshot.moreEntries.length;
 
   return (
-    <div className="archive-surface space-y-12 md:space-y-16">
+    <div className="archive-surface space-y-10 md:space-y-14">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
 
-      <section className="studio-hero overflow-hidden rounded-[36px] border border-line/80 bg-white/[0.035] p-5 md:p-8">
-        <div className="grid gap-7 lg:grid-cols-[minmax(0,0.95fr)_minmax(430px,1.05fr)] lg:items-stretch">
-          <div className="flex flex-col justify-between gap-8 rounded-[28px] border border-line/70 bg-black/20 p-5 md:p-7">
-            <div className="space-y-5">
+      <section className="studio-hero overflow-hidden rounded-[30px] border border-line/80 bg-white/[0.035] p-4 md:p-6">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(390px,1.08fr)] lg:items-stretch">
+          <div className="flex flex-col justify-between gap-6 rounded-[24px] border border-line/70 bg-black/20 p-5 md:p-6">
+            <div className="space-y-4">
               <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">ggumul / game studio log</p>
               <div className="space-y-4">
-                <h1 className="max-w-4xl text-[38px] font-black leading-[0.95] tracking-[-0.07em] text-text md:text-[72px]">
+                <h1 className="max-w-4xl text-[34px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[62px]">
                   작은 게임을 만들고,<br />그 과정을 개발기록으로 남겨요.
                 </h1>
-                <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
+                <p className="max-w-3xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
                   Wanderer, TRPG, Hanoi처럼 짧게 플레이해도 구조가 분명한 게임을 만들고 있어요. 홈에서는 먼저 실제 화면과 프로젝트를 보여주고, 개발기록에서는 무엇을 확인했고 무엇이 남았는지 이어서 볼 수 있게 정리했습니다.
                 </p>
               </div>
@@ -49,7 +50,7 @@ export default async function HomePage() {
               </div>
               <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">devlogs</p>
-                <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">{latestPosts.length}</p>
+                <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">{totalPostCount}</p>
                 <p className="mt-1 text-[13px] leading-6 text-subtext">읽을 수 있는 기록</p>
               </div>
               <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
@@ -60,8 +61,8 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_210px]">
-            <figure className="studio-shot relative min-h-[360px] overflow-hidden rounded-[30px] border border-line/80 bg-white/10 md:min-h-[560px]">
+          <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_190px]">
+            <figure className="studio-shot relative min-h-[300px] overflow-hidden rounded-[26px] border border-line/80 bg-white/10 md:min-h-[455px]">
               <img alt="Wanderer 실제 게임 진행 화면" className="h-full w-full object-cover" src="/media/runtime-checks/wanderer-mobile-current.png" />
               <figcaption className="studio-caption">
                 <span>Wanderer · 실제 진행 화면</span>
@@ -69,15 +70,15 @@ export default async function HomePage() {
               </figcaption>
             </figure>
             <div className="grid gap-3">
-              <figure className="studio-shot relative min-h-[170px] overflow-hidden rounded-[26px] border border-line/80 bg-white/10">
+              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[22px] border border-line/80 bg-white/10">
                 <img alt="Hanoi 웹 퍼즐 실행 화면" className="h-full w-full object-cover" src="/project-covers/hanoi.png" />
                 <figcaption className="studio-caption"><span>Hanoi</span></figcaption>
               </figure>
-              <figure className="studio-shot relative min-h-[170px] overflow-hidden rounded-[26px] border border-line/80 bg-white/10">
+              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[22px] border border-line/80 bg-white/10">
                 <img alt="TRPG 디바이스 메뉴 화면" className="h-full w-full object-cover object-top" src="/studio/trpg-device-menu.png" />
                 <figcaption className="studio-caption"><span>TRPG</span></figcaption>
               </figure>
-              <figure className="studio-shot relative min-h-[170px] overflow-hidden rounded-[26px] border border-line/80 bg-white/10">
+              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[22px] border border-line/80 bg-white/10">
                 <img alt="Color Hanoi 퍼즐 화면" className="h-full w-full object-cover" src="/project-covers/color-hanoi.png" />
                 <figcaption className="studio-caption"><span>Color Hanoi</span></figcaption>
               </figure>
@@ -99,7 +100,7 @@ export default async function HomePage() {
         </section>
       ) : null}
 
-      <section className="grid gap-5 md:grid-cols-3">
+      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {snapshot.worklines.slice(1).map((project) => (
           <ProjectCard key={project.slug} project={project} records={project.previewRecords} compact />
         ))}
