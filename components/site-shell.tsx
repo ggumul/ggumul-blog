@@ -47,7 +47,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
               href="/projects/wanderer"
               className="inline-flex min-h-[42px] items-center rounded-full border border-point/35 bg-point px-4 py-2 text-sm font-black text-[#160d08] shadow-glow transition hover:border-point/60 hover:bg-[#ffc47f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-point/30"
             >
-              Wanderer 보기
+              1분 카드 게임
             </Link>
           </div>
         </div>
