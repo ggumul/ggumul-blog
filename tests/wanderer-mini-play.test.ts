@@ -28,6 +28,10 @@ describe('Wanderer mini play sample', () => {
     expect(lowValid.outcome).toBe('lose');
     expect(lowValid.result).toContain('유효하지만');
     expect(lowValid.result).toContain('상대 9');
+    expect(lowValid.result).toContain('카드 5는');
+    expect(lowValid.result).not.toContain('카드 5은');
+    expect(lowValid.shareText).toContain('카드 5를 냈다');
+    expect(lowValid.shareText).not.toContain('카드 5을 냈다');
 
     const invalidEven = resolveWandererMiniPlayResult('even-10');
     expect(invalidEven.isValid).toBe(false);

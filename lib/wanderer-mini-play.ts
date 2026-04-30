@@ -53,36 +53,38 @@ const highestValidOpponentCard = Math.max(
 function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | 'outcome' | 'scene' | 'result' | 'shareText'> {
   const isValid = wandererMiniPlayTurn.condition.isCardValid(value);
   const playedCardText = `카드 ${value}`;
+  const subject = `${playedCardText}는`;
+  const object = `${playedCardText}를`;
 
   if (!isValid) {
-    const result = `${playedCardText}은 홀수 조건에 맞지 않아 무효입니다. 낼 수 있는 카드가 없다면 그대로 탈락합니다.`;
+    const result = `${subject} 홀수 조건에 맞지 않아 무효입니다. 낼 수 있는 카드가 없다면 그대로 탈락합니다.`;
     return {
       isValid,
       outcome: 'invalid',
       scene: `상대가 9, 12, 13을 냈고, 이번 조건은 ${wandererMiniPlayTurn.condition.label}입니다.`,
       result,
-      shareText: `Wanderer 30초 샘플: ${wandererMiniPlayTurn.condition.label}에서 ${playedCardText}을 냈다. 결과: ${result}`,
+      shareText: `Wanderer 30초 샘플: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
     };
   }
 
   if (value > highestValidOpponentCard) {
-    const result = `${playedCardText}은 조건을 만족하고 상대 13보다 높아 이번 턴 승리입니다.`;
+    const result = `${subject} 조건을 만족하고 상대 13보다 높아 이번 턴 승리입니다.`;
     return {
       isValid,
       outcome: 'win',
-      scene: `상대의 최고 유효 카드는 13입니다. ${playedCardText}을 내면 조건과 숫자를 모두 봐야 합니다.`,
+      scene: `상대의 최고 유효 카드는 13입니다. ${object} 내면 조건과 숫자를 모두 봐야 합니다.`,
       result,
-      shareText: `Wanderer 30초 샘플: ${wandererMiniPlayTurn.condition.label}에서 ${playedCardText}을 냈다. 결과: ${result}`,
+      shareText: `Wanderer 30초 샘플: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
     };
   }
 
-  const result = `${playedCardText}은 유효하지만 상대 9보다 낮아 이번 턴을 가져오지 못합니다.`;
+  const result = `${subject} 유효하지만 상대 9보다 낮아 이번 턴을 가져오지 못합니다.`;
   return {
     isValid,
     outcome: 'lose',
-    scene: `상대 A가 낸 9가 먼저 보입니다. ${playedCardText}은 조건을 통과하지만 숫자 싸움이 남습니다.`,
+    scene: `상대 A가 낸 9가 먼저 보입니다. ${subject} 조건을 통과하지만 숫자 싸움이 남습니다.`,
     result,
-    shareText: `Wanderer 30초 샘플: ${wandererMiniPlayTurn.condition.label}에서 ${playedCardText}을 냈다. 결과: ${result}`,
+    shareText: `Wanderer 30초 샘플: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
   };
 }
 
