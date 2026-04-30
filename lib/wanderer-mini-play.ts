@@ -68,7 +68,7 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
   }
 
   if (value > highestValidOpponentCard) {
-    const result = `${subject} 살아남고, 상대 13보다 높아서 이번 턴을 가져갑니다.`;
+    const result = `${subject} 살아남았고, 상대의 13보다 높아 이번 턴을 가져갑니다.`;
     return {
       isValid,
       outcome: 'win',

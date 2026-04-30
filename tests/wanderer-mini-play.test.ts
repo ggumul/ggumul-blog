@@ -43,7 +43,7 @@ describe('Wanderer mini play sample', () => {
     const duplicateHigh = resolveWandererMiniPlayResult('odd-15');
     expect(duplicateHigh.isValid).toBe(true);
     expect(duplicateHigh.outcome).toBe('win');
-    expect(duplicateHigh.result).toContain('상대 13보다 높아서');
+    expect(duplicateHigh.result).toContain('상대의 13보다 높아');
     expect(duplicateHigh.result).toContain('이번 턴을 가져갑니다');
   });
 
