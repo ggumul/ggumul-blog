@@ -12,22 +12,22 @@ export const metadata = createMetadata({
 
 const gameOrder = ['wanderer', 'hanoi', 'trpg', 'color-hanoi'];
 const gameHooks: Record<string, string> = {
-  wanderer: '한 장을 고르고 결과를 바로 보는 카드 전투가 어디서 끊기는지 따라갑니다.',
-  hanoi: '단순한 퍼즐 조작이 화면 안에서 충분히 읽히는지 봅니다.',
-  trpg: '선택 하나가 다음 장면으로 이어지는 감각을 짧은 서사로 확인합니다.',
-  'color-hanoi': '색 조건이 들어갔을 때 퍼즐 판단 리듬이 어떻게 바뀌는지 봅니다.',
+  wanderer: '카드를 고른 뒤 바로 결과가 보여야 하는데, 한 박자만 늦어도 전투 리듬이 흐려집니다.',
+  hanoi: '규칙은 단순하지만, 폰 화면에서는 “방금 뭘 옮겼는지”가 생각보다 쉽게 묻힙니다.',
+  trpg: '선택지를 눌렀을 때 다음 장면으로 넘어가는 감각이 짧은 서사 안에서 살아야 합니다.',
+  'color-hanoi': '색 조건이 하나 들어가면 같은 퍼즐도 판단 순서가 달라져서 따로 기록해 두었습니다.',
 };
 const gameReadAngles: Record<string, string> = {
-  wanderer: 'Wanderer는 빠른 대전부터 결과 화면까지 이어지는 한 판의 리듬을 먼저 봅니다.',
-  hanoi: 'Hanoi는 같은 기록 안에서도 퍼즐 조작이 한 화면에서 바로 읽히는지 보는 쪽입니다.',
-  trpg: 'TRPG는 아직 전용 글이 적어서, 전체 프로젝트 소개에서 선택형 서사 실험의 위치부터 잡습니다.',
-  'color-hanoi': 'Color Hanoi는 Hanoi와 달리 색 조건이 들어간 퍼즐 변형이 어떤 역할인지 먼저 나눠 봅니다.',
+  wanderer: 'Wanderer는 한 판이 짧아야 살아나서, 선택과 결과 사이가 늘어지는 순간부터 봅니다.',
+  hanoi: 'Hanoi는 조작 자체보다 화면 안에서 이동 결과가 바로 읽히는지가 더 자주 걸렸습니다.',
+  trpg: 'TRPG는 아직 전용 글이 적어서, 카드·퍼즐과 나란히 놓고 서사 실험의 위치를 먼저 잡았습니다.',
+  'color-hanoi': 'Color Hanoi는 색 조건 때문에 Hanoi와 다른 고민이 생겨서 프로젝트 상태부터 보는 편이 낫습니다.',
 };
 const gameEntryOverrides: Record<string, { href: string; title: string; summary: string; cta: string }> = {
   wanderer: {
     href: '/writing/wanderer-초기-설계-회고',
     title: '왜 Wanderer는 짧은 카드 게임으로 남았나',
-    summary: '한 판이 짧아야 살아나는 카드 전투의 기준과, 선택 뒤 결과가 바로 보여야 하는 이유를 먼저 봅니다.',
+    summary: '한 판이 짧아야 살아나는 카드 전투의 기준과, 선택 뒤 결과가 바로 보여야 하는 이유를 남긴 기록입니다.',
     cta: '한 판 흐름 보기 →',
   },
   hanoi: {
@@ -39,13 +39,13 @@ const gameEntryOverrides: Record<string, { href: string; title: string; summary:
   trpg: {
     href: '/writing/4월-프로젝트-개발-현황',
     title: '카드 전투, 퍼즐, 서사 실험을 한 화면에 나눴다',
-    summary: '선택형 서사 실험이 다른 게임들과 어떻게 분리되는지, 현재 보여줄 수 있는 화면 기준으로 봅니다.',
+    summary: '선택형 서사 실험이 카드 전투와 퍼즐 사이에서 어디에 놓이는지, 현재 보여줄 수 있는 화면 기준으로 나눴습니다.',
     cta: '서사 실험 보기 →',
   },
   'color-hanoi': {
     href: '/projects/color-hanoi',
     title: 'Color Hanoi 프로젝트 상태',
-    summary: '색 조건이 들어간 퍼즐 변형이 Hanoi와 어떤 판단 리듬을 다르게 만드는지 프로젝트 상태에서 먼저 봅니다.',
+    summary: '색 조건이 들어간 퍼즐 변형이 Hanoi와 어떤 판단 리듬을 다르게 만드는지 프로젝트 상태에서 먼저 확인합니다.',
     cta: '색 조건 보기 →',
   },
 };
@@ -94,12 +94,12 @@ export default async function WritingPage() {
           </div>
           <aside className="panel-aside space-y-3 text-sm text-subtext">
             <div className="flex flex-wrap gap-2 text-[12px]">
-              <Pill tone="point">글 {totalPostCount}개</Pill>
+              <Pill tone="point">실제 화면 중심</Pill>
               <Pill>게임 {gameLanes.length}개</Pill>
-              <Pill>분류 {sections.index.categoryCount}개</Pill>
+              <Pill>기록 {totalPostCount}개</Pill>
               <Link className="trace-chip border-point/35 bg-point/15 text-point transition hover:bg-point/25" href="/feed.xml">RSS</Link>
             </div>
-            <p className="text-[13px] leading-6">대표 기록과 게임별 기록을 따로 묶어두었습니다.</p>
+            <p className="text-[13px] leading-6">다시 켰을 때 바로 떠올리려고, 화면 흐름과 막힌 지점을 게임별로 갈라두었습니다.</p>
           </aside>
         </div>
       </section>
@@ -122,7 +122,7 @@ export default async function WritingPage() {
         <div>
           <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임별 기록</p>
           <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">게임마다 남긴 기록</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">게임마다 막혔던 지점과 고친 기록을 따로 묶었습니다.</p>
+          <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">한 게임 안에서도 막히는 지점이 달라서, 다시 찾기 쉽게 프로젝트별로 갈라두었습니다.</p>
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
           {gameLanes.map(({ project, records, hook, readAngle, entry }) => (
@@ -160,7 +160,7 @@ export default async function WritingPage() {
           <div>
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">최근 기록</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">다른 개발 기록</h2>
-            <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">대표 글 말고도 이어서 볼 수 있는 기록을 모았습니다.</p>
+            <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">대표 글을 읽고 나면, 남은 기록은 최근에 막혔던 순서대로 이어집니다.</p>
           </div>
           <div className="grid gap-4">
             {nextUpdates.map((post) => (
@@ -171,7 +171,7 @@ export default async function WritingPage() {
 
         <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">글 유형</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">기록 종류</div>
             <div className="space-y-2 text-[13px] leading-6">
               {sections.taxonomy.categories.map((category) => (
                 <div key={category} className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-text/90">{category}</div>
@@ -179,7 +179,7 @@ export default async function WritingPage() {
             </div>
           </div>
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">주제 태그</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">자주 나온 문제</div>
             <div className="flex flex-wrap gap-2 text-[12px]">
               {topicTags.map((tag) => (
                 <span key={tag} className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-subtext">#{tag}</span>
