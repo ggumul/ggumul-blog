@@ -18,26 +18,25 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="absolute bottom-[-18rem] left-1/3 h-[34rem] w-[34rem] rounded-full bg-[#ff6f59]/10 blur-3xl" />
       </div>
 
-      <header className="sticky top-0 z-30 border-b border-line/70 bg-background/72 backdrop-blur-2xl">
+      <header className="sticky top-0 z-30 border-b-[3px] border-[#fff1b8]/45 bg-background/86 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-8">
           <Link href="/" className="group inline-flex items-center gap-3">
-            <span className="relative grid h-12 w-12 place-items-center rounded-[18px] border border-point/35 bg-point/15 text-lg shadow-glow">
-              <span className="absolute inset-1 rounded-[14px] border border-white/10" />
+            <span className="relative grid h-12 w-12 place-items-center rounded-[15px] border-[3px] border-[#fff1b8]/60 bg-[#ffd447] text-lg font-black text-[#15183a] shadow-[0_3px_0_rgba(8,13,43,0.6)]">
               ✦
             </span>
             <span className="leading-tight">
-              <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[26px]">ggumul <span className="mx-1 text-point/70">/</span> 꼬물</span>
-              <span className="block text-[10px] font-bold uppercase tracking-[0.25em] text-subtext">작은 게임과 개발 기록</span>
+              <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[26px]">ggumul <span className="mx-1 text-point/80">/</span> 꼬물</span>
+              <span className="block text-[11px] font-black tracking-[-0.01em] text-subtext">작은 게임과 개발 기록</span>
             </span>
           </Link>
 
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-subtext">
-            <nav className="flex flex-wrap gap-x-1 gap-y-2 rounded-full border border-line/70 bg-white/[0.045] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+            <nav className="flex flex-wrap gap-x-1 gap-y-2 rounded-[18px] border-2 border-[#fff1b8]/30 bg-[#1b3d96]/58 p-1">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="inline-flex min-h-[40px] items-center rounded-full px-3.5 py-2 font-semibold transition hover:bg-white/10 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-point/30"
+                  className="inline-flex min-h-[38px] items-center rounded-[13px] px-3.5 py-2 font-bold transition hover:bg-[#ffd447] hover:text-[#15183a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-point/40"
                 >
                   {item.label}
                 </Link>
@@ -45,13 +44,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </nav>
             <Link
               href="/links#follow"
-              className="inline-flex min-h-[42px] items-center rounded-full border border-line/80 bg-white/[0.06] px-4 py-2 text-sm font-black text-text transition hover:border-point/60 hover:bg-white/[0.1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-point/30"
+              className="game-button-secondary min-h-[42px] px-4 py-2 text-sm"
             >
               소식 받기
             </Link>
             <Link
               href="/projects/wanderer"
-              className="inline-flex min-h-[42px] items-center rounded-full border border-point/35 bg-point px-4 py-2 text-sm font-black text-[#160d08] shadow-glow transition hover:border-point/60 hover:bg-[#ffc47f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-point/30"
+              className="game-button-primary min-h-[42px] px-4 py-2 text-sm"
             >
               1분 카드 게임
             </Link>

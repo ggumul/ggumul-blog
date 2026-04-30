@@ -25,7 +25,7 @@ const postThumbnails: Record<string, Thumbnail> = {
     label: '4 Games Map',
     caption: '카드·퍼즐·서사 지도',
     badge: '프로젝트 지도',
-    tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,180,95,0.28),transparent_18rem),radial-gradient(circle_at_80%_25%,rgba(108,92,231,0.22),transparent_16rem),linear-gradient(135deg,rgba(32,20,16,0.96),rgba(13,10,16,0.98))]',
+    tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.34),transparent_18rem),radial-gradient(circle_at_80%_25%,rgba(255,112,166,0.24),transparent_16rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]',
   },
   'wanderer-초기-설계-회고': {
     src: '/project-covers/wanderer.png',
@@ -37,14 +37,14 @@ const postThumbnails: Record<string, Thumbnail> = {
     label: 'Studio rhythm',
     caption: '작업 기준을 잃지 않는 법',
     badge: '스튜디오 노트',
-    tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(82,211,188,0.2),transparent_16rem),radial-gradient(circle_at_75%_70%,rgba(255,180,95,0.24),transparent_18rem),linear-gradient(135deg,rgba(18,27,27,0.96),rgba(13,10,16,0.98))]',
+    tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(126,230,198,0.28),transparent_16rem),radial-gradient(circle_at_75%_70%,rgba(255,212,71,0.26),transparent_18rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]',
   },
   'ggumul-dinner-grocery-가격-계약-정리': {
     src: null,
     label: 'Dinner Grocery',
     caption: '가격이 흔들리는 순간',
     badge: '장보기 기록',
-    tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,180,95,0.25),transparent_18rem),radial-gradient(circle_at_80%_70%,rgba(100,181,246,0.18),transparent_16rem),linear-gradient(135deg,rgba(32,20,16,0.96),rgba(13,10,16,0.98))]',
+    tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.3),transparent_18rem),radial-gradient(circle_at_80%_70%,rgba(143,210,255,0.24),transparent_16rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]',
   },
 };
 
@@ -107,8 +107,8 @@ function ThumbnailFrame({ thumbnail, alt, featured }: { thumbnail: Thumbnail; al
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]"
         />
       ) : (
-        <div className={["flex h-full min-h-[220px] flex-col justify-between p-5", thumbnail.tone ?? 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,180,95,0.28),transparent_18rem),linear-gradient(135deg,rgba(32,20,16,0.96),rgba(13,10,16,0.98))]'].join(' ')}>
-          <div className="inline-flex w-fit rounded-full border border-point/25 bg-point/15 px-3 py-1 text-[11px] font-black uppercase tracking-[0.2em] text-point">
+        <div className={["flex h-full min-h-[220px] flex-col justify-between p-5", thumbnail.tone ?? 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.32),transparent_18rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]'].join(' ')}>
+          <div className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">
             {thumbnail.badge ?? '기록 기반 카드'}
           </div>
           <div>
@@ -119,7 +119,7 @@ function ThumbnailFrame({ thumbnail, alt, featured }: { thumbnail: Thumbnail; al
       )}
       {thumbnail.src ? (
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-          <span className="rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[11px] font-bold text-white/90 backdrop-blur">
+          <span className="rounded-full border-2 border-[#fff1b8]/55 bg-[#10183a]/65 px-3 py-1 text-[11px] font-bold text-text backdrop-blur">
             {thumbnail.caption}
           </span>
         </div>
@@ -135,7 +135,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
     return (
       <Link
         href={`/writing/${post.slug}`}
-        className="group grid gap-3 rounded-[22px] border border-line/75 bg-white/[0.045] p-4 transition hover:-translate-y-0.5 hover:border-point/55 hover:bg-white/[0.07]"
+        className="group grid gap-3 rounded-[20px] border-2 border-[#fff1b8]/34 bg-[#1b3d96]/58 p-4 transition hover:-translate-y-0.5 hover:border-point hover:bg-[#244aa8]/80"
       >
         <div className="flex items-center justify-between gap-4 text-[12px] text-subtext">
           <span className="font-semibold text-point">{post.category}</span>
@@ -146,8 +146,8 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
           <p className="mt-2 line-clamp-2 text-sm leading-6 text-subtext">{post.summary}</p>
         </div>
         <div className="flex flex-wrap gap-2 text-[11px] text-subtext">
-          {post.series ? <span className="rounded-full border border-line/70 px-2.5 py-1">{post.series}</span> : null}
-          <span className="rounded-full border border-line/70 px-2.5 py-1">{post.readingTimeMinutes}분</span>
+          {post.series ? <span className="rounded-full border-2 border-[#fff1b8]/35 px-2.5 py-1">{post.series}</span> : null}
+          <span className="rounded-full border-2 border-[#fff1b8]/35 px-2.5 py-1">{post.readingTimeMinutes}분</span>
         </div>
       </Link>
     );
@@ -157,7 +157,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
     <Link
       href={`/writing/${post.slug}`}
       className={[
-        'group story-card grid overflow-hidden rounded-[28px] border border-line/80 bg-white/[0.055] transition hover:-translate-y-1 hover:border-point/55 hover:bg-white/[0.075]',
+        'group story-card grid overflow-hidden rounded-[24px] border-[3px] border-[#fff1b8]/42 bg-[#1b3d96]/66 transition hover:-translate-y-1 hover:border-point hover:bg-[#244aa8]/80',
         featured ? 'md:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]' : '',
       ].join(' ')}
     >
@@ -180,12 +180,12 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
 
         <div className="mt-5 flex flex-wrap gap-2 text-[11px] text-subtext">
           {post.relatedProjects.slice(0, 3).map((project) => (
-            <span key={project} className="rounded-full border border-line/75 bg-white/[0.045] px-2.5 py-1">
+            <span key={project} className="rounded-full border-2 border-[#fff1b8]/32 bg-[#10183a]/25 px-2.5 py-1">
               {project}
             </span>
           ))}
           {post.tags.slice(0, featured ? 4 : 2).map((tag) => (
-            <span key={tag} className="rounded-full border border-point/20 bg-point/10 px-2.5 py-1 text-point">
+            <span key={tag} className="rounded-full border-2 border-[#fff1b8]/35 bg-[#ffd447]/15 px-2.5 py-1 text-point">
               #{tag}
             </span>
           ))}

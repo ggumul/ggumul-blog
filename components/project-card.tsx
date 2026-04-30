@@ -10,16 +10,16 @@ const projectKinds: Record<string, string> = {
 };
 
 const progressTone: Record<ProjectEntry['progressStatus'], string> = {
-  '플레이 확인': 'border-emerald-300/35 bg-emerald-300/12 text-emerald-100',
-  '개발 중': 'border-point/30 bg-point/12 text-point',
-  '계약 점검 중': 'border-sky-300/35 bg-sky-300/12 text-sky-100',
-  보류: 'border-line/80 bg-white/[0.045] text-subtext',
+  '플레이 확인': 'border-[#fff1b8]/65 bg-[#7ee6c6] text-[#10183a]',
+  '개발 중': 'border-[#fff1b8]/65 bg-[#ffd447] text-[#10183a]',
+  '계약 점검 중': 'border-[#fff1b8]/65 bg-[#8fd2ff] text-[#10183a]',
+  보류: 'border-[#fff1b8]/45 bg-[#1f46a2] text-subtext',
 };
 
 function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
-    <div className="flex h-full min-h-[240px] flex-col justify-between bg-[radial-gradient(circle_at_18%_12%,rgba(255,180,95,0.24),transparent_17rem),linear-gradient(135deg,rgba(28,18,22,0.98),rgba(10,8,12,0.98))] p-5">
-      <span className="inline-flex w-fit rounded-full border border-point/25 bg-point/15 px-3 py-1 text-[11px] font-black uppercase tracking-[0.2em] text-point">
+    <div className="flex h-full min-h-[240px] flex-col justify-between bg-[radial-gradient(circle_at_18%_12%,rgba(255,212,71,0.34),transparent_17rem),linear-gradient(135deg,rgba(31,70,162,0.98),rgba(16,24,58,0.98))] p-5">
+      <span className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">
         기록 기반 카드
       </span>
       <div>
@@ -33,11 +33,11 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
 function StatusFacts({ project }: { project: ProjectEntry }) {
   return (
     <dl className="grid gap-2 text-[13px] leading-6 text-subtext">
-      <div className="rounded-2xl border border-line/70 bg-black/15 p-3">
+      <div className="rounded-2xl border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-3">
         <dt className="font-bold text-text">확인한 것</dt>
         <dd className="mt-1">{project.verificationNote}</dd>
       </div>
-      <div className="rounded-2xl border border-line/70 bg-black/15 p-3">
+      <div className="rounded-2xl border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-3">
         <dt className="font-bold text-text">다음에 볼 것</dt>
         <dd className="mt-1">{project.nextStep}</dd>
       </div>
@@ -51,13 +51,13 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
 
   if (compact) {
     return (
-      <Link href={`/projects/${project.slug}`} className="group grid gap-3 rounded-[22px] border border-line/75 bg-white/[0.045] p-4 transition hover:-translate-y-0.5 hover:border-point/55 hover:bg-white/[0.07]">
+      <Link href={`/projects/${project.slug}`} className="group grid gap-3 rounded-[20px] border-2 border-[#fff1b8]/34 bg-[#1b3d96]/58 p-4 transition hover:-translate-y-0.5 hover:border-point hover:bg-[#244aa8]/80">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">{projectKinds[project.slug] ?? '게임'}</p>
+            <p className="text-[12px] font-black text-point">{projectKinds[project.slug] ?? '게임'}</p>
             <h3 className="mt-1 text-xl font-black tracking-[-0.045em] text-text group-hover:text-point">{project.title}</h3>
           </div>
-          <span className={`shrink-0 rounded-full border px-3 py-1 text-[12px] font-bold ${progressTone[project.progressStatus]}`}>
+          <span className={`shrink-0 rounded-full border-2 px-3 py-1 text-[12px] font-black ${progressTone[project.progressStatus]}`}>
             {project.progressStatus}
           </span>
         </div>
@@ -72,17 +72,17 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
   }
 
   return (
-    <article className="game-card-glow overflow-hidden rounded-[30px] border border-line/80 bg-white/[0.05]">
+    <article className="game-card-glow overflow-hidden rounded-[26px] border-[3px] border-[#fff1b8]/45 bg-[#1b3d96]/68">
       <div className="grid gap-0 md:grid-cols-[minmax(260px,0.82fr)_minmax(0,1.18fr)]">
-        <Link href={`/projects/${project.slug}`} className="group relative min-h-[240px] overflow-hidden bg-white/[0.04] md:min-h-full">
+        <Link href={`/projects/${project.slug}`} className="group relative min-h-[240px] overflow-hidden bg-[#10183a] md:min-h-full">
           {cover ? (
             <img src={cover} alt={`${project.title} 대표 화면`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" />
           ) : (
             <EvidenceFallback project={project} />
           )}
           <div className="absolute inset-x-0 top-0 flex items-center justify-between gap-3 p-4">
-            <span className="rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[11px] font-bold text-white/90 backdrop-blur">{projectKinds[project.slug] ?? '게임'}</span>
-            <span className={`rounded-full border px-3 py-1 text-[11px] font-black backdrop-blur ${progressTone[project.progressStatus]}`}>{project.progressStatus}</span>
+            <span className="rounded-full border-2 border-[#fff1b8]/60 bg-[#10183a]/65 px-3 py-1 text-[11px] font-bold text-text backdrop-blur">{projectKinds[project.slug] ?? '게임'}</span>
+            <span className={`rounded-full border-2 px-3 py-1 text-[11px] font-black backdrop-blur ${progressTone[project.progressStatus]}`}>{project.progressStatus}</span>
           </div>
         </Link>
 
@@ -104,17 +104,17 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           <div className="mt-5 space-y-3">
             <StatusFacts project={project} />
             {latestRecord ? (
-              <Link href={project.evidenceHref} className="block rounded-[20px] border border-line/75 bg-black/15 p-4 transition hover:border-point/55 hover:bg-white/[0.055]">
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">근거 기록</p>
+              <Link href={project.evidenceHref} className="block rounded-[18px] border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-4 transition hover:border-point hover:bg-[#244aa8]/60">
+                <p className="text-[12px] font-black text-point">근거 기록</p>
                 <p className="mt-2 text-sm font-bold leading-6 text-text">{project.evidenceLabel}</p>
                 <p className="mt-1 line-clamp-2 text-[13px] leading-6 text-subtext">{latestRecord.summary}</p>
               </Link>
             ) : (
-              <div className="rounded-[20px] border border-line/75 bg-black/15 p-4 text-sm leading-6 text-subtext">아직 연결된 개발기록이 없습니다.</div>
+              <div className="rounded-[18px] border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-4 text-sm leading-6 text-subtext">아직 연결된 개발기록이 없습니다.</div>
             )}
             <div className="flex flex-wrap gap-3 text-sm">
-              <Link href={`/projects/${project.slug}`} className="inline-flex rounded-full border border-point/30 bg-point px-4 py-2.5 font-semibold text-[#160d08] transition hover:bg-[#ffc47f]">자세히 보기</Link>
-              <Link href={project.evidenceHref} className="inline-flex rounded-full border border-line/90 bg-white/10 px-4 py-2.5 font-semibold text-text transition hover:border-point/60">확인 기록 보기</Link>
+              <Link href={`/projects/${project.slug}`} className="game-button-primary px-4 py-2.5 text-sm">자세히 보기</Link>
+              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">확인 기록 보기</Link>
             </div>
           </div>
         </div>

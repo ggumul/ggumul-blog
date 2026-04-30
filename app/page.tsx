@@ -31,38 +31,38 @@ export default async function HomePage() {
     <div className="archive-surface space-y-10 md:space-y-14">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
 
-      <section className="studio-hero overflow-hidden rounded-[30px] border border-line/80 bg-white/[0.035] p-4 md:p-6">
+      <section className="studio-hero overflow-hidden rounded-[28px] border-[3px] border-[#fff1b8]/60 bg-[#1f46a2]/45 p-4 md:p-6">
         <div className="grid gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(390px,1.08fr)] lg:items-stretch">
-          <div className="flex flex-col justify-between gap-6 rounded-[24px] border border-line/70 bg-black/20 p-5 md:p-6">
+          <div className="flex flex-col justify-between gap-6 rounded-[22px] border-[3px] border-[#fff1b8]/55 bg-[#172f82]/80 p-5 shadow-[0_5px_0_rgba(8,13,43,0.55)] md:p-6">
             <div className="space-y-4">
-              <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">ggumul / game studio log</p>
+              <p className="inline-flex rounded-full border-2 border-[#fff1b8]/60 bg-[#ff72a6]/90 px-3 py-1 text-[12px] font-black tracking-[-0.02em] text-[#15183a]">ggumul / 꼬물 게임 기록</p>
               <div className="space-y-4">
                 <h1 className="max-w-4xl text-[34px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[62px]">
-                  직접 만든 작은 게임과,<br />그 게임이 바뀌는 과정을 보여줘요.
+                  작은 게임을 켜 보고,<br />막힌 장면을 바로 남겨요.
                 </h1>
                 <p className="max-w-3xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                  먼저 바로 볼 수 있는 작은 게임을 보여주고, 그 아래에 실제 화면과 고친 이유를 짧은 기록으로 남깁니다. 처음 오면 Wanderer부터 보면 됩니다.
+                  Wanderer처럼 직접 돌린 화면을 먼저 보여주고, 버튼 뒤에서 흐름이 끊긴 지점과 다음에 고칠 일을 짧게 붙여둡니다.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
-                <Link href="/projects/wanderer" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">1분 카드 게임 보기</Link>
-                <Link href="/writing/runtime-화면-확인-기록" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">실행 화면 보기</Link>
+                <Link href="/projects/wanderer" className="game-button-primary">1분 카드 게임 보기</Link>
+                <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">실행 화면 기록</Link>
               </div>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-3">
-              <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">projects</p>
+              <div className="rounded-[18px] border-2 border-[#fff1b8]/34 bg-[#213c93]/62 p-4">
+                <p className="text-[12px] font-black text-point">게임</p>
                 <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">{gameProjects.length}</p>
                 <p className="mt-1 text-[13px] leading-6 text-subtext">먼저 볼 게임</p>
               </div>
-              <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">devlogs</p>
+              <div className="rounded-[18px] border-2 border-[#fff1b8]/34 bg-[#213c93]/62 p-4">
+                <p className="text-[12px] font-black text-point">기록</p>
                 <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">{totalPostCount}</p>
                 <p className="mt-1 text-[13px] leading-6 text-subtext">읽을 수 있는 기록</p>
               </div>
-              <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">runtime</p>
+              <div className="rounded-[18px] border-2 border-[#fff1b8]/34 bg-[#213c93]/62 p-4">
+                <p className="text-[12px] font-black text-point">화면</p>
                 <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">영상</p>
                 <p className="mt-1 text-[13px] leading-6 text-subtext">실행 화면 우선</p>
               </div>
@@ -70,7 +70,7 @@ export default async function HomePage() {
           </div>
 
           <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_190px]">
-            <figure className="studio-shot relative min-h-[300px] overflow-hidden rounded-[26px] border border-line/80 bg-white/10 md:min-h-[455px]">
+            <figure className="studio-shot relative min-h-[300px] overflow-hidden rounded-[22px] border-[3px] border-[#fff1b8]/60 bg-[#10183a] md:min-h-[455px]">
               <img alt="Wanderer 실제 게임 진행 화면" className="h-full w-full object-cover" src="/media/runtime-checks/wanderer-mobile-current.png" />
               <figcaption className="studio-caption">
                 <span>Wanderer · 실제 진행 화면</span>
@@ -78,15 +78,15 @@ export default async function HomePage() {
               </figcaption>
             </figure>
             <div className="grid gap-3">
-              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[22px] border border-line/80 bg-white/10">
+              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[18px] border-2 border-[#fff1b8]/38 bg-[#10183a]">
                 <img alt="Hanoi 웹 퍼즐 실행 화면" className="h-full w-full object-cover" src="/project-covers/hanoi.png" />
                 <figcaption className="studio-caption"><span>Hanoi</span></figcaption>
               </figure>
-              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[22px] border border-line/80 bg-white/10">
+              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[18px] border-2 border-[#fff1b8]/38 bg-[#10183a]">
                 <img alt="TRPG 디바이스 메뉴 화면" className="h-full w-full object-cover object-top" src="/studio/trpg-device-menu.png" />
                 <figcaption className="studio-caption"><span>TRPG</span></figcaption>
               </figure>
-              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[22px] border border-line/80 bg-white/10">
+              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[18px] border-2 border-[#fff1b8]/38 bg-[#10183a]">
                 <img alt="Color Hanoi 퍼즐 화면" className="h-full w-full object-cover" src="/project-covers/color-hanoi.png" />
                 <figcaption className="studio-caption"><span>Color Hanoi</span></figcaption>
               </figure>
@@ -101,10 +101,10 @@ export default async function HomePage() {
         <section className="space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">대표 게임</p>
+              <p className="text-[13px] font-black text-point">대표 게임</p>
               <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">먼저 볼 게임</h2>
             </div>
-            <Link href="/projects" className="text-sm font-bold text-point hover:text-text">프로젝트 전체 보기 →</Link>
+            <Link href="/projects" className="game-button-secondary text-sm">프로젝트 전체 보기</Link>
           </div>
           <ProjectCard project={leadProject} records={leadProject.previewRecords} />
         </section>
@@ -120,10 +120,10 @@ export default async function HomePage() {
         <section className="space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">latest game devlog</p>
+              <p className="text-[13px] font-black text-point">최근 게임 기록</p>
               <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">최근에 게임에서 확인한 것</h2>
             </div>
-            <Link href="/writing" className="text-sm font-bold text-point hover:text-text">개발기록 전체 보기 →</Link>
+            <Link href="/writing" className="game-button-secondary text-sm">개발기록 전체 보기</Link>
           </div>
           <PostCard post={latestGamePost} featured />
           <div className="grid gap-4 md:grid-cols-3">
