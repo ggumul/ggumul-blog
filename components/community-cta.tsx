@@ -15,14 +15,14 @@ const actionCards = [
   },
   {
     label: '피드백 보내기',
-    title: '짧은 감상 보내기',
+    title: '짧게 감상 남기기',
     description: '헷갈린 화면, 궁금한 카드, 보고 싶은 다음 장면이 있으면 짧게 보내주세요.',
     href: contactHref,
     external: false,
   },
   {
     label: '공유하기',
-    title: '본 장면 X에 남기기',
+    title: '이 장면 X에 남기기',
     description: '이상했거나 재밌었던 장면이 있다면 짧게 남겨주세요. 다음에 고칠 때 같이 보겠습니다.',
     href: xShareHref,
     external: true,
@@ -36,10 +36,10 @@ export function CommunityCTA({ compact = false }: { compact?: boolean }) {
         <div className="space-y-4">
           <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">follow along</p>
           <h2 className="max-w-3xl text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[52px]">
-            다음에 어떻게 바뀌는지 같이 봐주세요.
+            다음에 어떻게 바뀌는지 같이 봐요.
           </h2>
           <p className="max-w-2xl text-sm leading-7 text-subtext md:text-base md:leading-8">
-            지금은 조용히 만들고 있습니다. 다만 혼자만 보고 고치기보다는, 궁금한 사람이 새 기록을 받아보고 짧은 감상도 남길 수 있게 열어뒀어요.
+            지금은 조용히 만들고 있습니다. 다만 혼자만 보고 고치기보다는, 관심 있는 분들이 새 기록을 받아보고 짧은 감상도 남길 수 있게 열어뒀어요.
           </p>
           {!compact ? (
             <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
