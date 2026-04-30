@@ -25,9 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return createMetadata({
-    title: project.slug === 'wanderer' ? 'Wanderer — 30초 미니 턴' : `${project.title} 작업 기록`,
+    title: project.slug === 'wanderer' ? 'Wanderer — 한 턴 체험' : `${project.title} 작업 기록`,
     description: project.slug === 'wanderer'
-      ? '조건을 보고 카드를 내는 Wanderer 30초 미니 턴, 실제 플레이 화면과 개발기록입니다.'
+      ? '규칙을 보고 한 장을 고르는 Wanderer 한 턴 체험, 실제 플레이 화면과 개발기록입니다.'
       : project.summary,
     path: `/projects/${project.slug}`,
     ogImage: project.coverImage,
@@ -36,9 +36,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const firstVisitSteps = [
   {
-    label: '30초 먼저 보기',
-    title: '조건을 보고 카드를 냅니다.',
-    description: '설명을 길게 읽기 전에, 이번 턴 조건과 상대 카드를 보고 유효한 한 장을 짧게 골라봅니다.',
+    label: '한 턴 먼저 보기',
+    title: '규칙 보고, 한 장만.',
+    description: '설명을 길게 읽기 전에, 이번 규칙과 상대 카드를 보고 내 카드 한 장을 골라봅니다.',
     href: '#mini-play',
   },
   {
@@ -152,7 +152,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
           <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">플레이 방식</p>
           <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">조건에 맞는 카드를 내고 비교합니다.</h2>
-          <p className="mt-3 text-sm leading-7 text-subtext">긴 성장 구조보다 한 턴 안에서 조건, 유효 여부, 숫자 비교가 바로 읽히는 흐름을 먼저 확인합니다.</p>
+          <p className="mt-3 text-sm leading-7 text-subtext">긴 성장 구조보다 한 턴 안에서 규칙, 생존 여부, 숫자 비교가 바로 읽히는 흐름을 먼저 확인합니다.</p>
         </div>
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
           <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">지금 보는 이유</p>

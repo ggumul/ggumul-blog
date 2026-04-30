@@ -8,7 +8,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '조건을 보고 카드를 내는 Wanderer 30초 미니 턴과, 실제 화면을 보며 고친 개발기록을 모았습니다.',
+  description: '규칙을 보고 한 장을 고르는 Wanderer 한 턴 체험과, 실제 화면을 보며 고친 개발기록을 모았습니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
@@ -47,7 +47,7 @@ export default async function HomePage() {
                   조건을 읽고,<br />한 장으로 턴을 가져갑니다.
                 </h1>
                 <p className="max-w-3xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                  지금 꼬물에서 가장 먼저 만질 건 Wanderer입니다. 턴 조건을 보고 카드를 내면 유효·무효와 승패가 바로 갈리는 30초 미니 턴을 먼저 두고, 실제 영상과 개발기록으로 이어 볼 수 있게 했어요.
+                  지금 꼬물에서 가장 먼저 만질 건 Wanderer입니다. 이번 규칙을 보고 한 장을 고르면, 살아남는지와 턴을 가져오는지가 바로 갈립니다. 그 다음 실제 영상과 개발기록으로 이어 볼 수 있게 했어요.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">

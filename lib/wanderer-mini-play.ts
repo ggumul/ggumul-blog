@@ -32,16 +32,16 @@ export type WandererMiniPlayTurn = {
 
 export const wandererMiniPlayTurn: WandererMiniPlayTurn = {
   condition: {
-    label: '홀수 카드만 유효',
-    description: '이번 턴은 홀수 카드만 살아남습니다. 조건에 맞는 카드 중 가장 높은 숫자가 턴을 가져갑니다.',
+    label: '홀수만 살아남음',
+    description: '이번 턴은 홀수 카드만 살아남습니다. 살아남은 카드끼리는 숫자가 높은 쪽이 턴을 가져갑니다.',
     isCardValid: (value: number) => value % 2 === 1,
   },
   opponents: [
-    { name: '상대 A', card: 9, note: '조건을 만족한 기준점' },
-    { name: '상대 B', card: 12, note: '짝수라 이번 턴 무효' },
-    { name: '상대 C', card: 13, note: '현재 가장 높은 유효 카드' },
+    { name: '상대 A', card: 9, note: '살아남은 낮은 기준' },
+    { name: '상대 B', card: 12, note: '짝수라 탈락' },
+    { name: '상대 C', card: 13, note: '지금 이길 기준' },
   ],
-  ruleSummary: '조건에 맞지 않는 카드는 무효가 되고, 유효 카드끼리는 숫자가 높은 쪽이 이깁니다.',
+  ruleSummary: '조건에 걸리면 바로 탈락. 살아남은 카드끼리만 숫자로 겨룹니다.',
 };
 
 const highestValidOpponentCard = Math.max(
@@ -57,34 +57,34 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
   const object = `${playedCardText}를`;
 
   if (!isValid) {
-    const result = `${subject} 홀수 조건에 맞지 않아 무효입니다. 낼 수 있는 카드가 없다면 그대로 탈락합니다.`;
+    const result = `${subject} 홀수가 아니라서 바로 탈락합니다. 이번 턴에는 낼 수 없는 카드예요.`;
     return {
       isValid,
       outcome: 'invalid',
-      scene: `상대가 9, 12, 13을 냈고, 이번 조건은 ${wandererMiniPlayTurn.condition.label}입니다.`,
+      scene: `상대는 9, 12, 13을 냈습니다. 이번 규칙은 ${wandererMiniPlayTurn.condition.label}입니다.`,
       result,
-      shareText: `Wanderer 30초 샘플: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
+      shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
     };
   }
 
   if (value > highestValidOpponentCard) {
-    const result = `${subject} 조건을 만족하고 상대 13보다 높아 이번 턴 승리입니다.`;
+    const result = `${subject} 살아남고, 상대 13보다 높아서 이번 턴을 가져갑니다.`;
     return {
       isValid,
       outcome: 'win',
-      scene: `상대의 최고 유효 카드는 13입니다. ${object} 내면 조건과 숫자를 모두 봐야 합니다.`,
+      scene: `상대의 최고 생존 카드는 13입니다. ${object} 내면 규칙도 통과하고 숫자도 앞섭니다.`,
       result,
-      shareText: `Wanderer 30초 샘플: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
+      shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
     };
   }
 
-  const result = `${subject} 유효하지만 상대 9보다 낮아 이번 턴을 가져오지 못합니다.`;
+  const result = `${subject} 살아남지만, 상대 9보다 낮아서 이번 턴을 가져오지 못합니다.`;
   return {
     isValid,
     outcome: 'lose',
-    scene: `상대 A가 낸 9가 먼저 보입니다. ${subject} 조건을 통과하지만 숫자 싸움이 남습니다.`,
+    scene: `상대 A의 9가 먼저 보입니다. ${subject} 살아남지만 숫자 싸움에서는 밀립니다.`,
     result,
-    shareText: `Wanderer 30초 샘플: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
+    shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
   };
 }
 
@@ -93,19 +93,19 @@ const handCards = [
     id: 'odd-5',
     value: 5,
     title: '5를 낸다',
-    description: '조건에는 맞는 유효 카드입니다. 다만 상대 숫자와 다시 비교해야 합니다.',
+    description: '규칙은 통과하지만 상대 9보다 낮습니다.',
   },
   {
     id: 'even-10',
     value: 10,
     title: '10을 낸다',
-    description: '숫자는 높아 보여도 홀수 조건에 맞지 않아 무효가 됩니다.',
+    description: '숫자는 커도 짝수라 이번 턴에는 탈락합니다.',
   },
   {
     id: 'odd-15',
     value: 15,
     title: '15를 낸다',
-    description: '조건을 만족하고 상대의 가장 높은 유효 카드보다 높은 선택입니다.',
+    description: '살아남고 상대 13보다 높습니다.',
   },
 ] as const;
 
