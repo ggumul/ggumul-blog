@@ -22,7 +22,7 @@ const actionCards = [
   },
   {
     label: '공유하기',
-    title: '이 장면 X에 남기기',
+    title: 'X에 짧게 남기기',
     description: '이상했거나 재밌었던 장면이 있다면 짧게 남겨주세요. 다음에 고칠 때 같이 보겠습니다.',
     href: xShareHref,
     external: true,
@@ -43,7 +43,7 @@ export function CommunityCTA({ compact = false }: { compact?: boolean }) {
           </p>
           {!compact ? (
             <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
-              <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">share copy</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">공유 문구</p>
               <p className="mt-2 text-sm leading-7 text-text">“1분 안에 한 판 끝나는 작은 카드 게임을 만들고 있어요. 실제 화면을 보면서 고친 것들을 기록하고 있습니다.”</p>
             </div>
           ) : null}
