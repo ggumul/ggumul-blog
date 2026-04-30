@@ -49,9 +49,38 @@ const gameEntryOverrides: Record<string, { href: string; title: string; summary:
     cta: '색 조건 보기 →',
   },
 };
+const gameEntryLabels: Record<string, string> = {
+  wanderer: '전투 리듬부터',
+  hanoi: '모바일 흐름부터',
+  trpg: '서사 화면부터',
+  'color-hanoi': '색 조건부터',
+};
+const topicLabelOverrides: Record<string, string> = {
+  runtime: '모바일 흐름',
+  hanoi: '퍼즐 이동',
+  wanderer: '카드 선택',
+  flutter: '실기기 화면',
+  sync: '상태 동기화',
+  ggumul: '생활 기록',
+  dinner: '가격 기록',
+  '게임 개발': '플레이 흐름',
+  '프로젝트 소개': '게임별 현재 모습',
+  회고: '짧게 남긴 판단',
+  '작업 철학': '작업 기준',
+  '개발 기록': '화면 흐름',
+};
 
 function recordLabel(count: number) {
   return `${count}개 기록`;
+}
+
+function displayTopicTags(tags: string[]) {
+  const labels = tags
+    .filter((tag) => !gameOrder.includes(tag))
+    .map((tag) => topicLabelOverrides[tag] ?? tag)
+    .filter((tag, index, array) => array.indexOf(tag) === index);
+
+  return labels.slice(0, 10);
 }
 
 export default async function WritingPage() {
@@ -60,7 +89,7 @@ export default async function WritingPage() {
   const latestGamePost = allPosts.find((post) => post.relatedProjects.some((project) => project !== 'ggumul-dinner-grocery')) ?? sections.latest;
   const nextUpdates = allPosts.filter((post) => post.slug !== latestGamePost.slug);
   const totalPostCount = allPosts.length;
-  const topicTags = sections.taxonomy.tags.filter((tag) => !gameOrder.includes(tag)).slice(0, 10);
+  const topicTags = displayTopicTags(sections.taxonomy.tags);
   const gameLanes = gameOrder
     .map((slug) => projectRecordMap[slug])
     .filter(Boolean)
@@ -68,6 +97,7 @@ export default async function WritingPage() {
       project,
       records,
       hook: gameHooks[project.slug] ?? project.summary,
+      entryLabel: gameEntryLabels[project.slug] ?? '먼저 볼 지점',
       readAngle: gameReadAngles[project.slug] ?? '이 게임과 연결된 기록에서 다음에 볼 문제를 고릅니다.',
       entry: gameEntryOverrides[project.slug] ?? (records[0]
         ? {
@@ -125,7 +155,7 @@ export default async function WritingPage() {
           <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">한 게임 안에서도 막히는 지점이 달라서, 다시 찾기 쉽게 프로젝트별로 갈라두었습니다.</p>
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
-          {gameLanes.map(({ project, records, hook, readAngle, entry }) => (
+          {gameLanes.map(({ project, records, hook, entryLabel, readAngle, entry }) => (
             <section key={project.slug} className="rounded-[28px] border border-line/80 bg-white/[0.045] p-5 transition hover:border-point/40 hover:bg-white/[0.06]">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -136,7 +166,7 @@ export default async function WritingPage() {
               </div>
               <p className="mt-4 text-sm leading-7 text-subtext">{hook}</p>
               <div className="mt-5 rounded-2xl border border-white/10 bg-black/18 p-4">
-                <div className="text-[11px] font-black uppercase tracking-[0.2em] text-point">먼저 읽을 기록</div>
+                <div className="text-[11px] font-black uppercase tracking-[0.2em] text-point">{entryLabel}</div>
                 <p className="mt-2 text-[13px] leading-6 text-subtext">{readAngle}</p>
                 {entry ? (
                   <Link href={entry.href} className="mt-3 block text-[17px] font-black leading-snug tracking-[-0.035em] text-text hover:text-point">
@@ -160,7 +190,7 @@ export default async function WritingPage() {
           <div>
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">최근 기록</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">다른 개발 기록</h2>
-            <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">대표 글을 읽고 나면, 남은 기록은 최근에 막혔던 순서대로 이어집니다.</p>
+            <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">게임 화면에서 시작한 기록이지만, 장보기 앱이나 작업 리듬처럼 같은 제작 과정에서 나온 기록도 함께 이어집니다.</p>
           </div>
           <div className="grid gap-4">
             {nextUpdates.map((post) => (
