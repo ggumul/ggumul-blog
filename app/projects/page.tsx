@@ -6,8 +6,8 @@ import { getProjectRecordMap } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
-  title: '프로젝트',
-  description: '꼬물이 만들고 있는 게임 프로젝트의 화면과 개발 기록을 모았습니다.',
+  title: '게임과 도구',
+  description: '꼬물이 만들고 있는 게임과 생활 도구를, 무엇을 해볼 수 있는지 바로 보이게 모았습니다.',
   path: '/projects',
 });
 
@@ -26,17 +26,17 @@ export default async function ProjectsPage() {
         <div className="grid gap-7 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1.08fr)] lg:items-stretch">
           <div className="flex flex-col justify-between gap-7 rounded-[28px] border border-line/70 bg-black/20 p-5 md:p-7">
             <div className="space-y-4">
-              <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">projects</p>
+              <p className="text-[12px] font-black tracking-[0.08em] text-point">게임과 도구</p>
               <h1 className="max-w-4xl text-[38px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[70px]">
-                게임별 현재 상태를<br />화면과 기록으로 봅니다.
+                게임과 도구를<br />먼저 해볼 일로 봅니다.
               </h1>
               <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-                완성된 소개문보다 먼저 실제 화면, 진행 상태, 연결된 개발기록을 배치했습니다. 목록에서 바로 어떤 게임이 어디까지 확인됐는지 볼 수 있게 만들었습니다.
+                Wanderer뿐 아니라 퍼즐, 서사 게임, 저녁 장보기 도구도 첫 화면에서 무엇을 해볼 수 있는지 보이게 정리했습니다. 작업 현황보다 먼저 손이 가는 흐름을 보여줍니다.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              <MetricCard label="프로젝트" value={worklines.length} description="현재 공개한 게임 작업 수" />
-              <MetricCard label="개발기록" value={recordTotal} description="프로젝트와 연결된 기록" />
+              <MetricCard label="공개 항목" value={worklines.length} description="게임과 생활 도구" />
+              <MetricCard label="이어 읽기" value={recordTotal} description="각 항목의 실제 기록" />
             </div>
           </div>
 
@@ -63,8 +63,8 @@ export default async function ProjectsPage() {
       {lead ? (
         <section className="space-y-5">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">main workline</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">가장 먼저 볼 프로젝트</h2>
+            <p className="text-[12px] font-black tracking-[0.08em] text-point">먼저 눌러볼 항목</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">제일 먼저 이해되는 항목</h2>
           </div>
           <ProjectCard project={lead.project} records={lead.records} />
         </section>
@@ -73,8 +73,8 @@ export default async function ProjectsPage() {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">other worklines</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">함께 진행 중인 프로젝트</h2>
+            <p className="text-[12px] font-black tracking-[0.08em] text-point">다른 게임과 도구</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">나머지도 해볼 일이 먼저 보이게</h2>
           </div>
           <Link href="/writing" className="text-sm font-bold text-point hover:text-text">개발기록 전체 보기 →</Link>
         </div>
@@ -87,7 +87,7 @@ export default async function ProjectsPage() {
 
       <section className="panel-section space-y-5">
         <div>
-          <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">recent records by project</p>
+          <p className="text-[12px] font-black tracking-[0.08em] text-point">최근에 남긴 기록</p>
           <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.05em] text-text md:text-[42px]">프로젝트별 최근 개발기록</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">

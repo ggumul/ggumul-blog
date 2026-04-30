@@ -23,7 +23,7 @@ export default async function HomePage() {
   const websiteJsonLd = createWebsiteJsonLd();
   const gameProjects = snapshot.worklines.filter((project) => project.slug !== 'ggumul-dinner-grocery');
   const leadProject = gameProjects.find((project) => project.slug === 'wanderer') ?? gameProjects[0] ?? snapshot.worklines[0] ?? null;
-  const otherProjects = gameProjects.filter((project) => project.slug !== leadProject?.slug).slice(0, 3);
+  const otherProjects = snapshot.worklines.filter((project) => project.slug !== leadProject?.slug).slice(0, 4);
   const allPosts = [snapshot.latest, ...snapshot.moreEntries].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
   const latestGamePosts = allPosts
     .filter((entry) => entry.relatedProjects.some((project) => project !== 'ggumul-dinner-grocery'))
@@ -103,10 +103,19 @@ export default async function HomePage() {
         </section>
       ) : null}
 
-      <section className="grid gap-4 md:grid-cols-3">
-        {otherProjects.map((project) => (
-          <ProjectCard key={project.slug} project={project} records={project.previewRecords} compact />
-        ))}
+      <section className="space-y-5">
+        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-[13px] font-black text-point">다른 게임과 도구</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">Wanderer 말고도 바로 해볼 일이 있어요</h2>
+          </div>
+          <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">전체 보기 →</Link>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {otherProjects.map((project) => (
+            <ProjectCard key={project.slug} project={project} records={project.previewRecords} compact />
+          ))}
+        </div>
       </section>
 
       {latestGamePost ? (
