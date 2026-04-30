@@ -178,7 +178,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             <h2>지금 확인한 것</h2>
             <ul>
               <li>모바일에서 Wanderer 화면이 실제로 실행됩니다.</li>
-              <li>조건 판단, 카드 선택, 화면 전환 흐름을 영상과 기록으로 남겼습니다.</li>
+              <li>규칙, 상대 카드, 내 카드, 결과로 이어지는 흐름을 영상과 기록으로 남겼습니다.</li>
               <li>재접속 이후 현재 게임 상태를 다시 받는 흐름은 계속 다듬는 중입니다.</li>
             </ul>
           </div>

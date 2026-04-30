@@ -47,7 +47,7 @@ export default async function HomePage() {
                   조건을 읽고,<br />한 장으로 턴을 가져갑니다.
                 </h1>
                 <p className="max-w-3xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                  지금 꼬물에서 가장 먼저 만질 건 Wanderer입니다. 이번 규칙을 보고 한 장을 고르면, 살아남는지와 턴을 가져오는지가 바로 갈립니다. 그 다음 실제 영상과 개발기록으로 이어 볼 수 있게 했어요.
+                  지금 꼬물에서 가장 먼저 만질 건 Wanderer입니다. 규칙을 보고, 상대 카드를 확인하고, 내 카드 한 장을 냅니다. 살아남는지와 턴을 가져오는지는 그 자리에서 바로 보이게 했어요.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
@@ -85,7 +85,7 @@ export default async function HomePage() {
               ▶
             </div>
             <figcaption className="studio-caption">
-              <span>실제 플레이 흐름 · 조건 → 선택 → 결과</span>
+              <span>실제 플레이 흐름 · 규칙 → 상대 카드 → 내 카드 → 결과</span>
               <Link href="/projects/wanderer">Wanderer 자세히 보기</Link>
             </figcaption>
           </figure>

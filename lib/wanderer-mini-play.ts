@@ -37,11 +37,11 @@ export const wandererMiniPlayTurn: WandererMiniPlayTurn = {
     isCardValid: (value: number) => value % 2 === 1,
   },
   opponents: [
-    { name: '상대 A', card: 9, note: '살아남은 낮은 기준' },
-    { name: '상대 B', card: 12, note: '짝수라 탈락' },
-    { name: '상대 C', card: 13, note: '지금 이길 기준' },
+    { name: '상대 A', card: 9, note: '생존' },
+    { name: '상대 B', card: 12, note: '탈락' },
+    { name: '상대 C', card: 13, note: '생존' },
   ],
-  ruleSummary: '조건에 걸리면 바로 탈락. 살아남은 카드끼리만 숫자로 겨룹니다.',
+  ruleSummary: '짝수는 탈락. 남은 카드끼리 숫자를 비교합니다.',
 };
 
 const highestValidOpponentCard = Math.max(
@@ -93,19 +93,19 @@ const handCards = [
     id: 'odd-5',
     value: 5,
     title: '5를 낸다',
-    description: '규칙은 통과하지만 상대 9보다 낮습니다.',
+    description: '생존 · 상대 9보다 낮음',
   },
   {
     id: 'even-10',
     value: 10,
     title: '10을 낸다',
-    description: '숫자는 커도 짝수라 이번 턴에는 탈락합니다.',
+    description: '짝수 · 이번 턴 탈락',
   },
   {
     id: 'odd-15',
     value: 15,
     title: '15를 낸다',
-    description: '살아남고 상대 13보다 높습니다.',
+    description: '생존 · 상대 13보다 높음',
   },
 ] as const;
 
