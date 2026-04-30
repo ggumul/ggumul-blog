@@ -16,24 +16,22 @@ export default async function HomePage() {
   const snapshot = await getHomeArchiveSnapshot();
   const websiteJsonLd = createWebsiteJsonLd();
   const gameProjects = snapshot.worklines.filter((project) => project.slug !== 'ggumul-dinner-grocery');
-  const sideProjects = snapshot.worklines.filter((project) => project.slug === 'ggumul-dinner-grocery');
   const leadProject = gameProjects.find((project) => project.slug === 'wanderer') ?? gameProjects[0] ?? snapshot.worklines[0] ?? null;
-  const otherProjects = [...gameProjects.filter((project) => project.slug !== leadProject?.slug), ...sideProjects];
+  const otherProjects = gameProjects.filter((project) => project.slug !== leadProject?.slug).slice(0, 3);
   const allPosts = [snapshot.latest, ...snapshot.moreEntries].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
   const latestGamePosts = allPosts
     .filter((entry) => entry.relatedProjects.some((project) => project !== 'ggumul-dinner-grocery'))
-    .slice(0, 4);
-  const totalPostCount = allPosts.length;
+    .slice(0, 3);
   const latestGamePost = latestGamePosts[0] ?? snapshot.latest;
-  const moreGamePosts = latestGamePosts.slice(1, 4);
+  const moreGamePosts = latestGamePosts.slice(1, 3);
 
   return (
-    <div className="archive-surface space-y-10 md:space-y-14">
+    <div className="archive-surface space-y-12 md:space-y-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
 
       <section className="studio-hero overflow-hidden rounded-[28px] border-[3px] border-[#fff1b8]/60 bg-[#1f46a2]/45 p-4 md:p-6">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(390px,1.08fr)] lg:items-stretch">
-          <div className="flex flex-col justify-between gap-6 rounded-[22px] border-[3px] border-[#fff1b8]/55 bg-[#172f82]/80 p-5 shadow-[0_5px_0_rgba(8,13,43,0.55)] md:p-6">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(380px,1.1fr)] lg:items-stretch">
+          <div className="flex flex-col justify-center gap-6 rounded-[22px] border-[3px] border-[#fff1b8]/55 bg-[#172f82]/80 p-5 shadow-[0_5px_0_rgba(8,13,43,0.55)] md:p-7">
             <div className="space-y-4">
               <p className="inline-flex rounded-full border-2 border-[#fff1b8]/60 bg-[#ff72a6]/90 px-3 py-1 text-[12px] font-black tracking-[-0.02em] text-[#15183a]">ggumul / 꼬물 게임 기록</p>
               <div className="space-y-4">
@@ -46,56 +44,20 @@ export default async function HomePage() {
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
                 <Link href="/projects/wanderer" className="game-button-primary">1분 카드 게임 보기</Link>
-                <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">실행 화면 기록</Link>
-              </div>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-3">
-              <div className="rounded-[18px] border-2 border-[#fff1b8]/34 bg-[#213c93]/62 p-4">
-                <p className="text-[12px] font-black text-point">게임</p>
-                <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">{gameProjects.length}</p>
-                <p className="mt-1 text-[13px] leading-6 text-subtext">먼저 볼 게임</p>
-              </div>
-              <div className="rounded-[18px] border-2 border-[#fff1b8]/34 bg-[#213c93]/62 p-4">
-                <p className="text-[12px] font-black text-point">기록</p>
-                <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">{totalPostCount}</p>
-                <p className="mt-1 text-[13px] leading-6 text-subtext">읽을 수 있는 기록</p>
-              </div>
-              <div className="rounded-[18px] border-2 border-[#fff1b8]/34 bg-[#213c93]/62 p-4">
-                <p className="text-[12px] font-black text-point">화면</p>
-                <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">영상</p>
-                <p className="mt-1 text-[13px] leading-6 text-subtext">실행 화면 우선</p>
+                <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary opacity-90">실행 화면 기록</Link>
               </div>
             </div>
           </div>
 
-          <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_190px]">
-            <figure className="studio-shot relative min-h-[300px] overflow-hidden rounded-[22px] border-[3px] border-[#fff1b8]/60 bg-[#10183a] md:min-h-[455px]">
-              <img alt="Wanderer 실제 게임 진행 화면" className="h-full w-full object-cover" src="/media/runtime-checks/wanderer-mobile-current.png" />
-              <figcaption className="studio-caption">
-                <span>Wanderer · 실제 진행 화면</span>
-                <Link href="/writing/runtime-화면-확인-기록">전체 흐름 기록 보기</Link>
-              </figcaption>
-            </figure>
-            <div className="grid gap-3">
-              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[18px] border-2 border-[#fff1b8]/38 bg-[#10183a]">
-                <img alt="Hanoi 웹 퍼즐 실행 화면" className="h-full w-full object-cover" src="/project-covers/hanoi.png" />
-                <figcaption className="studio-caption"><span>Hanoi</span></figcaption>
-              </figure>
-              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[18px] border-2 border-[#fff1b8]/38 bg-[#10183a]">
-                <img alt="TRPG 디바이스 메뉴 화면" className="h-full w-full object-cover object-top" src="/studio/trpg-device-menu.png" />
-                <figcaption className="studio-caption"><span>TRPG</span></figcaption>
-              </figure>
-              <figure className="studio-shot relative min-h-[140px] overflow-hidden rounded-[18px] border-2 border-[#fff1b8]/38 bg-[#10183a]">
-                <img alt="Color Hanoi 퍼즐 화면" className="h-full w-full object-cover" src="/project-covers/color-hanoi.png" />
-                <figcaption className="studio-caption"><span>Color Hanoi</span></figcaption>
-              </figure>
-            </div>
-          </div>
+          <figure className="studio-shot relative min-h-[320px] overflow-hidden rounded-[22px] border-[3px] border-[#fff1b8]/60 bg-[#10183a] md:min-h-[455px]">
+            <img alt="Wanderer 카드 선택과 결과 화면" className="h-full w-full object-cover object-center" src="/project-covers/wanderer.png" />
+            <figcaption className="studio-caption">
+              <span>Wanderer · 카드 선택 화면</span>
+              <Link href="/projects/wanderer">1분 카드 게임 보기</Link>
+            </figcaption>
+          </figure>
         </div>
       </section>
-
-      <CommunityCTA />
 
       {leadProject ? (
         <section className="space-y-5">
@@ -104,13 +66,13 @@ export default async function HomePage() {
               <p className="text-[13px] font-black text-point">대표 게임</p>
               <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">먼저 볼 게임</h2>
             </div>
-            <Link href="/projects" className="game-button-secondary text-sm">프로젝트 전체 보기</Link>
+            <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">게임 더 보기 →</Link>
           </div>
           <ProjectCard project={leadProject} records={leadProject.previewRecords} />
         </section>
       ) : null}
 
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <section className="grid gap-4 md:grid-cols-3">
         {otherProjects.map((project) => (
           <ProjectCard key={project.slug} project={project} records={project.previewRecords} compact />
         ))}
@@ -123,16 +85,18 @@ export default async function HomePage() {
               <p className="text-[13px] font-black text-point">최근 게임 기록</p>
               <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">최근에 게임에서 확인한 것</h2>
             </div>
-            <Link href="/writing" className="game-button-secondary text-sm">개발기록 전체 보기</Link>
+            <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">개발기록 전체 보기 →</Link>
           </div>
           <PostCard post={latestGamePost} featured />
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2">
             {moreGamePosts.map((post) => (
               <PostCard key={post.slug} post={post} compact />
             ))}
           </div>
         </section>
       ) : null}
+
+      <CommunityCTA compact />
     </div>
   );
 }

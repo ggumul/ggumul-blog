@@ -31,11 +31,11 @@ const actionCards = [
 
 export function CommunityCTA({ compact = false }: { compact?: boolean }) {
   return (
-    <section id="follow" className="overflow-hidden rounded-[26px] border-[3px] border-[#fff1b8]/45 bg-[#213c93]/62 p-5 shadow-[0_6px_0_rgba(8,13,43,0.52)] md:p-6">
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,0.82fr)_minmax(360px,1.18fr)] lg:items-start">
+    <section id="follow" className="overflow-hidden rounded-[24px] border-2 border-[#fff1b8]/32 bg-[#213c93]/48 p-5 md:p-6">
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,0.74fr)_minmax(360px,1.26fr)] lg:items-start">
         <div className="space-y-4">
           <p className="inline-flex rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[12px] font-black text-[#15183a]">같이 보기</p>
-          <h2 className="max-w-3xl text-[28px] font-black leading-tight tracking-[-0.055em] text-text md:text-[46px]">
+          <h2 className="max-w-3xl text-[24px] font-black leading-tight tracking-[-0.045em] text-text md:text-[36px]">
             다음 판이 어떻게 바뀌는지 남겨둘게요.
           </h2>
           <p className="max-w-2xl text-sm leading-7 text-subtext md:text-base md:leading-8">

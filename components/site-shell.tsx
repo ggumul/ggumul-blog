@@ -2,9 +2,8 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 const NAV_ITEMS = [
-  { href: '/', label: '홈' },
-  { href: '/writing', label: '기록' },
-  { href: '/projects', label: '프로젝트' },
+  { href: '/projects', label: '게임' },
+  { href: '/writing', label: '개발기록' },
   { href: '/about', label: '소개' },
   { href: '/links', label: '링크' },
 ];
@@ -18,39 +17,33 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="absolute bottom-[-18rem] left-1/3 h-[34rem] w-[34rem] rounded-full bg-[#ff6f59]/10 blur-3xl" />
       </div>
 
-      <header className="sticky top-0 z-30 border-b-[3px] border-[#fff1b8]/45 bg-background/86 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-8">
+      <header className="sticky top-0 z-30 border-b-2 border-[#fff1b8]/30 bg-background/88 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 md:flex-row md:items-center md:justify-between md:px-8">
           <Link href="/" className="group inline-flex items-center gap-3">
-            <span className="relative grid h-12 w-12 place-items-center rounded-[15px] border-[3px] border-[#fff1b8]/60 bg-[#ffd447] text-lg font-black text-[#15183a] shadow-[0_3px_0_rgba(8,13,43,0.6)]">
+            <span className="relative grid h-11 w-11 place-items-center rounded-[14px] border-2 border-[#fff1b8]/55 bg-[#ffd447] text-base font-black text-[#15183a] shadow-[0_3px_0_rgba(8,13,43,0.56)]">
               ✦
             </span>
             <span className="leading-tight">
-              <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[26px]">ggumul <span className="mx-1 text-point/80">/</span> 꼬물</span>
+              <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[25px]">ggumul <span className="mx-1 text-point/80">/</span> 꼬물</span>
               <span className="block text-[11px] font-black tracking-[-0.01em] text-subtext">작은 게임과 개발 기록</span>
             </span>
           </Link>
 
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-subtext">
-            <nav className="flex flex-wrap gap-x-1 gap-y-2 rounded-[18px] border-2 border-[#fff1b8]/30 bg-[#1b3d96]/58 p-1">
+            <nav className="flex flex-wrap gap-x-1 gap-y-2 rounded-[16px] border border-[#fff1b8]/24 bg-[#1b3d96]/40 p-1">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="inline-flex min-h-[38px] items-center rounded-[13px] px-3.5 py-2 font-bold transition hover:bg-[#ffd447] hover:text-[#15183a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-point/40"
+                  className="inline-flex min-h-[36px] items-center rounded-[12px] px-3 py-2 font-bold transition hover:bg-[#ffd447] hover:text-[#15183a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-point/40"
                 >
                   {item.label}
                 </Link>
               ))}
             </nav>
             <Link
-              href="/links#follow"
-              className="game-button-secondary min-h-[42px] px-4 py-2 text-sm"
-            >
-              소식 받기
-            </Link>
-            <Link
               href="/projects/wanderer"
-              className="game-button-primary min-h-[42px] px-4 py-2 text-sm"
+              className="game-button-primary min-h-[40px] px-4 py-2 text-sm"
             >
               1분 카드 게임
             </Link>
