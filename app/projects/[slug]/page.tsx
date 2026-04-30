@@ -25,14 +25,36 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return createMetadata({
     title: project.slug === 'wanderer' ? 'Wanderer — 1분 카드 게임' : `${project.title} 작업 기록`,
-    description: project.summary,
+    description: project.slug === 'wanderer'
+      ? '한 장을 고르고 바로 결과를 보는 1분 카드 게임 Wanderer의 실제 플레이 화면과 개발기록입니다.'
+      : project.summary,
     path: `/projects/${project.slug}`,
+    ogImage: project.coverImage,
   });
 }
 
-function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnType<typeof getWriting>> }) {
-  const latestRecord = relatedPosts[0];
+const firstVisitSteps = [
+  {
+    label: '30초 먼저 보기',
+    title: '플레이 영상으로 한 판의 리듬을 봅니다.',
+    description: '카드를 고른 뒤 결과 화면으로 넘어가는 흐름을 먼저 보면, Wanderer가 어떤 게임인지 가장 빨리 잡힙니다.',
+    href: '#play-video',
+  },
+  {
+    label: '그다음 읽기',
+    title: '폰에서 막힌 지점을 확인합니다.',
+    description: '실제 기기에서 화면 흐름이 끊긴 부분과 다음에 고칠 기준을 기록으로 이어 봅니다.',
+    href: '/writing/runtime-화면-확인-기록',
+  },
+  {
+    label: '계속 보기',
+    title: '새 기록을 받아보거나 짧게 감상을 남깁니다.',
+    description: 'RSS, 메일, X 공유는 /links에 모아두었습니다. 조용히 따라보는 정도로 열어둔 경로입니다.',
+    href: '/links#follow',
+  },
+];
 
+function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnType<typeof getWriting>> }) {
   return (
     <article className="archive-surface space-y-10 md:space-y-14">
       <Link href="/projects" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
@@ -99,6 +121,25 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="space-y-5">
+        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">처음 오셨다면</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">영상 → 기록 → 다음 소식 순서로 보면 됩니다.</h2>
+          </div>
+          <Link href="/links#follow" className="text-sm font-bold text-point hover:text-text">소식 받는 곳 보기 →</Link>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {firstVisitSteps.map((step) => (
+            <Link key={step.title} href={step.href} className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5 transition hover:border-point/60 hover:bg-white/[0.08]">
+              <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">{step.label}</p>
+              <h3 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">{step.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-subtext">{step.description}</p>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -233,15 +274,15 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
         <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">next action</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">다음에 볼 것</div>
             <Link href={latestRecord ? `/writing/${latestRecord.slug}` : '/writing'} className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
               <div className="font-black tracking-[-0.03em]">{latestRecord ? '최근 개발기록 읽기' : '개발기록 보기'}</div>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '프로젝트와 연결된 글을 전체 archive에서 확인합니다.'}</p>
+              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '프로젝트와 연결된 글을 개발기록에서 확인합니다.'}</p>
             </Link>
           </div>
 
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">connected records</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">연결된 기록</div>
             {relatedPosts.length > 0 ? (
               <div className="space-y-3">
                 {relatedPosts.map((post) => (

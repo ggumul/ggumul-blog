@@ -7,8 +7,9 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '작은 게임을 직접 만들고, 실제 화면과 바뀐 이유를 함께 남기는 개발 로그입니다.',
+  description: '작은 게임을 직접 만들고, 실제 화면과 바뀐 이유를 함께 남기는 개발 로그입니다. 처음 오면 1분 카드 게임 Wanderer부터 볼 수 있습니다.',
   path: '/',
+  ogImage: '/project-covers/wanderer.png',
 });
 
 export default async function HomePage() {
