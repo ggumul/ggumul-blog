@@ -1,29 +1,29 @@
 import Link from 'next/link';
 
 const contactHref = 'mailto:hwang95903@gmail.com?subject=%EA%BC%AC%EB%AC%BC%20%ED%94%8C%EB%A0%88%EC%9D%B4%20%ED%94%BC%EB%93%9C%EB%B0%B1&body=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94.%20%EA%BC%AC%EB%AC%BC%20%EA%B2%8C%EC%9E%84%EC%9D%84%20%EB%B3%B4%EA%B3%A0%20%EC%99%94%EC%8A%B5%EB%8B%88%EB%8B%A4.%0A%0A%EB%B3%B4%EA%B3%A0%20%EC%8B%B6%EC%9D%80%20%EA%B2%83%2F%ED%94%BC%EB%93%9C%EB%B0%B1%3A%0A';
-const shareText = '1분 안에 한 판 끝나는 작은 카드 게임 Wanderer를 만들고 있어요. 실제 플레이 화면과 고쳐가는 과정을 계속 올립니다.';
+const shareText = '1분 안에 한 판 끝나는 작은 카드 게임 Wanderer를 만들고 있어요. 실제 화면을 보면서 고친 것들을 기록하고 있습니다.';
 const shareUrl = 'https://ggumul-blog.vercel.app/projects/wanderer';
 const xShareHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
 
 const actionCards = [
   {
     label: '소식 받기',
-    title: 'RSS로 새 기록 보기',
+    title: 'RSS로 새 기록 받기',
     description: '새 개발기록이 올라오면 RSS로 조용히 받아볼 수 있어요.',
     href: '/feed.xml',
     external: false,
   },
   {
     label: '피드백 보내기',
-    title: '플레이 감상 남기기',
-    description: '짧게 봐도 괜찮습니다. 헷갈린 화면, 궁금한 카드, 보고 싶은 다음 장면이 있으면 보내주세요.',
+    title: '짧은 감상 보내기',
+    description: '헷갈린 화면, 궁금한 카드, 보고 싶은 다음 장면이 있으면 짧게 보내주세요.',
     href: contactHref,
     external: false,
   },
   {
     label: '공유하기',
-    title: 'X에 Wanderer 소개하기',
-    description: '재밌게 본 장면이 있다면 X에 짧게 공유해주세요. 다음에 같이 볼 사람이 생기면 좋겠습니다.',
+    title: '본 장면 X에 남기기',
+    description: '이상했거나 재밌었던 장면이 있다면 짧게 남겨주세요. 다음에 고칠 때 같이 보겠습니다.',
     href: xShareHref,
     external: true,
   },
@@ -44,7 +44,7 @@ export function CommunityCTA({ compact = false }: { compact?: boolean }) {
           {!compact ? (
             <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
               <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">share copy</p>
-              <p className="mt-2 text-sm leading-7 text-text">“1분 안에 한 판 끝나는 작은 카드 게임을 만들고 있어요. 실제 플레이 화면과 고쳐가는 과정을 계속 올립니다.”</p>
+              <p className="mt-2 text-sm leading-7 text-text">“1분 안에 한 판 끝나는 작은 카드 게임을 만들고 있어요. 실제 화면을 보면서 고친 것들을 기록하고 있습니다.”</p>
             </div>
           ) : null}
         </div>
