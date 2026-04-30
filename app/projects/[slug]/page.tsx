@@ -43,7 +43,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
         <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,1.1fr)] lg:items-stretch">
           <div className="flex flex-col justify-between gap-7 rounded-[28px] border border-line/70 bg-black/25 p-5 md:p-7">
             <div className="space-y-5">
-              <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">wanderer / mobile card game</p>
+              <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer · 모바일 카드 게임</p>
               <div className="space-y-4">
                 <h1 className="max-w-5xl text-[42px] font-black leading-[0.93] tracking-[-0.075em] text-text md:text-[84px]">
                   한 장을 고르고,<br />바로 결과를 보는 카드 전투.
@@ -94,7 +94,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
                 <figcaption className="studio-caption"><span>모바일 홈</span></figcaption>
               </figure>
               <div className="rounded-[24px] border border-point/25 bg-point/10 p-4 text-sm leading-7 text-subtext">
-                <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">current focus</p>
+                <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">지금 다듬는 것</p>
                 <p className="mt-2 font-bold text-text">제한 시간 안에 카드를 고르고, 바로 다음 결과를 확인하는 흐름을 다듬고 있습니다.</p>
               </div>
             </div>
@@ -106,17 +106,17 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
       <section className="grid gap-4 md:grid-cols-3">
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
-          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">how it plays</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">플레이 방식</p>
           <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">카드를 고르고 바로 결과를 봅니다.</h2>
           <p className="mt-3 text-sm leading-7 text-subtext">긴 성장 구조보다 한 판 안에서 선택과 분위기가 읽히는 흐름을 먼저 확인합니다.</p>
         </div>
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
-          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">why now</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">지금 보는 이유</p>
           <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">실제 폰에서 흐름을 다시 봅니다.</h2>
           <p className="mt-3 text-sm leading-7 text-subtext">화면이 예쁘게 보이는지보다, 처음부터 끝까지 조작이 끊기지 않는지를 기준으로 봅니다.</p>
         </div>
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
-          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">next update</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">다음에 고칠 것</p>
           <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">다시 시작해도 흐름을 이어갑니다.</h2>
           <p className="mt-3 text-sm leading-7 text-subtext">다시 켰을 때도 지금 판의 상태가 자연스럽게 이어지도록 모바일과 서버의 기준을 맞추고 있습니다.</p>
         </div>
@@ -125,7 +125,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
         <div className="panel-section space-y-6">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">game pitch</p>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임 소개</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">작고 짧게, 끝까지 흐르는 카드 게임</h2>
           </div>
           <div className="prose max-w-none">
@@ -142,7 +142,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
         <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">start here</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">먼저 볼 기록</div>
             <Link href="/writing/runtime-화면-확인-기록" className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
               <div className="font-black tracking-[-0.03em]">실제 폰에서 돌려본 기록</div>
               <p className="mt-1 text-[13px] leading-6 text-subtext">게임 화면이 어떻게 보이고 어디가 아직 어색한지 먼저 확인합니다.</p>
@@ -150,7 +150,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           </div>
 
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">updates</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">최근 기록</div>
             <div className="space-y-3">
               {relatedPosts.map((post) => (
                 <Link key={post.slug} href={`/writing/${post.slug}`} className="block rounded-[20px] border border-line/80 bg-white/[0.055] p-4 transition hover:border-point/60 hover:bg-white/[0.08]">
@@ -165,7 +165,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
       <section className="space-y-5">
         <div>
-          <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">devlog flow</p>
+          <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">개발기록</p>
           <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">Wanderer가 지나온 기록</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
@@ -261,7 +261,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {relatedPosts.length > 0 ? (
         <section className="space-y-5">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">devlog flow</p>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">개발기록</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이 프로젝트가 지나온 기록</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
