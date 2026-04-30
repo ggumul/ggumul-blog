@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { WritingEntry } from '@/lib/content';
+import { getWritingReadingPath } from '@/lib/writing-reading-path';
 
 type Thumbnail = {
   src: string | null;
@@ -130,6 +131,7 @@ function ThumbnailFrame({ thumbnail, alt, featured }: { thumbnail: Thumbnail; al
 
 export function PostCard({ post, compact = false, featured = false }: { post: WritingEntry; compact?: boolean; featured?: boolean }) {
   const thumbnail = resolvePostImage(post);
+  const readingPath = getWritingReadingPath(post.slug);
 
   if (compact) {
     return (
@@ -143,7 +145,10 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
         </div>
         <div>
           <h3 className="text-[18px] font-black leading-snug tracking-[-0.04em] text-text group-hover:text-point">{post.title}</h3>
-          <p className="mt-2 line-clamp-2 text-sm leading-6 text-subtext">{post.summary}</p>
+          <p className="mt-2 line-clamp-2 text-sm leading-6 text-subtext">{readingPath.stakes}</p>
+        </div>
+        <div className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 px-3 py-2 text-[12px] leading-5 text-subtext">
+          <span className="font-black text-point">다음 장면</span> · {readingPath.next}
         </div>
         <div className="flex flex-wrap gap-2 text-[11px] text-subtext">
           {post.series ? <span className="rounded-full border-2 border-[#fff1b8]/35 px-2.5 py-1">{post.series}</span> : null}
@@ -176,9 +181,19 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
             {post.title}
           </h3>
           <p className={featured ? 'mt-4 text-base leading-8 text-subtext' : 'mt-3 line-clamp-3 text-sm leading-7 text-subtext'}>{post.summary}</p>
+          <div className={featured ? 'mt-5 grid gap-3 md:grid-cols-2' : 'mt-4 grid gap-2'}>
+            <div className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 p-3">
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">문제가 된 장면</p>
+              <p className="mt-1 text-[13px] leading-6 text-subtext">{readingPath.stakes}</p>
+            </div>
+            <div className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 p-3">
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">바뀐 점</p>
+              <p className="mt-1 text-[13px] leading-6 text-subtext">{readingPath.change}</p>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-2 text-[11px] text-subtext">
+        <div className="mt-5 flex flex-wrap items-center gap-2 text-[11px] text-subtext">
           {post.relatedProjects.slice(0, 3).map((project) => (
             <span key={project} className="rounded-full border-2 border-[#fff1b8]/32 bg-[#10183a]/25 px-2.5 py-1">
               {project}
@@ -189,6 +204,9 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
               #{tag}
             </span>
           ))}
+          <span className="ml-auto rounded-full border-2 border-point/40 bg-point/15 px-3 py-1 font-black text-point">
+            {readingPath.next} →
+          </span>
         </div>
       </div>
     </Link>

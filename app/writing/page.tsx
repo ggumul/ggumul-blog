@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { PostCard } from '@/components/post-card';
 import { Pill } from '@/components/brand-ui';
 import { getProjectRecordMap, getWritingArchiveSections } from '@/lib/content';
+import { getWritingReadingPath } from '@/lib/writing-reading-path';
 import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
@@ -23,20 +24,23 @@ const gameReadAngles: Record<string, string> = {
   trpg: 'TRPG는 아직 전용 글이 적어서, 카드·퍼즐과 나란히 놓고 서사 실험의 위치를 먼저 잡았습니다.',
   'color-hanoi': 'Color Hanoi는 색 조건 때문에 Hanoi와 다른 고민이 생겨서 프로젝트 상태부터 보는 편이 낫습니다.',
 };
-const gameEntryOverrides: Record<string, { href: string; title: string; summary: string; cta: string }> = {
+const gameEntryOverrides: Record<string, { slug?: string; href: string; title: string; summary: string; cta: string }> = {
   wanderer: {
+    slug: 'wanderer-초기-설계-회고',
     href: '/writing/wanderer-초기-설계-회고',
     title: '왜 Wanderer는 짧은 카드 게임으로 남았나',
     summary: '한 판이 짧아야 살아나는 카드 전투의 기준과, 선택 뒤 결과가 바로 보여야 하는 이유를 남긴 기록입니다.',
     cta: '한 판 흐름 보기 →',
   },
   hanoi: {
+    slug: 'runtime-화면-확인-기록',
     href: '/writing/runtime-화면-확인-기록',
     title: '폰에서 돌려보니 게임 흐름이 생각보다 끊겼다',
     summary: '퍼즐 조작과 모바일 화면 흐름이 실제 화면에서 어디까지 바로 읽히는지 확인한 기록입니다.',
     cta: '퍼즐 흐름 보기 →',
   },
   trpg: {
+    slug: '4월-프로젝트-개발-현황',
     href: '/writing/4월-프로젝트-개발-현황',
     title: '카드 전투, 퍼즐, 서사 실험을 한 화면에 나눴다',
     summary: '선택형 서사 실험이 카드 전투와 퍼즐 사이에서 어디에 놓이는지, 현재 보여줄 수 있는 화면 기준으로 나눴습니다.',
@@ -90,6 +94,7 @@ export default async function WritingPage() {
   const nextUpdates = allPosts.filter((post) => post.slug !== latestGamePost.slug);
   const totalPostCount = allPosts.length;
   const topicTags = displayTopicTags(sections.taxonomy.tags);
+  const latestGamePath = getWritingReadingPath(latestGamePost.slug);
   const gameLanes = gameOrder
     .map((slug) => projectRecordMap[slug])
     .filter(Boolean)
@@ -101,6 +106,7 @@ export default async function WritingPage() {
       readAngle: gameReadAngles[project.slug] ?? '이 게임과 연결된 기록에서 다음에 볼 문제를 고릅니다.',
       entry: gameEntryOverrides[project.slug] ?? (records[0]
         ? {
+            slug: records[0].slug,
             href: `/writing/${records[0].slug}`,
             title: records[0].title,
             summary: records[0].summary,
@@ -146,6 +152,20 @@ export default async function WritingPage() {
           <Link href={`/writing/${latestGamePost.slug}`} className="text-sm font-bold text-point hover:text-text">문제부터 읽기 →</Link>
         </div>
         <PostCard post={latestGamePost} featured />
+        <div className="grid gap-3 md:grid-cols-3">
+          <div className="rounded-[20px] border-2 border-[#fff1b8]/30 bg-[#10183a]/28 p-4">
+            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">문제가 된 장면</p>
+            <p className="mt-2 text-sm leading-6 text-subtext">{latestGamePath.stakes}</p>
+          </div>
+          <div className="rounded-[20px] border-2 border-[#fff1b8]/30 bg-[#10183a]/28 p-4">
+            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">바뀐 점</p>
+            <p className="mt-2 text-sm leading-6 text-subtext">{latestGamePath.change}</p>
+          </div>
+          <Link href={`/writing/${latestGamePost.slug}`} className="rounded-[20px] border-2 border-point/45 bg-point/15 p-4 transition hover:bg-point/25">
+            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">다음 장면</p>
+            <p className="mt-2 text-sm font-black leading-6 text-text">{latestGamePath.next} →</p>
+          </Link>
+        </div>
       </section>
 
       <section className="space-y-5">
@@ -172,6 +192,11 @@ export default async function WritingPage() {
                   <Link href={entry.href} className="mt-3 block text-[17px] font-black leading-snug tracking-[-0.035em] text-text hover:text-point">
                     {entry.title}
                     <span className="mt-2 block text-[13px] font-normal leading-6 text-subtext">{entry.summary}</span>
+                    {entry.slug ? (
+                      <span className="mt-3 block rounded-2xl border border-[#fff1b8]/22 bg-[#10183a]/30 p-3 text-[12px] font-normal leading-5 text-subtext">
+                        <span className="font-black text-point">문제가 된 장면</span> · {getWritingReadingPath(entry.slug).stakes}
+                      </span>
+                    ) : null}
                   </Link>
                 ) : (
                   <p className="mt-2 text-sm text-subtext">연결된 기록을 준비 중입니다.</p>
