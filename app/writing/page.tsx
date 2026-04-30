@@ -13,7 +13,7 @@ export const metadata = createMetadata({
 
 const gameOrder = ['wanderer', 'hanoi', 'trpg', 'color-hanoi'];
 const gameHooks: Record<string, string> = {
-  wanderer: '카드를 고른 뒤 바로 결과가 보여야 하는데, 한 박자만 늦어도 전투 리듬이 흐려집니다.',
+  wanderer: '턴 조건을 읽고 유효한 카드를 내야 하는데, 한 박자만 늦어도 전투 리듬이 흐려집니다.',
   hanoi: '규칙은 단순하지만, 폰 화면에서는 “방금 뭘 옮겼는지”가 생각보다 쉽게 묻힙니다.',
   trpg: '선택지를 눌렀을 때 다음 장면으로 넘어가는 감각이 짧은 서사 안에서 살아야 합니다.',
   'color-hanoi': '색 조건이 하나 들어가면 같은 퍼즐도 판단 순서가 달라져서 따로 기록해 두었습니다.',
@@ -62,7 +62,7 @@ const gameEntryLabels: Record<string, string> = {
 const topicLabelOverrides: Record<string, string> = {
   runtime: '모바일 흐름',
   hanoi: '퍼즐 이동',
-  wanderer: '카드 선택',
+  wanderer: '조건 판단',
   flutter: '실기기 화면',
   sync: '상태 동기화',
   ggumul: '생활 기록',

@@ -8,15 +8,15 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '카드 한 장을 골라 결과를 보는 Wanderer 30초 샘플과, 실제 화면을 보며 고친 개발기록을 모았습니다.',
+  description: '조건을 보고 카드를 내는 Wanderer 30초 미니 턴과, 실제 화면을 보며 고친 개발기록을 모았습니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
 
-const playBeats = [
-  { label: '01', title: '한 장을 고릅니다', description: '길게 설명하기보다 먼저 카드를 잡고 한 판의 방향을 정합니다.' },
-  { label: '02', title: '바로 결과를 봅니다', description: '상세 페이지에서 30초 샘플을 눌러 선택 뒤 결과가 어떻게 바뀌는지 봅니다.' },
-  { label: '03', title: '막힌 장면을 고칩니다', description: '폰에서 흐름이 끊긴 지점은 개발기록으로 이어 남깁니다.' },
+const heroLoop = [
+  { label: '01', title: '조건을 봅니다', description: '이번 턴에 유효한 카드가 홀수인지, 짝수인지, 기준보다 높은지 먼저 읽습니다.' },
+  { label: '02', title: '한 장을 냅니다', description: '내 손패에서 조건을 통과하면서 상대보다 높을 카드를 고릅니다.' },
+  { label: '03', title: '유효·무효를 확인합니다', description: '조건에 맞지 않으면 무효, 유효 카드끼리는 높은 숫자가 턴을 가져갑니다.' },
 ];
 
 export default async function HomePage() {
@@ -44,10 +44,10 @@ export default async function HomePage() {
               <p className="inline-flex rounded-full border-2 border-[#fff1b8]/60 bg-[#ff72a6]/90 px-3 py-1 text-[12px] font-black tracking-[-0.02em] text-[#15183a]">대표 게임 보기</p>
               <div className="space-y-4">
                 <h1 className="max-w-4xl text-[34px] font-black leading-[0.96] tracking-[-0.075em] text-text md:text-[66px]">
-                  카드 한 장으로,<br />한 판이 갈립니다.
+                  조건을 읽고,<br />한 장으로 턴을 가져갑니다.
                 </h1>
                 <p className="max-w-3xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                  지금 꼬물에서 가장 먼저 만질 건 Wanderer입니다. 카드 한 장을 고르면 상황과 결과가 바로 바뀌는 30초 샘플을 먼저 두고, 실제 영상과 개발기록으로 이어 볼 수 있게 했어요.
+                  지금 꼬물에서 가장 먼저 만질 건 Wanderer입니다. 턴 조건을 보고 카드를 내면 유효·무효와 승패가 바로 갈리는 30초 미니 턴을 먼저 두고, 실제 영상과 개발기록으로 이어 볼 수 있게 했어요.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
@@ -57,7 +57,7 @@ export default async function HomePage() {
             </div>
 
             <div className="grid gap-2.5 text-sm md:grid-cols-3">
-              {playBeats.map((beat) => (
+              {heroLoop.map((beat) => (
                 <div key={beat.label} className="rounded-[16px] border border-[#fff1b8]/28 bg-[#10183a]/28 p-3">
                   <p className="text-[11px] font-black text-point">{beat.label}</p>
                   <p className="mt-1 font-black leading-5 text-text">{beat.title}</p>
@@ -69,7 +69,7 @@ export default async function HomePage() {
 
           <figure id="play-video" className="studio-shot relative min-h-[340px] overflow-hidden rounded-[22px] border-[3px] border-[#fff1b8]/60 bg-[#10183a] md:min-h-[500px]">
             <video
-              aria-label="Wanderer 카드 선택 플레이 흐름 영상"
+              aria-label="Wanderer 조건 판단 플레이 흐름 영상"
               className="h-full w-full object-cover object-center"
               src="/media/runtime-checks/wanderer-mobile-demo.mp4"
               poster="/project-covers/wanderer.png"
@@ -85,7 +85,7 @@ export default async function HomePage() {
               ▶
             </div>
             <figcaption className="studio-caption">
-              <span>실제 플레이 흐름 · 선택 → 결과</span>
+              <span>실제 플레이 흐름 · 조건 → 선택 → 결과</span>
               <Link href="/projects/wanderer">Wanderer 자세히 보기</Link>
             </figcaption>
           </figure>

@@ -25,9 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return createMetadata({
-    title: project.slug === 'wanderer' ? 'Wanderer — 30초 카드 샘플' : `${project.title} 작업 기록`,
+    title: project.slug === 'wanderer' ? 'Wanderer — 30초 미니 턴' : `${project.title} 작업 기록`,
     description: project.slug === 'wanderer'
-      ? '카드 한 장을 고르고 바로 결과를 보는 Wanderer 30초 샘플, 실제 플레이 화면과 개발기록입니다.'
+      ? '조건을 보고 카드를 내는 Wanderer 30초 미니 턴, 실제 플레이 화면과 개발기록입니다.'
       : project.summary,
     path: `/projects/${project.slug}`,
     ogImage: project.coverImage,
@@ -37,8 +37,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 const firstVisitSteps = [
   {
     label: '30초 먼저 보기',
-    title: '카드를 한 장 골라 결과를 봅니다.',
-    description: '설명을 길게 읽기 전에, 카드 선택이 상황과 결과 문장으로 어떻게 이어지는지 짧게 눌러봅니다.',
+    title: '조건을 보고 카드를 냅니다.',
+    description: '설명을 길게 읽기 전에, 이번 턴 조건과 상대 카드를 보고 유효한 한 장을 짧게 골라봅니다.',
     href: '#mini-play',
   },
   {
@@ -69,10 +69,10 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
               <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer · 모바일 카드 게임</p>
               <div className="space-y-4">
                 <h1 className="max-w-5xl text-[42px] font-black leading-[0.93] tracking-[-0.075em] text-text md:text-[84px]">
-                  한 장을 고르고,<br />바로 결과를 보는 카드 전투.
+                  조건을 보고,<br />상대보다 높게 내는 카드 전투.
                 </h1>
                 <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-                  Wanderer는 제한 시간 안에 카드를 고르고, 선택의 결과를 바로 확인하는 1분짜리 모바일 카드 게임입니다. 지금은 실제 플레이 흐름과 다시 시작했을 때의 이어짐을 다듬고 있습니다.
+                  Wanderer는 제한 시간 안에 턴 조건을 읽고 카드를 내는 모바일 카드 게임입니다. 조건에 맞는 카드 중 상대보다 높은 숫자가 턴을 가져가고, 맞지 않는 카드는 무효가 됩니다.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
@@ -94,8 +94,8 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
               </div>
               <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">loop</p>
-                <p className="mt-2 text-2xl font-black tracking-[-0.06em] text-text">선택→결과</p>
-                <p className="mt-1 text-[13px] leading-6 text-subtext">핵심 플레이</p>
+                <p className="mt-2 text-2xl font-black tracking-[-0.06em] text-text">조건→선택→판정</p>
+                <p className="mt-1 text-[13px] leading-6 text-subtext">핵심 턴</p>
               </div>
             </div>
           </div>
@@ -107,7 +107,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
                 실제 플레이 흐름
               </div>
               <figcaption className="studio-caption">
-                <span>Wanderer · 카드 선택 플레이 영상</span>
+                <span>Wanderer · 조건 판단 카드 전투</span>
                 <Link href="/writing/runtime-화면-확인-기록">기록 보기</Link>
               </figcaption>
             </figure>
@@ -118,7 +118,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
               </figure>
               <div className="rounded-[24px] border border-point/25 bg-point/10 p-4 text-sm leading-7 text-subtext">
                 <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">지금 다듬는 것</p>
-                <p className="mt-2 font-bold text-text">제한 시간 안에 카드를 고르고, 바로 다음 결과를 확인하는 흐름을 다듬고 있습니다.</p>
+                <p className="mt-2 font-bold text-text">제한 시간 안에 조건을 읽고 유효 카드를 내는 흐름을 다듬고 있습니다.</p>
               </div>
             </div>
           </div>
@@ -151,8 +151,8 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <section className="grid gap-4 md:grid-cols-3">
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
           <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">플레이 방식</p>
-          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">카드를 고르고 바로 결과를 봅니다.</h2>
-          <p className="mt-3 text-sm leading-7 text-subtext">긴 성장 구조보다 한 판 안에서 선택과 분위기가 읽히는 흐름을 먼저 확인합니다.</p>
+          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">조건에 맞는 카드를 내고 비교합니다.</h2>
+          <p className="mt-3 text-sm leading-7 text-subtext">긴 성장 구조보다 한 턴 안에서 조건, 유효 여부, 숫자 비교가 바로 읽히는 흐름을 먼저 확인합니다.</p>
         </div>
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
           <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">지금 보는 이유</p>
@@ -173,12 +173,12 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">작고 짧게, 끝까지 흐르는 카드 게임</h2>
           </div>
           <div className="prose max-w-none">
-            <p>Wanderer는 큰 콘텐츠 볼륨보다 짧은 한 판의 흐름을 먼저 보는 게임입니다. 카드를 고르고, 결과를 보고, 다시 다음 선택으로 넘어가는 리듬이 핵심입니다.</p>
+            <p>Wanderer는 큰 콘텐츠 볼륨보다 짧은 한 판의 흐름을 먼저 보는 게임입니다. 턴마다 조건을 읽고, 내 손패에서 유효한 카드를 고르고, 상대 카드와 비교한 뒤 다음 선택으로 넘어가는 리듬이 핵심입니다.</p>
             <p>지금 공개 페이지에서는 완성된 상점 페이지처럼 과장하지 않고, 실제 실행 화면과 최근에 확인한 문제를 같이 보여줍니다. 그래서 이 페이지의 목적은 “완성작 홍보”가 아니라 “지금 어떤 게임으로 다듬고 있는지”를 바로 이해시키는 것입니다.</p>
             <h2>지금 확인한 것</h2>
             <ul>
               <li>모바일에서 Wanderer 화면이 실제로 실행됩니다.</li>
-              <li>카드 선택과 화면 전환 흐름을 영상과 기록으로 남겼습니다.</li>
+              <li>조건 판단, 카드 선택, 화면 전환 흐름을 영상과 기록으로 남겼습니다.</li>
               <li>재접속 이후 현재 게임 상태를 다시 받는 흐름은 계속 다듬는 중입니다.</li>
             </ul>
           </div>
