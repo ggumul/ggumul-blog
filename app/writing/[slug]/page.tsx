@@ -128,7 +128,6 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
                 <Pill tone="point">{post.category}</Pill>
                 {post.series ? <Pill>{post.series}</Pill> : null}
                 <Pill>{post.publishedAt}</Pill>
-                <Pill>{post.readingTimeMinutes}분</Pill>
               </div>
               <h1 className="text-[38px] font-black leading-[1.02] tracking-[-0.065em] text-text md:text-[68px]">
                 {post.title}
@@ -187,7 +186,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
           ) : null}
 
           <div>
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">tags</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">글 주제</div>
             <div className="mt-3 flex flex-wrap gap-2 text-[12px]">
               {post.tags.map((tag) => (
                 <span key={tag} className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-subtext">#{tag}</span>
@@ -200,7 +199,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
       {relatedRecords.length > 0 ? (
         <section className="space-y-5">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">next records</p>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">이어서 보기</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이어서 볼 기록</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-3">

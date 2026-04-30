@@ -27,6 +27,8 @@ body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.75;
   text-rendering: optimizeLegibility;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 body::before {
@@ -76,6 +78,13 @@ h3 {
   color: #dbe5ff;
   font-size: 1.06rem;
   line-height: 1.88;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.korean-keep {
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .prose p {

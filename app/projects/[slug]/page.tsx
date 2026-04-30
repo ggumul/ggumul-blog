@@ -247,8 +247,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <PageHero eyebrow="project" title={<>{project.title}<br />작업 노트</>} description={project.summary}>
         <div className="space-y-3 text-sm text-subtext">
           <Pill tone="point">{project.status}</Pill>
-          <Pill>순서 {String(project.order).padStart(2, '0')}</Pill>
-          <Pill>연결된 기록 {relatedPosts.length}개</Pill>
           {latestRecord ? <Pill>최근 {latestRecord.publishedAt}</Pill> : null}
         </div>
       </PageHero>
@@ -267,9 +265,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
           <section className="panel-section">
             <div className="mb-6 flex flex-wrap gap-2 text-[12px]">
-              <Pill tone="point">상태: {project.status}</Pill>
-              <Pill>관련 기록 {relatedPosts.length}개</Pill>
-              {latestRecord ? <Pill>최근 기록: {latestRecord.title}</Pill> : null}
+              <Pill tone="point">{project.status}</Pill>
+              {latestRecord ? <Pill>최근 기록 있음</Pill> : null}
             </div>
             <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: project.html }} />
           </section>

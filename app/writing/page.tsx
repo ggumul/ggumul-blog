@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { PostCard } from '@/components/post-card';
-import { Pill } from '@/components/brand-ui';
 import { getProjectRecordMap, getWritingArchiveSections } from '@/lib/content';
 import { getWritingReadingPath } from '@/lib/writing-reading-path';
 import { createMetadata } from '@/lib/site';
@@ -15,7 +14,7 @@ const gameOrder = ['wanderer', 'hanoi', 'trpg', 'color-hanoi'];
 const gameHooks: Record<string, string> = {
   wanderer: '턴 조건을 읽고 유효한 카드를 내야 하는데, 한 박자만 늦어도 전투 리듬이 흐려집니다.',
   hanoi: '규칙은 단순하지만, 폰 화면에서는 “방금 뭘 옮겼는지”가 생각보다 쉽게 묻힙니다.',
-  trpg: '선택지를 눌렀을 때 다음 장면으로 넘어가는 감각이 짧은 서사 안에서 살아야 합니다.',
+  trpg: '선택지를 눌렀을 때 이어지는 흐름이 짧은 서사 안에서 살아야 합니다.',
   'color-hanoi': '색 조건이 하나 들어가면 같은 퍼즐도 판단 순서가 달라져서 따로 기록해 두었습니다.',
 };
 const gameReadAngles: Record<string, string> = {
@@ -92,7 +91,6 @@ export default async function WritingPage() {
   const allPosts = [sections.latest, ...sections.timeline];
   const latestGamePost = allPosts.find((post) => post.relatedProjects.some((project) => project !== 'ggumul-dinner-grocery')) ?? sections.latest;
   const nextUpdates = allPosts.filter((post) => post.slug !== latestGamePost.slug);
-  const totalPostCount = allPosts.length;
   const topicTags = displayTopicTags(sections.taxonomy.tags);
   const latestGamePath = getWritingReadingPath(latestGamePost.slug);
   const gameLanes = gameOrder
@@ -129,13 +127,8 @@ export default async function WritingPage() {
             </p>
           </div>
           <aside className="panel-aside space-y-3 text-sm text-subtext">
-            <div className="flex flex-wrap gap-2 text-[12px]">
-              <Pill tone="point">실제 화면 중심</Pill>
-              <Pill>게임 {gameLanes.length}개</Pill>
-              <Pill>기록 {totalPostCount}개</Pill>
-              <Link className="trace-chip border-point/35 bg-point/15 text-point transition hover:bg-point/25" href="/feed.xml">RSS</Link>
-            </div>
-            <p className="text-[13px] leading-6">다시 켰을 때 바로 떠올리려고, 화면 흐름과 막힌 지점을 게임별로 갈라두었습니다.</p>
+            <p className="text-[13px] leading-6">실제 화면을 다시 켰을 때 바로 떠올리려고, 흐름과 막힌 지점을 게임별로 갈라두었습니다.</p>
+            <Link className="inline-flex text-[13px] font-bold text-point hover:text-text" href="/feed.xml">RSS로 보기 →</Link>
           </aside>
         </div>
       </section>
@@ -154,15 +147,15 @@ export default async function WritingPage() {
         <PostCard post={latestGamePost} featured />
         <div className="grid gap-3 md:grid-cols-3">
           <div className="rounded-[20px] border-2 border-[#fff1b8]/30 bg-[#10183a]/28 p-4">
-            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">문제가 된 장면</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">읽을 이유</p>
             <p className="mt-2 text-sm leading-6 text-subtext">{latestGamePath.stakes}</p>
           </div>
           <div className="rounded-[20px] border-2 border-[#fff1b8]/30 bg-[#10183a]/28 p-4">
-            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">바뀐 점</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">남긴 판단</p>
             <p className="mt-2 text-sm leading-6 text-subtext">{latestGamePath.change}</p>
           </div>
           <Link href={`/writing/${latestGamePost.slug}`} className="rounded-[20px] border-2 border-point/45 bg-point/15 p-4 transition hover:bg-point/25">
-            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">다음 장면</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">볼 지점</p>
             <p className="mt-2 text-sm font-black leading-6 text-text">{latestGamePath.next} →</p>
           </Link>
         </div>
@@ -194,7 +187,7 @@ export default async function WritingPage() {
                     <span className="mt-2 block text-[13px] font-normal leading-6 text-subtext">{entry.summary}</span>
                     {entry.slug ? (
                       <span className="mt-3 block rounded-2xl border border-[#fff1b8]/22 bg-[#10183a]/30 p-3 text-[12px] font-normal leading-5 text-subtext">
-                        <span className="font-black text-point">문제가 된 장면</span> · {getWritingReadingPath(entry.slug).stakes}
+                        <span className="font-black text-point">읽을 이유</span> · {getWritingReadingPath(entry.slug).stakes}
                       </span>
                     ) : null}
                   </Link>
@@ -226,17 +219,10 @@ export default async function WritingPage() {
 
         <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">기록 종류</div>
-            <div className="space-y-2 text-[13px] leading-6">
-              {sections.taxonomy.categories.map((category) => (
-                <div key={category} className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-text/90">{category}</div>
-              ))}
-            </div>
-          </div>
-          <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">자주 나온 문제</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">찾아볼 주제</div>
+            <p className="text-[13px] leading-6">게임 화면, 동기화, 가격 기록처럼 다시 참고할 만한 주제만 모았습니다.</p>
             <div className="flex flex-wrap gap-2 text-[12px]">
-              {topicTags.map((tag) => (
+              {topicTags.slice(0, 6).map((tag) => (
                 <span key={tag} className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-subtext">#{tag}</span>
               ))}
             </div>

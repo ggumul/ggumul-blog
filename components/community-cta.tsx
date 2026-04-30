@@ -16,7 +16,7 @@ const actionCards = [
   {
     label: '감상',
     title: '짧게 감상 남기기',
-    description: '헷갈린 화면, 궁금한 카드, 보고 싶은 다음 장면이 있으면 짧게 보내주세요.',
+    description: '헷갈린 화면, 궁금한 카드, 보고 싶은 흐름이 있으면 짧게 보내주세요.',
     href: contactHref,
     external: false,
   },

@@ -147,13 +147,9 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
           <h3 className="text-[18px] font-black leading-snug tracking-[-0.04em] text-text group-hover:text-point">{post.title}</h3>
           <p className="mt-2 line-clamp-2 text-sm leading-6 text-subtext">{readingPath.stakes}</p>
         </div>
-        <div className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 px-3 py-2 text-[12px] leading-5 text-subtext">
-          <span className="font-black text-point">다음 장면</span> · {readingPath.next}
-        </div>
-        <div className="flex flex-wrap gap-2 text-[11px] text-subtext">
-          {post.series ? <span className="rounded-full border-2 border-[#fff1b8]/35 px-2.5 py-1">{post.series}</span> : null}
-          <span className="rounded-full border-2 border-[#fff1b8]/35 px-2.5 py-1">{post.readingTimeMinutes}분</span>
-        </div>
+        <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 px-3 py-2 text-[12px] leading-5 text-subtext">
+          <span className="font-black text-point">볼 지점</span> · {readingPath.next}
+        </p>
       </Link>
     );
   }
@@ -174,8 +170,6 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
             <span className="font-bold text-point">{post.category}</span>
             <span>·</span>
             <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
-            <span>·</span>
-            <span>{post.readingTimeMinutes}분</span>
           </div>
           <h3 className={featured ? 'mt-4 text-[26px] font-black leading-tight tracking-[-0.055em] text-text md:text-[38px]' : 'mt-3 text-[22px] font-black leading-tight tracking-[-0.045em] text-text'}>
             {post.title}
@@ -183,11 +177,11 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
           <p className={featured ? 'mt-4 text-base leading-8 text-subtext' : 'mt-3 line-clamp-3 text-sm leading-7 text-subtext'}>{post.summary}</p>
           <div className={featured ? 'mt-5 grid gap-3 md:grid-cols-2' : 'mt-4 grid gap-2'}>
             <div className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 p-3">
-              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">문제가 된 장면</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">읽을 이유</p>
               <p className="mt-1 text-[13px] leading-6 text-subtext">{readingPath.stakes}</p>
             </div>
             <div className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 p-3">
-              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">바뀐 점</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">남긴 판단</p>
               <p className="mt-1 text-[13px] leading-6 text-subtext">{readingPath.change}</p>
             </div>
           </div>

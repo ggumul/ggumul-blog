@@ -3,9 +3,9 @@ import { CommunityCTA } from '@/components/community-cta';
 import { createMetadata } from '@/lib/site';
 
 const links = [
-  { label: 'GitHub', href: 'https://github.com/ggumul', description: '코드와 프로젝트 저장소', type: 'code' },
-  { label: 'Notion', href: 'https://www.notion.so/348521c1518081e08d81d9215785de15', description: '기획 메모와 작업 정리', type: 'docs' },
-  { label: '문의 메일', href: 'mailto:hwang95903@gmail.com', description: '협업과 문의 메일', type: 'contact' },
+  { label: 'GitHub', href: 'https://github.com/ggumul', displayHref: 'github.com/ggumul', description: '코드와 프로젝트 저장소', type: 'code' },
+  { label: 'Notion', href: 'https://www.notion.so/348521c1518081e08d81d9215785de15', displayHref: 'notion 작업 문서', description: '기획 메모와 작업 정리', type: 'docs' },
+  { label: '문의 메일', href: 'mailto:hwang95903@gmail.com', displayHref: 'hwang95903@gmail.com', description: '협업과 문의 메일', type: 'contact' },
 ];
 
 export const metadata = createMetadata({
@@ -41,7 +41,7 @@ export default function LinksPage() {
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-point/25 bg-point/10 text-point">↗</span>
               </div>
               <p className="mt-4 text-sm leading-7 text-subtext">{link.description}</p>
-              <p className="mt-4 break-all rounded-2xl border border-white/10 bg-black/20 px-3 py-2 text-[12px] leading-5 text-point">{link.href}</p>
+              <p className="mt-4 rounded-2xl border border-white/10 bg-black/20 px-3 py-2 text-[12px] leading-5 text-point">{link.displayHref}</p>
             </a>
           ))}
         </div>

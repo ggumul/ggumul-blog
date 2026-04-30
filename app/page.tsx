@@ -136,15 +136,15 @@ export default async function HomePage() {
           {latestGamePath ? (
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-[20px] border-2 border-[#fff1b8]/30 bg-[#10183a]/28 p-4">
-                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">문제가 된 장면</p>
+                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">읽을 이유</p>
                 <p className="mt-2 text-sm leading-6 text-subtext">{latestGamePath.stakes}</p>
               </div>
               <div className="rounded-[20px] border-2 border-[#fff1b8]/30 bg-[#10183a]/28 p-4">
-                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">바뀐 점</p>
+                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">남긴 판단</p>
                 <p className="mt-2 text-sm leading-6 text-subtext">{latestGamePath.change}</p>
               </div>
               <Link href={`/writing/${latestGamePost.slug}`} className="rounded-[20px] border-2 border-point/45 bg-point/15 p-4 transition hover:bg-point/25">
-                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">다음 장면</p>
+                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">볼 지점</p>
                 <p className="mt-2 text-sm font-black leading-6 text-text">{latestGamePath.next} →</p>
               </Link>
             </div>

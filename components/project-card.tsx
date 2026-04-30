@@ -19,7 +19,7 @@ const progressTone: Record<ProjectEntry['progressStatus'], string> = {
 const projectHooks: Record<string, string> = {
   'ggumul-dinner-grocery': '식단을 정하면 장보기와 가격 판단까지 이어집니다.',
   wanderer: '턴 조건을 보고 유효한 카드를 내서 상대보다 높게 겨루는 짧은 한 판입니다.',
-  trpg: '선택한 문장이 다음 장면과 결말로 돌아옵니다.',
+  trpg: '선택한 문장이 이어지는 흐름과 결말로 돌아옵니다.',
   hanoi: '막대를 옮기는 순서 하나가 퍼즐의 길을 만듭니다.',
   'color-hanoi': '색 조건 하나가 익숙한 퍼즐을 다른 문제로 바꿉니다.',
 };
@@ -98,10 +98,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           </span>
         </div>
         <p className="line-clamp-2 text-sm leading-6 text-subtext">{projectHooks[project.slug] ?? project.summary}</p>
-        <div className="grid gap-2 text-[12px] leading-5 text-subtext">
-          <p><span className="font-bold text-text">지금 바로 볼 장면</span> · {projectAvailability[project.slug] ?? project.verificationNote}</p>
-          <p className="text-[11px] text-subtext/80">개발기록 {records.length}개{latestRecord ? ` · 최근 ${latestRecord.title}` : ''}</p>
-        </div>
+        <p className="text-[12px] leading-5 text-subtext"><span className="font-bold text-text">볼 수 있는 것</span> · {projectAvailability[project.slug] ?? project.verificationNote}</p>
         <span className="inline-flex text-[13px] font-black text-point">{projectCtas[project.slug] ?? '프로젝트 보기'} →</span>
       </Link>
     );
@@ -126,10 +123,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           <div>
             <div className="flex flex-wrap items-center gap-2 text-[12px] text-subtext">
               <span className="font-bold text-point">{projectKinds[project.slug] ?? '게임 프로젝트'}</span>
-              <span>·</span>
-              <span>개발기록 {records.length}개</span>
-              <span>·</span>
-              <span>{project.evidenceLabel}</span>
+              {latestRecord ? <span>· {project.evidenceLabel}</span> : null}
             </div>
             <Link href={projectHref} className="group/title">
               <h3 className="mt-3 text-[28px] font-black leading-tight tracking-[-0.055em] text-text group-hover/title:text-point md:text-[40px]">{project.title}</h3>
