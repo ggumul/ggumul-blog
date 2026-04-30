@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { PageHero, Pill } from '@/components/brand-ui';
 import { CommunityCTA } from '@/components/community-cta';
 import { PostCard } from '@/components/post-card';
+import { WandererMiniPlay } from '@/components/wanderer-mini-play';
 import { getProjectBySlug, getProjects, getWriting, resolveProjectRecords } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
@@ -123,6 +124,8 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           </div>
         </div>
       </section>
+
+      <WandererMiniPlay />
 
       <section className="space-y-5">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
