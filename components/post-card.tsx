@@ -108,7 +108,7 @@ function ThumbnailFrame({ thumbnail, alt, featured }: { thumbnail: Thumbnail; al
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]"
         />
       ) : (
-        <div className={["flex h-full min-h-[220px] flex-col justify-between p-5", thumbnail.tone ?? 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.32),transparent_18rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]'].join(' ')}>
+        <div className={["flex h-full min-h-full flex-col justify-between p-5", thumbnail.tone ?? 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.32),transparent_18rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]'].join(' ')}>
           <div className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">
             {thumbnail.badge ?? '기록 기반 카드'}
           </div>
