@@ -69,7 +69,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
               <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer · 모바일 카드 게임</p>
               <div className="space-y-4">
                 <h1 className="max-w-5xl text-[40px] font-black leading-[0.98] tracking-[-0.065em] text-text md:text-[72px]">
-                  조건을 보고,<br />더 높은 카드를 내는<br />짧은 전투.
+                  조건을 보고,<br />높게 내는<br />짧은 전투.
                 </h1>
                 <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
                   Wanderer는 제한 시간 안에 규칙을 읽고 카드 한 장을 내는 모바일 카드 게임입니다. 규칙을 통과한 카드끼리 숫자를 비교하고, 맞지 않는 카드는 바로 탈락합니다.
