@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import {
   resolveWandererMiniPlayResult,
@@ -47,7 +48,9 @@ describe('Wanderer mini play sample', () => {
   });
 
   it('keeps the public copy away from document/test-panel wording', () => {
+    const projectPageCopy = readFileSync('app/projects/[slug]/page.tsx', 'utf8');
     const combinedCopy = [
+      projectPageCopy,
       wandererMiniPlayTurn.condition.label,
       wandererMiniPlayTurn.condition.description,
       wandererMiniPlayTurn.ruleSummary,
@@ -55,7 +58,7 @@ describe('Wanderer mini play sample', () => {
       ...wandererMiniPlayCards.flatMap((card) => [card.title, card.description, card.scene, card.result, card.shareText]),
     ].join('\n');
 
-    expect(combinedCopy).not.toMatch(/30초 샘플|조건을 만족한 기준점|현재 가장 높은 유효 카드|숫자 싸움이 남습니다/);
+    expect(combinedCopy).not.toMatch(/30초 샘플|조건을 만족한 기준점|현재 가장 높은 유효 카드|숫자 싸움이 남습니다|play time|>status<|>loop<|조건→선택→판정/);
   });
 
   it('falls back safely to the first hand card for unknown input', () => {

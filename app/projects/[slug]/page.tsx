@@ -68,11 +68,11 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             <div className="space-y-5">
               <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer · 모바일 카드 게임</p>
               <div className="space-y-4">
-                <h1 className="max-w-5xl text-[42px] font-black leading-[0.93] tracking-[-0.075em] text-text md:text-[84px]">
-                  조건을 보고,<br />상대보다 높게 내는 카드 전투.
+                <h1 className="max-w-5xl text-[40px] font-black leading-[0.98] tracking-[-0.065em] text-text md:text-[72px]">
+                  조건을 보고,<br />더 높은 카드를 내는<br />짧은 전투.
                 </h1>
-                <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-                  Wanderer는 제한 시간 안에 턴 조건을 읽고 카드를 내는 모바일 카드 게임입니다. 조건에 맞는 카드 중 상대보다 높은 숫자가 턴을 가져가고, 맞지 않는 카드는 무효가 됩니다.
+                <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
+                  Wanderer는 제한 시간 안에 규칙을 읽고 카드 한 장을 내는 모바일 카드 게임입니다. 규칙을 통과한 카드끼리 숫자를 비교하고, 맞지 않는 카드는 바로 탈락합니다.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
@@ -83,31 +83,31 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
             <div className="grid gap-3 sm:grid-cols-3">
               <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">play time</p>
+                <p className="text-[11px] font-bold tracking-[0.12em] text-point">한 판</p>
                 <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">1분</p>
-                <p className="mt-1 text-[13px] leading-6 text-subtext">짧은 한 판</p>
+                <p className="mt-1 text-[13px] leading-6 text-subtext">짧게 끝나는 흐름</p>
               </div>
               <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">status</p>
+                <p className="text-[11px] font-bold tracking-[0.12em] text-point">현재 상태</p>
                 <p className="mt-2 text-2xl font-black tracking-[-0.06em] text-text">플레이 확인</p>
-                <p className="mt-1 text-[13px] leading-6 text-subtext">모바일 화면 보유</p>
+                <p className="mt-1 text-[13px] leading-6 text-subtext">모바일 실행 화면</p>
               </div>
               <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">loop</p>
-                <p className="mt-2 text-2xl font-black tracking-[-0.06em] text-text">조건→선택→판정</p>
-                <p className="mt-1 text-[13px] leading-6 text-subtext">핵심 턴</p>
+                <p className="text-[11px] font-bold tracking-[0.12em] text-point">이번 턴</p>
+                <p className="mt-2 text-2xl font-black tracking-[-0.06em] text-text">규칙→카드→결과</p>
+                <p className="mt-1 text-[13px] leading-6 text-subtext">아래에서 바로 확인</p>
               </div>
             </div>
           </div>
 
-          <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_190px]">
-            <figure id="play-video" className="studio-shot relative min-h-[420px] scroll-mt-28 overflow-hidden rounded-[30px] border border-line/80 bg-black/30 md:min-h-[640px]">
+          <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_210px]">
+            <figure id="play-video" className="studio-shot relative min-h-[380px] scroll-mt-28 overflow-hidden rounded-[30px] border border-line/80 bg-black/30 md:min-h-[560px]">
               <video className="h-full w-full object-cover" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
-              <div className="absolute left-4 top-4 rounded-full border border-point/30 bg-black/45 px-3 py-1 text-[11px] font-black uppercase tracking-[0.2em] text-point backdrop-blur">
-                실제 플레이 흐름
+              <div className="absolute left-4 top-4 rounded-full border border-point/30 bg-black/45 px-3 py-1 text-[11px] font-black tracking-[0.16em] text-point backdrop-blur">
+                실제 실행 화면
               </div>
               <figcaption className="studio-caption">
-                <span>Wanderer · 조건 판단 카드 전투</span>
+                <span>규칙 확인 → 카드 선택 → 결과 확인</span>
                 <Link href="/writing/runtime-화면-확인-기록">기록 보기</Link>
               </figcaption>
             </figure>
@@ -117,8 +117,8 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
                 <figcaption className="studio-caption"><span>모바일 홈</span></figcaption>
               </figure>
               <div className="rounded-[24px] border border-point/25 bg-point/10 p-4 text-sm leading-7 text-subtext">
-                <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">지금 다듬는 것</p>
-                <p className="mt-2 font-bold text-text">제한 시간 안에 조건을 읽고 유효 카드를 내는 흐름을 다듬고 있습니다.</p>
+                <p className="text-[11px] font-black tracking-[0.16em] text-point">지금 확인 중인 것</p>
+                <p className="mt-2 font-bold text-text">모바일에서 규칙 확인, 카드 선택, 결과 화면까지 흐름이 끊기지 않는지 보고 있습니다.</p>
               </div>
             </div>
           </div>
