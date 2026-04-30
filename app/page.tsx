@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CommunityCTA } from '@/components/community-cta';
 import { PostCard } from '@/components/post-card';
 import { ProjectCard } from '@/components/project-card';
 import { getHomeArchiveSnapshot } from '@/lib/content';
@@ -92,6 +93,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      <CommunityCTA />
 
       {leadProject ? (
         <section className="space-y-5">

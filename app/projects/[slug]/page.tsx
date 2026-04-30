@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PageHero, Pill } from '@/components/brand-ui';
+import { CommunityCTA } from '@/components/community-cta';
 import { PostCard } from '@/components/post-card';
 import { getProjectBySlug, getProjects, getWriting, resolveProjectRecords } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
@@ -100,6 +101,8 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           </div>
         </div>
       </section>
+
+      <CommunityCTA compact />
 
       <section className="grid gap-4 md:grid-cols-3">
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">

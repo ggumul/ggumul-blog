@@ -1,4 +1,5 @@
 import { FeatureCard, PageHero, SectionHeader } from '@/components/brand-ui';
+import { CommunityCTA } from '@/components/community-cta';
 import { createMetadata } from '@/lib/site';
 
 const links = [
@@ -45,6 +46,8 @@ export default function LinksPage() {
           ))}
         </div>
       </section>
+
+      <CommunityCTA />
 
       <section className="grid gap-4 md:grid-cols-2">
         <FeatureCard title="프로젝트가 궁금하면" description="먼저 프로젝트 페이지에서 실제 화면과 연결된 기록을 확인하는 흐름을 권장합니다." />

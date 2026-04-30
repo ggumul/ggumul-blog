@@ -44,6 +44,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
               ))}
             </nav>
             <Link
+              href="/links#follow"
+              className="inline-flex min-h-[42px] items-center rounded-full border border-line/80 bg-white/[0.06] px-4 py-2 text-sm font-black text-text transition hover:border-point/60 hover:bg-white/[0.1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-point/30"
+            >
+              소식 받기
+            </Link>
+            <Link
               href="/projects/wanderer"
               className="inline-flex min-h-[42px] items-center rounded-full border border-point/35 bg-point px-4 py-2 text-sm font-black text-[#160d08] shadow-glow transition hover:border-point/60 hover:bg-[#ffc47f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-point/30"
             >
