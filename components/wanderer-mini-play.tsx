@@ -4,16 +4,20 @@ import { useMemo, useState } from 'react';
 import { resolveWandererMiniPlayResult, wandererMiniPlayCards } from '@/lib/wanderer-mini-play';
 
 export function WandererMiniPlay() {
-  const [selectedCardId, setSelectedCardId] = useState(wandererMiniPlayCards[0]?.id ?? '');
+  const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
-  const selectedCard = useMemo(() => resolveWandererMiniPlayResult(selectedCardId), [selectedCardId]);
+  const selectedCard = useMemo(() => (selectedCardId ? resolveWandererMiniPlayResult(selectedCardId) : null), [selectedCardId]);
 
   const resetPlay = () => {
-    setSelectedCardId(wandererMiniPlayCards[0]?.id ?? '');
+    setSelectedCardId(null);
     setCopied(false);
   };
 
   const copyResult = async () => {
+    if (!selectedCard) {
+      return;
+    }
+
     setCopied(true);
 
     try {
@@ -36,7 +40,7 @@ export function WandererMiniPlay() {
           </p>
           <div className="mt-5 grid gap-3">
             {wandererMiniPlayCards.map((card) => {
-              const isSelected = card.id === selectedCard.id;
+              const isSelected = card.id === selectedCard?.id;
 
               return (
                 <button
@@ -63,34 +67,54 @@ export function WandererMiniPlay() {
         </div>
 
         <div className="flex flex-col justify-between gap-4 rounded-[28px] border border-line/80 bg-black/30 p-5 md:p-7">
-          <div className="space-y-4">
-            <div className="rounded-[24px] border border-line/70 bg-white/[0.06] p-5">
-              <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">상황</p>
-              <p className="mt-3 text-2xl font-black leading-snug tracking-[-0.04em] text-text">{selectedCard.scene}</p>
-            </div>
-            <div className="rounded-[24px] border border-point/35 bg-point/15 p-5">
-              <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">결과</p>
-              <p className="mt-3 text-3xl font-black leading-snug tracking-[-0.055em] text-text">{selectedCard.result}</p>
-            </div>
-          </div>
+          {selectedCard ? (
+            <>
+              <div className="space-y-4">
+                <div className="rounded-[24px] border border-line/70 bg-white/[0.06] p-5">
+                  <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">상황</p>
+                  <p className="mt-3 text-2xl font-black leading-snug tracking-[-0.04em] text-text">{selectedCard.scene}</p>
+                </div>
+                <div className="rounded-[24px] border border-point/35 bg-point/15 p-5">
+                  <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">결과</p>
+                  <p className="mt-3 text-3xl font-black leading-snug tracking-[-0.055em] text-text">{selectedCard.result}</p>
+                </div>
+              </div>
 
-          <div className="space-y-3">
-            <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4 text-sm leading-7 text-subtext">
-              <p className="font-bold text-text">결과 문장</p>
-              <p className="mt-1">{selectedCard.shareText}</p>
+              <div className="space-y-3">
+                <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4 text-sm leading-7 text-subtext">
+                  <p className="font-bold text-text">결과 문장</p>
+                  <p className="mt-1">{selectedCard.shareText}</p>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <button type="button" onClick={copyResult} className="rounded-full border border-point/30 bg-point px-5 py-3 text-sm font-black text-[#160d08] transition hover:bg-[#ffc47f]">
+                    {copied ? '복사했습니다' : '결과 문장 복사'}
+                  </button>
+                  <button type="button" onClick={resetPlay} className="rounded-full border border-line/90 bg-white/10 px-5 py-3 text-sm font-black text-text transition hover:border-point/60">
+                    다시 고르기
+                  </button>
+                  <a href="#play-video" className="rounded-full border border-line/90 bg-white/10 px-5 py-3 text-sm font-black text-text transition hover:border-point/60">
+                    실제 영상 보기
+                  </a>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="flex min-h-[420px] flex-col justify-between rounded-[24px] border border-point/25 bg-[radial-gradient(circle_at_20%_12%,rgba(255,212,71,0.2),transparent_14rem),linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] p-6">
+              <div>
+                <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">아직 선택 전</p>
+                <p className="mt-4 text-[34px] font-black leading-tight tracking-[-0.06em] text-text md:text-[46px]">
+                  먼저 한 장만 골라보세요.
+                </p>
+                <p className="mt-4 text-base leading-8 text-subtext">
+                  버튼을 누르면 바로 상황과 결과가 바뀝니다. 설명을 읽는 페이지가 아니라, Wanderer가 어떤 감각인지 아주 짧게 만져보는 자리입니다.
+                </p>
+              </div>
+              <div className="rounded-[20px] border border-line/70 bg-[#10183a]/45 p-4 text-sm leading-7 text-subtext">
+                <p className="font-bold text-text">선택하면 보이는 것</p>
+                <p className="mt-1">상황 한 줄, 결과 한 줄, 복사 가능한 결과 문장.</p>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <button type="button" onClick={copyResult} className="rounded-full border border-point/30 bg-point px-5 py-3 text-sm font-black text-[#160d08] transition hover:bg-[#ffc47f]">
-                {copied ? '복사했습니다' : '결과 문장 복사'}
-              </button>
-              <button type="button" onClick={resetPlay} className="rounded-full border border-line/90 bg-white/10 px-5 py-3 text-sm font-black text-text transition hover:border-point/60">
-                다시 고르기
-              </button>
-              <a href="#play-video" className="rounded-full border border-line/90 bg-white/10 px-5 py-3 text-sm font-black text-text transition hover:border-point/60">
-                실제 영상 보기
-              </a>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

@@ -25,9 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return createMetadata({
-    title: project.slug === 'wanderer' ? 'Wanderer — 1분 카드 게임' : `${project.title} 작업 기록`,
+    title: project.slug === 'wanderer' ? 'Wanderer — 30초 카드 샘플' : `${project.title} 작업 기록`,
     description: project.slug === 'wanderer'
-      ? '한 장을 고르고 바로 결과를 보는 1분 카드 게임 Wanderer의 실제 플레이 화면과 개발기록입니다.'
+      ? '카드 한 장을 고르고 바로 결과를 보는 Wanderer 30초 샘플, 실제 플레이 화면과 개발기록입니다.'
       : project.summary,
     path: `/projects/${project.slug}`,
     ogImage: project.coverImage,
@@ -37,9 +37,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 const firstVisitSteps = [
   {
     label: '30초 먼저 보기',
-    title: '플레이 영상으로 한 판의 리듬을 봅니다.',
-    description: '카드를 고른 뒤 결과 화면으로 넘어가는 흐름을 먼저 보면, Wanderer가 어떤 게임인지 가장 빨리 잡힙니다.',
-    href: '#play-video',
+    title: '카드를 한 장 골라 결과를 봅니다.',
+    description: '설명을 길게 읽기 전에, 카드 선택이 상황과 결과 문장으로 어떻게 이어지는지 짧게 눌러봅니다.',
+    href: '#mini-play',
   },
   {
     label: '그다음 읽기',
@@ -76,8 +76,8 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
-                <a href="#play-video" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">플레이 영상 보기</a>
-                <Link href="/writing/runtime-화면-확인-기록" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">개발로그 보기</Link>
+                <a href="#mini-play" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">30초 카드 골라보기</a>
+                <a href="#play-video" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">플레이 영상 보기</a>
               </div>
             </div>
 

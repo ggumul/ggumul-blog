@@ -42,10 +42,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
               ))}
             </nav>
             <Link
-              href="/projects/wanderer"
+              href="/projects/wanderer#mini-play"
               className="game-button-primary min-h-[40px] px-4 py-2 text-sm"
             >
-              1분 플레이 보기
+              30초 카드 골라보기
             </Link>
           </div>
         </div>

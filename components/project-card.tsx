@@ -26,7 +26,7 @@ const projectHooks: Record<string, string> = {
 
 const projectCtas: Record<string, string> = {
   'ggumul-dinner-grocery': '장보기 흐름 보기',
-  wanderer: '플레이 영상 보기',
+  wanderer: '30초 카드 골라보기',
   trpg: '첫 장면 보기',
   hanoi: '퍼즐 흐름 보기',
   'color-hanoi': '변형 규칙 보기',
@@ -76,13 +76,18 @@ function StatusFacts({ project }: { project: ProjectEntry }) {
   );
 }
 
+function getProjectHref(project: ProjectEntry) {
+  return project.slug === 'wanderer' ? `/projects/${project.slug}#mini-play` : `/projects/${project.slug}`;
+}
+
 export function ProjectCard({ project, records, compact = false }: { project: ProjectEntry; records: WritingEntry[]; compact?: boolean }) {
   const latestRecord = records[0];
   const cover = project.coverImage;
+  const projectHref = getProjectHref(project);
 
   if (compact) {
     return (
-      <Link href={`/projects/${project.slug}`} className="group grid gap-3 rounded-[20px] border-2 border-[#fff1b8]/34 bg-[#1b3d96]/58 p-4 transition hover:-translate-y-0.5 hover:border-point hover:bg-[#244aa8]/80">
+      <Link href={projectHref} className="group grid gap-3 rounded-[20px] border-2 border-[#fff1b8]/34 bg-[#1b3d96]/58 p-4 transition hover:-translate-y-0.5 hover:border-point hover:bg-[#244aa8]/80">
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-[12px] font-black text-point">{projectKinds[project.slug] ?? '게임'}</p>
@@ -105,7 +110,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
   return (
     <article className="game-card-glow overflow-hidden rounded-[26px] border-[3px] border-[#fff1b8]/45 bg-[#1b3d96]/68">
       <div className="grid gap-0 md:grid-cols-[minmax(260px,0.82fr)_minmax(0,1.18fr)]">
-        <Link href={`/projects/${project.slug}`} className="group relative min-h-[240px] overflow-hidden bg-[#10183a] md:min-h-full">
+        <Link href={projectHref} className="group relative min-h-[240px] overflow-hidden bg-[#10183a] md:min-h-full">
           {cover ? (
             <img src={cover} alt={`${project.title} 대표 화면`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" />
           ) : (
@@ -126,7 +131,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
               <span>·</span>
               <span>{project.evidenceLabel}</span>
             </div>
-            <Link href={`/projects/${project.slug}`} className="group/title">
+            <Link href={projectHref} className="group/title">
               <h3 className="mt-3 text-[28px] font-black leading-tight tracking-[-0.055em] text-text group-hover/title:text-point md:text-[40px]">{project.title}</h3>
             </Link>
             <p className="mt-3 rounded-[20px] border-2 border-[#fff1b8]/30 bg-[#10183a]/32 p-4 text-[18px] font-black leading-7 tracking-[-0.04em] text-text md:text-[22px] md:leading-8">
@@ -147,7 +152,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
               <div className="rounded-[18px] border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-4 text-sm leading-6 text-subtext">아직 연결된 개발기록이 없습니다.</div>
             )}
             <div className="flex flex-wrap gap-3 text-sm">
-              <Link href={`/projects/${project.slug}`} className="game-button-primary px-4 py-2.5 text-sm">{projectCtas[project.slug] ?? '프로젝트 보기'}</Link>
+              <Link href={projectHref} className="game-button-primary px-4 py-2.5 text-sm">{projectCtas[project.slug] ?? '프로젝트 보기'}</Link>
               <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">최근 기록 보기</Link>
             </div>
           </div>

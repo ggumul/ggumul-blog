@@ -7,14 +7,14 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '카드 한 장으로 한 판이 갈리는 1분 카드 게임 Wanderer와, 실제 화면을 보며 고친 개발기록을 모았습니다.',
+  description: '카드 한 장을 골라 결과를 보는 Wanderer 30초 샘플과, 실제 화면을 보며 고친 개발기록을 모았습니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
 
 const playBeats = [
   { label: '01', title: '한 장을 고릅니다', description: '길게 설명하기보다 먼저 카드를 잡고 한 판의 방향을 정합니다.' },
-  { label: '02', title: '바로 결과를 봅니다', description: '선택 뒤 화면이 어떻게 넘어가는지 실제 플레이 영상으로 확인합니다.' },
+  { label: '02', title: '바로 결과를 봅니다', description: '상세 페이지에서 30초 샘플을 눌러 선택 뒤 결과가 어떻게 바뀌는지 봅니다.' },
   { label: '03', title: '막힌 장면을 고칩니다', description: '폰에서 흐름이 끊긴 지점은 개발기록으로 이어 남깁니다.' },
 ];
 
@@ -45,12 +45,12 @@ export default async function HomePage() {
                   카드 한 장으로,<br />한 판이 갈립니다.
                 </h1>
                 <p className="max-w-3xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                  지금 꼬물에서 가장 먼저 볼 건 Wanderer입니다. 1분 안에 고르고, 겨루고, 결과를 보는 짧은 카드 게임을 실제 영상과 기록으로 남기고 있어요.
+                  지금 꼬물에서 가장 먼저 만질 건 Wanderer입니다. 카드 한 장을 고르면 상황과 결과가 바로 바뀌는 30초 샘플을 먼저 두고, 실제 영상과 개발기록으로 이어 볼 수 있게 했어요.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
-                <Link href="/projects/wanderer#play-video" className="game-button-primary">1분 플레이 보기</Link>
-                <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary opacity-90">막힌 장면 읽기</Link>
+                <Link href="/projects/wanderer#mini-play" className="game-button-primary">30초 카드 골라보기</Link>
+                <Link href="/projects/wanderer#play-video" className="game-button-secondary opacity-90">실제 영상 보기</Link>
               </div>
             </div>
 
