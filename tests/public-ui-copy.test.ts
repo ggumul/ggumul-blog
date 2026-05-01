@@ -46,6 +46,14 @@ describe('public UI copy cleanup', () => {
     expect(projectCard).toContain('볼 수 있는 것');
   });
 
+  it('keeps the projects page focused on Wanderer instead of dashboard metrics', () => {
+    const projectsPage = read('app/projects/page.tsx');
+
+    expect(projectsPage).toContain("project.slug === 'wanderer'");
+    expect(projectsPage).not.toMatch(/MetricCard|공개 항목|recordTotal|worklines\.slice\(1, 4\)/);
+    expect(projectsPage).toContain('Wanderer부터 바로 봅니다');
+  });
+
   it('keeps Wanderer title spacing readable in public routes', () => {
     const combined = [read('app/writing/page.tsx'), read('content/writing/2026-04-20-wanderer-초기-설계-회고.mdx')].join('\n');
 
