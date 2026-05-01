@@ -35,7 +35,15 @@ describe('public UI copy cleanup', () => {
     const combined = [read('components/post-card.tsx'), read('app/writing/page.tsx')].join('\n');
 
     expect(combined).not.toMatch(/문제가 된 장면|바뀐 점|다음 장면/);
-    expect(combined).toMatch(/볼 지점|읽을 이유/);
+    expect(combined).not.toMatch(/남긴 판단|먼저 읽기|찾아볼 주제/);
+    expect(combined).toMatch(/볼 지점/);
+  });
+
+  it('keeps project cards from over-explaining the same click path', () => {
+    const projectCard = read('components/project-card.tsx');
+
+    expect(projectCard).not.toMatch(/지금 바로 볼 장면|다음에 이어 볼 기록|왜 이렇게 만들었는지|기록 기반 카드/);
+    expect(projectCard).toContain('볼 수 있는 것');
   });
 
   it('keeps Wanderer title spacing readable in public routes', () => {

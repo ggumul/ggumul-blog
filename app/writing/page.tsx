@@ -68,7 +68,7 @@ const topicLabelOverrides: Record<string, string> = {
   dinner: '가격 기록',
   '게임 개발': '플레이 흐름',
   '프로젝트 소개': '게임별 현재 모습',
-  회고: '짧게 남긴 판단',
+  회고: '짧은 회고',
   '작업 철학': '작업 기준',
   '개발 기록': '화면 흐름',
 };
@@ -136,7 +136,7 @@ export default async function WritingPage() {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">먼저 읽기</p>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">처음 볼 기록</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">처음 오셨다면 이 글부터</h2>
             <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
               PC에서는 괜찮아 보였던 흐름이 실제 폰에서는 어떻게 끊기는지 먼저 보면, 이 개발기록이 무엇을 보는지 바로 잡힙니다.
@@ -145,18 +145,11 @@ export default async function WritingPage() {
           <Link href={`/writing/${latestGamePost.slug}`} className="text-sm font-bold text-point hover:text-text">문제부터 읽기 →</Link>
         </div>
         <PostCard post={latestGamePost} featured />
-        <div className="grid gap-3 md:grid-cols-3">
-          <div className="rounded-[20px] border-2 border-[#fff1b8]/30 bg-[#10183a]/28 p-4">
-            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">읽을 이유</p>
-            <p className="mt-2 text-sm leading-6 text-subtext">{latestGamePath.stakes}</p>
-          </div>
-          <div className="rounded-[20px] border-2 border-[#fff1b8]/30 bg-[#10183a]/28 p-4">
-            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">남긴 판단</p>
-            <p className="mt-2 text-sm leading-6 text-subtext">{latestGamePath.change}</p>
-          </div>
-          <Link href={`/writing/${latestGamePost.slug}`} className="rounded-[20px] border-2 border-point/45 bg-point/15 p-4 transition hover:bg-point/25">
-            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">볼 지점</p>
-            <p className="mt-2 text-sm font-black leading-6 text-text">{latestGamePath.next} →</p>
+        <div className="rounded-[20px] border-2 border-point/45 bg-point/15 p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">볼 지점</p>
+          <p className="mt-2 text-sm leading-6 text-subtext">{latestGamePath.stakes}</p>
+          <Link href={`/writing/${latestGamePost.slug}`} className="mt-3 inline-flex text-sm font-black text-text hover:text-point">
+            {latestGamePath.next} →
           </Link>
         </div>
       </section>
@@ -219,7 +212,7 @@ export default async function WritingPage() {
 
         <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">찾아볼 주제</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">주제</div>
             <p className="text-[13px] leading-6">게임 화면, 동기화, 가격 기록처럼 다시 참고할 만한 주제만 모았습니다.</p>
             <div className="flex flex-wrap gap-2 text-[12px]">
               {topicTags.slice(0, 6).map((tag) => (

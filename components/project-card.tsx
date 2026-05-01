@@ -51,7 +51,7 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
     <div className="flex h-full min-h-[240px] flex-col justify-between bg-[radial-gradient(circle_at_18%_12%,rgba(255,212,71,0.34),transparent_17rem),linear-gradient(135deg,rgba(31,70,162,0.98),rgba(16,24,58,0.98))] p-5">
       <span className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">
-        기록 기반 카드
+        작업 기록
       </span>
       <div>
         <p className="text-[13px] font-bold text-point">{project.evidenceLabel}</p>
@@ -63,16 +63,11 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
 
 function StatusFacts({ project }: { project: ProjectEntry }) {
   return (
-    <dl className="grid gap-2 text-[13px] leading-6 text-subtext">
-      <div className="rounded-2xl border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-3">
-        <dt className="font-bold text-text">지금 바로 볼 장면</dt>
-        <dd className="mt-1">{projectAvailability[project.slug] ?? project.verificationNote}</dd>
-      </div>
-      <div className="rounded-2xl border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-3">
-        <dt className="font-bold text-text">다음에 이어 볼 기록</dt>
-        <dd className="mt-1">{project.evidenceLabel}</dd>
-      </div>
-    </dl>
+    <p className="rounded-2xl border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-3 text-[13px] leading-6 text-subtext">
+      <span className="font-black text-text">볼 수 있는 것</span> · {projectAvailability[project.slug] ?? project.verificationNote}
+      <span className="mx-2 text-point">/</span>
+      <span className="font-black text-text">이어 읽기</span> · {project.evidenceLabel}
+    </p>
   );
 }
 
@@ -131,14 +126,13 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
             <p className="mt-3 rounded-[20px] border-2 border-[#fff1b8]/30 bg-[#10183a]/32 p-4 text-[18px] font-black leading-7 tracking-[-0.04em] text-text md:text-[22px] md:leading-8">
               {projectHooks[project.slug] ?? project.summary}
             </p>
-            <p className="mt-3 text-base leading-8 text-subtext">{project.summary}</p>
           </div>
 
           <div className="mt-5 space-y-3">
             <StatusFacts project={project} />
             {latestRecord ? (
               <Link href={project.evidenceHref} className="block rounded-[18px] border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-4 transition hover:border-point hover:bg-[#244aa8]/60">
-                <p className="text-[12px] font-black text-point">왜 이렇게 만들었는지</p>
+                <p className="text-[12px] font-black text-point">관련 기록</p>
                 <p className="mt-2 text-sm font-bold leading-6 text-text">{project.evidenceLabel}</p>
                 <p className="mt-1 line-clamp-2 text-[13px] leading-6 text-subtext">{latestRecord.summary}</p>
               </Link>

@@ -175,15 +175,10 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
             {post.title}
           </h3>
           <p className={featured ? 'mt-4 text-base leading-8 text-subtext' : 'mt-3 line-clamp-3 text-sm leading-7 text-subtext'}>{post.summary}</p>
-          <div className={featured ? 'mt-5 grid gap-3 md:grid-cols-2' : 'mt-4 grid gap-2'}>
-            <div className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 p-3">
-              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">읽을 이유</p>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">{readingPath.stakes}</p>
-            </div>
-            <div className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 p-3">
-              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">남긴 판단</p>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">{readingPath.change}</p>
-            </div>
+          <div className={featured ? 'mt-5' : 'mt-4'}>
+            <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 p-3 text-[13px] leading-6 text-subtext">
+              <span className="font-black text-point">볼 지점</span> · {readingPath.next}
+            </p>
           </div>
         </div>
 
