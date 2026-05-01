@@ -42,7 +42,7 @@ describe('public UI copy cleanup', () => {
   it('keeps project cards from over-explaining the same click path', () => {
     const projectCard = read('components/project-card.tsx');
 
-    expect(projectCard).not.toMatch(/지금 바로 볼 장면|다음에 이어 볼 기록|왜 이렇게 만들었는지|기록 기반 카드/);
+    expect(projectCard).not.toMatch(/지금 바로 볼 장면|다음에 이어 볼 기록|왜 이렇게 만들었는지|기록 기반 카드|이어 읽기|관련 기록/);
     expect(projectCard).toContain('볼 수 있는 것');
   });
 

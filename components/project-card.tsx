@@ -64,9 +64,7 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
 function StatusFacts({ project }: { project: ProjectEntry }) {
   return (
     <p className="rounded-2xl border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-3 text-[13px] leading-6 text-subtext">
-      <span className="font-black text-text">볼 수 있는 것</span> · {projectAvailability[project.slug] ?? project.verificationNote}{' '}
-      <span className="text-point">·</span>{' '}
-      <span className="font-black text-text">이어 읽기</span> · {project.evidenceLabel}
+      <span className="font-black text-text">볼 수 있는 것</span> · {projectAvailability[project.slug] ?? project.verificationNote}
     </p>
   );
 }
@@ -130,15 +128,6 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
 
           <div className="mt-5 space-y-3">
             <StatusFacts project={project} />
-            {latestRecord ? (
-              <Link href={project.evidenceHref} className="block rounded-[18px] border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-4 transition hover:border-point hover:bg-[#244aa8]/60">
-                <p className="text-[12px] font-black text-point">관련 기록</p>
-                <p className="mt-2 text-sm font-bold leading-6 text-text">{project.evidenceLabel}</p>
-                <p className="mt-1 line-clamp-2 text-[13px] leading-6 text-subtext">{latestRecord.summary}</p>
-              </Link>
-            ) : (
-              <div className="rounded-[18px] border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-4 text-sm leading-6 text-subtext">아직 연결된 개발기록이 없습니다.</div>
-            )}
             <div className="flex flex-wrap gap-3 text-sm">
               <Link href={projectHref} className="game-button-primary px-4 py-2.5 text-sm">{projectCtas[project.slug] ?? '프로젝트 보기'}</Link>
               <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">최근 기록 보기</Link>
