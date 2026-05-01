@@ -64,8 +64,8 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
 function StatusFacts({ project }: { project: ProjectEntry }) {
   return (
     <p className="rounded-2xl border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-3 text-[13px] leading-6 text-subtext">
-      <span className="font-black text-text">볼 수 있는 것</span> · {projectAvailability[project.slug] ?? project.verificationNote}
-      <span className="mx-2 text-point">/</span>
+      <span className="font-black text-text">볼 수 있는 것</span> · {projectAvailability[project.slug] ?? project.verificationNote}{' '}
+      <span className="text-point">·</span>{' '}
       <span className="font-black text-text">이어 읽기</span> · {project.evidenceLabel}
     </p>
   );
