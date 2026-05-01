@@ -58,40 +58,12 @@ const gameEntryLabels: Record<string, string> = {
   trpg: '서사 화면부터',
   'color-hanoi': '색 조건부터',
 };
-const topicLabelOverrides: Record<string, string> = {
-  runtime: '모바일 흐름',
-  hanoi: '퍼즐 이동',
-  wanderer: '조건 판단',
-  flutter: '실기기 화면',
-  sync: '상태 동기화',
-  ggumul: '생활 기록',
-  dinner: '가격 기록',
-  '게임 개발': '플레이 흐름',
-  '프로젝트 소개': '게임별 현재 모습',
-  회고: '짧은 회고',
-  '작업 철학': '작업 기준',
-  '개발 기록': '화면 흐름',
-};
-
-function recordLabel(count: number) {
-  return `${count}개 기록`;
-}
-
-function displayTopicTags(tags: string[]) {
-  const labels = tags
-    .filter((tag) => !gameOrder.includes(tag))
-    .map((tag) => topicLabelOverrides[tag] ?? tag)
-    .filter((tag, index, array) => array.indexOf(tag) === index);
-
-  return labels.slice(0, 10);
-}
 
 export default async function WritingPage() {
   const [sections, projectRecordMap] = await Promise.all([getWritingArchiveSections(), getProjectRecordMap()]);
   const allPosts = [sections.latest, ...sections.timeline];
   const latestGamePost = allPosts.find((post) => post.relatedProjects.some((project) => project !== 'ggumul-dinner-grocery')) ?? sections.latest;
   const nextUpdates = allPosts.filter((post) => post.slug !== latestGamePost.slug);
-  const topicTags = displayTopicTags(sections.taxonomy.tags);
   const latestGamePath = getWritingReadingPath(latestGamePost.slug);
   const gameLanes = gameOrder
     .map((slug) => projectRecordMap[slug])
@@ -168,7 +140,6 @@ export default async function WritingPage() {
                   <p className="text-[12px] font-black uppercase tracking-[0.22em] text-point">{project.progressStatus}</p>
                   <h3 className="mt-2 text-2xl font-black tracking-[-0.05em] text-text">{project.title}</h3>
                 </div>
-                <span className="rounded-full border border-line/70 px-3 py-1 text-[12px] text-subtext">{recordLabel(records.length)}</span>
               </div>
               <p className="mt-4 text-sm leading-7 text-subtext">{hook}</p>
               <div className="mt-5 rounded-2xl border border-white/10 bg-black/18 p-4">
@@ -178,11 +149,6 @@ export default async function WritingPage() {
                   <Link href={entry.href} className="mt-3 block text-[17px] font-black leading-snug tracking-[-0.035em] text-text hover:text-point">
                     {entry.title}
                     <span className="mt-2 block text-[13px] font-normal leading-6 text-subtext">{entry.summary}</span>
-                    {entry.slug ? (
-                      <span className="mt-3 block rounded-2xl border border-[#fff1b8]/22 bg-[#10183a]/30 p-3 text-[12px] font-normal leading-5 text-subtext">
-                        <span className="font-black text-point">읽을 이유</span> · {getWritingReadingPath(entry.slug).stakes}
-                      </span>
-                    ) : null}
                   </Link>
                 ) : (
                   <p className="mt-2 text-sm text-subtext">연결된 기록을 준비 중입니다.</p>
@@ -196,31 +162,17 @@ export default async function WritingPage() {
         </div>
       </section>
 
-      <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
-        <div className="space-y-5">
-          <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">최근 기록</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">다른 개발 기록</h2>
-            <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">게임 화면에서 시작한 기록이지만, 장보기 앱이나 작업 리듬처럼 같은 제작 과정에서 나온 기록도 함께 이어집니다.</p>
-          </div>
-          <div className="grid gap-4">
-            {nextUpdates.map((post) => (
-              <PostCard key={post.slug} post={post} />
-            ))}
-          </div>
+      <section className="space-y-5">
+        <div>
+          <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">최근 기록</p>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">다른 개발 기록</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">게임 화면에서 시작한 기록이지만, 장보기 앱이나 작업 리듬처럼 같은 제작 과정에서 나온 기록도 함께 이어집니다.</p>
         </div>
-
-        <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
-          <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">주제</div>
-            <p className="text-[13px] leading-6">게임 화면, 동기화, 가격 기록처럼 다시 참고할 만한 주제만 모았습니다.</p>
-            <div className="flex flex-wrap gap-2 text-[12px]">
-              {topicTags.slice(0, 6).map((tag) => (
-                <span key={tag} className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-subtext">#{tag}</span>
-              ))}
-            </div>
-          </div>
-        </aside>
+        <div className="grid gap-4">
+          {nextUpdates.map((post) => (
+            <PostCard key={post.slug} post={post} />
+          ))}
+        </div>
       </section>
     </div>
   );

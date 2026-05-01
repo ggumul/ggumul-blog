@@ -54,6 +54,28 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).toContain('Wanderer부터 바로 봅니다');
   });
 
+  it('keeps home from duplicating latest-record explanation blocks', () => {
+    const homePage = read('app/page.tsx');
+
+    expect(homePage).not.toMatch(/latestGamePath|다음에 볼 막힌 장면|남긴 판단|읽을 이유/);
+    expect(homePage).toContain('30초 카드 골라보기');
+  });
+
+  it('keeps writing index from becoming a tag wall or repeated explainer grid', () => {
+    const writingPage = read('app/writing/page.tsx');
+
+    expect(writingPage).not.toMatch(/displayTopicTags|topicTags|recordLabel|읽을 이유|aside-rail/);
+    expect(writingPage).toContain('처음 볼 기록');
+  });
+
+  it('keeps the Wanderer detail page focused on play before follow/devlog blocks', () => {
+    const projectDetailPage = read('app/projects/[slug]/page.tsx');
+
+    expect(projectDetailPage).toContain('<WandererMiniPlay />');
+    expect(projectDetailPage).not.toMatch(/firstVisitSteps|CommunityCTA|영상 → 기록 → 다음 소식|처음 오셨다면/);
+    expect(projectDetailPage).toContain('한 장 고르고, 바로 결과를 봅니다.');
+  });
+
   it('keeps Wanderer title spacing readable in public routes', () => {
     const combined = [read('app/writing/page.tsx'), read('content/writing/2026-04-20-wanderer-초기-설계-회고.mdx')].join('\n');
 

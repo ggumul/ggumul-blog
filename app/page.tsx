@@ -3,7 +3,6 @@ import { CommunityCTA } from '@/components/community-cta';
 import { PostCard } from '@/components/post-card';
 import { ProjectCard } from '@/components/project-card';
 import { getHomeArchiveSnapshot } from '@/lib/content';
-import { getWritingReadingPath } from '@/lib/writing-reading-path';
 import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
@@ -30,8 +29,7 @@ export default async function HomePage() {
     .filter((entry) => entry.relatedProjects.some((project) => project !== 'ggumul-dinner-grocery'))
     .slice(0, 3);
   const latestGamePost = latestGamePosts[0] ?? snapshot.latest;
-  const latestGamePath = latestGamePost ? getWritingReadingPath(latestGamePost.slug) : null;
-  const moreGamePosts = latestGamePosts.slice(1, 3);
+  const moreGamePosts = latestGamePosts.slice(1, 2);
 
   return (
     <div className="archive-surface space-y-12 md:space-y-16">
@@ -125,7 +123,7 @@ export default async function HomePage() {
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[13px] font-black text-point">최근 게임 기록</p>
-              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">다음에 볼 막힌 장면</h2>
+              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">화면에서 막힌 지점</h2>
               <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
                 그냥 작업 현황을 늘어놓지 않고, 화면에서 어긋난 순간과 고친 이유가 보이는 글부터 꺼냈습니다.
               </p>
@@ -133,15 +131,6 @@ export default async function HomePage() {
             <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">개발기록 전체 보기 →</Link>
           </div>
           <PostCard post={latestGamePost} featured />
-          {latestGamePath ? (
-            <div className="rounded-[20px] border-2 border-point/45 bg-point/15 p-4">
-              <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">볼 지점</p>
-              <p className="mt-2 text-sm leading-6 text-subtext">{latestGamePath.stakes}</p>
-              <Link href={`/writing/${latestGamePost.slug}`} className="mt-3 inline-flex text-sm font-black text-text hover:text-point">
-                {latestGamePath.next} →
-              </Link>
-            </div>
-          ) : null}
           <div className="grid gap-4 md:grid-cols-2">
             {moreGamePosts.map((post) => (
               <PostCard key={post.slug} post={post} compact />

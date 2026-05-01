@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PageHero, Pill } from '@/components/brand-ui';
-import { CommunityCTA } from '@/components/community-cta';
 import { PostCard } from '@/components/post-card';
 import { WandererMiniPlay } from '@/components/wanderer-mini-play';
 import { getProjectBySlug, getProjects, getWriting, resolveProjectRecords } from '@/lib/content';
@@ -34,27 +33,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   });
 }
 
-const firstVisitSteps = [
-  {
-    label: '한 턴 먼저 보기',
-    title: '규칙 보고, 한 장만.',
-    description: '설명을 길게 읽기 전에, 이번 규칙과 상대 카드를 보고 내 카드 한 장을 골라봅니다.',
-    href: '#mini-play',
-  },
-  {
-    label: '그다음 읽기',
-    title: '폰에서 막힌 지점을 확인합니다.',
-    description: '실제 기기에서 화면 흐름이 끊긴 부분과 다음에 고칠 기준을 기록으로 이어 봅니다.',
-    href: '/writing/runtime-화면-확인-기록',
-  },
-  {
-    label: '계속 보기',
-    title: '새 기록을 받아보거나 짧게 감상을 남깁니다.',
-    description: 'RSS, 메일, X 공유는 /links에 모아두었습니다. 조용히 따라보는 정도로 열어둔 경로입니다.',
-    href: '/links#follow',
-  },
-];
-
 function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnType<typeof getWriting>> }) {
   return (
     <article className="archive-surface space-y-10 md:space-y-14">
@@ -69,10 +47,10 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
               <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer · 모바일 카드 게임</p>
               <div className="space-y-4">
                 <h1 className="max-w-5xl text-[40px] font-black leading-[0.98] tracking-[-0.065em] text-text md:text-[72px]">
-                  조건을 보고,<br />높게 내는<br />짧은 전투.
+                  한 장 고르고,<br />바로 결과를<br />봅니다.
                 </h1>
                 <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-                  Wanderer는 제한 시간 안에 규칙을 읽고 카드 한 장을 내는 모바일 카드 게임입니다. 규칙을 통과한 카드끼리 숫자를 비교하고, 맞지 않는 카드는 바로 탈락합니다.
+                  한 장 고르고, 바로 결과를 봅니다. Wanderer는 제한 시간 안에 규칙을 읽고 카드 한 장을 내는 모바일 카드 게임입니다. 규칙을 통과한 카드끼리 숫자를 비교하고, 맞지 않는 카드는 바로 탈락합니다.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
@@ -126,27 +104,6 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       </section>
 
       <WandererMiniPlay />
-
-      <section className="space-y-5">
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">처음 오셨다면</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">영상 → 기록 → 다음 소식 순서로 보면 됩니다.</h2>
-          </div>
-          <Link href="/links#follow" className="text-sm font-bold text-point hover:text-text">소식 받는 곳 보기 →</Link>
-        </div>
-        <div className="grid gap-4 md:grid-cols-3">
-          {firstVisitSteps.map((step) => (
-            <Link key={step.title} href={step.href} className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5 transition hover:border-point/60 hover:bg-white/[0.08]">
-              <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">{step.label}</p>
-              <h3 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">{step.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-subtext">{step.description}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <CommunityCTA compact />
 
       <section className="grid gap-4 md:grid-cols-3">
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
