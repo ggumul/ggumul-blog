@@ -32,7 +32,7 @@ describe('public UI copy cleanup', () => {
   });
 
   it('uses fewer competing labels on archive cards', () => {
-    const combined = [read('components/post-card.tsx'), read('app/writing/page.tsx')].join('\n');
+    const combined = [read('components/post-card.tsx'), read('app/writing/page.tsx'), read('app/page.tsx')].join('\n');
 
     expect(combined).not.toMatch(/문제가 된 장면|바뀐 점|다음 장면/);
     expect(combined).not.toMatch(/남긴 판단|먼저 읽기|찾아볼 주제/);
