@@ -36,7 +36,7 @@ export default async function ProjectsPage() {
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               <MetricCard label="공개 항목" value={worklines.length} description="게임과 생활 도구" />
-              <MetricCard label="이어 읽기" value={recordTotal} description="각 항목의 실제 기록" />
+              <MetricCard label="기록" value={recordTotal} description="각 항목의 실제 기록" />
             </div>
           </div>
 
