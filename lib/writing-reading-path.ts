@@ -17,7 +17,7 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
   'runtime-화면-확인-기록': {
     stakes: '버튼을 눌렀는데 다음 상황이 바로 읽히지 않았습니다.',
     change: '폰 화면에서 어디서 한 박자 끊기는지 보고, 먼저 고칠 흐름을 골랐습니다.',
-    next: '한 턴 다듬은 글 읽기',
+    next: '플레이 흐름 읽기',
   },
   'wanderer-sync-연결-문제-분석': {
     stakes: '화면은 이어진다고 믿었는데 서버는 이미 끊겼다고 보고 있었습니다.',

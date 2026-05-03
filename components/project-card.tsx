@@ -53,6 +53,28 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
   );
 }
 
+function WandererCardPreview() {
+  return (
+    <div className="wanderer-card-preview flex h-full min-h-[260px] flex-col justify-between bg-[radial-gradient(circle_at_24%_20%,rgba(255,212,71,0.3),transparent_12rem),linear-gradient(135deg,rgba(31,70,162,0.98),rgba(16,24,58,0.98))] p-5">
+      <div className="flex items-center justify-between gap-3">
+        <span className="rounded-full border-2 border-[#fff1b8]/65 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">Wanderer 한 턴</span>
+        <span className="rounded-full border border-[#fff1b8]/35 bg-[#10183a]/60 px-3 py-1 text-[11px] font-black text-subtext">홀수 카드</span>
+      </div>
+      <div className="grid gap-3 py-6">
+        <div className="rounded-[20px] border-2 border-[#fff1b8]/35 bg-[#10183a]/50 p-4 text-center">
+          <p className="text-[12px] font-black text-subtext">상대보다 높은 카드를 고릅니다</p>
+          <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+            <strong className="rounded-[16px] border-2 border-[#fff1b8]/35 bg-[#172f82] py-5 text-5xl tracking-[-0.08em] text-[#ffd447]">13</strong>
+            <span className="text-[12px] font-black text-point">VS</span>
+            <strong className="rounded-[16px] border-2 border-[#fff1b8]/65 bg-[#ff72a6] py-5 text-5xl tracking-[-0.08em] text-[#15183a]">15</strong>
+          </div>
+        </div>
+        <p className="rounded-[18px] border-2 border-[#fff1b8]/30 bg-[#10183a]/55 p-3 text-sm font-black leading-6 text-text">15는 살아남고 이번 턴을 가져갑니다.</p>
+      </div>
+    </div>
+  );
+}
+
 function getProjectHref(project: ProjectEntry) {
   return project.slug === 'wanderer' ? `/projects/${project.slug}#mini-play` : `/projects/${project.slug}`;
 }
@@ -84,7 +106,9 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
     <article className="game-card-glow overflow-hidden rounded-[26px] border-[3px] border-[#fff1b8]/45 bg-[#1b3d96]/68">
       <div className="grid gap-0 md:grid-cols-[minmax(260px,0.82fr)_minmax(0,1.18fr)]">
         <Link href={projectHref} className="group relative min-h-[240px] overflow-hidden bg-[#10183a] md:min-h-full">
-          {cover ? (
+          {project.slug === 'wanderer' ? (
+            <WandererCardPreview />
+          ) : cover ? (
             <img src={cover} alt={`${project.title} 대표 화면`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" />
           ) : (
             <EvidenceFallback project={project} />
@@ -112,7 +136,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           <div className="mt-5 space-y-3">
             <div className="flex flex-wrap gap-3 text-sm">
               <Link href={projectHref} className="game-button-primary px-4 py-2.5 text-sm">{projectCtas[project.slug] ?? '프로젝트'}</Link>
-              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">한 턴 다듬은 글</Link>
+              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">플레이 흐름 읽기</Link>
             </div>
           </div>
         </div>

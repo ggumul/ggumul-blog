@@ -33,7 +33,7 @@ export default async function ProjectsPage() {
             </p>
             <div className="mt-5 flex flex-wrap gap-3 text-sm">
               <Link href="/projects/wanderer#mini-play" className="game-button-primary">30초 카드 골라보기</Link>
-              <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">한 턴 다듬은 글</Link>
+              <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">플레이 흐름 읽기</Link>
             </div>
           </div>
 

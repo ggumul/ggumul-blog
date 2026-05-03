@@ -119,7 +119,7 @@ export default async function WritingPage() {
               카드 게임은 버튼을 누른 뒤 결과가 늦으면 바로 힘이 빠집니다. 그래서 이 글을 맨 위에 뒀습니다.
             </p>
           </div>
-          <Link href={`/writing/${latestGamePost.slug}`} className="text-sm font-bold text-point hover:text-text">한 턴 다듬은 글 읽기 →</Link>
+          <Link href={`/writing/${latestGamePost.slug}`} className="text-sm font-bold text-point hover:text-text">플레이 흐름 읽기 →</Link>
         </div>
         <PostCard post={latestGamePost} featured />
 

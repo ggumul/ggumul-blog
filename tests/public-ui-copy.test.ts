@@ -135,7 +135,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/작업 문서|작업 정리|작업 관련 문의/);
     expect(combined).not.toMatch(/이번 기록|초기 설계 회고|확인한 사실|다음 작업|점검표|프로젝트 문서|프로젝트 회고|같은 작업에서 나온 글/);
     expect(combined).not.toMatch(/작업 철학|진행 현황/);
-    expect(combined).not.toMatch(/모바일 화면 보기|최근 장면 보기/);
+    expect(combined).not.toMatch(/모바일 화면 보기|최근 장면 보기|한 턴 다듬은 글/);
   });
 
   it('keeps project cards from repeating two descriptions for the same project', () => {
@@ -143,5 +143,8 @@ describe('public UI copy cleanup', () => {
 
     expect(projectCard).not.toMatch(/projectLines|projectAvailability|StatusFacts/);
     expect(projectCard).not.toMatch(/>새 소식<|식단을 정하면 장보기 목록과 가격 판단으로 이어집니다|홀수만 살아남는 턴에서 15를 내면 상대의 13을 넘깁니다|막대를 옮기면 다음 상태가 바로 보입니다/);
+    expect(projectCard).toContain('function WandererCardPreview');
+    expect(projectCard).toContain("project.slug === 'wanderer'");
+    expect(projectCard).toContain('wanderer-card-preview');
   });
 });
