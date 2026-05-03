@@ -37,7 +37,7 @@ export default async function HomePage() {
                 이번 턴, 어떤 카드를 내야 이길까요?
               </h1>
               <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                이번 턴은 홀수 카드만 유효합니다. 상대의 13보다 높은 카드를 골라보세요.
+                이번 턴은 홀수 카드만 유효. 상대의 13보다 높은 카드를 골라보세요.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 text-sm">
@@ -105,7 +105,7 @@ export default async function HomePage() {
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[13px] font-black text-point">다른 게임과 도구</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">짧게 볼 수 있는 다른 게임들</h2>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">다른 작은 게임들</h2>
           </div>
           <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">다른 게임 모두 보기 →</Link>
         </div>
@@ -121,9 +121,9 @@ export default async function HomePage() {
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[13px] font-black text-point">Wanderer 이야기</p>
-              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">모바일에서도 결과가 자연스럽게 이어지도록 개선했습니다</h2>
+              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">카드 한 장을 고르는 맛을 다듬고 있습니다</h2>
               <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
-                카드를 고른 뒤 결과가 바로 이어지지 않던 흐름을 다시 맞췄습니다.
+                Wanderer는 긴 설명보다 한 번의 선택과 결과가 먼저 보이는 쪽으로 만들고 있습니다.
               </p>
             </div>
             <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">글 목록 →</Link>

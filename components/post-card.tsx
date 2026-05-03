@@ -14,12 +14,12 @@ const postThumbnails: Record<string, Thumbnail> = {
   'runtime-화면-확인-기록': {
     src: '/media/runtime-checks/wanderer-mobile-current.png',
     label: 'Mobile flow',
-    caption: '버튼 뒤 흐름 끊김',
+    caption: '카드 선택 뒤 결과',
   },
   'wanderer-sync-연결-문제-분석': {
     src: '/studio/wanderer-home.png',
-    label: 'Sync problem',
-    caption: '이어진다고 믿은 화면',
+    label: 'Wanderer turn',
+    caption: '같은 턴을 보는 장면',
   },
   '4월-프로젝트-개발-현황': {
     src: null,
@@ -147,7 +147,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
           <h3 className="text-[18px] font-black leading-snug tracking-[-0.04em] text-text group-hover:text-point">{post.title}</h3>
           <p className="mt-2 line-clamp-2 text-sm leading-6 text-subtext">{readingPath.stakes}</p>
         </div>
-        <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 px-3 py-2 text-[12px] leading-5 text-subtext">{readingPath.next}</p>
+        <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 px-3 py-2 text-[12px] leading-5 text-subtext">글 읽기</p>
       </Link>
     );
   }
@@ -173,9 +173,6 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
             {post.title}
           </h3>
           <p className={featured ? 'mt-4 text-base leading-8 text-subtext' : 'mt-3 line-clamp-3 text-sm leading-7 text-subtext'}>{post.summary}</p>
-          <div className={featured ? 'mt-5' : 'mt-4'}>
-            <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 p-3 text-[13px] leading-6 text-subtext">{readingPath.next}</p>
-          </div>
         </div>
 
         <div className="mt-5 flex flex-wrap items-center gap-2 text-[11px] text-subtext">
@@ -190,7 +187,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
             </span>
           ))}
           <span className="ml-auto rounded-full border-2 border-point/40 bg-point/15 px-3 py-1 font-black text-point">
-            {readingPath.next} →
+            글 읽기 →
           </span>
         </div>
       </div>

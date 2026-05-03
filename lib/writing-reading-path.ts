@@ -15,14 +15,14 @@ export const writingReadingPathSlugs = [
 
 const writingReadingPaths: Record<string, WritingReadingPath> = {
   'runtime-화면-확인-기록': {
-    stakes: '버튼을 눌렀는데 다음 상황이 바로 읽히지 않았습니다.',
-    change: '폰 화면에서 어디서 한 박자 끊기는지 보고, 먼저 고칠 흐름을 골랐습니다.',
-    next: '플레이 흐름 읽기',
+    stakes: '카드를 고른 뒤 결과가 어떻게 보이는지 한 턴 단위로 살폈습니다.',
+    change: '폰에서 손패, 선택, 결과가 한 장면으로 이어지도록 기준을 세웠습니다.',
+    next: '한 턴 기록 읽기',
   },
   'wanderer-sync-연결-문제-분석': {
-    stakes: '모바일 진행 상태가 화면과 서버에서 다르게 읽히던 흐름을 맞췄습니다.',
-    change: '한 턴의 선택과 결과가 같은 상태로 이어지도록 기준을 다시 잡았습니다.',
-    next: '진행 상태 개선 글 읽기',
+    stakes: '플레이어가 다시 돌아와도 같은 카드와 결과를 볼 수 있어야 했습니다.',
+    change: '한 턴의 선택과 결과를 같은 장면으로 이어 보이게 기준을 잡았습니다.',
+    next: '같은 턴 기록 읽기',
   },
   'wanderer-초기-설계-회고': {
     stakes: '카드 전투가 길어질수록 선택 뒤 결과를 보는 맛이 흐려졌습니다.',

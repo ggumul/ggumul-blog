@@ -50,7 +50,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
                   한 장 고르고,<br />바로 결과를<br />봅니다.
                 </h1>
                 <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-                  한 장 고르고, 바로 결과를 봅니다. 이번 턴은 홀수 카드만 유효합니다. 상대의 최고 카드는 13이고, 손에는 5, 10, 15가 있습니다.
+                  한 장 고르고, 바로 결과를 봅니다. 이번 턴은 홀수 카드만 유효. 상대의 최고 카드는 13이고, 손에는 5, 10, 15가 있습니다.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
@@ -108,7 +108,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <section className="grid gap-4 md:grid-cols-3">
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
           <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">규칙</p>
-          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">홀수 카드만 유효합니다.</h2>
+          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">홀수 카드만 유효.</h2>
           <p className="mt-3 text-sm leading-7 text-subtext">5, 9, 13, 15는 남고 10과 12는 빠집니다.</p>
         </div>
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
