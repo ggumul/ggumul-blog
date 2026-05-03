@@ -22,6 +22,8 @@ describe('public UI copy cleanup', () => {
 
     expect(linksPage).not.toContain('break-all');
     expect(linksPage).not.toContain('{link.href}</p>');
+    expect(linksPage).not.toContain('github.com/ggumul');
+    expect(linksPage).toContain('github.com/ggomul');
     expect(linksPage).toContain('link.displayHref');
   });
 
@@ -135,7 +137,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/작업 문서|작업 정리|작업 관련 문의/);
     expect(combined).not.toMatch(/이번 기록|초기 설계 회고|확인한 사실|다음 작업|점검표|프로젝트 문서|프로젝트 회고|같은 작업에서 나온 글/);
     expect(combined).not.toMatch(/작업 철학|진행 현황/);
-    expect(combined).not.toMatch(/모바일 화면 보기|최근 장면 보기|한 턴 다듬은 글/);
+    expect(combined).not.toMatch(/모바일 화면|최근 장면 보기|한 턴 다듬은 글|대표 화면|작업을 찾을 수 없음|요청한 작업을 찾을 수 없습니다/);
   });
 
   it('keeps project cards from repeating two descriptions for the same project', () => {

@@ -140,7 +140,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
           </div>
 
           <figure className="studio-shot min-h-[330px] overflow-hidden rounded-[30px] border border-line/80 bg-white/10 md:min-h-[520px]">
-            <img alt={`${post.title} 대표 화면`} className="h-full w-full object-cover" src={heroImage} />
+            <img alt={`${post.title} 장면`} className="h-full w-full object-cover" src={heroImage} />
             <figcaption className="studio-caption">
               <span>글과 연결된 실행 화면</span>
               <span>{post.category}</span>
@@ -171,7 +171,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
               <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">관련 프로젝트</div>
               {relatedProjects.map((project) => (
                 <Link key={project.slug} href={`/projects/${project.slug}`} className="block overflow-hidden rounded-[20px] border border-line/80 bg-white/[0.055] transition hover:border-point/60">
-                  {project.coverImage ? <img alt={`${project.title} 대표 화면`} className="h-28 w-full object-cover" src={project.coverImage} /> : null}
+                  {project.coverImage ? <img alt={`${project.title} 장면`} className="h-28 w-full object-cover" src={project.coverImage} /> : null}
                   <div className="p-4">
                     <div className="font-black tracking-[-0.03em] text-text">{project.title}</div>
                     <p className="mt-1 text-sm leading-6 text-subtext">{project.summary}</p>

@@ -2,7 +2,7 @@ import { PageHero, SectionHeader } from '@/components/brand-ui';
 import { createMetadata } from '@/lib/site';
 
 const links = [
-  { label: 'GitHub', href: 'https://github.com/ggumul', displayHref: 'github.com/ggumul', description: '게임과 도구의 코드 저장소', type: 'code' },
+  { label: 'GitHub', href: 'https://github.com/ggomul', displayHref: 'github.com/ggomul', description: '게임과 도구의 코드 저장소', type: 'code' },
   { label: 'Notion', href: 'https://www.notion.so/348521c1518081e08d81d9215785de15', displayHref: 'notion.so/ggumul', description: '게임 아이디어와 메모 모음', type: 'memo' },
   { label: '문의 메일', href: 'mailto:hwang95903@gmail.com', displayHref: 'hwang95903@gmail.com', description: '메일로 연락하기', type: 'mail' },
 ];

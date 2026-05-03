@@ -160,7 +160,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
         featured ? 'md:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]' : '',
       ].join(' ')}
     >
-      <ThumbnailFrame thumbnail={thumbnail} alt={`${post.title} 대표 화면`} featured={featured} />
+      <ThumbnailFrame thumbnail={thumbnail} alt={`${post.title} 장면`} featured={featured} />
 
       <div className={featured ? 'flex min-h-[240px] flex-col justify-between p-5 md:p-7' : 'p-5'}>
         <div>

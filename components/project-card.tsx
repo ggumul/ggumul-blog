@@ -109,7 +109,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           {project.slug === 'wanderer' ? (
             <WandererCardPreview />
           ) : cover ? (
-            <img src={cover} alt={`${project.title} 대표 화면`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" />
+            <img src={cover} alt={`${project.title} 장면`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" />
           ) : (
             <EvidenceFallback project={project} />
           )}
