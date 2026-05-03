@@ -33,15 +33,44 @@ export default async function ProjectsPage() {
             </p>
             <div className="mt-5 flex flex-wrap gap-3 text-sm">
               <Link href="/projects/wanderer#mini-play" className="game-button-primary">30초 카드 골라보기</Link>
-              <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">모바일 화면 보기</Link>
+              <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">한 턴 다듬은 글</Link>
             </div>
           </div>
 
-          <figure className="studio-shot min-h-[320px] rounded-[24px] border-[3px] border-[#fff1b8]/55 bg-[#10183a] md:min-h-[500px]">
-            <img alt="Wanderer 대표 플레이 화면" className="h-full w-full object-cover object-center" src="/media/runtime-checks/wanderer-mobile-current.png" />
-            <figcaption className="studio-caption">
-              <span>Wanderer · 규칙 확인 → 카드 선택 → 결과</span>
-              <Link href="/projects/wanderer#mini-play">한 턴</Link>
+          <figure className="studio-shot relative flex min-h-[320px] flex-col justify-between overflow-hidden rounded-[24px] border-[3px] border-[#fff1b8]/55 bg-[#10183a] p-4 md:min-h-[500px] md:p-6">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_18%,rgba(255,212,71,0.22),transparent_26%),radial-gradient(circle_at_78%_20%,rgba(255,114,166,0.18),transparent_26%),linear-gradient(135deg,rgba(31,70,162,0.95),rgba(16,24,58,0.98))]" />
+            <div className="relative flex items-center justify-between gap-3">
+              <div className="rounded-full border-2 border-[#fff1b8]/70 bg-[#ffd447] px-3 py-1 text-[12px] font-black text-[#15183a] shadow-[0_3px_0_rgba(8,13,43,0.45)]">
+                Wanderer 한 턴
+              </div>
+              <div className="rounded-full border border-[#fff1b8]/35 bg-[#10183a]/58 px-3 py-1 text-[12px] font-black text-subtext">
+                조건: 홀수만 살아남음
+              </div>
+            </div>
+
+            <div className="relative mx-auto grid w-full max-w-[620px] gap-4 py-6">
+              <div className="rounded-[24px] border-[3px] border-[#fff1b8]/45 bg-[#172f82]/84 p-4 shadow-[0_6px_0_rgba(8,13,43,0.42)] md:p-6">
+                <div className="grid gap-3 md:grid-cols-[1fr_auto_1fr] md:items-center">
+                  <div className="rounded-[18px] border-2 border-[#fff1b8]/35 bg-[#10183a]/55 p-4 text-center">
+                    <p className="text-[12px] font-black text-subtext">상대 카드</p>
+                    <p className="mt-2 text-6xl font-black tracking-[-0.08em] text-[#ffd447]">13</p>
+                  </div>
+                  <div className="text-center text-[13px] font-black text-point">VS</div>
+                  <div className="rounded-[18px] border-2 border-[#fff1b8]/65 bg-[#ff72a6]/90 p-4 text-center shadow-[0_5px_0_rgba(8,13,43,0.35)]">
+                    <p className="text-[12px] font-black text-[#15183a]">내 카드</p>
+                    <p className="mt-2 text-6xl font-black tracking-[-0.08em] text-[#15183a]">15</p>
+                  </div>
+                </div>
+                <div className="mt-4 rounded-[18px] border-2 border-[#fff1b8]/35 bg-[#10183a]/58 p-4">
+                  <p className="text-[12px] font-black text-point">결과</p>
+                  <p className="mt-1 text-lg font-black leading-7 text-text">15는 홀수라 살아남고, 13보다 높아 턴을 가져갑니다.</p>
+                </div>
+              </div>
+            </div>
+
+            <figcaption className="studio-caption relative">
+              <span>조건 확인 → 카드 선택 → 결과</span>
+              <Link href="/projects/wanderer#mini-play">직접 골라보기</Link>
             </figcaption>
           </figure>
         </div>

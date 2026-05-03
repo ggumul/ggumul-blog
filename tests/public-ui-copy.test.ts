@@ -60,8 +60,10 @@ describe('public UI copy cleanup', () => {
     const projectsPage = read('app/projects/page.tsx');
 
     expect(projectsPage).toContain("project.slug === 'wanderer'");
-    expect(projectsPage).not.toMatch(/MetricCard|공개 항목|recordTotal|worklines\.slice\(1, 4\)|object-contain object-center/);
-    expect(projectsPage).toContain('Wanderer부터 바로 봅니다');
+    expect(projectsPage).not.toMatch(/MetricCard|공개 항목|recordTotal|worklines\.slice\(1, 4\)|총 게임|화면·글·상태|현황판/);
+    expect(projectsPage).not.toMatch(/장면을 나누고, 글과 화면을 붙입니다|가장 최근에 확인한 화면과 기록을 먼저 보여줍니다/);
+    expect(projectsPage).not.toMatch(/object-contain object-center/);
+    expect(projectsPage).not.toContain('/media/runtime-checks/wanderer-mobile-current.png');
   });
 
   it('keeps home from duplicating latest-record explanation blocks', () => {
@@ -132,6 +134,8 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/화면 있음|가격 연결 중|다른 항목|폰에서 본 장면|바로 고르기|첫 장면|새 장면|퍼즐 흐름|장보기 흐름|변형 규칙|빈 부분 다시 열기|가격 기준 다시 열기|끊긴 장면\s*→|프로젝트 지도|볼 항목|event 이름|payload 기준|작업 철학|진행 현황/);
     expect(combined).not.toMatch(/작업 문서|작업 정리|작업 관련 문의/);
     expect(combined).not.toMatch(/이번 기록|초기 설계 회고|확인한 사실|다음 작업|점검표|프로젝트 문서|프로젝트 회고|같은 작업에서 나온 글/);
+    expect(combined).not.toMatch(/작업 철학|진행 현황/);
+    expect(combined).not.toMatch(/모바일 화면 보기|최근 장면 보기/);
   });
 
   it('keeps project cards from repeating two descriptions for the same project', () => {
