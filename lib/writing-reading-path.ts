@@ -20,9 +20,9 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
     next: '플레이 흐름 읽기',
   },
   'wanderer-sync-연결-문제-분석': {
-    stakes: '화면은 이어진다고 믿었는데 서버는 이미 끊겼다고 보고 있었습니다.',
-    change: '화면과 서버가 진행 상태를 다르게 본 이유를 찾았습니다.',
-    next: '연결 문제 글 읽기',
+    stakes: '모바일 진행 상태가 화면과 서버에서 다르게 읽히던 흐름을 맞췄습니다.',
+    change: '한 턴의 선택과 결과가 같은 상태로 이어지도록 기준을 다시 잡았습니다.',
+    next: '진행 상태 개선 글 읽기',
   },
   'wanderer-초기-설계-회고': {
     stakes: '카드 전투가 길어질수록 선택 뒤 결과를 보는 맛이 흐려졌습니다.',

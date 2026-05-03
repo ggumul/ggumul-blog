@@ -81,7 +81,8 @@ describe('public UI copy cleanup', () => {
     expect(homePage).not.toContain('<video');
     expect(homePage).not.toContain('wanderer-mobile-demo.mp4');
     expect(homePage).not.toMatch(/heroLoop|조건을 읽고,?<br \/>한 장으로 턴을 가져갑니다|Wanderer 한 턴 샘플|홀수만 살아남음|직접 골라보기|Wanderer를 먼저 봅니다|Wanderer 말고도 바로 해볼 일이 있어요|버튼 뒤 장면이 늦었던 날/);
-    expect(homePage).toContain('지금 이길 카드는 어느 쪽일까요?');
+    expect(homePage).not.toMatch(/Wanderer 플레이 예시|지금 이길 카드는 어느 쪽일까요|모바일에서 결과가 늦게 보였던 문제|끊긴 이유|서버는 이미 끊겼다|턴 조건을 보고/);
+    expect(homePage).toContain('이번 턴, 어떤 카드를 내야 이길까요?');
     expect(homePage).toContain('바로 한 턴 해보기');
     expect(homePage).toContain('홀수 카드만 유효');
   });

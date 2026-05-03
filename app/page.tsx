@@ -31,13 +31,13 @@ export default async function HomePage() {
       <section className="studio-hero overflow-hidden rounded-[28px] border-[3px] border-[#fff1b8]/60 bg-[#1f46a2]/45 p-4 md:p-6">
         <div className="grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(390px,1.2fr)] lg:items-stretch">
           <div className="flex flex-col justify-center gap-5 rounded-[22px] bg-[#172f82]/72 p-5 md:p-7">
-            <p className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/60 bg-[#ff72a6]/90 px-3 py-1 text-[12px] font-black tracking-[-0.02em] text-[#15183a]">Wanderer 플레이 예시</p>
+            <p className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/60 bg-[#ff72a6]/90 px-3 py-1 text-[12px] font-black tracking-[-0.02em] text-[#15183a]">Wanderer 한 턴</p>
             <div className="space-y-4">
               <h1 className="max-w-4xl text-[34px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[64px]">
-                지금 이길 카드는 어느 쪽일까요?
+                이번 턴, 어떤 카드를 내야 이길까요?
               </h1>
               <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                조건은 단순합니다. 홀수 카드만 유효하고, 상대의 13보다 높은 카드를 고르면 이번 턴을 가져갑니다.
+                이번 턴은 홀수 카드만 유효합니다. 상대의 13보다 높은 카드를 골라보세요.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 text-sm">
@@ -76,14 +76,13 @@ export default async function HomePage() {
                 </div>
                 <div className="mt-4 rounded-[18px] border-2 border-[#fff1b8]/35 bg-[#10183a]/58 p-4">
                   <p className="text-[12px] font-black text-point">결과</p>
-                  <p className="mt-1 text-lg font-black leading-7 text-text">15는 홀수이고 13보다 높습니다. 그래서 이번 턴을 가져갑니다.</p>
+                  <p className="mt-1 text-lg font-black leading-7 text-text">15는 홀수이고 13보다 높습니다. 이번 턴은 승리입니다.</p>
                 </div>
               </div>
             </div>
 
             <figcaption className="studio-caption relative">
               <span>13보다 높고 홀수인 카드를 고르면 됩니다.</span>
-              <Link href="/projects/wanderer#mini-play">한 턴 해보기</Link>
             </figcaption>
           </figure>
         </div>
@@ -122,7 +121,7 @@ export default async function HomePage() {
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[13px] font-black text-point">Wanderer 이야기</p>
-              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">모바일에서 결과가 늦게 보였던 문제</h2>
+              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">모바일에서도 결과가 자연스럽게 이어지도록 개선했습니다</h2>
               <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
                 카드를 고른 뒤 결과가 바로 이어지지 않던 흐름을 다시 맞췄습니다.
               </p>

@@ -18,7 +18,7 @@ const progressTone: Record<ProjectEntry['progressStatus'], string> = {
 
 const projectHooks: Record<string, string> = {
   'ggumul-dinner-grocery': '식단을 정하면 장보기와 가격 판단까지 이어집니다.',
-  wanderer: '턴 조건을 보고 유효한 카드를 내서 상대보다 높게 겨루는 짧은 한 판입니다.',
+  wanderer: '매 턴 조건에 맞는 카드를 골라 상대보다 높게 내는 짧은 카드 게임입니다.',
   trpg: '선택한 문장이 이어지는 흐름과 결말로 돌아옵니다.',
   hanoi: '막대를 옮기는 순서 하나가 퍼즐의 길을 만듭니다.',
   'color-hanoi': '색 조건 하나가 익숙한 퍼즐을 다른 문제로 바꿉니다.',
@@ -33,7 +33,7 @@ const projectCtas: Record<string, string> = {
 };
 
 const statusLabel: Record<ProjectEntry['progressStatus'], string> = {
-  '플레이 확인': '플레이 보기',
+  '플레이 확인': '한 턴 가능',
   미리보기: '미리보기',
   '계약 점검 중': '가격 보기',
   보류: '보관',
