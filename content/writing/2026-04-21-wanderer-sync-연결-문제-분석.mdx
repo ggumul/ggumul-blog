@@ -17,7 +17,7 @@ relatedProjects:
   - "wanderer"
 ---
 
-이번 기록에서는 Wanderer 모바일과 서버의 sync 연결이 왜 바로 붙지 않았는지 정리합니다. 처음에는 서버 쪽 websocket 기능이 아직 준비되지 않은 것처럼 보였지만, 다시 확인해 보니 핵심 원인은 transport 부재가 아니라 상태 복구 계약의 차이였습니다.
+여기서는 Wanderer 모바일과 서버의 sync 연결이 왜 바로 붙지 않았는지 정리합니다. 처음에는 서버 쪽 websocket 기능이 아직 준비되지 않은 것처럼 보였지만, 다시 확인해 보니 핵심 원인은 transport 부재가 아니라 상태 복구 계약의 차이였습니다.
 
 ## 문제
 
@@ -25,7 +25,7 @@ relatedProjects:
 
 반면 서버는 같은 상황을 하나의 snapshot으로 내려주기보다, room, game, turn submission 변경을 각각 이벤트로 발행하는 구조에 가까웠습니다. 서버 입장에서는 `ROOM.UPDATED`, `GAME.UPDATED`, `TURN_SUBMISSIONS_UPDATED`를 순서대로 보내면 충분해 보일 수 있지만, 모바일은 이 이벤트들을 조합해서 기준 상태를 복원하도록 설계되어 있지 않았습니다.
 
-## 확인한 사실
+## 실제로 맞지 않았던 것
 
 최신 `wanderer-was` 기준으로 websocket 자체는 이미 구성되어 있었습니다. `/ws/v1`, `/app`, `/topic`, `@MessageMapping`과 관련 action이 존재했고, 따라서 문제를 “서버에 websocket이 없다”로 보는 것은 틀렸습니다. endpoint 목록만 보면 연결이 가능해 보이지만, 실제로는 event 이름과 payload 형태, 상태 복구 방식이 함께 맞아야 합니다.
 
@@ -54,8 +54,8 @@ relatedProjects:
 
 우선순위는 서버 호환층을 추가해 모바일의 현재 구조를 살리는 쪽입니다. 그 다음에 실제 게임 진행 중에는 event-stream을 어떻게 누적 적용할지 별도 작업으로 분리하는 편이 낫습니다. reconnect 복구와 진행 중 업데이트를 한 번에 재설계하면 수정 범위가 커지고, 실패했을 때 원인을 다시 나누기 어려워집니다.
 
-## 다음 작업
+## 이어서 볼 부분
 
-다음 작업은 세 단계로 나눕니다. 첫째, 서버 테스트에서 sync request 이후 `SYNC_SNAPSHOT`이 한 번 발행되는지 확인합니다. 둘째, payload 안에 room, game, submissions가 모바일 decoder가 기대하는 이름과 형태로 들어가는지 고정합니다. 셋째, 모바일에서 reconnect 이후 해당 snapshot을 받아 화면 상태가 복구되는지 확인합니다.
+이어서 볼 일은 세 단계로 나눕니다. 첫째, 서버 테스트에서 sync request 이후 `SYNC_SNAPSHOT`이 한 번 발행되는지 확인합니다. 둘째, payload 안에 room, game, submissions가 모바일 decoder가 기대하는 이름과 형태로 들어가는지 고정합니다. 셋째, 모바일에서 reconnect 이후 해당 snapshot을 받아 화면 상태가 복구되는지 확인합니다.
 
 이 기록의 결론은 단순합니다. realtime 기능은 endpoint가 열려 있다고 끝나는 작업이 아닙니다. topic, event 이름, payload, 복구 시점, 실패 후 재진입 방식까지 같은 계약으로 맞아야 실제 플레이가 이어집니다. Wanderer의 우선 과제는 이 기준을 문서와 테스트로 고정한 뒤, 모바일과 서버를 다시 같은 흐름에 올리는 것입니다.

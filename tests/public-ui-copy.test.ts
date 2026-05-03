@@ -1,7 +1,12 @@
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const read = (path: string) => readFileSync(path, 'utf8');
+const readWritingMdx = () =>
+  readdirSync('content/writing')
+    .filter((name) => name.endsWith('.mdx'))
+    .map((name) => read(`content/writing/${name}`))
+    .join('\n');
 
 describe('public UI copy cleanup', () => {
   it('keeps Korean prose from splitting syllables in narrow cards', () => {
@@ -105,6 +110,7 @@ describe('public UI copy cleanup', () => {
       read('app/about/page.tsx'),
       read('lib/writing-reading-path.ts'),
       read('content/writing/2026-04-20-wanderer-초기-설계-회고.mdx'),
+      readWritingMdx(),
     ].join('\n');
 
     expect(combined).not.toMatch(/대표 게임 보기|게임 더 보기|전체 보기|글 더 보기|최근 글 보기|끊긴 지점 보기|어긋난 이유 보기|퍼즐 흐름 보기|장보기 흐름 보기|개발 기록 보기/);
