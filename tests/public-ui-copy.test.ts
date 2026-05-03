@@ -70,6 +70,7 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toMatch(/object-contain object-center/);
     expect(projectsPage).not.toContain('/media/runtime-checks/wanderer-mobile-current.png');
     expect(projectsPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
+    expect(projectsPage).not.toMatch(/Wanderer부터 바로 봅니다|먼저 볼 건|줄였습니다|한장을|짧게 보고 고릅니다|새로 좋아진 점|살아남고|13보다 높아/);
     expect(projectsPage).toContain('한 턴 해보기');
     expect(projectsPage).toContain('홀수 카드만 유효');
   });

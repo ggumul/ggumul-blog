@@ -6,7 +6,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '게임과 도구',
-  description: '꼬물이 만들고 있는 게임과 생활 도구를, 무엇을 해볼 수 있는지 바로 보이게 모았습니다.',
+  description: '꼬물의 작은 게임과 생활 도구를, 무엇을 해볼 수 있는지 바로 보이게 모았습니다.',
   path: '/projects',
 });
 
@@ -26,10 +26,10 @@ export default async function ProjectsPage() {
           <div className="flex flex-col justify-center rounded-[24px] border-2 border-[#fff1b8]/42 bg-[#10183a]/42 p-5 md:p-7">
             <p className="text-[12px] font-black tracking-[0.08em] text-point">게임과 도구</p>
             <h1 className="mt-3 max-w-4xl text-[38px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[68px]">
-              Wanderer부터 바로 봅니다.
+              먼저 Wanderer를 만나보세요.
             </h1>
             <p className="mt-4 max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-8">
-              먼저 볼 건 규칙을 보고 카드 한 장을 내는 Wanderer입니다. 나머지 퍼즐과 도구는 아래에서 짧게 고를 수 있게 줄였습니다.
+              Wanderer는 조건을 확인한 뒤 카드 한 장을 골라 겨루는 짧은 카드 게임입니다. 다른 퍼즐과 도구도 아래에서 빠르게 살펴볼 수 있습니다.
             </p>
             <div className="mt-5 flex flex-wrap gap-3 text-sm">
               <Link href="/projects/wanderer#mini-play" className="game-button-primary">한 턴 해보기</Link>
@@ -63,7 +63,7 @@ export default async function ProjectsPage() {
                 </div>
                 <div className="mt-4 rounded-[18px] border-2 border-[#fff1b8]/35 bg-[#10183a]/58 p-4">
                   <p className="text-[12px] font-black text-point">결과</p>
-                  <p className="mt-1 text-lg font-black leading-7 text-text">15는 홀수라 살아남고, 13보다 높아 턴을 가져갑니다.</p>
+                  <p className="mt-1 text-lg font-black leading-7 text-text">15는 홀수이고 13보다 큽니다. 이번 턴을 가져갑니다.</p>
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@ export default async function ProjectsPage() {
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[12px] font-black tracking-[0.08em] text-point">다른 게임과 도구</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">짧게 보고 고릅니다</h2>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">짧게 살펴봅니다</h2>
           </div>
           <Link href="/writing" className="text-sm font-bold text-point hover:text-text">새 소식 더 보기 →</Link>
         </div>
@@ -107,7 +107,7 @@ export default async function ProjectsPage() {
       <section className="panel-section space-y-5">
         <div>
           <p className="text-[12px] font-black tracking-[0.08em] text-point">새 소식</p>
-          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.05em] text-text md:text-[42px]">새로 좋아진 점</h2>
+          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.05em] text-text md:text-[42px]">최근 소식</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {recentRecords.map((post) => (

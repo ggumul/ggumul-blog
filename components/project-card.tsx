@@ -69,7 +69,7 @@ function WandererCardPreview() {
             <strong className="rounded-[16px] border-2 border-[#fff1b8]/65 bg-[#ff72a6] py-5 text-5xl tracking-[-0.08em] text-[#15183a]">15</strong>
           </div>
         </div>
-        <p className="rounded-[18px] border-2 border-[#fff1b8]/30 bg-[#10183a]/55 p-3 text-sm font-black leading-6 text-text">15는 살아남고 이번 턴을 가져갑니다.</p>
+        <p className="rounded-[18px] border-2 border-[#fff1b8]/30 bg-[#10183a]/55 p-3 text-sm font-black leading-6 text-text">15가 13보다 커서 이번 턴을 가져갑니다.</p>
       </div>
     </div>
   );
