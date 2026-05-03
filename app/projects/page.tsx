@@ -95,7 +95,7 @@ export default async function ProjectsPage() {
             <p className="text-[12px] font-black tracking-[0.08em] text-point">다른 게임과 도구</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">짧게 보고 고릅니다</h2>
           </div>
-          <Link href="/writing" className="text-sm font-bold text-point hover:text-text">글 목록 →</Link>
+          <Link href="/writing" className="text-sm font-bold text-point hover:text-text">새 소식 더 보기 →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {otherWorklines.map(({ project, records }) => (
