@@ -37,7 +37,7 @@ export default async function HomePage() {
                 이번 턴, 어떤 카드를 내야 이길까요?
               </h1>
               <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                이번 턴은 홀수 카드만 유효. 상대의 13보다 높은 카드를 골라보세요.
+                이번 턴에는 홀수 카드만 낼 수 있어요. 상대의 13보다 큰 카드를 골라보세요.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 text-sm">
@@ -50,7 +50,7 @@ export default async function HomePage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_18%,rgba(255,212,71,0.22),transparent_28%),radial-gradient(circle_at_76%_24%,rgba(255,114,166,0.18),transparent_26%),linear-gradient(135deg,rgba(31,70,162,0.94),rgba(16,24,58,0.98))]" />
             <div className="relative flex items-center justify-between gap-3">
               <div className="rounded-full border-2 border-[#fff1b8]/70 bg-[#ffd447] px-3 py-1 text-[12px] font-black text-[#15183a] shadow-[0_3px_0_rgba(8,13,43,0.45)]">
-                상대 카드 13
+                상대 카드: 13
               </div>
               <div className="rounded-full border border-[#fff1b8]/35 bg-[#10183a]/58 px-3 py-1 text-[12px] font-black text-subtext">
                 홀수 카드만 유효
@@ -76,13 +76,13 @@ export default async function HomePage() {
                 </div>
                 <div className="mt-4 rounded-[18px] border-2 border-[#fff1b8]/35 bg-[#10183a]/58 p-4">
                   <p className="text-[12px] font-black text-point">결과</p>
-                  <p className="mt-1 text-lg font-black leading-7 text-text">15는 홀수이고 13보다 높습니다. 이번 턴은 승리입니다.</p>
+                  <p className="mt-1 text-lg font-black leading-7 text-text">15는 홀수이고 13보다 큽니다. 승리!</p>
                 </div>
               </div>
             </div>
 
             <figcaption className="studio-caption relative">
-              <span>13보다 높고 홀수인 카드를 고르면 됩니다.</span>
+              <span>13보다 크고 홀수인 카드를 고르면 됩니다.</span>
             </figcaption>
           </figure>
         </div>

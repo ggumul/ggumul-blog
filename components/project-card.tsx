@@ -18,15 +18,15 @@ const progressTone: Record<ProjectEntry['progressStatus'], string> = {
 
 const projectHooks: Record<string, string> = {
   'ggumul-dinner-grocery': '식단을 정하면 장보기와 가격 판단까지 이어집니다.',
-  wanderer: '매 턴 조건에 맞는 카드를 골라 상대보다 높게 내는 짧은 카드 게임입니다.',
-  trpg: '선택한 문장이 이어지는 흐름과 결말로 돌아옵니다.',
+  wanderer: '매 턴 조건에 맞는 카드를 골라, 상대보다 큰 수를 내는 짧은 카드 게임입니다.',
+  trpg: '선택한 문장에 따라 이야기의 흐름과 결말이 달라집니다.',
   hanoi: '막대를 옮기는 순서 하나가 퍼즐의 길을 만듭니다.',
-  'color-hanoi': '색 조건 하나가 익숙한 퍼즐을 다른 문제로 바꿉니다.',
+  'color-hanoi': '색 조건이 더해져 익숙한 퍼즐이 새로운 문제로 바뀝니다.',
 };
 
 const projectCtas: Record<string, string> = {
   'ggumul-dinner-grocery': '장보기 보기',
-  wanderer: '바로 한 턴 해보기',
+  wanderer: '한 턴 체험하기',
   trpg: '서사 보기',
   hanoi: '퍼즐 보기',
   'color-hanoi': '규칙 보기',

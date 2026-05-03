@@ -96,6 +96,7 @@ describe('public UI copy cleanup', () => {
     expect(homeVisibleSources).not.toMatch(/모바일에서도 결과가 자연스럽게|결과가 바로 이어지지 않던 흐름|흐름을 다시 맞췄습니다|버튼 뒤 흐름 끊김|진행 상태 개선|짧게 볼 수 있는 다른 게임들|유효합니다/);
     expect(homeVisibleSources).not.toMatch(/category: "연결 문제"|- "runtime"|- "flutter"|안정적으로 이어지게|자연스럽게 이어지게|멈칫했는지 줄이고|카드를 한 장을/);
     expect(homeVisibleSources).not.toMatch(/다듬고 있습니다|만들고 있습니다|정리했습니다|다듬었습니다|볼 수 있어야 했습니다|고쳤|Mobile flow|Wanderer turn/);
+    expect(homeVisibleSources).not.toMatch(/상대 카드 13|이번 턴은 홀수 카드만 유효\. 상대의 13보다 높은|13보다 높고 홀수인 카드|선택한 문장이 이어지는 흐름과 결말로 돌아옵니다|색 조건 하나가 익숙한 퍼즐을 다른 문제로 바꿉니다/);
     expect(homeVisibleSources).toContain('한 장을 고르는 순간, 승부가 갈립니다');
     expect(homeVisibleSources).toContain('카드를 고르면 바로 승부가 보입니다');
     expect(homePage).toContain('이번 턴, 어떤 카드를 내야 이길까요?');
