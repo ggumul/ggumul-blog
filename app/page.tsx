@@ -67,7 +67,7 @@ export default async function HomePage() {
           <figure id="play-video" className="studio-shot relative min-h-[340px] overflow-hidden rounded-[22px] border-[3px] border-[#fff1b8]/60 bg-[#10183a] md:min-h-[500px]">
             <video
               aria-label="Wanderer 조건 판단 플레이 흐름 영상"
-              className="h-full w-full object-cover object-center"
+              className="h-full w-full object-contain object-center"
               src="/media/runtime-checks/wanderer-mobile-demo.mp4"
               poster="/project-covers/wanderer.png"
               autoPlay

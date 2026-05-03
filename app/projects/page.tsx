@@ -38,7 +38,7 @@ export default async function ProjectsPage() {
           </div>
 
           <figure className="studio-shot min-h-[320px] rounded-[24px] border-[3px] border-[#fff1b8]/55 bg-[#10183a] md:min-h-[500px]">
-            <img alt="Wanderer 대표 플레이 화면" className="h-full w-full object-cover object-center" src="/media/runtime-checks/wanderer-mobile-current.png" />
+            <img alt="Wanderer 대표 플레이 화면" className="h-full w-full object-contain object-center" src="/media/runtime-checks/wanderer-mobile-current.png" />
             <figcaption className="studio-caption">
               <span>Wanderer · 규칙 확인 → 카드 선택 → 결과</span>
               <Link href="/projects/wanderer#mini-play">한 턴 보기</Link>

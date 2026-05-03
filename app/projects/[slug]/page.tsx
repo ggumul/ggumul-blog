@@ -80,7 +80,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
           <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_210px]">
             <figure id="play-video" className="studio-shot relative min-h-[380px] scroll-mt-28 overflow-hidden rounded-[30px] border border-line/80 bg-black/30 md:min-h-[560px]">
-              <video className="h-full w-full object-cover" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
+              <video className="h-full w-full object-contain" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
               <div className="absolute left-4 top-4 rounded-full border border-point/30 bg-black/45 px-3 py-1 text-[11px] font-black tracking-[0.16em] text-point backdrop-blur">
                 플레이 영상
               </div>
