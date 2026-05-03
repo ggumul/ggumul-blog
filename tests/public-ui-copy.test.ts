@@ -108,6 +108,7 @@ describe('public UI copy cleanup', () => {
       read('components/post-card.tsx'),
       read('components/site-shell.tsx'),
       read('app/about/page.tsx'),
+      read('app/links/page.tsx'),
       read('lib/writing-reading-path.ts'),
       read('content/writing/2026-04-20-wanderer-초기-설계-회고.mdx'),
       readWritingMdx(),
@@ -118,6 +119,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/실제 화면 기록|화면에서 막힌 지점|화면 노트|시스템 노트|프로젝트 소개|최근 글|최근 바뀐 장면|Wanderer 노트/);
     expect(combined).not.toMatch(/게임 노트|장보기 기록|스튜디오 노트|#게임 개발|개발 중/);
     expect(combined).not.toMatch(/플레이 메모|Studio rhythm|4 Games Map|프로젝트 상태|작업 기준/);
+    expect(combined).not.toMatch(/작업 문서|작업 정리|작업 관련 문의/);
     expect(combined).not.toMatch(/이번 기록|초기 설계 회고|확인한 사실|다음 작업|점검표|프로젝트 문서|프로젝트 회고|같은 작업에서 나온 글/);
   });
 

@@ -2,9 +2,9 @@ import { PageHero, SectionHeader } from '@/components/brand-ui';
 import { createMetadata } from '@/lib/site';
 
 const links = [
-  { label: 'GitHub', href: 'https://github.com/ggumul', displayHref: 'github.com/ggumul', description: '코드와 프로젝트 저장소', type: 'code' },
-  { label: 'Notion', href: 'https://www.notion.so/348521c1518081e08d81d9215785de15', displayHref: 'notion 작업 문서', description: '기획 메모와 작업 정리', type: 'docs' },
-  { label: '문의 메일', href: 'mailto:hwang95903@gmail.com', displayHref: 'hwang95903@gmail.com', description: '협업과 문의 메일', type: 'contact' },
+  { label: 'GitHub', href: 'https://github.com/ggumul', displayHref: 'github.com/ggumul', description: '게임과 도구의 코드 저장소', type: 'code' },
+  { label: 'Notion', href: 'https://www.notion.so/348521c1518081e08d81d9215785de15', displayHref: 'notion.so/ggumul', description: '게임 아이디어와 메모 모음', type: 'memo' },
+  { label: '문의 메일', href: 'mailto:hwang95903@gmail.com', displayHref: 'hwang95903@gmail.com', description: '메일로 연락하기', type: 'mail' },
 ];
 
 export const metadata = createMetadata({
@@ -18,17 +18,17 @@ export default function LinksPage() {
     <div className="archive-surface space-y-12 md:space-y-16">
       <PageHero
         eyebrow="링크"
-        title={<>코드, 문서, 연락처를<br />한 곳에 모았습니다.</>}
-        description="프로젝트 저장소와 작업 문서, 문의 채널을 바로 찾을 수 있게 모았습니다."
+        title={<>게임, 메모, 연락처를<br />한 곳에 모았습니다.</>}
+        description="Wanderer와 작은 게임들을 더 보려는 사람이 바로 이동할 수 있게 모았습니다."
       >
         <div className="space-y-3 text-sm leading-7 text-subtext">
           <p>외부 링크는 새 탭에서 열립니다.</p>
-          <p>작업 관련 문의는 메일이 가장 확실합니다.</p>
+          <p>메일은 가장 확실한 연락 방법입니다.</p>
         </div>
       </PageHero>
 
       <section className="space-y-5">
-        <SectionHeader eyebrow="연결되는 곳" title="꼬물과 연결되는 곳" description="저장소, 문서, 연락처를 역할별로 구분해 바로 이동할 수 있게 했습니다." />
+        <SectionHeader eyebrow="연결되는 곳" title="꼬물과 연결되는 곳" description="코드 저장소, 메모, 연락처를 나눠 바로 이동할 수 있게 했습니다." />
         <div className="grid gap-4 md:grid-cols-3">
           {links.map((link) => (
             <a key={link.label} href={link.href} target={link.href.startsWith('mailto:') ? undefined : '_blank'} rel={link.href.startsWith('mailto:') ? undefined : 'noreferrer'} className="story-card group rounded-[28px] border border-line/80 bg-white/[0.055] p-5 transition hover:border-point/60 hover:bg-white/[0.08]">
