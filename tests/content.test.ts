@@ -75,14 +75,14 @@ describe('content loader', () => {
     const taxonomy = await getWritingTaxonomy();
 
     expect(taxonomy.categories).toContain('게임 소개');
-    expect(taxonomy.categories).toContain('스튜디오 노트');
+    expect(taxonomy.categories).toContain('만드는 기준');
     expect(taxonomy.categories).toContain('연결 문제');
     expect(taxonomy.categories).toContain('새 장면');
     expect(taxonomy.series).toContain('4월 작업');
     expect(taxonomy.series).toContain('꼬물 노트');
     expect(taxonomy.series).toContain('Wanderer 로그');
     expect(taxonomy.series).toContain('GGUMUL Dinner Grocery');
-    expect(taxonomy.tags).toContain('게임 개발');
+    expect(taxonomy.tags).toContain('게임');
     expect(taxonomy.tags).toContain('제작 리듬');
   });
 
@@ -161,7 +161,7 @@ describe('content loader', () => {
     const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
     const projectSlugs = new Set(projects.map((project) => project.slug));
     const postSlugs = new Set(posts.map((post) => post.slug));
-    const allowedProgressStatuses = new Set(['플레이 확인', '개발 중', '계약 점검 중', '보류']);
+    const allowedProgressStatuses = new Set(['플레이 확인', '미리보기', '계약 점검 중', '보류']);
 
     for (const project of projects) {
       expect(project.relatedPosts.every((slug) => postSlugs.has(slug))).toBe(true);

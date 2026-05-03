@@ -89,7 +89,7 @@ export default async function WritingPage() {
       <section className="studio-hero overflow-hidden rounded-[36px] border border-line/80 bg-white/[0.035] p-5 md:p-8">
         <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div className="space-y-5 rounded-[28px] border border-line/70 bg-black/20 p-5 md:p-7">
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임 노트</p>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">플레이 메모</p>
             <h1 className="max-w-5xl text-[38px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[72px]">
               카드 한 장, 막대 하나, 선택지 하나.
             </h1>

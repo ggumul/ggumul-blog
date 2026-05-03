@@ -11,7 +11,7 @@ const projectKinds: Record<string, string> = {
 
 const progressTone: Record<ProjectEntry['progressStatus'], string> = {
   '플레이 확인': 'border-[#fff1b8]/65 bg-[#7ee6c6] text-[#10183a]',
-  '개발 중': 'border-[#fff1b8]/65 bg-[#ffd447] text-[#10183a]',
+  미리보기: 'border-[#fff1b8]/65 bg-[#ffd447] text-[#10183a]',
   '계약 점검 중': 'border-[#fff1b8]/65 bg-[#8fd2ff] text-[#10183a]',
   보류: 'border-[#fff1b8]/45 bg-[#1f46a2] text-subtext',
 };
@@ -34,7 +34,7 @@ const projectCtas: Record<string, string> = {
 
 const statusLabel: Record<ProjectEntry['progressStatus'], string> = {
   '플레이 확인': '화면 있음',
-  '개발 중': '미리보기',
+  미리보기: '미리보기',
   '계약 점검 중': '가격 연결 중',
   보류: '보관',
 };

@@ -37,14 +37,14 @@ const postThumbnails: Record<string, Thumbnail> = {
     src: null,
     label: 'Studio rhythm',
     caption: '작업 기준을 잃지 않는 법',
-    badge: '스튜디오 노트',
+    badge: '만드는 기준',
     tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(126,230,198,0.28),transparent_16rem),radial-gradient(circle_at_75%_70%,rgba(255,212,71,0.26),transparent_18rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]',
   },
   'ggumul-dinner-grocery-가격-계약-정리': {
     src: null,
     label: 'Dinner Grocery',
     caption: '가격이 흔들리는 순간',
-    badge: '장보기 기록',
+    badge: '장보기 가격',
     tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.3),transparent_18rem),radial-gradient(circle_at_80%_70%,rgba(143,210,255,0.24),transparent_16rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]',
   },
 };
