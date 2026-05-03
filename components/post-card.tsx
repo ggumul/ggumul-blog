@@ -25,7 +25,7 @@ const postThumbnails: Record<string, Thumbnail> = {
     src: null,
     label: '네 가지 게임',
     caption: '카드·퍼즐·서사 지도',
-    badge: '프로젝트 지도',
+    badge: '게임 지도',
     tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.34),transparent_18rem),radial-gradient(circle_at_80%_25%,rgba(255,112,166,0.24),transparent_16rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]',
   },
   'wanderer-초기-설계-회고': {
