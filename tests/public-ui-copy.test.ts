@@ -94,6 +94,13 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/같이 보기|RSS로 새 기록 받기|짧게 감상 남기기|X에 짧게 남기기|공유 문구|>RSS</);
   });
 
+  it('keeps shared navigation labels consistent with the public game framing', () => {
+    const shell = read('components/site-shell.tsx');
+
+    expect(shell).toContain('<Link href="/projects" className="transition hover:text-text">게임</Link>');
+    expect(shell).not.toContain('<Link href="/projects" className="transition hover:text-text">프로젝트</Link>');
+  });
+
   it('removes pre-reading instruction boxes and engagement prompts from writing detail pages', () => {
     const writingDetailPage = read('app/writing/[slug]/page.tsx');
 

@@ -61,7 +61,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
             <Link href="/writing" className="transition hover:text-text">새 소식</Link>
-            <Link href="/projects" className="transition hover:text-text">프로젝트</Link>
+            <Link href="/projects" className="transition hover:text-text">게임</Link>
             <Link href="/about" className="transition hover:text-text">소개</Link>
             <Link href="/links" className="transition hover:text-text">링크</Link>
           </div>
