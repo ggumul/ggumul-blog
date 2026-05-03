@@ -57,7 +57,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 text-sm text-subtext md:grid-cols-[minmax(0,1fr)_auto] md:px-8">
           <div>
             <div className="text-lg font-black tracking-[-0.04em] text-text">ggumul / 꼬물</div>
-            <p className="mt-2 max-w-2xl leading-7">작은 카드 게임과 퍼즐을 담아 둔 공간입니다. 지금은 Wanderer 한 턴을 먼저 보여줍니다.</p>
+            <p className="mt-2 max-w-2xl leading-7">작은 카드 게임과 퍼즐을 담아 둔 공간입니다. Wanderer의 짧은 카드 승부부터 만날 수 있습니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
             <Link href="/writing" className="transition hover:text-text">새 소식</Link>

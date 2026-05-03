@@ -36,7 +36,7 @@ export default function AboutPage() {
               작은 게임을 하나씩 만듭니다.
             </h1>
             <p className="mt-5 max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-              지금은 Wanderer 한 턴을 먼저 보여줍니다. 카드 한 장, 퍼즐 이동 하나, 선택지 하나처럼 짧게 만질 수 있는 장면을 남깁니다.
+              Wanderer의 짧은 카드 승부부터 보여줍니다. 카드 한 장, 퍼즐 이동 하나, 선택지 하나처럼 짧게 만질 수 있는 장면을 남깁니다.
             </p>
           </div>
           <div className="rounded-[28px] border border-point/25 bg-point/10 p-5 text-sm leading-7 text-subtext">

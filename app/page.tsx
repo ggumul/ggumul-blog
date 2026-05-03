@@ -22,7 +22,7 @@ export default async function HomePage() {
     .filter((entry) => entry.relatedProjects.some((project) => project !== 'ggumul-dinner-grocery'))
     .slice(0, 3);
   const latestGamePost = latestGamePosts[0] ?? snapshot.latest;
-  const moreGamePosts = latestGamePosts.slice(1, 2);
+  const moreGamePosts = latestGamePosts.slice(1, 3);
 
   return (
     <div className="archive-surface space-y-12 md:space-y-16">
@@ -129,7 +129,7 @@ export default async function HomePage() {
             <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">이야기 더 보기 →</Link>
           </div>
           <PostCard post={latestGamePost} featured />
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className={moreGamePosts.length > 1 ? 'grid gap-4 md:grid-cols-2' : 'grid gap-4'}>
             {moreGamePosts.map((post) => (
               <PostCard key={post.slug} post={post} compact />
             ))}
