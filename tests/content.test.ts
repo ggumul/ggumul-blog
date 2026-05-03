@@ -77,7 +77,7 @@ describe('content loader', () => {
     expect(taxonomy.categories).toContain('게임 소개');
     expect(taxonomy.categories).toContain('만드는 기준');
     expect(taxonomy.categories).toContain('연결 문제');
-    expect(taxonomy.categories).toContain('새 장면');
+    expect(taxonomy.categories).toContain('플레이 화면');
     expect(taxonomy.series).toContain('4월 작업');
     expect(taxonomy.series).toContain('꼬물 노트');
     expect(taxonomy.series).toContain('Wanderer 로그');
@@ -112,7 +112,7 @@ describe('content loader', () => {
     expect(sections.timeline).toHaveLength(5);
     expect(sections.timeline[0]?.slug).toBe('runtime-화면-확인-기록');
     expect(sections.index.seriesCount).toBe(5);
-    expect(sections.index.categoryCount).toBe(5);
+    expect(sections.index.categoryCount).toBe(6);
     expect(sections.index.tagCount).toBeGreaterThan(7);
   });
 

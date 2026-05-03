@@ -25,17 +25,17 @@ const projectHooks: Record<string, string> = {
 };
 
 const projectCtas: Record<string, string> = {
-  'ggumul-dinner-grocery': '장보기 흐름',
+  'ggumul-dinner-grocery': '장보기 보기',
   wanderer: '30초 카드 골라보기',
-  trpg: '첫 장면',
-  hanoi: '퍼즐 흐름',
-  'color-hanoi': '변형 규칙',
+  trpg: '서사 보기',
+  hanoi: '퍼즐 보기',
+  'color-hanoi': '규칙 보기',
 };
 
 const statusLabel: Record<ProjectEntry['progressStatus'], string> = {
-  '플레이 확인': '화면 있음',
+  '플레이 확인': '플레이 보기',
   미리보기: '미리보기',
-  '계약 점검 중': '가격 연결 중',
+  '계약 점검 중': '가격 보기',
   보류: '보관',
 };
 
@@ -43,7 +43,7 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
     <div className="flex h-full min-h-[240px] flex-col justify-between bg-[radial-gradient(circle_at_18%_12%,rgba(255,212,71,0.34),transparent_17rem),linear-gradient(135deg,rgba(31,70,162,0.98),rgba(16,24,58,0.98))] p-5">
       <span className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">
-        새 장면
+        새로 본 화면
       </span>
       <div>
         <p className="text-[13px] font-bold text-point">{project.evidenceLabel}</p>

@@ -143,7 +143,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
         <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">폰에서 본 장면</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">모바일 화면</div>
             <Link href="/writing/runtime-화면-확인-기록" className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
               <div className="font-black tracking-[-0.03em]">버튼 뒤 장면이 늦었습니다</div>
               <p className="mt-1 text-[13px] leading-6 text-subtext">폰에서 눌렀을 때 결과가 늦게 읽힌 순간입니다.</p>

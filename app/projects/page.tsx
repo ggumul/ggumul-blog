@@ -33,7 +33,7 @@ export default async function ProjectsPage() {
             </p>
             <div className="mt-5 flex flex-wrap gap-3 text-sm">
               <Link href="/projects/wanderer#mini-play" className="game-button-primary">30초 카드 골라보기</Link>
-              <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">폰에서 본 장면</Link>
+              <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">모바일 화면 보기</Link>
             </div>
           </div>
 
@@ -54,7 +54,7 @@ export default async function ProjectsPage() {
               <p className="text-[12px] font-black tracking-[0.08em] text-point">먼저 해볼 게임</p>
               <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">한 장을 골라 결과를 봅니다</h2>
             </div>
-            <Link href="/projects/wanderer#mini-play" className="text-sm font-black text-point hover:text-text">바로 고르기 →</Link>
+            <Link href="/projects/wanderer#mini-play" className="text-sm font-black text-point hover:text-text">한 턴 고르기 →</Link>
           </div>
           <ProjectCard project={lead.project} records={lead.records} />
         </section>
@@ -63,7 +63,7 @@ export default async function ProjectsPage() {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-[12px] font-black tracking-[0.08em] text-point">다른 항목</p>
+            <p className="text-[12px] font-black tracking-[0.08em] text-point">다른 게임과 도구</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">짧게 보고 고릅니다</h2>
           </div>
           <Link href="/writing" className="text-sm font-bold text-point hover:text-text">글 목록 →</Link>
