@@ -8,7 +8,7 @@ import {
 
 describe('Wanderer mini play sample', () => {
   it('models one real Wanderer-style turn instead of an item-choice vignette', () => {
-    expect(wandererMiniPlayTurn.condition.label).toBe('홀수만 살아남음');
+    expect(wandererMiniPlayTurn.condition.label).toBe('홀수 카드만 유효');
     expect(wandererMiniPlayTurn.opponents).toHaveLength(3);
     expect(wandererMiniPlayTurn.opponents.map((opponent) => opponent.card)).toEqual([9, 12, 13]);
     expect(wandererMiniPlayCards).toHaveLength(3);

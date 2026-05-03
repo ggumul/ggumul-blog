@@ -11,7 +11,7 @@ export const metadata = createMetadata({
 
 const gameOrder = ['wanderer', 'hanoi', 'trpg', 'color-hanoi'];
 const gameHooks: Record<string, string> = {
-  wanderer: '턴 조건을 읽고 유효한 카드를 내야 하는데, 한 박자만 늦어도 전투 리듬이 흐려집니다.',
+  wanderer: '턴 규칙을 보고 유효한 카드를 내야 하는데, 한 박자만 늦어도 전투 리듬이 흐려집니다.',
   hanoi: '규칙은 단순하지만, 폰 화면에서는 “방금 뭘 옮겼는지”가 생각보다 쉽게 묻힙니다.',
   trpg: '선택지를 눌렀을 때 이어지는 흐름이 짧은 서사 안에서 살아야 합니다.',
   'color-hanoi': '색 조건이 하나 들어가면 같은 퍼즐도 판단 순서가 달라져서 따로 기록해 두었습니다.',
@@ -27,7 +27,7 @@ const gameEntryOverrides: Record<string, { slug?: string; href: string; title: s
     slug: 'wanderer-초기-설계-회고',
     href: '/writing/wanderer-초기-설계-회고',
     title: '왜 Wanderer는 짧은 카드 게임으로 남았나',
-    summary: '조건을 읽고 카드를 낸 뒤 결과가 바로 떠야 Wanderer가 살아납니다.',
+    summary: '규칙을 보고 카드를 낸 뒤 결과가 바로 떠야 Wanderer가 살아납니다.',
     cta: '한 턴 →',
   },
   hanoi: {

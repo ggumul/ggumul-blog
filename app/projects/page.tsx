@@ -29,10 +29,10 @@ export default async function ProjectsPage() {
               Wanderer부터 바로 봅니다.
             </h1>
             <p className="mt-4 max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-8">
-              먼저 볼 건 조건을 읽고 카드 한 장을 내는 Wanderer입니다. 나머지 퍼즐과 도구는 아래에서 짧게 고를 수 있게 줄였습니다.
+              먼저 볼 건 규칙을 보고 카드 한 장을 내는 Wanderer입니다. 나머지 퍼즐과 도구는 아래에서 짧게 고를 수 있게 줄였습니다.
             </p>
             <div className="mt-5 flex flex-wrap gap-3 text-sm">
-              <Link href="/projects/wanderer#mini-play" className="game-button-primary">30초 카드 골라보기</Link>
+              <Link href="/projects/wanderer#mini-play" className="game-button-primary">바로 한 턴 해보기</Link>
               <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">플레이 흐름 읽기</Link>
             </div>
           </div>
@@ -44,7 +44,7 @@ export default async function ProjectsPage() {
                 Wanderer 한 턴
               </div>
               <div className="rounded-full border border-[#fff1b8]/35 bg-[#10183a]/58 px-3 py-1 text-[12px] font-black text-subtext">
-                조건: 홀수만 살아남음
+                규칙: 홀수 카드만 유효
               </div>
             </div>
 
@@ -70,7 +70,7 @@ export default async function ProjectsPage() {
 
             <figcaption className="studio-caption relative">
               <span>조건 확인 → 카드 선택 → 결과</span>
-              <Link href="/projects/wanderer#mini-play">직접 골라보기</Link>
+              <Link href="/projects/wanderer#mini-play">한 턴 해보기</Link>
             </figcaption>
           </figure>
         </div>

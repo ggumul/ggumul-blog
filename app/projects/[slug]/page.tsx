@@ -50,11 +50,11 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
                   한 장 고르고,<br />바로 결과를<br />봅니다.
                 </h1>
                 <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-                  한 장 고르고, 바로 결과를 봅니다. 홀수만 살아남는 턴입니다. 상대의 최고 카드는 13이고, 손에는 5, 10, 15가 있습니다.
+                  한 장 고르고, 바로 결과를 봅니다. 이번 턴은 홀수 카드만 유효합니다. 상대의 최고 카드는 13이고, 손에는 5, 10, 15가 있습니다.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
-                <a href="#mini-play" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">30초 카드 골라보기</a>
+                <a href="#mini-play" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">바로 한 턴 해보기</a>
                 <a href="#play-video" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">플레이 영상</a>
               </div>
             </div>
@@ -108,7 +108,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <section className="grid gap-4 md:grid-cols-3">
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
           <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">규칙</p>
-          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">홀수만 살아남습니다.</h2>
+          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">홀수 카드만 유효합니다.</h2>
           <p className="mt-3 text-sm leading-7 text-subtext">5, 9, 13, 15는 남고 10과 12는 빠집니다.</p>
         </div>
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
@@ -130,7 +130,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">짧은 턴이 계속 이어지는 카드 게임</h2>
           </div>
           <div className="prose max-w-none">
-            <p>Wanderer는 턴마다 조건을 읽고 손패에서 카드 한 장을 내는 게임입니다. 조건에 맞지 않으면 빠지고, 남은 카드끼리는 숫자가 높은 쪽이 턴을 가져갑니다.</p>
+            <p>Wanderer는 턴마다 규칙을 보고 손패에서 카드 한 장을 내는 게임입니다. 규칙에 맞지 않으면 빠지고, 남은 카드끼리는 숫자가 높은 쪽이 턴을 가져갑니다.</p>
             <p>한 판은 짧습니다. 대신 카드를 낸 뒤 생존, 탈락, 승패가 바로 보여야 합니다. 이 페이지도 그 한 턴을 먼저 만지게 만들었습니다.</p>
             <h2>지금 해볼 수 있는 것</h2>
             <ul>

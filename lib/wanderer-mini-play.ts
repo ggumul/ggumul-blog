@@ -32,7 +32,7 @@ export type WandererMiniPlayTurn = {
 
 export const wandererMiniPlayTurn: WandererMiniPlayTurn = {
   condition: {
-    label: '홀수만 살아남음',
+    label: '홀수 카드만 유효',
     description: '이번 턴은 홀수 카드만 살아남습니다. 살아남은 카드끼리는 숫자가 높은 쪽이 턴을 가져갑니다.',
     isCardValid: (value: number) => value % 2 === 1,
   },

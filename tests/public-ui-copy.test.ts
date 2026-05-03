@@ -68,6 +68,9 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toMatch(/장면을 나누고, 글과 화면을 붙입니다|가장 최근에 확인한 화면과 기록을 먼저 보여줍니다/);
     expect(projectsPage).not.toMatch(/object-contain object-center/);
     expect(projectsPage).not.toContain('/media/runtime-checks/wanderer-mobile-current.png');
+    expect(projectsPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
+    expect(projectsPage).toContain('바로 한 턴 해보기');
+    expect(projectsPage).toContain('홀수 카드만 유효');
   });
 
   it('keeps home focused on one playable turn instead of a generic landing page', () => {
@@ -96,6 +99,9 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).toContain('<WandererMiniPlay />');
     expect(projectDetailPage).not.toMatch(/firstVisitSteps|CommunityCTA|영상 → 기록 → 다음 소식|처음 오셨다면/);
     expect(projectDetailPage).not.toMatch(/지금 확인|지금 보는 이유|다음에 고칠 것|기록 보기|플레이 방식|현재 들어간 것|Wanderer 노트|폰에서 돌린 날/);
+    expect(projectDetailPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
+    expect(projectDetailPage).toContain('바로 한 턴 해보기');
+    expect(projectDetailPage).toContain('홀수 카드만 유효');
     expect(projectDetailPage).toContain('한 장 고르고, 바로 결과를 봅니다.');
   });
 
@@ -143,6 +149,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/이번 기록|초기 설계 회고|확인한 사실|다음 작업|점검표|프로젝트 문서|프로젝트 회고|같은 작업에서 나온 글/);
     expect(combined).not.toMatch(/작업 철학|진행 현황/);
     expect(combined).not.toMatch(/모바일 화면|최근 장면 보기|한 턴 다듬은 글|대표 화면|작업을 찾을 수 없음|요청한 작업을 찾을 수 없습니다/);
+    expect(combined).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
   });
 
   it('keeps project cards from repeating two descriptions for the same project', () => {
