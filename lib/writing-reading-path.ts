@@ -15,14 +15,14 @@ export const writingReadingPathSlugs = [
 
 const writingReadingPaths: Record<string, WritingReadingPath> = {
   'runtime-화면-확인-기록': {
-    stakes: '카드를 고른 뒤 결과가 어떻게 보이는지 한 턴 단위로 살폈습니다.',
-    change: '폰에서 손패, 선택, 결과가 한 장면으로 이어지도록 기준을 세웠습니다.',
-    next: '한 턴 기록 읽기',
+    stakes: '한 장을 고르는 순간 내 카드와 상대 카드가 나란히 드러납니다.',
+    change: '15가 13을 넘는지 바로 확인하는 짧은 승부를 담았습니다.',
+    next: '짧은 승부 읽기',
   },
   'wanderer-sync-연결-문제-분석': {
-    stakes: '플레이어가 다시 돌아와도 같은 카드와 결과를 볼 수 있어야 했습니다.',
-    change: '한 턴의 선택과 결과를 같은 장면으로 이어 보이게 기준을 잡았습니다.',
-    next: '같은 턴 기록 읽기',
+    stakes: '잠깐 자리를 비워도 고르던 카드와 결과를 다시 볼 수 있습니다.',
+    change: '짧게 즐기고 돌아와 이어가는 한 턴 이야기입니다.',
+    next: '이어지는 턴 읽기',
   },
   'wanderer-초기-설계-회고': {
     stakes: '카드 전투가 길어질수록 선택 뒤 결과를 보는 맛이 흐려졌습니다.',

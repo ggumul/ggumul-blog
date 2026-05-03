@@ -49,6 +49,14 @@ const postThumbnails: Record<string, Thumbnail> = {
   },
 };
 
+const projectLabels: Record<string, string> = {
+  hanoi: 'Hanoi',
+  wanderer: 'Wanderer',
+  trpg: 'TRPG',
+  'color-hanoi': 'Color Hanoi',
+  'ggumul-dinner-grocery': 'Dinner Grocery',
+};
+
 const projectThumbnails: Record<string, Thumbnail> = {
   'ggumul-dinner-grocery': {
     src: null,
@@ -178,7 +186,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
         <div className="mt-5 flex flex-wrap items-center gap-2 text-[11px] text-subtext">
           {post.relatedProjects.slice(0, 3).map((project) => (
             <span key={project} className="rounded-full border-2 border-[#fff1b8]/32 bg-[#10183a]/25 px-2.5 py-1">
-              {project}
+              {projectLabels[project] ?? project}
             </span>
           ))}
           {post.tags.slice(0, featured ? 4 : 2).map((tag) => (

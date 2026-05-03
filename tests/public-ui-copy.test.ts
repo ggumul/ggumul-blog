@@ -92,6 +92,9 @@ describe('public UI copy cleanup', () => {
     expect(homePage).not.toMatch(/Wanderer 플레이 예시|지금 이길 카드는 어느 쪽일까요|모바일에서 결과가 늦게 보였던 문제|끊긴 이유|서버는 이미 끊겼다|턴 조건을 보고/);
     expect(homeVisibleSources).not.toMatch(/모바일에서도 결과가 자연스럽게|결과가 바로 이어지지 않던 흐름|흐름을 다시 맞췄습니다|버튼 뒤 흐름 끊김|진행 상태 개선|짧게 볼 수 있는 다른 게임들|유효합니다/);
     expect(homeVisibleSources).not.toMatch(/category: "연결 문제"|- "runtime"|- "flutter"|안정적으로 이어지게|자연스럽게 이어지게|멈칫했는지 줄이고|카드를 한 장을/);
+    expect(homeVisibleSources).not.toMatch(/다듬고 있습니다|만들고 있습니다|정리했습니다|다듬었습니다|볼 수 있어야 했습니다|고쳤|Mobile flow|Wanderer turn/);
+    expect(homeVisibleSources).toContain('한 장을 고르는 순간, 승부가 갈립니다');
+    expect(homeVisibleSources).toContain('카드를 고르면 바로 승부가 보입니다');
     expect(homePage).toContain('이번 턴, 어떤 카드를 내야 이길까요?');
     expect(homePage).toContain('바로 한 턴 해보기');
     expect(homePage).toContain('홀수 카드만 유효');

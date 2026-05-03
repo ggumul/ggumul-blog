@@ -121,9 +121,9 @@ export default async function HomePage() {
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[13px] font-black text-point">Wanderer 이야기</p>
-              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">카드 한 장을 고르는 맛을 다듬고 있습니다</h2>
+              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">한 장을 고르는 순간, 승부가 갈립니다</h2>
               <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
-                Wanderer는 긴 설명보다 한 번의 선택과 결과가 먼저 보이는 쪽으로 만들고 있습니다.
+                Wanderer는 어떤 카드를 낼지 고르고, 바로 결과를 확인하는 짧은 승부에 집중합니다.
               </p>
             </div>
             <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">글 목록 →</Link>

@@ -66,9 +66,9 @@ describe('content loader', () => {
   it('keeps the first runtime writing title framed around a concrete gameplay moment', async () => {
     const post = await getWritingBySlug('runtime-화면-확인-기록');
 
-    expect(post?.title).toBe('카드를 고른 뒤 결과까지, 한 턴이 더 또렷해졌습니다');
-    expect(post?.summary).toContain('결과가 바로 눈에 들어오도록');
-    expect(post?.summary).not.toContain('자연스럽게 이어지게');
+    expect(post?.title).toBe('카드를 고르면 바로 승부가 보입니다');
+    expect(post?.summary).toContain('15가 13을 넘는지 바로 확인하는 짧은 승부');
+    expect(post?.summary).not.toMatch(/자연스럽게 이어지게|정리했습니다|다듬었습니다/);
   });
 
   it('returns category, tags, and series data for writing taxonomy', async () => {
