@@ -60,7 +60,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <p className="mt-2 max-w-2xl leading-7">꼬물은 만들고 있는 게임의 화면, 변경 이유, 남은 문제를 같이 남깁니다. 완성 소개보다 실제로 어떻게 바뀌었는지를 먼저 보여줍니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
-            <Link href="/feed.xml" className="transition hover:text-text">RSS</Link>
             <Link href="/writing" className="transition hover:text-text">개발 기록</Link>
             <Link href="/projects" className="transition hover:text-text">프로젝트</Link>
             <Link href="/about" className="transition hover:text-text">소개</Link>

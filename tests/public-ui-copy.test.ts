@@ -83,9 +83,9 @@ describe('public UI copy cleanup', () => {
   });
 
   it('removes campaign-style follow/share blocks from primary pages', () => {
-    const combined = [read('app/page.tsx'), read('app/links/page.tsx')].join('\n');
+    const combined = [read('app/page.tsx'), read('app/links/page.tsx'), read('components/site-shell.tsx')].join('\n');
 
-    expect(combined).not.toMatch(/같이 보기|RSS로 새 기록 받기|짧게 감상 남기기|X에 짧게 남기기|공유 문구/);
+    expect(combined).not.toMatch(/같이 보기|RSS로 새 기록 받기|짧게 감상 남기기|X에 짧게 남기기|공유 문구|>RSS</);
   });
 
   it('removes pre-reading instruction boxes from writing detail pages', () => {
