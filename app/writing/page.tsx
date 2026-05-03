@@ -20,7 +20,7 @@ const gameReadAngles: Record<string, string> = {
   wanderer: 'Wanderer는 한 판이 짧아야 살아나서, 선택과 결과 사이가 늘어지는 순간부터 봅니다.',
   hanoi: 'Hanoi는 조작 자체보다 화면 안에서 이동 결과가 바로 읽히는지가 더 자주 걸렸습니다.',
   trpg: 'TRPG는 아직 전용 글이 적어서, 카드·퍼즐과 나란히 놓고 서사 실험의 위치를 먼저 잡았습니다.',
-  'color-hanoi': 'Color Hanoi는 색 조건 때문에 Hanoi와 다른 고민이 생겨서 프로젝트 상태부터 보는 편이 낫습니다.',
+  'color-hanoi': 'Color Hanoi는 색 조건 때문에 Hanoi와 다른 고민이 생겨서 규칙 쪽을 먼저 보는 편이 낫습니다.',
 };
 const gameEntryOverrides: Record<string, { slug?: string; href: string; title: string; summary: string; cta: string }> = {
   wanderer: {
@@ -46,7 +46,7 @@ const gameEntryOverrides: Record<string, { slug?: string; href: string; title: s
   },
   'color-hanoi': {
     href: '/projects/color-hanoi',
-    title: 'Color Hanoi 프로젝트 상태',
+    title: 'Color Hanoi 색 조건',
     summary: '색 조건이 들어가면 같은 Hanoi도 옮기는 판단이 달라집니다.',
     cta: '색 조건 →',
   },
@@ -89,7 +89,7 @@ export default async function WritingPage() {
       <section className="studio-hero overflow-hidden rounded-[36px] border border-line/80 bg-white/[0.035] p-5 md:p-8">
         <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div className="space-y-5 rounded-[28px] border border-line/70 bg-black/20 p-5 md:p-7">
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">플레이 메모</p>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">새 소식</p>
             <h1 className="max-w-5xl text-[38px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[72px]">
               카드 한 장, 막대 하나, 선택지 하나.
             </h1>

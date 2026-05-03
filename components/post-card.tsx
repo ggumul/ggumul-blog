@@ -23,7 +23,7 @@ const postThumbnails: Record<string, Thumbnail> = {
   },
   '4월-프로젝트-개발-현황': {
     src: null,
-    label: '4 Games Map',
+    label: '네 가지 게임',
     caption: '카드·퍼즐·서사 지도',
     badge: '프로젝트 지도',
     tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.34),transparent_18rem),radial-gradient(circle_at_80%_25%,rgba(255,112,166,0.24),transparent_16rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]',
@@ -35,8 +35,8 @@ const postThumbnails: Record<string, Thumbnail> = {
   },
   '제작-리듬을-우선하는-이유': {
     src: null,
-    label: 'Studio rhythm',
-    caption: '작업 기준을 잃지 않는 법',
+    label: '만드는 리듬',
+    caption: '여러 게임을 계속 만지는 법',
     badge: '만드는 기준',
     tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(126,230,198,0.28),transparent_16rem),radial-gradient(circle_at_75%_70%,rgba(255,212,71,0.26),transparent_18rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]',
   },

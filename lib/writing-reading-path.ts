@@ -41,8 +41,8 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
   },
   '제작-리듬을-우선하는-이유': {
     stakes: '여러 게임을 오가다 보니 속도보다 먼저 무엇을 볼지 기준이 흐려졌습니다.',
-    change: '작은 작업을 잃어버리지 않도록 화면과 기록을 다시 잡는 리듬을 남겼습니다.',
-    next: '작업 기준 다시 열기',
+    change: '여러 게임을 놓치지 않도록 만드는 리듬을 다시 잡았습니다.',
+    next: '만드는 리듬 다시 열기',
   },
 };
 
