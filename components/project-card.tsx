@@ -62,7 +62,7 @@ function WandererCardPreview() {
       </div>
       <div className="grid gap-3 py-6">
         <div className="rounded-[20px] border-2 border-[#fff1b8]/35 bg-[#10183a]/50 p-4 text-center">
-          <p className="text-[12px] font-black text-subtext">상대보다 높은 카드를 고릅니다</p>
+          <p className="text-[12px] font-black text-subtext">상대보다 큰 카드를 고릅니다</p>
           <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
             <strong className="rounded-[16px] border-2 border-[#fff1b8]/35 bg-[#172f82] py-5 text-5xl tracking-[-0.08em] text-[#ffd447]">13</strong>
             <span className="text-[12px] font-black text-point">VS</span>

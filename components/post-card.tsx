@@ -155,7 +155,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
           <h3 className="text-[18px] font-black leading-snug tracking-[-0.04em] text-text group-hover:text-point">{post.title}</h3>
           <p className="mt-2 line-clamp-2 text-sm leading-6 text-subtext">{readingPath.stakes}</p>
         </div>
-        <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 px-3 py-2 text-[12px] leading-5 text-subtext">글 읽기</p>
+        <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 px-3 py-2 text-[12px] leading-5 text-subtext">이야기 읽기</p>
       </Link>
     );
   }
@@ -195,7 +195,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
             </span>
           ))}
           <span className="ml-auto rounded-full border-2 border-point/40 bg-point/15 px-3 py-1 font-black text-point">
-            글 읽기 →
+            이야기 읽기 →
           </span>
         </div>
       </div>

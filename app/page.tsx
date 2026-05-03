@@ -126,7 +126,7 @@ export default async function HomePage() {
                 Wanderer는 어떤 카드를 낼지 고르고, 바로 결과를 확인하는 짧은 승부에 집중합니다.
               </p>
             </div>
-            <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">글 목록 →</Link>
+            <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">이야기 더 보기 →</Link>
           </div>
           <PostCard post={latestGamePost} featured />
           <div className="grid gap-4 md:grid-cols-2">
