@@ -25,10 +25,10 @@ const projectHooks: Record<string, string> = {
 };
 
 const projectCtas: Record<string, string> = {
-  'ggumul-dinner-grocery': '장보기 보기',
-  wanderer: '한 턴 체험하기',
-  trpg: '서사 보기',
-  hanoi: '퍼즐 보기',
+  'ggumul-dinner-grocery': '도구 열기',
+  wanderer: '카드 고르기',
+  trpg: '이야기 보기',
+  hanoi: '퍼즐 풀기',
   'color-hanoi': '규칙 보기',
 };
 
