@@ -70,14 +70,17 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toContain('/media/runtime-checks/wanderer-mobile-current.png');
   });
 
-  it('keeps home from duplicating latest-record explanation blocks', () => {
+  it('keeps home focused on one playable turn instead of a generic landing page', () => {
     const homePage = read('app/page.tsx');
 
     expect(homePage).not.toMatch(/latestGamePath|다음에 볼 막힌 장면|남긴 판단|읽을 이유/);
     expect(homePage).not.toContain('object-contain object-center');
     expect(homePage).not.toContain('<video');
     expect(homePage).not.toContain('wanderer-mobile-demo.mp4');
-    expect(homePage).toContain('30초 카드 골라보기');
+    expect(homePage).not.toMatch(/heroLoop|조건을 읽고,?<br \/>한 장으로 턴을 가져갑니다|Wanderer 한 턴 샘플|홀수만 살아남음|직접 골라보기|Wanderer를 먼저 봅니다|Wanderer 말고도 바로 해볼 일이 있어요|버튼 뒤 장면이 늦었던 날/);
+    expect(homePage).toContain('지금 이길 카드는 어느 쪽일까요?');
+    expect(homePage).toContain('바로 한 턴 해보기');
+    expect(homePage).toContain('홀수 카드만 유효');
   });
 
   it('keeps writing index from becoming a tag wall or repeated explainer grid', () => {
