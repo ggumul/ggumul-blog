@@ -78,10 +78,13 @@ describe('public UI copy cleanup', () => {
     const homePage = read('app/page.tsx');
     const homeVisibleSources = [
       homePage,
+      read('components/site-shell.tsx'),
       read('components/post-card.tsx'),
       read('lib/writing-reading-path.ts'),
+      readFrontmatter('content/projects/wanderer.mdx'),
       readFrontmatter('content/writing/2026-04-26-runtime-화면-확인-기록.mdx'),
       readFrontmatter('content/writing/2026-04-21-wanderer-sync-연결-문제-분석.mdx'),
+      readFrontmatter('content/writing/2026-04-27-ggumul-dinner-grocery-가격-계약-정리.mdx'),
     ].join('\n');
 
     expect(homePage).not.toMatch(/latestGamePath|다음에 볼 막힌 장면|남긴 판단|읽을 이유/);
