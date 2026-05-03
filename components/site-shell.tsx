@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 const NAV_ITEMS = [
   { href: '/projects', label: '게임' },
-  { href: '/writing', label: '작업 노트' },
+  { href: '/writing', label: '최근 소식' },
   { href: '/about', label: '소개' },
   { href: '/links', label: '링크' },
 ];
@@ -25,7 +25,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </span>
             <span className="leading-tight">
               <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[25px]">ggumul <span className="mx-1 text-point/80">/</span> 꼬물</span>
-              <span className="block text-[11px] font-black tracking-[-0.01em] text-subtext">작은 게임과 작업 노트</span>
+              <span className="block text-[11px] font-black tracking-[-0.01em] text-subtext">작은 게임과 최근 소식</span>
             </span>
           </Link>
 
@@ -60,7 +60,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <p className="mt-2 max-w-2xl leading-7">작은 카드 게임과 퍼즐을 만들고 있습니다. 지금은 Wanderer 한 턴을 먼저 보여줍니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
-            <Link href="/writing" className="transition hover:text-text">작업 노트</Link>
+            <Link href="/writing" className="transition hover:text-text">최근 소식</Link>
             <Link href="/projects" className="transition hover:text-text">프로젝트</Link>
             <Link href="/about" className="transition hover:text-text">소개</Link>
             <Link href="/links" className="transition hover:text-text">링크</Link>

@@ -74,9 +74,10 @@ describe('content loader', () => {
   it('returns category, tags, and series data for writing taxonomy', async () => {
     const taxonomy = await getWritingTaxonomy();
 
-    expect(taxonomy.categories).toContain('프로젝트 소개');
+    expect(taxonomy.categories).toContain('게임 소개');
     expect(taxonomy.categories).toContain('스튜디오 노트');
-    expect(taxonomy.categories).toContain('시스템 노트');
+    expect(taxonomy.categories).toContain('연결 문제');
+    expect(taxonomy.categories).toContain('업데이트');
     expect(taxonomy.series).toContain('4월 작업');
     expect(taxonomy.series).toContain('꼬물 노트');
     expect(taxonomy.series).toContain('Wanderer 로그');

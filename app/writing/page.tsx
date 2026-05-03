@@ -4,7 +4,7 @@ import { getProjectRecordMap, getWritingArchiveSections } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
-  title: '작업 노트',
+  title: '최근 소식',
   description: '작은 게임을 만들며 실제 화면에서 달라진 점과 문제를 해결한 과정을 모았습니다.',
   path: '/writing',
 });
@@ -157,7 +157,7 @@ export default async function WritingPage() {
       <section className="space-y-5">
         <div>
           <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">나머지</p>
-          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">장보기와 작업 노트</h2>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">장보기와 소식</h2>
           <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">게임 밖에서 나온 가격 판단과 제작 리듬은 아래에만 모았습니다.</p>
         </div>
         <div className="grid gap-4">

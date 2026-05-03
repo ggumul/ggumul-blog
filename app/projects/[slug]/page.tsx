@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return createMetadata({
     title: project.slug === 'wanderer' ? 'Wanderer — 한 턴 체험' : `${project.title} 작업 기록`,
     description: project.slug === 'wanderer'
-      ? '규칙을 보고 한 장을 고르는 Wanderer 한 턴 체험, 실제 플레이 화면과 작업 노트입니다.'
+      ? '규칙을 보고 한 장을 고르는 Wanderer 한 턴 체험, 실제 플레이 화면과 최근 소식입니다.'
       : project.summary,
     path: `/projects/${project.slug}`,
     ogImage: project.coverImage,
@@ -167,7 +167,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <section className="space-y-5">
         <div>
           <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">더 읽기</p>
-          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">Wanderer 작업 노트</h2>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">Wanderer 소식</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {relatedPosts.map((post) => (
@@ -201,7 +201,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         ← 프로젝트 목록으로
       </Link>
 
-      <PageHero eyebrow="project" title={<>{project.title}<br />작업 노트</>} description={project.summary}>
+      <PageHero eyebrow="project" title={<>{project.title}<br />소식</>} description={project.summary}>
         <div className="space-y-3 text-sm text-subtext">
           <Pill tone="point">{project.status}</Pill>
           {latestRecord ? <Pill>최근 {latestRecord.publishedAt}</Pill> : null}
@@ -233,7 +233,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="space-y-3">
             <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">다음에 볼 것</div>
             <Link href={latestRecord ? `/writing/${latestRecord.slug}` : '/writing'} className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
-              <div className="font-black tracking-[-0.03em]">{latestRecord ? '최근 글' : '글'}</div>
+              <div className="font-black tracking-[-0.03em]">{latestRecord ? '최근 소식' : '소식'}</div>
               <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '프로젝트와 연결된 글을 봅니다.'}</p>
             </Link>
           </div>
@@ -259,7 +259,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {relatedPosts.length > 0 ? (
         <section className="space-y-5">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">작업 노트</p>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">소식</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이 프로젝트가 지나온 기록</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">

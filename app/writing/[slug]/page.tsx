@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (redirectSlug) {
       return createMetadata({
         title: '글 주소가 변경됨',
-        description: '새 작업 노트 주소로 이동합니다.',
+        description: '새 소식 주소로 이동합니다.',
         path: `/writing/${redirectSlug}`,
         type: 'article',
       });
