@@ -69,6 +69,8 @@ describe('public UI copy cleanup', () => {
 
     expect(homePage).not.toMatch(/latestGamePath|다음에 볼 막힌 장면|남긴 판단|읽을 이유/);
     expect(homePage).not.toContain('object-contain object-center');
+    expect(homePage).not.toContain('<video');
+    expect(homePage).not.toContain('wanderer-mobile-demo.mp4');
     expect(homePage).toContain('30초 카드 골라보기');
   });
 
