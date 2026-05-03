@@ -24,6 +24,8 @@ describe('public UI copy cleanup', () => {
     expect(linksPage).not.toContain('{link.href}</p>');
     expect(linksPage).not.toContain('github.com/ggumul');
     expect(linksPage).toContain('github.com/ggomul');
+    expect(linksPage).toContain('게임 아이디어와 제작 노트');
+    expect(linksPage).not.toMatch(/메모 모음|type: 'memo'|게임, 메모|코드 저장소, 메모/);
     expect(linksPage).toContain('link.displayHref');
   });
 

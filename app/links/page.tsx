@@ -3,7 +3,7 @@ import { createMetadata } from '@/lib/site';
 
 const links = [
   { label: 'GitHub', href: 'https://github.com/ggomul', displayHref: 'github.com/ggomul', description: '게임과 도구의 코드 저장소', type: 'code' },
-  { label: 'Notion', href: 'https://www.notion.so/348521c1518081e08d81d9215785de15', displayHref: 'notion.so/ggumul', description: '게임 아이디어와 메모 모음', type: 'memo' },
+  { label: 'Notion', href: 'https://www.notion.so/348521c1518081e08d81d9215785de15', displayHref: 'notion.so/ggumul', description: '게임 아이디어와 제작 노트', type: 'idea' },
   { label: '문의 메일', href: 'mailto:hwang95903@gmail.com', displayHref: 'hwang95903@gmail.com', description: '메일로 연락하기', type: 'mail' },
 ];
 
@@ -18,7 +18,7 @@ export default function LinksPage() {
     <div className="archive-surface space-y-12 md:space-y-16">
       <PageHero
         eyebrow="링크"
-        title={<>게임, 메모, 연락처를<br />한 곳에 모았습니다.</>}
+        title={<>게임, 아이디어, 연락처를<br />한 곳에 모았습니다.</>}
         description="Wanderer와 작은 게임들을 더 보려는 사람이 바로 이동할 수 있게 모았습니다."
       >
         <div className="space-y-3 text-sm leading-7 text-subtext">
@@ -28,7 +28,7 @@ export default function LinksPage() {
       </PageHero>
 
       <section className="space-y-5">
-        <SectionHeader eyebrow="연결되는 곳" title="꼬물과 연결되는 곳" description="코드 저장소, 메모, 연락처를 나눠 바로 이동할 수 있게 했습니다." />
+        <SectionHeader eyebrow="연결되는 곳" title="꼬물과 연결되는 곳" description="코드 저장소, 제작 노트, 연락처를 나눠 바로 이동할 수 있게 했습니다." />
         <div className="grid gap-4 md:grid-cols-3">
           {links.map((link) => (
             <a key={link.label} href={link.href} target={link.href.startsWith('mailto:') ? undefined : '_blank'} rel={link.href.startsWith('mailto:') ? undefined : 'noreferrer'} className="story-card group rounded-[28px] border border-line/80 bg-white/[0.055] p-5 transition hover:border-point/60 hover:bg-white/[0.08]">
