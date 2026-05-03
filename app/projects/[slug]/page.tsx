@@ -50,7 +50,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
                   한 장 고르고,<br />바로 결과를<br />봅니다.
                 </h1>
                 <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-                  한 장 고르고, 바로 결과를 봅니다. Wanderer는 제한 시간 안에 규칙을 읽고 카드 한 장을 내는 모바일 카드 게임입니다. 규칙을 통과한 카드끼리 숫자를 비교하고, 맞지 않는 카드는 바로 탈락합니다.
+                  한 장 고르고, 바로 결과를 봅니다. 홀수만 살아남는 턴입니다. 상대의 최고 카드는 13이고, 손에는 5, 10, 15가 있습니다.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
@@ -63,17 +63,17 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
               <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
                 <p className="text-[11px] font-bold tracking-[0.12em] text-point">한 판</p>
                 <p className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">1분</p>
-                <p className="mt-1 text-[13px] leading-6 text-subtext">짧게 끝나는 흐름</p>
+                <p className="mt-1 text-[13px] leading-6 text-subtext">짧게 끝나는 판</p>
               </div>
               <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
-                <p className="text-[11px] font-bold tracking-[0.12em] text-point">현재 상태</p>
-                <p className="mt-2 text-2xl font-black tracking-[-0.06em] text-text">플레이 확인</p>
-                <p className="mt-1 text-[13px] leading-6 text-subtext">모바일 실행 화면</p>
+                <p className="text-[11px] font-bold tracking-[0.12em] text-point">상대 카드</p>
+                <p className="mt-2 text-2xl font-black tracking-[-0.06em] text-text">9 · 12 · 13</p>
+                <p className="mt-1 text-[13px] leading-6 text-subtext">12는 탈락</p>
               </div>
               <div className="rounded-[20px] border border-line/70 bg-white/[0.055] p-4">
                 <p className="text-[11px] font-bold tracking-[0.12em] text-point">이번 턴</p>
                 <p className="mt-2 text-2xl font-black tracking-[-0.06em] text-text">규칙→카드→결과</p>
-                <p className="mt-1 text-[13px] leading-6 text-subtext">아래에서 바로 확인</p>
+                <p className="mt-1 text-[13px] leading-6 text-subtext">15가 이김</p>
               </div>
             </div>
           </div>
@@ -82,11 +82,11 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             <figure id="play-video" className="studio-shot relative min-h-[380px] scroll-mt-28 overflow-hidden rounded-[30px] border border-line/80 bg-black/30 md:min-h-[560px]">
               <video className="h-full w-full object-cover" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
               <div className="absolute left-4 top-4 rounded-full border border-point/30 bg-black/45 px-3 py-1 text-[11px] font-black tracking-[0.16em] text-point backdrop-blur">
-                실제 실행 화면
+                플레이 영상
               </div>
               <figcaption className="studio-caption">
-                <span>규칙 확인 → 카드 선택 → 결과 확인</span>
-                <Link href="/writing/runtime-화면-확인-기록">기록 보기</Link>
+                <span>규칙 → 카드 선택 → 결과</span>
+                <Link href="#mini-play">직접 고르기</Link>
               </figcaption>
             </figure>
             <div className="grid gap-3">
@@ -95,8 +95,8 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
                 <figcaption className="studio-caption"><span>모바일 홈</span></figcaption>
               </figure>
               <div className="rounded-[24px] border border-point/25 bg-point/10 p-4 text-sm leading-7 text-subtext">
-                <p className="text-[11px] font-black tracking-[0.16em] text-point">지금 확인 중인 것</p>
-                <p className="mt-2 font-bold text-text">모바일에서 규칙 확인, 카드 선택, 결과 화면까지 흐름이 끊기지 않는지 보고 있습니다.</p>
+                <p className="text-[11px] font-black tracking-[0.16em] text-point">이번 턴</p>
+                <p className="mt-2 font-bold text-text">홀수만 생존. 15를 내면 상대의 13보다 높습니다.</p>
               </div>
             </div>
           </div>
@@ -107,51 +107,51 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
       <section className="grid gap-4 md:grid-cols-3">
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
-          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">플레이 방식</p>
-          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">조건에 맞는 카드를 내고 비교합니다.</h2>
-          <p className="mt-3 text-sm leading-7 text-subtext">긴 성장 구조보다 한 턴 안에서 규칙, 생존 여부, 숫자 비교가 바로 읽히는 흐름을 먼저 확인합니다.</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">규칙</p>
+          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">홀수만 살아남습니다.</h2>
+          <p className="mt-3 text-sm leading-7 text-subtext">5, 9, 13, 15는 남고 10과 12는 빠집니다.</p>
         </div>
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
-          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">지금 보는 이유</p>
-          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">실제 폰에서 흐름을 다시 봅니다.</h2>
-          <p className="mt-3 text-sm leading-7 text-subtext">화면이 예쁘게 보이는지보다, 처음부터 끝까지 조작이 끊기지 않는지를 기준으로 봅니다.</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">상대</p>
+          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">상대의 최고 생존 카드는 13입니다.</h2>
+          <p className="mt-3 text-sm leading-7 text-subtext">9도 남지만 이번 턴의 기준은 13입니다.</p>
         </div>
         <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
-          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">다음에 고칠 것</p>
-          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">다시 시작해도 흐름을 이어갑니다.</h2>
-          <p className="mt-3 text-sm leading-7 text-subtext">다시 켰을 때도 지금 판의 상태가 자연스럽게 이어지도록 모바일과 서버의 기준을 맞추고 있습니다.</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">내 선택</p>
+          <h2 className="mt-3 text-2xl font-black tracking-[-0.05em] text-text">15를 내면 턴을 가져갑니다.</h2>
+          <p className="mt-3 text-sm leading-7 text-subtext">10은 탈락, 5는 살아남아도 13보다 낮습니다.</p>
         </div>
       </section>
 
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
         <div className="panel-section space-y-6">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임 소개</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">작고 짧게, 끝까지 흐르는 카드 게임</h2>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">짧은 턴이 계속 이어지는 카드 게임</h2>
           </div>
           <div className="prose max-w-none">
-            <p>Wanderer는 큰 콘텐츠 볼륨보다 짧은 한 판의 흐름을 먼저 보는 게임입니다. 턴마다 조건을 읽고, 내 손패에서 유효한 카드를 고르고, 상대 카드와 비교한 뒤 다음 선택으로 넘어가는 리듬이 핵심입니다.</p>
-            <p>지금 공개 페이지에서는 완성된 상점 페이지처럼 과장하지 않고, 실제 실행 화면과 최근에 확인한 문제를 같이 보여줍니다. 그래서 이 페이지의 목적은 “완성작 홍보”가 아니라 “지금 어떤 게임으로 다듬고 있는지”를 바로 이해시키는 것입니다.</p>
-            <h2>지금 확인한 것</h2>
+            <p>Wanderer는 턴마다 조건을 읽고 손패에서 카드 한 장을 내는 게임입니다. 조건에 맞지 않으면 빠지고, 남은 카드끼리는 숫자가 높은 쪽이 턴을 가져갑니다.</p>
+            <p>한 판은 짧습니다. 대신 카드를 낸 뒤 생존, 탈락, 승패가 바로 보여야 합니다. 이 페이지도 그 한 턴을 먼저 만지게 만들었습니다.</p>
+            <h2>현재 들어간 것</h2>
             <ul>
-              <li>모바일에서 Wanderer 화면이 실제로 실행됩니다.</li>
-              <li>규칙, 상대 카드, 내 카드, 결과로 이어지는 흐름을 영상과 기록으로 남겼습니다.</li>
-              <li>재접속 이후 현재 게임 상태를 다시 받는 흐름은 계속 다듬는 중입니다.</li>
+              <li>4명이 1~15 숫자 카드 6장으로 시작합니다.</li>
+              <li>턴마다 홀수, 짝수, 기준보다 높거나 낮은 조건이 붙습니다.</li>
+              <li>조건을 통과한 카드 중 높은 카드가 턴을 가져갑니다.</li>
             </ul>
           </div>
         </div>
 
         <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">먼저 볼 기록</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">폰에서 돌린 날</div>
             <Link href="/writing/runtime-화면-확인-기록" className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
-              <div className="font-black tracking-[-0.03em]">실제 폰에서 돌려본 기록</div>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">게임 화면이 어떻게 보이고 어디가 아직 어색한지 먼저 확인합니다.</p>
+              <div className="font-black tracking-[-0.03em]">버튼 뒤 장면이 늦었습니다</div>
+              <p className="mt-1 text-[13px] leading-6 text-subtext">폰에서 눌렀을 때 결과가 늦게 읽힌 순간입니다.</p>
             </Link>
           </div>
 
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">최근 기록</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">Wanderer 노트</div>
             <div className="space-y-3">
               {relatedPosts.map((post) => (
                 <Link key={post.slug} href={`/writing/${post.slug}`} className="block rounded-[20px] border border-line/80 bg-white/[0.055] p-4 transition hover:border-point/60 hover:bg-white/[0.08]">
@@ -166,8 +166,8 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
       <section className="space-y-5">
         <div>
-          <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">개발기록</p>
-          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">Wanderer가 지나온 기록</h2>
+          <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">더 읽기</p>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">Wanderer 작업 노트</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {relatedPosts.map((post) => (
@@ -233,8 +233,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="space-y-3">
             <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">다음에 볼 것</div>
             <Link href={latestRecord ? `/writing/${latestRecord.slug}` : '/writing'} className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
-              <div className="font-black tracking-[-0.03em]">{latestRecord ? '최근 개발기록 읽기' : '개발기록 보기'}</div>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '프로젝트와 연결된 글을 개발기록에서 확인합니다.'}</p>
+              <div className="font-black tracking-[-0.03em]">{latestRecord ? '최근 글 읽기' : '글 보기'}</div>
+              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '프로젝트와 연결된 글을 봅니다.'}</p>
             </Link>
           </div>
 

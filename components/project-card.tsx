@@ -32,40 +32,32 @@ const projectCtas: Record<string, string> = {
   'color-hanoi': '변형 규칙 보기',
 };
 
-const projectAvailability: Record<string, string> = {
-  'ggumul-dinner-grocery': '식단에서 장보기 판단까지 이어지는 흐름을 볼 수 있어요.',
-  wanderer: '실제 플레이 영상과 막힌 장면 기록을 볼 수 있어요.',
-  trpg: '선택지가 장면을 어떻게 바꾸는지 짧은 흐름으로 볼 수 있어요.',
-  hanoi: '퍼즐 화면과 플레이 흐름 기록을 볼 수 있어요.',
-  'color-hanoi': '기본 Hanoi와 달라지는 색 조건을 먼저 볼 수 있어요.',
+const projectLines: Record<string, string> = {
+  'ggumul-dinner-grocery': '식단을 정하면 장보기 목록과 가격 판단으로 이어집니다.',
+  wanderer: '홀수만 살아남는 턴에서 15를 내면 상대의 13을 넘깁니다.',
+  trpg: '선택한 문장에 따라 이어지는 장면이 달라집니다.',
+  hanoi: '막대를 옮기면 다음 상태가 바로 보입니다.',
+  'color-hanoi': '색 조건 하나가 옮길 수 있는 막대를 바꿉니다.',
 };
 
 const statusLabel: Record<ProjectEntry['progressStatus'], string> = {
   '플레이 확인': '화면 있음',
   '개발 중': '미리보기',
   '계약 점검 중': '가격 연결 중',
-  보류: '기록 보관',
+  보류: '보관',
 };
 
 function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
     <div className="flex h-full min-h-[240px] flex-col justify-between bg-[radial-gradient(circle_at_18%_12%,rgba(255,212,71,0.34),transparent_17rem),linear-gradient(135deg,rgba(31,70,162,0.98),rgba(16,24,58,0.98))] p-5">
       <span className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">
-        작업 기록
+        작업 노트
       </span>
       <div>
         <p className="text-[13px] font-bold text-point">{project.evidenceLabel}</p>
         <p className="mt-2 max-w-[14rem] text-[30px] font-black leading-none tracking-[-0.06em] text-text">{project.title}</p>
       </div>
     </div>
-  );
-}
-
-function StatusFacts({ project }: { project: ProjectEntry }) {
-  return (
-    <p className="rounded-2xl border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-3 text-[13px] leading-6 text-subtext">
-      <span className="font-black text-text">볼 수 있는 것</span> · {projectAvailability[project.slug] ?? project.verificationNote}
-    </p>
   );
 }
 
@@ -91,7 +83,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           </span>
         </div>
         <p className="line-clamp-2 text-sm leading-6 text-subtext">{projectHooks[project.slug] ?? project.summary}</p>
-        <p className="text-[12px] leading-5 text-subtext"><span className="font-bold text-text">볼 수 있는 것</span> · {projectAvailability[project.slug] ?? project.verificationNote}</p>
+        <p className="text-[12px] leading-5 text-subtext">{projectLines[project.slug] ?? project.verificationNote}</p>
         <span className="inline-flex text-[13px] font-black text-point">{projectCtas[project.slug] ?? '프로젝트 보기'} →</span>
       </Link>
     );
@@ -127,10 +119,12 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           </div>
 
           <div className="mt-5 space-y-3">
-            <StatusFacts project={project} />
+            <p className="rounded-2xl border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-3 text-[13px] leading-6 text-subtext">
+              {projectLines[project.slug] ?? project.verificationNote}
+            </p>
             <div className="flex flex-wrap gap-3 text-sm">
               <Link href={projectHref} className="game-button-primary px-4 py-2.5 text-sm">{projectCtas[project.slug] ?? '프로젝트 보기'}</Link>
-              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">최근 기록 보기</Link>
+              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">최근 글 보기</Link>
             </div>
           </div>
         </div>

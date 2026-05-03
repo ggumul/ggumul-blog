@@ -152,9 +152,6 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
         <section className="rounded-[30px] border border-line/70 bg-white/[0.025] px-5 py-7 md:px-8 md:py-9">
-          <div className="mb-7 rounded-[22px] border border-line/70 bg-white/[0.045] p-4 text-sm leading-7 text-subtext">
-            <span className="font-bold text-point">읽기 전에</span> 이 글은 {post.relatedProjects.join(', ')} 작업과 연결된 기록입니다. 본문은 확인한 화면/문제/판단을 중심으로 읽히도록 정리했습니다.
-          </div>
           <div className="prose mx-auto max-w-3xl" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
 

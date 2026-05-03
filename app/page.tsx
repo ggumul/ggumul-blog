@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { CommunityCTA } from '@/components/community-cta';
 import { PostCard } from '@/components/post-card';
 import { ProjectCard } from '@/components/project-card';
 import { getHomeArchiveSnapshot } from '@/lib/content';
@@ -45,12 +44,12 @@ export default async function HomePage() {
                   조건을 읽고,<br />한 장으로 턴을 가져갑니다.
                 </h1>
                 <p className="max-w-3xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                  지금 꼬물에서 가장 먼저 만질 건 Wanderer입니다. 규칙을 보고, 상대 카드를 확인하고, 내 카드 한 장을 냅니다. 살아남는지와 턴을 가져오는지는 그 자리에서 바로 보이게 했어요.
+                  홀수만 살아남습니다. 상대는 13을 냈고, 당신 손에는 15가 있습니다. 지금 고르면 이번 턴을 가져갑니다.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
                 <Link href="/projects/wanderer#mini-play" className="game-button-primary">30초 카드 골라보기</Link>
-                <Link href="/projects/wanderer#play-video" className="game-button-secondary opacity-90">실제 영상 보기</Link>
+                <Link href="/projects/wanderer#play-video" className="game-button-secondary opacity-90">플레이 영상 보기</Link>
               </div>
             </div>
 
@@ -83,7 +82,7 @@ export default async function HomePage() {
               ▶
             </div>
             <figcaption className="studio-caption">
-              <span>실제 플레이 흐름 · 규칙 → 상대 카드 → 내 카드 → 결과</span>
+              <span>규칙 → 상대 카드 → 내 카드 → 결과</span>
               <Link href="/projects/wanderer">Wanderer 자세히 보기</Link>
             </figcaption>
           </figure>
@@ -122,13 +121,13 @@ export default async function HomePage() {
         <section className="space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-[13px] font-black text-point">최근 게임 기록</p>
-              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">화면에서 막힌 지점</h2>
+              <p className="text-[13px] font-black text-point">Wanderer 노트</p>
+              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">버튼 뒤 장면이 늦었던 날</h2>
               <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
-                그냥 작업 현황을 늘어놓지 않고, 화면에서 어긋난 순간과 고친 이유가 보이는 글부터 꺼냈습니다.
+                카드 버튼을 눌렀는데 결과가 바로 읽히지 않았습니다. 그 순간부터 다시 봤습니다.
               </p>
             </div>
-            <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">개발기록 전체 보기 →</Link>
+            <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">글 더 보기 →</Link>
           </div>
           <PostCard post={latestGamePost} featured />
           <div className="grid gap-4 md:grid-cols-2">
@@ -138,8 +137,6 @@ export default async function HomePage() {
           </div>
         </section>
       ) : null}
-
-      <CommunityCTA compact />
     </div>
   );
 }

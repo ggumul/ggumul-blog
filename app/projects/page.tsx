@@ -33,7 +33,7 @@ export default async function ProjectsPage() {
             </p>
             <div className="mt-5 flex flex-wrap gap-3 text-sm">
               <Link href="/projects/wanderer#mini-play" className="game-button-primary">30초 카드 골라보기</Link>
-              <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">실제 화면 기록 보기</Link>
+              <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">폰에서 본 장면</Link>
             </div>
           </div>
 
@@ -66,7 +66,7 @@ export default async function ProjectsPage() {
             <p className="text-[12px] font-black tracking-[0.08em] text-point">다른 항목</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">짧게 보고 고릅니다</h2>
           </div>
-          <Link href="/writing" className="text-sm font-bold text-point hover:text-text">개발 기록 보기 →</Link>
+          <Link href="/writing" className="text-sm font-bold text-point hover:text-text">글 보기 →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {otherWorklines.map(({ project, records }) => (

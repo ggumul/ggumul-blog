@@ -88,7 +88,7 @@ function resolvePostImage(post: WritingEntry): Thumbnail {
     : {
         src: null,
         label: post.category,
-        caption: post.series ?? '개발기록',
+        caption: post.series ?? '작업 노트',
       };
 }
 
@@ -110,7 +110,7 @@ function ThumbnailFrame({ thumbnail, alt, featured }: { thumbnail: Thumbnail; al
       ) : (
         <div className={["flex h-full min-h-full flex-col justify-between p-5", thumbnail.tone ?? 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.32),transparent_18rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]'].join(' ')}>
           <div className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">
-            {thumbnail.badge ?? '기록 기반 카드'}
+            {thumbnail.badge ?? '작업 노트'}
           </div>
           <div>
             <p className="text-[13px] font-bold text-point">{thumbnail.caption}</p>
@@ -147,9 +147,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
           <h3 className="text-[18px] font-black leading-snug tracking-[-0.04em] text-text group-hover:text-point">{post.title}</h3>
           <p className="mt-2 line-clamp-2 text-sm leading-6 text-subtext">{readingPath.stakes}</p>
         </div>
-        <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 px-3 py-2 text-[12px] leading-5 text-subtext">
-          <span className="font-black text-point">볼 지점</span> · {readingPath.next}
-        </p>
+        <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 px-3 py-2 text-[12px] leading-5 text-subtext">{readingPath.next}</p>
       </Link>
     );
   }
@@ -176,9 +174,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
           </h3>
           <p className={featured ? 'mt-4 text-base leading-8 text-subtext' : 'mt-3 line-clamp-3 text-sm leading-7 text-subtext'}>{post.summary}</p>
           <div className={featured ? 'mt-5' : 'mt-4'}>
-            <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 p-3 text-[13px] leading-6 text-subtext">
-              <span className="font-black text-point">볼 지점</span> · {readingPath.next}
-            </p>
+            <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 p-3 text-[13px] leading-6 text-subtext">{readingPath.next}</p>
           </div>
         </div>
 

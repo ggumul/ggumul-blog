@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { PostCard } from '@/components/post-card';
 import { getProjectRecordMap, getWritingArchiveSections } from '@/lib/content';
-import { getWritingReadingPath } from '@/lib/writing-reading-path';
 import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
@@ -28,34 +27,34 @@ const gameEntryOverrides: Record<string, { slug?: string; href: string; title: s
     slug: 'wanderer-초기-설계-회고',
     href: '/writing/wanderer-초기-설계-회고',
     title: '왜 Wanderer는 짧은 카드 게임으로 남았나',
-    summary: '한 판이 짧아야 살아나는 카드 전투의 기준과, 선택 뒤 결과가 바로 보여야 하는 이유를 남긴 기록입니다.',
-    cta: '한 판 흐름 보기 →',
+    summary: '조건을 읽고 카드를 낸 뒤 결과가 바로 떠야 Wanderer가 살아납니다.',
+    cta: '한 턴 보기 →',
   },
   hanoi: {
     slug: 'runtime-화면-확인-기록',
     href: '/writing/runtime-화면-확인-기록',
     title: '폰에서 돌려보니 게임 흐름이 생각보다 끊겼다',
-    summary: '퍼즐 조작과 모바일 화면 흐름이 실제 화면에서 어디까지 바로 읽히는지 확인한 기록입니다.',
-    cta: '퍼즐 흐름 보기 →',
+    summary: '막대를 옮긴 뒤 다음 상태가 바로 보이는지 봤습니다.',
+    cta: '퍼즐 보기 →',
   },
   trpg: {
     slug: '4월-프로젝트-개발-현황',
     href: '/writing/4월-프로젝트-개발-현황',
     title: '카드 전투, 퍼즐, 서사 실험을 한 화면에 나눴다',
-    summary: '선택형 서사 실험이 카드 전투와 퍼즐 사이에서 어디에 놓이는지, 현재 보여줄 수 있는 화면 기준으로 나눴습니다.',
+    summary: '선택지가 장면을 어떻게 바꾸는지 카드와 퍼즐 옆에 놓고 봤습니다.',
     cta: '서사 실험 보기 →',
   },
   'color-hanoi': {
     href: '/projects/color-hanoi',
     title: 'Color Hanoi 프로젝트 상태',
-    summary: '색 조건이 들어간 퍼즐 변형이 Hanoi와 어떤 판단 리듬을 다르게 만드는지 프로젝트 상태에서 먼저 확인합니다.',
+    summary: '색 조건이 들어가면 같은 Hanoi도 옮기는 판단이 달라집니다.',
     cta: '색 조건 보기 →',
   },
 };
 const gameEntryLabels: Record<string, string> = {
-  wanderer: '전투 리듬부터',
-  hanoi: '모바일 흐름부터',
-  trpg: '서사 화면부터',
+  wanderer: '전투 리듬',
+  hanoi: '모바일 조작',
+  trpg: '서사 선택',
   'color-hanoi': '색 조건부터',
 };
 
@@ -64,7 +63,7 @@ export default async function WritingPage() {
   const allPosts = [sections.latest, ...sections.timeline];
   const latestGamePost = allPosts.find((post) => post.relatedProjects.some((project) => project !== 'ggumul-dinner-grocery')) ?? sections.latest;
   const nextUpdates = allPosts.filter((post) => post.slug !== latestGamePost.slug);
-  const latestGamePath = getWritingReadingPath(latestGamePost.slug);
+
   const gameLanes = gameOrder
     .map((slug) => projectRecordMap[slug])
     .filter(Boolean)
@@ -72,15 +71,15 @@ export default async function WritingPage() {
       project,
       records,
       hook: gameHooks[project.slug] ?? project.summary,
-      entryLabel: gameEntryLabels[project.slug] ?? '먼저 볼 지점',
-      readAngle: gameReadAngles[project.slug] ?? '이 게임과 연결된 기록에서 다음에 볼 문제를 고릅니다.',
+      entryLabel: gameEntryLabels[project.slug] ?? '바로 읽기',
+      readAngle: gameReadAngles[project.slug] ?? '게임마다 막힌 장면을 하나씩 남겼습니다.',
       entry: gameEntryOverrides[project.slug] ?? (records[0]
         ? {
             slug: records[0].slug,
             href: `/writing/${records[0].slug}`,
             title: records[0].title,
             summary: records[0].summary,
-            cta: '게임 상태 보기 →',
+            cta: '자세히 보기 →',
           }
         : null),
     }));
@@ -90,17 +89,16 @@ export default async function WritingPage() {
       <section className="studio-hero overflow-hidden rounded-[36px] border border-line/80 bg-white/[0.035] p-5 md:p-8">
         <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div className="space-y-5 rounded-[28px] border border-line/70 bg-black/20 p-5 md:p-7">
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임 개발 기록</p>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임 노트</p>
             <h1 className="max-w-5xl text-[38px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[72px]">
-              게임을 만들다 막힌 지점을 화면으로 남겨둡니다.
+              카드 한 장, 막대 하나, 선택지 하나.
             </h1>
             <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-              작은 카드 게임과 퍼즐을 직접 켜 보며 흐름이 끊긴 지점과 고친 이유를 남깁니다. 대부분 실제 화면을 보면서 쓴 기록입니다.
+              Wanderer, Hanoi, TRPG를 켜 보고 플레이가 어디서 멈추는지 짧게 남겼습니다.
             </p>
           </div>
           <aside className="panel-aside space-y-3 text-sm text-subtext">
-            <p className="text-[13px] leading-6">실제 화면을 다시 켰을 때 바로 떠올리려고, 흐름과 막힌 지점을 게임별로 갈라두었습니다.</p>
-            <Link className="inline-flex text-[13px] font-bold text-point hover:text-text" href="/feed.xml">RSS로 보기 →</Link>
+            <p className="text-[13px] leading-6">Wanderer는 카드 판단, Hanoi는 이동 결과, TRPG는 선택 뒤 이어지는 장면을 봅니다.</p>
           </aside>
         </div>
       </section>
@@ -108,29 +106,23 @@ export default async function WritingPage() {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">처음 볼 기록</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">처음 오셨다면 이 글부터</h2>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">폰에서 버튼을 눌렀는데 결과가 늦었습니다</h2>
             <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
-              PC에서는 괜찮아 보였던 흐름이 실제 폰에서는 어떻게 끊기는지 먼저 보면, 이 개발기록이 무엇을 보는지 바로 잡힙니다.
+              카드 게임은 버튼을 누른 뒤 결과가 늦으면 바로 힘이 빠집니다. 그래서 이 글을 맨 위에 뒀습니다.
             </p>
           </div>
-          <Link href={`/writing/${latestGamePost.slug}`} className="text-sm font-bold text-point hover:text-text">문제부터 읽기 →</Link>
+          <Link href={`/writing/${latestGamePost.slug}`} className="text-sm font-bold text-point hover:text-text">끊긴 장면 보기 →</Link>
         </div>
         <PostCard post={latestGamePost} featured />
-        <div className="rounded-[20px] border-2 border-point/45 bg-point/15 p-4">
-          <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">볼 지점</p>
-          <p className="mt-2 text-sm leading-6 text-subtext">{latestGamePath.stakes}</p>
-          <Link href={`/writing/${latestGamePost.slug}`} className="mt-3 inline-flex text-sm font-black text-text hover:text-point">
-            {latestGamePath.next} →
-          </Link>
-        </div>
+
       </section>
 
       <section className="space-y-5">
         <div>
-          <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임별 기록</p>
-          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">게임마다 남긴 기록</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">한 게임 안에서도 막히는 지점이 달라서, 다시 찾기 쉽게 프로젝트별로 갈라두었습니다.</p>
+          <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임별</p>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">게임마다 다른 순간</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">카드 전투, 퍼즐 이동, 서사 선택은 서로 다른 곳에서 막힙니다.</p>
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
           {gameLanes.map(({ project, records, hook, entryLabel, readAngle, entry }) => (
@@ -151,11 +143,11 @@ export default async function WritingPage() {
                     <span className="mt-2 block text-[13px] font-normal leading-6 text-subtext">{entry.summary}</span>
                   </Link>
                 ) : (
-                  <p className="mt-2 text-sm text-subtext">연결된 기록을 준비 중입니다.</p>
+                  <p className="mt-2 text-sm text-subtext">아직 따로 뺀 글은 없습니다.</p>
                 )}
               </div>
               <Link href={`/projects/${project.slug}`} className="mt-4 inline-flex text-sm font-bold text-point hover:text-text">
-                {entry?.cta ?? '게임 상태 보기 →'}
+                {entry?.cta ?? '자세히 보기 →'}
               </Link>
             </section>
           ))}
@@ -164,9 +156,9 @@ export default async function WritingPage() {
 
       <section className="space-y-5">
         <div>
-          <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">최근 기록</p>
-          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">다른 개발 기록</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">게임 화면에서 시작한 기록이지만, 장보기 앱이나 작업 리듬처럼 같은 제작 과정에서 나온 기록도 함께 이어집니다.</p>
+          <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">나머지</p>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">장보기와 작업 노트</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">게임 밖에서 나온 가격 판단과 제작 리듬은 아래에만 모았습니다.</p>
         </div>
         <div className="grid gap-4">
           {nextUpdates.map((post) => (
