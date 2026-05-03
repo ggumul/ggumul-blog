@@ -26,7 +26,7 @@ describe('writing reading path', () => {
   it('falls back without pretending unknown posts have a fake story arc', () => {
     expect(getWritingReadingPath('unknown-post')).toEqual({
       stakes: '무슨 문제가 있었는지 먼저 봅니다.',
-      change: '글 안에서 확인한 사실과 다음 판단을 이어 봅니다.',
+      change: '글 안에서 무엇이 달라졌는지 이어 봅니다.',
       next: '글 열기',
     });
   });
