@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return createMetadata({
     title: project.slug === 'wanderer' ? 'Wanderer — 한 턴 체험' : `${project.title} 작업 기록`,
     description: project.slug === 'wanderer'
-      ? '규칙을 보고 한 장을 고르는 Wanderer 한 턴 체험, 실제 플레이 화면과 최근 소식입니다.'
+      ? '규칙을 보고 한 장을 고르는 Wanderer 한 턴 체험, 실제 플레이 화면과 새 소식입니다.'
       : project.summary,
     path: `/projects/${project.slug}`,
     ogImage: project.coverImage,
@@ -233,7 +233,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="space-y-3">
             <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">다음에 볼 것</div>
             <Link href={latestRecord ? `/writing/${latestRecord.slug}` : '/writing'} className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
-              <div className="font-black tracking-[-0.03em]">{latestRecord ? '최근 소식' : '소식'}</div>
+              <div className="font-black tracking-[-0.03em]">{latestRecord ? '새 소식' : '소식'}</div>
               <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '프로젝트와 연결된 글을 봅니다.'}</p>
             </Link>
           </div>

@@ -4,7 +4,7 @@ import { getProjectRecordMap, getWritingArchiveSections } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
-  title: '최근 소식',
+  title: '새 소식',
   description: '작은 게임을 만들며 실제 화면에서 달라진 점과 문제를 해결한 과정을 모았습니다.',
   path: '/writing',
 });

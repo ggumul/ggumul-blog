@@ -43,7 +43,7 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
     <div className="flex h-full min-h-[240px] flex-col justify-between bg-[radial-gradient(circle_at_18%_12%,rgba(255,212,71,0.34),transparent_17rem),linear-gradient(135deg,rgba(31,70,162,0.98),rgba(16,24,58,0.98))] p-5">
       <span className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">
-        업데이트
+        새 장면
       </span>
       <div>
         <p className="text-[13px] font-bold text-point">{project.evidenceLabel}</p>
@@ -112,7 +112,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           <div className="mt-5 space-y-3">
             <div className="flex flex-wrap gap-3 text-sm">
               <Link href={projectHref} className="game-button-primary px-4 py-2.5 text-sm">{projectCtas[project.slug] ?? '프로젝트'}</Link>
-              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">최근 소식</Link>
+              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">새 소식</Link>
             </div>
           </div>
         </div>

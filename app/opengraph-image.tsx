@@ -36,7 +36,7 @@ export default function OpenGraphImage() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '22px', maxWidth: '860px' }}>
           <div style={{ fontSize: 72, fontWeight: 700, lineHeight: 1.18 }}>
-            작은 게임과 최근 소식
+            작은 게임과 새 소식
           </div>
           <div style={{ fontSize: 30, lineHeight: 1.5, color: '#5f574f' }}>
             실행 화면, 수정 이유, 남은 문제를 함께 보여주는 꼬물의 소식

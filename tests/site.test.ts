@@ -5,7 +5,7 @@ describe('site branding and seo helpers', () => {
   it('exposes ggumul brand identity for metadata defaults', () => {
     expect(siteConfig.name).toBe('ggumul / 꼬물');
     expect(siteConfig.description).toContain('작은 게임');
-    expect(siteConfig.keywords).toContain('최근 소식');
+    expect(siteConfig.keywords).toContain('새 소식');
     expect(siteConfig.keywords).toContain('Wanderer');
   });
 

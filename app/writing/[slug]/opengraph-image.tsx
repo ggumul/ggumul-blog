@@ -13,8 +13,8 @@ export default async function WritingOpenGraphImage({ params }: { params: Promis
   const post = await getWritingBySlug(slug);
 
   const title = post?.title ?? '꼬물의 기록';
-  const summary = post?.summary ?? '꼬물이 게임을 만들며 남긴 소식';
-  const category = post?.category ?? '소식';
+  const summary = post?.summary ?? '꼬물이 게임을 만들며 남긴 새 이야기';
+  const category = post?.category ?? '새 이야기';
 
   return new ImageResponse(
     (
@@ -40,7 +40,7 @@ export default async function WritingOpenGraphImage({ params }: { params: Promis
         </div>
         <div style={{ display: 'flex', gap: '16px', fontSize: 22, color: '#6a6159' }}>
           <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>기록</div>
-          <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>소식</div>
+          <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>새 이야기</div>
         </div>
       </div>
     ),

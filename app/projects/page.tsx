@@ -77,8 +77,8 @@ export default async function ProjectsPage() {
 
       <section className="panel-section space-y-5">
         <div>
-          <p className="text-[12px] font-black tracking-[0.08em] text-point">최근 소식</p>
-          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.05em] text-text md:text-[42px]">최근 바뀐 장면</h2>
+          <p className="text-[12px] font-black tracking-[0.08em] text-point">새 소식</p>
+          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.05em] text-text md:text-[42px]">새로 좋아진 점</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {recentRecords.map((post) => (

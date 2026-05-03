@@ -51,7 +51,7 @@ describe('content loader', () => {
   it('finds writing by slug and exposes related projects', async () => {
     const post = await getWritingBySlug('4월-프로젝트-개발-현황');
 
-    expect(post?.title).toBe('카드 전투, 퍼즐, 서사 실험을 한 화면에 나눴다');
+    expect(post?.title).toBe('Wanderer와 퍼즐을 한 화면에서 고르게 나눴다');
     expect(post?.relatedProjects).toContain('trpg');
     expect(post?.readingTimeMinutes).toBeGreaterThan(0);
     expect(post?.updatedAt).toBe('2026-04-20');
@@ -66,8 +66,8 @@ describe('content loader', () => {
   it('keeps the first runtime writing title framed around a concrete gameplay problem', async () => {
     const post = await getWritingBySlug('runtime-화면-확인-기록');
 
-    expect(post?.title).toBe('폰에서 돌려보니 게임 흐름이 생각보다 끊겼다');
-    expect(post?.summary).toContain('어디서 흐름이 끊겼고');
+    expect(post?.title).toBe('폰에서 한 턴이 더 자연스럽게 이어지게 다듬었다');
+    expect(post?.summary).toContain('다음 상황이 바로 읽히도록');
     expect(post?.summary).not.toContain('정리했습니다');
   });
 
@@ -77,7 +77,7 @@ describe('content loader', () => {
     expect(taxonomy.categories).toContain('게임 소개');
     expect(taxonomy.categories).toContain('스튜디오 노트');
     expect(taxonomy.categories).toContain('연결 문제');
-    expect(taxonomy.categories).toContain('업데이트');
+    expect(taxonomy.categories).toContain('새 장면');
     expect(taxonomy.series).toContain('4월 작업');
     expect(taxonomy.series).toContain('꼬물 노트');
     expect(taxonomy.series).toContain('Wanderer 로그');
