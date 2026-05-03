@@ -68,6 +68,7 @@ describe('public UI copy cleanup', () => {
     const homePage = read('app/page.tsx');
 
     expect(homePage).not.toMatch(/latestGamePath|다음에 볼 막힌 장면|남긴 판단|읽을 이유/);
+    expect(homePage).not.toContain('object-contain object-center');
     expect(homePage).toContain('30초 카드 골라보기');
   });
 
@@ -127,6 +128,6 @@ describe('public UI copy cleanup', () => {
     const projectCard = read('components/project-card.tsx');
 
     expect(projectCard).not.toMatch(/projectLines|projectAvailability|StatusFacts/);
-    expect(projectCard).not.toMatch(/식단을 정하면 장보기 목록과 가격 판단으로 이어집니다|홀수만 살아남는 턴에서 15를 내면 상대의 13을 넘깁니다|막대를 옮기면 다음 상태가 바로 보입니다/);
+    expect(projectCard).not.toMatch(/>새 소식<|식단을 정하면 장보기 목록과 가격 판단으로 이어집니다|홀수만 살아남는 턴에서 15를 내면 상대의 13을 넘깁니다|막대를 옮기면 다음 상태가 바로 보입니다/);
   });
 });

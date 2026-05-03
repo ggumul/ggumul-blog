@@ -17,12 +17,12 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
   'runtime-화면-확인-기록': {
     stakes: '버튼을 눌렀는데 다음 상황이 바로 읽히지 않았습니다.',
     change: '폰 화면에서 어디서 한 박자 끊기는지 보고, 먼저 고칠 흐름을 골랐습니다.',
-    next: '끊긴 장면 열기',
+    next: '한 턴 다듬은 글 읽기',
   },
   'wanderer-sync-연결-문제-분석': {
     stakes: '화면은 이어진다고 믿었는데 서버는 이미 끊겼다고 보고 있었습니다.',
     change: 'event 이름과 payload 기준을 다시 맞추며 진행 상태가 갈라진 이유를 찾았습니다.',
-    next: '어긋난 이유 열기',
+    next: '연결 문제 글 읽기',
   },
   'wanderer-초기-설계-회고': {
     stakes: '카드 전투가 길어질수록 선택 뒤 결과를 보는 맛이 흐려졌습니다.',

@@ -67,7 +67,7 @@ export default async function HomePage() {
           <figure id="play-video" className="studio-shot relative min-h-[340px] overflow-hidden rounded-[22px] border-[3px] border-[#fff1b8]/60 bg-[#10183a] md:min-h-[500px]">
             <video
               aria-label="Wanderer 조건 판단 플레이 흐름 영상"
-              className="h-full w-full object-contain object-center"
+              className="h-full w-full object-cover object-center"
               src="/media/runtime-checks/wanderer-mobile-demo.mp4"
               poster="/project-covers/wanderer.png"
               autoPlay
@@ -96,7 +96,7 @@ export default async function HomePage() {
               <p className="text-[13px] font-black text-point">대표 게임</p>
               <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">Wanderer를 먼저 봅니다</h2>
             </div>
-            <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">게임 목록 →</Link>
+            <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">전체 게임 보기 →</Link>
           </div>
           <ProjectCard project={leadProject} records={leadProject.previewRecords} />
         </section>
@@ -108,7 +108,7 @@ export default async function HomePage() {
             <p className="text-[13px] font-black text-point">다른 게임과 도구</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">Wanderer 말고도 바로 해볼 일이 있어요</h2>
           </div>
-          <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">게임 목록 →</Link>
+          <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">다른 게임 모두 보기 →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {otherProjects.map((project) => (

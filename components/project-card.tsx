@@ -112,7 +112,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           <div className="mt-5 space-y-3">
             <div className="flex flex-wrap gap-3 text-sm">
               <Link href={projectHref} className="game-button-primary px-4 py-2.5 text-sm">{projectCtas[project.slug] ?? '프로젝트'}</Link>
-              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">새 소식</Link>
+              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">최근 장면 보기</Link>
             </div>
           </div>
         </div>
