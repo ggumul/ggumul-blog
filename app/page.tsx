@@ -41,7 +41,7 @@ export default async function HomePage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3 text-sm">
-              <Link href="/projects/wanderer#mini-play" className="game-button-primary">바로 한 턴 해보기</Link>
+              <Link href="/projects/wanderer#mini-play" className="game-button-primary">한 턴 해보기</Link>
               <Link href="/projects/wanderer" className="game-button-secondary opacity-90">규칙 보기</Link>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default async function HomePage() {
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[13px] font-black text-point">다른 게임과 도구</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">다른 작은 게임들</h2>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">다른 게임들</h2>
           </div>
           <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">다른 게임 모두 보기 →</Link>
         </div>

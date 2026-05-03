@@ -33,7 +33,7 @@ const projectCtas: Record<string, string> = {
 };
 
 const statusLabel: Record<ProjectEntry['progressStatus'], string> = {
-  '플레이 확인': '한 턴 가능',
+  '플레이 확인': '1분 플레이',
   미리보기: '미리보기',
   '계약 점검 중': '가격 보기',
   보류: '보관',
@@ -136,7 +136,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           <div className="mt-5 space-y-3">
             <div className="flex flex-wrap gap-3 text-sm">
               <Link href={projectHref} className="game-button-primary px-4 py-2.5 text-sm">{projectCtas[project.slug] ?? '프로젝트'}</Link>
-              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">플레이 흐름 읽기</Link>
+              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">게임 흐름 보기</Link>
             </div>
           </div>
         </div>

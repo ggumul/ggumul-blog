@@ -32,8 +32,8 @@ export default async function ProjectsPage() {
               먼저 볼 건 규칙을 보고 카드 한 장을 내는 Wanderer입니다. 나머지 퍼즐과 도구는 아래에서 짧게 고를 수 있게 줄였습니다.
             </p>
             <div className="mt-5 flex flex-wrap gap-3 text-sm">
-              <Link href="/projects/wanderer#mini-play" className="game-button-primary">바로 한 턴 해보기</Link>
-              <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">플레이 흐름 읽기</Link>
+              <Link href="/projects/wanderer#mini-play" className="game-button-primary">한 턴 해보기</Link>
+              <Link href="/writing/runtime-화면-확인-기록" className="game-button-secondary">게임 흐름 보기</Link>
             </div>
           </div>
 

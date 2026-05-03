@@ -44,7 +44,7 @@ export default function AboutPage() {
             <p className="mt-2 text-lg font-black leading-7 text-text">Wanderer · 홀수 턴</p>
             <p className="mt-2">상대의 13보다 높은 15를 내면 이번 턴을 가져갑니다.</p>
             <Link href="/projects/wanderer#mini-play" className="mt-4 inline-flex font-black text-point hover:text-text">
-              바로 한 턴 해보기 →
+              한 턴 해보기 →
             </Link>
           </div>
         </div>

@@ -54,7 +54,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
-                <a href="#mini-play" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">바로 한 턴 해보기</a>
+                <a href="#mini-play" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">한 턴 해보기</a>
                 <a href="#play-video" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">플레이 영상</a>
               </div>
             </div>

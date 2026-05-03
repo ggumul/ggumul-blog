@@ -70,7 +70,7 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toMatch(/object-contain object-center/);
     expect(projectsPage).not.toContain('/media/runtime-checks/wanderer-mobile-current.png');
     expect(projectsPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
-    expect(projectsPage).toContain('바로 한 턴 해보기');
+    expect(projectsPage).toContain('한 턴 해보기');
     expect(projectsPage).toContain('홀수 카드만 유효');
   });
 
@@ -97,10 +97,11 @@ describe('public UI copy cleanup', () => {
     expect(homeVisibleSources).not.toMatch(/category: "연결 문제"|- "runtime"|- "flutter"|안정적으로 이어지게|자연스럽게 이어지게|멈칫했는지 줄이고|카드를 한 장을/);
     expect(homeVisibleSources).not.toMatch(/다듬고 있습니다|만들고 있습니다|정리했습니다|다듬었습니다|볼 수 있어야 했습니다|고쳤|Mobile flow|Wanderer turn/);
     expect(homeVisibleSources).not.toMatch(/상대 카드 13|이번 턴은 홀수 카드만 유효\. 상대의 13보다 높은|13보다 높고 홀수인 카드|선택한 문장이 이어지는 흐름과 결말로 돌아옵니다|색 조건 하나가 익숙한 퍼즐을 다른 문제로 바꿉니다/);
+    expect(homeVisibleSources).not.toMatch(/바로 한 턴 해보기|한 턴 가능|플레이 흐름 읽기|카드 선택 뒤 결과|다른 작은 게임들/);
     expect(homeVisibleSources).toContain('한 장을 고르는 순간, 승부가 갈립니다');
     expect(homeVisibleSources).toContain('카드를 고르면 바로 승부가 보입니다');
     expect(homePage).toContain('이번 턴, 어떤 카드를 내야 이길까요?');
-    expect(homePage).toContain('바로 한 턴 해보기');
+    expect(homePage).toContain('한 턴 해보기');
     expect(homePage).toContain('홀수 카드만 유효');
   });
 
@@ -118,7 +119,7 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).not.toMatch(/firstVisitSteps|CommunityCTA|영상 → 기록 → 다음 소식|처음 오셨다면/);
     expect(projectDetailPage).not.toMatch(/지금 확인|지금 보는 이유|다음에 고칠 것|기록 보기|플레이 방식|현재 들어간 것|Wanderer 노트|폰에서 돌린 날/);
     expect(projectDetailPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
-    expect(projectDetailPage).toContain('바로 한 턴 해보기');
+    expect(projectDetailPage).toContain('한 턴 해보기');
     expect(projectDetailPage).toContain('홀수 카드만 유효');
     expect(projectDetailPage).toContain('한 장 고르고, 바로 결과를 봅니다.');
   });

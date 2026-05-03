@@ -45,7 +45,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
               href="/projects/wanderer#mini-play"
               className="game-button-primary min-h-[40px] px-4 py-2 text-sm"
             >
-              바로 한 턴 해보기
+              한 턴 해보기
             </Link>
           </div>
         </div>

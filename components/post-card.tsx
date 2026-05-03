@@ -14,7 +14,7 @@ const postThumbnails: Record<string, Thumbnail> = {
   'runtime-화면-확인-기록': {
     src: '/media/runtime-checks/wanderer-mobile-current.png',
     label: '한 턴 장면',
-    caption: '카드 선택 뒤 결과',
+    caption: '카드를 고른 뒤 결과',
   },
   'wanderer-sync-연결-문제-분석': {
     src: '/studio/wanderer-home.png',
