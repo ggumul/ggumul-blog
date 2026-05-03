@@ -21,7 +21,7 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
   },
   'wanderer-sync-연결-문제-분석': {
     stakes: '화면은 이어진다고 믿었는데 서버는 이미 끊겼다고 보고 있었습니다.',
-    change: 'event 이름과 payload 기준을 다시 맞추며 진행 상태가 갈라진 이유를 찾았습니다.',
+    change: '화면과 서버가 진행 상태를 다르게 본 이유를 찾았습니다.',
     next: '연결 문제 글 읽기',
   },
   'wanderer-초기-설계-회고': {

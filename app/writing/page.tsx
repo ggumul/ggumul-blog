@@ -58,6 +58,13 @@ const gameEntryLabels: Record<string, string> = {
   'color-hanoi': '색 조건부터',
 };
 
+const gameLaneLabels: Record<string, string> = {
+  wanderer: '플레이 화면',
+  hanoi: '퍼즐 화면',
+  trpg: '서사 미리보기',
+  'color-hanoi': '색 조건 미리보기',
+};
+
 export default async function WritingPage() {
   const [sections, projectRecordMap] = await Promise.all([getWritingArchiveSections(), getProjectRecordMap()]);
   const allPosts = [sections.latest, ...sections.timeline];
@@ -129,7 +136,7 @@ export default async function WritingPage() {
             <section key={project.slug} className="rounded-[28px] border border-line/80 bg-white/[0.045] p-5 transition hover:border-point/40 hover:bg-white/[0.06]">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-[12px] font-black uppercase tracking-[0.22em] text-point">{project.progressStatus}</p>
+                  <p className="text-[12px] font-black uppercase tracking-[0.22em] text-point">{gameLaneLabels[project.slug] ?? '게임 보기'}</p>
                   <h3 className="mt-2 text-2xl font-black tracking-[-0.05em] text-text">{project.title}</h3>
                 </div>
               </div>
