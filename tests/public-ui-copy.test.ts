@@ -103,6 +103,7 @@ describe('public UI copy cleanup', () => {
       read('components/post-card.tsx'),
       read('components/site-shell.tsx'),
       read('app/about/page.tsx'),
+      read('lib/writing-reading-path.ts'),
     ].join('\n');
 
     expect(combined).not.toMatch(/대표 게임 보기|게임 더 보기|전체 보기|글 더 보기|최근 글 보기|끊긴 지점 보기|어긋난 이유 보기|퍼즐 흐름 보기|장보기 흐름 보기|개발 기록 보기/);
