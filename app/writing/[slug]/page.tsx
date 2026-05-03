@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { Pill } from '@/components/brand-ui';
 import { PostCard } from '@/components/post-card';
-import { PostEngagement } from '@/components/post-engagement';
 import { getProjects, getWriting, getWritingBySlug } from '@/lib/content';
 import { createArticleJsonLd, createMetadata } from '@/lib/site';
 
@@ -117,7 +116,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 
       <Link href="/writing" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
-        ← 개발 기록으로
+        ← 글 목록으로
       </Link>
 
       <header className="studio-hero overflow-hidden rounded-[36px] border border-line/80 bg-white/[0.035] p-5 md:p-8">
@@ -196,8 +195,8 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
       {relatedRecords.length > 0 ? (
         <section className="space-y-5">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">이어서 보기</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이어서 볼 기록</h2>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">다음 글</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">같은 작업에서 나온 글</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {relatedRecords.slice(0, 3).map((entry) => (
@@ -206,10 +205,6 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
           </div>
         </section>
       ) : null}
-
-      <section className="panel-section space-y-6">
-        <PostEngagement slug={post.slug} title={post.title} />
-      </section>
     </article>
   );
 }

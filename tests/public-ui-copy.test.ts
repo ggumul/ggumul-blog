@@ -88,9 +88,31 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/같이 보기|RSS로 새 기록 받기|짧게 감상 남기기|X에 짧게 남기기|공유 문구|>RSS</);
   });
 
-  it('removes pre-reading instruction boxes from writing detail pages', () => {
+  it('removes pre-reading instruction boxes and engagement prompts from writing detail pages', () => {
     const writingDetailPage = read('app/writing/[slug]/page.tsx');
 
-    expect(writingDetailPage).not.toMatch(/읽기 전에|작업과 연결된 기록|확인한 화면\/문제\/판단/);
+    expect(writingDetailPage).not.toMatch(/읽기 전에|작업과 연결된 기록|확인한 화면\/문제\/판단|PostEngagement|공유하기|댓글 남기기/);
+  });
+
+  it('keeps public copy from repeating generic view CTAs and dev-record framing', () => {
+    const combined = [
+      read('app/page.tsx'),
+      read('app/projects/page.tsx'),
+      read('app/writing/page.tsx'),
+      read('components/project-card.tsx'),
+      read('components/post-card.tsx'),
+      read('components/site-shell.tsx'),
+      read('app/about/page.tsx'),
+    ].join('\n');
+
+    expect(combined).not.toMatch(/대표 게임 보기|게임 더 보기|전체 보기|글 더 보기|최근 글 보기|끊긴 지점 보기|어긋난 이유 보기|퍼즐 흐름 보기|장보기 흐름 보기|개발 기록 보기/);
+    expect(combined).not.toMatch(/게임의 화면, 변경 이유, 남은 문제|결과보다 과정|기록 가능한 개발|작은 단위의 완성/);
+  });
+
+  it('keeps project cards from repeating two descriptions for the same project', () => {
+    const projectCard = read('components/project-card.tsx');
+
+    expect(projectCard).not.toMatch(/projectLines|projectAvailability|StatusFacts/);
+    expect(projectCard).not.toMatch(/식단을 정하면 장보기 목록과 가격 판단으로 이어집니다|홀수만 살아남는 턴에서 15를 내면 상대의 13을 넘깁니다|막대를 옮기면 다음 상태가 바로 보입니다/);
   });
 });

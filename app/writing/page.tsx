@@ -28,27 +28,27 @@ const gameEntryOverrides: Record<string, { slug?: string; href: string; title: s
     href: '/writing/wanderer-초기-설계-회고',
     title: '왜 Wanderer는 짧은 카드 게임으로 남았나',
     summary: '조건을 읽고 카드를 낸 뒤 결과가 바로 떠야 Wanderer가 살아납니다.',
-    cta: '한 턴 보기 →',
+    cta: '한 턴 →',
   },
   hanoi: {
     slug: 'runtime-화면-확인-기록',
     href: '/writing/runtime-화면-확인-기록',
     title: '폰에서 돌려보니 게임 흐름이 생각보다 끊겼다',
     summary: '막대를 옮긴 뒤 다음 상태가 바로 보이는지 봤습니다.',
-    cta: '퍼즐 보기 →',
+    cta: '퍼즐 →',
   },
   trpg: {
     slug: '4월-프로젝트-개발-현황',
     href: '/writing/4월-프로젝트-개발-현황',
     title: '카드 전투, 퍼즐, 서사 실험을 한 화면에 나눴다',
     summary: '선택지가 장면을 어떻게 바꾸는지 카드와 퍼즐 옆에 놓고 봤습니다.',
-    cta: '서사 실험 보기 →',
+    cta: '서사 실험 →',
   },
   'color-hanoi': {
     href: '/projects/color-hanoi',
     title: 'Color Hanoi 프로젝트 상태',
     summary: '색 조건이 들어가면 같은 Hanoi도 옮기는 판단이 달라집니다.',
-    cta: '색 조건 보기 →',
+    cta: '색 조건 →',
   },
 };
 const gameEntryLabels: Record<string, string> = {
@@ -79,7 +79,7 @@ export default async function WritingPage() {
             href: `/writing/${records[0].slug}`,
             title: records[0].title,
             summary: records[0].summary,
-            cta: '자세히 보기 →',
+            cta: '글 열기 →',
           }
         : null),
     }));
@@ -112,7 +112,7 @@ export default async function WritingPage() {
               카드 게임은 버튼을 누른 뒤 결과가 늦으면 바로 힘이 빠집니다. 그래서 이 글을 맨 위에 뒀습니다.
             </p>
           </div>
-          <Link href={`/writing/${latestGamePost.slug}`} className="text-sm font-bold text-point hover:text-text">끊긴 장면 보기 →</Link>
+          <Link href={`/writing/${latestGamePost.slug}`} className="text-sm font-bold text-point hover:text-text">끊긴 장면 →</Link>
         </div>
         <PostCard post={latestGamePost} featured />
 
@@ -147,7 +147,7 @@ export default async function WritingPage() {
                 )}
               </div>
               <Link href={`/projects/${project.slug}`} className="mt-4 inline-flex text-sm font-bold text-point hover:text-text">
-                {entry?.cta ?? '자세히 보기 →'}
+                {entry?.cta ?? '글 열기 →'}
               </Link>
             </section>
           ))}

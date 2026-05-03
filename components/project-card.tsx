@@ -25,19 +25,11 @@ const projectHooks: Record<string, string> = {
 };
 
 const projectCtas: Record<string, string> = {
-  'ggumul-dinner-grocery': '장보기 흐름 보기',
+  'ggumul-dinner-grocery': '장보기 흐름',
   wanderer: '30초 카드 골라보기',
-  trpg: '첫 장면 보기',
-  hanoi: '퍼즐 흐름 보기',
-  'color-hanoi': '변형 규칙 보기',
-};
-
-const projectLines: Record<string, string> = {
-  'ggumul-dinner-grocery': '식단을 정하면 장보기 목록과 가격 판단으로 이어집니다.',
-  wanderer: '홀수만 살아남는 턴에서 15를 내면 상대의 13을 넘깁니다.',
-  trpg: '선택한 문장에 따라 이어지는 장면이 달라집니다.',
-  hanoi: '막대를 옮기면 다음 상태가 바로 보입니다.',
-  'color-hanoi': '색 조건 하나가 옮길 수 있는 막대를 바꿉니다.',
+  trpg: '첫 장면',
+  hanoi: '퍼즐 흐름',
+  'color-hanoi': '변형 규칙',
 };
 
 const statusLabel: Record<ProjectEntry['progressStatus'], string> = {
@@ -83,8 +75,7 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           </span>
         </div>
         <p className="line-clamp-2 text-sm leading-6 text-subtext">{projectHooks[project.slug] ?? project.summary}</p>
-        <p className="text-[12px] leading-5 text-subtext">{projectLines[project.slug] ?? project.verificationNote}</p>
-        <span className="inline-flex text-[13px] font-black text-point">{projectCtas[project.slug] ?? '프로젝트 보기'} →</span>
+        <span className="inline-flex text-[13px] font-black text-point">{projectCtas[project.slug] ?? '프로젝트'} →</span>
       </Link>
     );
   }
@@ -119,12 +110,9 @@ export function ProjectCard({ project, records, compact = false }: { project: Pr
           </div>
 
           <div className="mt-5 space-y-3">
-            <p className="rounded-2xl border-2 border-[#fff1b8]/35 bg-[#10183a]/35 p-3 text-[13px] leading-6 text-subtext">
-              {projectLines[project.slug] ?? project.verificationNote}
-            </p>
             <div className="flex flex-wrap gap-3 text-sm">
-              <Link href={projectHref} className="game-button-primary px-4 py-2.5 text-sm">{projectCtas[project.slug] ?? '프로젝트 보기'}</Link>
-              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">최근 글 보기</Link>
+              <Link href={projectHref} className="game-button-primary px-4 py-2.5 text-sm">{projectCtas[project.slug] ?? '프로젝트'}</Link>
+              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">최근 글</Link>
             </div>
           </div>
         </div>

@@ -41,7 +41,7 @@ export default async function ProjectsPage() {
             <img alt="Wanderer 대표 플레이 화면" className="h-full w-full object-contain object-center" src="/media/runtime-checks/wanderer-mobile-current.png" />
             <figcaption className="studio-caption">
               <span>Wanderer · 규칙 확인 → 카드 선택 → 결과</span>
-              <Link href="/projects/wanderer#mini-play">한 턴 보기</Link>
+              <Link href="/projects/wanderer#mini-play">한 턴</Link>
             </figcaption>
           </figure>
         </div>
@@ -66,7 +66,7 @@ export default async function ProjectsPage() {
             <p className="text-[12px] font-black tracking-[0.08em] text-point">다른 항목</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">짧게 보고 고릅니다</h2>
           </div>
-          <Link href="/writing" className="text-sm font-bold text-point hover:text-text">글 보기 →</Link>
+              <Link href="/writing" className="text-sm font-bold text-point hover:text-text">글 목록 →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {otherWorklines.map(({ project, records }) => (
@@ -77,7 +77,7 @@ export default async function ProjectsPage() {
 
       <section className="panel-section space-y-5">
         <div>
-          <p className="text-[12px] font-black tracking-[0.08em] text-point">최근 기록</p>
+          <p className="text-[12px] font-black tracking-[0.08em] text-point">최근 글</p>
           <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.05em] text-text md:text-[42px]">화면에서 막힌 지점</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-3">

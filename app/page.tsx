@@ -6,7 +6,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '규칙을 보고 한 장을 고르는 Wanderer 한 턴 체험과, 실제 화면을 보며 고친 개발기록을 모았습니다.',
+  description: '규칙을 보고 한 장을 고르는 Wanderer 한 턴과 작은 게임들을 모았습니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
@@ -38,7 +38,7 @@ export default async function HomePage() {
         <div className="grid gap-5 lg:grid-cols-[minmax(0,0.86fr)_minmax(390px,1.14fr)] lg:items-stretch">
           <div className="flex flex-col justify-center gap-6 rounded-[22px] border-[3px] border-[#fff1b8]/55 bg-[#172f82]/80 p-5 shadow-[0_5px_0_rgba(8,13,43,0.55)] md:p-7">
             <div className="space-y-4">
-              <p className="inline-flex rounded-full border-2 border-[#fff1b8]/60 bg-[#ff72a6]/90 px-3 py-1 text-[12px] font-black tracking-[-0.02em] text-[#15183a]">대표 게임 보기</p>
+              <p className="inline-flex rounded-full border-2 border-[#fff1b8]/60 bg-[#ff72a6]/90 px-3 py-1 text-[12px] font-black tracking-[-0.02em] text-[#15183a]">Wanderer 한 턴</p>
               <div className="space-y-4">
                 <h1 className="max-w-4xl text-[34px] font-black leading-[0.96] tracking-[-0.075em] text-text md:text-[66px]">
                   조건을 읽고,<br />한 장으로 턴을 가져갑니다.
@@ -49,7 +49,7 @@ export default async function HomePage() {
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
                 <Link href="/projects/wanderer#mini-play" className="game-button-primary">30초 카드 골라보기</Link>
-                <Link href="/projects/wanderer#play-video" className="game-button-secondary opacity-90">플레이 영상 보기</Link>
+                <Link href="/projects/wanderer#play-video" className="game-button-secondary opacity-90">플레이 영상</Link>
               </div>
             </div>
 
@@ -83,7 +83,7 @@ export default async function HomePage() {
             </div>
             <figcaption className="studio-caption">
               <span>규칙 → 상대 카드 → 내 카드 → 결과</span>
-              <Link href="/projects/wanderer">Wanderer 자세히 보기</Link>
+              <Link href="/projects/wanderer">Wanderer</Link>
             </figcaption>
           </figure>
         </div>
@@ -96,7 +96,7 @@ export default async function HomePage() {
               <p className="text-[13px] font-black text-point">대표 게임</p>
               <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">Wanderer를 먼저 봅니다</h2>
             </div>
-            <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">게임 더 보기 →</Link>
+            <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">게임 목록 →</Link>
           </div>
           <ProjectCard project={leadProject} records={leadProject.previewRecords} />
         </section>
@@ -108,7 +108,7 @@ export default async function HomePage() {
             <p className="text-[13px] font-black text-point">다른 게임과 도구</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">Wanderer 말고도 바로 해볼 일이 있어요</h2>
           </div>
-          <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">전체 보기 →</Link>
+          <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">게임 목록 →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {otherProjects.map((project) => (
@@ -127,7 +127,7 @@ export default async function HomePage() {
                 카드 버튼을 눌렀는데 결과가 바로 읽히지 않았습니다. 그 순간부터 다시 봤습니다.
               </p>
             </div>
-            <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">글 더 보기 →</Link>
+            <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">글 목록 →</Link>
           </div>
           <PostCard post={latestGamePost} featured />
           <div className="grid gap-4 md:grid-cols-2">

@@ -25,7 +25,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </span>
             <span className="leading-tight">
               <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[25px]">ggumul <span className="mx-1 text-point/80">/</span> 꼬물</span>
-              <span className="block text-[11px] font-black tracking-[-0.01em] text-subtext">작은 게임과 개발 기록</span>
+              <span className="block text-[11px] font-black tracking-[-0.01em] text-subtext">작은 게임과 작업 노트</span>
             </span>
           </Link>
 
@@ -57,7 +57,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 text-sm text-subtext md:grid-cols-[minmax(0,1fr)_auto] md:px-8">
           <div>
             <div className="text-lg font-black tracking-[-0.04em] text-text">ggumul / 꼬물</div>
-            <p className="mt-2 max-w-2xl leading-7">꼬물은 만들고 있는 게임의 화면, 변경 이유, 남은 문제를 같이 남깁니다. 완성 소개보다 실제로 어떻게 바뀌었는지를 먼저 보여줍니다.</p>
+            <p className="mt-2 max-w-2xl leading-7">작은 카드 게임과 퍼즐을 만들고 있습니다. 지금은 Wanderer 한 턴을 먼저 보여줍니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
             <Link href="/writing" className="transition hover:text-text">개발 기록</Link>

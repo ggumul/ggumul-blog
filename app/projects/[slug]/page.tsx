@@ -55,7 +55,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
                 <a href="#mini-play" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">30초 카드 골라보기</a>
-                <a href="#play-video" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">플레이 영상 보기</a>
+                <a href="#play-video" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">플레이 영상</a>
               </div>
             </div>
 
@@ -233,7 +233,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="space-y-3">
             <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">다음에 볼 것</div>
             <Link href={latestRecord ? `/writing/${latestRecord.slug}` : '/writing'} className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
-              <div className="font-black tracking-[-0.03em]">{latestRecord ? '최근 글 읽기' : '글 보기'}</div>
+              <div className="font-black tracking-[-0.03em]">{latestRecord ? '최근 글' : '글'}</div>
               <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '프로젝트와 연결된 글을 봅니다.'}</p>
             </Link>
           </div>
@@ -259,7 +259,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {relatedPosts.length > 0 ? (
         <section className="space-y-5">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">개발기록</p>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">작업 노트</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이 프로젝트가 지나온 기록</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
