@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return createMetadata({
-    title: project.slug === 'wanderer' ? 'Wanderer — 한 턴 체험' : `${project.title} 작업 기록`,
+    title: project.slug === 'wanderer' ? 'Wanderer — 한 턴 체험' : `${project.title} 소식`,
     description: project.slug === 'wanderer'
       ? '규칙을 보고 한 장을 고르는 Wanderer 한 턴 체험, 실제 플레이 화면과 새 소식입니다.'
       : project.summary,
@@ -132,7 +132,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           <div className="prose max-w-none">
             <p>Wanderer는 턴마다 조건을 읽고 손패에서 카드 한 장을 내는 게임입니다. 조건에 맞지 않으면 빠지고, 남은 카드끼리는 숫자가 높은 쪽이 턴을 가져갑니다.</p>
             <p>한 판은 짧습니다. 대신 카드를 낸 뒤 생존, 탈락, 승패가 바로 보여야 합니다. 이 페이지도 그 한 턴을 먼저 만지게 만들었습니다.</p>
-            <h2>현재 들어간 것</h2>
+            <h2>지금 해볼 수 있는 것</h2>
             <ul>
               <li>4명이 1~15 숫자 카드 6장으로 시작합니다.</li>
               <li>턴마다 홀수, 짝수, 기준보다 높거나 낮은 조건이 붙습니다.</li>
@@ -143,7 +143,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
         <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">폰에서 돌린 날</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">폰에서 본 장면</div>
             <Link href="/writing/runtime-화면-확인-기록" className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
               <div className="font-black tracking-[-0.03em]">버튼 뒤 장면이 늦었습니다</div>
               <p className="mt-1 text-[13px] leading-6 text-subtext">폰에서 눌렀을 때 결과가 늦게 읽힌 순간입니다.</p>
@@ -151,7 +151,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           </div>
 
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">Wanderer 노트</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">Wanderer 이야기</div>
             <div className="space-y-3">
               {relatedPosts.map((post) => (
                 <Link key={post.slug} href={`/writing/${post.slug}`} className="block rounded-[20px] border border-line/80 bg-white/[0.055] p-4 transition hover:border-point/60 hover:bg-white/[0.08]">
@@ -223,7 +223,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <section className="panel-section">
             <div className="mb-6 flex flex-wrap gap-2 text-[12px]">
               <Pill tone="point">{project.status}</Pill>
-              {latestRecord ? <Pill>최근 기록 있음</Pill> : null}
+              {latestRecord ? <Pill>새 소식 있음</Pill> : null}
             </div>
             <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: project.html }} />
           </section>
@@ -239,7 +239,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </div>
 
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">연결된 기록</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">함께 볼 글</div>
             {relatedPosts.length > 0 ? (
               <div className="space-y-3">
                 {relatedPosts.map((post) => (
@@ -250,7 +250,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 ))}
               </div>
             ) : (
-              <p className="rounded-[20px] border border-line/80 bg-white/[0.055] p-4 text-xs leading-6">아직 이 프로젝트와 직접 연결한 기록은 많지 않지만, 작업은 계속 이어지고 있습니다.</p>
+              <p className="rounded-[20px] border border-line/80 bg-white/[0.055] p-4 text-xs leading-6">아직 이 프로젝트와 함께 볼 글은 많지 않지만, 조금씩 이어지고 있습니다.</p>
             )}
           </div>
         </aside>
@@ -260,7 +260,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <section className="space-y-5">
           <div>
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">소식</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이 프로젝트가 지나온 기록</h2>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이 프로젝트와 이어진 이야기</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {relatedPosts.map((post) => (

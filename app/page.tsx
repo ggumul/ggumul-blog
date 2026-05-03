@@ -121,7 +121,7 @@ export default async function HomePage() {
         <section className="space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-[13px] font-black text-point">Wanderer 노트</p>
+              <p className="text-[13px] font-black text-point">Wanderer 이야기</p>
               <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">버튼 뒤 장면이 늦었던 날</h2>
               <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
                 카드 버튼을 눌렀는데 결과가 바로 읽히지 않았습니다. 그 순간부터 다시 봤습니다.
