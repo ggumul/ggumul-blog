@@ -196,7 +196,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
         <section className="space-y-5">
           <div>
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">다음 글</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">같은 작업에서 나온 글</h2>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이어지는 이야기</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {relatedRecords.slice(0, 3).map((entry) => (
