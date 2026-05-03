@@ -2,6 +2,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const read = (path: string) => readFileSync(path, 'utf8');
+const readFrontmatter = (path: string) => read(path).split('---')[1] ?? '';
 const readWritingMdx = () =>
   readdirSync('content/writing')
     .filter((name) => name.endsWith('.mdx'))
@@ -75,6 +76,13 @@ describe('public UI copy cleanup', () => {
 
   it('keeps home focused on one playable turn instead of a generic landing page', () => {
     const homePage = read('app/page.tsx');
+    const homeVisibleSources = [
+      homePage,
+      read('components/post-card.tsx'),
+      read('lib/writing-reading-path.ts'),
+      readFrontmatter('content/writing/2026-04-26-runtime-화면-확인-기록.mdx'),
+      readFrontmatter('content/writing/2026-04-21-wanderer-sync-연결-문제-분석.mdx'),
+    ].join('\n');
 
     expect(homePage).not.toMatch(/latestGamePath|다음에 볼 막힌 장면|남긴 판단|읽을 이유/);
     expect(homePage).not.toContain('object-contain object-center');
@@ -82,7 +90,8 @@ describe('public UI copy cleanup', () => {
     expect(homePage).not.toContain('wanderer-mobile-demo.mp4');
     expect(homePage).not.toMatch(/heroLoop|조건을 읽고,?<br \/>한 장으로 턴을 가져갑니다|Wanderer 한 턴 샘플|홀수만 살아남음|직접 골라보기|Wanderer를 먼저 봅니다|Wanderer 말고도 바로 해볼 일이 있어요|버튼 뒤 장면이 늦었던 날/);
     expect(homePage).not.toMatch(/Wanderer 플레이 예시|지금 이길 카드는 어느 쪽일까요|모바일에서 결과가 늦게 보였던 문제|끊긴 이유|서버는 이미 끊겼다|턴 조건을 보고/);
-    expect(homePage).not.toMatch(/모바일에서도 결과가 자연스럽게|결과가 바로 이어지지 않던 흐름|흐름을 다시 맞췄습니다|버튼 뒤 흐름 끊김|진행 상태 개선|짧게 볼 수 있는 다른 게임들|유효합니다/);
+    expect(homeVisibleSources).not.toMatch(/모바일에서도 결과가 자연스럽게|결과가 바로 이어지지 않던 흐름|흐름을 다시 맞췄습니다|버튼 뒤 흐름 끊김|진행 상태 개선|짧게 볼 수 있는 다른 게임들|유효합니다/);
+    expect(homeVisibleSources).not.toMatch(/category: "연결 문제"|- "runtime"|- "flutter"|안정적으로 이어지게|자연스럽게 이어지게|멈칫했는지 줄이고|카드를 한 장을/);
     expect(homePage).toContain('이번 턴, 어떤 카드를 내야 이길까요?');
     expect(homePage).toContain('바로 한 턴 해보기');
     expect(homePage).toContain('홀수 카드만 유효');

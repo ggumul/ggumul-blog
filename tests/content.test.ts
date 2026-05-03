@@ -63,12 +63,12 @@ describe('content loader', () => {
     expect(post?.title).toBe('왜 Wanderer는 짧은 카드 게임으로 남았나');
   });
 
-  it('keeps the first runtime writing title framed around a concrete gameplay problem', async () => {
+  it('keeps the first runtime writing title framed around a concrete gameplay moment', async () => {
     const post = await getWritingBySlug('runtime-화면-확인-기록');
 
-    expect(post?.title).toBe('폰에서 한 턴이 더 자연스럽게 이어지게 다듬었다');
-    expect(post?.summary).toContain('다음 상황이 바로 읽히도록');
-    expect(post?.summary).not.toContain('정리했습니다');
+    expect(post?.title).toBe('카드를 고른 뒤 결과까지, 한 턴이 더 또렷해졌습니다');
+    expect(post?.summary).toContain('결과가 바로 눈에 들어오도록');
+    expect(post?.summary).not.toContain('자연스럽게 이어지게');
   });
 
   it('returns category, tags, and series data for writing taxonomy', async () => {
@@ -76,7 +76,7 @@ describe('content loader', () => {
 
     expect(taxonomy.categories).toContain('게임 소개');
     expect(taxonomy.categories).toContain('만드는 기준');
-    expect(taxonomy.categories).toContain('연결 문제');
+    expect(taxonomy.categories).toContain('플레이 흐름');
     expect(taxonomy.categories).toContain('플레이 화면');
     expect(taxonomy.series).toContain('4월 작업');
     expect(taxonomy.series).toContain('꼬물 노트');

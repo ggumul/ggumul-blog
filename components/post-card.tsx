@@ -13,12 +13,12 @@ type Thumbnail = {
 const postThumbnails: Record<string, Thumbnail> = {
   'runtime-화면-확인-기록': {
     src: '/media/runtime-checks/wanderer-mobile-current.png',
-    label: 'Mobile flow',
+    label: '한 턴 장면',
     caption: '카드 선택 뒤 결과',
   },
   'wanderer-sync-연결-문제-분석': {
     src: '/studio/wanderer-home.png',
-    label: 'Wanderer turn',
+    label: '하던 판 이어가기',
     caption: '같은 턴을 보는 장면',
   },
   '4월-프로젝트-개발-현황': {
