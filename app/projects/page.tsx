@@ -38,7 +38,7 @@ export default async function ProjectsPage() {
           </div>
 
           <figure className="studio-shot min-h-[320px] rounded-[24px] border-[3px] border-[#fff1b8]/55 bg-[#10183a] md:min-h-[500px]">
-            <img alt="Wanderer 대표 플레이 화면" className="h-full w-full object-contain object-center" src="/media/runtime-checks/wanderer-mobile-current.png" />
+            <img alt="Wanderer 대표 플레이 화면" className="h-full w-full object-cover object-center" src="/media/runtime-checks/wanderer-mobile-current.png" />
             <figcaption className="studio-caption">
               <span>Wanderer · 규칙 확인 → 카드 선택 → 결과</span>
               <Link href="/projects/wanderer#mini-play">한 턴</Link>
@@ -66,7 +66,7 @@ export default async function ProjectsPage() {
             <p className="text-[12px] font-black tracking-[0.08em] text-point">다른 항목</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">짧게 보고 고릅니다</h2>
           </div>
-              <Link href="/writing" className="text-sm font-bold text-point hover:text-text">글 목록 →</Link>
+          <Link href="/writing" className="text-sm font-bold text-point hover:text-text">글 목록 →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {otherWorklines.map(({ project, records }) => (

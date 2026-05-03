@@ -60,7 +60,7 @@ describe('public UI copy cleanup', () => {
     const projectsPage = read('app/projects/page.tsx');
 
     expect(projectsPage).toContain("project.slug === 'wanderer'");
-    expect(projectsPage).not.toMatch(/MetricCard|공개 항목|recordTotal|worklines\.slice\(1, 4\)/);
+    expect(projectsPage).not.toMatch(/MetricCard|공개 항목|recordTotal|worklines\.slice\(1, 4\)|object-contain object-center/);
     expect(projectsPage).toContain('Wanderer부터 바로 봅니다');
   });
 
