@@ -34,7 +34,7 @@ export default async function HomePage() {
             <p className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/60 bg-[#ff72a6]/90 px-3 py-1 text-[12px] font-black tracking-[-0.02em] text-[#15183a]">Wanderer 한 턴</p>
             <div className="space-y-4">
               <h1 className="max-w-4xl text-[34px] font-black leading-[0.98] tracking-[-0.035em] text-text md:text-[64px]">
-                카드 한 장이면, 한 판이 갈립니다.
+                카드 한 장, 한 판이 갈립니다.
               </h1>
               <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
                 꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다. 먼저 Wanderer의 한 턴을 보여드립니다.
@@ -95,7 +95,7 @@ export default async function HomePage() {
               <p className="text-[13px] font-black text-point">대표 게임</p>
               <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[48px]">첫 번째 게임, Wanderer</h2>
             </div>
-            <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">게임 둘러보기 →</Link>
+            <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">모든 게임 보기 →</Link>
           </div>
           <ProjectCard project={leadProject} records={leadProject.previewRecords} />
         </section>
@@ -107,7 +107,7 @@ export default async function HomePage() {
             <p className="text-[13px] font-black text-point">다른 작은 게임</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[44px]">다음에 해볼 게임들</h2>
           </div>
-          <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">게임 둘러보기 →</Link>
+          <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">모든 게임 보기 →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {otherProjects.map((project) => (
@@ -121,7 +121,7 @@ export default async function HomePage() {
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[13px] font-black text-point">게임 기록</p>
-              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[48px]">카드 한 장으로 승부가 납니다</h2>
+              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[48px]">한 장의 카드로 승부가 납니다</h2>
               <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
                 카드를 고르면 바로 승부가 납니다. Wanderer는 그 짧은 순간에 집중합니다.
               </p>
