@@ -30,7 +30,7 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
     next: '짧은 전투 기준 열기',
   },
   '4월-프로젝트-개발-현황': {
-    stakes: '게임이 많아져도 지금 볼 수 있는 장면을 쉽게 찾을 수 있습니다.',
+    stakes: '게임이 많아져도 지금 열린 장면을 쉽게 찾을 수 있습니다.',
     change: '카드 전투, 퍼즐, 서사 실험을 나눠 놓고 비어 있는 부분을 먼저 드러냈습니다.',
     next: '게임 배치 읽기',
   },

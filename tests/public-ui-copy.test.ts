@@ -158,6 +158,7 @@ describe('public UI copy cleanup', () => {
       read('components/project-card.tsx'),
       read('components/post-card.tsx'),
       read('components/wanderer-mini-play.tsx'),
+      read('lib/writing-reading-path.ts'),
     ].join('\n');
 
     expect(combined).not.toMatch(/한장|한판|한장을/);
