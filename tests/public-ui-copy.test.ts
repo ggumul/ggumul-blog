@@ -102,7 +102,8 @@ describe('public UI copy cleanup', () => {
 
     expect(homeVisibleSources).toContain('한 장의 카드로 승부가 납니다');
     expect(homeVisibleSources).toContain('고른 순간, 승부가 갈립니다');
-    expect(homePage).toContain('카드 한 장, 한 판이 갈립니다.');
+    expect(homePage).toContain('카드 한 장,');
+    expect(homePage).toContain('<span className="whitespace-nowrap">한 판이 갈립니다.</span>');
     expect(homePage).toContain('카드 한 장 고르기');
     expect(homePage).toContain('홀수 카드만 유효');
   });

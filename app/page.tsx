@@ -34,7 +34,7 @@ export default async function HomePage() {
             <p className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/60 bg-[#ff72a6]/90 px-3 py-1 text-[12px] font-black tracking-[-0.02em] text-[#15183a]">Wanderer 한 턴</p>
             <div className="space-y-4">
               <h1 className="max-w-4xl text-[34px] font-black leading-[0.98] tracking-[-0.035em] text-text md:text-[64px]">
-                카드 한 장, 한 판이 갈립니다.
+                카드 한 장, <span className="whitespace-nowrap">한 판이 갈립니다.</span>
               </h1>
               <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
                 꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다. 먼저 Wanderer의 한 턴을 보여드립니다.
