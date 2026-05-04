@@ -142,6 +142,30 @@ describe('public UI copy cleanup', () => {
     expect(shell).not.toContain('<Link href="/writing" className="transition hover:text-text">새 소식</Link>');
   });
 
+  it('keeps the mobile header from duplicating the primary play CTA', () => {
+    const shell = read('components/site-shell.tsx');
+
+    expect(shell).toContain('md:inline-flex');
+    expect(shell).not.toMatch(/className="inline-flex[^\n]+카드 한 장 고르기/);
+  });
+
+  it('keeps mobile-facing copy and thumbnails from reading like dashboards or placeholders', () => {
+    const combined = [
+      read('app/page.tsx'),
+      read('app/projects/page.tsx'),
+      read('app/writing/page.tsx'),
+      read('app/projects/[slug]/page.tsx'),
+      read('components/project-card.tsx'),
+      read('components/post-card.tsx'),
+      read('components/wanderer-mini-play.tsx'),
+    ].join('\n');
+
+    expect(combined).not.toMatch(/한장|한판|한장을/);
+    expect(combined).not.toMatch(/Wanderer부터 고릅니다|결과가 여기에 뜹니다|상대 카드 13|짝수\/정답\/짝수|볼 수 있는 장면/);
+    expect(combined).toContain('프로젝트-폴백-장면');
+    expect(combined).toContain('게임 기록 목록');
+  });
+
   it('keeps the public flow game-first instead of project-status first', () => {
     const combined = [
       read('app/page.tsx'),

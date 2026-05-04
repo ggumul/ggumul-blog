@@ -47,10 +47,15 @@ const statusLabel: Record<ProjectEntry['progressStatus'], string> = {
 
 function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
-    <div className="flex h-full min-h-[240px] flex-col justify-between bg-[radial-gradient(circle_at_18%_12%,rgba(255,212,71,0.34),transparent_17rem),linear-gradient(135deg,rgba(31,70,162,0.98),rgba(16,24,58,0.98))] p-5">
+    <div aria-label="프로젝트-폴백-장면" className="flex h-full min-h-[240px] flex-col justify-between bg-[radial-gradient(circle_at_18%_12%,rgba(255,212,71,0.34),transparent_17rem),radial-gradient(circle_at_78%_72%,rgba(255,114,166,0.22),transparent_14rem),linear-gradient(135deg,rgba(31,70,162,0.98),rgba(16,24,58,0.98))] p-5">
       <span className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">
-        볼 수 있는 장면
+        작은 장면
       </span>
+      <div className="grid grid-cols-3 gap-2 opacity-85">
+        <span className="h-16 rounded-[16px] border-2 border-[#fff1b8]/35 bg-[#10183a]/45" />
+        <span className="h-16 translate-y-4 rounded-[16px] border-2 border-[#fff1b8]/55 bg-[#ffd447]/90" />
+        <span className="h-16 rounded-[16px] border-2 border-[#fff1b8]/35 bg-[#ff72a6]/75" />
+      </div>
       <div>
         <p className="text-[13px] font-bold text-point">{project.evidenceLabel}</p>
         <p className="mt-2 max-w-[14rem] text-[30px] font-black leading-none tracking-[-0.06em] text-text">{project.title}</p>

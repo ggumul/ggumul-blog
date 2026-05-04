@@ -110,7 +110,7 @@ export default async function WritingPage() {
         </div>
       </section>
 
-      <section className="space-y-5">
+      <section aria-label="게임 기록 목록" className="space-y-5">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer</p>

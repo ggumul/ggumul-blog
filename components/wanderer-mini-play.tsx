@@ -150,7 +150,7 @@ export function WandererMiniPlay() {
             ) : (
               <div className="flex h-full flex-col justify-center">
                 <p className="text-[11px] font-black uppercase tracking-[0.22em] text-point">선택 결과</p>
-                <p className="mt-4 text-[30px] font-black leading-tight tracking-[-0.06em] text-text md:text-[38px]">결과가 여기에 뜹니다.</p>
+                <p className="mt-4 text-[30px] font-black leading-tight tracking-[-0.06em] text-text md:text-[38px]">카드를 고르면 바로 승부가 납니다.</p>
                 <p className="mt-4 text-sm font-bold leading-7 text-subtext">카드를 고르면 생존, 탈락, 턴 획득만 짧게 보여줍니다.</p>
               </div>
             )}
