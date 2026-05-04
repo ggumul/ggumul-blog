@@ -104,8 +104,8 @@ export default async function HomePage() {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-[13px] font-black text-point">다른 작은 게임</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[44px]">다음에 해볼 게임들</h2>
+            <p className="text-[13px] font-black text-point">퍼즐과 서사</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[44px]">Wanderer 옆의 작은 장면들</h2>
           </div>
           <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">모든 게임 보기 →</Link>
         </div>

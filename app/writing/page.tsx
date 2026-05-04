@@ -101,11 +101,11 @@ export default async function WritingPage() {
               게임이 끊기는 순간을 고칩니다.
             </h1>
             <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-              카드 승부, 퍼즐 이동, 서사 선택이 어디서 흐려지는지 보고 왜 바꿨는지 남깁니다.
+              카드 승부, 퍼즐 이동, 서사 선택이 어떤 순간에 멈추는지 보고 왜 바꿨는지 남깁니다.
             </p>
           </div>
           <aside className="panel-aside space-y-3 text-sm text-subtext">
-            <p className="text-[13px] leading-6">먼저 실제 게임 장면을 보고, 깊은 기술 이야기는 글 안쪽에만 둡니다.</p>
+            <p className="text-[13px] leading-6">먼저 실제 게임 장면을 보고, 자세한 제작 이야기는 글 안쪽에만 둡니다.</p>
           </aside>
         </div>
       </section>

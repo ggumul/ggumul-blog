@@ -92,7 +92,7 @@ export default async function ProjectsPage() {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-[12px] font-black tracking-[0.08em] text-point">다른 작은 게임들</p>
+            <p className="text-[12px] font-black tracking-[0.08em] text-point">퍼즐과 서사</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">퍼즐과 서사도 있습니다</h2>
           </div>
           <Link href="/writing" className="text-sm font-bold text-point hover:text-text">게임 기록 읽기 →</Link>
