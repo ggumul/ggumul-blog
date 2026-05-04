@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { Pill } from '@/components/brand-ui';
-import { PostCard } from '@/components/post-card';
 import { getProjects, getWriting, getWritingBySlug } from '@/lib/content';
 import { createArticleJsonLd, createMetadata } from '@/lib/site';
 
@@ -50,7 +49,7 @@ function resolvePostHeroFallback(post: { slug: string; category: string }) {
       title: '장보기 전 가격 흐름',
       description: '메뉴를 고르고 재료를 적기 전에, 오늘 사도 괜찮은지 먼저 보는 작은 장면입니다.',
       badge: '장보기 도구',
-      tone: 'bg-[radial-gradient(circle_at_24%_22%,rgba(251,191,36,0.26),transparent_34%),radial-gradient(circle_at_78%_18%,rgba(132,204,22,0.22),transparent_30%),linear-gradient(135deg,rgba(14,20,14,0.96),rgba(44,35,18,0.92))]',
+      tone: 'bg-[#182013]',
     };
   }
 
@@ -59,7 +58,7 @@ function resolvePostHeroFallback(post: { slug: string; category: string }) {
     title: post.category,
     description: '글과 연결된 장면을 짧게 남긴 제작 노트입니다.',
     badge: '게임 기록',
-    tone: 'bg-[radial-gradient(circle_at_24%_20%,rgba(124,92,255,0.32),transparent_34%),radial-gradient(circle_at_78%_16%,rgba(255,122,162,0.2),transparent_30%),linear-gradient(135deg,rgba(14,16,28,0.96),rgba(31,26,54,0.92))]',
+    tone: 'bg-[#151929]',
   };
 }
 
@@ -136,66 +135,61 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
     <article className="archive-surface space-y-10 md:space-y-14">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 
-      <Link href="/writing" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
+      <Link href="/writing" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
         ← 게임 기록으로
       </Link>
 
-      <header className="studio-hero overflow-hidden rounded-[36px] border border-line/80 bg-white/[0.035] p-5 md:p-8">
-        <div className="grid gap-7 lg:grid-cols-[minmax(0,0.96fr)_minmax(380px,1.04fr)] lg:items-stretch">
-          <div className="flex flex-col justify-between gap-7 rounded-[28px] border border-line/70 bg-black/20 p-5 md:p-7">
-            <div className="space-y-4">
-              <div className="flex flex-wrap items-center gap-2 text-[12px]">
-                <Pill tone="point">{post.category}</Pill>
-                {post.series ? <Pill>{post.series}</Pill> : null}
-                <Pill>{post.publishedAt}</Pill>
-              </div>
-              <h1 className="text-[38px] font-black leading-[1.02] tracking-[-0.065em] text-text md:text-[68px]">
-                {post.title}
-              </h1>
-              <p className="text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">{post.summary}</p>
-              {post.updatedAt !== post.publishedAt ? <p className="text-[12px] text-subtext/80">마지막 수정 {post.updatedAt}</p> : null}
+      <header className="rounded-[28px] border border-line/70 bg-surface/70 p-5 md:p-8">
+        <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
+          <div className="space-y-4">
+            <div className="flex flex-wrap items-center gap-2 text-[12px]">
+              <Pill tone="point">{post.category}</Pill>
+              {post.series ? <Pill>{post.series}</Pill> : null}
+              <Pill>{post.publishedAt}</Pill>
             </div>
+            <h1 className="text-[36px] font-black leading-[1.05] tracking-[-0.055em] text-text md:text-[62px]">
+              {post.title}
+            </h1>
+            <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">{post.summary}</p>
+            {post.updatedAt !== post.publishedAt ? <p className="text-[12px] text-subtext/80">마지막 수정 {post.updatedAt}</p> : null}
             <div className="flex flex-wrap gap-2 text-[12px]">
               {post.relatedProjects.map((project) => <Pill key={project}>{project}</Pill>)}
             </div>
           </div>
 
-          <figure className="studio-shot min-h-[330px] overflow-hidden rounded-[30px] border border-line/80 bg-white/10 md:min-h-[520px]">
+          <figure className="overflow-hidden rounded-[24px] border border-line/70 bg-surface/60">
             {heroImage ? (
-              <img alt={`${post.title} 장면`} className="h-full w-full object-cover" src={heroImage} />
+              <img alt={`${post.title} 장면`} className="max-h-[420px] w-full object-cover" src={heroImage} />
             ) : (
-              <div className={`flex h-full min-h-[330px] flex-col justify-between p-7 md:min-h-[520px] md:p-9 ${heroFallback.tone}`}>
-                <div className="flex items-center justify-between gap-3 text-[11px] font-black uppercase tracking-[0.24em] text-white/65">
+              <div className={`flex min-h-[280px] flex-col justify-between p-6 ${heroFallback.tone}`}>
+                <div className="flex items-center justify-between gap-3 text-[11px] font-black uppercase tracking-[0.2em] text-white/65">
                   <span>{heroFallback.label}</span>
                   <span>{heroFallback.badge}</span>
                 </div>
-                <div className="max-w-sm space-y-4">
-                  <div className="h-1.5 w-20 rounded-full bg-white/45" />
-                  <h2 className="text-[34px] font-black leading-[0.98] tracking-[-0.06em] text-white md:text-[56px]">{heroFallback.title}</h2>
-                  <p className="text-[15px] leading-7 text-white/72 md:text-[17px] md:leading-8">{heroFallback.description}</p>
+                <div className="max-w-sm space-y-3">
+                  <h2 className="text-[30px] font-black leading-[1.02] tracking-[-0.05em] text-white md:text-[46px]">{heroFallback.title}</h2>
+                  <p className="text-[15px] leading-7 text-white/72">{heroFallback.description}</p>
                 </div>
               </div>
             )}
-            <figcaption className="studio-caption">
-              <span>글과 연결된 실행 화면</span>
+            <figcaption className="flex items-center justify-between gap-3 border-t border-line/70 px-4 py-3 text-xs font-semibold text-subtext">
+              <span>글과 연결된 장면</span>
               <span>{post.category}</span>
             </figcaption>
           </figure>
         </div>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
-        <section className="rounded-[30px] border border-line/70 bg-white/[0.025] px-5 py-7 md:px-8 md:py-9">
-          <div className="prose mx-auto max-w-3xl" dangerouslySetInnerHTML={{ __html: post.html }} />
-        </section>
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
+        <section className="prose max-w-none lg:max-w-3xl" dangerouslySetInnerHTML={{ __html: post.html }} />
 
-        <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
+        <aside className="space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           {headings.length > 0 ? (
             <div className="space-y-3">
-              <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">목차</div>
+              <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">목차</div>
               <ol className="space-y-2 text-[13px] leading-6">
                 {headings.map((heading) => (
-                  <li key={heading} className="rounded-2xl border border-white/10 bg-white/[0.035] px-3 py-2 text-text/90">{heading}</li>
+                  <li key={heading} className="border-t border-line/70 py-2 text-text/90">{heading}</li>
                 ))}
               </ol>
             </div>
@@ -203,24 +197,23 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
 
           {relatedProjects.length > 0 ? (
             <div className="space-y-3">
-              <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">관련 프로젝트</div>
-              {relatedProjects.map((project) => (
-                <Link key={project.slug} href={`/projects/${project.slug}`} className="block overflow-hidden rounded-[20px] border border-line/80 bg-white/[0.055] transition hover:border-point/60">
-                  {project.coverImage ? <img alt={`${project.title} 장면`} className="h-28 w-full object-cover" src={project.coverImage} /> : null}
-                  <div className="p-4">
+              <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">관련 프로젝트</div>
+              <div className="divide-y divide-line/70 border-y border-line/70">
+                {relatedProjects.map((project) => (
+                  <Link key={project.slug} href={`/projects/${project.slug}`} className="block py-4 transition hover:text-text">
                     <div className="font-black tracking-[-0.03em] text-text">{project.title}</div>
                     <p className="mt-1 text-sm leading-6 text-subtext">{project.summary}</p>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ))}
+              </div>
             </div>
           ) : null}
 
           <div>
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">글 주제</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">글 주제</div>
             <div className="mt-3 flex flex-wrap gap-2 text-[12px]">
               {post.tags.map((tag) => (
-                <span key={tag} className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-subtext">#{tag}</span>
+                <span key={tag} className="rounded-full border border-line/70 px-2.5 py-1 text-subtext">#{tag}</span>
               ))}
             </div>
           </div>
@@ -230,12 +223,15 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
       {relatedRecords.length > 0 ? (
         <section className="space-y-5">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">다음 글</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이어지는 이야기</h2>
+            <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">다음 글</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.045em] text-text md:text-[46px]">이어지는 이야기</h2>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="divide-y divide-line/70 border-y border-line/70">
             {relatedRecords.slice(0, 3).map((entry) => (
-              <PostCard key={entry.slug} post={entry} compact />
+              <Link key={entry.slug} href={`/writing/${entry.slug}`} className="block py-4 transition hover:text-text">
+                <h3 className="text-xl font-black tracking-[-0.04em] text-text">{entry.title}</h3>
+                <p className="mt-1 max-w-3xl text-sm leading-7 text-subtext">{entry.summary}</p>
+              </Link>
             ))}
           </div>
         </section>

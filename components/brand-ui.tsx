@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 export function Eyebrow({ children }: { children: ReactNode }) {
-  return <p className="text-[11px] font-black uppercase tracking-[0.28em] text-point">{children}</p>;
+  return <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">{children}</p>;
 }
 
 export function PageHero({
@@ -16,16 +16,16 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="hero-panel overflow-hidden rounded-[34px] border border-line/80 bg-white/[0.035] p-6 md:p-9">
-      <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_300px] md:items-end">
+    <section className="rounded-[28px] border border-line/70 bg-surface/70 p-5 md:p-8">
+      <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_260px] md:items-end">
         <div className="space-y-4">
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="max-w-5xl text-[38px] font-black leading-[0.98] tracking-[-0.065em] text-text md:text-[76px]">
+          <h1 className="max-w-5xl text-[36px] font-black leading-[1.04] tracking-[-0.055em] text-text md:text-[68px]">
             {title}
           </h1>
-          <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[20px] md:leading-9">{description}</p>
+          <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">{description}</p>
         </div>
-        {children ? <div className="panel-aside md:self-stretch">{children}</div> : null}
+        {children ? <div className="text-sm leading-7 text-subtext">{children}</div> : null}
       </div>
     </section>
   );
@@ -56,9 +56,9 @@ export function SectionHeader({
 
 export function MetricCard({ label, value, description }: { label: string; value: ReactNode; description: string }) {
   return (
-    <div className="rounded-[24px] border border-line/80 bg-white/[0.065] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-      <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-point">{label}</div>
-      <div className="mt-2 text-3xl font-black tracking-[-0.06em] text-text">{value}</div>
+    <div className="rounded-[20px] border border-line/70 bg-surface/60 p-4">
+      <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-point">{label}</div>
+      <div className="mt-2 text-2xl font-black tracking-[-0.05em] text-text">{value}</div>
       <p className="mt-1 text-[13px] leading-6 text-subtext">{description}</p>
     </div>
   );
@@ -72,15 +72,10 @@ export function Pill({ children, tone = 'neutral' }: { children: ReactNode; tone
 
 export function FeatureCard({ title, description, children }: { title: string; description: string; children?: ReactNode }) {
   return (
-    <div className="story-card rounded-[28px] border border-line/80 bg-white/[0.055] p-5">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h3 className="text-xl font-black tracking-[-0.04em] text-text">{title}</h3>
-          <p className="mt-2 text-sm leading-7 text-subtext">{description}</p>
-        </div>
-        <span className="mt-1 grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-point/25 bg-point/10 text-point">✦</span>
-      </div>
-      {children ? <div className="mt-4">{children}</div> : null}
+    <div className="rounded-2xl border border-line/70 bg-surface/60 p-5">
+      <h3 className="text-xl font-black tracking-[-0.04em] text-text">{title}</h3>
+      <p className="mt-2 text-sm leading-7 text-subtext">{description}</p>
+      {children ? <div className="mt-4 text-sm leading-7 text-subtext">{children}</div> : null}
     </div>
   );
 }

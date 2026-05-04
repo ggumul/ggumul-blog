@@ -244,4 +244,40 @@ describe('public UI copy cleanup', () => {
     expect(projectCard).toContain("project.slug === 'wanderer'");
     expect(projectCard).toContain('wanderer-card-preview');
   });
+
+  it('keeps the visual system quiet: no patterned backdrop or heavy depth tokens', () => {
+    const css = read('app/globals.css');
+    const sharedSources = [
+      css,
+      read('components/site-shell.tsx'),
+      read('components/brand-ui.tsx'),
+      read('components/project-card.tsx'),
+      read('components/post-card.tsx'),
+      read('components/wanderer-mini-play.tsx'),
+      read('app/page.tsx'),
+      read('app/projects/page.tsx'),
+      read('app/writing/page.tsx'),
+      read('app/projects/[slug]/page.tsx'),
+      read('app/writing/[slug]/page.tsx'),
+      read('app/about/page.tsx'),
+      read('app/links/page.tsx'),
+    ].join('\n');
+
+    expect(css).not.toMatch(/body::before|radial-gradient\(circle at 14%|background-size:\s*26px 26px|blur-3xl/);
+    expect(sharedSources).not.toMatch(/border-\[3px\]|shadow-card|shadow-\[0_[3-9]px|hover:-translate-y|group-hover:scale|bg-\[radial-gradient/);
+    expect(sharedSources).not.toMatch(/studio-shot|hero-panel|game-card-glow|story-card/);
+  });
+
+  it('keeps primary pages one-layered and list-like instead of card-in-card dashboards', () => {
+    const home = read('app/page.tsx');
+    const projects = read('app/projects/page.tsx');
+    const writing = read('app/writing/page.tsx');
+    const miniPlay = read('components/wanderer-mini-play.tsx');
+
+    expect(home).not.toMatch(/상대 카드: 13|내 손패|정답|VS|figure className="studio-shot|ProjectCard project=\{leadProject\}/);
+    expect(projects).not.toMatch(/상대 카드|내 카드|결과|VS|figure className="studio-shot|recentRecords|PostCard/);
+    expect(writing).toContain('article-list');
+    expect(writing).not.toMatch(/gameLanes|grid gap-5 md:grid-cols|PostCard post=\{entry/);
+    expect(miniPlay).not.toMatch(/rounded-\[26px\]|rounded-\[22px\]|lg:grid-cols-\[minmax\(0,0\.62fr\)|result aside/);
+  });
 });

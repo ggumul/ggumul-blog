@@ -1,157 +1,80 @@
 import Link from 'next/link';
 import type { ProjectEntry, WritingEntry } from '@/lib/content';
 
-const projectKinds: Record<string, string> = {
-  'ggumul-dinner-grocery': '저녁 장보기 도구',
-  wanderer: '카드 게임',
-  trpg: '분기형 서사',
-  hanoi: '퍼즐 게임',
-  'color-hanoi': '색 조건 하노이',
-};
-
-const progressTone: Record<ProjectEntry['progressStatus'], string> = {
-  '한 턴 공개': 'border-[#fff1b8]/65 bg-[#7ee6c6] text-[#10183a]',
-  미리보기: 'border-[#fff1b8]/65 bg-[#ffd447] text-[#10183a]',
-  '장보기 판단': 'border-[#fff1b8]/65 bg-[#8fd2ff] text-[#10183a]',
-  '퍼즐 장면': 'border-[#fff1b8]/65 bg-[#ffd447] text-[#10183a]',
-  '색 퍼즐': 'border-[#fff1b8]/65 bg-[#ffd447] text-[#10183a]',
-  '선택 장면': 'border-[#fff1b8]/65 bg-[#ff72a6] text-[#10183a]',
-  보류: 'border-[#fff1b8]/45 bg-[#1f46a2] text-subtext',
-};
-
-const projectHooks: Record<string, string> = {
-  'ggumul-dinner-grocery': '식단을 정하면 장보기와 가격 판단까지 이어집니다.',
-  wanderer: '매 턴 조건에 맞는 카드를 골라, 상대보다 큰 수를 내는 짧은 카드 게임입니다.',
-  trpg: '선택한 문장에 따라 이야기의 흐름과 결말이 달라집니다.',
-  hanoi: '막대를 옮기는 순서 하나가 퍼즐의 길을 만듭니다.',
-  'color-hanoi': '색 조건이 더해져 익숙한 퍼즐이 새로운 문제로 바뀝니다.',
+type ProjectCardProps = {
+  project: ProjectEntry;
+  records?: WritingEntry[];
+  compact?: boolean;
 };
 
 const projectCtas: Record<string, string> = {
-  'ggumul-dinner-grocery': '장보기 도구',
-  wanderer: '카드 한 장 고르기',
-  trpg: '이야기 선택',
-  hanoi: '퍼즐 시작',
-  'color-hanoi': '색 조건 보기',
+  wanderer: 'Wanderer 보기',
+  hanoi: 'Hanoi 보기',
+  trpg: 'TRPG 보기',
+  'color-hanoi': 'Color Hanoi 보기',
+  'ggumul-dinner-grocery': '장보기 도구 보기',
 };
 
-const statusLabel: Record<ProjectEntry['progressStatus'], string> = {
-  '한 턴 공개': '한 턴 공개',
-  미리보기: '미리보기',
-  '장보기 판단': '장보기 판단',
-  '퍼즐 장면': '퍼즐 장면',
-  '색 퍼즐': '색 퍼즐',
-  '선택 장면': '선택 장면',
-  보류: '보관',
-};
+function formatDate(date: string) {
+  return date.replaceAll('-', '.');
+}
 
 function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
-    <div aria-label="프로젝트-폴백-장면" className="flex h-full min-h-[240px] flex-col justify-between bg-[radial-gradient(circle_at_18%_12%,rgba(255,212,71,0.34),transparent_17rem),radial-gradient(circle_at_78%_72%,rgba(255,114,166,0.22),transparent_14rem),linear-gradient(135deg,rgba(31,70,162,0.98),rgba(16,24,58,0.98))] p-5">
-      <span className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">
-        작은 장면
-      </span>
-      <div className="grid grid-cols-3 gap-2 opacity-85">
-        <span className="h-16 rounded-[16px] border-2 border-[#fff1b8]/35 bg-[#10183a]/45" />
-        <span className="h-16 translate-y-4 rounded-[16px] border-2 border-[#fff1b8]/55 bg-[#ffd447]/90" />
-        <span className="h-16 rounded-[16px] border-2 border-[#fff1b8]/35 bg-[#ff72a6]/75" />
-      </div>
-      <div>
-        <p className="text-[13px] font-bold text-point">{project.evidenceLabel}</p>
-        <p className="mt-2 max-w-[14rem] text-[30px] font-black leading-none tracking-[-0.06em] text-text">{project.title}</p>
-      </div>
+    <div aria-label="프로젝트-폴백-장면" className="border-t border-line/30 pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
+      <p className="text-[12px] font-black tracking-[0.14em] text-point">{project.evidenceLabel}</p>
+      <p className="mt-3 text-[20px] font-black leading-tight tracking-[-0.04em] text-text">{project.title}</p>
+      <p className="mt-2 text-sm leading-6 text-subtext">{project.summary}</p>
     </div>
   );
 }
 
 function WandererCardPreview() {
   return (
-    <div className="wanderer-card-preview flex h-full min-h-[260px] flex-col justify-between bg-[radial-gradient(circle_at_24%_20%,rgba(255,212,71,0.3),transparent_12rem),linear-gradient(135deg,rgba(31,70,162,0.98),rgba(16,24,58,0.98))] p-5">
-      <div className="flex items-center justify-between gap-3">
-        <span className="rounded-full border-2 border-[#fff1b8]/65 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">Wanderer 한 턴</span>
-        <span className="rounded-full border border-[#fff1b8]/35 bg-[#10183a]/60 px-3 py-1 text-[11px] font-black text-subtext">홀수 카드</span>
-      </div>
-      <div className="grid gap-3 py-6">
-        <div className="rounded-[20px] border-2 border-[#fff1b8]/35 bg-[#10183a]/50 p-4 text-center">
-          <p className="text-[12px] font-black text-subtext">상대보다 큰 카드를 고릅니다</p>
-          <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
-            <strong className="rounded-[16px] border-2 border-[#fff1b8]/35 bg-[#172f82] py-5 text-5xl tracking-[-0.08em] text-[#ffd447]">13</strong>
-            <span className="text-[12px] font-black text-point">VS</span>
-            <strong className="rounded-[16px] border-2 border-[#fff1b8]/65 bg-[#ff72a6] py-5 text-5xl tracking-[-0.08em] text-[#15183a]">15</strong>
-          </div>
-        </div>
-        <p className="rounded-[18px] border-2 border-[#fff1b8]/30 bg-[#10183a]/55 p-3 text-sm font-black leading-6 text-text">15가 13보다 커서 이번 턴을 가져갑니다.</p>
+    <div className="wanderer-card-preview border-t border-line/30 pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
+      <p className="text-[12px] font-black tracking-[0.14em] text-point">Wanderer 한 턴</p>
+      <div className="mt-3 space-y-2 text-sm leading-6 text-subtext">
+        <p><strong className="text-text">규칙</strong> 홀수 카드만 살아남습니다.</p>
+        <p><strong className="text-text">선택</strong> 손에 든 카드 중 하나를 고릅니다.</p>
+        <p><strong className="text-text">결과</strong> 선택 직후 생존 여부가 드러납니다.</p>
       </div>
     </div>
   );
 }
 
-function getProjectHref(project: ProjectEntry) {
-  return project.slug === 'wanderer' ? `/projects/${project.slug}#mini-play` : `/projects/${project.slug}`;
-}
-
-export function ProjectCard({ project, records, compact = false }: { project: ProjectEntry; records: WritingEntry[]; compact?: boolean }) {
-  const latestRecord = records[0];
-  const cover = project.coverImage;
-  const projectHref = getProjectHref(project);
-
-  if (compact) {
-    return (
-      <Link href={projectHref} className="group grid gap-3 rounded-[20px] border-2 border-[#fff1b8]/34 bg-[#1b3d96]/58 p-4 transition hover:-translate-y-0.5 hover:border-point hover:bg-[#244aa8]/80">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <p className="text-[12px] font-black text-point">{projectKinds[project.slug] ?? '게임'}</p>
-            <h3 className="mt-1 text-xl font-black tracking-[-0.045em] text-text group-hover:text-point">{project.title}</h3>
-          </div>
-          <span className={`shrink-0 rounded-full border-2 px-3 py-1 text-[12px] font-black ${progressTone[project.progressStatus]}`}>
-            {statusLabel[project.progressStatus] ?? project.progressStatus}
-          </span>
-        </div>
-        <p className="line-clamp-2 text-sm leading-6 text-subtext">{projectHooks[project.slug] ?? project.summary}</p>
-        <span className="inline-flex text-[13px] font-black text-point">{projectCtas[project.slug] ?? '프로젝트'} →</span>
-      </Link>
-    );
-  }
+export function ProjectCard({ project, records = [], compact = false }: ProjectCardProps) {
+  const projectHref = `/projects/${project.slug}`;
+  const previewRecords = records.slice(0, compact ? 1 : 2);
 
   return (
-    <article className="game-card-glow overflow-hidden rounded-[26px] border-[3px] border-[#fff1b8]/45 bg-[#1b3d96]/68">
-      <div className="grid gap-0 md:grid-cols-[minmax(260px,0.82fr)_minmax(0,1.18fr)]">
-        <Link href={projectHref} className="group relative min-h-[240px] overflow-hidden bg-[#10183a] md:min-h-full">
-          {project.slug === 'wanderer' ? (
-            <WandererCardPreview />
-          ) : cover ? (
-            <img src={cover} alt={`${project.title} 장면`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" />
-          ) : (
-            <EvidenceFallback project={project} />
-          )}
-          <div className="absolute inset-x-0 top-0 flex items-center justify-between gap-3 p-4">
-            <span className="rounded-full border-2 border-[#fff1b8]/60 bg-[#10183a]/65 px-3 py-1 text-[11px] font-bold text-text backdrop-blur">{projectKinds[project.slug] ?? '게임'}</span>
-            <span className={`rounded-full border-2 px-3 py-1 text-[11px] font-black backdrop-blur ${progressTone[project.progressStatus]}`}>{statusLabel[project.progressStatus] ?? project.progressStatus}</span>
-          </div>
-        </Link>
+    <article className="grid gap-4 rounded-[20px] border border-line/45 bg-white/[0.035] p-4 md:grid-cols-[minmax(0,0.85fr)_minmax(220px,0.45fr)] md:p-5">
+      <div className="space-y-4">
+        <div>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">{project.progressStatus}</p>
+          <h3 className="mt-2 text-[24px] font-black leading-tight tracking-[-0.045em] text-text md:text-[32px]">
+            <Link href={projectHref} className="hover:text-point">{project.title}</Link>
+          </h3>
+          <p className="mt-3 text-sm leading-7 text-subtext">{project.summary}</p>
+        </div>
 
-        <div className="flex flex-col justify-between p-5 md:p-7">
-          <div>
-            <div className="flex flex-wrap items-center gap-2 text-[12px] text-subtext">
-              <span className="font-bold text-point">{projectKinds[project.slug] ?? '게임 프로젝트'}</span>
-              {latestRecord ? <span>· {project.evidenceLabel}</span> : null}
-            </div>
-            <Link href={projectHref} className="group/title">
-              <h3 className="mt-3 text-[28px] font-black leading-tight tracking-[-0.055em] text-text group-hover/title:text-point md:text-[40px]">{project.title}</h3>
-            </Link>
-            <p className="mt-3 rounded-[20px] border-2 border-[#fff1b8]/30 bg-[#10183a]/32 p-4 text-[18px] font-black leading-7 tracking-[-0.04em] text-text md:text-[22px] md:leading-8">
-              {projectHooks[project.slug] ?? project.summary}
-            </p>
+        {previewRecords.length ? (
+          <div className="space-y-2 border-t border-line/30 pt-3">
+            {previewRecords.map((record) => (
+              <Link key={record.slug} href={`/writing/${record.slug}`} className="grid gap-1 text-sm leading-6 md:grid-cols-[88px_minmax(0,1fr)]">
+                <time className="text-subtext" dateTime={record.publishedAt}>{formatDate(record.publishedAt)}</time>
+                <span className="font-bold text-text hover:text-point">{record.title}</span>
+              </Link>
+            ))}
           </div>
+        ) : null}
 
-          <div className="mt-5 space-y-3">
-            <div className="flex flex-wrap gap-3 text-sm">
-              <Link href={projectHref} className="game-button-primary px-4 py-2.5 text-sm">{projectCtas[project.slug] ?? '프로젝트'}</Link>
-              <Link href={project.evidenceHref} className="game-button-secondary px-4 py-2.5 text-sm">게임 기록 읽기</Link>
-            </div>
-          </div>
+        <div className="flex flex-wrap items-center gap-3 text-sm">
+          <Link href={projectHref} className="font-black text-point hover:text-text">{projectCtas[project.slug] ?? '프로젝트 보기'} →</Link>
+          {project.evidenceHref ? <Link href={project.evidenceHref} className="text-subtext hover:text-point">기록 읽기 →</Link> : null}
         </div>
       </div>
+
+      {project.slug === 'wanderer' ? <WandererCardPreview /> : <EvidenceFallback project={project} />}
     </article>
   );
 }

@@ -28,33 +28,26 @@ const games = [
 export default function AboutPage() {
   return (
     <div className="archive-surface space-y-10 md:space-y-14">
-      <section className="studio-hero overflow-hidden rounded-[36px] border border-line/80 bg-white/[0.035] p-5 md:p-8">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
-          <div className="rounded-[28px] border border-line/70 bg-black/20 p-5 md:p-7">
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">꼬물</p>
-            <h1 className="max-w-5xl text-[40px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[72px]">
-              작은 게임을 하나씩 만듭니다.
-            </h1>
-            <p className="mt-5 max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-              Wanderer의 짧은 카드 승부부터 보여줍니다. 카드 한 장, 퍼즐 이동 하나, 선택지 하나처럼 짧게 만질 수 있는 장면을 남깁니다.
-            </p>
-          </div>
-          <div className="rounded-[28px] border border-point/25 bg-point/10 p-5 text-sm leading-7 text-subtext">
-            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-point">먼저 볼 것</p>
-            <p className="mt-2 text-lg font-black leading-7 text-text">Wanderer · 홀수 턴</p>
-            <p className="mt-2">상대의 13보다 큰 15를 내면 이번 턴을 가져갑니다.</p>
-            <Link href="/projects/wanderer#mini-play" className="mt-4 inline-flex font-black text-point hover:text-text">
-              카드 한 장 고르기 →
-            </Link>
-          </div>
+      <section className="rounded-[28px] border border-line/70 bg-surface/70 p-5 md:p-8">
+        <div className="max-w-4xl space-y-5">
+          <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">꼬물</p>
+          <h1 className="text-[38px] font-black leading-[1.04] tracking-[-0.06em] text-text md:text-[68px]">
+            작은 게임을 하나씩 만듭니다.
+          </h1>
+          <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
+            Wanderer의 짧은 카드 승부부터 보여줍니다. 카드 한 장, 퍼즐 이동 하나, 선택지 하나처럼 짧게 만질 수 있는 장면을 남깁니다.
+          </p>
+          <Link href="/projects/wanderer#mini-play" className="inline-flex min-h-[42px] items-center rounded-full border border-point/35 px-4 py-2 text-sm font-bold text-point transition hover:border-point/70 hover:text-text">
+            Wanderer 한 턴 보기 →
+          </Link>
         </div>
       </section>
 
-      <section className="grid gap-4 md:grid-cols-3">
+      <section className="space-y-4">
         {games.map((game) => (
-          <Link key={game.title} href={game.href} className="story-card rounded-[26px] border border-line/80 bg-white/[0.055] p-5 transition hover:border-point/60 hover:bg-white/[0.08]">
+          <Link key={game.title} href={game.href} className="block border-t border-line/70 py-5 transition hover:border-point/50">
             <h2 className="text-2xl font-black tracking-[-0.05em] text-text">{game.title}</h2>
-            <p className="mt-3 text-sm leading-7 text-subtext">{game.text}</p>
+            <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">{game.text}</p>
           </Link>
         ))}
       </section>

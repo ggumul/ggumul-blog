@@ -10,15 +10,9 @@ const outcomeLabel = {
 } as const;
 
 const outcomeTone = {
-  win: 'border-[#7dd3fc]/45 bg-[#7dd3fc]/16 text-[#d8f4ff]',
-  lose: 'border-point/40 bg-point/14 text-text',
-  invalid: 'border-white/15 bg-white/[0.06] text-subtext',
-} as const;
-
-const outcomeDot = {
-  win: 'bg-[#7dd3fc]',
-  lose: 'bg-point',
-  invalid: 'bg-white/35',
+  win: 'border-[#7dd3fc]/45 bg-[#7dd3fc]/12 text-[#d8f4ff]',
+  lose: 'border-point/40 bg-point/10 text-text',
+  invalid: 'border-line/60 bg-white/[0.035] text-subtext',
 } as const;
 
 export function WandererMiniPlay() {
@@ -32,129 +26,102 @@ export function WandererMiniPlay() {
   };
 
   const copyResult = async () => {
-    if (!selectedCard) {
-      return;
-    }
-
+    if (!selectedCard) return;
     setCopied(true);
-
     try {
       await navigator.clipboard?.writeText(selectedCard.shareText);
     } catch {
-      // 브라우저가 클립보드를 막아도, 아래 문장을 직접 선택해서 복사할 수 있게 둔다.
+      // 클립보드가 막히면 아래 문장을 직접 복사하면 된다.
     }
   };
 
   return (
-    <section id="mini-play" className="scroll-mt-28 rounded-[32px] border border-line/80 bg-[#0b1020] p-4 shadow-card md:p-6">
-      <div className="rounded-[28px] border border-line/80 bg-[radial-gradient(circle_at_18%_0%,rgba(255,212,71,0.13),transparent_18rem),linear-gradient(180deg,rgba(18,28,51,0.98),rgba(10,16,31,0.98))] p-4 md:p-6">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.72fr)_minmax(260px,0.28fr)] lg:items-end">
+    <section id="mini-play" className="scroll-mt-28 rounded-[20px] border border-line/50 bg-white/[0.035] p-4 md:p-6">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+        <div className="space-y-5">
           <div>
-            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-point">Wanderer · 한 턴</p>
-            <h2 className="mt-3 max-w-[13ch] text-[34px] font-black leading-[0.95] tracking-[-0.065em] text-text md:text-[52px]">
-              규칙을 보고<br />카드 한 장을 냅니다.
+            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">Wanderer · 한 턴</p>
+            <h2 className="mt-3 max-w-2xl text-[32px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">
+              규칙을 읽고 카드 한 장을 냅니다.
             </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-subtext md:text-[15px]">
+              이번 턴은 {wandererMiniPlayTurn.condition.label} 조건입니다. 상대 카드를 본 뒤, 손에 든 카드 중 하나만 고릅니다.
+            </p>
           </div>
-          <p className="max-w-md text-sm leading-7 text-subtext md:text-[15px] lg:justify-self-end">
-            이번 턴은 <span className="font-black text-text">규칙 → 상대 카드 → 내 카드 → 결과</span> 순서로만 읽습니다. 다른 설명은 빼고, 한 장을 냈을 때 살아남는지만 바로 드러냅니다.
-          </p>
+
+          <div className="grid gap-3 md:grid-cols-2">
+            <div className="border-t border-line/35 pt-3">
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">규칙</p>
+              <p className="mt-2 text-2xl font-black tracking-[-0.045em] text-text">{wandererMiniPlayTurn.condition.label}</p>
+              <p className="mt-2 text-sm leading-6 text-subtext">{wandererMiniPlayTurn.ruleSummary}</p>
+            </div>
+            <div className="border-t border-line/35 pt-3">
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">상대</p>
+              <ul className="mt-2 space-y-2 text-sm leading-6 text-subtext">
+                {wandererMiniPlayTurn.opponents.map((opponent) => (
+                  <li key={opponent.name} className="flex justify-between gap-3">
+                    <span>{opponent.name}</span>
+                    <strong className="text-text">{opponent.card}</strong>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">내 카드</p>
+              <p className="text-xs font-bold text-subtext">한 장만 선택</p>
+            </div>
+            <div className="mt-3 grid gap-3 md:grid-cols-3">
+              {wandererMiniPlayCards.map((card) => {
+                const isSelected = card.id === selectedCard?.id;
+                return (
+                  <button
+                    key={card.id}
+                    type="button"
+                    onClick={() => {
+                      setSelectedCardId(card.id);
+                      setCopied(false);
+                    }}
+                    className={`min-h-[148px] rounded-[18px] border p-4 text-left ${
+                      isSelected ? 'border-point bg-point text-[#160d08]' : 'border-line/60 bg-white/[0.035] text-text hover:border-point/60'
+                    }`}
+                    aria-pressed={isSelected}
+                  >
+                    <span className="block text-[48px] font-black leading-none tracking-[-0.08em]">{card.value}</span>
+                    <span className="mt-4 block text-lg font-black tracking-[-0.04em]">{card.title}</span>
+                    <span className={`mt-2 block text-sm leading-6 ${isSelected ? 'text-[#3d2615]' : 'text-subtext'}`}>{card.description}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,0.62fr)_minmax(280px,0.38fr)]">
-          <div className="rounded-[26px] border border-point/25 bg-[#17203a]/92 p-4 md:p-5">
-            <div className="grid gap-4 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-stretch">
-              <div className="rounded-[22px] border border-point/30 bg-point p-4 text-[#160d08]">
-                <p className="text-[11px] font-black uppercase tracking-[0.22em] opacity-70">규칙</p>
-                <p className="mt-2 text-[30px] font-black leading-none tracking-[-0.06em] md:text-[38px]">{wandererMiniPlayTurn.condition.label}</p>
-                <p className="mt-4 text-sm font-bold leading-6 opacity-85">{wandererMiniPlayTurn.ruleSummary}</p>
+        <div aria-live="polite" className={`rounded-[18px] border p-4 ${selectedCard ? outcomeTone[selectedCard.outcome] : 'border-line/60 bg-white/[0.025] text-subtext'}`}>
+          {selectedCard ? (
+            <div className="space-y-4">
+              <div>
+                <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">선택</p>
+                <p className="mt-3 text-[38px] font-black leading-none tracking-[-0.065em] text-text">{outcomeLabel[selectedCard.outcome]}</p>
+                <p className="mt-4 text-lg font-black leading-snug tracking-[-0.035em] text-text">{selectedCard.result}</p>
+                <p className="mt-3 text-sm leading-7 text-subtext">{selectedCard.scene}</p>
               </div>
-
-              <div className="rounded-[22px] border border-line/70 bg-[#0f1729] p-4">
-                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-point">상대 카드</p>
-                <div className="mt-3 grid grid-cols-3 gap-2">
-                  {wandererMiniPlayTurn.opponents.map((opponent) => (
-                    <div key={opponent.name} className="rounded-[18px] border border-line/70 bg-white/[0.055] p-3 text-center">
-                      <p className="text-[10px] font-black text-subtext">{opponent.name.replace('상대 ', '')}</p>
-                      <p className="mt-1 text-[34px] font-black leading-none tracking-[-0.07em] text-text">{opponent.card}</p>
-                      <p className="mt-2 text-[11px] font-bold leading-4 text-subtext">{opponent.note}</p>
-                    </div>
-                  ))}
-                </div>
+              <p className="text-sm leading-7 text-subtext">{selectedCard.shareText}</p>
+              <div className="flex flex-wrap gap-3">
+                <button type="button" onClick={copyResult} className="game-button-primary text-sm">{copied ? '복사됨' : '복사'}</button>
+                <button type="button" onClick={resetPlay} className="game-button-secondary text-sm">다시 선택</button>
+                <a href="#play-video" className="text-sm font-bold text-point hover:text-text">영상 →</a>
               </div>
             </div>
-
-            <div className="mt-4">
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-point">내 카드</p>
-                <p className="text-xs font-bold text-subtext">한 장만 선택</p>
-              </div>
-              <div className="mt-3 grid gap-3 md:grid-cols-3">
-                {wandererMiniPlayCards.map((card) => {
-                  const isSelected = card.id === selectedCard?.id;
-
-                  return (
-                    <button
-                      key={card.id}
-                      type="button"
-                      onClick={() => {
-                        setSelectedCardId(card.id);
-                        setCopied(false);
-                      }}
-                      className={`group flex min-h-[172px] flex-col justify-between rounded-[24px] border p-4 text-left transition ${
-                        isSelected
-                          ? 'border-point bg-point text-[#160d08] shadow-card'
-                          : 'border-line/80 bg-[#0f1729] text-text hover:-translate-y-0.5 hover:border-point/70 hover:bg-[#17233c]'
-                      }`}
-                      aria-pressed={isSelected}
-                    >
-                      <span className="flex items-start justify-between gap-3">
-                        <span className="text-[58px] font-black leading-none tracking-[-0.09em]">{card.value}</span>
-                        <span className={`mt-1 h-3 w-3 rounded-full ${isSelected ? 'bg-[#160d08]' : outcomeDot[card.outcome]}`} aria-hidden="true" />
-                      </span>
-                      <span>
-                        <span className="block text-lg font-black tracking-[-0.045em]">{card.title}</span>
-                        <span className={`mt-2 block text-sm font-bold leading-6 ${isSelected ? 'text-[#3d2615]' : 'text-subtext'}`}>{card.description}</span>
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
+          ) : (
+            <div className="flex min-h-[240px] flex-col justify-center">
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">선택</p>
+              <p className="mt-4 text-[28px] font-black leading-tight tracking-[-0.05em] text-text">카드를 고르면 바로 승부가 납니다.</p>
+              <p className="mt-4 text-sm leading-7 text-subtext">생존, 탈락, 턴 획득만 짧게 보여줍니다.</p>
             </div>
-          </div>
-
-          <aside aria-live="polite" className={`flex min-h-[280px] flex-col justify-between rounded-[26px] border p-5 ${selectedCard ? outcomeTone[selectedCard.outcome] : 'border-line/80 bg-[#0f1729] text-subtext'}`}>
-            {selectedCard ? (
-              <>
-                <div>
-                  <p className="text-[11px] font-black uppercase tracking-[0.22em] text-point">선택 결과</p>
-                  <p className="mt-3 text-[42px] font-black leading-none tracking-[-0.075em] text-text md:text-[54px]">{outcomeLabel[selectedCard.outcome]}</p>
-                  <p className="mt-5 text-xl font-black leading-snug tracking-[-0.04em] text-text">{selectedCard.result}</p>
-                  <p className="mt-4 rounded-[18px] border border-white/10 bg-black/15 p-4 text-sm font-bold leading-7 text-subtext">{selectedCard.scene}</p>
-                </div>
-
-                <div className="mt-6 space-y-3">
-                  <p className="rounded-[18px] border border-white/10 bg-black/15 p-4 text-sm leading-7 text-subtext">{selectedCard.shareText}</p>
-                  <div className="flex flex-wrap gap-3">
-                    <button type="button" onClick={copyResult} className="rounded-full border border-point/30 bg-point px-5 py-3 text-sm font-black text-[#160d08] transition hover:bg-[#ffc47f]">
-                      {copied ? '복사됨' : '복사'}
-                    </button>
-                    <button type="button" onClick={resetPlay} className="rounded-full border border-line/90 bg-white/10 px-5 py-3 text-sm font-black text-text transition hover:border-point/60">
-                      다시 선택
-                    </button>
-                    <a href="#play-video" className="rounded-full border border-line/90 bg-white/10 px-5 py-3 text-sm font-black text-text transition hover:border-point/60">
-                      영상
-                    </a>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <div className="flex h-full flex-col justify-center">
-                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-point">선택 결과</p>
-                <p className="mt-4 text-[30px] font-black leading-tight tracking-[-0.06em] text-text md:text-[38px]">카드를 고르면 바로 승부가 납니다.</p>
-                <p className="mt-4 text-sm font-bold leading-7 text-subtext">카드를 고르면 생존, 탈락, 턴 획득만 짧게 보여줍니다.</p>
-              </div>
-            )}
-          </aside>
+          )}
         </div>
       </div>
     </section>
