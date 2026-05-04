@@ -25,7 +25,7 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
     next: '이어지는 턴 읽기',
   },
   'wanderer-초기-설계-회고': {
-    stakes: '카드 전투가 길어질수록 선택 뒤 결과를 보는 맛이 흐려졌습니다.',
+    stakes: '카드 전투가 길어질수록 선택 뒤 결과를 보는 맛이 약해졌습니다.',
     change: '복잡한 세계관보다 짧은 선택과 빠른 결과를 남기는 쪽으로 기준을 세웠습니다.',
     next: '짧은 전투 기준 열기',
   },
@@ -40,7 +40,7 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
     next: '가격 기록 읽기',
   },
   '제작-리듬을-우선하는-이유': {
-    stakes: '여러 게임을 오가다 보니 속도보다 먼저 무엇을 볼지 기준이 흐려졌습니다.',
+    stakes: '여러 게임을 오가다 보니 속도보다 먼저 무엇을 볼지 기준이 약해졌습니다.',
     change: '여러 게임을 놓치지 않도록 만드는 리듬을 다시 잡았습니다.',
     next: '만드는 리듬 다시 열기',
   },

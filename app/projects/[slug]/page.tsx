@@ -127,11 +127,11 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
         <div className="panel-section space-y-6">
           <div>
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">짧은 턴이 계속 이어지는 카드 게임</h2>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[48px]">짧은 턴이 계속 이어지는 카드 게임</h2>
           </div>
           <div className="prose max-w-none">
             <p>Wanderer는 턴마다 규칙을 보고 손패에서 카드 한 장을 내는 게임입니다. 규칙에 맞지 않으면 빠지고, 남은 카드끼리는 숫자가 높은 쪽이 턴을 가져갑니다.</p>
-            <p>한 판은 짧습니다. 대신 카드를 낸 뒤 생존, 탈락, 승패가 바로 보여야 합니다. 이 페이지도 그 한 턴을 먼저 만지게 만들었습니다.</p>
+            <p>한 판은 짧습니다. 대신 카드를 내면 생존, 탈락, 승패가 바로 보입니다. 이 페이지도 그 한 턴을 먼저 만지게 만들었습니다.</p>
             <h2>지금 해볼 수 있는 것</h2>
             <ul>
               <li>4명이 1~15 숫자 카드 6장으로 시작합니다.</li>
@@ -145,7 +145,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           <div className="space-y-3">
             <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">한 턴 뒤에 읽을 기록</div>
             <Link href="/writing/runtime-화면-확인-기록" className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
-              <div className="font-black tracking-[-0.03em]">카드를 고르면 승부가 바로 보여야 합니다</div>
+              <div className="font-black tracking-[-0.03em]">고른 순간, 승부가 갈립니다</div>
               <p className="mt-1 text-[13px] leading-6 text-subtext">한 장을 고른 뒤 카드와 결과가 나란히 드러나는 이유를 남겼습니다.</p>
             </Link>
           </div>
@@ -167,7 +167,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <section className="space-y-5">
         <div>
           <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">더 읽기</p>
-          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">Wanderer 게임 기록</h2>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[48px]">Wanderer 게임 기록</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {relatedPosts.map((post) => (
@@ -260,7 +260,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <section className="space-y-5">
           <div>
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임 기록</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이 게임과 이어진 기록</h2>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[48px]">이 게임과 이어진 기록</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {relatedPosts.map((post) => (

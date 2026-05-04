@@ -114,7 +114,7 @@ export default async function WritingPage() {
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">카드를 고르면 승부가 바로 보여야 합니다</h2>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[48px]">고른 순간, 승부가 갈립니다</h2>
             <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
               Wanderer는 선택 뒤 결과가 바로 떠야 한 판의 리듬이 살아납니다. 첫 글은 그 장면부터 봅니다.
             </p>
@@ -128,7 +128,7 @@ export default async function WritingPage() {
       <section className="space-y-5">
         <div>
           <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임별</p>
-          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">게임마다 끊기는 순간이 다릅니다</h2>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[48px]">게임마다 끊기는 순간이 다릅니다</h2>
           <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">카드 게임은 결과가, 퍼즐은 다음 상태가, 서사는 선택 뒤 장면이 바로 읽혀야 합니다.</p>
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
@@ -164,7 +164,7 @@ export default async function WritingPage() {
       <section className="space-y-5">
         <div>
           <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">나머지</p>
-          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">게임 밖에서 나온 기록</h2>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[48px]">게임 밖에서 나온 기록</h2>
           <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">장보기 도구와 제작 리듬처럼 게임 밖에서 나온 글은 아래에 낮춰 둡니다.</p>
         </div>
         <div className="grid gap-4">

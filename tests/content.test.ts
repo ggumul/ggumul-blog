@@ -51,7 +51,7 @@ describe('content loader', () => {
   it('finds writing by slug and exposes related projects', async () => {
     const post = await getWritingBySlug('4월-프로젝트-개발-현황');
 
-    expect(post?.title).toBe('카드, 퍼즐, 서사를 한 화면에 같이 두니 첫 선택이 흐려졌습니다');
+    expect(post?.title).toBe('작은 게임도 첫 선택은 선명해야 합니다');
     expect(post?.relatedProjects).toContain('trpg');
     expect(post?.readingTimeMinutes).toBeGreaterThan(0);
     expect(post?.updatedAt).toBe('2026-04-20');
@@ -66,8 +66,8 @@ describe('content loader', () => {
   it('keeps the first runtime writing title framed around a concrete gameplay moment', async () => {
     const post = await getWritingBySlug('runtime-화면-확인-기록');
 
-    expect(post?.title).toBe('카드를 고르면 승부가 바로 보여야 합니다');
-    expect(post?.summary).toContain('15가 13을 넘는지 바로 읽히는 장면');
+    expect(post?.title).toBe('고른 순간, 승부가 갈립니다');
+    expect(post?.summary).toContain('15가 13을 넘는 순간을 바로 읽을 수 있게 했습니다');
     expect(post?.summary).not.toMatch(/자연스럽게 이어지게|정리했습니다|다듬었습니다/);
   });
 
