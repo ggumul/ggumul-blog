@@ -5,7 +5,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '게임 기록',
-  description: 'Wanderer와 작은 게임들이 어디서 끊겼고, 왜 그렇게 바꿨는지 남긴 게임 기록입니다.',
+  description: 'Wanderer와 작은 게임들의 장면, 선택, 리듬을 모아 둔 게임 기록입니다.',
   path: '/writing',
 });
 
@@ -98,14 +98,14 @@ export default async function WritingPage() {
           <div className="space-y-5 rounded-[28px] border border-line/70 bg-black/20 p-5 md:p-7">
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임 기록</p>
             <h1 className="max-w-5xl text-[38px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[72px]">
-              게임이 끊기는 순간을 고칩니다.
+              작은 장면을 모아 둡니다.
             </h1>
             <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-              카드 승부, 퍼즐 이동, 서사 선택이 어떤 순간에 멈추는지 보고 왜 바꿨는지 남깁니다.
+              카드 승부, 퍼즐 이동, 서사 선택이 어떻게 읽히는지 게임별로 나눠 둡니다.
             </p>
           </div>
           <aside className="panel-aside space-y-3 text-sm text-subtext">
-            <p className="text-[13px] leading-6">먼저 실제 게임 장면을 보고, 자세한 제작 이야기는 글 안쪽에만 둡니다.</p>
+            <p className="text-[13px] leading-6">먼저 게임 장면을 고르고, 이어지는 글에서 선택과 결과를 읽습니다.</p>
           </aside>
         </div>
       </section>

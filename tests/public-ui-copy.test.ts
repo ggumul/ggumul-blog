@@ -163,8 +163,11 @@ describe('public UI copy cleanup', () => {
 
     expect(combined).not.toMatch(/한장|한판|한장을/);
     expect(combined).not.toMatch(/Wanderer부터 고릅니다|결과가 여기에 뜹니다|상대 카드 13|짝수\/정답\/짝수|볼 수 있는 장면/);
+    expect(combined).not.toMatch(/게임이 끊기는 순간을 고칩니다|어떤 순간에 멈추는지 보고 왜 바꿨는지|자세한 제작 이야기|아래에는 퍼즐과 서사 게임도 함께 모았습니다/);
     expect(combined).toContain('프로젝트-폴백-장면');
     expect(combined).toContain('게임 기록 목록');
+    expect(combined).toContain('md:max-lg:hidden');
+    expect(combined).toContain('aria-live="polite"');
   });
 
   it('keeps the public flow game-first instead of project-status first', () => {

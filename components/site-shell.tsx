@@ -43,7 +43,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </nav>
             <Link
               href="/projects/wanderer#mini-play"
-              className="game-button-primary hidden min-h-[40px] px-4 py-2 text-sm md:inline-flex"
+              className="game-button-primary hidden min-h-[40px] px-4 py-2 text-sm md:inline-flex md:max-lg:hidden lg:inline-flex"
             >
               카드 한 장 고르기
             </Link>

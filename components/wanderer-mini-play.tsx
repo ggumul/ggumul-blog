@@ -122,7 +122,7 @@ export function WandererMiniPlay() {
             </div>
           </div>
 
-          <aside className={`flex min-h-[280px] flex-col justify-between rounded-[26px] border p-5 ${selectedCard ? outcomeTone[selectedCard.outcome] : 'border-line/80 bg-[#0f1729] text-subtext'}`}>
+          <aside aria-live="polite" className={`flex min-h-[280px] flex-col justify-between rounded-[26px] border p-5 ${selectedCard ? outcomeTone[selectedCard.outcome] : 'border-line/80 bg-[#0f1729] text-subtext'}`}>
             {selectedCard ? (
               <>
                 <div>

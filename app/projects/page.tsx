@@ -29,11 +29,11 @@ export default async function ProjectsPage() {
               Wanderer 한 턴부터.
             </h1>
             <p className="mt-4 max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-8">
-              규칙을 살피고 카드 한 장을 냅니다. 아래에는 퍼즐과 서사 게임도 함께 모았습니다.
+              규칙을 살피고 카드 한 장을 냅니다. 이어지는 목록에는 퍼즐과 서사 게임의 열린 장면을 둡니다.
             </p>
             <div className="mt-5 flex flex-wrap gap-3 text-sm">
               <Link href="/projects/wanderer#mini-play" className="game-button-primary">카드 한 장 고르기</Link>
-              <Link href="#other-games" className="game-button-secondary">다른 게임 보기</Link>
+              <Link href="#other-games" className="game-button-secondary md:max-lg:hidden">다른 게임 보기</Link>
             </div>
           </div>
 
