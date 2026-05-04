@@ -7,15 +7,15 @@ import { getProjectBySlug, getProjects, getWriting, resolveProjectRecords } from
 import { createMetadata } from '@/lib/site';
 
 export async function generateStaticParams() {
-  const projects = await getProjects();
-  return projects.map((project) => ({ slug: project.slug }));
+  const games = await getProjects();
+  return games.map((game) => ({ slug: game.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug);
+  const game = await getProjectBySlug(slug);
 
-  if (!project) {
+  if (!game) {
     return createMetadata({
       title: '게임을 찾을 수 없음',
       description: '요청한 게임을 찾을 수 없습니다.',
@@ -24,12 +24,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return createMetadata({
-    title: project.slug === 'wanderer' ? 'Wanderer — 한 턴 체험' : `${project.title} 소식`,
-    description: project.slug === 'wanderer'
-      ? '규칙을 보고 한 장을 고르는 Wanderer 한 턴 체험, 실제 플레이 화면과 새 소식입니다.'
-      : project.summary,
-    path: `/projects/${project.slug}`,
-    ogImage: project.coverImage,
+    title: game.slug === 'wanderer' ? 'Wanderer — 카드 한 턴' : `${game.title} 게임 기록`,
+    description: game.slug === 'wanderer'
+      ? '규칙을 보고 카드 한 장을 고르는 Wanderer의 짧은 한 턴입니다.'
+      : game.summary,
+    path: `/projects/${game.slug}`,
+    ogImage: game.coverImage,
   });
 }
 
@@ -54,7 +54,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
-                <a href="#mini-play" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">한 턴 해보기</a>
+                <a href="#mini-play" className="inline-flex rounded-full border border-point/30 bg-point px-5 py-3 font-bold text-[#160d08] transition hover:bg-[#ffc47f]">카드 한 장 고르기</a>
                 <a href="#play-video" className="inline-flex rounded-full border border-line/90 bg-white/10 px-5 py-3 font-bold text-text transition hover:border-point/60">플레이 영상</a>
               </div>
             </div>
@@ -86,7 +86,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
               </div>
               <figcaption className="studio-caption">
                 <span>규칙 → 카드 선택 → 결과</span>
-                <Link href="#mini-play">직접 고르기</Link>
+                <Link href="#mini-play">카드 고르기</Link>
               </figcaption>
             </figure>
             <div className="grid gap-3">
@@ -143,15 +143,15 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
         <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">게임 장면</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">한 턴 뒤에 읽을 기록</div>
             <Link href="/writing/runtime-화면-확인-기록" className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
-              <div className="font-black tracking-[-0.03em]">버튼 뒤 장면이 늦었습니다</div>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">폰에서 눌렀을 때 결과가 늦게 읽힌 순간입니다.</p>
+              <div className="font-black tracking-[-0.03em]">카드를 고르면 승부가 바로 보여야 합니다</div>
+              <p className="mt-1 text-[13px] leading-6 text-subtext">한 장을 고른 뒤 카드와 결과가 나란히 드러나는 이유를 남겼습니다.</p>
             </Link>
           </div>
 
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">Wanderer 이야기</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">Wanderer 기록</div>
             <div className="space-y-3">
               {relatedPosts.map((post) => (
                 <Link key={post.slug} href={`/writing/${post.slug}`} className="block rounded-[20px] border border-line/80 bg-white/[0.055] p-4 transition hover:border-point/60 hover:bg-white/[0.08]">
@@ -167,7 +167,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <section className="space-y-5">
         <div>
           <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">더 읽기</p>
-          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">Wanderer 소식</h2>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">Wanderer 게임 기록</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {relatedPosts.map((post) => (
@@ -181,65 +181,65 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug);
+  const game = await getProjectBySlug(slug);
 
-  if (!project) {
+  if (!game) {
     notFound();
   }
 
   const posts = await getWriting();
-  const relatedPosts = resolveProjectRecords(project, posts);
+  const relatedPosts = resolveProjectRecords(game, posts);
   const latestRecord = relatedPosts[0];
 
-  if (project.slug === 'wanderer') {
+  if (game.slug === 'wanderer') {
     return <WandererFeaturePage relatedPosts={relatedPosts} />;
   }
 
   return (
     <article className="archive-surface space-y-10 md:space-y-14">
       <Link href="/projects" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
-        ← 프로젝트 목록으로
+        ← 게임 목록으로
       </Link>
 
-      <PageHero eyebrow="project" title={<>{project.title}<br />소식</>} description={project.summary}>
+      <PageHero eyebrow="game" title={<>{game.title}<br />게임 기록</>} description={game.summary}>
         <div className="space-y-3 text-sm text-subtext">
-          <Pill tone="point">{project.status}</Pill>
+          <Pill tone="point">{game.status}</Pill>
           {latestRecord ? <Pill>최근 {latestRecord.publishedAt}</Pill> : null}
         </div>
       </PageHero>
 
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
         <div className="space-y-8">
-          {project.coverImage ? (
+          {game.coverImage ? (
             <figure className="studio-shot overflow-hidden rounded-[34px] border border-line/80 bg-white/[0.06] shadow-glow">
-              <img alt={`${project.title} 대표 이미지`} className="max-h-[640px] w-full object-cover" src={project.coverImage} />
+              <img alt={`${game.title} 대표 이미지`} className="max-h-[640px] w-full object-cover" src={game.coverImage} />
               <figcaption className="studio-caption">
-                <span>{project.title} · 실제 실행 화면</span>
-                <span>{project.status}</span>
+                <span>{game.title} · 실제 실행 화면</span>
+                <span>{game.status}</span>
               </figcaption>
             </figure>
           ) : null}
 
           <section className="panel-section">
             <div className="mb-6 flex flex-wrap gap-2 text-[12px]">
-              <Pill tone="point">{project.status}</Pill>
-              {latestRecord ? <Pill>새 소식 있음</Pill> : null}
+              <Pill tone="point">{game.status}</Pill>
+              {latestRecord ? <Pill>새 게임 기록 있음</Pill> : null}
             </div>
-            <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: project.html }} />
+            <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: game.html }} />
           </section>
         </div>
 
         <aside className="aside-rail panel-aside space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">다음에 볼 것</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">다음에 읽을 것</div>
             <Link href={latestRecord ? `/writing/${latestRecord.slug}` : '/writing'} className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
-              <div className="font-black tracking-[-0.03em]">{latestRecord ? '새 소식' : '소식'}</div>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '프로젝트와 연결된 글을 봅니다.'}</p>
+              <div className="font-black tracking-[-0.03em]">{latestRecord ? '새 게임 기록' : '게임 기록'}</div>
+              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '게임과 이어진 글을 봅니다.'}</p>
             </Link>
           </div>
 
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">함께 볼 글</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">함께 읽을 글</div>
             {relatedPosts.length > 0 ? (
               <div className="space-y-3">
                 {relatedPosts.map((post) => (
@@ -250,7 +250,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 ))}
               </div>
             ) : (
-              <p className="rounded-[20px] border border-line/80 bg-white/[0.055] p-4 text-xs leading-6">아직 이 프로젝트와 함께 볼 글은 많지 않지만, 조금씩 이어지고 있습니다.</p>
+              <p className="rounded-[20px] border border-line/80 bg-white/[0.055] p-4 text-xs leading-6">아직 이 프로젝트와 함께 읽을 글은 많지 않지만, 조금씩 이어지고 있습니다.</p>
             )}
           </div>
         </aside>
@@ -259,8 +259,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {relatedPosts.length > 0 ? (
         <section className="space-y-5">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">소식</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이 프로젝트와 이어진 이야기</h2>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임 기록</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">이 게임과 이어진 기록</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {relatedPosts.map((post) => (

@@ -42,9 +42,9 @@ export default function AboutPage() {
           <div className="rounded-[28px] border border-point/25 bg-point/10 p-5 text-sm leading-7 text-subtext">
             <p className="text-[11px] font-black uppercase tracking-[0.22em] text-point">먼저 볼 것</p>
             <p className="mt-2 text-lg font-black leading-7 text-text">Wanderer · 홀수 턴</p>
-            <p className="mt-2">상대의 13보다 높은 15를 내면 이번 턴을 가져갑니다.</p>
+            <p className="mt-2">상대의 13보다 큰 15를 내면 이번 턴을 가져갑니다.</p>
             <Link href="/projects/wanderer#mini-play" className="mt-4 inline-flex font-black text-point hover:text-text">
-              한 턴 해보기 →
+              카드 한 장 고르기 →
             </Link>
           </div>
         </div>

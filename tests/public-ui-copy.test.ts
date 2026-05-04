@@ -71,7 +71,7 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toContain('/media/runtime-checks/wanderer-mobile-current.png');
     expect(projectsPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
     expect(projectsPage).not.toMatch(/Wanderer부터 바로 봅니다|먼저 볼 건|줄였습니다|한장을|짧게 보고 고릅니다|새로 좋아진 점|살아남고|13보다 높아/);
-    expect(projectsPage).toContain('한 턴 해보기');
+    expect(projectsPage).toContain('카드 한 장 고르기');
     expect(projectsPage).toContain('홀수 카드만 유효');
   });
 
@@ -101,9 +101,9 @@ describe('public UI copy cleanup', () => {
     expect(homeVisibleSources).not.toMatch(/바로 한 턴 해보기|한 턴 가능|플레이 흐름 읽기|카드 선택 뒤 결과|다른 작은 게임들|장보기 보기|한 턴 체험하기|서사 보기|퍼즐 보기|상대보다 높은 카드|글 목록|글 읽기 →/);
     expect(homeVisibleSources).not.toMatch(/지금은 Wanderer 한 턴을 먼저 보여줍니다|const moreGamePosts = latestGamePosts\.slice\(1, 2\)/);
     expect(homeVisibleSources).toContain('카드 한 장으로 승부를 봅니다');
-    expect(homeVisibleSources).toContain('카드를 고르면 바로 승부가 보입니다');
-    expect(homePage).toContain('이번 턴, 어떤 카드를 내야 이길까요?');
-    expect(homePage).toContain('한 턴 해보기');
+    expect(homeVisibleSources).toContain('카드를 고르면 승부가 바로 보여야 합니다');
+    expect(homePage).toContain('카드 한 장으로, 한 판이 갈립니다.');
+    expect(homePage).toContain('카드 한 장 고르기');
     expect(homePage).toContain('홀수 카드만 유효');
   });
 
@@ -121,7 +121,7 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).not.toMatch(/firstVisitSteps|CommunityCTA|영상 → 기록 → 다음 소식|처음 오셨다면/);
     expect(projectDetailPage).not.toMatch(/지금 확인|지금 보는 이유|다음에 고칠 것|기록 보기|플레이 방식|현재 들어간 것|Wanderer 노트|폰에서 돌린 날/);
     expect(projectDetailPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
-    expect(projectDetailPage).toContain('한 턴 해보기');
+    expect(projectDetailPage).toContain('카드 한 장 고르기');
     expect(projectDetailPage).toContain('홀수 카드만 유효');
     expect(projectDetailPage).toContain('한 장 고르고, 바로 결과를 봅니다.');
   });
@@ -136,7 +136,31 @@ describe('public UI copy cleanup', () => {
     const shell = read('components/site-shell.tsx');
 
     expect(shell).toContain('<Link href="/projects" className="transition hover:text-text">게임</Link>');
+    expect(shell).toContain('<Link href="/writing" className="transition hover:text-text">게임 기록</Link>');
     expect(shell).not.toContain('<Link href="/projects" className="transition hover:text-text">프로젝트</Link>');
+    expect(shell).not.toContain('<Link href="/writing" className="transition hover:text-text">새 소식</Link>');
+  });
+
+  it('keeps the public flow game-first instead of project-status first', () => {
+    const combined = [
+      read('app/page.tsx'),
+      read('app/projects/page.tsx'),
+      read('app/writing/page.tsx'),
+      read('app/projects/[slug]/page.tsx'),
+      read('components/project-card.tsx'),
+      read('components/post-card.tsx'),
+      read('components/site-shell.tsx'),
+      readFrontmatter('content/writing/2026-04-20-4월-프로젝트-개발-현황.mdx'),
+      readFrontmatter('content/writing/2026-04-26-runtime-화면-확인-기록.mdx'),
+    ].join('\n');
+
+    expect(combined).toContain('꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다.');
+    expect(combined).toContain('카드 한 장 고르기');
+    expect(combined).toContain('게임 기록');
+    expect(combined).toContain('카드, 퍼즐, 서사를 한 화면에 같이 두니 첫 선택이 흐려졌습니다');
+    expect(combined).not.toMatch(/게임과 도구|다른 게임과 도구|새 소식|최근 소식|한 턴 고르기|짧게 살펴봅니다|게임 흐름 보기|이야기 더 보기|이야기 읽기/);
+    expect(combined).not.toMatch(/Wanderer와 퍼즐을 한 화면에서 고르게 나눴다|고르게 나눴다|현재 상태를 한 번에 정리|무엇을 확인하는 단계인지|다음에 어떤 작업이 필요한지/);
+    expect(combined).not.toMatch(/버튼 뒤 장면이 늦었습니다|폰에서 눌렀을 때 결과가 늦게 읽힌 순간|iOS Simulator에서 실행했습니다|로컬 서버|Flutter 통합 테스트|Gradle 테스트|운영 서버|장시간 동시 접속/);
   });
 
   it('removes pre-reading instruction boxes and engagement prompts from writing detail pages', () => {

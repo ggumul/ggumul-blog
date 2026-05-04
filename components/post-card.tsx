@@ -25,7 +25,7 @@ const postThumbnails: Record<string, Thumbnail> = {
     src: null,
     label: '네 가지 게임',
     caption: '카드·퍼즐·서사 지도',
-    badge: '게임 지도',
+    badge: '게임 배치',
     tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.34),transparent_18rem),radial-gradient(circle_at_80%_25%,rgba(255,112,166,0.24),transparent_16rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]',
   },
   'wanderer-초기-설계-회고': {
@@ -44,7 +44,7 @@ const postThumbnails: Record<string, Thumbnail> = {
     src: null,
     label: 'Dinner Grocery',
     caption: '가격이 흔들리는 순간',
-    badge: '장보기 가격',
+    badge: '장보기 도구',
     tone: 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.3),transparent_18rem),radial-gradient(circle_at_80%_70%,rgba(143,210,255,0.24),transparent_16rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]',
   },
 };
@@ -61,12 +61,12 @@ const projectThumbnails: Record<string, Thumbnail> = {
   'ggumul-dinner-grocery': {
     src: null,
     label: 'GGUMUL Dinner Grocery',
-    caption: '가격 계약 · 장보기 판단',
+    caption: '가격과 장보기 판단',
   },
   wanderer: {
     src: '/media/runtime-checks/wanderer-mobile-current.png',
     label: 'Wanderer',
-    caption: '실제 진행 화면',
+    caption: '카드 승부 화면',
   },
   hanoi: {
     src: '/project-covers/hanoi.png',
@@ -96,7 +96,7 @@ function resolvePostImage(post: WritingEntry): Thumbnail {
     : {
         src: null,
         label: post.category,
-        caption: post.series ?? '소식',
+        caption: post.series ?? '게임 기록',
       };
 }
 
@@ -118,7 +118,7 @@ function ThumbnailFrame({ thumbnail, alt, featured }: { thumbnail: Thumbnail; al
       ) : (
         <div className={["flex h-full min-h-full flex-col justify-between p-5", thumbnail.tone ?? 'bg-[radial-gradient(circle_at_20%_15%,rgba(255,212,71,0.32),transparent_18rem),linear-gradient(135deg,rgba(31,70,162,0.96),rgba(16,24,58,0.98))]'].join(' ')}>
           <div className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/55 bg-[#ffd447] px-3 py-1 text-[11px] font-black text-[#15183a]">
-            {thumbnail.badge ?? '소식'}
+            {thumbnail.badge ?? '게임 기록'}
           </div>
           <div>
             <p className="text-[13px] font-bold text-point">{thumbnail.caption}</p>
@@ -155,7 +155,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
           <h3 className="text-[18px] font-black leading-snug tracking-[-0.04em] text-text group-hover:text-point">{post.title}</h3>
           <p className="mt-2 line-clamp-2 text-sm leading-6 text-subtext">{readingPath.stakes}</p>
         </div>
-        <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 px-3 py-2 text-[12px] leading-5 text-subtext">이야기 읽기</p>
+        <p className="rounded-2xl border border-[#fff1b8]/24 bg-[#10183a]/28 px-3 py-2 text-[12px] leading-5 text-subtext">기록 읽기</p>
       </Link>
     );
   }
@@ -195,7 +195,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
             </span>
           ))}
           <span className="ml-auto rounded-full border-2 border-point/40 bg-point/15 px-3 py-1 font-black text-point">
-            이야기 읽기 →
+            기록 읽기 →
           </span>
         </div>
       </div>

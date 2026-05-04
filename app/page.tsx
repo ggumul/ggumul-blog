@@ -6,7 +6,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '규칙을 보고 한 장을 고르는 Wanderer 한 턴과 작은 게임들을 모았습니다.',
+  description: '꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다. Wanderer의 카드 한 턴부터 보여줍니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
@@ -16,7 +16,7 @@ export default async function HomePage() {
   const websiteJsonLd = createWebsiteJsonLd();
   const gameProjects = snapshot.worklines.filter((project) => project.slug !== 'ggumul-dinner-grocery');
   const leadProject = gameProjects.find((project) => project.slug === 'wanderer') ?? gameProjects[0] ?? snapshot.worklines[0] ?? null;
-  const otherProjects = snapshot.worklines.filter((project) => project.slug !== leadProject?.slug).slice(0, 4);
+  const otherProjects = gameProjects.filter((project) => project.slug !== leadProject?.slug).slice(0, 3);
   const allPosts = [snapshot.latest, ...snapshot.moreEntries].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
   const latestGamePosts = allPosts
     .filter((entry) => entry.relatedProjects.some((project) => project !== 'ggumul-dinner-grocery'))
@@ -34,15 +34,15 @@ export default async function HomePage() {
             <p className="inline-flex w-fit rounded-full border-2 border-[#fff1b8]/60 bg-[#ff72a6]/90 px-3 py-1 text-[12px] font-black tracking-[-0.02em] text-[#15183a]">Wanderer 한 턴</p>
             <div className="space-y-4">
               <h1 className="max-w-4xl text-[34px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[64px]">
-                이번 턴, 어떤 카드를 내야 이길까요?
+                카드 한 장으로, 한 판이 갈립니다.
               </h1>
               <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-                이번 턴에는 홀수 카드만 낼 수 있어요. 상대의 13보다 큰 카드를 골라보세요.
+                꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다. 지금은 Wanderer의 카드 한 턴을 먼저 보여줍니다.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 text-sm">
-              <Link href="/projects/wanderer#mini-play" className="game-button-primary">한 턴 해보기</Link>
-              <Link href="/projects/wanderer" className="game-button-secondary opacity-90">규칙 보기</Link>
+              <Link href="/projects/wanderer#mini-play" className="game-button-primary">카드 한 장 고르기</Link>
+              <Link href="/projects/wanderer" className="game-button-secondary opacity-90">Wanderer 보기</Link>
             </div>
           </div>
 
@@ -93,9 +93,9 @@ export default async function HomePage() {
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[13px] font-black text-point">대표 게임</p>
-              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">대표 게임: Wanderer</h2>
+              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">Wanderer부터 시작합니다</h2>
             </div>
-            <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">전체 게임 보기 →</Link>
+            <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">게임 둘러보기 →</Link>
           </div>
           <ProjectCard project={leadProject} records={leadProject.previewRecords} />
         </section>
@@ -104,10 +104,10 @@ export default async function HomePage() {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-[13px] font-black text-point">다른 게임과 도구</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">다른 게임들</h2>
+            <p className="text-[13px] font-black text-point">다른 작은 게임</p>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[44px]">다음에 볼 게임들</h2>
           </div>
-          <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">다른 게임 모두 보기 →</Link>
+          <Link href="/projects" className="text-sm font-black text-point transition hover:text-text">게임 둘러보기 →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {otherProjects.map((project) => (
@@ -120,13 +120,13 @@ export default async function HomePage() {
         <section className="space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-[13px] font-black text-point">Wanderer 이야기</p>
+              <p className="text-[13px] font-black text-point">게임 기록</p>
               <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">카드 한 장으로 승부를 봅니다</h2>
               <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
                 Wanderer는 어떤 카드를 낼지 고르고, 바로 결과를 확인하는 짧은 승부에 집중합니다.
               </p>
             </div>
-            <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">이야기 더 보기 →</Link>
+            <Link href="/writing" className="text-sm font-black text-point transition hover:text-text">게임 기록 읽기 →</Link>
           </div>
           <PostCard post={latestGamePost} featured />
           <div className={moreGamePosts.length > 1 ? 'grid gap-4 md:grid-cols-2' : 'grid gap-4'}>

@@ -16,7 +16,7 @@ export const writingReadingPathSlugs = [
 const writingReadingPaths: Record<string, WritingReadingPath> = {
   'runtime-화면-확인-기록': {
     stakes: '한 장을 고르는 순간 내 카드와 상대 카드가 나란히 드러납니다.',
-    change: '15가 13을 넘는지 바로 확인하는 짧은 승부를 담았습니다.',
+    change: '15가 13을 넘는지 바로 읽히는 짧은 승부를 담았습니다.',
     next: '짧은 승부 읽기',
   },
   'wanderer-sync-연결-문제-분석': {
@@ -32,12 +32,12 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
   '4월-프로젝트-개발-현황': {
     stakes: '게임이 늘어나자 어떤 화면을 지금 볼 수 있는지 한눈에 잡히지 않았습니다.',
     change: '카드 전투, 퍼즐, 서사 실험을 나눠 놓고 비어 있는 부분을 먼저 드러냈습니다.',
-    next: '게임 소개 글 읽기',
+    next: '게임 배치 읽기',
   },
   'ggumul-dinner-grocery-가격-계약-정리': {
     stakes: '식단을 추천하려 해도 가격이 언제 바뀌었는지 기준이 없었습니다.',
     change: '장보기 판단이 흔들리지 않도록 가격 기록과 계약 기준을 먼저 세웠습니다.',
-    next: '가격 이야기 읽기',
+    next: '가격 기록 읽기',
   },
   '제작-리듬을-우선하는-이유': {
     stakes: '여러 게임을 오가다 보니 속도보다 먼저 무엇을 볼지 기준이 흐려졌습니다.',

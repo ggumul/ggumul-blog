@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 const NAV_ITEMS = [
   { href: '/projects', label: '게임' },
-  { href: '/writing', label: '새 소식' },
+  { href: '/writing', label: '게임 기록' },
   { href: '/about', label: '소개' },
   { href: '/links', label: '링크' },
 ];
@@ -25,7 +25,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </span>
             <span className="leading-tight">
               <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[25px]">ggumul <span className="mx-1 text-point/80">/</span> 꼬물</span>
-              <span className="block text-[11px] font-black tracking-[-0.01em] text-subtext">작은 게임과 새 소식</span>
+              <span className="block text-[11px] font-black tracking-[-0.01em] text-subtext">작은 게임과 게임 기록</span>
             </span>
           </Link>
 
@@ -45,7 +45,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
               href="/projects/wanderer#mini-play"
               className="game-button-primary min-h-[40px] px-4 py-2 text-sm"
             >
-              한 턴 해보기
+              카드 한 장 고르기
             </Link>
           </div>
         </div>
@@ -57,10 +57,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 text-sm text-subtext md:grid-cols-[minmax(0,1fr)_auto] md:px-8">
           <div>
             <div className="text-lg font-black tracking-[-0.04em] text-text">ggumul / 꼬물</div>
-            <p className="mt-2 max-w-2xl leading-7">작은 카드 게임과 퍼즐을 담아 둔 공간입니다. Wanderer의 짧은 카드 승부부터 만날 수 있습니다.</p>
+            <p className="mt-2 max-w-2xl leading-7">꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다. Wanderer의 카드 한 턴부터 만날 수 있습니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
-            <Link href="/writing" className="transition hover:text-text">새 소식</Link>
+            <Link href="/writing" className="transition hover:text-text">게임 기록</Link>
             <Link href="/projects" className="transition hover:text-text">게임</Link>
             <Link href="/about" className="transition hover:text-text">소개</Link>
             <Link href="/links" className="transition hover:text-text">링크</Link>

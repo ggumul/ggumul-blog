@@ -51,7 +51,7 @@ describe('content loader', () => {
   it('finds writing by slug and exposes related projects', async () => {
     const post = await getWritingBySlug('4월-프로젝트-개발-현황');
 
-    expect(post?.title).toBe('Wanderer와 퍼즐을 한 화면에서 고르게 나눴다');
+    expect(post?.title).toBe('카드, 퍼즐, 서사를 한 화면에 같이 두니 첫 선택이 흐려졌습니다');
     expect(post?.relatedProjects).toContain('trpg');
     expect(post?.readingTimeMinutes).toBeGreaterThan(0);
     expect(post?.updatedAt).toBe('2026-04-20');
@@ -66,19 +66,19 @@ describe('content loader', () => {
   it('keeps the first runtime writing title framed around a concrete gameplay moment', async () => {
     const post = await getWritingBySlug('runtime-화면-확인-기록');
 
-    expect(post?.title).toBe('카드를 고르면 바로 승부가 보입니다');
-    expect(post?.summary).toContain('15가 13을 넘는지 바로 확인하는 짧은 승부');
+    expect(post?.title).toBe('카드를 고르면 승부가 바로 보여야 합니다');
+    expect(post?.summary).toContain('15가 13을 넘는지 바로 읽히는 장면');
     expect(post?.summary).not.toMatch(/자연스럽게 이어지게|정리했습니다|다듬었습니다/);
   });
 
   it('returns category, tags, and series data for writing taxonomy', async () => {
     const taxonomy = await getWritingTaxonomy();
 
-    expect(taxonomy.categories).toContain('게임 소개');
-    expect(taxonomy.categories).toContain('만드는 기준');
-    expect(taxonomy.categories).toContain('플레이 흐름');
-    expect(taxonomy.categories).toContain('플레이 화면');
-    expect(taxonomy.series).toContain('4월 작업');
+    expect(taxonomy.categories).toContain('게임 배치');
+    expect(taxonomy.categories).toContain('제작 리듬');
+    expect(taxonomy.categories).toContain('이어지는 한 턴');
+    expect(taxonomy.categories).toContain('카드 승부');
+    expect(taxonomy.series).toContain('게임 기록');
     expect(taxonomy.series).toContain('꼬물 노트');
     expect(taxonomy.series).toContain('Wanderer 로그');
     expect(taxonomy.series).toContain('GGUMUL Dinner Grocery');
@@ -145,7 +145,7 @@ describe('content loader', () => {
     ]);
   });
 
-  it('keeps writing entries dense enough to read as development records', async () => {
+  it('keeps writing entries dense enough to read as game records', async () => {
     const posts = await getWriting();
 
     for (const post of posts) {

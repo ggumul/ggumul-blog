@@ -4,8 +4,8 @@ import { getProjectRecordMap, getWritingArchiveSections } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
-  title: '새 소식',
-  description: '작은 게임을 만들며 실제 화면에서 달라진 점과 문제를 해결한 과정을 모았습니다.',
+  title: '게임 기록',
+  description: 'Wanderer와 작은 게임들이 어디서 끊겼고, 왜 그렇게 바꿨는지 남긴 게임 기록입니다.',
   path: '/writing',
 });
 
@@ -28,27 +28,27 @@ const gameEntryOverrides: Record<string, { slug?: string; href: string; title: s
     href: '/writing/wanderer-초기-설계-회고',
     title: '왜 Wanderer는 짧은 카드 게임으로 남았나',
     summary: '규칙을 보고 카드를 낸 뒤 결과가 바로 떠야 Wanderer가 살아납니다.',
-    cta: '한 턴 →',
+    cta: 'Wanderer 보기 →',
   },
   hanoi: {
     slug: 'runtime-화면-확인-기록',
     href: '/writing/runtime-화면-확인-기록',
     title: '폰에서 돌려보니 게임 흐름이 생각보다 끊겼다',
     summary: '막대를 옮긴 뒤 다음 상태가 바로 보이는지 봤습니다.',
-    cta: '퍼즐 →',
+    cta: 'Hanoi 보기 →',
   },
   trpg: {
     slug: '4월-프로젝트-개발-현황',
     href: '/writing/4월-프로젝트-개발-현황',
     title: '카드 전투, 퍼즐, 서사 실험을 한 화면에 나눴다',
     summary: '선택지가 장면을 어떻게 바꾸는지 카드와 퍼즐 옆에 놓고 봤습니다.',
-    cta: '서사 실험 →',
+    cta: 'TRPG 보기 →',
   },
   'color-hanoi': {
     href: '/projects/color-hanoi',
     title: 'Color Hanoi 색 조건',
     summary: '색 조건이 들어가면 같은 Hanoi도 옮기는 판단이 달라집니다.',
-    cta: '색 조건 →',
+    cta: 'Color Hanoi 보기 →',
   },
 };
 const gameEntryLabels: Record<string, string> = {
@@ -78,7 +78,7 @@ export default async function WritingPage() {
       project,
       records,
       hook: gameHooks[project.slug] ?? project.summary,
-      entryLabel: gameEntryLabels[project.slug] ?? '바로 읽기',
+      entryLabel: gameEntryLabels[project.slug] ?? '먼저 볼 장면',
       readAngle: gameReadAngles[project.slug] ?? '게임마다 막힌 장면을 하나씩 남겼습니다.',
       entry: gameEntryOverrides[project.slug] ?? (records[0]
         ? {
@@ -86,7 +86,7 @@ export default async function WritingPage() {
             href: `/writing/${records[0].slug}`,
             title: records[0].title,
             summary: records[0].summary,
-            cta: '글 열기 →',
+            cta: '기록 열기 →',
           }
         : null),
     }));
@@ -96,16 +96,16 @@ export default async function WritingPage() {
       <section className="studio-hero overflow-hidden rounded-[36px] border border-line/80 bg-white/[0.035] p-5 md:p-8">
         <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div className="space-y-5 rounded-[28px] border border-line/70 bg-black/20 p-5 md:p-7">
-            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">새 소식</p>
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임 기록</p>
             <h1 className="max-w-5xl text-[38px] font-black leading-[0.98] tracking-[-0.07em] text-text md:text-[72px]">
-              카드 한 장, 막대 하나, 선택지 하나.
+              게임이 끊기는 순간을 고칩니다.
             </h1>
             <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-              Wanderer, Hanoi, TRPG를 켜 보고 플레이가 어디서 멈추는지 짧게 남겼습니다.
+              카드 승부, 퍼즐 이동, 서사 선택이 어디서 흐려지는지 보고 왜 바꿨는지 남깁니다.
             </p>
           </div>
           <aside className="panel-aside space-y-3 text-sm text-subtext">
-            <p className="text-[13px] leading-6">Wanderer는 카드 판단, Hanoi는 이동 결과, TRPG는 선택 뒤 이어지는 장면을 봅니다.</p>
+            <p className="text-[13px] leading-6">먼저 실제 게임 장면을 보고, 깊은 기술 이야기는 글 안쪽에만 둡니다.</p>
           </aside>
         </div>
       </section>
@@ -114,12 +114,12 @@ export default async function WritingPage() {
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">폰에서 버튼을 눌렀는데 결과가 늦었습니다</h2>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">카드를 고르면 승부가 바로 보여야 합니다</h2>
             <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
-              카드 게임은 버튼을 누른 뒤 결과가 늦으면 바로 힘이 빠집니다. 그래서 이 글을 맨 위에 뒀습니다.
+              Wanderer는 선택 뒤 결과가 바로 떠야 한 판의 리듬이 살아납니다. 첫 글은 그 장면부터 봅니다.
             </p>
           </div>
-          <Link href={`/writing/${latestGamePost.slug}`} className="text-sm font-bold text-point hover:text-text">게임 흐름 보기 →</Link>
+          <Link href={`/writing/${latestGamePost.slug}`} className="text-sm font-bold text-point hover:text-text">기록 읽기 →</Link>
         </div>
         <PostCard post={latestGamePost} featured />
 
@@ -128,8 +128,8 @@ export default async function WritingPage() {
       <section className="space-y-5">
         <div>
           <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">게임별</p>
-          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">게임마다 다른 순간</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">카드 전투, 퍼즐 이동, 서사 선택은 서로 다른 곳에서 막힙니다.</p>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">게임마다 끊기는 순간이 다릅니다</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">카드 게임은 결과가, 퍼즐은 다음 상태가, 서사는 선택 뒤 장면이 바로 읽혀야 합니다.</p>
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
           {gameLanes.map(({ project, records, hook, entryLabel, readAngle, entry }) => (
@@ -164,8 +164,8 @@ export default async function WritingPage() {
       <section className="space-y-5">
         <div>
           <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">나머지</p>
-          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">장보기와 소식</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">게임 밖에서 나온 가격 판단과 제작 리듬은 아래에만 모았습니다.</p>
+          <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">게임 밖에서 나온 기록</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-7 text-subtext">장보기 도구와 제작 리듬처럼 게임 밖에서 나온 글은 아래에 낮춰 둡니다.</p>
         </div>
         <div className="grid gap-4">
           {nextUpdates.map((post) => (
