@@ -157,6 +157,27 @@ describe('content loader', () => {
     }
   });
 
+  it('keeps public writing away from internal QA phrasing', async () => {
+    const posts = await getWriting();
+    const internalQaPhrases = [
+      /테스트를 돌려/,
+      /현재 코드가 깨지/,
+      /사용자 화면까지 도달/,
+      /기준선/,
+      /이번 보기[은이]/,
+      /보기한/,
+      /보기이었습니다/,
+      /기술 결과/,
+      /코드가 맞아도/,
+    ];
+
+    for (const post of posts) {
+      for (const phrase of internalQaPhrases) {
+        expect(post.content, `${post.slug} should not include ${phrase}`).not.toMatch(phrase);
+      }
+    }
+  });
+
   it('keeps project/post relationships, cover assets, and operational card metadata resolvable', async () => {
     const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
     const projectSlugs = new Set(projects.map((project) => project.slug));
