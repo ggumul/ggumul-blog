@@ -170,6 +170,15 @@ describe('public UI copy cleanup', () => {
     expect(writingDetailPage).not.toMatch(/읽기 전에|작업과 연결된 기록|확인한 화면\/문제\/판단|PostEngagement|공유하기|댓글 남기기/);
   });
 
+  it('does not render broken article hero images when a project has no screenshot', () => {
+    const writingDetailPage = read('app/writing/[slug]/page.tsx');
+
+    expect(writingDetailPage).toContain('heroImage ? (');
+    expect(writingDetailPage).toContain('장보기 전 가격 흐름');
+    expect(writingDetailPage).toContain('{heroImage ? (\n              <img');
+    expect(writingDetailPage).not.toMatch(/<figure[^>]*>\s*<img[\s\S]*src=\{heroImage\}/);
+  });
+
   it('keeps public copy from repeating generic view CTAs and dev-record framing', () => {
     const combined = [
       read('app/page.tsx'),

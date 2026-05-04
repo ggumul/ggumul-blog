@@ -43,6 +43,26 @@ function resolvePostImage(post: { slug: string; relatedProjects: string[] }) {
   return firstProject ? projectThumbnails[firstProject] : '/studio/wanderer-home.png';
 }
 
+function resolvePostHeroFallback(post: { slug: string; category: string }) {
+  if (post.slug === 'ggumul-dinner-grocery-가격-계약-정리') {
+    return {
+      label: 'Dinner Grocery',
+      title: '장보기 전 가격 흐름',
+      description: '메뉴를 고르고 재료를 적기 전에, 오늘 사도 괜찮은지 먼저 보는 작은 장면입니다.',
+      badge: '장보기 도구',
+      tone: 'bg-[radial-gradient(circle_at_24%_22%,rgba(251,191,36,0.26),transparent_34%),radial-gradient(circle_at_78%_18%,rgba(132,204,22,0.22),transparent_30%),linear-gradient(135deg,rgba(14,20,14,0.96),rgba(44,35,18,0.92))]',
+    };
+  }
+
+  return {
+    label: 'GGUMUL',
+    title: post.category,
+    description: '글과 연결된 장면을 짧게 남긴 제작 노트입니다.',
+    badge: '게임 기록',
+    tone: 'bg-[radial-gradient(circle_at_24%_20%,rgba(124,92,255,0.32),transparent_34%),radial-gradient(circle_at_78%_16%,rgba(255,122,162,0.2),transparent_30%),linear-gradient(135deg,rgba(14,16,28,0.96),rgba(31,26,54,0.92))]',
+  };
+}
+
 export async function generateStaticParams() {
   const posts = await getWriting();
   return posts.map((post) => ({ slug: post.slug }));
@@ -104,6 +124,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
     : allPosts.filter((entry) => entry.slug !== post.slug && entry.relatedProjects.some((project) => post.relatedProjects.includes(project))).slice(0, 3);
   const headings = extractHeadings(post.content);
   const heroImage = resolvePostImage(post);
+  const heroFallback = resolvePostHeroFallback({ slug: post.slug, category: post.category });
   const articleJsonLd = createArticleJsonLd({
     title: post.title,
     description: post.summary,
@@ -140,7 +161,21 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
           </div>
 
           <figure className="studio-shot min-h-[330px] overflow-hidden rounded-[30px] border border-line/80 bg-white/10 md:min-h-[520px]">
-            <img alt={`${post.title} 장면`} className="h-full w-full object-cover" src={heroImage} />
+            {heroImage ? (
+              <img alt={`${post.title} 장면`} className="h-full w-full object-cover" src={heroImage} />
+            ) : (
+              <div className={`flex h-full min-h-[330px] flex-col justify-between p-7 md:min-h-[520px] md:p-9 ${heroFallback.tone}`}>
+                <div className="flex items-center justify-between gap-3 text-[11px] font-black uppercase tracking-[0.24em] text-white/65">
+                  <span>{heroFallback.label}</span>
+                  <span>{heroFallback.badge}</span>
+                </div>
+                <div className="max-w-sm space-y-4">
+                  <div className="h-1.5 w-20 rounded-full bg-white/45" />
+                  <h2 className="text-[34px] font-black leading-[0.98] tracking-[-0.06em] text-white md:text-[56px]">{heroFallback.title}</h2>
+                  <p className="text-[15px] leading-7 text-white/72 md:text-[17px] md:leading-8">{heroFallback.description}</p>
+                </div>
+              </div>
+            )}
             <figcaption className="studio-caption">
               <span>글과 연결된 실행 화면</span>
               <span>{post.category}</span>
