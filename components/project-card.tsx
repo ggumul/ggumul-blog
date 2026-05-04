@@ -10,9 +10,12 @@ const projectKinds: Record<string, string> = {
 };
 
 const progressTone: Record<ProjectEntry['progressStatus'], string> = {
-  '플레이 확인': 'border-[#fff1b8]/65 bg-[#7ee6c6] text-[#10183a]',
+  '한 턴 공개': 'border-[#fff1b8]/65 bg-[#7ee6c6] text-[#10183a]',
   미리보기: 'border-[#fff1b8]/65 bg-[#ffd447] text-[#10183a]',
-  '계약 점검 중': 'border-[#fff1b8]/65 bg-[#8fd2ff] text-[#10183a]',
+  '장보기 판단': 'border-[#fff1b8]/65 bg-[#8fd2ff] text-[#10183a]',
+  '퍼즐 장면': 'border-[#fff1b8]/65 bg-[#ffd447] text-[#10183a]',
+  '색 퍼즐': 'border-[#fff1b8]/65 bg-[#ffd447] text-[#10183a]',
+  '선택 장면': 'border-[#fff1b8]/65 bg-[#ff72a6] text-[#10183a]',
   보류: 'border-[#fff1b8]/45 bg-[#1f46a2] text-subtext',
 };
 
@@ -33,9 +36,12 @@ const projectCtas: Record<string, string> = {
 };
 
 const statusLabel: Record<ProjectEntry['progressStatus'], string> = {
-  '플레이 확인': '1분 플레이',
+  '한 턴 공개': '한 턴 공개',
   미리보기: '미리보기',
-  '계약 점검 중': '가격 보기',
+  '장보기 판단': '장보기 판단',
+  '퍼즐 장면': '퍼즐 장면',
+  '색 퍼즐': '색 퍼즐',
+  '선택 장면': '선택 장면',
   보류: '보관',
 };
 

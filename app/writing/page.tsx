@@ -17,8 +17,8 @@ const gameHooks: Record<string, string> = {
   'color-hanoi': '색 조건이 하나 들어가면 같은 퍼즐도 판단 순서가 달라져서 따로 기록해 두었습니다.',
 };
 const gameReadAngles: Record<string, string> = {
-  wanderer: 'Wanderer는 한 판이 짧아야 살아나서, 선택과 결과 사이가 늘어지는 순간부터 봅니다.',
-  hanoi: 'Hanoi는 조작 자체보다 화면 안에서 이동 결과가 바로 읽히는지가 더 자주 걸렸습니다.',
+  wanderer: 'Wanderer는 한 판이 짧아야 살아나서, 선택과 결과 사이가 늘어지는 순간이 중요합니다.',
+  hanoi: 'Hanoi는 조작 자체보다 화면 안에서 이동 결과가 바로 읽히는지가 더 자주 걸립니다.',
   trpg: 'TRPG는 아직 전용 글이 적어서, 카드·퍼즐과 나란히 놓고 서사 실험의 위치를 먼저 잡았습니다.',
   'color-hanoi': 'Color Hanoi는 색 조건 때문에 Hanoi와 다른 고민이 생겨서 규칙 쪽을 먼저 보는 편이 낫습니다.',
 };
@@ -34,14 +34,14 @@ const gameEntryOverrides: Record<string, { slug?: string; href: string; title: s
     slug: 'runtime-화면-확인-기록',
     href: '/writing/runtime-화면-확인-기록',
     title: '폰에서 돌려보니 게임 흐름이 생각보다 끊겼다',
-    summary: '막대를 옮긴 뒤 다음 상태가 바로 보이는지 봤습니다.',
+    summary: '막대를 옮긴 뒤 다음 상태가 바로 읽혀야 퍼즐 감각이 살아납니다.',
     cta: 'Hanoi 보기 →',
   },
   trpg: {
     slug: '4월-프로젝트-개발-현황',
     href: '/writing/4월-프로젝트-개발-현황',
     title: '카드 전투, 퍼즐, 서사 실험을 한 화면에 나눴다',
-    summary: '선택지가 장면을 어떻게 바꾸는지 카드와 퍼즐 옆에 놓고 봤습니다.',
+    summary: '선택지가 장면을 바꾸는 순간을 카드와 퍼즐 옆에 나란히 둡니다.',
     cta: 'TRPG 보기 →',
   },
   'color-hanoi': {
@@ -116,7 +116,7 @@ export default async function WritingPage() {
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer</p>
             <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.025em] text-text md:text-[48px]">고른 순간, 승부가 갈립니다</h2>
             <p className="mt-2 max-w-2xl text-sm leading-7 text-subtext">
-              Wanderer는 선택 뒤 결과가 바로 떠야 한 판의 리듬이 살아납니다. 첫 글은 그 장면부터 봅니다.
+              Wanderer는 선택 뒤 결과가 바로 떠야 한 판의 리듬이 살아납니다. 첫 글은 그 장면에서 시작합니다.
             </p>
           </div>
           <Link href={`/writing/${latestGamePost.slug}`} className="text-sm font-bold text-point hover:text-text">기록 읽기 →</Link>

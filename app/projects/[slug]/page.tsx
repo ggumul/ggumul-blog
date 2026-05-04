@@ -47,10 +47,10 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
               <p className="text-[12px] font-black uppercase tracking-[0.28em] text-point">Wanderer · 모바일 카드 게임</p>
               <div className="space-y-4">
                 <h1 className="max-w-5xl text-[40px] font-black leading-[0.98] tracking-[-0.065em] text-text md:text-[72px]">
-                  한 장 고르고,<br />바로 결과를<br />봅니다.
+                  한 장 고르고,<br />바로 결과를<br />읽습니다.
                 </h1>
                 <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-                  한 장 고르고, 바로 결과를 봅니다. 이번 턴은 홀수 카드만 유효. 상대의 최고 카드는 13이고, 손에는 5, 10, 15가 있습니다.
+                  한 장 고르고, 바로 결과를 읽습니다. 이번 턴은 홀수 카드만 유효. 상대의 최고 카드는 13이고, 손에는 5, 10, 15가 있습니다.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 text-sm">
@@ -234,7 +234,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <div className="text-[11px] font-black uppercase tracking-[0.24em] text-point">다음에 읽을 것</div>
             <Link href={latestRecord ? `/writing/${latestRecord.slug}` : '/writing'} className="block rounded-[22px] border border-point/25 bg-point/10 p-4 text-point transition hover:bg-point/15">
               <div className="font-black tracking-[-0.03em]">{latestRecord ? '새 게임 기록' : '게임 기록'}</div>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '게임과 이어진 글을 봅니다.'}</p>
+              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '게임과 이어진 글을 함께 둡니다.'}</p>
             </Link>
           </div>
 

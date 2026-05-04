@@ -128,7 +128,7 @@ describe('content loader', () => {
       'wanderer-sync-연결-문제-분석',
       'wanderer-초기-설계-회고',
     ]);
-    expect(projectRecordMap.hanoi.records.map((record) => record.slug)).toContain('runtime-화면-확인-기록');
+    expect(projectRecordMap.hanoi.records.map((record) => record.slug)).toContain('4월-프로젝트-개발-현황');
     expect(projectRecordMap.trpg.records.map((record) => record.slug)).toContain('4월-프로젝트-개발-현황');
   });
 
@@ -195,11 +195,68 @@ describe('content loader', () => {
       /슈퍼앱/,
       /아키텍처/,
       /작업선/,
+      /봤습니다/,
+      /봅니다/,
+      /확인/,
+      /검증/,
+      /실행/,
+      /로컬/,
+      /Simulator/,
+      /Flutter/,
+      /서버/,
+      /작업/,
+      /결과 확인/,
+      /wanderer-was/,
+      /이번에는 .*봤/,
+      /다음에는 .*봅/,
+      /확인하면 충분/,
+      /앱이 켜진다/,
+      /영상 대신/,
     ];
 
     for (const post of posts) {
+      const searchable = [post.title, post.summary, post.category, post.series, post.tags.join(' '), post.content].join('\n');
+
       for (const phrase of internalQaPhrases) {
-        expect(post.content, `${post.slug} should not include ${phrase}`).not.toMatch(phrase);
+        expect(searchable, `${post.slug} should not include ${phrase}`).not.toMatch(phrase);
+      }
+    }
+  });
+
+  it('keeps project metadata written as public scene copy instead of internal status labels', async () => {
+    const projects = await getProjects();
+    const internalProjectPhrases = [
+      /플레이 확인/,
+      /계약 점검 중/,
+      /런타임 흐름/,
+      /기록 보유/,
+      /문서화/,
+      /가격 이력 계약/,
+      /가격 계약/,
+      /실제 가격 수집/,
+      /진행 상태/,
+      /확인/,
+      /실행/,
+      /작업/,
+      /stale/,
+      /현재가/,
+      /7일 평균/,
+      /30일 최근 저가/,
+      /마지막 수집 시각/,
+    ];
+
+    for (const project of projects) {
+      const publicMetadata = [
+        project.progressStatus,
+        project.verificationNote,
+        project.nextStep,
+        project.evidenceLabel,
+        project.summary,
+        project.content,
+      ].join('\n');
+
+      for (const phrase of internalProjectPhrases) {
+        expect(publicMetadata, `${project.slug} should not include ${phrase}`).not.toMatch(phrase);
       }
     }
   });
@@ -208,7 +265,7 @@ describe('content loader', () => {
     const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
     const projectSlugs = new Set(projects.map((project) => project.slug));
     const postSlugs = new Set(posts.map((post) => post.slug));
-    const allowedProgressStatuses = new Set(['플레이 확인', '미리보기', '계약 점검 중', '보류']);
+    const allowedProgressStatuses = new Set(['한 턴 공개', '미리보기', '장보기 판단', '퍼즐 장면', '색 퍼즐', '선택 장면', '보류']);
 
     for (const project of projects) {
       expect(project.relatedPosts.every((slug) => postSlugs.has(slug))).toBe(true);

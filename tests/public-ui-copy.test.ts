@@ -124,7 +124,7 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
     expect(projectDetailPage).toContain('카드 한 장 고르기');
     expect(projectDetailPage).toContain('홀수 카드만 유효');
-    expect(projectDetailPage).toContain('한 장 고르고, 바로 결과를 봅니다.');
+    expect(projectDetailPage).toContain('한 장 고르고, 바로 결과를 읽습니다.');
   });
 
   it('removes campaign-style follow/share blocks from primary pages', () => {

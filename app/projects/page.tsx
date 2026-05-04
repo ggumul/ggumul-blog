@@ -6,7 +6,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '작은 게임들',
-  description: 'Wanderer의 카드 한 턴을 먼저 보여주고, 이어서 작은 퍼즐과 서사 게임을 둘러봅니다.',
+  description: 'Wanderer의 카드 한 턴을 먼저 보여주고, 이어서 작은 퍼즐과 서사 게임을 함께 둡니다.',
   path: '/projects',
 });
 
@@ -81,7 +81,7 @@ export default async function ProjectsPage() {
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[12px] font-black tracking-[0.08em] text-point">먼저 고를 게임</p>
-              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">한 장을 골라 결과를 봅니다</h2>
+              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">한 장을 골라 결과를 읽습니다</h2>
             </div>
             <Link href="/projects/wanderer#mini-play" className="text-sm font-black text-point hover:text-text">카드 한 장 고르기 →</Link>
           </div>

@@ -56,7 +56,7 @@ export function WandererMiniPlay() {
             </h2>
           </div>
           <p className="max-w-md text-sm leading-7 text-subtext md:text-[15px] lg:justify-self-end">
-            이번 턴은 <span className="font-black text-text">규칙 → 상대 카드 → 내 카드 → 결과</span> 순서로만 봅니다. 다른 설명은 빼고, 한 장을 냈을 때 살아남는지만 바로 확인합니다.
+            이번 턴은 <span className="font-black text-text">규칙 → 상대 카드 → 내 카드 → 결과</span> 순서로만 읽습니다. 다른 설명은 빼고, 한 장을 냈을 때 살아남는지만 바로 드러냅니다.
           </p>
         </div>
 
