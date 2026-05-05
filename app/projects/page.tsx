@@ -62,15 +62,15 @@ export default async function ProjectsPage() {
           <p className="text-[12px] font-black tracking-[0.16em] text-point">작업 글</p>
           <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">짧아진 선택을 따라 읽기</h2>
         </div>
-        <div className="article-list">
+        <div className="space-y-3 border-y border-line/70 py-2">
           {worklines.flatMap(({ project, records }) => records.slice(0, 2).map((post) => ({ project, post }))).map(({ project, post }) => (
-            <Link key={`${project.slug}-${post.slug}`} href={`/writing/${post.slug}`} className="grid gap-2 py-4 md:grid-cols-[140px_minmax(0,1fr)_100px] md:items-center">
+            <Link key={`${project.slug}-${post.slug}`} href={`/writing/${post.slug}`} className="block rounded-xl px-0 py-3 transition hover:text-text md:px-3">
               <span className="text-sm font-black text-point">{project.title}</span>
               <span>
-                <span className="block text-lg font-black tracking-[-0.035em] text-text">{post.title}</span>
+                <span className="mt-1 block text-lg font-black tracking-[-0.035em] text-text">{post.title}</span>
                 <span className="mt-1 block text-sm leading-7 text-subtext">{post.summary}</span>
               </span>
-              <time className="text-sm text-subtext md:text-right" dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+              <time className="mt-2 block text-sm text-subtext" dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
             </Link>
           ))}
         </div>
