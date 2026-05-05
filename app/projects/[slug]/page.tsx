@@ -85,13 +85,11 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
       <WandererMiniPlay />
 
-      <figure id="play-video" className="relative scroll-mt-28 overflow-hidden rounded-2xl border border-line/60 bg-surface/40">
-        <video className="max-h-[560px] w-full object-contain" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
-        <figcaption className="flex items-center justify-between gap-3 border-t border-line/60 px-4 py-3 text-xs font-semibold text-subtext">
-          <span>규칙을 읽고, 한 장을 고르고, 승부를 읽습니다</span>
-          <span>플레이 영상</span>
-        </figcaption>
-      </figure>
+      <section id="play-video" className="scroll-mt-28 space-y-3 border-t border-line/45 pt-5">
+        <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">플레이 흐름</p>
+        <video className="max-h-[520px] w-full object-contain" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
+        <p className="text-xs font-semibold leading-6 text-subtext">규칙을 읽고, 한 장을 고르고, 승부를 읽는 순서만 짧게 보여줍니다.</p>
+      </section>
 
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
         <div className="space-y-5">

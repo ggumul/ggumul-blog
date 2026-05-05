@@ -303,12 +303,17 @@ describe('public UI copy cleanup', () => {
     expect(writing).toContain('rounded-full border border-line/60 px-2.5 py-1 text-[12px] font-semibold text-subtext');
   });
 
-  it('puts Wanderer card selection before the video-heavy detail proof', () => {
+  it('puts Wanderer card selection before the video-heavy detail proof without nested CTA frames', () => {
     const detail = read('app/projects/[slug]/page.tsx');
+    const miniPlay = read('components/wanderer-mini-play.tsx');
 
-    expect(detail.indexOf('<WandererMiniPlay />')).toBeLessThan(detail.indexOf('<figure id="play-video"'));
+    expect(detail.indexOf('<WandererMiniPlay />')).toBeLessThan(detail.indexOf('<section id="play-video"'));
     expect(detail).not.toContain('rounded-[28px]');
     expect(detail).not.toContain('rounded-[24px] border border-line/70 bg-black/20');
+    expect(detail).not.toContain('figure id="play-video" className="relative scroll-mt-28 overflow-hidden rounded-2xl border');
+    expect(miniPlay).not.toContain('section id="mini-play" className="scroll-mt-28 rounded-[20px] border');
+    expect(miniPlay).not.toContain('href="#play-video"');
+    expect(miniPlay).not.toContain('rounded-[18px] border p-4 ${selectedCard');
   });
 
   it('keeps public sentences direct instead of abstract scene/report fragments', () => {

@@ -10,9 +10,9 @@ const outcomeLabel = {
 } as const;
 
 const outcomeTone = {
-  win: 'border-[#7dd3fc]/45 bg-[#7dd3fc]/12 text-[#d8f4ff]',
-  lose: 'border-point/40 bg-point/10 text-text',
-  invalid: 'border-line/60 bg-white/[0.035] text-subtext',
+  win: 'border-[#7dd3fc]/35 text-[#d8f4ff]',
+  lose: 'border-point/35 text-text',
+  invalid: 'border-line/45 text-subtext',
 } as const;
 
 export function WandererMiniPlay() {
@@ -36,7 +36,7 @@ export function WandererMiniPlay() {
   };
 
   return (
-    <section id="mini-play" className="scroll-mt-28 rounded-[20px] border border-line/50 bg-white/[0.035] p-4 md:p-6">
+    <section id="mini-play" className="scroll-mt-28 border-y border-line/45 py-5 md:py-7">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
         <div className="space-y-5">
           <div>
@@ -99,7 +99,7 @@ export function WandererMiniPlay() {
           </div>
         </div>
 
-        <div aria-live="polite" className={`rounded-[18px] border p-4 ${selectedCard ? outcomeTone[selectedCard.outcome] : 'border-line/60 bg-white/[0.025] text-subtext'}`}>
+        <div aria-live="polite" className={`border-t pt-4 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0 ${selectedCard ? outcomeTone[selectedCard.outcome] : 'border-line/45 text-subtext'}`}>
           {selectedCard ? (
             <div className="space-y-4">
               <div>
@@ -112,7 +112,6 @@ export function WandererMiniPlay() {
               <div className="flex flex-wrap gap-3">
                 <button type="button" onClick={copyResult} className="game-button-primary text-sm">{copied ? '복사됨' : '복사'}</button>
                 <button type="button" onClick={resetPlay} className="game-button-secondary text-sm">다시 선택</button>
-                <a href="#play-video" className="text-sm font-bold text-point hover:text-text">영상 →</a>
               </div>
             </div>
           ) : (
