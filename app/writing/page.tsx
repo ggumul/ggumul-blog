@@ -38,7 +38,7 @@ export default async function WritingPage() {
         </p>
       </section>
 
-      <section aria-label="게임 글 목록" className="space-y-3">
+      <section aria-label="게임 글" className="space-y-3">
         <div>
           <p className="text-[12px] font-black tracking-[0.16em] text-point">읽을거리</p>
           <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">첫 행동이 분명한 게임들</h2>
