@@ -59,7 +59,7 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
     return {
       isValid,
       outcome: 'invalid',
-      scene: `9, 12, 13이 먼저 깔렸습니다. 이번 규칙은 ${wandererMiniPlayTurn.condition.label}입니다.`,
+      scene: `먼저 깔린 숫자 중 9와 13은 남고 12는 빠집니다. 이번 규칙은 ${wandererMiniPlayTurn.condition.label}입니다.`,
       result,
     };
   }
@@ -69,7 +69,7 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
     return {
       isValid,
       outcome: 'win',
-      scene: `가장 큰 생존 카드는 13입니다. ${playedCardText}를 내면 규칙도 통과하고 숫자도 앞섭니다.`,
+      scene: `15가 남으면 숫자 싸움도 끝납니다. ${playedCardText}를 내면 규칙도 통과하고 숫자도 앞섭니다.`,
       result,
     };
   }

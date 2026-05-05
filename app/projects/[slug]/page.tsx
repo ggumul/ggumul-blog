@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return createMetadata({
     title: game.slug === 'wanderer' ? 'Wanderer — 카드 한 턴' : `${game.title} 게임`,
     description: game.slug === 'wanderer'
-      ? '규칙을 읽고 카드 한 장을 고르는 Wanderer의 짧은 한 턴입니다.'
+      ? '안전해 보이는 10이 먼저 빠지는 Wanderer의 짧은 한 턴입니다.'
       : game.summary,
     path: `/projects/${game.slug}`,
     ogImage: game.coverImage,
@@ -98,7 +98,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           <div className="prose max-w-none">
             <p>Wanderer는 매 턴 규칙이 바뀌는 카드 게임입니다. 먼저 이번 규칙에서 죽는 카드를 버리고, 남은 카드끼리 숫자를 겨룹니다.</p>
             <p>이번 판에서는 10이 빠집니다. 5는 남지만 끝까지 이기기에는 낮습니다. 15는 규칙을 통과하고 마지막 비교에서도 앞섭니다.</p>
-            <p>미니 플레이에는 그 차이만 남겼습니다. 세 숫자를 눌러 보면 왜 안전해 보이는 10을 버려야 하는지 바로 드러납니다.</p>
+            <p>미니 플레이는 그 차이만 드러냅니다. 세 숫자를 누르면 왜 안전해 보이는 10을 버려야 하는지 바로 드러납니다.</p>
           </div>
         </div>
 

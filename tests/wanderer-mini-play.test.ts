@@ -56,6 +56,7 @@ describe('Wanderer mini play sample', () => {
     ].join('\n');
 
     expect(combinedCopy).not.toMatch(/30초 샘플|조건을 만족한 기준점|현재 가장 높은 유효 카드|숫자 싸움이 남습니다|play time|>status<|>loop<|조건→선택→판정/);
+    expect(combinedCopy).not.toMatch(/가장 큰 생존 카드는 13입니다|9, 12, 13이 먼저 깔렸습니다|카드 한 장을 고르는|남겼습니다/);
   });
 
   it('falls back safely to the first hand card for unknown input', () => {
