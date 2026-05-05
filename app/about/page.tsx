@@ -35,11 +35,8 @@ export default function AboutPage() {
             느리게라도 계속 만듭니다.
           </h1>
           <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-            꼬물이라는 이름에는 꾸물거리더라도 손을 멈추지 않겠다는 뜻이 있습니다. 그래서 큰 말보다 작은 판을 먼저 올립니다. 카드 한 장, 막대 하나, 선택지 하나처럼 손으로 해볼 수 있는 것부터 올립니다.
+            꼬물이라는 이름에는 꾸물거리더라도 손을 멈추지 않겠다는 뜻이 있습니다. 그래서 큰 말보다 작은 판을 먼저 올립니다. 카드 한 장, 막대 하나, 선택지 하나처럼 손으로 만질 수 있는 것부터 올립니다.
           </p>
-          <Link href="/projects/wanderer#mini-play" className="inline-flex min-h-[42px] items-center rounded-full border border-point/35 px-4 py-2 text-sm font-bold text-point transition hover:border-point/70 hover:text-text">
-            Wanderer 카드 고르기
-          </Link>
         </div>
       </section>
 

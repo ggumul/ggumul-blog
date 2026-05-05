@@ -44,10 +44,10 @@ export default async function HomePage() {
         <section className="panel-section space-y-4">
           <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
             <div>
-              <p className="text-[12px] font-black tracking-[0.16em] text-point">먼저 만져볼 게임</p>
+              <p className="text-[12px] font-black tracking-[0.16em] text-point">먼저 올린 게임</p>
               <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.035em] text-text md:text-[42px]">Wanderer</h2>
             </div>
-            <Link href={`/projects/${leadProject.slug}#mini-play`} className="game-button-primary text-sm">카드 한 장 고르기</Link>
+            <Link href={`/projects/${leadProject.slug}#mini-play`} className="game-button-primary text-sm">Wanderer 한 턴</Link>
           </div>
           <p className="max-w-3xl text-sm leading-7 text-subtext">Wanderer는 오래 붙드는 카드 게임이 아닙니다. 이번 턴의 규칙을 읽고, 손에 든 카드 하나를 냅니다.</p>
           <p className="max-w-3xl text-sm leading-7 text-subtext">지금은 홀수 카드만 살아남는 짧은 판이 열려 있습니다. 5, 10, 15 중 무엇을 낼지 고르면 바로 승부가 갈립니다.</p>

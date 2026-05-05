@@ -77,7 +77,8 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toContain('/media/runtime-checks/wanderer-mobile-current.png');
     expect(projectsPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
     expect(projectsPage).not.toMatch(/Wanderer부터 바로 봅니다|먼저 볼 건|줄였습니다|한장을|짧게 보고 고릅니다|새로 좋아진 점|살아남고|13보다 높아/);
-    expect(projectsPage).toContain('카드 한 장 고르기');
+    expect(projectsPage).toContain('Wanderer 한 턴');
+    expect(projectsPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기/);
     expect(projectsPage).toContain('홀수 카드만 살아남는');
   });
 
@@ -91,7 +92,8 @@ describe('public UI copy cleanup', () => {
     expect(heroSection).toContain('완성품처럼 포장하기보다 손댈 수 있는 판과 그 옆의 메모를 그대로 올립니다.');
     expect(heroSection).not.toMatch(/고르면 바로 결과가 보이는 게임|카드를 고르고, 막대를 옮기고, 문장을 누르는|글은 게임을 해본 뒤에 읽는 설명|게임 뒤에 읽는 글|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는|큰 세계관보다|글은 그 뒤에 붙습니다/s);
     expect(heroSection).not.toMatch(/Wanderer|카드 한 장|한 장의 카드|카드 한 장 고르기/);
-    expect(leadSection).toContain('먼저 만져볼 게임');
+    expect(leadSection).toContain('먼저 올린 게임');
+    expect(leadSection).not.toMatch(/먼저 만져볼 게임|게임 해보기|해보기|카드 한 장 고르기/);
     expect(leadSection).toContain('Wanderer');
     expect(leadSection).toContain('고르면 바로 승부가 갈립니다');
   });
@@ -125,7 +127,8 @@ describe('public UI copy cleanup', () => {
     expect(homeVisibleSources).toContain('고른 순간, 승부가 갈립니다');
     expect(homePage).toContain('고르면 바로 승부가 갈립니다');
     expect(homePage).toContain('고르면 바로 승부가 갈립니다');
-    expect(homePage).toContain('카드 한 장 고르기');
+    expect(homePage).toContain('Wanderer 한 턴');
+    expect(homePage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기/);
     expect(homePage).toContain('홀수 카드만 살아남는');
   });
 
@@ -186,7 +189,8 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).not.toMatch(/firstVisitSteps|CommunityCTA|영상 → 기록 → 다음 소식|처음 오셨다면/);
     expect(projectDetailPage).not.toMatch(/지금 확인|지금 보는 이유|다음에 고칠 것|기록 보기|플레이 방식|현재 들어간 것|Wanderer 노트|폰에서 돌린 날/);
     expect(projectDetailPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
-    expect(projectDetailPage).toContain('카드 한 장 고르기');
+    expect(projectDetailPage).toContain('Wanderer 한 턴');
+    expect(projectDetailPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기/);
     expect(projectDetailPage).toContain('홀수 카드만 살아남는');
     expect(projectDetailPage).toContain('카드 한 장으로 턴을 가져옵니다.');
   });
@@ -249,7 +253,8 @@ describe('public UI copy cleanup', () => {
 
     expect(combined).toContain('느려도 손은 놓지 않습니다.');
     expect(combined).not.toMatch(/짧게 만질 수 있는 작은 게임을 만듭니다|꼬물은 작은 게임을 만들고, 게임을 해본 뒤 읽을 글을 함께 보여 줍니다|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는/);
-    expect(combined).toContain('카드 한 장 고르기');
+    expect(combined).toContain('Wanderer 한 턴');
+    expect(combined).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|먼저 만져볼 게임/);
     expect(combined).toContain('게임 글');
     expect(combined).toContain('첫 선택이 게임을 정합니다');
     expect(combined).not.toMatch(/게임과 도구|다른 게임과 도구|다른 작은 게임들?|새 소식|최근 소식|한 턴 고르기|짧게 살펴봅니다|게임 흐름 보기|이야기 더 보기|이야기 읽기|Wanderer와 퍼즐을 한 화면에서 고르게 나눴다|고르게 나눴다|현재 상태를 한 번에 정리|무엇을 확인하는 단계인지|다음에 어떤 작업이 필요한지|버튼 뒤 장면이 늦었습니다|폰에서 눌렀을 때 결과가 늦게 읽힌 순간|iOS Simulator에서 실행했습니다|로컬 서버|Flutter 통합 테스트|Gradle 테스트|운영 서버|장시간 동시 접속|보여야 합니다|돌아와야 합니다|흐려졌습니다|흐려지는|깊은 기술|다음에 볼 게임들|다음에 해볼 게임들|Wanderer부터 시작합니다/);
