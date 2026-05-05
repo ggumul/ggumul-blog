@@ -29,13 +29,13 @@ export default async function HomePage() {
       <section className="max-w-4xl space-y-6 py-6 md:py-12">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">GGUMUL</p>
         <h1 className="text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[70px] md:leading-[1.04]">
-          짧게 만질 수 있는 작은 게임을 만듭니다.
+          작은 선택이 바로 돌아오는 게임.
         </h1>
         <p className="max-w-2xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-          꼬물은 작은 게임을 만들고, 게임을 해본 뒤 읽을 글을 함께 보여 줍니다. 꼬물은 작은 게임을 오래 설명하지 않습니다. 먼저 눌러 볼 행동을 보이게 하고, 고른 뒤의 반응을 바로 읽히게 합니다. 첫 행동이 분명해야 작은 게임도 자기 리듬을 가집니다.
+          꼬물은 큰 세계관보다 한 번의 선택을 먼저 놓습니다. 카드를 고르거나, 막대를 옮기거나, 문장을 누르면 결과가 바로 돌아오는 게임을 만듭니다.
         </p>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext">
-          글은 게임을 대신 설명하지 않고, 선택 뒤에 왜 그렇게 만들었는지 짧게 이어 줍니다.
+          글은 그 뒤에 붙습니다. 게임을 해본 다음에야 규칙을 왜 그렇게 줄였는지, 선택을 왜 그 자리에 뒀는지 읽을 수 있게 합니다.
         </p>
       </section>
 
