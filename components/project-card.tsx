@@ -8,11 +8,11 @@ type ProjectCardProps = {
 };
 
 const projectCtas: Record<string, string> = {
-  wanderer: 'Wanderer 보기',
-  hanoi: 'Hanoi 보기',
-  trpg: 'TRPG 보기',
-  'color-hanoi': 'Color Hanoi 보기',
-  'ggumul-dinner-grocery': '장보기 도구 보기',
+  wanderer: '한 턴 열기',
+  hanoi: '막대 옮기기',
+  trpg: '선택지 열기',
+  'color-hanoi': '색 퍼즐 열기',
+  'ggumul-dinner-grocery': '장보기 열기',
 };
 
 function formatDate(date: string) {
@@ -34,8 +34,8 @@ function WandererCardPreview() {
     <div className="wanderer-card-preview border-t border-line/30 pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
       <p className="text-[12px] font-black tracking-[0.14em] text-point">Wanderer 한 턴</p>
       <div className="mt-3 space-y-2 text-sm leading-6 text-subtext">
-        <p>이번 판에서는 홀수 카드만 살아남습니다. 그래서 플레이어는 손에 든 카드가 조건을 통과하는지 먼저 읽습니다.</p>
-        <p>그다음에는 상대보다 높을 수 있는 한 장을 고릅니다. 선택이 끝나면 생존 여부와 승부가 같은 자리에서 이어집니다.</p>
+        <p>홀수 카드만 살아남는 판입니다. 손에 든 5, 10, 15는 같은 카드처럼 보이지만 시작하자마자 무게가 갈립니다.</p>
+        <p>10은 빠지고, 5는 약하고, 15는 상대의 13을 넘습니다. 그래서 고를 카드는 하나로 좁아집니다.</p>
       </div>
     </div>
   );
@@ -68,7 +68,7 @@ export function ProjectCard({ project, records = [], compact = false }: ProjectC
         ) : null}
 
         <div className="flex flex-wrap items-center gap-3 text-sm">
-          <Link href={projectHref} className="font-black text-point hover:text-text">{projectCtas[project.slug] ?? '프로젝트 보기'} →</Link>
+          <Link href={projectHref} className="font-black text-point hover:text-text">{projectCtas[project.slug] ?? '열기'} →</Link>
         </div>
       </div>
 

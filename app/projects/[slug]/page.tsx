@@ -106,15 +106,15 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
         <aside className="space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">한 턴 뒤에 읽을 기록</div>
-            <Link href="/writing/runtime-화면-확인-기록" className="block border-t border-line/70 py-4 text-point transition hover:text-text">
+            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">한 턴 뒤에 읽을 글</div>
+            <Link href="/writing/wanderer-one-card" className="block border-t border-line/70 py-4 text-point transition hover:text-text">
               <div className="font-black tracking-[-0.03em]">고른 순간, 승부가 갈립니다</div>
               <p className="mt-1 text-[13px] leading-6 text-subtext">한 장을 고른 뒤 카드와 결과가 나란히 보여야 하는 이유를 적었습니다.</p>
             </Link>
           </div>
 
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">Wanderer 기록</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">Wanderer 글</div>
             <RelatedPostRows posts={relatedPosts} />
           </div>
         </aside>

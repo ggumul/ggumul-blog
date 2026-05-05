@@ -4,7 +4,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '게임 기록',
-  description: '꼬물이 만들고 있는 작은 게임에 대한 짧은 기록입니다.',
+  description: '꼬물이 만들고 있는 작은 게임에 대한 짧은 글입니다.',
   path: '/writing',
 });
 
@@ -34,7 +34,7 @@ export default async function WritingPage() {
           게임 기록
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          게임을 만들다 보면 화면보다 먼저 정해야 하는 기준이 생깁니다. 카드 한 장을 고르는 이유, 퍼즐에서 다음 수가 보여야 하는 이유, 선택지가 결말로 이어져야 하는 이유를 글로 남겼습니다. 게임을 먼저 만진 뒤 읽으면 각 선택이 왜 그렇게 놓였는지 따라가기 쉽습니다.
+          게임을 만들다 보면 플레이보다 앞서 정해야 하는 기준이 생깁니다. 카드 한 장을 고르는 이유, 퍼즐에서 다음 수가 보여야 하는 이유, 선택지가 결말로 이어져야 하는 이유를 글로 남겼습니다. 게임을 만진 뒤 읽으면 각 선택이 왜 그렇게 놓였는지 따라가기 쉽습니다.
         </p>
       </section>
 

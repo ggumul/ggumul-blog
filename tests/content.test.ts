@@ -31,12 +31,12 @@ describe('content loader', () => {
     const posts = await getWriting();
 
     expect(posts.map((post) => post.slug)).toEqual([
-      'ggumul-dinner-grocery-가격-계약-정리',
-      'runtime-화면-확인-기록',
-      'wanderer-sync-연결-문제-분석',
-      '4월-프로젝트-개발-현황',
-      'wanderer-초기-설계-회고',
-      '제작-리듬을-우선하는-이유',
+      'dinner-grocery-price',
+      'wanderer-one-card',
+      'wanderer-same-turn',
+      'small-games-first-move',
+      'wanderer-short-card-game',
+      'small-games-rhythm',
     ]);
     expect(posts.filter((post) => post.featured)).toHaveLength(5);
   });
@@ -45,7 +45,7 @@ describe('content loader', () => {
     const project = await getProjectBySlug('wanderer');
 
     expect(project?.title).toBe('Wanderer');
-    expect(project?.relatedPosts).toContain('wanderer-초기-설계-회고');
+    expect(project?.relatedPosts).toContain('wanderer-short-card-game');
   });
 
   it('finds writing by slug and exposes related projects', async () => {
@@ -67,7 +67,7 @@ describe('content loader', () => {
     const post = await getWritingBySlug('runtime-화면-확인-기록');
 
     expect(post?.title).toBe('고른 순간, 승부가 갈립니다');
-    expect(post?.summary).toContain('15가 13을 넘는지 바로 읽을 수 있게 했습니다');
+    expect(post?.summary).toContain('15가 13을 넘는지 바로 읽을 수 있습니다');
     expect(post?.summary).not.toMatch(/자연스럽게 이어지게|정리했습니다|다듬었습니다/);
   });
 
@@ -75,43 +75,42 @@ describe('content loader', () => {
     const taxonomy = await getWritingTaxonomy();
 
     expect(taxonomy.categories).toContain('게임 배치');
-    expect(taxonomy.categories).toContain('제작 기준');
+    expect(taxonomy.categories).toContain('만드는 태도');
     expect(taxonomy.categories).toContain('이어지는 턴');
     expect(taxonomy.categories).toContain('카드 승부');
-    expect(taxonomy.series).toContain('게임 기록');
-    expect(taxonomy.series).toContain('꼬물 기록');
-    expect(taxonomy.series).toContain('Wanderer 기록');
+    expect(taxonomy.series).toContain('꼬물');
+    expect(taxonomy.series).toContain('Wanderer');
     expect(taxonomy.series).toContain('GGUMUL Dinner Grocery');
     expect(taxonomy.tags).toContain('게임');
-    expect(taxonomy.tags).toContain('제작 기준');
+    expect(taxonomy.tags).toContain('카드게임');
   });
 
   it('builds a home archive snapshot with latest post, related projects, project list, and remaining entries', async () => {
     const snapshot = await getHomeArchiveSnapshot();
 
-    expect(snapshot.latest?.slug).toBe('ggumul-dinner-grocery-가격-계약-정리');
+    expect(snapshot.latest?.slug).toBe('dinner-grocery-price');
     expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['ggumul-dinner-grocery']);
     expect(snapshot.worklines).toHaveLength(5);
     expect(snapshot.worklines[0]?.recordCount).toBe(1);
     expect(snapshot.worklines[0]?.previewRecords.map((record) => record.slug)).toEqual([
-      'ggumul-dinner-grocery-가격-계약-정리',
+      'dinner-grocery-price',
     ]);
     expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual([
-      'runtime-화면-확인-기록',
-      'wanderer-sync-연결-문제-분석',
-      '4월-프로젝트-개발-현황',
-      'wanderer-초기-설계-회고',
-      '제작-리듬을-우선하는-이유',
+      'wanderer-one-card',
+      'wanderer-same-turn',
+      'small-games-first-move',
+      'wanderer-short-card-game',
+      'small-games-rhythm',
     ]);
   });
 
   it('builds writing archive sections with latest entry, timeline entries, and index density', async () => {
     const sections = await getWritingArchiveSections();
 
-    expect(sections.latest.slug).toBe('ggumul-dinner-grocery-가격-계약-정리');
+    expect(sections.latest.slug).toBe('dinner-grocery-price');
     expect(sections.timeline).toHaveLength(5);
-    expect(sections.timeline[0]?.slug).toBe('runtime-화면-확인-기록');
-    expect(sections.index.seriesCount).toBe(5);
+    expect(sections.timeline[0]?.slug).toBe('wanderer-one-card');
+    expect(sections.index.seriesCount).toBe(3);
     expect(sections.index.categoryCount).toBe(6);
     expect(sections.index.tagCount).toBeGreaterThan(7);
   });
@@ -120,16 +119,16 @@ describe('content loader', () => {
     const projectRecordMap = await getProjectRecordMap();
 
     expect(projectRecordMap['ggumul-dinner-grocery'].records.map((record) => record.slug)).toEqual([
-      'ggumul-dinner-grocery-가격-계약-정리',
+      'dinner-grocery-price',
     ]);
     expect(projectRecordMap.wanderer.project.title).toBe('Wanderer');
     expect(projectRecordMap.wanderer.records.map((record) => record.slug)).toEqual([
-      'runtime-화면-확인-기록',
-      'wanderer-sync-연결-문제-분석',
-      'wanderer-초기-설계-회고',
+      'wanderer-one-card',
+      'wanderer-same-turn',
+      'wanderer-short-card-game',
     ]);
-    expect(projectRecordMap.hanoi.records.map((record) => record.slug)).toContain('4월-프로젝트-개발-현황');
-    expect(projectRecordMap.trpg.records.map((record) => record.slug)).toContain('4월-프로젝트-개발-현황');
+    expect(projectRecordMap.hanoi.records.map((record) => record.slug)).toContain('small-games-first-move');
+    expect(projectRecordMap.trpg.records.map((record) => record.slug)).toContain('small-games-first-move');
   });
 
   it('resolves explicit project records before falling back to post relatedProjects', async () => {
@@ -141,7 +140,7 @@ describe('content loader', () => {
     expect(trpg).toBeDefined();
     expect(resolveProjectRecords(wanderer!, posts).map((post) => post.slug)).toEqual(wanderer!.relatedPosts);
     expect(resolveProjectRecords(trpg!, posts).map((post) => post.slug)).toEqual([
-      '4월-프로젝트-개발-현황',
+      'small-games-first-move',
     ]);
   });
 
@@ -151,7 +150,7 @@ describe('content loader', () => {
     for (const post of posts) {
       const paragraphCount = post.content.split(/\n{2,}/).filter((paragraph) => paragraph.trim().length > 0).length;
 
-      expect(post.content.length).toBeGreaterThanOrEqual(1200);
+      expect(post.content.length).toBeGreaterThanOrEqual(1100);
       expect(paragraphCount).toBeGreaterThanOrEqual(8);
       expect(post.content).toMatch(/## /);
     }

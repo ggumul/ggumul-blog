@@ -342,15 +342,14 @@ describe('public UI copy cleanup', () => {
       read('app/links/page.tsx'),
       read('components/project-card.tsx'),
     ].join('\n');
-    const articles = [
-      readWritingMdx(),
-      readdirSync('content/projects').filter((name) => name.endsWith('.mdx')).map((name) => read(`content/projects/${name}`)).join('\n'),
-    ].join('\n');
+    const articles = [readWritingMdx(), readProjectMdx()].join('\n');
 
     expect(primaryPages).not.toMatch(/규칙<\/strong><br \/>[\s\S]*선택<\/strong><br \/>[\s\S]*결과<\/strong><br \/>/);
     expect(primaryPages).not.toMatch(/만들고 있는 게임을 짧은 글로 정리했습니다|코드, 아이디어, 연락처를 모았습니다|필요한 링크만 남겼습니다|Wanderer는 지금 바로 해볼 수 있는 카드 게임입니다\. Hanoi와 TRPG는 준비 중입니다/);
+    expect(primaryPages).not.toMatch(/대표 게임|다음 게임|게임을 만든 이유|왜 이렇게 만들었는지|기록으로 가기|게임 더 읽기|Wanderer 보기|보기 →|읽기 →/);
     expect(articles).not.toMatch(/## 첫 선택이 게임을 정합니다[\s\S]*## 목록보다 행동|## 작은 판의 힘[\s\S]*## 남길 규칙|## 오래 이어가기 위한 기준[\s\S]*## 다시 돌아오는 방법|## 한 턴이 짧을수록|## 가격을 읽는 순서[\s\S]*## 작은 판단이 모이면/);
     expect(articles).not.toMatch(/Wanderer는 짧게 끝나는 모바일 카드 게임이에요|Hanoi는 하노이 탑 규칙을 바탕으로 만든 퍼즐 게임이에요|Color Hanoi는 하노이 탑 규칙에 색 조건을 더한 퍼즐 변형작이에요|TRPG는 선택에 따라 이야기와 결말이 달라지는 서사 게임입니다/);
-    expect(articles).toContain('그래서 Wanderer는 한 장을 고르면 바로 결과가 나오는 짧은 카드 게임으로 정리했습니다.');
+    expect(articles).not.toMatch(/이 글은|이 글에서는|기준입니다|기준은|정리했습니다|정리합니다|기록입니다|기록을|문제는|단계|화면/);
+    expect(articles).toContain('Wanderer는 오래 버티는 게임이 아니라 한 장을 고르는 게임입니다.');
   });
 });

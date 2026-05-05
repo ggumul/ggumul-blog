@@ -76,12 +76,26 @@ export type HomeArchiveSnapshot = {
 
 const CONTENT_ROOT = path.join(process.cwd(), 'content');
 
+const legacyWritingSlugMap: Record<string, string> = {
+  'ggumul-dinner-grocery-\uac00\uaca9-\uacc4\uc57d-\uc815\ub9ac': 'dinner-grocery-price',
+  'runtime-\ud654\uba74-\ud655\uc778-\uae30\ub85d': 'wanderer-one-card',
+  'wanderer-sync-\uc5f0\uacb0-\ubb38\uc81c-\ubd84\uc11d': 'wanderer-same-turn',
+  '4\uc6d4-\ud504\ub85c\uc81d\ud2b8-\uac1c\ubc1c-\ud604\ud669': 'small-games-first-move',
+  'wanderer-\ucd08\uae30-\uc124\uacc4-\ud68c\uace0': 'wanderer-short-card-game',
+  '\uc81c\uc791-\ub9ac\ub4ec\uc744-\uc6b0\uc120\ud558\ub294-\uc774\uc720': 'small-games-rhythm',
+};
+
 function normalizeSlug(slug: string) {
   try {
     return decodeURIComponent(slug);
   } catch {
     return slug;
   }
+}
+
+function normalizeWritingSlug(slug: string) {
+  const normalizedSlug = normalizeSlug(slug);
+  return legacyWritingSlugMap[normalizedSlug] ?? normalizedSlug;
 }
 
 async function renderMarkdown(content: string) {
@@ -155,7 +169,7 @@ export async function getWritingTaxonomy(): Promise<WritingTaxonomy> {
 
 export async function getWritingBySlug(slug: string) {
   const posts = await getWriting();
-  const normalizedSlug = normalizeSlug(slug);
+  const normalizedSlug = normalizeWritingSlug(slug);
   return posts.find((post) => post.slug === normalizedSlug) ?? null;
 }
 

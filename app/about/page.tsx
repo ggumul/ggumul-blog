@@ -38,7 +38,7 @@ export default function AboutPage() {
             작은 게임은 작아서 대충 만드는 것이 아니라, 처음 눌러야 할 행동을 흐리지 않는 방식입니다. Wanderer는 카드 한 장으로 승부를 보여주고, Hanoi와 TRPG는 각각 막대와 선택지에서 같은 기준을 이어 갑니다.
           </p>
           <Link href="/projects/wanderer#mini-play" className="inline-flex min-h-[42px] items-center rounded-full border border-point/35 px-4 py-2 text-sm font-bold text-point transition hover:border-point/70 hover:text-text">
-            Wanderer 한 턴 보기 →
+            Wanderer 한 턴 열기 →
           </Link>
         </div>
       </section>

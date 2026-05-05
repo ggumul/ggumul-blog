@@ -4,12 +4,12 @@ import { getWritingReadingPath, writingReadingPathSlugs } from '@/lib/writing-re
 describe('writing reading path', () => {
   it('gives every public writing entry a concrete reason to click', () => {
     expect(writingReadingPathSlugs).toEqual([
-      'runtime-화면-확인-기록',
-      'wanderer-sync-연결-문제-분석',
-      'wanderer-초기-설계-회고',
-      '4월-프로젝트-개발-현황',
-      'ggumul-dinner-grocery-가격-계약-정리',
-      '제작-리듬을-우선하는-이유',
+      'wanderer-one-card',
+      'wanderer-same-turn',
+      'wanderer-short-card-game',
+      'small-games-first-move',
+      'dinner-grocery-price',
+      'small-games-rhythm',
     ]);
 
     for (const slug of writingReadingPathSlugs) {

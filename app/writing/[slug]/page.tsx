@@ -5,10 +5,10 @@ import { getProjects, getWriting, getWritingBySlug } from '@/lib/content';
 import { createArticleJsonLd, createMetadata } from '@/lib/site';
 
 const legacyWritingSlugMap: Record<string, string> = {
-  'wanderer-sync는-왜-안-붙었냐': 'wanderer-sync-연결-문제-분석',
-  'wanderer는-꼬물의-출발점-같은-게임이었다': 'wanderer-초기-설계-회고',
-  '우리는-왜-이렇게-천천히-만들고-있냐': '제작-리듬을-우선하는-이유',
-  '요즘-이런-게임들을-만들고-있어요': '4월-프로젝트-개발-현황',
+  'wanderer-sync는-왜-안-붙었냐': 'wanderer-sync-\uc5f0\uacb0-\ubb38\uc81c-\ubd84\uc11d',
+  'wanderer는-꼬물의-출발점-같은-게임이었다': 'wanderer-\ucd08\uae30-\uc124\uacc4-\ud68c\uace0',
+  '우리는-왜-이렇게-천천히-만들고-있냐': '\uc81c\uc791-\ub9ac\ub4ec\uc744-\uc6b0\uc120\ud558\ub294-\uc774\uc720',
+  '요즘-이런-게임들을-만들고-있어요': '4\uc6d4-\ud504\ub85c\uc81d\ud2b8-\uac1c\ubc1c-\ud604\ud669',
 };
 
 const projectThumbnails: Record<string, string> = {
@@ -34,7 +34,7 @@ function extractHeadings(content: string) {
 }
 
 function resolvePostImage(post: { slug: string; relatedProjects: string[] }) {
-  if (post.slug === 'runtime-화면-확인-기록') {
+  if (post.slug === 'wanderer-one-card') {
     return '/media/runtime-checks/wanderer-mobile-current.png';
   }
 
@@ -43,7 +43,7 @@ function resolvePostImage(post: { slug: string; relatedProjects: string[] }) {
 }
 
 function resolvePostHeroFallback(post: { slug: string; category: string }) {
-  if (post.slug === 'ggumul-dinner-grocery-가격-계약-정리') {
+  if (post.slug === 'dinner-grocery-price') {
     return {
       label: 'Dinner Grocery',
       title: '장보기 전 가격',
@@ -56,8 +56,8 @@ function resolvePostHeroFallback(post: { slug: string; category: string }) {
   return {
     label: 'GGUMUL',
     title: post.category,
-    description: '게임을 만들며 정한 기준과 플레이 방식을 짧게 정리한 글입니다.',
-    badge: '게임 기록',
+    description: '게임을 만들며 잡아 둔 방향과 플레이 방식을 짧게 담은 글입니다.',
+    badge: '게임 글',
     tone: 'bg-[#151929]',
   };
 }
