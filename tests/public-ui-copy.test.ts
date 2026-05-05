@@ -332,6 +332,39 @@ describe('public UI copy cleanup', () => {
     expect(miniPlay).not.toContain('rounded-[18px] border p-4 ${selectedCard');
   });
 
+  it('states ggumul, games, and game-writing relationship in one plain public frame', () => {
+    const home = read('app/page.tsx');
+    const shell = read('components/site-shell.tsx');
+    const writing = read('app/writing/page.tsx');
+    const projects = read('app/projects/page.tsx');
+    const site = read('lib/site.ts');
+    const og = read('app/opengraph-image.tsx');
+
+    expect(home).toContain('꼬물은 작은 게임을 만들고, 게임을 해본 뒤 읽을 글을 함께 보여 줍니다.');
+    expect(home).toContain('글은 게임을 대신 설명하지 않고, 선택 뒤에 왜 그렇게 만들었는지 짧게 이어 줍니다.');
+    expect(shell).toContain('작은 게임, 그리고 게임 뒤에 읽는 글');
+    expect(site).toContain('꼬물은 작은 게임을 만들고, 게임 뒤에 읽는 글을 함께 보여 줍니다.');
+    expect(og).toContain('작은 게임, 그리고 게임 뒤에 읽는 글');
+    expect(writing).toContain('게임을 먼저 해보고, 그 뒤에 선택이 왜 그렇게 놓였는지 읽는 곳입니다.');
+    expect(projects).toContain('게임을 먼저 고르고, 더 궁금한 이유는 게임 뒤의 글에서 이어 읽습니다.');
+    expect([home, shell, writing, projects, site, og].join('\n')).not.toMatch(/작은 게임과 게임 글|선택 뒤에 남은 이야기|선택 뒤에 남은|게임 뒤의 글<\/p>[\s\S]*선택이 짧아진 이유/);
+  });
+
+  it('uses a reading-first muted palette instead of yellow-on-blue visual noise', () => {
+    const css = read('app/globals.css');
+    const tailwind = read('tailwind.config.ts');
+    const combined = [css, tailwind].join('\n');
+
+    expect(tailwind).toContain("background: '#0F172A'");
+    expect(tailwind).toContain("text: '#F8FAFC'");
+    expect(tailwind).toContain("subtext: '#CBD5E1'");
+    expect(tailwind).toContain("line: '#334155'");
+    expect(tailwind).toContain("point: '#D6A72A'");
+    expect(combined).not.toMatch(/#FFF1B8|#FFD447|#11183A|#10172f|#10183a|#111936|#0d1328|#3957A6|#C9D7FF|#ffd447|#ffe08a/);
+    expect(css).toContain('background: #0f172a;');
+    expect(css).toContain('color: #f8fafc;');
+  });
+
   it('keeps public sentences direct instead of abstract scene/report fragments', () => {
     const combined = [
       read('app/page.tsx'),

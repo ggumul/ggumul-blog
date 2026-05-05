@@ -27,7 +27,7 @@ export default async function ProjectsPage() {
           먼저 해볼 게임을 고릅니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          꼬물의 작은 게임은 첫 행동부터 분명해야 합니다. Wanderer에서는 카드 한 장을 고르고, Hanoi에서는 막대 하나를 옮깁니다. 무엇을 해야 할지 보이면 설명을 읽기 전에 손이 먼저 움직입니다.
+          꼬물의 작은 게임은 첫 행동부터 분명해야 합니다. Wanderer에서는 카드 한 장을 고르고, Hanoi에서는 막대 하나를 옮깁니다. 게임을 먼저 고르고, 더 궁금한 이유는 게임 뒤의 글에서 이어 읽습니다.
         </p>
       </section>
 

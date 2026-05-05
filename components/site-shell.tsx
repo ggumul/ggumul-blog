@@ -19,7 +19,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </span>
             <span className="leading-tight">
               <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[24px]">ggumul / 꼬물</span>
-              <span className="block text-[11px] font-semibold text-subtext">작은 게임과 게임 글</span>
+              <span className="block text-[11px] font-semibold text-subtext">작은 게임, 그리고 게임 뒤에 읽는 글</span>
             </span>
           </Link>
 
@@ -45,7 +45,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 text-sm text-subtext md:grid-cols-[minmax(0,1fr)_auto] md:px-8">
           <div>
             <div className="text-lg font-black tracking-[-0.04em] text-text">ggumul / 꼬물</div>
-            <p className="mt-2 max-w-2xl leading-7">꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다. 긴 설명보다 먼저 손에 잡히는 선택을 두고, 그 선택이 바로 결과로 이어지게 만듭니다.</p>
+            <p className="mt-2 max-w-2xl leading-7">꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다. 글은 게임을 해본 뒤 선택이 왜 그렇게 놓였는지 이어 읽는 자리입니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
             <Link href="/writing" className="transition hover:text-text">게임 글</Link>

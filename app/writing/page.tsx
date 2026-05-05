@@ -31,10 +31,10 @@ export default async function WritingPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">게임 뒤의 글</p>
         <h1 className="text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          선택 뒤에 남은 이야기
+          게임 뒤에 읽는 글
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          게임을 만들다 보면 플레이보다 앞서 정해야 하는 기준이 생깁니다. 카드 한 장을 고르는 이유, 퍼즐에서 다음 수가 보여야 하는 이유, 선택지가 결말로 이어져야 하는 이유를 글로 남겼습니다. 게임을 만진 뒤 읽으면 각 선택이 왜 그렇게 놓였는지 따라가기 쉽습니다.
+          게임을 먼저 해보고, 그 뒤에 선택이 왜 그렇게 놓였는지 읽는 곳입니다. 카드 한 장을 고르는 이유, 퍼즐에서 다음 수가 보여야 하는 이유, 선택지가 결말로 이어지는 이유를 짧게 붙였습니다.
         </p>
       </section>
 

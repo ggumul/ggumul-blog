@@ -32,7 +32,10 @@ export default async function HomePage() {
           짧게 만질 수 있는 작은 게임을 만듭니다.
         </h1>
         <p className="max-w-2xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-          꼬물은 작은 게임을 오래 설명하지 않습니다. 먼저 눌러 볼 행동을 보이게 하고, 고른 뒤의 반응을 바로 읽히게 합니다. 첫 행동이 분명해야 작은 게임도 자기 리듬을 가집니다.
+          꼬물은 작은 게임을 만들고, 게임을 해본 뒤 읽을 글을 함께 보여 줍니다. 꼬물은 작은 게임을 오래 설명하지 않습니다. 먼저 눌러 볼 행동을 보이게 하고, 고른 뒤의 반응을 바로 읽히게 합니다. 첫 행동이 분명해야 작은 게임도 자기 리듬을 가집니다.
+        </p>
+        <p className="max-w-2xl text-[15px] leading-7 text-subtext">
+          글은 게임을 대신 설명하지 않고, 선택 뒤에 왜 그렇게 만들었는지 짧게 이어 줍니다.
         </p>
       </section>
 
@@ -75,8 +78,8 @@ export default async function HomePage() {
         <section className="space-y-4">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 뒤의 글</p>
-              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">선택이 짧아진 이유</h2>
+              <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 뒤에 읽는 글</p>
+              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">게임 뒤에 남는 이유</h2>
             </div>
             <Link href="/writing" className="text-sm font-bold text-point hover:text-text">글 모아 열기 →</Link>
           </div>
