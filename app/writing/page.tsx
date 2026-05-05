@@ -34,7 +34,7 @@ export default async function WritingPage() {
           만들다가 걸린 것들
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          카드를 왜 한 장만 내게 했는지, 퍼즐은 왜 다음 수부터 보여야 하는지, 장보기 도구는 왜 가격부터 봐야 하는지 적습니다.
+          카드를 왜 한 장만 내게 했는지, 퍼즐은 왜 다음 수부터 읽혀야 하는지, 장보기 도구는 왜 가격부터 봐야 하는지 적습니다.
         </p>
       </section>
 

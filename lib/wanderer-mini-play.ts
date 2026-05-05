@@ -82,7 +82,7 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
   return {
     isValid,
     outcome: 'lose',
-    scene: `상대 A의 9가 먼저 보입니다. ${subject} 살아남지만 숫자 싸움에서는 밀립니다.`,
+    scene: `상대 A의 9가 먼저 나왔습니다. ${subject} 살아남지만 숫자 싸움에서는 밀립니다.`,
     result,
     shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
   };
