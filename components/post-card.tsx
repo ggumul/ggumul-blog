@@ -53,7 +53,7 @@ export function PostCard({ post, compact = false, featured = false }: { post: Wr
           {post.tags.slice(0, featured ? 4 : 2).map((tag) => (
             <span key={tag}>#{tag}</span>
           ))}
-          <span className="font-bold text-point">열기 →</span>
+          <span className="font-bold text-point">보기</span>
         </div>
       </div>
     </Link>

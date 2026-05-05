@@ -131,9 +131,13 @@ describe('public UI copy cleanup', () => {
     const homePage = read('app/page.tsx');
     const projectsPage = read('app/projects/page.tsx');
     const writingPage = read('app/writing/page.tsx');
+    const postCard = read('components/post-card.tsx');
+    const aboutPage = read('app/about/page.tsx');
 
     expect(homePage).not.toMatch(/지금 해볼 게임|열기 →|글 모아 열기|게임 목록 열기/);
     expect(projectsPage).not.toMatch(/더 궁금한 이유|지금 해볼 게임/);
+    expect(postCard).not.toContain('열기 →');
+    expect(aboutPage).not.toContain('열기 →');
     expect(projectsPage).toContain('먼저 게임을 고른 뒤, 궁금해진 이야기는 게임 뒤의 글에서 이어 읽습니다.');
     expect(writingPage.match(/게임 뒤의 글/g) ?? []).toHaveLength(1);
   });
