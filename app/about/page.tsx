@@ -10,7 +10,7 @@ export const metadata = createMetadata({
 const games = [
   {
     title: 'Wanderer',
-    text: '이번 턴의 규칙을 보고 카드 한 장을 냅니다.',
+    text: '안전해 보이는 10이 먼저 빠지는 짧은 카드 게임입니다.',
     href: '/projects/wanderer',
   },
   {
@@ -35,7 +35,7 @@ export default function AboutPage() {
             느리게라도 계속 만듭니다.
           </h1>
           <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-            꼬물이라는 이름에는 꾸물거리더라도 손을 멈추지 않겠다는 뜻이 있습니다. 그래서 큰 말보다 작은 판을 먼저 올립니다. 카드 한 장, 막대 하나, 선택지 하나처럼 손으로 만질 수 있는 것부터 올립니다.
+            꼬물이라는 이름에는 꾸물거리더라도 손을 멈추지 않겠다는 뜻이 있습니다. 그래서 큰 말보다 작은 판을 먼저 올립니다. 안전해 보이던 카드가 빠지고, 막대 하나가 길을 막고, 선택지 하나가 다음 문장을 바꾸는 곳을 적습니다.
           </p>
         </div>
       </section>

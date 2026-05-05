@@ -138,6 +138,7 @@ describe('public UI copy cleanup', () => {
     expect(homePage).not.toMatch(/지금 해볼 게임|열기 →|글 모아 열기|게임 목록 열기/);
     expect(projectsPage).not.toMatch(/더 궁금한 이유|지금 해볼 게임/);
     expect(aboutPage).not.toContain('열기 →');
+    expect(aboutPage).not.toMatch(/카드 한 장을 냅니다|손으로 만질 수 있는 것부터/);
     expect(projectsPage).toContain('카드 10은 숫자로는 괜찮지만 규칙 앞에서 빠집니다.');
     expect(writingPage).toContain('왜 그 선택을 버렸나');
   });
