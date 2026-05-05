@@ -85,9 +85,21 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
       <WandererMiniPlay />
 
-      <section id="play-video" className="scroll-mt-28 space-y-3 border-t border-line/45 pt-5">
+      <section id="play-video" className="scroll-mt-28 space-y-4 border-t border-line/45 pt-5">
         <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">플레이 흐름</p>
-        <video className="max-h-[520px] w-full object-contain" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
+        <div className="space-y-0 md:hidden">
+          {[
+            ['규칙 읽기', '홀수 카드만 남기고 짝수 카드는 빠집니다.'],
+            ['카드 선택', '손에 든 5, 10, 15 중 한 장만 고릅니다.'],
+            ['결과 확인', '15는 살아남고 상대 13보다 높아 턴을 가져갑니다.'],
+          ].map(([title, body]) => (
+            <div key={title} className="border-t border-line/45 py-3 first:border-t-0 first:pt-0">
+              <strong className="block text-sm font-black text-text">{title}</strong>
+              <p className="mt-1 text-sm leading-6 text-subtext">{body}</p>
+            </div>
+          ))}
+        </div>
+        <video className="hidden max-h-[520px] w-full object-contain md:block" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
         <p className="text-xs font-semibold leading-6 text-subtext">규칙을 읽고, 한 장을 고르고, 승부를 읽는 순서만 짧게 보여줍니다.</p>
       </section>
 

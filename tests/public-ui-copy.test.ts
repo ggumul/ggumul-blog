@@ -311,6 +311,9 @@ describe('public UI copy cleanup', () => {
     expect(detail).not.toContain('rounded-[28px]');
     expect(detail).not.toContain('rounded-[24px] border border-line/70 bg-black/20');
     expect(detail).not.toContain('figure id="play-video" className="relative scroll-mt-28 overflow-hidden rounded-2xl border');
+    expect(detail).toContain('md:hidden');
+    expect(detail).toContain('hidden max-h-[520px] w-full object-contain md:block');
+    expect(detail).toContain('결과 확인');
     expect(miniPlay).not.toContain('section id="mini-play" className="scroll-mt-28 rounded-[20px] border');
     expect(miniPlay).not.toContain('href="#play-video"');
     expect(miniPlay).not.toContain('rounded-[18px] border p-4 ${selectedCard');
