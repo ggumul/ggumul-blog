@@ -5,7 +5,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '작은 게임들',
-  description: '꼬물이 작은 게임에서 버린 선택과 남긴 선택을 모았습니다.',
+  description: '10을 냈는데 바로 버려지는 짧은 판에서 시작합니다.',
   path: '/projects',
 });
 
@@ -24,10 +24,10 @@ export default async function ProjectsPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">게임</p>
         <h1 className="text-[30px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          좋아 보이는 선택도 판이 바뀌면 버립니다.
+          10을 냈는데, 바로 버려졌습니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          Wanderer에서는 10이 괜찮아 보여도 홀수 규칙 때문에 빠집니다. Hanoi는 방금 옮긴 막대가 다음 길을 막고, 저녁 장보기는 가격 때문에 살 재료가 바뀝니다.
+          Wanderer에서는 숫자가 괜찮아 보여도 홀수 규칙에 맞지 않으면 빠집니다. Hanoi는 방금 옮긴 막대가 다음 길을 막고, 저녁 장보기는 가격 때문에 살 재료가 바뀝니다.
         </p>
       </section>
 

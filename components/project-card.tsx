@@ -15,7 +15,6 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
     <div aria-label="처음 부딪히는 선택" className="border-t border-line/30 pt-4">
       <p className="text-[12px] font-black tracking-[0.14em] text-point">{project.evidenceLabel}</p>
-      <p className="mt-3 text-sm leading-6 text-subtext">좋아 보였던 선택이 왜 버려지는지부터 꺼냅니다.</p>
     </div>
   );
 }
