@@ -81,6 +81,19 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).toContain('홀수 카드만 유효');
   });
 
+  it('separates ggumul identity from the Wanderer game introduction on the homepage', () => {
+    const homePage = read('app/page.tsx');
+    const heroSection = homePage.slice(homePage.indexOf('<section className="max-w-4xl'), homePage.indexOf('{leadProject ? ('));
+    const leadSection = homePage.slice(homePage.indexOf('{leadProject ? ('), homePage.indexOf('{otherProjects.length ? ('));
+
+    expect(heroSection).toContain('꼬물은 작은 게임을 오래 설명하지 않습니다.');
+    expect(heroSection).toContain('첫 행동이 분명해야 작은 게임도 자기 리듬을 가집니다.');
+    expect(heroSection).not.toMatch(/Wanderer|카드 한 장|한 장의 카드|지금 앞에 놓은 것은|카드 한 장 고르기|다른 게임도 열기/);
+    expect(leadSection).toContain('지금 해볼 게임');
+    expect(leadSection).toContain('Wanderer');
+    expect(leadSection).toContain('카드 한 장을 고르면 바로 결과가 나옵니다');
+  });
+
   it('keeps home focused on one playable turn instead of a generic landing page', () => {
     const homePage = read('app/page.tsx');
     const homeVisibleSources = [
