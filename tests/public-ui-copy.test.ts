@@ -422,7 +422,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).toContain('안전해 보이는 10을 버리게 만든 이유');
     expect(combined).toContain('좋은 카드가 아니라 죽지 않을 카드');
     expect(combined).toContain('10은 안전해 보이지만');
-    expect(combined).not.toMatch(/고르면 바로 승부가 갈립니다|장면|감각|붙잡|남깁|둡니다|살핍니다|이어 봅니다|먼저 두고|먼저 보여|목록처럼 읽|게임 밖에서 나온|제작 노트|게임 안에서 나온 기록|선택과 결과가 남은 글|지금 만질/);
+    expect(combined).not.toMatch(/고른 순간, 승부가 갈립니다|카드를 냈을 때 왜 15가 이기는지|고르면 바로 승부가 갈립니다|장면|감각|붙잡|남깁|둡니다|살핍니다|이어 봅니다|먼저 두고|먼저 보여|목록처럼 읽|게임 밖에서 나온|제작 노트|게임 안에서 나온 기록|선택과 결과가 남은 글|지금 만질/);
   });
 
   it('keeps detail/list labels from reading like duplicated archive scaffolding', () => {
