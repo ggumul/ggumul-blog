@@ -21,7 +21,6 @@ export type WandererMiniPlayCard = {
   outcome: WandererMiniPlayOutcome;
   scene: string;
   result: string;
-  shareText: string;
 };
 
 export type WandererMiniPlayTurn = {
@@ -50,11 +49,10 @@ const highestValidOpponentCard = Math.max(
     .map((opponent) => opponent.card),
 );
 
-function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | 'outcome' | 'scene' | 'result' | 'shareText'> {
+function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | 'outcome' | 'scene' | 'result'> {
   const isValid = wandererMiniPlayTurn.condition.isCardValid(value);
   const playedCardText = `카드 ${value}`;
   const subject = `${playedCardText}는`;
-  const object = `${playedCardText}를`;
 
   if (!isValid) {
     const result = `${subject} 홀수가 아니라서 바로 탈락합니다. 이번 턴에는 낼 수 없는 카드예요.`;
@@ -63,7 +61,6 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
       outcome: 'invalid',
       scene: `상대는 9, 12, 13을 냈습니다. 이번 규칙은 ${wandererMiniPlayTurn.condition.label}입니다.`,
       result,
-      shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 승부: ${result}`,
     };
   }
 
@@ -72,9 +69,8 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
     return {
       isValid,
       outcome: 'win',
-      scene: `상대의 최고 생존 카드는 13입니다. ${object} 내면 규칙도 통과하고 숫자도 앞섭니다.`,
+      scene: `상대의 최고 생존 카드는 13입니다. ${playedCardText}를 내면 규칙도 통과하고 숫자도 앞섭니다.`,
       result,
-      shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 승부: ${result}`,
     };
   }
 
@@ -84,7 +80,6 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
     outcome: 'lose',
     scene: `상대 A의 9가 먼저 나왔습니다. ${subject} 살아남지만 숫자 싸움에서는 밀립니다.`,
     result,
-    shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 승부: ${result}`,
   };
 }
 

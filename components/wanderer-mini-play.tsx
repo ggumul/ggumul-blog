@@ -17,26 +17,14 @@ const outcomeTone = {
 
 export function WandererMiniPlay() {
   const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
   const selectedCard = useMemo(() => (selectedCardId ? resolveWandererMiniPlayResult(selectedCardId) : null), [selectedCardId]);
 
   const resetPlay = () => {
     setSelectedCardId(null);
-    setCopied(false);
-  };
-
-  const copyResult = async () => {
-    if (!selectedCard) return;
-    setCopied(true);
-    try {
-      await navigator.clipboard?.writeText(selectedCard.shareText);
-    } catch {
-      // 클립보드가 막히면 아래 문장을 직접 복사하면 된다.
-    }
   };
 
   return (
-    <section id="mini-play" className="scroll-mt-28 border-y border-line/45 py-5 md:py-7">
+    <section className="border-y border-line/45 py-5 md:py-7">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
         <div className="space-y-5">
           <div>
@@ -82,7 +70,6 @@ export function WandererMiniPlay() {
                     type="button"
                     onClick={() => {
                       setSelectedCardId(card.id);
-                      setCopied(false);
                     }}
                     className={`min-h-[148px] rounded-[18px] border p-4 text-left ${
                       isSelected ? 'border-point bg-point text-[#160d08]' : 'border-line/60 bg-white/[0.035] text-text hover:border-point/60'
@@ -108,9 +95,7 @@ export function WandererMiniPlay() {
                 <p className="mt-4 text-lg font-black leading-snug tracking-[-0.035em] text-text">{selectedCard.result}</p>
                 <p className="mt-3 text-sm leading-7 text-subtext">{selectedCard.scene}</p>
               </div>
-              <p className="text-sm leading-7 text-subtext">{selectedCard.shareText}</p>
               <div className="flex flex-wrap gap-3">
-                <button type="button" onClick={copyResult} className="game-button-primary text-sm">{copied ? '복사됨' : '복사'}</button>
                 <button type="button" onClick={resetPlay} className="game-button-secondary text-sm">다시 선택</button>
               </div>
             </div>

@@ -18,8 +18,6 @@ describe('Wanderer mini play sample', () => {
       expect(card.title).toContain(String(card.value));
       expect(card.description).toMatch(/규칙|탈락|상대|살아남/);
       expect(card.result).toMatch(/살아남|탈락|가져오지 못합니다|가져갑니다/);
-      expect(card.shareText).toContain('Wanderer');
-      expect(card.shareText).toContain(wandererMiniPlayTurn.condition.label);
     }
   });
 
@@ -31,8 +29,7 @@ describe('Wanderer mini play sample', () => {
     expect(lowValid.result).toContain('상대 9');
     expect(lowValid.result).toContain('카드 5는');
     expect(lowValid.result).not.toContain('카드 5은');
-    expect(lowValid.shareText).toContain('카드 5를 냈다');
-    expect(lowValid.shareText).not.toContain('카드 5을 냈다');
+    expect(lowValid.scene).toContain('카드 5는');
 
     const invalidEven = resolveWandererMiniPlayResult('even-10');
     expect(invalidEven.isValid).toBe(false);
@@ -55,7 +52,7 @@ describe('Wanderer mini play sample', () => {
       wandererMiniPlayTurn.condition.description,
       wandererMiniPlayTurn.ruleSummary,
       ...wandererMiniPlayTurn.opponents.flatMap((opponent) => [opponent.name, opponent.note]),
-      ...wandererMiniPlayCards.flatMap((card) => [card.title, card.description, card.scene, card.result, card.shareText]),
+      ...wandererMiniPlayCards.flatMap((card) => [card.title, card.description, card.scene, card.result]),
     ].join('\n');
 
     expect(combinedCopy).not.toMatch(/30초 샘플|조건을 만족한 기준점|현재 가장 높은 유효 카드|숫자 싸움이 남습니다|play time|>status<|>loop<|조건→선택→판정/);

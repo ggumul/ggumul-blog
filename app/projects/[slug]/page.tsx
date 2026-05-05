@@ -65,7 +65,6 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
             이번 턴은 홀수 카드만 살아남는 짧은 턴입니다. 손에는 5, 10, 15가 있고, 상대는 13을 들고 있습니다. 살아남고 이기려면 어떤 카드를 내야 할까요.
           </p>
-          <a href="#mini-play" className="inline-flex text-sm font-black text-point hover:text-text">Wanderer 한 턴</a>
         </div>
         <div className="max-w-3xl border-t border-line/40 pt-4 text-sm leading-7 text-subtext">
           한 판은 짧습니다. 상대가 낸 13을 넘기려면 15를 내야 하고, 짝수인 10은 이번 턴에서 빠집니다.

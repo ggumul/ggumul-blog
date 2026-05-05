@@ -39,7 +39,6 @@ describe('public UI copy cleanup', () => {
   it('removes internal ordering and reading-time chips from visitor-facing cards', () => {
     const combined = [
       read('app/projects/[slug]/page.tsx'),
-      read('components/post-card.tsx'),
       read('components/project-card.tsx'),
       read('app/writing/[slug]/page.tsx'),
     ].join('\n');
@@ -49,7 +48,6 @@ describe('public UI copy cleanup', () => {
 
   it('removes template labels from archive and project cards', () => {
     const combined = [
-      read('components/post-card.tsx'),
       read('components/project-card.tsx'),
       read('app/writing/page.tsx'),
       read('app/page.tsx'),
@@ -71,14 +69,13 @@ describe('public UI copy cleanup', () => {
     const projectsPage = read('app/projects/page.tsx');
 
     expect(projectsPage).toContain("project.slug === 'wanderer'");
-    expect(projectsPage).not.toMatch(/MetricCard|공개 항목|recordTotal|worklines\.slice\(1, 4\)|총 게임|화면·글·상태|현황판/);
+    expect(projectsPage).not.toMatch(/공개 항목|recordTotal|worklines\.slice\(1, 4\)|총 게임|화면·글·상태|현황판/);
     expect(projectsPage).not.toMatch(/장면을 나누고, 글과 화면을 붙입니다|가장 최근에 확인한 화면과 기록을 먼저 보여줍니다/);
     expect(projectsPage).not.toMatch(/object-contain object-center/);
     expect(projectsPage).not.toContain('/media/runtime-checks/wanderer-mobile-current.png');
     expect(projectsPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
     expect(projectsPage).not.toMatch(/Wanderer부터 바로 봅니다|먼저 볼 건|줄였습니다|한장을|짧게 보고 고릅니다|새로 좋아진 점|살아남고|13보다 높아/);
-    expect(projectsPage).toContain('Wanderer 한 턴');
-    expect(projectsPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기/);
+    expect(projectsPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴/);
     expect(projectsPage).toContain('홀수 카드만 살아남는');
   });
 
@@ -103,7 +100,6 @@ describe('public UI copy cleanup', () => {
     const homeVisibleSources = [
       homePage,
       read('components/site-shell.tsx'),
-      read('components/post-card.tsx'),
       read('lib/writing-reading-path.ts'),
       readFrontmatter('content/projects/wanderer.mdx'),
       readFrontmatter('content/writing/2026-04-26-runtime-화면-확인-기록.mdx'),
@@ -127,8 +123,7 @@ describe('public UI copy cleanup', () => {
     expect(homeVisibleSources).toContain('고른 순간, 승부가 갈립니다');
     expect(homePage).toContain('고르면 바로 승부가 갈립니다');
     expect(homePage).toContain('고르면 바로 승부가 갈립니다');
-    expect(homePage).toContain('Wanderer 한 턴');
-    expect(homePage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기/);
+    expect(homePage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴/);
     expect(homePage).toContain('홀수 카드만 살아남는');
   });
 
@@ -136,12 +131,10 @@ describe('public UI copy cleanup', () => {
     const homePage = read('app/page.tsx');
     const projectsPage = read('app/projects/page.tsx');
     const writingPage = read('app/writing/page.tsx');
-    const postCard = read('components/post-card.tsx');
     const aboutPage = read('app/about/page.tsx');
 
     expect(homePage).not.toMatch(/지금 해볼 게임|열기 →|글 모아 열기|게임 목록 열기/);
     expect(projectsPage).not.toMatch(/더 궁금한 이유|지금 해볼 게임/);
-    expect(postCard).not.toContain('열기 →');
     expect(aboutPage).not.toContain('열기 →');
     expect(projectsPage).toContain('카드 한 장을 내고, 막대 하나를 옮기고, 저녁 장볼 재료를 고릅니다.');
     expect(writingPage).toContain('만들다가 걸린 것들');
@@ -157,7 +150,6 @@ describe('public UI copy cleanup', () => {
       read('app/about/page.tsx'),
       read('app/links/page.tsx'),
       read('components/project-card.tsx'),
-      read('components/post-card.tsx'),
       read('lib/writing-reading-path.ts'),
     ].join('\n');
 
@@ -189,8 +181,7 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).not.toMatch(/firstVisitSteps|CommunityCTA|영상 → 기록 → 다음 소식|처음 오셨다면/);
     expect(projectDetailPage).not.toMatch(/지금 확인|지금 보는 이유|다음에 고칠 것|기록 보기|플레이 방식|현재 들어간 것|Wanderer 노트|폰에서 돌린 날/);
     expect(projectDetailPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
-    expect(projectDetailPage).toContain('Wanderer 한 턴');
-    expect(projectDetailPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기/);
+    expect(projectDetailPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴/);
     expect(projectDetailPage).toContain('홀수 카드만 살아남는');
     expect(projectDetailPage).toContain('카드 한 장으로 턴을 가져옵니다.');
   });
@@ -225,7 +216,6 @@ describe('public UI copy cleanup', () => {
       read('app/writing/page.tsx'),
       read('app/projects/[slug]/page.tsx'),
       read('components/project-card.tsx'),
-      read('components/post-card.tsx'),
       read('components/wanderer-mini-play.tsx'),
       read('lib/writing-reading-path.ts'),
     ].join('\n');
@@ -245,7 +235,6 @@ describe('public UI copy cleanup', () => {
       read('app/writing/page.tsx'),
       read('app/projects/[slug]/page.tsx'),
       read('components/project-card.tsx'),
-      read('components/post-card.tsx'),
       read('components/site-shell.tsx'),
       readFrontmatter('content/writing/2026-04-20-4월-프로젝트-개발-현황.mdx'),
       readFrontmatter('content/writing/2026-04-26-runtime-화면-확인-기록.mdx'),
@@ -253,8 +242,7 @@ describe('public UI copy cleanup', () => {
 
     expect(combined).toContain('느려도 손은 놓지 않습니다.');
     expect(combined).not.toMatch(/짧게 만질 수 있는 작은 게임을 만듭니다|꼬물은 작은 게임을 만들고, 게임을 해본 뒤 읽을 글을 함께 보여 줍니다|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는/);
-    expect(combined).toContain('Wanderer 한 턴');
-    expect(combined).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|먼저 만져볼 게임/);
+    expect(combined).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|먼저 만져볼 게임/);
     expect(combined).toContain('게임 글');
     expect(combined).toContain('첫 선택이 게임을 정합니다');
     expect(combined).not.toMatch(/게임과 도구|다른 게임과 도구|다른 작은 게임들?|새 소식|최근 소식|한 턴 고르기|짧게 살펴봅니다|게임 흐름 보기|이야기 더 보기|이야기 읽기|Wanderer와 퍼즐을 한 화면에서 고르게 나눴다|고르게 나눴다|현재 상태를 한 번에 정리|무엇을 확인하는 단계인지|다음에 어떤 작업이 필요한지|버튼 뒤 장면이 늦었습니다|폰에서 눌렀을 때 결과가 늦게 읽힌 순간|iOS Simulator에서 실행했습니다|로컬 서버|Flutter 통합 테스트|Gradle 테스트|운영 서버|장시간 동시 접속|보여야 합니다|돌아와야 합니다|흐려졌습니다|흐려지는|깊은 기술|다음에 볼 게임들|다음에 해볼 게임들|Wanderer부터 시작합니다/);
@@ -284,7 +272,6 @@ describe('public UI copy cleanup', () => {
       read('app/projects/page.tsx'),
       read('app/writing/page.tsx'),
       read('components/project-card.tsx'),
-      read('components/post-card.tsx'),
       read('components/site-shell.tsx'),
       read('app/about/page.tsx'),
       read('app/links/page.tsx'),
@@ -313,9 +300,9 @@ describe('public UI copy cleanup', () => {
 
     expect(projectCard).not.toMatch(/projectLines|projectAvailability|StatusFacts|project\.progressStatus/);
     expect(projectCard).not.toMatch(/>새 소식<|식단을 정하면 장보기 목록과 가격 판단으로 이어집니다|홀수 카드만 살아남는에서 15를 내면 상대의 13을 넘깁니다|막대를 옮기면 다음 상태가 바로 보입니다|기록 읽기|첫 행동과 결과가 바로 이어지는지 확인할 수 있게/);
-    expect(projectCard).toContain('function WandererCardPreview');
-    expect(projectCard).toContain("project.slug === 'wanderer'");
-    expect(projectCard).toContain('wanderer-card-preview');
+    expect(projectCard).not.toContain('function WandererCardPreview');
+    expect(projectCard).not.toContain("project.slug === 'wanderer' ?");
+    expect(projectCard).not.toContain('wanderer-card-preview');
   });
 
   it('keeps the visual system quiet: no patterned backdrop or heavy depth tokens', () => {
@@ -325,7 +312,6 @@ describe('public UI copy cleanup', () => {
       read('components/site-shell.tsx'),
       read('components/brand-ui.tsx'),
       read('components/project-card.tsx'),
-      read('components/post-card.tsx'),
       read('components/wanderer-mini-play.tsx'),
       read('app/page.tsx'),
       read('app/projects/page.tsx'),
@@ -348,9 +334,9 @@ describe('public UI copy cleanup', () => {
     const miniPlay = read('components/wanderer-mini-play.tsx');
 
     expect(home).not.toMatch(/상대 카드: 13|내 손패|정답|VS|figure className="studio-shot|ProjectCard project=\{leadProject\}/);
-    expect(projects).not.toMatch(/상대 카드|내 카드|결과|VS|figure className="studio-shot|recentRecords|PostCard/);
+    expect(projects).not.toMatch(/상대 카드|내 카드|결과|VS|figure className="studio-shot|recentRecords/);
     expect(writing).toContain('article-list');
-    expect(writing).not.toMatch(/gameLanes|grid gap-5 md:grid-cols|PostCard post=\{entry/);
+    expect(writing).not.toMatch(/gameLanes|grid gap-5 md:grid-cols/);
     expect(miniPlay).not.toMatch(/rounded-\[26px\]|rounded-\[22px\]|lg:grid-cols-\[minmax\(0,0\.62fr\)|result aside/);
   });
 
@@ -378,7 +364,8 @@ describe('public UI copy cleanup', () => {
     expect(detail).toContain('md:hidden');
     expect(detail).toContain('hidden max-h-[520px] w-full object-contain md:block');
     expect(detail).toContain('승부 읽기');
-    expect(miniPlay).not.toContain('section id="mini-play" className="scroll-mt-28 rounded-[20px] border');
+    expect(miniPlay).not.toContain('id="mini-play"');
+    expect(miniPlay).not.toContain('scroll-mt-28');
     expect(miniPlay).not.toContain('href="#play-video"');
     expect(miniPlay).not.toContain('rounded-[18px] border p-4 ${selectedCard');
   });
@@ -423,7 +410,6 @@ describe('public UI copy cleanup', () => {
       read('app/projects/[slug]/page.tsx'),
       read('app/writing/[slug]/page.tsx'),
       read('components/project-card.tsx'),
-      read('components/post-card.tsx'),
       read('components/wanderer-mini-play.tsx'),
       read('lib/writing-reading-path.ts'),
       readWritingMdx(),

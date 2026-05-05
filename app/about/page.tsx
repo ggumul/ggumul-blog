@@ -11,7 +11,7 @@ const games = [
   {
     title: 'Wanderer',
     text: '이번 턴의 규칙을 보고 카드 한 장을 냅니다.',
-    href: '/projects/wanderer#mini-play',
+    href: '/projects/wanderer',
   },
   {
     title: 'Hanoi',

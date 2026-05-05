@@ -20,18 +20,6 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
   );
 }
 
-function WandererCardPreview() {
-  return (
-    <div className="wanderer-card-preview border-t border-line/30 pt-4">
-      <p className="text-[12px] font-black tracking-[0.14em] text-point">Wanderer 한 턴</p>
-      <div className="mt-3 space-y-2 text-sm leading-6 text-subtext">
-        <p>홀수 카드만 살아남는 판입니다. 손에 든 5, 10, 15는 같은 카드처럼 보이지만 시작하자마자 무게가 갈립니다.</p>
-        <p>10은 빠지고, 5는 약하고, 15는 상대의 13을 넘습니다. 그래서 고를 카드는 하나로 좁아집니다.</p>
-      </div>
-    </div>
-  );
-}
-
 export function ProjectCard({ project, records = [], compact = false }: ProjectCardProps) {
   const projectHref = `/projects/${project.slug}`;
   const previewRecords = records.slice(0, compact ? 1 : 2);
@@ -61,7 +49,7 @@ export function ProjectCard({ project, records = [], compact = false }: ProjectC
 
       </div>
 
-      {project.slug === 'wanderer' ? <WandererCardPreview /> : <EvidenceFallback project={project} />}
+      <EvidenceFallback project={project} />
     </article>
   );
 }

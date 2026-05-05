@@ -54,28 +54,9 @@ export function SectionHeader({
   );
 }
 
-export function MetricCard({ label, value, description }: { label: string; value: ReactNode; description: string }) {
-  return (
-    <div className="rounded-[20px] border border-line/70 bg-surface/60 p-4">
-      <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-point">{label}</div>
-      <div className="mt-2 text-2xl font-black tracking-[-0.05em] text-text">{value}</div>
-      <p className="mt-1 text-[13px] leading-6 text-subtext">{description}</p>
-    </div>
-  );
-}
 
 export function Pill({ children, tone = 'neutral' }: { children: ReactNode; tone?: 'neutral' | 'point' }) {
   return (
     <span className={tone === 'point' ? 'trace-chip text-point' : 'trace-chip text-subtext'}>{children}</span>
-  );
-}
-
-export function FeatureCard({ title, description, children }: { title: string; description: string; children?: ReactNode }) {
-  return (
-    <div className="rounded-2xl border border-line/70 bg-surface/60 p-5">
-      <h3 className="text-xl font-black tracking-[-0.04em] text-text">{title}</h3>
-      <p className="mt-2 text-sm leading-7 text-subtext">{description}</p>
-      {children ? <div className="mt-4 text-sm leading-7 text-subtext">{children}</div> : null}
-    </div>
   );
 }
