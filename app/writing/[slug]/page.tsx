@@ -173,7 +173,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
               </div>
             )}
             <figcaption className="flex items-center justify-between gap-3 border-t border-line/70 px-4 py-3 text-xs font-semibold text-subtext">
-              <span>장보기 전 가격 흐름</span>
+              <span>{post.title}</span>
               <span>{post.category}</span>
             </figcaption>
           </figure>
