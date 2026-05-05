@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 function RelatedPostRows({ posts }: { posts: Awaited<ReturnType<typeof getWriting>> }) {
   if (posts.length === 0) {
-    return <p className="border-t border-line/70 py-4 text-sm leading-7 text-subtext">아직 함께 읽을 글은 많지 않습니다. 새 글이 생기면 이곳에 모읍니다.</p>;
+    return <p className="border-t border-line/70 py-4 text-sm leading-7 text-subtext">아직 함께 읽을 글은 많지 않습니다. 새 글이 생기면 이곳에서 이어 보겠습니다.</p>;
   }
 
   return (
@@ -63,7 +63,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             한 장 고르고, 바로 결과를 읽습니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            이번 턴은 홀수 카드만 유효한 판입니다. 아래에서 5, 10, 15 중 한 장을 고르면 바로 승부가 납니다.
+            Wanderer는 한 판이 길어질수록 힘이 빠졌습니다. 그래서 이 페이지는 설명을 앞세우기보다 홀수 카드만 유효한 한 턴에서 시작합니다. 5, 10, 15 중 한 장을 고르면 선택이 곧바로 승부로 이어집니다.
           </p>
           <a href="#mini-play" className="inline-flex text-sm font-black text-point hover:text-text">카드 한 장 고르기 →</a>
         </div>
@@ -88,7 +88,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <figure id="play-video" className="relative scroll-mt-28 overflow-hidden rounded-2xl border border-line/60 bg-surface/40">
         <video className="max-h-[560px] w-full object-contain" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
         <figcaption className="flex items-center justify-between gap-3 border-t border-line/60 px-4 py-3 text-xs font-semibold text-subtext">
-          <span>규칙 → 카드 선택 → 결과</span>
+          <span>규칙을 읽고, 한 장을 고르고, 승부를 읽습니다</span>
           <span>플레이 영상</span>
         </figcaption>
       </figure>
@@ -98,14 +98,9 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">Wanderer</p>
           <h2 className="text-[30px] font-black leading-tight tracking-[-0.03em] text-text md:text-[46px]">짧은 턴이 계속 이어지는 카드 게임</h2>
           <div className="prose max-w-none">
-            <p>Wanderer는 턴마다 규칙을 보고 손패에서 카드 한 장을 내는 게임입니다. 규칙에 맞지 않으면 빠지고, 남은 카드끼리는 숫자가 높은 쪽이 턴을 가져갑니다.</p>
-            <p>한 판은 짧습니다. 대신 카드를 내면 생존, 탈락, 승패가 바로 보입니다. 이 페이지도 그 한 턴을 먼저 만지게 만들었습니다.</p>
-            <h2>지금 해볼 수 있는 것</h2>
-            <ul>
-              <li>4명이 1~15 숫자 카드 6장으로 시작합니다.</li>
-              <li>턴마다 홀수, 짝수, 기준보다 높거나 낮은 조건이 붙습니다.</li>
-              <li>조건을 통과한 카드 중 높은 카드가 턴을 가져갑니다.</li>
-            </ul>
+            <p>Wanderer는 턴마다 규칙을 보고 손패에서 카드 한 장을 내는 게임입니다. 규칙에 맞지 않는 카드는 빠지고, 살아남은 카드 중 숫자가 높은 쪽이 턴을 가져갑니다.</p>
+            <p>중요한 건 규칙표를 많이 외우는 일이 아닙니다. 이번 조건을 읽는 순간 손에 든 카드의 의미가 달라지고, 그중 하나를 고르면 생존과 승패가 바로 이어져야 합니다.</p>
+            <p>지금 미니 플레이는 그 기준만 남긴 작은 판입니다. 카드 10은 조건에서 빠지고, 5는 살아남지만 약하며, 15는 상대를 넘길 수 있습니다. 한 장의 카드로 승부가 납니다.</p>
           </div>
         </div>
 

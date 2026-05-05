@@ -10,17 +10,17 @@ export const metadata = createMetadata({
 const games = [
   {
     title: 'Wanderer',
-    text: '홀수 카드만 유효한 턴에서 카드 15를 내면 이깁니다.',
+    text: '규칙을 읽고 카드 한 장을 고르면 바로 승부가 갈립니다.',
     href: '/projects/wanderer#mini-play',
   },
   {
     title: 'Hanoi',
-    text: '막대를 옮겨 하노이 탑을 푸는 퍼즐입니다.',
+    text: '설명을 길게 붙이기보다 다음에 옮길 막대가 보이는 퍼즐로 다듬습니다.',
     href: '/projects/hanoi',
   },
   {
     title: 'TRPG',
-    text: '선택한 문장에 따라 결말이 달라지는 이야기 게임입니다.',
+    text: '선택지를 누른 이유가 다음 문장과 결말로 돌아오는 게임을 준비합니다.',
     href: '/projects/trpg',
   },
 ];
@@ -35,7 +35,7 @@ export default function AboutPage() {
             짧게 끝나는 작은 게임을 만듭니다.
           </h1>
           <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-            Wanderer는 지금 바로 해볼 수 있는 카드 게임입니다. Hanoi와 TRPG는 준비 중입니다.
+            작은 게임은 작아서 대충 만드는 것이 아니라, 처음 눌러야 할 행동을 흐리지 않는 방식입니다. Wanderer는 카드 한 장으로 승부를 보여주고, Hanoi와 TRPG는 각각 막대와 선택지에서 같은 기준을 이어 갑니다.
           </p>
           <Link href="/projects/wanderer#mini-play" className="inline-flex min-h-[42px] items-center rounded-full border border-point/35 px-4 py-2 text-sm font-bold text-point transition hover:border-point/70 hover:text-text">
             Wanderer 한 턴 보기 →

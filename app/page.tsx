@@ -34,7 +34,7 @@ export default async function HomePage() {
           짧게 끝나는 작은 게임을 만듭니다.
         </h1>
         <p className="max-w-2xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-          지금은 Wanderer를 먼저 공개합니다. 한 장의 카드로 승부가 납니다. 카드 한 장을 고르면 바로 결과가 나옵니다.
+          꼬물의 게임은 오래 설명하기보다 첫 선택을 빨리 건네는 쪽에 가깝습니다. 지금은 Wanderer를 앞에 두었습니다. 카드 한 장을 고르면 바로 결과가 나옵니다. 그래서 짧은 판 안에서도 선택의 이유와 승부가 한 문장으로 남습니다.
         </p>
         <div className="flex flex-wrap gap-3 text-sm">
           <Link href="/projects/wanderer#mini-play" className="game-button-primary">카드 한 장 고르기</Link>
@@ -49,14 +49,10 @@ export default async function HomePage() {
               <p className="text-[12px] font-black tracking-[0.16em] text-point">대표 게임</p>
               <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.035em] text-text md:text-[42px]">{leadProject.title}</h2>
             </div>
-            <Link href={`/projects/${leadProject.slug}`} className="text-sm font-bold text-point hover:text-text">게임 보기 →</Link>
+            <Link href={`/projects/${leadProject.slug}`} className="text-sm font-bold text-point hover:text-text">Wanderer 보기 →</Link>
           </div>
           <p className="max-w-3xl text-sm leading-7 text-subtext">{leadProject.summary}</p>
-          <ul className="grid gap-3 md:grid-cols-3">
-            <li className="text-sm leading-7 text-subtext"><strong className="text-text">규칙</strong><br />홀수 카드만 유효한 판입니다.</li>
-            <li className="text-sm leading-7 text-subtext"><strong className="text-text">선택</strong><br />카드 5, 10, 15 중 하나를 고릅니다.</li>
-            <li className="text-sm leading-7 text-subtext"><strong className="text-text">결과</strong><br />한 장의 카드로 승부가 납니다. 카드 한 장을 고르면 바로 결과가 나옵니다.</li>
-          </ul>
+          <p className="max-w-3xl text-sm leading-7 text-subtext">홀수 카드만 유효한 판에서는 모든 카드가 같은 무게를 갖지 않습니다. 5는 살아남지만 약하고, 10은 조건에서 빠지고, 15는 살아남은 뒤 상대의 13을 넘습니다. 그래서 이 한 턴은 규칙을 읽는 일에서 시작해 한 장의 선택으로 좁아지고, 마지막에는 한 장의 카드로 승부가 납니다.</p>
         </section>
       ) : null}
 
@@ -65,9 +61,9 @@ export default async function HomePage() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-[12px] font-black tracking-[0.16em] text-point">퍼즐과 서사</p>
-              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">퍼즐과 서사 게임</h2>
+              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">다음에 이어질 게임</h2>
             </div>
-            <Link href="/projects" className="text-sm font-bold text-point hover:text-text">전체 →</Link>
+            <Link href="/projects" className="text-sm font-bold text-point hover:text-text">게임 더 읽기 →</Link>
           </div>
           <div className="article-list">
             {otherProjects.map((project) => (
@@ -86,9 +82,9 @@ export default async function HomePage() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 기록</p>
-              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">최근 기록</h2>
+              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">왜 이렇게 만들었는지</h2>
             </div>
-            <Link href="/writing" className="text-sm font-bold text-point hover:text-text">기록 목록 →</Link>
+            <Link href="/writing" className="text-sm font-bold text-point hover:text-text">기록으로 가기 →</Link>
           </div>
           <div className="article-list">
             {latestGamePosts.map((post) => (

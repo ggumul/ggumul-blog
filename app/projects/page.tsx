@@ -27,7 +27,7 @@ export default async function ProjectsPage() {
           게임 목록
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          지금 바로 해볼 수 있는 게임과 준비 중인 게임을 함께 모았습니다. Wanderer는 홀수 카드만 유효한 짧은 판부터 시작합니다.
+          꼬물의 게임은 이름보다 첫 행동이 먼저 잡힐 때 이해하기 쉽습니다. Wanderer는 카드 한 장을 고르는 데서 시작하고, Hanoi는 막대를 옮기는 데서 시작합니다. 그래서 이 목록은 홀수 카드만 유효한 Wanderer의 한 턴을 앞에 놓고, 그다음에 퍼즐과 서사 게임으로 넓어집니다.
         </p>
       </section>
 
@@ -46,8 +46,8 @@ export default async function ProjectsPage() {
 
       <section id="other-games" className="space-y-5">
         <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">준비 중인 게임</p>
-          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">준비 중인 게임</h2>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">다음 게임</p>
+          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">다음 게임</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {otherWorklines.map(({ project, records }) => (
@@ -59,7 +59,7 @@ export default async function ProjectsPage() {
       <section className="space-y-4">
         <div>
           <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 기록</p>
-          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">게임별 기록</h2>
+          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">게임을 만든 이유</h2>
         </div>
         <div className="article-list">
           {worklines.flatMap(({ project, records }) => records.slice(0, 2).map((post) => ({ project, post }))).map(({ project, post }) => (

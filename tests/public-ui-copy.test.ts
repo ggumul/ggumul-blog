@@ -25,7 +25,7 @@ describe('public UI copy cleanup', () => {
     expect(linksPage).not.toContain('{link.href}</p>');
     expect(linksPage).not.toContain('github.com/ggumul');
     expect(linksPage).toContain('github.com/ggomul');
-    expect(linksPage).toContain('게임 아이디어를 모읍니다');
+    expect(linksPage).toContain('게임으로 옮기기 전의 생각을 짧게 적었습니다');
     expect(linksPage).not.toMatch(/메모 모음|type: 'memo'|게임, 메모|코드 저장소, 메모/);
     expect(linksPage).toContain('link.displayHref');
   });
@@ -323,5 +323,26 @@ describe('public UI copy cleanup', () => {
     expect(combined).toContain('짧게 끝나는 작은 게임');
     expect(combined).toContain('카드 한 장을 고르면 바로 결과가 나옵니다');
     expect(combined).not.toMatch(/장면|감각|붙잡|남깁|둡니다|살핍니다|이어 봅니다|먼저 두고|먼저 보여|목록처럼 읽|게임 밖에서 나온|제작 노트|게임 안에서 나온 기록|선택과 결과가 남은 글|지금 만질/);
+  });
+
+  it('keeps pages and articles from restarting every paragraph like separate memo bullets', () => {
+    const primaryPages = [
+      read('app/page.tsx'),
+      read('app/projects/page.tsx'),
+      read('app/writing/page.tsx'),
+      read('app/about/page.tsx'),
+      read('app/links/page.tsx'),
+      read('components/project-card.tsx'),
+    ].join('\n');
+    const articles = [
+      readWritingMdx(),
+      readdirSync('content/projects').filter((name) => name.endsWith('.mdx')).map((name) => read(`content/projects/${name}`)).join('\n'),
+    ].join('\n');
+
+    expect(primaryPages).not.toMatch(/규칙<\/strong><br \/>[\s\S]*선택<\/strong><br \/>[\s\S]*결과<\/strong><br \/>/);
+    expect(primaryPages).not.toMatch(/만들고 있는 게임을 짧은 글로 정리했습니다|코드, 아이디어, 연락처를 모았습니다|필요한 링크만 남겼습니다|Wanderer는 지금 바로 해볼 수 있는 카드 게임입니다\. Hanoi와 TRPG는 준비 중입니다/);
+    expect(articles).not.toMatch(/## 첫 선택이 게임을 정합니다[\s\S]*## 목록보다 행동|## 작은 판의 힘[\s\S]*## 남길 규칙|## 오래 이어가기 위한 기준[\s\S]*## 다시 돌아오는 방법|## 한 턴이 짧을수록|## 가격을 읽는 순서[\s\S]*## 작은 판단이 모이면/);
+    expect(articles).not.toMatch(/Wanderer는 짧게 끝나는 모바일 카드 게임이에요|Hanoi는 하노이 탑 규칙을 바탕으로 만든 퍼즐 게임이에요|Color Hanoi는 하노이 탑 규칙에 색 조건을 더한 퍼즐 변형작이에요|TRPG는 선택에 따라 이야기와 결말이 달라지는 서사 게임입니다/);
+    expect(articles).toContain('그래서 Wanderer는 한 장을 고르면 바로 결과가 나오는 짧은 카드 게임으로 정리했습니다.');
   });
 });

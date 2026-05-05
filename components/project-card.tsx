@@ -34,9 +34,8 @@ function WandererCardPreview() {
     <div className="wanderer-card-preview border-t border-line/30 pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
       <p className="text-[12px] font-black tracking-[0.14em] text-point">Wanderer 한 턴</p>
       <div className="mt-3 space-y-2 text-sm leading-6 text-subtext">
-        <p><strong className="text-text">규칙</strong> 홀수 카드만 살아남습니다.</p>
-        <p><strong className="text-text">선택</strong> 손에 든 카드 중 하나를 고릅니다.</p>
-        <p><strong className="text-text">결과</strong> 선택 직후 생존 여부가 드러납니다.</p>
+        <p>이번 판에서는 홀수 카드만 살아남습니다. 그래서 플레이어는 손에 든 카드가 조건을 통과하는지 먼저 읽습니다.</p>
+        <p>그다음에는 상대보다 높을 수 있는 한 장을 고릅니다. 선택이 끝나면 생존 여부와 승부가 같은 자리에서 이어집니다.</p>
       </div>
     </div>
   );
