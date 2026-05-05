@@ -142,11 +142,12 @@ describe('public UI copy cleanup', () => {
     expect(shell).not.toContain('<Link href="/writing" className="transition hover:text-text">새 소식</Link>');
   });
 
-  it('keeps the mobile header from duplicating the primary play CTA', () => {
+  it('keeps the shared header navigational instead of repeating the primary play CTA', () => {
     const shell = read('components/site-shell.tsx');
 
-    expect(shell).toContain('md:inline-flex');
-    expect(shell).not.toMatch(/className="inline-flex[^\n]+카드 한 장 고르기/);
+    expect(shell).not.toContain('/projects/wanderer#mini-play');
+    expect(shell).not.toContain('카드 한 장 고르기');
+    expect(shell).not.toContain('md:max-lg:hidden');
   });
 
   it('keeps mobile-facing copy and thumbnails from reading like dashboards or placeholders', () => {
@@ -166,7 +167,6 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/게임이 끊기는 순간을 고칩니다|어떤 순간에 멈추는지 보고 왜 바꿨는지|자세한 제작 이야기|아래에는 퍼즐과 서사 게임도 함께 모았습니다/);
     expect(combined).toContain('프로젝트-폴백-장면');
     expect(combined).toContain('게임 기록 목록');
-    expect(combined).toContain('md:max-lg:hidden');
     expect(combined).toContain('aria-live="polite"');
   });
 
@@ -239,7 +239,7 @@ describe('public UI copy cleanup', () => {
     const projectCard = read('components/project-card.tsx');
 
     expect(projectCard).not.toMatch(/projectLines|projectAvailability|StatusFacts/);
-    expect(projectCard).not.toMatch(/>새 소식<|식단을 정하면 장보기 목록과 가격 판단으로 이어집니다|홀수만 살아남는 턴에서 15를 내면 상대의 13을 넘깁니다|막대를 옮기면 다음 상태가 바로 보입니다/);
+    expect(projectCard).not.toMatch(/>새 소식<|식단을 정하면 장보기 목록과 가격 판단으로 이어집니다|홀수만 살아남는 턴에서 15를 내면 상대의 13을 넘깁니다|막대를 옮기면 다음 상태가 바로 보입니다|기록 읽기/);
     expect(projectCard).toContain('function WandererCardPreview');
     expect(projectCard).toContain("project.slug === 'wanderer'");
     expect(projectCard).toContain('wanderer-card-preview');
@@ -265,7 +265,7 @@ describe('public UI copy cleanup', () => {
 
     expect(css).not.toMatch(/body::before|radial-gradient\(circle at 14%|background-size:\s*26px 26px|blur-3xl/);
     expect(sharedSources).not.toMatch(/border-\[3px\]|shadow-card|shadow-\[0_[3-9]px|hover:-translate-y|group-hover:scale|bg-\[radial-gradient/);
-    expect(sharedSources).not.toMatch(/studio-shot|hero-panel|game-card-glow|story-card/);
+    expect(sharedSources).not.toMatch(/studio-shot|hero-panel|game-card-glow|story-card|rounded-\[28px\]/);
   });
 
   it('keeps primary pages one-layered and list-like instead of card-in-card dashboards', () => {
@@ -279,5 +279,26 @@ describe('public UI copy cleanup', () => {
     expect(writing).toContain('article-list');
     expect(writing).not.toMatch(/gameLanes|grid gap-5 md:grid-cols|PostCard post=\{entry/);
     expect(miniPlay).not.toMatch(/rounded-\[26px\]|rounded-\[22px\]|lg:grid-cols-\[minmax\(0,0\.62fr\)|result aside/);
+  });
+
+  it('keeps mobile archive pages compact enough to show real lists immediately', () => {
+    const projects = read('app/projects/page.tsx');
+    const writing = read('app/writing/page.tsx');
+
+    expect(projects).not.toContain('game-button-primary text-sm md:max-lg:hidden');
+    expect(projects).not.toContain('text-[38px] font-black leading-[1.04]');
+    expect(writing).not.toContain('text-[38px] font-black leading-[1.04]');
+    expect(writing).not.toContain('Wanderer 한 턴 →');
+    expect(projects).toContain('text-[30px] font-black leading-tight');
+    expect(writing).toContain('text-[26px] font-black leading-tight');
+    expect(writing).toContain('rounded-full border border-line/60 px-2.5 py-1 text-[12px] font-semibold text-subtext');
+  });
+
+  it('puts Wanderer card selection before the video-heavy detail proof', () => {
+    const detail = read('app/projects/[slug]/page.tsx');
+
+    expect(detail.indexOf('<WandererMiniPlay />')).toBeLessThan(detail.indexOf('<figure id="play-video"'));
+    expect(detail).not.toContain('rounded-[28px]');
+    expect(detail).not.toContain('rounded-[24px] border border-line/70 bg-black/20');
   });
 });

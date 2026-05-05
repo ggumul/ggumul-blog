@@ -70,7 +70,6 @@ export function ProjectCard({ project, records = [], compact = false }: ProjectC
 
         <div className="flex flex-wrap items-center gap-3 text-sm">
           <Link href={projectHref} className="font-black text-point hover:text-text">{projectCtas[project.slug] ?? '프로젝트 보기'} →</Link>
-          {project.evidenceHref ? <Link href={project.evidenceHref} className="text-subtext hover:text-point">기록 읽기 →</Link> : null}
         </div>
       </div>
 

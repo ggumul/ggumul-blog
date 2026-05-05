@@ -35,12 +35,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 </Link>
               ))}
             </nav>
-            <Link
-              href="/projects/wanderer#mini-play"
-              className="hidden min-h-[40px] items-center rounded-full border border-point/35 px-4 py-2 text-sm font-bold text-point transition hover:border-point/70 hover:text-text md:inline-flex md:max-lg:hidden lg:inline-flex"
-            >
-              카드 한 장 고르기
-            </Link>
           </div>
         </div>
       </header>

@@ -52,51 +52,46 @@ function RelatedPostRows({ posts }: { posts: Awaited<ReturnType<typeof getWritin
 function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnType<typeof getWriting>> }) {
   return (
     <article className="archive-surface space-y-10 md:space-y-14">
-      <Link href="/projects" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
-        ← 게임 목록으로
+      <Link href="/projects" className="text-sm font-semibold text-subtext transition hover:text-point">
+        ← 게임 목록
       </Link>
 
-      <section className="rounded-[28px] border border-line/70 bg-surface/70 p-5 md:p-8">
-        <div className="grid gap-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:items-center">
-          <div className="space-y-5">
-            <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">Wanderer · 모바일 카드 게임</p>
-            <h1 className="max-w-5xl text-[40px] font-black leading-[1.02] tracking-[-0.06em] text-text md:text-[72px]">
-              한 장 고르고, 바로 결과를 읽습니다.
-            </h1>
-            <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-              이번 턴은 홀수 카드만 유효. 상대의 최고 카드는 13이고, 손에는 5, 10, 15가 있습니다.
-            </p>
-            <div className="flex flex-wrap gap-3 text-sm">
-              <a href="#mini-play" className="inline-flex min-h-[42px] items-center rounded-full border border-point/35 px-5 py-2 font-bold text-point transition hover:border-point/70 hover:text-text">카드 한 장 고르기</a>
-              <a href="#play-video" className="inline-flex min-h-[42px] items-center rounded-full border border-line/80 px-5 py-2 font-bold text-subtext transition hover:border-point/60 hover:text-text">플레이 영상</a>
-            </div>
-            <dl className="grid gap-3 border-y border-line/70 py-4 text-sm text-subtext sm:grid-cols-3">
-              <div>
-                <dt className="font-black text-point">한 판</dt>
-                <dd className="mt-1">짧게 끝나는 1분 판</dd>
-              </div>
-              <div>
-                <dt className="font-black text-point">상대</dt>
-                <dd className="mt-1">9 · 12 · 13 중 13이 남음</dd>
-              </div>
-              <div>
-                <dt className="font-black text-point">선택</dt>
-                <dd className="mt-1">15를 내면 턴 획득</dd>
-              </div>
-            </dl>
-          </div>
-
-          <figure id="play-video" className="relative scroll-mt-28 overflow-hidden rounded-[24px] border border-line/70 bg-black/20">
-            <video className="max-h-[560px] w-full object-contain" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
-            <figcaption className="flex items-center justify-between gap-3 border-t border-line/70 px-4 py-3 text-xs font-semibold text-subtext">
-              <span>규칙 → 카드 선택 → 결과</span>
-              <span>플레이 영상</span>
-            </figcaption>
-          </figure>
+      <section className="space-y-5 border-b border-line/60 pb-6 md:space-y-7 md:pb-8">
+        <div className="max-w-3xl space-y-3">
+          <p className="text-[12px] font-black uppercase tracking-[0.18em] text-point">Wanderer · 모바일 카드 게임</p>
+          <h1 className="max-w-4xl text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[72px] md:leading-[1.02]">
+            한 장 고르고, 바로 결과를 읽습니다.
+          </h1>
+          <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
+            이번 턴은 홀수 카드만 유효합니다. 아래에서 5, 10, 15 중 한 장을 고르면 바로 승부가 납니다.
+          </p>
+          <a href="#mini-play" className="inline-flex text-sm font-black text-point hover:text-text">카드 한 장 고르기 →</a>
         </div>
+        <dl className="grid gap-3 text-sm text-subtext sm:grid-cols-3">
+          <div className="border-t border-line/40 pt-3">
+            <dt className="font-black text-point">한 판</dt>
+            <dd className="mt-1">짧게 끝나는 1분 판</dd>
+          </div>
+          <div className="border-t border-line/40 pt-3">
+            <dt className="font-black text-point">상대</dt>
+            <dd className="mt-1">9 · 12 · 13 중 13이 남음</dd>
+          </div>
+          <div className="border-t border-line/40 pt-3">
+            <dt className="font-black text-point">선택</dt>
+            <dd className="mt-1">15를 내면 턴 획득</dd>
+          </div>
+        </dl>
       </section>
 
       <WandererMiniPlay />
+
+      <figure id="play-video" className="relative scroll-mt-28 overflow-hidden rounded-2xl border border-line/60 bg-surface/40">
+        <video className="max-h-[560px] w-full object-contain" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
+        <figcaption className="flex items-center justify-between gap-3 border-t border-line/60 px-4 py-3 text-xs font-semibold text-subtext">
+          <span>규칙 → 카드 선택 → 결과</span>
+          <span>플레이 영상</span>
+        </figcaption>
+      </figure>
 
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
         <div className="space-y-5">

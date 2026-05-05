@@ -30,7 +30,7 @@ export default async function HomePage() {
 
       <section className="max-w-4xl space-y-6 py-6 md:py-12">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">GGUMUL / 작은 게임</p>
-        <h1 className="text-[38px] font-black leading-[1.04] tracking-[-0.045em] text-text md:text-[70px]">
+        <h1 className="text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[70px] md:leading-[1.04]">
           카드 한 장, <span className="whitespace-nowrap">한 판이 갈립니다.</span>
         </h1>
         <p className="max-w-2xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">

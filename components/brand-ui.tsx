@@ -16,7 +16,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="rounded-[28px] border border-line/70 bg-surface/70 p-5 md:p-8">
+    <section className="rounded-2xl border border-line/70 bg-surface/70 p-5 md:p-8">
       <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_260px] md:items-end">
         <div className="space-y-4">
           <Eyebrow>{eyebrow}</Eyebrow>

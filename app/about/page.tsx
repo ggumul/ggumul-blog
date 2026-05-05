@@ -28,10 +28,10 @@ const games = [
 export default function AboutPage() {
   return (
     <div className="archive-surface space-y-10 md:space-y-14">
-      <section className="rounded-[28px] border border-line/70 bg-surface/70 p-5 md:p-8">
+      <section className="rounded-2xl border border-line/70 bg-surface/70 p-5 md:p-8">
         <div className="max-w-4xl space-y-5">
           <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">꼬물</p>
-          <h1 className="text-[38px] font-black leading-[1.04] tracking-[-0.06em] text-text md:text-[68px]">
+          <h1 className="text-[34px] font-black leading-tight tracking-[-0.05em] text-text md:text-[68px] md:leading-[1.04]">
             작은 게임을 하나씩 만듭니다.
           </h1>
           <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">

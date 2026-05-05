@@ -20,16 +20,15 @@ export default async function ProjectsPage() {
   const otherWorklines = worklines.filter(({ project }) => project.slug !== lead?.project.slug);
 
   return (
-    <div className="archive-surface space-y-12 md:space-y-16">
-      <section className="max-w-4xl space-y-5 py-4 md:py-10">
+    <div className="archive-surface space-y-8 md:space-y-16">
+      <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">작은 게임 목록</p>
-        <h1 className="text-[38px] font-black leading-[1.04] tracking-[-0.045em] text-text md:text-[68px]">
-          Wanderer부터, 나머지는 목록으로.
+        <h1 className="text-[30px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
+          Wanderer와 작은 게임들.
         </h1>
-        <p className="max-w-2xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-          먼저 카드 한 장을 고르는 Wanderer를 둡니다. 홀수 카드만 유효한 짧은 턴을 앞에 두고, 나머지 게임은 목록으로 낮췄습니다.
+        <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
+          홀수 카드만 유효한 Wanderer를 먼저 두고, 퍼즐과 서사 게임은 바로 아래 목록에 둡니다.
         </p>
-        <Link href="/projects/wanderer#mini-play" className="game-button-primary text-sm md:max-lg:hidden">카드 한 장 고르기</Link>
       </section>
 
       {lead ? (
@@ -37,9 +36,9 @@ export default async function ProjectsPage() {
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[12px] font-black tracking-[0.16em] text-point">먼저 고를 게임</p>
-              <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.045em] text-text md:text-[46px]">{lead.project.title}</h2>
+              <h2 className="mt-2 text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[46px]">{lead.project.title}</h2>
             </div>
-            <Link href={`/projects/${lead.project.slug}`} className="text-sm font-bold text-point hover:text-text">프로젝트 보기 →</Link>
+            <Link href="/projects/wanderer#mini-play" className="text-sm font-bold text-point hover:text-text">카드 한 장 고르기 →</Link>
           </div>
           <ProjectCard project={lead.project} records={lead.records} />
         </section>

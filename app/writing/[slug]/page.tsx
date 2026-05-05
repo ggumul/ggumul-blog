@@ -139,7 +139,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
         ← 게임 기록으로
       </Link>
 
-      <header className="rounded-[28px] border border-line/70 bg-surface/70 p-5 md:p-8">
+      <header className="rounded-2xl border border-line/70 bg-surface/70 p-5 md:p-8">
         <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-2 text-[12px]">
