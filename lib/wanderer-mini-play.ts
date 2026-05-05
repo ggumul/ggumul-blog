@@ -32,13 +32,13 @@ export type WandererMiniPlayTurn = {
 export const wandererMiniPlayTurn: WandererMiniPlayTurn = {
   condition: {
     label: '홀수 카드만 유효',
-    description: '이번 턴은 홀수 카드만 살아남습니다. 살아남은 카드끼리는 숫자가 높은 쪽이 턴을 가져갑니다.',
+    description: '홀수는 남고 짝수는 빠집니다. 남은 숫자끼리 승부합니다.',
     isCardValid: (value: number) => value % 2 === 1,
   },
   opponents: [
-    { name: '상대 A', card: 9, note: '생존' },
-    { name: '상대 B', card: 12, note: '탈락' },
-    { name: '상대 C', card: 13, note: '생존' },
+    { name: 'A', card: 9, note: '생존' },
+    { name: 'B', card: 12, note: '탈락' },
+    { name: 'C', card: 13, note: '생존' },
   ],
   ruleSummary: '짝수는 탈락. 남은 카드끼리 숫자를 비교합니다.',
 };
@@ -59,26 +59,26 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
     return {
       isValid,
       outcome: 'invalid',
-      scene: `상대는 9, 12, 13을 냈습니다. 이번 규칙은 ${wandererMiniPlayTurn.condition.label}입니다.`,
+      scene: `9, 12, 13이 먼저 깔렸습니다. 이번 규칙은 ${wandererMiniPlayTurn.condition.label}입니다.`,
       result,
     };
   }
 
   if (value > highestValidOpponentCard) {
-    const result = `${subject} 살아남았고, 상대의 13보다 높아 이번 턴을 가져갑니다.`;
+    const result = `${subject} 살아남았고, 가장 큰 생존 카드보다 높아 이번 턴을 가져갑니다.`;
     return {
       isValid,
       outcome: 'win',
-      scene: `상대의 최고 생존 카드는 13입니다. ${playedCardText}를 내면 규칙도 통과하고 숫자도 앞섭니다.`,
+      scene: `가장 큰 생존 카드는 13입니다. ${playedCardText}를 내면 규칙도 통과하고 숫자도 앞섭니다.`,
       result,
     };
   }
 
-  const result = `${subject} 살아남지만, 상대 9보다 낮아서 이번 턴을 가져오지 못합니다.`;
+  const result = `${subject} 살아남지만, 앞선 생존 카드보다 낮아서 이번 턴을 가져오지 못합니다.`;
   return {
     isValid,
     outcome: 'lose',
-    scene: `상대 A의 9가 먼저 나왔습니다. ${subject} 살아남지만 숫자 싸움에서는 밀립니다.`,
+    scene: `9가 먼저 나왔습니다. ${subject} 살아남지만 숫자 싸움에서는 밀립니다.`,
     result,
   };
 }
@@ -88,7 +88,7 @@ const handCards = [
     id: 'odd-5',
     value: 5,
     title: '5를 낸다',
-    description: '생존 · 상대 9보다 낮음',
+    description: '생존 · 앞선 숫자보다 낮음',
   },
   {
     id: 'even-10',
@@ -100,7 +100,7 @@ const handCards = [
     id: 'odd-15',
     value: 15,
     title: '15를 낸다',
-    description: '생존 · 상대 13보다 높음',
+    description: '생존 · 가장 큰 숫자보다 높음',
   },
 ] as const;
 

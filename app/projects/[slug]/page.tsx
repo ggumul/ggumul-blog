@@ -60,14 +60,14 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
         <div className="max-w-3xl space-y-3">
           <p className="text-[12px] font-black uppercase tracking-[0.18em] text-point">Wanderer · 모바일 카드 게임</p>
           <h1 className="max-w-4xl text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[72px] md:leading-[1.02]">
-            카드 한 장으로 턴을 가져옵니다.
+            10을 버려야 이기는 턴입니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            이번 턴은 홀수 카드만 살아남는 짧은 턴입니다. 손에는 5, 10, 15가 있고, 상대는 13을 들고 있습니다. 살아남고 이기려면 어떤 카드를 내야 할까요.
+            이번 턴에서는 홀수만 남습니다. 5는 살아남지만 약하고, 10은 빠지고, 15만 끝까지 남습니다.
           </p>
         </div>
         <div className="max-w-3xl border-t border-line/40 pt-4 text-sm leading-7 text-subtext">
-          한 판은 짧습니다. 상대가 낸 13을 넘기려면 15를 내야 하고, 짝수인 10은 이번 턴에서 빠집니다.
+          Wanderer는 좋은 숫자를 찾는 게임이 아닙니다. 이번 규칙에서 죽지 않고, 마지막 숫자 싸움까지 갈 카드를 고르는 게임입니다.
         </div>
       </section>
 
@@ -77,9 +77,9 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
         <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">플레이 영상</p>
         <div className="space-y-0 md:hidden">
           {[
-            ['규칙 읽기', '홀수 카드만 남기고 짝수 카드는 빠집니다.'],
-            ['카드 선택', '손에 든 5, 10, 15 중 한 장만 고릅니다.'],
-            ['승부 읽기', '15는 살아남고 상대 13보다 높아 턴을 가져갑니다.'],
+            ['규칙 읽기', '홀수는 남고 짝수는 빠집니다.'],
+            ['카드 선택', '5, 10, 15 중 이번 규칙을 버틸 카드를 냅니다.'],
+            ['승부 읽기', '15는 살아남고 가장 높은 카드로 남습니다.'],
           ].map(([title, body]) => (
             <div key={title} className="border-t border-line/45 py-3 first:border-t-0 first:pt-0">
               <strong className="block text-sm font-black text-text">{title}</strong>
@@ -88,7 +88,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           ))}
         </div>
         <video className="hidden max-h-[520px] w-full object-contain md:block" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
-        <p className="text-xs font-semibold leading-6 text-subtext">빠른 대전에 들어가 카드를 내고, 승부를 보는 짧은 영상입니다.</p>
+        <p className="text-xs font-semibold leading-6 text-subtext">짧은 대전에서 규칙을 읽고 카드를 낸 뒤, 살아남은 숫자로 승부를 보는 영상입니다.</p>
       </section>
 
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
@@ -96,9 +96,9 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">Wanderer</p>
           <h2 className="text-[30px] font-black leading-tight tracking-[-0.03em] text-text md:text-[46px]">한 턴이 짧아야 살아나는 카드 게임</h2>
           <div className="prose max-w-none">
-            <p>Wanderer는 턴마다 규칙이 바뀌는 카드 게임입니다. 이번 조건에 맞지 않는 카드는 빠지고, 남은 카드끼리 숫자를 겨룹니다.</p>
-            <p>이번 판에서는 10이 빠집니다. 5는 살아남지만 약합니다. 15는 살아남고 상대의 13도 넘습니다.</p>
-            <p>그래서 지금 올린 미니 플레이에는 카드 세 장만 있습니다. 한 장을 고르면 왜 이겼는지 바로 읽힙니다.</p>
+            <p>Wanderer는 매 턴 규칙이 바뀌는 카드 게임입니다. 먼저 이번 규칙에서 죽는 카드를 버리고, 남은 카드끼리 숫자를 겨룹니다.</p>
+            <p>이번 판에서는 10이 빠집니다. 5는 남지만 끝까지 이기기에는 낮습니다. 15는 규칙을 통과하고 마지막 비교에서도 앞섭니다.</p>
+            <p>미니 플레이에는 그 차이만 남겼습니다. 세 숫자를 눌러 보면 왜 안전해 보이는 10을 버려야 하는지 바로 드러납니다.</p>
           </div>
         </div>
 

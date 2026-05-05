@@ -16,7 +16,7 @@ describe('Wanderer mini play sample', () => {
 
     for (const card of wandererMiniPlayCards) {
       expect(card.title).toContain(String(card.value));
-      expect(card.description).toMatch(/규칙|탈락|상대|살아남/);
+      expect(card.description).toMatch(/규칙|탈락|앞선|살아남|가장 큰/);
       expect(card.result).toMatch(/살아남|탈락|가져오지 못합니다|가져갑니다/);
     }
   });
@@ -26,7 +26,7 @@ describe('Wanderer mini play sample', () => {
     expect(lowValid.isValid).toBe(true);
     expect(lowValid.outcome).toBe('lose');
     expect(lowValid.result).toContain('살아남지만');
-    expect(lowValid.result).toContain('상대 9');
+    expect(lowValid.result).toContain('앞선 생존 카드보다 낮아서');
     expect(lowValid.result).toContain('카드 5는');
     expect(lowValid.result).not.toContain('카드 5은');
     expect(lowValid.scene).toContain('카드 5는');
@@ -40,7 +40,7 @@ describe('Wanderer mini play sample', () => {
     const duplicateHigh = resolveWandererMiniPlayResult('odd-15');
     expect(duplicateHigh.isValid).toBe(true);
     expect(duplicateHigh.outcome).toBe('win');
-    expect(duplicateHigh.result).toContain('상대의 13보다 높아');
+    expect(duplicateHigh.result).toContain('가장 큰 생존 카드보다 높아');
     expect(duplicateHigh.result).toContain('이번 턴을 가져갑니다');
   });
 

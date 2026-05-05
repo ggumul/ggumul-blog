@@ -28,12 +28,12 @@ export function WandererMiniPlay() {
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
         <div className="space-y-5">
           <div>
-            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">Wanderer · 한 턴</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">Wanderer</p>
             <h2 className="mt-3 max-w-2xl text-[32px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">
-              이번 턴에 낼 카드를 고릅니다.
+              10을 버려야 이기는 턴입니다.
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-subtext md:text-[15px]">
-              {wandererMiniPlayTurn.condition.label}. 짝수는 빠지고, 남은 카드끼리 숫자를 겨룹니다.
+              {wandererMiniPlayTurn.condition.label}. 먼저 죽는 카드를 버리고, 남은 숫자로 승부합니다.
             </p>
           </div>
 
@@ -44,7 +44,7 @@ export function WandererMiniPlay() {
               <p className="mt-2 text-sm leading-6 text-subtext">{wandererMiniPlayTurn.ruleSummary}</p>
             </div>
             <div className="border-t border-line/35 pt-3">
-              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">상대</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">깔린 카드</p>
               <ul className="mt-2 space-y-2 text-sm leading-6 text-subtext">
                 {wandererMiniPlayTurn.opponents.map((opponent) => (
                   <li key={opponent.name} className="flex justify-between gap-3">
@@ -59,7 +59,7 @@ export function WandererMiniPlay() {
           <div>
             <div className="flex items-center justify-between gap-3">
               <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">내 카드</p>
-              <p className="text-xs font-bold text-subtext">한 장만 선택</p>
+              <p className="text-xs font-bold text-subtext">하나만 선택</p>
             </div>
             <div className="mt-3 grid gap-3 md:grid-cols-3">
               {wandererMiniPlayCards.map((card) => {
@@ -103,7 +103,7 @@ export function WandererMiniPlay() {
             <div className="flex min-h-[240px] flex-col justify-center">
               <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">선택</p>
               <p className="mt-4 text-[28px] font-black leading-tight tracking-[-0.05em] text-text">아직 카드를 내지 않았습니다.</p>
-              <p className="mt-4 text-sm leading-7 text-subtext">5, 10, 15 중 하나를 고르면 이번 턴의 승부가 나옵니다.</p>
+              <p className="mt-4 text-sm leading-7 text-subtext">5, 10, 15 중 하나를 누르면 이번 턴의 승부가 나옵니다.</p>
             </div>
           )}
         </div>
