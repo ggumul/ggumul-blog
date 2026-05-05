@@ -306,8 +306,8 @@ describe('public UI copy cleanup', () => {
   it('keeps project cards from repeating two descriptions for the same project', () => {
     const projectCard = read('components/project-card.tsx');
 
-    expect(projectCard).not.toMatch(/projectLines|projectAvailability|StatusFacts/);
-    expect(projectCard).not.toMatch(/>새 소식<|식단을 정하면 장보기 목록과 가격 판단으로 이어집니다|홀수만 살아남는 턴에서 15를 내면 상대의 13을 넘깁니다|막대를 옮기면 다음 상태가 바로 보입니다|기록 읽기/);
+    expect(projectCard).not.toMatch(/projectLines|projectAvailability|StatusFacts|project\.progressStatus/);
+    expect(projectCard).not.toMatch(/>새 소식<|식단을 정하면 장보기 목록과 가격 판단으로 이어집니다|홀수만 살아남는 턴에서 15를 내면 상대의 13을 넘깁니다|막대를 옮기면 다음 상태가 바로 보입니다|기록 읽기|첫 행동과 결과가 바로 이어지는지 확인할 수 있게/);
     expect(projectCard).toContain('function WandererCardPreview');
     expect(projectCard).toContain("project.slug === 'wanderer'");
     expect(projectCard).toContain('wanderer-card-preview');

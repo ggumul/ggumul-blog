@@ -15,7 +15,7 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
     <div aria-label="게임 단서" className="border-t border-line/30 pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
       <p className="text-[12px] font-black tracking-[0.14em] text-point">{project.evidenceLabel}</p>
-      <p className="mt-3 text-sm leading-6 text-subtext">첫 행동과 결과가 바로 이어지는지 확인할 수 있게 남겨 둔 단서입니다.</p>
+      <p className="mt-3 text-sm leading-6 text-subtext">처음 무엇을 누르거나 고를지 분명해야 작은 게임으로 읽힙니다.</p>
     </div>
   );
 }
@@ -35,12 +35,13 @@ function WandererCardPreview() {
 export function ProjectCard({ project, records = [], compact = false }: ProjectCardProps) {
   const projectHref = `/projects/${project.slug}`;
   const previewRecords = records.slice(0, compact ? 1 : 2);
+  const publicLabel = project.slug === 'ggumul-dinner-grocery' ? '곁가지 도구' : '작은 게임';
 
   return (
     <article className="grid gap-4 rounded-[20px] border border-line/45 bg-white/[0.035] p-4 md:grid-cols-[minmax(0,0.85fr)_minmax(220px,0.45fr)] md:p-5">
       <div className="space-y-4">
         <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">{project.progressStatus}</p>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">{publicLabel}</p>
           <h3 className="mt-2 text-[24px] font-black leading-tight tracking-[-0.045em] text-text md:text-[32px]">
             <Link href={projectHref} className="hover:text-point">{project.title}</Link>
           </h3>
