@@ -45,7 +45,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 text-sm text-subtext md:grid-cols-[minmax(0,1fr)_auto] md:px-8">
           <div>
             <div className="text-lg font-black tracking-[-0.04em] text-text">ggumul / 꼬물</div>
-            <p className="mt-2 max-w-2xl leading-7">꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다. 글은 게임을 해본 뒤 선택이 왜 그렇게 놓였는지 이어 읽는 자리입니다.</p>
+            <p className="mt-2 max-w-2xl leading-7">꼬물은 작은 선택이 바로 돌아오는 게임을 만듭니다. 글은 게임을 해본 뒤 규칙과 선택을 다시 읽는 자리입니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
             <Link href="/writing" className="transition hover:text-text">게임 글</Link>

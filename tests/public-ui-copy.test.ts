@@ -247,7 +247,8 @@ describe('public UI copy cleanup', () => {
       readFrontmatter('content/writing/2026-04-26-runtime-화면-확인-기록.mdx'),
     ].join('\n');
 
-    expect(combined).toContain('꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다.');
+    expect(combined).toContain('꼬물은 작은 선택이 바로 돌아오는 게임을 만듭니다.');
+    expect(combined).not.toMatch(/짧게 만질 수 있는 작은 게임을 만듭니다|꼬물은 작은 게임을 만들고, 게임을 해본 뒤 읽을 글을 함께 보여 줍니다/);
     expect(combined).toContain('카드 한 장 고르기');
     expect(combined).toContain('게임 글');
     expect(combined).toContain('첫 선택이 게임을 정합니다');
