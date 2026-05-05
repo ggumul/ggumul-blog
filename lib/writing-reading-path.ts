@@ -15,9 +15,9 @@ export const writingReadingPathSlugs = [
 
 const writingReadingPaths: Record<string, WritingReadingPath> = {
   'wanderer-one-card': {
-    stakes: '한 장을 고르는 순간 내 카드와 상대 카드가 나란히 드러납니다.',
-    change: '15가 13을 넘는지 바로 읽히는 짧은 승부를 담았습니다.',
-    next: '짧은 승부 읽기',
+    stakes: '안전해 보이는 10이 왜 버려지는지부터 시작합니다.',
+    change: '좋은 카드가 아니라 죽지 않을 카드를 찾는 한 턴입니다.',
+    next: '버린 카드 읽기',
   },
   'wanderer-same-turn': {
     stakes: '잠깐 자리를 비워도 고르던 카드와 결과를 다시 볼 수 있습니다.',

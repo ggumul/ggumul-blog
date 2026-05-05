@@ -13,9 +13,9 @@ function formatDate(date: string) {
 
 function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
-    <div aria-label="게임 단서" className="border-t border-line/30 pt-4">
+    <div aria-label="처음 부딪히는 선택" className="border-t border-line/30 pt-4">
       <p className="text-[12px] font-black tracking-[0.14em] text-point">{project.evidenceLabel}</p>
-      <p className="mt-3 text-sm leading-6 text-subtext">카드를 낼지, 막대를 옮길지, 재료를 고를지부터 말합니다.</p>
+      <p className="mt-3 text-sm leading-6 text-subtext">안전해 보이는 선택이 어디서 틀어지는지부터 꺼냅니다.</p>
     </div>
   );
 }

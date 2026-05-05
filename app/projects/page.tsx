@@ -5,7 +5,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '작은 게임들',
-  description: '꼬물이 지금 손댈 수 있게 올린 게임과 작은 도구입니다.',
+  description: '꼬물이 작은 게임에서 안전해 보이는 선택이 틀어지는 순간을 모았습니다.',
   path: '/projects',
 });
 
@@ -24,10 +24,10 @@ export default async function ProjectsPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">게임</p>
         <h1 className="text-[30px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          손이 가는 것부터 시작합니다.
+          안전한 선택이 먼저 틀어집니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          카드 한 장을 내고, 막대 하나를 옮기고, 저녁 장볼 재료를 고릅니다. 긴 소개보다 손으로 해볼 일을 먼저 올립니다.
+          카드 10은 숫자로는 괜찮지만 규칙 앞에서 빠집니다. 막대 하나도 잘못 옮기면 길을 막고, 저녁 재료도 가격 앞에서 미뤄집니다.
         </p>
       </section>
 
@@ -39,7 +39,7 @@ export default async function ProjectsPage() {
               <h2 className="mt-2 text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[46px]">{lead.project.title}</h2>
             </div>
           </div>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">홀수 카드만 살아남는 짧은 턴입니다. 10은 빠지고, 15는 상대의 13을 넘습니다.</p>
+          <p className="max-w-3xl text-sm leading-7 text-subtext">10은 안전해 보이지만 빠지고, 5는 살아도 약합니다. Wanderer는 좋은 카드가 아니라 죽지 않을 카드를 고르는 짧은 게임입니다.</p>
           <ProjectCard project={lead.project} records={lead.records} />
         </section>
       ) : null}
@@ -59,7 +59,7 @@ export default async function ProjectsPage() {
       <section className="space-y-4">
         <div>
           <p className="text-[12px] font-black tracking-[0.16em] text-point">글</p>
-          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">만들며 고친 이유</h2>
+          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">틀어진 선택들</h2>
         </div>
         <div className="space-y-3 border-y border-line/70 py-2">
           {worklines.flatMap(({ project, records }) => records.slice(0, 2).map((post) => ({ project, post }))).map(({ project, post }) => (

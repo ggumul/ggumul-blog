@@ -4,7 +4,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '꼬물은 느리게라도 손을 놓지 않고 작은 게임을 만드는 곳입니다.',
+  description: '꼬물은 작은 게임에서 선택이 틀어지는 순간을 먼저 꺼냅니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
@@ -30,13 +30,13 @@ export default async function HomePage() {
       <section className="max-w-4xl space-y-6 py-6 md:py-12">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">GGUMUL</p>
         <h1 className="text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[70px] md:leading-[1.04]">
-          느려도 손은 놓지 않습니다.
+          안전해 보이는 선택부터 버립니다.
         </h1>
         <p className="max-w-2xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-          꼬물은 작은 게임을 만들고, 만들다 고친 이유를 짧은 글로 남기는 곳입니다.
+          꼬물은 작은 게임에서 선택이 틀어지는 순간을 먼저 꺼냅니다.
         </p>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext">
-          완성품처럼 포장하기보다 손댈 수 있는 판과 그 옆의 메모를 그대로 올립니다.
+          왜 10을 버리고 15를 남겼는지, 실패한 선택과 살아남은 선택을 같이 올립니다.
         </p>
       </section>
 
@@ -44,12 +44,12 @@ export default async function HomePage() {
         <section className="panel-section space-y-4">
           <div>
             <div>
-              <p className="text-[12px] font-black tracking-[0.16em] text-point">먼저 올린 게임</p>
+              <p className="text-[12px] font-black tracking-[0.16em] text-point">처음 걸리는 선택</p>
               <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.035em] text-text md:text-[42px]">Wanderer</h2>
             </div>
           </div>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">Wanderer는 오래 붙드는 카드 게임이 아닙니다. 이번 턴의 규칙을 읽고, 손에 든 카드 하나를 냅니다.</p>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">지금은 홀수 카드만 살아남는 짧은 판이 열려 있습니다. 5, 10, 15 중 무엇을 낼지 고르면 바로 승부가 갈립니다.</p>
+          <p className="max-w-3xl text-sm leading-7 text-subtext">Wanderer에서 10은 안전해 보이지만 이번 규칙에서는 바로 빠집니다.</p>
+          <p className="max-w-3xl text-sm leading-7 text-subtext">좋은 카드가 아니라 죽지 않을 카드를 찾는 게임입니다. 5는 살아도 지고, 15는 살아남고 이깁니다.</p>
         </section>
       ) : null}
 
@@ -78,7 +78,7 @@ export default async function HomePage() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-[12px] font-black tracking-[0.16em] text-point">글</p>
-              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">만든 이유</h2>
+              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">버린 선택들</h2>
             </div>
             <Link href="/writing" className="text-sm font-bold text-point hover:text-text">전체 글</Link>
           </div>

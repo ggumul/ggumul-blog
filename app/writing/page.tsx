@@ -3,8 +3,8 @@ import { getWritingArchiveSections } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
-  title: '게임 글',
-  description: '꼬물이 게임을 만들며 남긴 짧은 글입니다.',
+  title: '버린 선택들',
+  description: '꼬물이 작은 게임에서 버린 선택과 남긴 선택을 적습니다.',
   path: '/writing',
 });
 
@@ -31,17 +31,17 @@ export default async function WritingPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">글</p>
         <h1 className="text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          만들다가 걸린 것들
+          왜 그 선택을 버렸나
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          카드를 왜 한 장만 내게 했는지, 퍼즐은 왜 다음 수부터 읽혀야 하는지, 장보기 도구는 왜 가격부터 봐야 하는지 적습니다.
+          안전해 보이는 10을 왜 버렸는지, 긴 카드 게임을 왜 줄였는지, 가격을 모르면 저녁 장보기가 왜 흔들리는지 적습니다.
         </p>
       </section>
 
       <section aria-label="게임 글" className="space-y-3">
         <div>
           <p className="text-[12px] font-black tracking-[0.16em] text-point">게임</p>
-          <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">카드와 퍼즐 이야기</h2>
+          <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">버린 카드와 막힌 길</h2>
         </div>
         <div className="article-list">
           {gamePosts.map((post) => (
@@ -61,7 +61,7 @@ export default async function WritingPage() {
         <section className="space-y-3">
           <div>
             <p className="text-[12px] font-black tracking-[0.16em] text-point">도구</p>
-            <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">저녁 장보기 이야기</h2>
+            <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">오늘 살까, 미룰까</h2>
           </div>
           <div className="article-list">
             {outsidePosts.map((post) => (

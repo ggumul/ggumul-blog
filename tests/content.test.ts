@@ -66,8 +66,8 @@ describe('content loader', () => {
   it('keeps the first runtime writing title framed around a concrete gameplay moment', async () => {
     const post = await getWritingBySlug('runtime-화면-확인-기록');
 
-    expect(post?.title).toBe('고른 순간, 승부가 갈립니다');
-    expect(post?.summary).toContain('15가 13을 넘는지 바로 읽을 수 있습니다');
+    expect(post?.title).toBe('안전해 보이는 10을 버리게 만든 이유');
+    expect(post?.summary).toContain('좋은 카드가 아니라 죽지 않을 카드를 찾는 한 턴입니다');
     expect(post?.summary).not.toMatch(/자연스럽게 이어지게|정리했습니다|다듬었습니다/);
   });
 
