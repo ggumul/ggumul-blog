@@ -36,14 +36,14 @@ export default function OpenGraphImage() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '22px', maxWidth: '860px' }}>
           <div style={{ fontSize: 72, fontWeight: 700, lineHeight: 1.18 }}>
-            작은 게임과 게임 기록
+            작은 게임과 게임 글
           </div>
           <div style={{ fontSize: 30, lineHeight: 1.5, color: '#5f574f' }}>
-            짧게 끝나는 작은 게임과 게임 기록
+            짧게 끝나는 작은 게임과 게임 글
           </div>
         </div>
         <div style={{ display: 'flex', gap: '16px', fontSize: 22, color: '#6a6159' }}>
-          <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>기록</div>
+          <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>글</div>
           <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>프로젝트</div>
           <div style={{ padding: '12px 20px', borderRadius: '9999px', border: '1px solid rgba(86,65,44,0.15)' }}>소식</div>
         </div>

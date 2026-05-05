@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 const NAV_ITEMS = [
   { href: '/projects', label: '게임' },
-  { href: '/writing', label: '게임 기록' },
+  { href: '/writing', label: '게임 글' },
   { href: '/about', label: '소개' },
   { href: '/links', label: '링크' },
 ];
@@ -19,7 +19,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </span>
             <span className="leading-tight">
               <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[24px]">ggumul / 꼬물</span>
-              <span className="block text-[11px] font-semibold text-subtext">작은 게임과 게임 기록</span>
+              <span className="block text-[11px] font-semibold text-subtext">작은 게임과 게임 글</span>
             </span>
           </Link>
 
@@ -48,7 +48,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <p className="mt-2 max-w-2xl leading-7">꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다. 긴 설명보다 먼저 손에 잡히는 선택을 두고, 그 선택이 바로 결과로 이어지게 만듭니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
-            <Link href="/writing" className="transition hover:text-text">게임 기록</Link>
+            <Link href="/writing" className="transition hover:text-text">게임 글</Link>
             <Link href="/projects" className="transition hover:text-text">게임</Link>
             <Link href="/about" className="transition hover:text-text">소개</Link>
             <Link href="/links" className="transition hover:text-text">링크</Link>

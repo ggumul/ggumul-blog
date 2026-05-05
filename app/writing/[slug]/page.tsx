@@ -136,7 +136,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 
       <Link href="/writing" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
-        ← 게임 기록으로
+        ← 게임 글로
       </Link>
 
       <header className="rounded-2xl border border-line/70 bg-surface/70 p-5 md:p-8">

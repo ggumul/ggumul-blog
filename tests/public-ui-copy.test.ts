@@ -143,7 +143,7 @@ describe('public UI copy cleanup', () => {
     const shell = read('components/site-shell.tsx');
 
     expect(shell).toContain('<Link href="/projects" className="transition hover:text-text">게임</Link>');
-    expect(shell).toContain('<Link href="/writing" className="transition hover:text-text">게임 기록</Link>');
+    expect(shell).toContain('<Link href="/writing" className="transition hover:text-text">게임 글</Link>');
     expect(shell).not.toContain('<Link href="/projects" className="transition hover:text-text">프로젝트</Link>');
     expect(shell).not.toContain('<Link href="/writing" className="transition hover:text-text">새 소식</Link>');
   });
@@ -172,7 +172,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/Wanderer부터 고릅니다|결과가 여기에 뜹니다|상대 카드 13|짝수\/정답\/짝수|볼 수 있는 장면/);
     expect(combined).not.toMatch(/게임이 끊기는 순간을 고칩니다|어떤 순간에 멈추는지 보고 왜 바꿨는지|자세한 제작 이야기|아래에는 퍼즐과 서사 게임도 함께 모았습니다/);
     expect(combined).toContain('프로젝트-폴백');
-    expect(combined).toContain('게임 기록 목록');
+    expect(combined).toContain('게임 글 목록');
     expect(combined).toContain('aria-live="polite"');
   });
 
@@ -191,7 +191,7 @@ describe('public UI copy cleanup', () => {
 
     expect(combined).toContain('꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다.');
     expect(combined).toContain('카드 한 장 고르기');
-    expect(combined).toContain('게임 기록');
+    expect(combined).toContain('게임 글');
     expect(combined).toContain('첫 선택이 게임을 정합니다');
     expect(combined).not.toMatch(/게임과 도구|다른 게임과 도구|다른 작은 게임들?|새 소식|최근 소식|한 턴 고르기|짧게 살펴봅니다|게임 흐름 보기|이야기 더 보기|이야기 읽기|Wanderer와 퍼즐을 한 화면에서 고르게 나눴다|고르게 나눴다|현재 상태를 한 번에 정리|무엇을 확인하는 단계인지|다음에 어떤 작업이 필요한지|버튼 뒤 장면이 늦었습니다|폰에서 눌렀을 때 결과가 늦게 읽힌 순간|iOS Simulator에서 실행했습니다|로컬 서버|Flutter 통합 테스트|Gradle 테스트|운영 서버|장시간 동시 접속|보여야 합니다|돌아와야 합니다|흐려졌습니다|흐려지는|깊은 기술|다음에 볼 게임들|다음에 해볼 게임들|Wanderer부터 시작합니다/);
     expect(combined).not.toMatch(/Wanderer와 퍼즐을 한 화면에서 고르게 나눴다|고르게 나눴다|현재 상태를 한 번에 정리|무엇을 확인하는 단계인지|다음에 어떤 작업이 필요한지/);

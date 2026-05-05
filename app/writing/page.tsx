@@ -3,7 +3,7 @@ import { getWritingArchiveSections } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
-  title: '게임 기록',
+  title: '게임 글',
   description: '꼬물이 만들고 있는 작은 게임에 대한 짧은 글입니다.',
   path: '/writing',
 });
@@ -29,18 +29,18 @@ export default async function WritingPage() {
   return (
     <div className="archive-surface space-y-6 md:space-y-16">
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
-        <p className="text-[12px] font-black tracking-[0.18em] text-point">게임 기록</p>
+        <p className="text-[12px] font-black tracking-[0.18em] text-point">게임 글</p>
         <h1 className="text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          게임 기록
+          게임 글
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
           게임을 만들다 보면 플레이보다 앞서 정해야 하는 기준이 생깁니다. 카드 한 장을 고르는 이유, 퍼즐에서 다음 수가 보여야 하는 이유, 선택지가 결말로 이어져야 하는 이유를 글로 남겼습니다. 게임을 만진 뒤 읽으면 각 선택이 왜 그렇게 놓였는지 따라가기 쉽습니다.
         </p>
       </section>
 
-      <section aria-label="게임 기록 목록" className="space-y-3">
+      <section aria-label="게임 글 목록" className="space-y-3">
         <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 기록</p>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 글</p>
           <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">첫 행동이 분명한 게임들</h2>
         </div>
         <div className="article-list">
@@ -60,7 +60,7 @@ export default async function WritingPage() {
       {outsidePosts.length ? (
         <section className="space-y-3">
           <div>
-            <p className="text-[12px] font-black tracking-[0.16em] text-point">도구 기록</p>
+            <p className="text-[12px] font-black tracking-[0.16em] text-point">도구 글</p>
             <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">저녁 준비로 이어진 도구</h2>
           </div>
           <div className="article-list">
