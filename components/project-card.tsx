@@ -21,7 +21,7 @@ function formatDate(date: string) {
 
 function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
-    <div aria-label="프로젝트-폴백-장면" className="border-t border-line/30 pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
+    <div aria-label="프로젝트-폴백" className="border-t border-line/30 pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
       <p className="text-[12px] font-black tracking-[0.14em] text-point">{project.evidenceLabel}</p>
       <p className="mt-3 text-[20px] font-black leading-tight tracking-[-0.04em] text-text">{project.title}</p>
       <p className="mt-2 text-sm leading-6 text-subtext">{project.summary}</p>

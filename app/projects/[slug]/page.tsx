@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 function RelatedPostRows({ posts }: { posts: Awaited<ReturnType<typeof getWriting>> }) {
   if (posts.length === 0) {
-    return <p className="border-t border-line/70 py-4 text-sm leading-7 text-subtext">아직 함께 읽을 글은 많지 않지만, 조금씩 이어지고 있습니다.</p>;
+    return <p className="border-t border-line/70 py-4 text-sm leading-7 text-subtext">아직 함께 읽을 글은 많지 않습니다. 새 글이 생기면 이곳에 모읍니다.</p>;
   }
 
   return (
@@ -63,7 +63,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             한 장 고르고, 바로 결과를 읽습니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            이번 턴은 홀수 카드만 유효합니다. 아래에서 5, 10, 15 중 한 장을 고르면 바로 승부가 납니다.
+            이번 턴은 홀수 카드만 유효한 판입니다. 아래에서 5, 10, 15 중 한 장을 고르면 바로 승부가 납니다.
           </p>
           <a href="#mini-play" className="inline-flex text-sm font-black text-point hover:text-text">카드 한 장 고르기 →</a>
         </div>
@@ -100,7 +100,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           <div className="prose max-w-none">
             <p>Wanderer는 턴마다 규칙을 보고 손패에서 카드 한 장을 내는 게임입니다. 규칙에 맞지 않으면 빠지고, 남은 카드끼리는 숫자가 높은 쪽이 턴을 가져갑니다.</p>
             <p>한 판은 짧습니다. 대신 카드를 내면 생존, 탈락, 승패가 바로 보입니다. 이 페이지도 그 한 턴을 먼저 만지게 만들었습니다.</p>
-            <h2>지금 만질 장면</h2>
+            <h2>지금 해볼 수 있는 것</h2>
             <ul>
               <li>4명이 1~15 숫자 카드 6장으로 시작합니다.</li>
               <li>턴마다 홀수, 짝수, 기준보다 높거나 낮은 조건이 붙습니다.</li>
@@ -114,7 +114,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">한 턴 뒤에 읽을 기록</div>
             <Link href="/writing/runtime-화면-확인-기록" className="block border-t border-line/70 py-4 text-point transition hover:text-text">
               <div className="font-black tracking-[-0.03em]">고른 순간, 승부가 갈립니다</div>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">한 장을 고른 뒤 카드와 결과가 나란히 드러나는 이유를 남겼습니다.</p>
+              <p className="mt-1 text-[13px] leading-6 text-subtext">한 장을 고른 뒤 카드와 결과가 나란히 보여야 하는 이유를 적었습니다.</p>
             </Link>
           </div>
 
@@ -177,7 +177,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">다음에 읽을 것</div>
             <Link href={latestRecord ? `/writing/${latestRecord.slug}` : '/writing'} className="block border-t border-line/70 py-4 text-point transition hover:text-text">
               <div className="font-black tracking-[-0.03em]">{latestRecord ? '새 게임 기록' : '게임 기록'}</div>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '게임과 이어진 글을 함께 둡니다.'}</p>
+              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '게임과 관련된 글을 함께 읽을 수 있습니다.'}</p>
             </Link>
           </div>
 

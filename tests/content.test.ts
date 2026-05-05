@@ -51,7 +51,7 @@ describe('content loader', () => {
   it('finds writing by slug and exposes related projects', async () => {
     const post = await getWritingBySlug('4월-프로젝트-개발-현황');
 
-    expect(post?.title).toBe('첫 선택이 게임의 흐름을 바꿉니다');
+    expect(post?.title).toBe('첫 선택이 게임을 정합니다');
     expect(post?.relatedProjects).toContain('trpg');
     expect(post?.readingTimeMinutes).toBeGreaterThan(0);
     expect(post?.updatedAt).toBe('2026-04-20');
@@ -67,7 +67,7 @@ describe('content loader', () => {
     const post = await getWritingBySlug('runtime-화면-확인-기록');
 
     expect(post?.title).toBe('고른 순간, 승부가 갈립니다');
-    expect(post?.summary).toContain('15가 13을 넘는 순간을 바로 읽을 수 있게 했습니다');
+    expect(post?.summary).toContain('15가 13을 넘는지 바로 읽을 수 있게 했습니다');
     expect(post?.summary).not.toMatch(/자연스럽게 이어지게|정리했습니다|다듬었습니다/);
   });
 
@@ -75,15 +75,15 @@ describe('content loader', () => {
     const taxonomy = await getWritingTaxonomy();
 
     expect(taxonomy.categories).toContain('게임 배치');
-    expect(taxonomy.categories).toContain('제작 리듬');
-    expect(taxonomy.categories).toContain('이어지는 한 턴');
+    expect(taxonomy.categories).toContain('제작 기준');
+    expect(taxonomy.categories).toContain('이어지는 턴');
     expect(taxonomy.categories).toContain('카드 승부');
     expect(taxonomy.series).toContain('게임 기록');
-    expect(taxonomy.series).toContain('꼬물 노트');
-    expect(taxonomy.series).toContain('Wanderer 로그');
+    expect(taxonomy.series).toContain('꼬물 기록');
+    expect(taxonomy.series).toContain('Wanderer 기록');
     expect(taxonomy.series).toContain('GGUMUL Dinner Grocery');
     expect(taxonomy.tags).toContain('게임');
-    expect(taxonomy.tags).toContain('제작 리듬');
+    expect(taxonomy.tags).toContain('제작 기준');
   });
 
   it('builds a home archive snapshot with latest post, related projects, project list, and remaining entries', async () => {
@@ -265,7 +265,7 @@ describe('content loader', () => {
     const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
     const projectSlugs = new Set(projects.map((project) => project.slug));
     const postSlugs = new Set(posts.map((post) => post.slug));
-    const allowedProgressStatuses = new Set(['한 턴 공개', '미리보기', '장보기 판단', '퍼즐 장면', '색 퍼즐', '선택 장면', '보류']);
+    const allowedProgressStatuses = new Set(['플레이 가능', '미리보기', '장보기 판단', '퍼즐', '색 퍼즐', '선택 게임', '보류']);
 
     for (const project of projects) {
       expect(project.relatedPosts.every((slug) => postSlugs.has(slug))).toBe(true);

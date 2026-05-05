@@ -25,7 +25,7 @@ describe('public UI copy cleanup', () => {
     expect(linksPage).not.toContain('{link.href}</p>');
     expect(linksPage).not.toContain('github.com/ggumul');
     expect(linksPage).toContain('github.com/ggomul');
-    expect(linksPage).toContain('게임 아이디어와 제작 노트');
+    expect(linksPage).toContain('게임 아이디어를 모읍니다');
     expect(linksPage).not.toMatch(/메모 모음|type: 'memo'|게임, 메모|코드 저장소, 메모/);
     expect(linksPage).toContain('link.displayHref');
   });
@@ -102,8 +102,8 @@ describe('public UI copy cleanup', () => {
 
     expect(homeVisibleSources).toContain('한 장의 카드로 승부가 납니다');
     expect(homeVisibleSources).toContain('고른 순간, 승부가 갈립니다');
-    expect(homePage).toContain('카드 한 장,');
-    expect(homePage).toContain('<span className="whitespace-nowrap">한 판이 갈립니다.</span>');
+    expect(homePage).toContain('한 장의 카드로 승부가 납니다');
+    expect(homePage).toContain('카드 한 장을 고르면 바로 결과가 나옵니다');
     expect(homePage).toContain('카드 한 장 고르기');
     expect(homePage).toContain('홀수 카드만 유효');
   });
@@ -165,7 +165,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/한장|한판|한장을/);
     expect(combined).not.toMatch(/Wanderer부터 고릅니다|결과가 여기에 뜹니다|상대 카드 13|짝수\/정답\/짝수|볼 수 있는 장면/);
     expect(combined).not.toMatch(/게임이 끊기는 순간을 고칩니다|어떤 순간에 멈추는지 보고 왜 바꿨는지|자세한 제작 이야기|아래에는 퍼즐과 서사 게임도 함께 모았습니다/);
-    expect(combined).toContain('프로젝트-폴백-장면');
+    expect(combined).toContain('프로젝트-폴백');
     expect(combined).toContain('게임 기록 목록');
     expect(combined).toContain('aria-live="polite"');
   });
@@ -186,7 +186,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).toContain('꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다.');
     expect(combined).toContain('카드 한 장 고르기');
     expect(combined).toContain('게임 기록');
-    expect(combined).toContain('첫 선택이 게임의 흐름을 바꿉니다');
+    expect(combined).toContain('첫 선택이 게임을 정합니다');
     expect(combined).not.toMatch(/게임과 도구|다른 게임과 도구|다른 작은 게임들?|새 소식|최근 소식|한 턴 고르기|짧게 살펴봅니다|게임 흐름 보기|이야기 더 보기|이야기 읽기|Wanderer와 퍼즐을 한 화면에서 고르게 나눴다|고르게 나눴다|현재 상태를 한 번에 정리|무엇을 확인하는 단계인지|다음에 어떤 작업이 필요한지|버튼 뒤 장면이 늦었습니다|폰에서 눌렀을 때 결과가 늦게 읽힌 순간|iOS Simulator에서 실행했습니다|로컬 서버|Flutter 통합 테스트|Gradle 테스트|운영 서버|장시간 동시 접속|보여야 합니다|돌아와야 합니다|흐려졌습니다|흐려지는|깊은 기술|다음에 볼 게임들|다음에 해볼 게임들|Wanderer부터 시작합니다/);
     expect(combined).not.toMatch(/Wanderer와 퍼즐을 한 화면에서 고르게 나눴다|고르게 나눴다|현재 상태를 한 번에 정리|무엇을 확인하는 단계인지|다음에 어떤 작업이 필요한지/);
     expect(combined).not.toMatch(/버튼 뒤 장면이 늦었습니다|폰에서 눌렀을 때 결과가 늦게 읽힌 순간|iOS Simulator에서 실행했습니다|로컬 서버|Flutter 통합 테스트|Gradle 테스트|운영 서버|장시간 동시 접속/);
@@ -300,5 +300,27 @@ describe('public UI copy cleanup', () => {
     expect(detail.indexOf('<WandererMiniPlay />')).toBeLessThan(detail.indexOf('<figure id="play-video"'));
     expect(detail).not.toContain('rounded-[28px]');
     expect(detail).not.toContain('rounded-[24px] border border-line/70 bg-black/20');
+  });
+
+  it('keeps public sentences direct instead of abstract scene/report fragments', () => {
+    const combined = [
+      read('app/page.tsx'),
+      read('app/projects/page.tsx'),
+      read('app/writing/page.tsx'),
+      read('app/about/page.tsx'),
+      read('app/links/page.tsx'),
+      read('app/projects/[slug]/page.tsx'),
+      read('app/writing/[slug]/page.tsx'),
+      read('components/project-card.tsx'),
+      read('components/post-card.tsx'),
+      read('components/wanderer-mini-play.tsx'),
+      read('lib/writing-reading-path.ts'),
+      readWritingMdx(),
+      readdirSync('content/projects').filter((name) => name.endsWith('.mdx')).map((name) => read(`content/projects/${name}`)).join('\n'),
+    ].join('\n');
+
+    expect(combined).toContain('짧게 끝나는 작은 게임');
+    expect(combined).toContain('카드 한 장을 고르면 바로 결과가 나옵니다');
+    expect(combined).not.toMatch(/장면|감각|붙잡|남깁|둡니다|살핍니다|이어 봅니다|먼저 두고|먼저 보여|목록처럼 읽|게임 밖에서 나온|제작 노트|게임 안에서 나온 기록|선택과 결과가 남은 글|지금 만질/);
   });
 });

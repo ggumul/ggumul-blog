@@ -4,7 +4,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '꼬물은 짧게 만질 수 있는 작은 게임을 만듭니다. Wanderer의 카드 한 턴부터 보여줍니다.',
+  description: '꼬물은 짧게 끝나는 작은 게임을 만듭니다. 지금은 Wanderer의 카드 한 판을 바로 해볼 수 있습니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
@@ -29,12 +29,12 @@ export default async function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
 
       <section className="max-w-4xl space-y-6 py-6 md:py-12">
-        <p className="text-[12px] font-black tracking-[0.18em] text-point">GGUMUL / 작은 게임</p>
+        <p className="text-[12px] font-black tracking-[0.18em] text-point">GGUMUL</p>
         <h1 className="text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[70px] md:leading-[1.04]">
-          카드 한 장, <span className="whitespace-nowrap">한 판이 갈립니다.</span>
+          짧게 끝나는 작은 게임을 만듭니다.
         </h1>
         <p className="max-w-2xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-          한 장의 카드로 승부가 납니다. Wanderer는 홀수 카드만 유효한 턴에서 손패를 고르고, 고른 순간 결과를 읽는 작은 카드 게임입니다.
+          지금은 Wanderer를 먼저 공개합니다. 한 장의 카드로 승부가 납니다. 카드 한 장을 고르면 바로 결과가 나옵니다.
         </p>
         <div className="flex flex-wrap gap-3 text-sm">
           <Link href="/projects/wanderer#mini-play" className="game-button-primary">카드 한 장 고르기</Link>
@@ -49,13 +49,13 @@ export default async function HomePage() {
               <p className="text-[12px] font-black tracking-[0.16em] text-point">대표 게임</p>
               <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.035em] text-text md:text-[42px]">{leadProject.title}</h2>
             </div>
-            <Link href={`/projects/${leadProject.slug}`} className="text-sm font-bold text-point hover:text-text">자세히 보기 →</Link>
+            <Link href={`/projects/${leadProject.slug}`} className="text-sm font-bold text-point hover:text-text">게임 보기 →</Link>
           </div>
           <p className="max-w-3xl text-sm leading-7 text-subtext">{leadProject.summary}</p>
           <ul className="grid gap-3 md:grid-cols-3">
-            <li className="text-sm leading-7 text-subtext"><strong className="text-text">장면</strong><br />{leadProject.evidenceLabel}</li>
-            <li className="text-sm leading-7 text-subtext"><strong className="text-text">상태</strong><br />{leadProject.progressStatus}</li>
-            <li className="text-sm leading-7 text-subtext"><strong className="text-text">읽는 법</strong><br />홀수 카드만 유효 · 한 장을 고르면 결과가 나옵니다.</li>
+            <li className="text-sm leading-7 text-subtext"><strong className="text-text">규칙</strong><br />홀수 카드만 유효한 판입니다.</li>
+            <li className="text-sm leading-7 text-subtext"><strong className="text-text">선택</strong><br />카드 5, 10, 15 중 하나를 고릅니다.</li>
+            <li className="text-sm leading-7 text-subtext"><strong className="text-text">결과</strong><br />한 장의 카드로 승부가 납니다. 카드 한 장을 고르면 바로 결과가 나옵니다.</li>
           </ul>
         </section>
       ) : null}
@@ -65,7 +65,7 @@ export default async function HomePage() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-[12px] font-black tracking-[0.16em] text-point">퍼즐과 서사</p>
-              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">퍼즐과 서사도 함께 둡니다</h2>
+              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">퍼즐과 서사 게임</h2>
             </div>
             <Link href="/projects" className="text-sm font-bold text-point hover:text-text">전체 →</Link>
           </div>
@@ -86,7 +86,7 @@ export default async function HomePage() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 기록</p>
-              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">최근에 남긴 장면</h2>
+              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">최근 기록</h2>
             </div>
             <Link href="/writing" className="text-sm font-bold text-point hover:text-text">기록 목록 →</Link>
           </div>

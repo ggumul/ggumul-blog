@@ -5,7 +5,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '작은 게임들',
-  description: 'Wanderer의 카드 한 턴을 먼저 보여주고, 이어서 작은 퍼즐과 서사 게임을 함께 둡니다.',
+  description: '꼬물이 만들고 있는 작은 게임 목록입니다. Wanderer는 지금 바로 한 판을 해볼 수 있습니다.',
   path: '/projects',
 });
 
@@ -24,10 +24,10 @@ export default async function ProjectsPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">작은 게임 목록</p>
         <h1 className="text-[30px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          Wanderer와 작은 게임들.
+          게임 목록
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          홀수 카드만 유효한 Wanderer를 먼저 두고, 퍼즐과 서사 게임은 바로 아래 목록에 둡니다.
+          지금 바로 해볼 수 있는 게임과 준비 중인 게임을 함께 모았습니다. Wanderer는 홀수 카드만 유효한 짧은 판부터 시작합니다.
         </p>
       </section>
 
@@ -35,7 +35,7 @@ export default async function ProjectsPage() {
         <section className="space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-[12px] font-black tracking-[0.16em] text-point">먼저 고를 게임</p>
+              <p className="text-[12px] font-black tracking-[0.16em] text-point">지금 해볼 게임</p>
               <h2 className="mt-2 text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[46px]">{lead.project.title}</h2>
             </div>
             <Link href="/projects/wanderer#mini-play" className="text-sm font-bold text-point hover:text-text">카드 한 장 고르기 →</Link>
@@ -46,8 +46,8 @@ export default async function ProjectsPage() {
 
       <section id="other-games" className="space-y-5">
         <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">퍼즐과 서사</p>
-          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">퍼즐과 서사</h2>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">준비 중인 게임</p>
+          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">준비 중인 게임</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {otherWorklines.map(({ project, records }) => (

@@ -30,7 +30,7 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
     next: '짧은 전투 기준 열기',
   },
   '4월-프로젝트-개발-현황': {
-    stakes: '게임이 많아져도 지금 열린 장면을 쉽게 찾을 수 있습니다.',
+    stakes: '게임이 많아져도 지금 해볼 수 있는 일을 쉽게 찾을 수 있습니다.',
     change: '카드 전투, 퍼즐, 서사 실험을 나눠 놓고 비어 있는 부분을 먼저 드러냈습니다.',
     next: '게임 배치 읽기',
   },
@@ -48,8 +48,8 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
 
 export function getWritingReadingPath(slug: string): WritingReadingPath {
   return writingReadingPaths[slug] ?? {
-    stakes: '무슨 문제가 있었는지 먼저 봅니다.',
-    change: '글 안에서 무엇이 달라졌는지 이어 봅니다.',
+    stakes: '무엇을 다루는 글인지 짧게 읽습니다.',
+    change: '글 안에서 달라진 점을 짧게 읽습니다.',
     next: '글 열기',
   };
 }

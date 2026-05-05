@@ -39,7 +39,7 @@ export default function OpenGraphImage() {
             작은 게임과 게임 기록
           </div>
           <div style={{ fontSize: 30, lineHeight: 1.5, color: '#5f574f' }}>
-            실행 화면, 수정 이유, 남은 문제를 함께 보여주는 꼬물의 소식
+            짧게 끝나는 작은 게임과 게임 기록
           </div>
         </div>
         <div style={{ display: 'flex', gap: '16px', fontSize: 22, color: '#6a6159' }}>

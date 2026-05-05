@@ -46,8 +46,8 @@ function resolvePostHeroFallback(post: { slug: string; category: string }) {
   if (post.slug === 'ggumul-dinner-grocery-가격-계약-정리') {
     return {
       label: 'Dinner Grocery',
-      title: '장보기 전 가격 흐름',
-      description: '메뉴를 고르고 재료를 적기 전에, 오늘 사도 괜찮은지 먼저 보는 작은 장면입니다.',
+      title: '장보기 전 가격',
+      description: '메뉴를 고르고 재료를 적기 전에, 오늘 사도 괜찮은지 가격을 함께 읽습니다.',
       badge: '장보기 도구',
       tone: 'bg-[#182013]',
     };
@@ -56,7 +56,7 @@ function resolvePostHeroFallback(post: { slug: string; category: string }) {
   return {
     label: 'GGUMUL',
     title: post.category,
-    description: '글과 연결된 장면을 짧게 남긴 제작 노트입니다.',
+    description: '게임을 만들며 정한 기준과 플레이 방식을 짧게 정리한 글입니다.',
     badge: '게임 기록',
     tone: 'bg-[#151929]',
   };
@@ -159,7 +159,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
 
           <figure className="overflow-hidden rounded-[24px] border border-line/70 bg-surface/60">
             {heroImage ? (
-              <img alt={`${post.title} 장면`} className="max-h-[420px] w-full object-cover" src={heroImage} />
+              <img alt={`${post.title} 대표 이미지`} className="max-h-[420px] w-full object-cover" src={heroImage} />
             ) : (
               <div className={`flex min-h-[280px] flex-col justify-between p-6 ${heroFallback.tone}`}>
                 <div className="flex items-center justify-between gap-3 text-[11px] font-black uppercase tracking-[0.2em] text-white/65">
@@ -173,7 +173,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
               </div>
             )}
             <figcaption className="flex items-center justify-between gap-3 border-t border-line/70 px-4 py-3 text-xs font-semibold text-subtext">
-              <span>글과 연결된 장면</span>
+              <span>장보기 전 가격 흐름</span>
               <span>{post.category}</span>
             </figcaption>
           </figure>

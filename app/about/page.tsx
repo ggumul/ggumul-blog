@@ -3,24 +3,24 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물 소개',
-  description: '꼬물이 만들고 있는 작은 게임들을 소개합니다.',
+  description: '꼬물은 짧게 끝나는 작은 게임을 만듭니다.',
   path: '/about',
 });
 
 const games = [
   {
     title: 'Wanderer',
-    text: '홀수 카드만 유효한 턴에서 15를 내면 상대의 13을 넘깁니다.',
+    text: '홀수 카드만 유효한 턴에서 카드 15를 내면 이깁니다.',
     href: '/projects/wanderer#mini-play',
   },
   {
     title: 'Hanoi',
-    text: '막대를 옮기고 바로 다음 상태를 읽는 퍼즐입니다.',
+    text: '막대를 옮겨 하노이 탑을 푸는 퍼즐입니다.',
     href: '/projects/hanoi',
   },
   {
     title: 'TRPG',
-    text: '선택한 문장에 따라 이어지는 장면이 달라집니다.',
+    text: '선택한 문장에 따라 결말이 달라지는 이야기 게임입니다.',
     href: '/projects/trpg',
   },
 ];
@@ -32,10 +32,10 @@ export default function AboutPage() {
         <div className="max-w-4xl space-y-5">
           <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">꼬물</p>
           <h1 className="text-[34px] font-black leading-tight tracking-[-0.05em] text-text md:text-[68px] md:leading-[1.04]">
-            작은 게임을 하나씩 만듭니다.
+            짧게 끝나는 작은 게임을 만듭니다.
           </h1>
           <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-            Wanderer의 짧은 카드 승부부터 보여줍니다. 카드 한 장, 퍼즐 이동 하나, 선택지 하나처럼 짧게 만질 수 있는 장면을 남깁니다.
+            Wanderer는 지금 바로 해볼 수 있는 카드 게임입니다. Hanoi와 TRPG는 준비 중입니다.
           </p>
           <Link href="/projects/wanderer#mini-play" className="inline-flex min-h-[42px] items-center rounded-full border border-point/35 px-4 py-2 text-sm font-bold text-point transition hover:border-point/70 hover:text-text">
             Wanderer 한 턴 보기 →

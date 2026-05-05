@@ -4,7 +4,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '게임 기록',
-  description: 'Wanderer와 작은 게임들의 장면, 선택, 리듬을 모아 둔 게임 기록입니다.',
+  description: '꼬물이 만들고 있는 작은 게임에 대한 짧은 기록입니다.',
   path: '/writing',
 });
 
@@ -31,17 +31,17 @@ export default async function WritingPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">게임 기록</p>
         <h1 className="text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          글은 목록처럼 읽힙니다.
+          게임 기록
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          카드 승부, 퍼즐 이동, 서사 선택에서 남은 장면을 시간순으로 모았습니다.
+          만들고 있는 게임을 짧은 글로 정리했습니다.
         </p>
       </section>
 
       <section aria-label="게임 기록 목록" className="space-y-3">
         <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 안에서 나온 기록</p>
-          <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">선택과 결과가 남은 글</h2>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 기록</p>
+          <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">Wanderer와 작은 게임</h2>
         </div>
         <div className="article-list">
           {gamePosts.map((post) => (
@@ -60,8 +60,8 @@ export default async function WritingPage() {
       {outsidePosts.length ? (
         <section className="space-y-3">
           <div>
-            <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 밖의 기록</p>
-            <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">도구와 제작 리듬</h2>
+            <p className="text-[12px] font-black tracking-[0.16em] text-point">도구 기록</p>
+            <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">장보기 도구</h2>
           </div>
           <div className="article-list">
             {outsidePosts.map((post) => (
