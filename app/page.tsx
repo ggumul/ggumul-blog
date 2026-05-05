@@ -4,7 +4,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '꼬물은 짧게 만질 수 있는 작은 게임을 만드는 이름입니다.',
+  description: '꼬물은 고르면 바로 결과가 보이는 작은 게임을 만듭니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
@@ -29,13 +29,13 @@ export default async function HomePage() {
       <section className="max-w-4xl space-y-6 py-6 md:py-12">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">GGUMUL</p>
         <h1 className="text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[70px] md:leading-[1.04]">
-          작은 선택이 바로 돌아오는 게임.
+          고르면 바로 결과가 보이는 게임.
         </h1>
         <p className="max-w-2xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-          꼬물은 큰 세계관보다 한 번의 선택을 먼저 놓습니다. 카드를 고르거나, 막대를 옮기거나, 문장을 누르면 결과가 바로 돌아오는 게임을 만듭니다.
+          꼬물은 카드를 고르고, 막대를 옮기고, 문장을 누르는 작은 게임을 만듭니다. 행동은 짧고 결과는 바로 보입니다.
         </p>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext">
-          글은 그 뒤에 붙습니다. 게임을 해본 다음에야 규칙을 왜 그렇게 줄였는지, 선택을 왜 그 자리에 뒀는지 읽을 수 있게 합니다.
+          글은 게임을 해본 뒤에 읽는 설명입니다. 왜 규칙을 줄였는지, 왜 그 선택만 남겼는지 짧게 적습니다.
         </p>
       </section>
 

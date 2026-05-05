@@ -86,10 +86,10 @@ describe('public UI copy cleanup', () => {
     const heroSection = homePage.slice(homePage.indexOf('<section className="max-w-4xl'), homePage.indexOf('{leadProject ? ('));
     const leadSection = homePage.slice(homePage.indexOf('{leadProject ? ('), homePage.indexOf('{otherProjects.length ? ('));
 
-    expect(heroSection).toContain('작은 선택이 바로 돌아오는 게임.');
-    expect(heroSection).toContain('꼬물은 큰 세계관보다 한 번의 선택을 먼저 놓습니다.');
-    expect(heroSection).toContain('글은 그 뒤에 붙습니다.');
-    expect(heroSection).not.toMatch(/꼬물은 작은 게임을 만들고|꼬물은 작은 게임을 오래 설명하지 않습니다|첫 행동이 분명해야 작은 게임도 자기 리듬을 가집니다|작은 게임.*작은 게임.*작은 게임/s);
+    expect(heroSection).toContain('고르면 바로 결과가 보이는 게임.');
+    expect(heroSection).toContain('꼬물은 카드를 고르고, 막대를 옮기고, 문장을 누르는 작은 게임을 만듭니다.');
+    expect(heroSection).toContain('글은 게임을 해본 뒤에 읽는 설명입니다.');
+    expect(heroSection).not.toMatch(/꼬물은 작은 게임을 만들고|꼬물은 작은 게임을 오래 설명하지 않습니다|첫 행동이 분명해야 작은 게임도 자기 리듬을 가집니다|작은 게임.*작은 게임.*작은 게임|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는|큰 세계관보다|글은 그 뒤에 붙습니다/s);
     expect(heroSection).not.toMatch(/Wanderer|카드 한 장|한 장의 카드|지금 앞에 놓은 것은|카드 한 장 고르기|다른 게임도 열기/);
     expect(leadSection).toContain('바로 한 판');
     expect(leadSection).toContain('Wanderer');
@@ -247,8 +247,8 @@ describe('public UI copy cleanup', () => {
       readFrontmatter('content/writing/2026-04-26-runtime-화면-확인-기록.mdx'),
     ].join('\n');
 
-    expect(combined).toContain('꼬물은 작은 선택이 바로 돌아오는 게임을 만듭니다.');
-    expect(combined).not.toMatch(/짧게 만질 수 있는 작은 게임을 만듭니다|꼬물은 작은 게임을 만들고, 게임을 해본 뒤 읽을 글을 함께 보여 줍니다/);
+    expect(combined).toContain('꼬물은 고르면 바로 결과가 보이는 작은 게임을 만듭니다.');
+    expect(combined).not.toMatch(/짧게 만질 수 있는 작은 게임을 만듭니다|꼬물은 작은 게임을 만들고, 게임을 해본 뒤 읽을 글을 함께 보여 줍니다|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는/);
     expect(combined).toContain('카드 한 장 고르기');
     expect(combined).toContain('게임 글');
     expect(combined).toContain('첫 선택이 게임을 정합니다');
@@ -386,8 +386,8 @@ describe('public UI copy cleanup', () => {
     const site = read('lib/site.ts');
     const og = read('app/opengraph-image.tsx');
 
-    expect(home).toContain('꼬물은 큰 세계관보다 한 번의 선택을 먼저 놓습니다.');
-    expect(home).toContain('글은 그 뒤에 붙습니다. 게임을 해본 다음에야 규칙을 왜 그렇게 줄였는지, 선택을 왜 그 자리에 뒀는지 읽을 수 있게 합니다.');
+    expect(home).toContain('꼬물은 카드를 고르고, 막대를 옮기고, 문장을 누르는 작은 게임을 만듭니다.');
+    expect(home).toContain('글은 게임을 해본 뒤에 읽는 설명입니다. 왜 규칙을 줄였는지, 왜 그 선택만 남겼는지 짧게 적습니다.');
     expect(shell).toContain('작은 게임, 그리고 게임 뒤에 읽는 글');
     expect(site).toContain('꼬물은 작은 게임을 만들고, 게임 뒤에 읽는 글을 함께 보여 줍니다.');
     expect(og).toContain('작은 게임, 그리고 게임 뒤에 읽는 글');
