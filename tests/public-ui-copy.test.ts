@@ -76,7 +76,8 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
     expect(projectsPage).not.toMatch(/Wanderer부터 바로 봅니다|먼저 볼 건|줄였습니다|한장을|짧게 보고 고릅니다|새로 좋아진 점|살아남고|13보다 높아/);
     expect(projectsPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴/);
-    expect(projectsPage).toContain('안전한 선택이 먼저 틀어집니다');
+    expect(projectsPage).not.toMatch(/안전한 선택이 먼저 틀어집니다|규칙 앞에서 빠집니다/);
+    expect(projectsPage).toContain('좋아 보이는 선택도 판이 바뀌면 버립니다.');
     expect(projectsPage).toContain('좋은 카드가 아니라 죽지 않을 카드');
   });
 
@@ -139,7 +140,8 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toMatch(/더 궁금한 이유|지금 해볼 게임/);
     expect(aboutPage).not.toContain('열기 →');
     expect(aboutPage).not.toMatch(/카드 한 장을 냅니다|손으로 만질 수 있는 것부터/);
-    expect(projectsPage).toContain('카드 10은 숫자로는 괜찮지만 규칙 앞에서 빠집니다.');
+    expect(projectsPage).not.toMatch(/안전한 선택이 먼저 틀어집니다|규칙 앞에서 빠집니다/);
+    expect(projectsPage).toContain('좋아 보이는 선택도 판이 바뀌면 버립니다.');
     expect(writingPage).toContain('왜 그 선택을 버렸나');
   });
 
@@ -434,7 +436,8 @@ describe('public UI copy cleanup', () => {
     const linksPage = read('app/links/page.tsx');
 
     expect(projectsPage).not.toMatch(/어디서 시작할지 바로 보이게|카드 다음에는 막대와 선택지/);
-    expect(projectsPage).toContain('안전한 선택이 먼저 틀어집니다');
+    expect(projectsPage).not.toMatch(/안전한 선택이 먼저 틀어집니다|규칙 앞에서 빠집니다/);
+    expect(projectsPage).toContain('좋아 보이는 선택도 판이 바뀌면 버립니다.');
     expect(projectDetail).not.toContain('PageHero eyebrow="game"');
     expect(projectDetail).not.toContain('title={<>{game.title}<br />게임 글</>}');
     expect(projectDetail).not.toMatch(/다음에 읽을 것|새 게임 글/);
