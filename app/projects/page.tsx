@@ -5,7 +5,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '작은 게임들',
-  description: '꼬물의 작은 게임 목록입니다. Wanderer는 바로 한 판을 해볼 수 있습니다.',
+  description: '꼬물이 만들고 있는 작은 게임을 모았습니다.',
   path: '/projects',
 });
 
@@ -27,7 +27,7 @@ export default async function ProjectsPage() {
           먼저 해볼 게임을 고릅니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          꼬물의 작은 게임은 첫 행동부터 분명해야 합니다. Wanderer에서는 카드 한 장을 고르고, Hanoi에서는 막대 하나를 옮깁니다. 먼저 게임을 고른 뒤, 궁금해진 이야기는 게임 뒤의 글에서 이어 읽습니다.
+          꼬물의 작은 게임은 첫 행동부터 분명해야 합니다. Wanderer에서는 카드 한 장을 고르고, Hanoi에서는 막대 하나를 옮깁니다. 게임을 먼저 고르고, 궁금한 부분은 작업 글에서 이어 읽습니다.
         </p>
       </section>
 
@@ -59,7 +59,7 @@ export default async function ProjectsPage() {
 
       <section className="space-y-4">
         <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 뒤의 글</p>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">작업 글</p>
           <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">짧아진 선택을 따라 읽기</h2>
         </div>
         <div className="article-list">

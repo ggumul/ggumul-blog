@@ -81,19 +81,19 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).toContain('홀수 카드만 유효');
   });
 
-  it('separates ggumul identity from the Wanderer game introduction on the homepage', () => {
+  it('states the real ggumul identity before introducing any single game', () => {
     const homePage = read('app/page.tsx');
     const heroSection = homePage.slice(homePage.indexOf('<section className="max-w-4xl'), homePage.indexOf('{leadProject ? ('));
     const leadSection = homePage.slice(homePage.indexOf('{leadProject ? ('), homePage.indexOf('{otherProjects.length ? ('));
 
-    expect(heroSection).toContain('고르면 바로 결과가 보이는 게임.');
-    expect(heroSection).toContain('꼬물은 카드를 고르고, 막대를 옮기고, 문장을 누르는 작은 게임을 만듭니다.');
-    expect(heroSection).toContain('글은 게임을 해본 뒤에 읽는 설명입니다.');
-    expect(heroSection).not.toMatch(/꼬물은 작은 게임을 만들고|꼬물은 작은 게임을 오래 설명하지 않습니다|첫 행동이 분명해야 작은 게임도 자기 리듬을 가집니다|작은 게임.*작은 게임.*작은 게임|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는|큰 세계관보다|글은 그 뒤에 붙습니다/s);
-    expect(heroSection).not.toMatch(/Wanderer|카드 한 장|한 장의 카드|지금 앞에 놓은 것은|카드 한 장 고르기|다른 게임도 열기/);
-    expect(leadSection).toContain('바로 한 판');
+    expect(heroSection).toContain('느리지만 멈추지 않고 게임을 만듭니다.');
+    expect(heroSection).toContain('꼬물은 빨리 커 보이려고 하기보다, 작은 게임과 작업 글을 꾸준히 쌓는 작업실입니다.');
+    expect(heroSection).toContain('완성된 것만 올리지 않습니다. 만들다 고친 것, 아직 손대는 것, 다음에 다시 볼 것까지 함께 모읍니다.');
+    expect(heroSection).not.toMatch(/고르면 바로 결과가 보이는 게임|카드를 고르고, 막대를 옮기고, 문장을 누르는|글은 게임을 해본 뒤에 읽는 설명|게임 뒤에 읽는 글|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는|큰 세계관보다|글은 그 뒤에 붙습니다/s);
+    expect(heroSection).not.toMatch(/Wanderer|카드 한 장|한 장의 카드|카드 한 장 고르기/);
+    expect(leadSection).toContain('먼저 해볼 수 있는 게임');
     expect(leadSection).toContain('Wanderer');
-    expect(leadSection).toContain('카드 한 장을 고르면 바로 결과가 나옵니다');
+    expect(leadSection).toContain('한 장의 카드로 승부가 납니다');
   });
 
   it('keeps home focused on one playable turn instead of a generic landing page', () => {
@@ -140,8 +140,8 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toMatch(/더 궁금한 이유|지금 해볼 게임/);
     expect(postCard).not.toContain('열기 →');
     expect(aboutPage).not.toContain('열기 →');
-    expect(projectsPage).toContain('먼저 게임을 고른 뒤, 궁금해진 이야기는 게임 뒤의 글에서 이어 읽습니다.');
-    expect(writingPage.match(/게임 뒤의 글/g) ?? []).toHaveLength(1);
+    expect(projectsPage).toContain('게임을 먼저 고르고, 궁금한 부분은 작업 글에서 이어 읽습니다.');
+    expect(writingPage).toContain('게임을 만들며 남긴 글');
   });
 
   it('keeps public navigation from falling back to repeated open-arrow CTAs', () => {
@@ -161,7 +161,7 @@ describe('public UI copy cleanup', () => {
     expect(publicNavigationSources).not.toMatch(/열기|보기\s*→|읽기\s*→|→/);
     expect(publicNavigationSources).not.toMatch(/더 궁금한 이유|지금 해볼 게임|게임 목록 열기|글 모아 열기|대표 게임|다음 게임/);
     expect(publicNavigationSources).not.toMatch(/<span className="text-sm font-bold text-point">보기<\/span>/);
-    expect(publicNavigationSources).toContain('먼저 게임을 고른 뒤, 궁금해진 이야기는 게임 뒤의 글에서 이어 읽습니다.');
+    expect(publicNavigationSources).toContain('게임을 먼저 고르고, 궁금한 부분은 작업 글에서 이어 읽습니다.');
   });
 
   it('keeps project cards from repeating the same title as a nested CTA block', () => {
@@ -247,7 +247,7 @@ describe('public UI copy cleanup', () => {
       readFrontmatter('content/writing/2026-04-26-runtime-화면-확인-기록.mdx'),
     ].join('\n');
 
-    expect(combined).toContain('꼬물은 고르면 바로 결과가 보이는 작은 게임을 만듭니다.');
+    expect(combined).toContain('느리지만 멈추지 않고 게임을 만듭니다.');
     expect(combined).not.toMatch(/짧게 만질 수 있는 작은 게임을 만듭니다|꼬물은 작은 게임을 만들고, 게임을 해본 뒤 읽을 글을 함께 보여 줍니다|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는/);
     expect(combined).toContain('카드 한 장 고르기');
     expect(combined).toContain('게임 글');
@@ -385,15 +385,12 @@ describe('public UI copy cleanup', () => {
     const projects = read('app/projects/page.tsx');
     const site = read('lib/site.ts');
     const og = read('app/opengraph-image.tsx');
+    const combined = [home, shell, writing, projects, site, og].join('\n');
 
-    expect(home).toContain('꼬물은 카드를 고르고, 막대를 옮기고, 문장을 누르는 작은 게임을 만듭니다.');
-    expect(home).toContain('글은 게임을 해본 뒤에 읽는 설명입니다. 왜 규칙을 줄였는지, 왜 그 선택만 남겼는지 짧게 적습니다.');
-    expect(shell).toContain('작은 게임, 그리고 게임 뒤에 읽는 글');
-    expect(site).toContain('꼬물은 작은 게임을 만들고, 게임 뒤에 읽는 글을 함께 보여 줍니다.');
-    expect(og).toContain('작은 게임, 그리고 게임 뒤에 읽는 글');
-    expect(writing).toContain('게임을 먼저 해보고, 그 뒤에 선택이 왜 그렇게 놓였는지 읽는 곳입니다.');
-    expect(projects).toContain('먼저 게임을 고른 뒤, 궁금해진 이야기는 게임 뒤의 글에서 이어 읽습니다.');
-    expect([home, shell, writing, projects, site, og].join('\n')).not.toMatch(/작은 게임과 게임 글|선택 뒤에 남은 이야기|선택 뒤에 남은|게임 뒤의 글<\/p>[\s\S]*선택이 짧아진 이유/);
+    expect(combined).toContain('느리지만 멈추지 않고 게임을 만듭니다.');
+    expect(combined).toContain('작은 게임과 작업 글을 꾸준히 쌓는 작업실입니다.');
+    expect(combined).not.toMatch(/고르면 바로 결과가 보이는 게임|꼬물은 카드를 고르고, 막대를 옮기고, 문장을 누르는|글은 게임을 해본 뒤에 읽는 설명|작은 게임, 그리고 게임 뒤에 읽는 글|작은 게임을 만들고, 게임 뒤에 읽는 글을 함께 보여 줍니다|게임을 먼저 해보고, 그 뒤에 선택이 왜 그렇게 놓였는지|먼저 게임을 고른 뒤, 궁금해진 이야기는 게임 뒤의 글에서 이어 읽습니다/);
+    expect(combined).not.toMatch(/작은 게임과 게임 글|선택 뒤에 남은 이야기|선택 뒤에 남은|게임 뒤의 글<\/p>[\s\S]*선택이 짧아진 이유/);
   });
 
   it('uses a reading-first muted palette instead of yellow-on-blue visual noise', () => {
@@ -448,7 +445,7 @@ describe('public UI copy cleanup', () => {
     expect(projectDetail).toContain('eyebrow="게임"');
     expect(projectDetail).toContain('title={game.title}');
     expect(writingPage).not.toMatch(/text-point">게임 글<\/p>[\s\S]*>\s*게임 글\s*<\/h1>/);
-    expect(writingPage).toContain('게임 뒤의 글');
+    expect(writingPage).toContain('게임을 만들며 남긴 글');
     expect(writingDetail).not.toMatch(/\{post\.relatedProjects\.map\(\(project\).*\{project\}/);
     expect(linksPage).not.toMatch(/코드와 메모|게임은 사이트에서 먼저 읽히지만/);
   });
