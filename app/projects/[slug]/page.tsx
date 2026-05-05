@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return createMetadata({
-    title: game.slug === 'wanderer' ? 'Wanderer — 카드 한 턴' : `${game.title} 게임 글`,
+    title: game.slug === 'wanderer' ? 'Wanderer — 카드 한 턴' : `${game.title} 게임`,
     description: game.slug === 'wanderer'
       ? '규칙을 보고 카드 한 장을 고르는 Wanderer의 짧은 한 턴입니다.'
       : game.summary,
@@ -155,7 +155,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         ← 게임 목록으로
       </Link>
 
-      <PageHero eyebrow="game" title={<>{game.title}<br />게임 글</>} description={game.summary}>
+      <PageHero eyebrow="게임" title={game.title} description={game.summary}>
         <div className="space-y-3">
           <Pill tone="point">{game.status}</Pill>
           {latestRecord ? <Pill>최근 {latestRecord.publishedAt}</Pill> : null}
@@ -179,10 +179,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
         <aside className="space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">다음에 읽을 것</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">게임 뒤의 글</div>
             <Link href={latestRecord ? `/writing/${latestRecord.slug}` : '/writing'} className="block border-t border-line/70 py-4 text-point transition hover:text-text">
-              <div className="font-black tracking-[-0.03em]">{latestRecord ? '새 게임 글' : '게임 글'}</div>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '게임과 관련된 글을 함께 읽을 수 있습니다.'}</p>
+              <div className="font-black tracking-[-0.03em]">{latestRecord ? latestRecord.title : '게임 뒤의 글'}</div>
+              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '게임을 해본 뒤 이어서 읽을 글을 모았습니다.'}</p>
             </Link>
           </div>
 

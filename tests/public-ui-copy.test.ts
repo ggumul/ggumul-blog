@@ -341,6 +341,26 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/장면|감각|붙잡|남깁|둡니다|살핍니다|이어 봅니다|먼저 두고|먼저 보여|목록처럼 읽|게임 밖에서 나온|제작 노트|게임 안에서 나온 기록|선택과 결과가 남은 글|지금 만질/);
   });
 
+  it('keeps detail/list labels from reading like duplicated archive scaffolding', () => {
+    const projectsPage = read('app/projects/page.tsx');
+    const projectDetail = read('app/projects/[slug]/page.tsx');
+    const writingPage = read('app/writing/page.tsx');
+    const writingDetail = read('app/writing/[slug]/page.tsx');
+    const linksPage = read('app/links/page.tsx');
+
+    expect(projectsPage).not.toMatch(/어디서 시작할지 바로 보이게|카드 다음에는 막대와 선택지/);
+    expect(projectsPage).toContain('먼저 해볼 게임을 고릅니다');
+    expect(projectDetail).not.toContain('PageHero eyebrow="game"');
+    expect(projectDetail).not.toContain('title={<>{game.title}<br />게임 글</>}');
+    expect(projectDetail).not.toMatch(/다음에 읽을 것|새 게임 글/);
+    expect(projectDetail).toContain('eyebrow="게임"');
+    expect(projectDetail).toContain('title={game.title}');
+    expect(writingPage).not.toMatch(/text-point">게임 글<\/p>[\s\S]*>\s*게임 글\s*<\/h1>/);
+    expect(writingPage).toContain('게임 뒤의 글');
+    expect(writingDetail).not.toMatch(/\{post\.relatedProjects\.map\(\(project\).*\{project\}/);
+    expect(linksPage).not.toMatch(/코드와 메모|게임은 사이트에서 먼저 읽히지만/);
+  });
+
   it('keeps pages and articles from restarting every paragraph like separate memo bullets', () => {
     const primaryPages = [
       read('app/page.tsx'),

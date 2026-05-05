@@ -17,16 +17,16 @@ export default function LinksPage() {
   return (
     <div className="archive-surface space-y-12 md:space-y-16">
       <PageHero
-        eyebrow="링크"
-        title={<>꼬물 링크</>}
-        description="게임은 사이트에서 먼저 읽히지만, 그 뒤에는 코드와 메모와 연락처가 남습니다. 더 자세히 보고 싶거나 말을 걸고 싶을 때 이어지는 길입니다."
+        eyebrow="바깥으로 이어지는 곳"
+        title={<>게임을 본 뒤 이어가기</>}
+        description="게임을 더 보고 싶을 때는 GitHub로, 아직 게임이 되기 전의 생각이 궁금할 때는 Notion으로 이어집니다. 직접 이야기해야 할 일은 메일로 받습니다."
       >
         <p>코드는 GitHub에서 보고, 아직 게임이 되기 전의 생각은 Notion에서 읽을 수 있습니다.</p>
         <p>직접 이야기해야 할 일은 메일로 보내면 됩니다.</p>
       </PageHero>
 
       <section className="space-y-5">
-        <SectionHeader eyebrow="연결되는 곳" title="꼬물과 연결되는 곳" description="먼저 게임을 보고, 더 궁금한 곳으로 넘어갈 수 있게 세 갈래만 남겼습니다." />
+        <SectionHeader eyebrow="다음 길" title="더 보고 싶은 곳으로" description="게임에서 시작해 코드, 아이디어, 연락처로만 길을 줄였습니다." />
         <div className="divide-y divide-line/70 border-y border-line/70">
           {links.map((link) => (
             <a key={link.label} href={link.href} target={link.href.startsWith('mailto:') ? undefined : '_blank'} rel={link.href.startsWith('mailto:') ? undefined : 'noreferrer'} className="grid gap-2 py-5 transition hover:text-text md:grid-cols-[140px_minmax(0,1fr)_auto] md:items-center">

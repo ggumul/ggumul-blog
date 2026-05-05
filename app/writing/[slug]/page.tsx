@@ -117,6 +117,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
 
   const [projects, allPosts] = await Promise.all([getProjects(), getWriting()]);
   const relatedProjects = projects.filter((project) => post.relatedProjects.includes(project.slug));
+  const relatedProjectLabelMap = new Map(projects.map((project) => [project.slug, project.title]));
   const siblingRecords = allPosts.filter((entry) => entry.slug !== post.slug && entry.series && entry.series === post.series);
   const relatedRecords = siblingRecords.length > 0
     ? siblingRecords
@@ -153,7 +154,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
             <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">{post.summary}</p>
             {post.updatedAt !== post.publishedAt ? <p className="text-[12px] text-subtext/80">마지막 수정 {post.updatedAt}</p> : null}
             <div className="flex flex-wrap gap-2 text-[12px]">
-              {post.relatedProjects.map((project) => <Pill key={project}>{project}</Pill>)}
+              {post.relatedProjects.map((slug) => <Pill key={slug}>{relatedProjectLabelMap.get(slug) ?? post.category}</Pill>)}
             </div>
           </div>
 
@@ -210,7 +211,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
           ) : null}
 
           <div>
-            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">글 주제</div>
+            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">이 글에서 보는 것</div>
             <div className="mt-3 flex flex-wrap gap-2 text-[12px]">
               {post.tags.map((tag) => (
                 <span key={tag} className="rounded-full border border-line/70 px-2.5 py-1 text-subtext">#{tag}</span>

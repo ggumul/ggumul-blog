@@ -24,10 +24,10 @@ export default async function ProjectsPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">작은 게임 목록</p>
         <h1 className="text-[30px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          어디서 시작할지 바로 보이게.
+          먼저 해볼 게임을 고릅니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          꼬물의 게임은 이름보다 첫 행동이 먼저입니다. Wanderer는 카드 한 장을 고르면 되고, Hanoi는 막대 하나를 옮기면 됩니다. 첫 행동이 보이면 게임은 설명서가 아니라 손 안의 선택으로 들어옵니다.
+          꼬물의 작은 게임은 첫 행동부터 분명해야 합니다. Wanderer에서는 카드 한 장을 고르고, Hanoi에서는 막대 하나를 옮깁니다. 무엇을 해야 할지 보이면 설명을 읽기 전에 손이 먼저 움직입니다.
         </p>
       </section>
 
@@ -48,7 +48,7 @@ export default async function ProjectsPage() {
       <section id="other-games" className="space-y-5">
         <div>
           <p className="text-[12px] font-black tracking-[0.16em] text-point">이어지는 게임</p>
-          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">카드 다음에는 막대와 선택지</h2>
+          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">퍼즐과 선택지도 이어집니다</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {otherWorklines.map(({ project, records }) => (
