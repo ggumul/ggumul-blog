@@ -104,14 +104,6 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
         <aside className="space-y-7 text-sm text-subtext lg:sticky lg:top-24">
           <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">같이 볼 글</div>
-            <Link href="/writing/wanderer-one-card" className="block border-t border-line/70 py-4 text-point transition hover:text-text">
-              <div className="font-black tracking-[-0.03em]">안전해 보이는 10을 버리게 만든 이유</div>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">10은 빠지고, 5는 약하고, 15만 살아남는 한 턴입니다.</p>
-            </Link>
-          </div>
-
-          <div className="space-y-3">
             <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">Wanderer 글</div>
             <RelatedPostRows posts={relatedPosts} />
           </div>
@@ -166,14 +158,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </div>
 
         <aside className="space-y-7 text-sm text-subtext lg:sticky lg:top-24">
-          <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">같이 볼 글</div>
-            <Link href={latestRecord ? `/writing/${latestRecord.slug}` : '/writing'} className="block border-t border-line/70 py-4 text-point transition hover:text-text">
-              <div className="font-black tracking-[-0.03em]">{latestRecord ? latestRecord.title : '글이 더 필요합니다'}</div>
-              <p className="mt-1 text-[13px] leading-6 text-subtext">{latestRecord ? latestRecord.summary : '아직 함께 둘 글이 많지 않습니다.'}</p>
-            </Link>
-          </div>
-
           <div className="space-y-3">
             <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">함께 볼 글</div>
             <RelatedPostRows posts={relatedPosts} />
