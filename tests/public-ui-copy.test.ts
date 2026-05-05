@@ -9,6 +9,12 @@ const readWritingMdx = () =>
     .map((name) => read(`content/writing/${name}`))
     .join('\n');
 
+const readProjectMdx = () =>
+  readdirSync('content/projects')
+    .filter((name) => name.endsWith('.mdx'))
+    .map((name) => read(`content/projects/${name}`))
+    .join('\n');
+
 describe('public UI copy cleanup', () => {
   it('keeps Korean prose from splitting syllables in narrow cards', () => {
     const css = read('app/globals.css');
@@ -221,8 +227,10 @@ describe('public UI copy cleanup', () => {
       read('lib/writing-reading-path.ts'),
       read('content/writing/2026-04-20-wanderer-초기-설계-회고.mdx'),
       readWritingMdx(),
+      readProjectMdx(),
     ].join('\n');
 
+    expect(combined).not.toMatch(/봤습니다|봅니다|확인합니다|검증|실행|Simulator|Flutter|wanderer-was|플레이 확인|계약 점검 중/);
     expect(combined).not.toMatch(/대표 게임 보기|게임 더 보기|전체 보기|글 더 보기|최근 글 보기|끊긴 지점 보기|어긋난 이유 보기|퍼즐 흐름 보기|장보기 흐름 보기|개발 기록 보기/);
     expect(combined).not.toMatch(/게임의 화면, 변경 이유, 남은 문제|결과보다 과정|기록 가능한 개발|작은 단위의 완성|개발기록/);
     expect(combined).not.toMatch(/실제 화면 기록|화면에서 막힌 지점|화면 노트|시스템 노트|프로젝트 소개|최근 글|최근 바뀐 장면|Wanderer 노트/);
