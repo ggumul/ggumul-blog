@@ -63,7 +63,7 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
       outcome: 'invalid',
       scene: `상대는 9, 12, 13을 냈습니다. 이번 규칙은 ${wandererMiniPlayTurn.condition.label}입니다.`,
       result,
-      shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
+      shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 승부: ${result}`,
     };
   }
 
@@ -74,7 +74,7 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
       outcome: 'win',
       scene: `상대의 최고 생존 카드는 13입니다. ${object} 내면 규칙도 통과하고 숫자도 앞섭니다.`,
       result,
-      shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
+      shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 승부: ${result}`,
     };
   }
 
@@ -84,7 +84,7 @@ function resolveOutcome(value: number): Pick<WandererMiniPlayCard, 'isValid' | '
     outcome: 'lose',
     scene: `상대 A의 9가 먼저 나왔습니다. ${subject} 살아남지만 숫자 싸움에서는 밀립니다.`,
     result,
-    shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 결과: ${result}`,
+    shareText: `Wanderer 한 턴: ${wandererMiniPlayTurn.condition.label}에서 ${object} 냈다. 승부: ${result}`,
   };
 }
 
