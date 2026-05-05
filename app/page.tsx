@@ -43,7 +43,7 @@ export default async function HomePage() {
         <section className="panel-section space-y-4">
           <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
             <div>
-              <p className="text-[12px] font-black tracking-[0.16em] text-point">지금 해볼 게임</p>
+              <p className="text-[12px] font-black tracking-[0.16em] text-point">바로 한 판</p>
               <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.035em] text-text md:text-[42px]">Wanderer</h2>
             </div>
             <Link href={`/projects/${leadProject.slug}#mini-play`} className="game-button-primary text-sm">카드 한 장 고르기</Link>
@@ -60,14 +60,14 @@ export default async function HomePage() {
               <p className="text-[12px] font-black tracking-[0.16em] text-point">퍼즐과 서사</p>
               <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">막대를 옮기고, 문장을 고릅니다</h2>
             </div>
-            <Link href="/projects" className="text-sm font-bold text-point hover:text-text">게임 목록 열기 →</Link>
+            <Link href="/projects" className="text-sm font-bold text-point hover:text-text">작은 게임들</Link>
           </div>
           <div className="article-list">
             {otherProjects.map((project) => (
               <Link key={project.slug} href={`/projects/${project.slug}`} className="grid gap-2 py-4 md:grid-cols-[180px_minmax(0,1fr)_auto] md:items-center">
                 <span className="text-sm font-black text-point">{project.title}</span>
                 <span className="text-sm leading-7 text-subtext">{project.summary}</span>
-                <span className="text-sm font-bold text-point">열기 →</span>
+                <span className="text-sm font-bold text-point">보기</span>
               </Link>
             ))}
           </div>
@@ -81,7 +81,7 @@ export default async function HomePage() {
               <p className="text-[12px] font-black tracking-[0.16em] text-point">게임 뒤에 읽는 글</p>
               <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">게임 뒤에 남는 이유</h2>
             </div>
-            <Link href="/writing" className="text-sm font-bold text-point hover:text-text">글 모아 열기 →</Link>
+            <Link href="/writing" className="text-sm font-bold text-point hover:text-text">이어 읽는 글</Link>
           </div>
           <div className="article-list">
             {latestGamePosts.map((post) => (
@@ -91,7 +91,7 @@ export default async function HomePage() {
                   <span className="block text-lg font-black tracking-[-0.035em] text-text">{post.title}</span>
                   <span className="mt-1 block text-sm leading-7 text-subtext">{post.summary}</span>
                 </span>
-                <span className="text-sm font-bold text-point">열기 →</span>
+                <span className="text-sm font-bold text-point">보기</span>
               </Link>
             ))}
           </div>

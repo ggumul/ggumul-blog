@@ -89,7 +89,7 @@ describe('public UI copy cleanup', () => {
     expect(heroSection).toContain('꼬물은 작은 게임을 오래 설명하지 않습니다.');
     expect(heroSection).toContain('첫 행동이 분명해야 작은 게임도 자기 리듬을 가집니다.');
     expect(heroSection).not.toMatch(/Wanderer|카드 한 장|한 장의 카드|지금 앞에 놓은 것은|카드 한 장 고르기|다른 게임도 열기/);
-    expect(leadSection).toContain('지금 해볼 게임');
+    expect(leadSection).toContain('바로 한 판');
     expect(leadSection).toContain('Wanderer');
     expect(leadSection).toContain('카드 한 장을 고르면 바로 결과가 나옵니다');
   });
@@ -125,6 +125,17 @@ describe('public UI copy cleanup', () => {
     expect(homePage).toContain('카드 한 장을 고르면 바로 결과가 나옵니다');
     expect(homePage).toContain('카드 한 장 고르기');
     expect(homePage).toContain('홀수 카드만 유효');
+  });
+
+  it('keeps the late-stage public copy fixes from regressing into awkward repeated labels', () => {
+    const homePage = read('app/page.tsx');
+    const projectsPage = read('app/projects/page.tsx');
+    const writingPage = read('app/writing/page.tsx');
+
+    expect(homePage).not.toMatch(/지금 해볼 게임|열기 →|글 모아 열기|게임 목록 열기/);
+    expect(projectsPage).not.toMatch(/더 궁금한 이유|지금 해볼 게임/);
+    expect(projectsPage).toContain('먼저 게임을 고른 뒤, 궁금해진 이야기는 게임 뒤의 글에서 이어 읽습니다.');
+    expect(writingPage.match(/게임 뒤의 글/g) ?? []).toHaveLength(1);
   });
 
   it('keeps writing index from becoming a tag wall or repeated explainer grid', () => {
@@ -346,7 +357,7 @@ describe('public UI copy cleanup', () => {
     expect(site).toContain('꼬물은 작은 게임을 만들고, 게임 뒤에 읽는 글을 함께 보여 줍니다.');
     expect(og).toContain('작은 게임, 그리고 게임 뒤에 읽는 글');
     expect(writing).toContain('게임을 먼저 해보고, 그 뒤에 선택이 왜 그렇게 놓였는지 읽는 곳입니다.');
-    expect(projects).toContain('게임을 먼저 고르고, 더 궁금한 이유는 게임 뒤의 글에서 이어 읽습니다.');
+    expect(projects).toContain('먼저 게임을 고른 뒤, 궁금해진 이야기는 게임 뒤의 글에서 이어 읽습니다.');
     expect([home, shell, writing, projects, site, og].join('\n')).not.toMatch(/작은 게임과 게임 글|선택 뒤에 남은 이야기|선택 뒤에 남은|게임 뒤의 글<\/p>[\s\S]*선택이 짧아진 이유/);
   });
 
