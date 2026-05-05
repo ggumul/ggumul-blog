@@ -7,14 +7,6 @@ type ProjectCardProps = {
   compact?: boolean;
 };
 
-const projectCtas: Record<string, string> = {
-  wanderer: '한 턴 열기',
-  hanoi: '막대 옮기기',
-  trpg: '선택지 열기',
-  'color-hanoi': '색 퍼즐 열기',
-  'ggumul-dinner-grocery': '장보기 열기',
-};
-
 function formatDate(date: string) {
   return date.replaceAll('-', '.');
 }
@@ -67,9 +59,9 @@ export function ProjectCard({ project, records = [], compact = false }: ProjectC
           </div>
         ) : null}
 
-        <div className="flex flex-wrap items-center gap-3 text-sm">
-          <Link href={projectHref} className="font-black text-point hover:text-text">{projectCtas[project.slug] ?? '열기'} →</Link>
-        </div>
+        <Link href={projectHref} className="inline-flex text-sm font-black text-point hover:text-text" aria-label={`${project.title} 자세히`}>
+          {project.title}
+        </Link>
       </div>
 
       {project.slug === 'wanderer' ? <WandererCardPreview /> : <EvidenceFallback project={project} />}

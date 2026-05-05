@@ -142,6 +142,26 @@ describe('public UI copy cleanup', () => {
     expect(writingPage.match(/게임 뒤의 글/g) ?? []).toHaveLength(1);
   });
 
+  it('keeps public navigation from falling back to repeated open-arrow CTAs', () => {
+    const publicNavigationSources = [
+      read('app/page.tsx'),
+      read('app/projects/page.tsx'),
+      read('app/projects/[slug]/page.tsx'),
+      read('app/writing/page.tsx'),
+      read('app/writing/[slug]/page.tsx'),
+      read('app/about/page.tsx'),
+      read('app/links/page.tsx'),
+      read('components/project-card.tsx'),
+      read('components/post-card.tsx'),
+      read('lib/writing-reading-path.ts'),
+    ].join('\n');
+
+    expect(publicNavigationSources).not.toMatch(/열기|보기\s*→|읽기\s*→|→/);
+    expect(publicNavigationSources).not.toMatch(/더 궁금한 이유|지금 해볼 게임|게임 목록 열기|글 모아 열기|대표 게임|다음 게임/);
+    expect(publicNavigationSources).not.toMatch(/<span className="text-sm font-bold text-point">보기<\/span>/);
+    expect(publicNavigationSources).toContain('먼저 게임을 고른 뒤, 궁금해진 이야기는 게임 뒤의 글에서 이어 읽습니다.');
+  });
+
   it('keeps writing index from becoming a tag wall or repeated explainer grid', () => {
     const writingPage = read('app/writing/page.tsx');
 

@@ -38,7 +38,7 @@ export default async function ProjectsPage() {
               <p className="text-[12px] font-black tracking-[0.16em] text-point">바로 한 판</p>
               <h2 className="mt-2 text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[46px]">{lead.project.title}</h2>
             </div>
-            <Link href="/projects/wanderer#mini-play" className="text-sm font-bold text-point hover:text-text">카드 한 장 고르기 →</Link>
+            <Link href="/projects/wanderer#mini-play" className="text-sm font-bold text-point hover:text-text">카드 한 장 고르기</Link>
           </div>
           <p className="max-w-3xl text-sm leading-7 text-subtext">홀수 카드만 유효한 판에서는 10이 빠지고, 15가 상대의 13을 넘습니다.</p>
           <ProjectCard project={lead.project} records={lead.records} />

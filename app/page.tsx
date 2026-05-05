@@ -67,7 +67,7 @@ export default async function HomePage() {
               <Link key={project.slug} href={`/projects/${project.slug}`} className="grid gap-2 py-4 md:grid-cols-[180px_minmax(0,1fr)_auto] md:items-center">
                 <span className="text-sm font-black text-point">{project.title}</span>
                 <span className="text-sm leading-7 text-subtext">{project.summary}</span>
-                <span className="text-sm font-bold text-point">보기</span>
+                <span className="sr-only">자세히</span>
               </Link>
             ))}
           </div>
@@ -91,7 +91,7 @@ export default async function HomePage() {
                   <span className="block text-lg font-black tracking-[-0.035em] text-text">{post.title}</span>
                   <span className="mt-1 block text-sm leading-7 text-subtext">{post.summary}</span>
                 </span>
-                <span className="text-sm font-bold text-point">보기</span>
+                <span className="sr-only">자세히</span>
               </Link>
             ))}
           </div>

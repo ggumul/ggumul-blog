@@ -27,7 +27,7 @@ describe('writing reading path', () => {
     expect(getWritingReadingPath('unknown-post')).toEqual({
       stakes: '무엇을 다루는 글인지 짧게 읽습니다.',
       change: '글 안에서 달라진 점을 짧게 읽습니다.',
-      next: '글 열기',
+      next: '글 읽기',
     });
   });
 });

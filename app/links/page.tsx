@@ -35,7 +35,7 @@ export default function LinksPage() {
                 <h2 className="text-2xl font-black tracking-[-0.045em] text-text">{link.label}</h2>
                 <p className="mt-1 text-sm leading-7 text-subtext">{link.description}</p>
               </div>
-              <p className="text-sm font-semibold text-point">{link.displayHref} ↗</p>
+              <p className="text-sm font-semibold text-point">{link.displayHref}</p>
             </a>
           ))}
         </div>

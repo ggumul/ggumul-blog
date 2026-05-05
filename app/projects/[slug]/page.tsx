@@ -53,7 +53,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
   return (
     <article className="archive-surface space-y-10 md:space-y-14">
       <Link href="/projects" className="text-sm font-semibold text-subtext transition hover:text-point">
-        ← 게임 목록
+        게임 목록
       </Link>
 
       <section className="space-y-5 border-b border-line/60 pb-6 md:space-y-7 md:pb-8">
@@ -65,7 +65,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
             Wanderer는 한 판이 길어질수록 힘이 빠졌습니다. 그래서 이 페이지는 설명을 앞세우기보다 홀수 카드만 유효한 한 턴에서 시작합니다. 5, 10, 15 중 한 장을 고르면 선택이 곧바로 승부로 이어집니다.
           </p>
-          <a href="#mini-play" className="inline-flex text-sm font-black text-point hover:text-text">카드 한 장 고르기 →</a>
+          <a href="#mini-play" className="inline-flex text-sm font-black text-point hover:text-text">카드 한 장 고르기</a>
         </div>
         <dl className="grid gap-3 text-sm text-subtext sm:grid-cols-3">
           <div className="border-t border-line/40 pt-3">
@@ -152,7 +152,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   return (
     <article className="archive-surface space-y-10 md:space-y-14">
       <Link href="/projects" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
-        ← 게임 목록으로
+        게임 목록으로
       </Link>
 
       <PageHero eyebrow="게임" title={game.title} description={game.summary}>
