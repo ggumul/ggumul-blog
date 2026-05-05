@@ -21,8 +21,8 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
   },
   'wanderer-same-turn': {
     stakes: '잠깐 자리를 비워도 고르던 카드와 결과를 다시 볼 수 있습니다.',
-    change: '짧게 즐기고 돌아와 이어가는 한 턴 이야기입니다.',
-    next: '이어지는 턴 읽기',
+    change: '짧게 즐기고 돌아와도 같은 승부를 만나는 이야기입니다.',
+    next: '같은 턴 다시 읽기',
   },
   'wanderer-short-card-game': {
     stakes: '카드 전투가 길어질수록 선택 뒤 결과를 보는 맛이 약해졌습니다.',
@@ -36,7 +36,7 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
   },
   'dinner-grocery-price': {
     stakes: '식단을 추천하려 해도 가격이 언제 바뀌었는지 알 수 없으면 흔들립니다.',
-    change: '장보기 판단이 이어지도록 가격과 재료를 함께 읽게 했습니다.',
+    change: '식단 옆에서 가격과 재료를 함께 읽게 했습니다.',
     next: '가격 이야기 읽기',
   },
   'small-games-rhythm': {

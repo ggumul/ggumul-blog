@@ -42,10 +42,10 @@ export function WandererMiniPlay() {
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.2em] text-point">Wanderer · 한 턴</p>
             <h2 className="mt-3 max-w-2xl text-[32px] font-black leading-tight tracking-[-0.055em] text-text md:text-[48px]">
-              규칙을 읽으면 고를 카드가 좁혀집니다.
+              이번 턴에 낼 카드를 고릅니다.
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-subtext md:text-[15px]">
-              이번 턴은 {wandererMiniPlayTurn.condition.label} 조건입니다. 조건을 통과할 카드와 상대를 넘길 카드를 함께 생각한 뒤, 손에 든 카드 중 하나만 고릅니다.
+              {wandererMiniPlayTurn.condition.label}. 짝수는 빠지고, 남은 카드끼리 숫자를 겨룹니다.
             </p>
           </div>
 
@@ -117,8 +117,8 @@ export function WandererMiniPlay() {
           ) : (
             <div className="flex min-h-[240px] flex-col justify-center">
               <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">선택</p>
-              <p className="mt-4 text-[28px] font-black leading-tight tracking-[-0.05em] text-text">카드를 고르면 바로 승부가 납니다.</p>
-              <p className="mt-4 text-sm leading-7 text-subtext">조건을 통과했는지와 턴을 가져갔는지를 한 문장으로 이어서 보여줍니다.</p>
+              <p className="mt-4 text-[28px] font-black leading-tight tracking-[-0.05em] text-text">아직 카드를 내지 않았습니다.</p>
+              <p className="mt-4 text-sm leading-7 text-subtext">5, 10, 15 중 하나를 고르면 이번 턴의 승부가 나옵니다.</p>
             </div>
           )}
         </div>

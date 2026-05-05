@@ -225,7 +225,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
         <section className="space-y-5">
           <div>
             <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">다음 글</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.045em] text-text md:text-[46px]">이어지는 이야기</h2>
+            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.045em] text-text md:text-[46px]">다음에 읽을 이야기</h2>
           </div>
           <div className="divide-y divide-line/70 border-y border-line/70">
             {relatedRecords.slice(0, 3).map((entry) => (

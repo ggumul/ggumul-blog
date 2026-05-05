@@ -16,7 +16,7 @@ type BaseEntry = {
 
 export type ProjectEntry = BaseEntry & {
   status: string;
-  progressStatus: '플레이 가능' | '미리보기' | '장보기 판단' | '퍼즐' | '색 퍼즐' | '선택 게임' | '보류';
+  progressStatus: '한 턴' | '미리보기' | '장보기' | '퍼즐' | '색 퍼즐' | '선택 게임' | '쉬는 중';
   verificationNote: string;
   nextStep: string;
   evidenceLabel: string;

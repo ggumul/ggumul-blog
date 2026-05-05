@@ -4,7 +4,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '게임 글',
-  description: '꼬물이 만들고 있는 작은 게임에 대한 짧은 글입니다.',
+  description: '꼬물이 게임을 만들며 남긴 짧은 글입니다.',
   path: '/writing',
 });
 
@@ -29,19 +29,19 @@ export default async function WritingPage() {
   return (
     <div className="archive-surface space-y-6 md:space-y-16">
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
-        <p className="text-[12px] font-black tracking-[0.18em] text-point">작업 글</p>
+        <p className="text-[12px] font-black tracking-[0.18em] text-point">글</p>
         <h1 className="text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          게임을 만들며 남긴 글
+          만들다가 걸린 것들
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          카드 한 장을 고르는 이유, 퍼즐에서 다음 수가 보여야 하는 이유, 선택지가 결말로 이어지는 이유를 짧게 적습니다. 게임을 본 뒤 더 궁금한 부분만 이어 읽으면 됩니다.
+          카드를 왜 한 장만 내게 했는지, 퍼즐은 왜 다음 수부터 보여야 하는지, 장보기 도구는 왜 가격부터 봐야 하는지 적습니다.
         </p>
       </section>
 
       <section aria-label="게임 글" className="space-y-3">
         <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">읽을거리</p>
-          <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">첫 행동이 분명한 게임들</h2>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">게임</p>
+          <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">카드와 퍼즐 이야기</h2>
         </div>
         <div className="article-list">
           {gamePosts.map((post) => (
@@ -60,8 +60,8 @@ export default async function WritingPage() {
       {outsidePosts.length ? (
         <section className="space-y-3">
           <div>
-            <p className="text-[12px] font-black tracking-[0.16em] text-point">도구 글</p>
-            <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">저녁 준비로 이어진 도구</h2>
+            <p className="text-[12px] font-black tracking-[0.16em] text-point">도구</p>
+            <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">저녁 장보기 이야기</h2>
           </div>
           <div className="article-list">
             {outsidePosts.map((post) => (

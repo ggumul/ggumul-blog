@@ -3,24 +3,24 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물 소개',
-  description: '꼬물은 짧게 끝나는 작은 게임을 만듭니다.',
+  description: '꼬물은 느리게라도 손을 놓지 않고 작은 게임을 만드는 곳입니다.',
   path: '/about',
 });
 
 const games = [
   {
     title: 'Wanderer',
-    text: '규칙을 읽고 카드 한 장을 고르면 바로 승부가 갈립니다.',
+    text: '이번 턴의 규칙을 보고 카드 한 장을 냅니다.',
     href: '/projects/wanderer#mini-play',
   },
   {
     title: 'Hanoi',
-    text: '설명을 길게 붙이기보다 다음에 옮길 막대가 보이는 퍼즐로 다듬습니다.',
+    text: '큰 막대를 피해서 다음에 옮길 막대를 찾는 퍼즐입니다.',
     href: '/projects/hanoi',
   },
   {
     title: 'TRPG',
-    text: '선택지를 누른 이유가 다음 문장과 결말로 돌아오는 게임을 준비합니다.',
+    text: '짧은 선택지가 다음 문장과 결말을 바꾸는 게임입니다.',
     href: '/projects/trpg',
   },
 ];
@@ -32,13 +32,13 @@ export default function AboutPage() {
         <div className="max-w-4xl space-y-5">
           <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">꼬물</p>
           <h1 className="text-[34px] font-black leading-tight tracking-[-0.05em] text-text md:text-[68px] md:leading-[1.04]">
-            짧게 끝나는 작은 게임을 만듭니다.
+            느리게라도 계속 만듭니다.
           </h1>
           <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-            작은 게임은 작아서 대충 만드는 것이 아니라, 처음 눌러야 할 행동을 흐리지 않는 방식입니다. Wanderer는 카드 한 장으로 승부를 보여주고, Hanoi와 TRPG는 각각 막대와 선택지에서 같은 기준을 이어 갑니다.
+            꼬물이라는 이름에는 꾸물거리더라도 손을 멈추지 않겠다는 뜻이 있습니다. 그래서 큰 말보다 작은 판을 먼저 올립니다. 카드 한 장, 막대 하나, 선택지 하나처럼 손으로 해볼 수 있는 것부터 올립니다.
           </p>
           <Link href="/projects/wanderer#mini-play" className="inline-flex min-h-[42px] items-center rounded-full border border-point/35 px-4 py-2 text-sm font-bold text-point transition hover:border-point/70 hover:text-text">
-            Wanderer 한 턴
+            Wanderer 카드 고르기
           </Link>
         </div>
       </section>

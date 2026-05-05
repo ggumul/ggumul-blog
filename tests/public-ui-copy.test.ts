@@ -31,7 +31,7 @@ describe('public UI copy cleanup', () => {
     expect(linksPage).not.toContain('{link.href}</p>');
     expect(linksPage).not.toContain('github.com/ggumul');
     expect(linksPage).toContain('github.com/ggomul');
-    expect(linksPage).toContain('게임으로 옮기기 전의 생각을 짧게 적었습니다');
+    expect(linksPage).toContain('아직 게임이 되기 전의 생각을 모아 놓습니다');
     expect(linksPage).not.toMatch(/메모 모음|type: 'memo'|게임, 메모|코드 저장소, 메모/);
     expect(linksPage).toContain('link.displayHref');
   });
@@ -78,7 +78,7 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
     expect(projectsPage).not.toMatch(/Wanderer부터 바로 봅니다|먼저 볼 건|줄였습니다|한장을|짧게 보고 고릅니다|새로 좋아진 점|살아남고|13보다 높아/);
     expect(projectsPage).toContain('카드 한 장 고르기');
-    expect(projectsPage).toContain('홀수 카드만 유효');
+    expect(projectsPage).toContain('홀수 카드만 살아남는');
   });
 
   it('states the real ggumul identity before introducing any single game', () => {
@@ -86,14 +86,14 @@ describe('public UI copy cleanup', () => {
     const heroSection = homePage.slice(homePage.indexOf('<section className="max-w-4xl'), homePage.indexOf('{leadProject ? ('));
     const leadSection = homePage.slice(homePage.indexOf('{leadProject ? ('), homePage.indexOf('{otherProjects.length ? ('));
 
-    expect(heroSection).toContain('느리지만 멈추지 않고 게임을 만듭니다.');
-    expect(heroSection).toContain('꼬물은 빨리 커 보이려고 하기보다, 작은 게임과 작업 글을 꾸준히 쌓는 작업실입니다.');
-    expect(heroSection).toContain('완성된 것만 올리지 않습니다. 만들다 고친 것, 아직 손대는 것, 다음에 다시 볼 것까지 함께 모읍니다.');
+    expect(heroSection).toContain('느려도 손은 놓지 않습니다.');
+    expect(heroSection).toContain('꼬물은 작은 게임을 만들고, 만들다 고친 이유를 짧은 글로 남기는 곳입니다.');
+    expect(heroSection).toContain('완성품처럼 포장하기보다 손댈 수 있는 판과 그 옆의 메모를 그대로 올립니다.');
     expect(heroSection).not.toMatch(/고르면 바로 결과가 보이는 게임|카드를 고르고, 막대를 옮기고, 문장을 누르는|글은 게임을 해본 뒤에 읽는 설명|게임 뒤에 읽는 글|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는|큰 세계관보다|글은 그 뒤에 붙습니다/s);
     expect(heroSection).not.toMatch(/Wanderer|카드 한 장|한 장의 카드|카드 한 장 고르기/);
-    expect(leadSection).toContain('먼저 해볼 수 있는 게임');
+    expect(leadSection).toContain('먼저 만져볼 게임');
     expect(leadSection).toContain('Wanderer');
-    expect(leadSection).toContain('한 장의 카드로 승부가 납니다');
+    expect(leadSection).toContain('고르면 바로 승부가 갈립니다');
   });
 
   it('keeps home focused on one playable turn instead of a generic landing page', () => {
@@ -118,15 +118,15 @@ describe('public UI copy cleanup', () => {
     expect(homeVisibleSources).not.toMatch(/모바일에서도 결과가 자연스럽게|결과가 바로 이어지지 않던 흐름|흐름을 다시 맞췄습니다|버튼 뒤 흐름 끊김|진행 상태 개선|짧게 볼 수 있는 다른 게임들|유효합니다/);
     expect(homeVisibleSources).not.toMatch(/category: "연결 문제"|- "runtime"|- "flutter"|안정적으로 이어지게|자연스럽게 이어지게|멈칫했는지 줄이고|카드를 한 장을/);
     expect(homeVisibleSources).not.toMatch(/다듬고 있습니다|만들고 있습니다|정리했습니다|다듬었습니다|볼 수 있어야 했습니다|고쳤|Mobile flow|Wanderer turn/);
-    expect(homeVisibleSources).not.toMatch(/상대 카드 13|이번 턴은 홀수 카드만 유효\. 상대의 13보다 높은|13보다 높고 홀수인 카드|선택한 문장이 이어지는 흐름과 결말로 돌아옵니다|색 조건 하나가 익숙한 퍼즐을 다른 문제로 바꿉니다/);
+    expect(homeVisibleSources).not.toMatch(/상대 카드 13|이번 턴은 홀수 카드만 살아남는\. 상대의 13보다 높은|13보다 높고 홀수인 카드|선택한 문장이 이어지는 흐름과 결말로 돌아옵니다|색 조건 하나가 익숙한 퍼즐을 다른 문제로 바꿉니다/);
     expect(homeVisibleSources).not.toMatch(/바로 한 턴 해보기|한 턴 가능|플레이 흐름 읽기|카드 선택 뒤 결과|다른 작은 게임들|장보기 보기|한 턴 체험하기|서사 보기|퍼즐 보기|상대보다 높은 카드|글 목록|글 읽기 →|게임이 늘어나자|게임 둘러보기 →/);
 
-    expect(homeVisibleSources).toContain('한 장의 카드로 승부가 납니다');
+    expect(homeVisibleSources).toContain('고르면 바로 승부가 갈립니다');
     expect(homeVisibleSources).toContain('고른 순간, 승부가 갈립니다');
-    expect(homePage).toContain('한 장의 카드로 승부가 납니다');
-    expect(homePage).toContain('카드 한 장을 고르면 바로 결과가 나옵니다');
+    expect(homePage).toContain('고르면 바로 승부가 갈립니다');
+    expect(homePage).toContain('고르면 바로 승부가 갈립니다');
     expect(homePage).toContain('카드 한 장 고르기');
-    expect(homePage).toContain('홀수 카드만 유효');
+    expect(homePage).toContain('홀수 카드만 살아남는');
   });
 
   it('keeps the late-stage public copy fixes from regressing into awkward repeated labels', () => {
@@ -140,8 +140,8 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toMatch(/더 궁금한 이유|지금 해볼 게임/);
     expect(postCard).not.toContain('열기 →');
     expect(aboutPage).not.toContain('열기 →');
-    expect(projectsPage).toContain('게임을 먼저 고르고, 궁금한 부분은 작업 글에서 이어 읽습니다.');
-    expect(writingPage).toContain('게임을 만들며 남긴 글');
+    expect(projectsPage).toContain('카드 한 장을 내고, 막대 하나를 옮기고, 저녁 장볼 재료를 고릅니다.');
+    expect(writingPage).toContain('만들다가 걸린 것들');
   });
 
   it('keeps public navigation from falling back to repeated open-arrow CTAs', () => {
@@ -161,7 +161,7 @@ describe('public UI copy cleanup', () => {
     expect(publicNavigationSources).not.toMatch(/열기|보기\s*→|읽기\s*→|→/);
     expect(publicNavigationSources).not.toMatch(/더 궁금한 이유|지금 해볼 게임|게임 목록 열기|글 모아 열기|대표 게임|다음 게임/);
     expect(publicNavigationSources).not.toMatch(/<span className="text-sm font-bold text-point">보기<\/span>/);
-    expect(publicNavigationSources).toContain('게임을 먼저 고르고, 궁금한 부분은 작업 글에서 이어 읽습니다.');
+    expect(publicNavigationSources).toContain('카드 한 장을 내고, 막대 하나를 옮기고, 저녁 장볼 재료를 고릅니다.');
   });
 
   it('keeps project cards from repeating the same title as a nested CTA block', () => {
@@ -187,8 +187,8 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).not.toMatch(/지금 확인|지금 보는 이유|다음에 고칠 것|기록 보기|플레이 방식|현재 들어간 것|Wanderer 노트|폰에서 돌린 날/);
     expect(projectDetailPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
     expect(projectDetailPage).toContain('카드 한 장 고르기');
-    expect(projectDetailPage).toContain('홀수 카드만 유효');
-    expect(projectDetailPage).toContain('한 장 고르고, 바로 결과를 읽습니다.');
+    expect(projectDetailPage).toContain('홀수 카드만 살아남는');
+    expect(projectDetailPage).toContain('카드 한 장으로 턴을 가져옵니다.');
   });
 
   it('removes campaign-style follow/share blocks from primary pages', () => {
@@ -247,7 +247,7 @@ describe('public UI copy cleanup', () => {
       readFrontmatter('content/writing/2026-04-26-runtime-화면-확인-기록.mdx'),
     ].join('\n');
 
-    expect(combined).toContain('느리지만 멈추지 않고 게임을 만듭니다.');
+    expect(combined).toContain('느려도 손은 놓지 않습니다.');
     expect(combined).not.toMatch(/짧게 만질 수 있는 작은 게임을 만듭니다|꼬물은 작은 게임을 만들고, 게임을 해본 뒤 읽을 글을 함께 보여 줍니다|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는/);
     expect(combined).toContain('카드 한 장 고르기');
     expect(combined).toContain('게임 글');
@@ -307,7 +307,7 @@ describe('public UI copy cleanup', () => {
     const projectCard = read('components/project-card.tsx');
 
     expect(projectCard).not.toMatch(/projectLines|projectAvailability|StatusFacts|project\.progressStatus/);
-    expect(projectCard).not.toMatch(/>새 소식<|식단을 정하면 장보기 목록과 가격 판단으로 이어집니다|홀수만 살아남는 턴에서 15를 내면 상대의 13을 넘깁니다|막대를 옮기면 다음 상태가 바로 보입니다|기록 읽기|첫 행동과 결과가 바로 이어지는지 확인할 수 있게/);
+    expect(projectCard).not.toMatch(/>새 소식<|식단을 정하면 장보기 목록과 가격 판단으로 이어집니다|홀수 카드만 살아남는에서 15를 내면 상대의 13을 넘깁니다|막대를 옮기면 다음 상태가 바로 보입니다|기록 읽기|첫 행동과 결과가 바로 이어지는지 확인할 수 있게/);
     expect(projectCard).toContain('function WandererCardPreview');
     expect(projectCard).toContain("project.slug === 'wanderer'");
     expect(projectCard).toContain('wanderer-card-preview');
@@ -372,7 +372,7 @@ describe('public UI copy cleanup', () => {
     expect(detail).not.toContain('figure id="play-video" className="relative scroll-mt-28 overflow-hidden rounded-2xl border');
     expect(detail).toContain('md:hidden');
     expect(detail).toContain('hidden max-h-[520px] w-full object-contain md:block');
-    expect(detail).toContain('결과 확인');
+    expect(detail).toContain('승부 읽기');
     expect(miniPlay).not.toContain('section id="mini-play" className="scroll-mt-28 rounded-[20px] border');
     expect(miniPlay).not.toContain('href="#play-video"');
     expect(miniPlay).not.toContain('rounded-[18px] border p-4 ${selectedCard');
@@ -387,8 +387,8 @@ describe('public UI copy cleanup', () => {
     const og = read('app/opengraph-image.tsx');
     const combined = [home, shell, writing, projects, site, og].join('\n');
 
-    expect(combined).toContain('느리지만 멈추지 않고 게임을 만듭니다.');
-    expect(combined).toContain('작은 게임과 작업 글을 꾸준히 쌓는 작업실입니다.');
+    expect(combined).toContain('느려도 손은 놓지 않습니다.');
+    expect(combined).toContain('만들다 고친 이유를 짧은 글로 남기는 곳입니다.');
     expect(combined).not.toMatch(/고르면 바로 결과가 보이는 게임|꼬물은 카드를 고르고, 막대를 옮기고, 문장을 누르는|글은 게임을 해본 뒤에 읽는 설명|작은 게임, 그리고 게임 뒤에 읽는 글|작은 게임을 만들고, 게임 뒤에 읽는 글을 함께 보여 줍니다|게임을 먼저 해보고, 그 뒤에 선택이 왜 그렇게 놓였는지|먼저 게임을 고른 뒤, 궁금해진 이야기는 게임 뒤의 글에서 이어 읽습니다/);
     expect(combined).not.toMatch(/작은 게임과 게임 글|선택 뒤에 남은 이야기|선택 뒤에 남은|게임 뒤의 글<\/p>[\s\S]*선택이 짧아진 이유/);
   });
@@ -425,8 +425,8 @@ describe('public UI copy cleanup', () => {
       readdirSync('content/projects').filter((name) => name.endsWith('.mdx')).map((name) => read(`content/projects/${name}`)).join('\n'),
     ].join('\n');
 
-    expect(combined).toContain('짧게 끝나는 작은 게임');
-    expect(combined).toContain('카드 한 장을 고르면 바로 결과가 나옵니다');
+    expect(combined).toContain('느리게라도 계속 만듭니다');
+    expect(combined).toContain('고르면 바로 승부가 갈립니다');
     expect(combined).not.toMatch(/장면|감각|붙잡|남깁|둡니다|살핍니다|이어 봅니다|먼저 두고|먼저 보여|목록처럼 읽|게임 밖에서 나온|제작 노트|게임 안에서 나온 기록|선택과 결과가 남은 글|지금 만질/);
   });
 
@@ -438,14 +438,14 @@ describe('public UI copy cleanup', () => {
     const linksPage = read('app/links/page.tsx');
 
     expect(projectsPage).not.toMatch(/어디서 시작할지 바로 보이게|카드 다음에는 막대와 선택지/);
-    expect(projectsPage).toContain('먼저 해볼 게임을 고릅니다');
+    expect(projectsPage).toContain('손이 가는 것부터 시작합니다');
     expect(projectDetail).not.toContain('PageHero eyebrow="game"');
     expect(projectDetail).not.toContain('title={<>{game.title}<br />게임 글</>}');
     expect(projectDetail).not.toMatch(/다음에 읽을 것|새 게임 글/);
     expect(projectDetail).toContain('eyebrow="게임"');
     expect(projectDetail).toContain('title={game.title}');
     expect(writingPage).not.toMatch(/text-point">게임 글<\/p>[\s\S]*>\s*게임 글\s*<\/h1>/);
-    expect(writingPage).toContain('게임을 만들며 남긴 글');
+    expect(writingPage).toContain('만들다가 걸린 것들');
     expect(writingDetail).not.toMatch(/\{post\.relatedProjects\.map\(\(project\).*\{project\}/);
     expect(linksPage).not.toMatch(/코드와 메모|게임은 사이트에서 먼저 읽히지만/);
   });

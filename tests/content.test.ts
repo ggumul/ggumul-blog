@@ -76,7 +76,7 @@ describe('content loader', () => {
 
     expect(taxonomy.categories).toContain('게임 배치');
     expect(taxonomy.categories).toContain('만드는 태도');
-    expect(taxonomy.categories).toContain('이어지는 턴');
+    expect(taxonomy.categories).toContain('같은 턴');
     expect(taxonomy.categories).toContain('카드 승부');
     expect(taxonomy.series).toContain('꼬물');
     expect(taxonomy.series).toContain('Wanderer');
@@ -264,7 +264,7 @@ describe('content loader', () => {
     const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
     const projectSlugs = new Set(projects.map((project) => project.slug));
     const postSlugs = new Set(posts.map((post) => post.slug));
-    const allowedProgressStatuses = new Set(['플레이 가능', '미리보기', '장보기 판단', '퍼즐', '색 퍼즐', '선택 게임', '보류']);
+    const allowedProgressStatuses = new Set(['한 턴', '미리보기', '장보기', '퍼즐', '색 퍼즐', '선택 게임', '쉬는 중']);
 
     for (const project of projects) {
       expect(project.relatedPosts.every((slug) => postSlugs.has(slug))).toBe(true);
