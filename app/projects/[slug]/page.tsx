@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PageHero, Pill } from '@/components/brand-ui';
-import { WandererTurnStrip } from '@/components/wanderer-turn-strip';
 import { getProjectBySlug, getProjects, getWriting, resolveProjectRecords } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
@@ -79,15 +78,12 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             손에 있던 10이 조건 변화 뒤 버림 더미로 가는 한 턴입니다.
           </figcaption>
         </figure>
-
-        <WandererTurnStrip />
-
         <section className="grid gap-4 md:grid-cols-2">
-        <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">플레이 영상</p>
+        <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">한 턴 순서</p>
         <div className="space-y-0 md:hidden">
           {[
             ['규칙 읽기', '이번 턴은 짝수 카드를 버림 더미로 보냅니다.'],
-            ['카드 선택', '5, 10, 15 중 하나를 냅니다.'],
+            ['카드 분류', '10은 버림 더미로 가고, 5와 15가 승부 후보가 됩니다.'],
             ['승부 읽기', '5와 15가 승부 후보이고, 15가 턴을 가져갑니다.'],
           ].map(([title, body]) => (
             <div key={title} className="border-t border-line/45 py-3 first:border-t-0 first:pt-0">
@@ -97,7 +93,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           ))}
         </div>
         <video className="hidden max-h-[520px] w-full object-contain md:block" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
-        <p className="text-xs font-semibold leading-6 text-subtext">짧은 대전에서 규칙을 읽고 카드를 낸 뒤, 승부 후보 숫자로 턴을 가르는 영상입니다.</p>
+        <p className="text-xs font-semibold leading-6 text-subtext">GIF와 같은 사건을 길게 잡은 영상입니다. 10은 버림 더미로 가고, 5와 15가 승부 후보가 된 뒤, 15가 턴을 가져갑니다.</p>
       </section>
 
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">

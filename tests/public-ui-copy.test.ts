@@ -180,21 +180,19 @@ describe('public UI copy cleanup', () => {
     expect(writingPage).toContain('Wanderer');
   });
 
-  it('lets a visitor resolve the Wanderer turn from the public page without bringing back mini-play copy', () => {
+  it('keeps Wanderer as a blog page, not a playable game window', () => {
     const projectDetailPage = read('app/projects/[slug]/page.tsx');
-    const turnStrip = read('components/wanderer-turn-strip.tsx');
+    const components = readdirSync('components').join('\n');
 
-    expect(projectDetailPage).toContain("import { WandererTurnStrip } from '@/components/wanderer-turn-strip';");
-    expect(projectDetailPage).toContain('<WandererTurnStrip />');
-    expect(turnStrip).toContain('use client');
-    expect(turnStrip).toContain('카드 10');
-    expect(turnStrip).toContain('5를 내면 버림 더미로 가지 않고 승부 후보가 됩니다. 같은 후보인 15와 비교해서 턴은 15가 가져갑니다.');
-    expect(turnStrip).toContain('10을 내면 짝수라서 버림 더미로 갑니다. 이 턴의 승부 후보가 아닙니다.');
-    expect(turnStrip).toContain('15를 내면 승부 후보가 되고, 5와 비교해서 이 턴을 가져갑니다.');
-    expect([projectDetailPage, turnStrip].join('\n')).not.toMatch(/WandererMiniPlay|wanderer-mini-play|#mini-play|mini-play|게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|상대 카드 13|상대는 13|남은 카드끼리|홀수라 남|살아남/);
+    expect(projectDetailPage).not.toContain("import { WandererTurnStrip } from '@/components/wanderer-turn-strip';");
+    expect(projectDetailPage).not.toContain('<WandererTurnStrip />');
+    expect(components).not.toContain('wanderer-turn-strip.tsx');
+    expect(projectDetailPage).toContain('/media/devlog-gifs/wanderer-rule-result.gif');
+    expect(projectDetailPage).toContain('손에 있던 10이 조건 변화 뒤 버림 더미로 가는 한 턴입니다.');
+    expect(projectDetailPage).not.toMatch(/button|use client|useState|onClick|aria-pressed|카드 5|카드 10|카드 15|카드를 냅니다|직접 선택|선택해|눌러|플레이 창구|체험|해보기|게임 해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴/);
   });
 
-  it('keeps the Wanderer detail page focused on play before follow/devlog blocks', () => {
+  it('keeps the Wanderer detail page focused on one turn event before follow/devlog blocks', () => {
     const projectDetailPage = read('app/projects/[slug]/page.tsx');
 
     expect(projectDetailPage).not.toMatch(/WandererMiniPlay|wanderer-mini-play|#mini-play|mini-play/);
