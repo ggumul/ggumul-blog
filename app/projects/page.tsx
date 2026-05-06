@@ -5,7 +5,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '작은 게임들',
-  description: '10을 냈는데 바로 버려지는 짧은 판에서 시작합니다.',
+  description: '작은 게임을 만들며 바꾼 내용을 글과 함께 모았습니다.',
   path: '/projects',
 });
 
@@ -24,10 +24,10 @@ export default async function ProjectsPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">게임</p>
         <h1 className="text-[30px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          10을 냈는데, 바로 버려졌습니다.
+          작은 게임을 만들며 바꾼 내용을 모았습니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          Wanderer에서는 10이 손에 있어도 버림 더미로 갑니다. Hanoi는 방금 옮긴 막대가 다음 길을 막고, 저녁 장보기는 가격 때문에 살 재료가 바뀝니다.
+          Wanderer, Hanoi, TRPG, 저녁 장보기처럼 지금 손대는 작은 판을 모았습니다. 자세한 변경은 각 글에서 읽습니다.
         </p>
       </section>
 
@@ -39,7 +39,7 @@ export default async function ProjectsPage() {
               <h2 className="mt-2 text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[46px]">{lead.project.title}</h2>
             </div>
           </div>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">10은 버림 더미로 가고, 5와 15가 승부 후보가 됩니다. Wanderer는 15가 턴을 가져가는 짧은 카드 게임입니다.</p>
+          <p className="max-w-3xl text-sm leading-7 text-subtext">Wanderer는 손패, 규칙, 버림 더미, 승부 후보로 한 턴을 끝내는 모바일 카드 게임입니다.</p>
           <ProjectCard project={lead.project} records={lead.records} />
         </section>
       ) : null}
@@ -59,7 +59,7 @@ export default async function ProjectsPage() {
       <section className="space-y-4">
         <div>
           <p className="text-[12px] font-black tracking-[0.16em] text-point">글</p>
-          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">틀어진 선택들</h2>
+          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">만드는 동안 바꾼 것들</h2>
         </div>
         <div className="space-y-3 border-y border-line/70 py-2">
           {worklines.flatMap(({ project, records }) => records.slice(0, 2).map((post) => ({ project, post }))).map(({ project, post }) => (

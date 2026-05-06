@@ -65,7 +65,7 @@ describe('public UI copy cleanup', () => {
     expect(projectCard).not.toMatch(/지금 바로 볼 장면|다음에 이어 볼 기록|왜 이렇게 만들었는지|기록 기반 카드|이어 읽기|관련 기록|볼 수 있는 것|볼 지점/);
   });
 
-  it('keeps the projects page focused on Wanderer instead of dashboard metrics', () => {
+  it('keeps the projects page as a game list instead of dashboard metrics or a single Wanderer incident', () => {
     const projectsPage = read('app/projects/page.tsx');
 
     expect(projectsPage).toContain("project.slug === 'wanderer'");
@@ -77,25 +77,25 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toMatch(/Wanderer부터 바로 봅니다|먼저 볼 건|줄였습니다|한장을|짧게 보고 고릅니다|새로 좋아진 점|살아남고|13보다 높아/);
     expect(projectsPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴/);
     expect(projectsPage).not.toMatch(/안전한 선택이 먼저 틀어집니다|규칙 앞에서|안전해 보|좋아 보|괜찮아 보/);
-    expect(projectsPage).toContain('10을 냈는데, 바로 버려졌습니다.');
-    expect(projectsPage).toContain('10은 버림 더미로 가고');
+    expect(projectsPage).not.toContain('틀어진 선택들');
+    expect(projectsPage).toContain('작은 게임을 만들며 바꾼 내용을 모았습니다.');
+    expect(projectsPage).toContain('Wanderer는 손패, 규칙, 버림 더미, 승부 후보로 한 턴을 끝내는 모바일 카드 게임입니다.');
+    expect(projectsPage).not.toMatch(/10을 냈는데, 바로 버려졌습니다|10은 버림 더미로 가고, 5와 15가 승부 후보/);
   });
 
-  it('states the real ggumul identity before introducing any single game', () => {
+  it('keeps home as a blog index before any project pitch or single Wanderer incident', () => {
     const homePage = read('app/page.tsx');
-    const heroSection = homePage.slice(homePage.indexOf('<section className="max-w-4xl'), homePage.indexOf('{leadProject ? ('));
-    const leadSection = homePage.slice(homePage.indexOf('{leadProject ? ('), homePage.indexOf('{otherProjects.length ? ('));
+    const topSection = homePage.slice(homePage.indexOf('<section className="max-w-4xl'), homePage.indexOf('{projectLinks.length ? ('));
+    const writingSectionIndex = homePage.indexOf('{latestPosts.length ? (');
+    const projectsSectionIndex = homePage.indexOf('{projectLinks.length ? (');
 
-    expect(heroSection).toContain('10을 냈는데, 바로 버려졌습니다.');
-    expect(heroSection).toContain('꼬물은 작은 게임에서 카드가 빠지고 원반이 막히는 순간을 먼저 꺼냅니다.');
-    expect(heroSection).toContain('10이 버림 더미로 가고 15가 턴을 가져가는 순서');
-    expect(heroSection).not.toMatch(/고르면 바로 결과가 보이는 게임|카드를 고르고, 막대를 옮기고, 문장을 누르는|글은 게임을 해본 뒤에 읽는 설명|게임 뒤에 읽는 글|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는|큰 세계관보다|글은 그 뒤에 붙습니다/s);
-    expect(heroSection).not.toMatch(/Wanderer|카드 한 장|한 장의 카드|카드 한 장 고르기/);
-    expect(leadSection).toContain('지금 고친 것');
-    expect(leadSection).not.toMatch(/먼저 만져볼 게임|게임 해보기|해보기|카드 한 장 고르기/);
-    expect(leadSection).toContain('Wanderer');
-    expect(leadSection).toContain('한 턴에서 왜 10이 빠지는지 늦게 읽혔습니다.');
-    expect(leadSection).toContain('버림 더미를 먼저 가르고, 그 뒤에 승부 후보만 비교하게 바꿨습니다.');
+    expect(writingSectionIndex).toBeGreaterThan(0);
+    expect(projectsSectionIndex).toBeGreaterThan(0);
+    expect(writingSectionIndex).toBeLessThan(projectsSectionIndex);
+    expect(topSection).toContain('최근 글');
+    expect(topSection).not.toMatch(/GGUMUL|지금 고친 것|같이 만드는 것|전체 목록|01 처음엔|02 바꾼 뒤|03 그래서/);
+    expect(topSection).not.toMatch(/10을 냈는데, 바로 버려졌습니다|10이 버림 더미로 가고 15가 턴을 가져가는 순서|Wanderer/);
+    expect(topSection).toContain('꼬물은 작은 게임을 만들며 바꾼 내용을 짧게 적습니다.');
   });
 
   it('keeps home focused on one playable turn instead of a generic landing page', () => {
@@ -110,7 +110,7 @@ describe('public UI copy cleanup', () => {
       readFrontmatter('content/writing/2026-04-27-ggumul-dinner-grocery-가격-계약-정리.mdx'),
     ].join('\n');
 
-    expect(homePage).not.toMatch(/latestGamePath|다음에 볼 막힌 장면|남긴 판단|읽을 이유/);
+    expect(homePage).not.toMatch(/latestGamePath|다음에 볼 막힌 장면|남긴 판단|읽을 이유|지금 고친 것|같이 만드는 것|전체 목록|01 처음엔|02 바꾼 뒤|03 그래서/);
     expect(homePage).not.toContain('object-contain object-center');
     expect(homePage).not.toContain('<video');
     expect(homePage).not.toContain('wanderer-mobile-demo.mp4');
@@ -124,10 +124,10 @@ describe('public UI copy cleanup', () => {
 
     expect(homeVisibleSources).toContain('10은 이렇게 먼저 버려집니다');
     expect(homeVisibleSources).toContain('5와 15가 승부 후보가 되고');
-    expect(homePage).toContain('10을 냈는데, 바로 버려졌습니다.');
-    expect(homePage).toContain('한 턴에서 왜 10이 빠지는지 늦게 읽혔습니다.');
+    expect(homePage).toContain('최근 글');
+    expect(homePage).toContain('꼬물은 작은 게임을 만들며 바꾼 내용을 짧게 적습니다.');
     expect(homePage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴/);
-    expect(homePage).toContain('10이 버림 더미로 가고 15가 턴을 가져가는 순서');
+    expect(homePage).not.toMatch(/10이 버림 더미로 가고 15가 턴을 가져가는 순서/);
   });
 
   it('keeps the late-stage public copy fixes from regressing into awkward repeated labels', () => {
@@ -141,7 +141,7 @@ describe('public UI copy cleanup', () => {
     expect(aboutPage).not.toContain('열기 →');
     expect(aboutPage).not.toMatch(/카드 한 장을 냅니다|손으로 만질 수 있는 것부터/);
     expect(projectsPage).not.toMatch(/안전한 선택이 먼저 틀어집니다|규칙 앞에서|안전해 보|좋아 보|괜찮아 보/);
-    expect(projectsPage).toContain('10을 냈는데, 바로 버려졌습니다.');
+    expect(projectsPage).not.toContain('틀어진 선택들');
     expect(writingPage).toContain('만드는 동안 바꾼 것들');
     expect(writingPage).not.toMatch(/Wanderer 01|Wanderer 02|Wanderer 03/);
   });
@@ -162,7 +162,7 @@ describe('public UI copy cleanup', () => {
     expect(publicNavigationSources).not.toMatch(/열기|보기\s*→|읽기\s*→|→/);
     expect(publicNavigationSources).not.toMatch(/더 궁금한 이유|지금 해볼 게임|게임 목록 열기|글 모아 열기|대표 게임|다음 게임/);
     expect(publicNavigationSources).not.toMatch(/<span className="text-sm font-bold text-point">보기<\/span>/);
-    expect(publicNavigationSources).toContain('10을 냈는데, 바로 버려졌습니다.');
+    expect(publicNavigationSources).toContain('최근 글');
   });
 
   it('keeps project cards from repeating the same title as a nested CTA block', () => {
@@ -201,7 +201,7 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).not.toMatch(/지금 확인|지금 보는 이유|다음에 고칠 것|기록 보기|플레이 방식|현재 들어간 것|Wanderer 노트|폰에서 돌린 날/);
     expect(projectDetailPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
     expect(projectDetailPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|카드 한 장으로 턴을 가져옵니다|상대는 13|한 장을 고르면/);
-    expect(projectDetailPage).toContain('처음엔 10이 왜 사라지는지 늦게 읽혔습니다.');
+    expect(projectDetailPage).toContain('예전 설명은 15가 이긴다는 말부터 앞에 나와서 10이 왜 사라졌는지 늦게 읽혔습니다.');
     expect(projectDetailPage).toContain('10을 버려야 이기는 턴입니다.');
   });
 
@@ -241,7 +241,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/한장|한판|한장을/);
     expect(combined).not.toMatch(/Wanderer부터 고릅니다|결과가 여기에 뜹니다|상대 카드 13|상대는 13|카드 한 장으로 턴을 가져옵니다|한 장을 고르면|한 장만 선택|짝수\/정답\/짝수|볼 수 있는 장면/);
     expect(combined).not.toMatch(/게임이 끊기는 순간을 고칩니다|어떤 순간에 멈추는지 보고 왜 바꿨는지|자세한 제작 이야기|아래에는 퍼즐과 서사 게임도 함께 모았습니다/);
-    expect(combined).toContain('지금 고친 것');
+    expect(combined).toContain('최근 글');
     expect(combined).toContain('만드는 동안 바꾼 것들');
   });
 
@@ -257,7 +257,7 @@ describe('public UI copy cleanup', () => {
       readFrontmatter('content/writing/2026-04-26-runtime-화면-확인-기록.mdx'),
     ].join('\n');
 
-    expect(combined).toContain('10을 냈는데, 바로 버려졌습니다.');
+    expect(combined).toContain('꼬물은 작은 게임을 만들며 바꾼 내용을 짧게 적습니다.');
     expect(combined).not.toMatch(/짧게 만질 수 있는 작은 게임을 만듭니다|꼬물은 작은 게임을 만들고, 게임을 해본 뒤 읽을 글을 함께 보여 줍니다|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는/);
     expect(combined).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|먼저 만져볼 게임/);
     expect(combined).toContain('글');
@@ -301,7 +301,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/봤습니다|봅니다|확인합니다|검증|실행|Simulator|Flutter|wanderer-was|플레이 확인|계약 점검 중/);
     expect(combined).not.toMatch(/대표 게임 보기|게임 더 보기|전체 보기|글 더 보기|최근 글 보기|끊긴 지점 보기|어긋난 이유 보기|퍼즐 흐름 보기|장보기 흐름 보기|개발 기록 보기/);
     expect(combined).not.toMatch(/게임의 화면, 변경 이유, 남은 문제|결과보다 과정|기록 가능한 개발|작은 단위의 완성|개발기록/);
-    expect(combined).not.toMatch(/실제 화면 기록|화면에서 막힌 지점|화면 노트|시스템 노트|프로젝트 소개|최근 글|최근 바뀐 장면|Wanderer 노트/);
+    expect(combined).not.toMatch(/실제 화면 기록|화면에서 막힌 지점|화면 노트|시스템 노트|프로젝트 소개|최근 바뀐 장면|Wanderer 노트/);
     expect(combined).not.toMatch(/게임 노트|장보기 기록|스튜디오 노트|#게임 개발|개발 중/);
     expect(combined).not.toMatch(/플레이 메모|Studio rhythm|4 Games Map|프로젝트 상태|작업 기준/);
     expect(combined).not.toMatch(/화면 있음|가격 연결 중|다른 항목|폰에서 본 장면|바로 고르기|첫 장면|새 장면|퍼즐 흐름|장보기 흐름|변형 규칙|빈 부분 다시 열기|가격 기준 다시 열기|끊긴 장면\s*→|프로젝트 지도|볼 항목|event 이름|payload 기준|작업 철학|진행 현황/);
@@ -372,7 +372,7 @@ describe('public UI copy cleanup', () => {
     expect(detail).not.toContain('rounded-[28px]');
     expect(detail).not.toContain('rounded-[24px] border border-line/70 bg-black/20');
     expect(detail).not.toContain('figure id="play-video" className="relative scroll-mt-28 overflow-hidden rounded-2xl border');
-    expect(detail).toContain('md:hidden');
+    expect(detail).toContain('wanderer-rule-result.gif');
     expect(detail).toContain('hidden max-h-[520px] w-full object-contain md:block');
     expect(detail).toContain('wanderer-rule-result.gif');
   });
@@ -384,18 +384,17 @@ describe('public UI copy cleanup', () => {
     const article = read('content/writing/2026-04-26-runtime-화면-확인-기록.mdx');
     const combined = [home, writing, detail, article].join('\n');
 
-    expect(home).toContain('지금 고친 것');
-    expect(home).toContain('한 턴에서 왜 10이 빠지는지 늦게 읽혔습니다.');
-    expect(home).toContain('버림 더미를 먼저 가르고, 그 뒤에 승부 후보만 비교하게 바꿨습니다.');
-    expect(home).toContain('10은 먼저 빠지고, 5와 15 중 15가 턴을 가져갑니다.');
+    expect(home).toContain('최근 글');
+    expect(home).toContain('꼬물은 작은 게임을 만들며 바꾼 내용을 짧게 적습니다.');
+    expect(home).not.toMatch(/지금 고친 것|01 처음엔|02 바꾼 뒤|03 그래서/);
 
     expect(writing).toContain('만드는 동안 바꾼 것들');
     expect(writing).not.toMatch(/Wanderer 01|Wanderer 02|Wanderer 03/);
 
-    expect(detail).toContain('처음엔 10이 왜 사라지는지 늦게 읽혔습니다.');
-    expect(detail).toContain('버림 더미를 앞에 두고, 승부 후보는 그 다음에 묶었습니다.');
-    expect(detail).toContain('그래서 10은 먼저 빠지고 15가 턴을 가져갑니다.');
-    expect(detail).toMatch(/처음엔[\s\S]*바꾼 뒤[\s\S]*그래서/);
+    expect(detail).toContain('Wanderer는 매 턴 조건이 바뀌는 카드 게임입니다.');
+    expect(detail).toContain('예전 설명은 15가 이긴다는 말부터 앞에 나와서 10이 왜 사라졌는지 늦게 읽혔습니다.');
+    expect(detail).toContain('Wanderer에서 바꾼 것들');
+    expect(detail).not.toMatch(/처음엔[\s\S]*바꾼 뒤[\s\S]*그래서/);
 
     expect(article).toContain('처음엔 15가 이긴다는 말이 먼저 나왔습니다.');
     expect(article).toContain('그래서 10을 버림 더미로 보내는 칸을 승부 후보보다 앞에 뒀습니다.');
@@ -412,7 +411,7 @@ describe('public UI copy cleanup', () => {
     const og = read('app/opengraph-image.tsx');
     const combined = [home, shell, writing, projects, site, og].join('\n');
 
-    expect(combined).toContain('10을 냈는데, 바로 버려졌습니다.');
+    expect(combined).toContain('꼬물은 작은 게임을 만들며 바꾼 내용을 짧게 적습니다.');
     expect(combined).toContain('꼬물은 작은 게임에서 카드가 빠지고 원반이 막히는 순간을 먼저 꺼냅니다.');
     expect(combined).not.toMatch(/고르면 바로 결과가 보이는 게임|꼬물은 카드를 고르고, 막대를 옮기고, 문장을 누르는|글은 게임을 해본 뒤에 읽는 설명|작은 게임, 그리고 게임 뒤에 읽는 글|작은 게임을 만들고, 게임 뒤에 읽는 글을 함께 보여 줍니다|게임을 먼저 해보고, 그 뒤에 선택이 왜 그렇게 놓였는지|먼저 게임을 고른 뒤, 궁금해진 이야기는 게임 뒤의 글에서 이어 읽습니다/);
     expect(combined).not.toMatch(/작은 게임과 게임 글|선택 뒤에 남은 이야기|선택 뒤에 남은|게임 뒤의 글<\/p>[\s\S]*선택이 짧아진 이유/);
@@ -448,7 +447,7 @@ describe('public UI copy cleanup', () => {
       readdirSync('content/projects').filter((name) => name.endsWith('.mdx')).map((name) => read(`content/projects/${name}`)).join('\n'),
     ].join('\n');
 
-    expect(combined).toContain('10을 냈는데, 바로 버려졌습니다.');
+    expect(combined).toContain('꼬물은 작은 게임을 만들며 바꾼 내용을 짧게 적습니다.');
     expect(combined).toContain('10은 이렇게 먼저 버려집니다');
     expect(combined).toContain('5와 15가 승부 후보가 되고');
     expect(combined).toContain('10은 손에 있어도 이번 규칙에서는 버림 더미로 갑니다');
@@ -464,7 +463,7 @@ describe('public UI copy cleanup', () => {
 
     expect(projectsPage).not.toMatch(/어디서 시작할지 바로 보이게|카드 다음에는 막대와 선택지/);
     expect(projectsPage).not.toMatch(/안전한 선택이 먼저 틀어집니다|규칙 앞에서|안전해 보|좋아 보|괜찮아 보/);
-    expect(projectsPage).toContain('10을 냈는데, 바로 버려졌습니다.');
+    expect(projectsPage).not.toContain('틀어진 선택들');
     expect(projectDetail).not.toContain('PageHero eyebrow="game"');
     expect(projectDetail).not.toContain('title={<>{game.title}<br />게임 글</>}');
     expect(projectDetail).not.toMatch(/다음에 읽을 것|새 게임 글/);
