@@ -1,13 +1,13 @@
 ---
 title: Hanoi
 slug: hanoi
-summary: 원반 하나를 옮긴 뒤 다음 자리가 제대로 열리는지 보는 퍼즐입니다.
+summary: 원반 하나를 옮긴 뒤 다음에 갈 수 있는 자리가 바로 갈리는 퍼즐입니다.
 featured: false
-status: 이동 규칙 확인 중
+status: 다음 자리
 progressStatus: 퍼즐
-verificationNote: 다음 이동이 열리는 장면을 GIF에 담았습니다.
-nextStep: 막히는 상태를 더 분명하게 표시하기
-evidenceLabel: 다음 자리 확인 GIF
+verificationNote: 원반을 옮긴 뒤 다음 자리가 열리는 장면을 GIF에 담았습니다.
+nextStep: 막힌 자리와 열린 자리 구분하기
+evidenceLabel: 다음 자리 GIF
 evidenceHref: /media/devlog-gifs/hanoi-next-seat.gif
 order: 2
 relatedPosts:
@@ -16,10 +16,10 @@ relatedPosts:
 coverImage: /project-covers/hanoi.png
 ---
 
-Hanoi는 설명할 것이 많은 퍼즐이 아닙니다. 중요한 것은 원반 하나를 옮긴 뒤 다음에 어디로 갈 수 있는지가 바로 보이는지입니다.
+Hanoi에서 재미있는 순간은 원반을 드는 순간보다 내려놓은 뒤에 옵니다. 방금 놓은 원반 때문에 어떤 길은 닫히고, 어떤 길은 새로 열립니다.
 
-처음 화면은 이동이 끝난 뒤에도 다음 자리가 흐릿했습니다. 그래서 성공한 이동보다 그다음 선택지를 더 오래 보았습니다.
+처음 화면은 이동이 끝난 뒤에도 그 차이가 흐렸습니다. 플레이어가 규칙을 외워서 맞히는 퍼즐이 아니라, 방금 한 행동이 다음 길을 어떻게 바꿨는지 눈으로 따라가야 했습니다.
 
-<img src="/media/devlog-gifs/hanoi-next-seat.gif" alt="Hanoi 다음 자리 GIF" />
+<img src="/media/devlog-gifs/hanoi-next-seat.gif" alt="Hanoi에서 원반 이동 뒤 다음 자리가 열리는 장면" />
 
-지금은 화려한 효과보다 막힌 자리와 열린 자리를 구분하는 쪽을 먼저 고치고 있습니다. 이 구분이 느리면 퍼즐은 금방 규칙 설명으로 돌아가 버립니다.
+그래서 Hanoi는 화려한 연출보다 자리의 차이를 먼저 붙잡습니다. 열린 자리와 막힌 자리가 분명하면, 퍼즐은 설명문으로 돌아가지 않고 손끝에서 이어집니다.

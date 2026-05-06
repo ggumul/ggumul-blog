@@ -54,7 +54,7 @@ describe('content loader', () => {
     expect(monthly?.relatedProjects).toContain('trpg');
     expect(encoded?.slug).toBe('wanderer-short-card-game');
     expect(runtime?.slug).toBe('wanderer-one-card');
-    expect(runtime?.summary).toContain('먼저 빠진 카드');
+    expect(runtime?.summary).toContain('버림 더미로 간 10');
   });
 
   it('builds taxonomy and archive snapshots from the current writing set', async () => {
@@ -62,8 +62,8 @@ describe('content loader', () => {
     const snapshot = await getHomeArchiveSnapshot();
     const sections = await getWritingArchiveSections();
 
-    expect(taxonomy.categories).toEqual(expect.arrayContaining(['제작 기록', 'Wanderer', '생활 도구']));
-    expect(taxonomy.series).toEqual(expect.arrayContaining(['작은 게임들', 'Wanderer 작업노트', 'Dinner Grocery']));
+    expect(taxonomy.categories).toEqual(expect.arrayContaining(['작은 게임', 'Wanderer', '생활 도구']));
+    expect(taxonomy.series).toEqual(expect.arrayContaining(['작은 게임들', 'Wanderer 글', 'Dinner Grocery']));
     expect(taxonomy.tags.length).toBeGreaterThanOrEqual(8);
     expect(snapshot.latest?.slug).toBe('dinner-grocery-price');
     expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['ggumul-dinner-grocery']);

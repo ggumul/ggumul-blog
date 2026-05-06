@@ -7,7 +7,7 @@ export const siteConfig = {
   name: 'ggumul / 꼬물',
   shortName: '꼬물',
   url: SITE_URL,
-  description: '꼬물은 천천히 만들고 있는 것들을 적어 두는 블로그입니다.',
+  description: '꼬물은 작은 게임과 생활 도구를 천천히 이어 가는 블로그입니다.',
   keywords: [
     '꼬물',
     'ggumul',

@@ -3,7 +3,7 @@ import { createMetadata } from '@/lib/site';
 
 const links = [
   { label: 'GitHub', href: 'https://github.com/ggomul', displayHref: 'github.com/ggomul', description: '코드와 배포 내역을 올립니다', type: 'code' },
-  { label: 'Notion', href: 'https://www.notion.so/348521c1518081e08d81d9215785de15', displayHref: 'notion.so/ggumul', description: '게임이 되기 전의 메모를 둡니다', type: 'note' },
+  { label: 'Notion', href: 'https://www.notion.so/348521c1518081e08d81d9215785de15', displayHref: 'notion.so/ggumul', description: '아직 글로 묶기 전의 조각을 둡니다', type: 'note' },
   { label: '메일', href: 'mailto:hwang95903@gmail.com', displayHref: 'hwang95903@gmail.com', description: '따로 할 말이 있으면 여기로 보내 주세요', type: 'mail' },
 ];
 
@@ -19,13 +19,13 @@ export default function LinksPage() {
       <PageHero
         eyebrow="링크"
         title={<>밖에 있는 곳들</>}
-        description="코드는 GitHub에 있고, 아직 글이 되지 않은 메모는 Notion에 있습니다. 연락은 메일로 받습니다."
+        description="코드는 GitHub에 있고, 글로 묶기 전의 조각은 Notion에 있습니다. 연락은 메일로 받습니다."
       >
         <p>필요한 곳만 짧게 두었습니다.</p>
       </PageHero>
 
       <section className="space-y-5">
-        <SectionHeader eyebrow="목록" title="GitHub, Notion, 메일" description="코드, 메모, 연락처입니다." />
+        <SectionHeader eyebrow="목록" title="GitHub, Notion, 메일" description="코드, 조각, 연락처입니다." />
         <div className="divide-y divide-line/70 border-y border-line/70">
           {links.map((link) => (
             <a key={link.label} href={link.href} target={link.href.startsWith('mailto:') ? undefined : '_blank'} rel={link.href.startsWith('mailto:') ? undefined : 'noreferrer'} className="grid gap-2 py-5 transition hover:text-text md:grid-cols-[140px_minmax(0,1fr)_auto] md:items-center">

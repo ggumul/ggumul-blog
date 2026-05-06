@@ -4,7 +4,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '글',
-  description: '꼬물이 만들면서 남긴 짧은 글입니다.',
+  description: '꼬물이 작은 게임과 생활 도구를 만들며 쓴 글입니다.',
   path: '/writing',
 });
 
@@ -31,14 +31,14 @@ export default async function WritingPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">글</p>
         <h1 className="text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          아직 만드는 중이라서 남긴 말들.
+          장면이 먼저 보이는 글들.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          큰 소개글보다 작은 수정이 먼저입니다. 왜 줄였는지, 어디서 끊겼는지, 다음에 무엇을 붙일지 적습니다.
+          카드가 왜 빠졌는지, 원반을 옮긴 뒤 어떤 자리가 열렸는지, 저녁 재료를 왜 나눴는지처럼 한 장면에서 시작한 글을 모았습니다.
         </p>
       </section>
 
-      <section aria-label="게임 제작 기록" className="space-y-3">
+      <section aria-label="게임 글" className="space-y-3">
         <div>
           <p className="text-[12px] font-black tracking-[0.16em] text-point">게임</p>
           <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">카드, 퍼즐, 선택지</h2>

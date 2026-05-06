@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 function RelatedPostRows({ posts }: { posts: Awaited<ReturnType<typeof getWriting>> }) {
   if (posts.length === 0) {
-    return <p className="border-t border-line/70 py-4 text-sm leading-7 text-subtext">아직 붙여 둘 글이 많지 않습니다.</p>;
+    return <p className="border-t border-line/70 py-4 text-sm leading-7 text-subtext">아직 이어 읽을 글이 많지 않습니다.</p>;
   }
 
   return (
@@ -60,7 +60,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             세 장짜리 판으로 줄인 카드 게임.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            Wanderer는 아직 큰 세계를 말할 단계가 아닙니다. 지금은 손에 든 세 장과 그 턴에 붙은 조건만으로 한 판이 읽히는지 보고 있습니다.
+            Wanderer는 큰 카드 전투보다 작은 턴에서 시작합니다. 손에 든 세 장 중 한 장이 조건에 걸려 빠지고, 남은 카드가 승부 후보가 됩니다.
           </p>
         </div>
       </section>
@@ -68,14 +68,14 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <figure className="overflow-hidden rounded-[2rem] border border-[#2d2620] bg-[#17120f] p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
         <img alt="Wanderer 턴 표본 GIF" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/wanderer-rule-result.gif" />
         <figcaption className="px-3 pb-3 pt-4 text-sm text-[#c7b49d]">
-          이번 표본에서는 손패 하나가 조건에 걸려 빠지고, 남은 카드로 턴이 끝납니다.
+          손패 하나가 조건에 걸려 버림 더미로 가고, 남은 카드로 턴이 끝납니다.
         </figcaption>
       </figure>
 
       <section className="grid gap-6 md:grid-cols-[minmax(0,1fr)_320px] md:items-start">
         <div className="prose max-w-none">
-          <p>처음에는 카드 게임답게 더 많은 효과와 설명을 넣으려고 했습니다. 그런데 화면에 말이 많아지자 정작 이번 턴에서 무슨 일이 일어났는지 늦게 읽혔습니다.</p>
-          <p>그래서 첫 표본은 세 장짜리 판으로 줄였습니다. 조건 하나가 붙고, 그 조건 때문에 한 장이 빠지고, 남은 카드끼리 결과를 냅니다. 이 정도까지 줄여야 다음에 무엇을 더해야 하는지도 보였습니다.</p>
+          <p>처음에는 카드 효과와 설명이 더 많았습니다. 화면은 풍성해졌지만, 정작 이번 턴에서 어떤 카드가 빠졌는지는 늦게 보였습니다.</p>
+          <p>세 장으로 줄이자 순서가 보였습니다. 조건을 읽고, 10이 빠지고, 남은 5와 15가 승부 후보가 됩니다. Wanderer는 그 짧은 흐름이 납득되는지부터 붙잡습니다.</p>
         </div>
         <video className="hidden max-h-[520px] w-full object-contain md:block" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
       </section>
@@ -83,7 +83,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
         <div className="space-y-5">
           <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">글</p>
-          <h2 className="text-[30px] font-black leading-tight tracking-[-0.03em] text-text md:text-[46px]">Wanderer를 만지며 쓴 글</h2>
+          <h2 className="text-[30px] font-black leading-tight tracking-[-0.03em] text-text md:text-[46px]">Wanderer에서 나온 글</h2>
           <RelatedPostRows posts={relatedPosts} />
         </div>
       </section>

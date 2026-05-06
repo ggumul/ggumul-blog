@@ -30,8 +30,8 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
     next: '줄인 이유 다시 읽기',
   },
   'small-games-first-move': {
-    stakes: '프로젝트 이름보다 오늘 고칠 첫 선택이 더 필요했습니다.',
-    change: '카드, 원반, 테마 선택처럼 다시 잡을 수 있는 장면만 남겼습니다.',
+    stakes: '프로젝트 이름보다 처음 보이는 장면이 더 중요했습니다.',
+    change: '카드, 원반, 테마 선택처럼 손이 먼저 가는 장면을 골랐습니다.',
     next: '첫 선택 다시 읽기',
   },
   'dinner-grocery-price': {
@@ -40,16 +40,16 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
     next: '장보기 다시 읽기',
   },
   'small-games-rhythm': {
-    stakes: '오래 비운 프로젝트는 큰 목표만 남으면 다시 잡기 어려웠습니다.',
-    change: '다시 열었을 때 손이 가는 작은 장면을 글에 남겼습니다.',
+    stakes: '오래 비운 프로젝트는 큰 목표만으로 다시 시작하기 어려웠습니다.',
+    change: '다시 열었을 때 바로 이어 볼 작은 장면을 골랐습니다.',
     next: '리듬 다시 읽기',
   },
 };
 
 export function getWritingReadingPath(slug: string): WritingReadingPath {
   return writingReadingPaths[slug] ?? {
-    stakes: '아직 따로 묶지 않은 글입니다.',
-    change: '본문에서 어떤 일을 고쳤는지 바로 이어 읽습니다.',
+    stakes: '이 글은 한 장면에서 시작합니다.',
+    change: '본문에서 그 장면이 어떻게 달라졌는지 이어 읽습니다.',
     next: '본문으로 가기',
   };
 }

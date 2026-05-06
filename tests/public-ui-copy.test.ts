@@ -66,6 +66,14 @@ describe('public copy safety rails', () => {
     expect(sources).not.toMatch(/Wanderer 01|Wanderer 02|Wanderer 03|지금 고친 것|01 처음엔|02 바꾼 뒤|03 그래서/);
   });
 
+  it('does not read like an internal task log', () => {
+    const sources = publicSources();
+
+    expect(sources).not.toMatch(/작업 중인 표본|확인 중|테마 선택 표본|다시 쓴 기록|월간 메모|제작 메모|장보기 메모|연결 문제 기록|설계 회고/);
+    expect(sources).not.toMatch(/보고 있습니다|고치고 있습니다|붙여 보려고 합니다|생각입니다|다음 작업|다음에는|계속 갱신하기|더 짧게 다듬기/);
+    expect(sources).not.toMatch(/기록\b|메모\b|흔적|작업 흔적|작업 순서|작업 중/);
+  });
+
   it('keeps links from exposing raw long URLs as the visible label', () => {
     const linksPage = read('app/links/page.tsx');
 

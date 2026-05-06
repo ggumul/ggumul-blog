@@ -1,13 +1,13 @@
 ---
 title: Color Hanoi
 slug: color-hanoi
-summary: 크기 규칙만 있던 Hanoi에 색 순서를 더해 막히는 이유를 늘려 본 퍼즐입니다.
+summary: Hanoi의 크기 규칙 위에 색 순서를 얹어, 왜 막혔는지 더 분명해야 하는 퍼즐입니다.
 featured: false
-status: 색 조건 실험 중
+status: 색 조건
 progressStatus: 색 퍼즐
-verificationNote: 색 조건에 막힌 이동을 GIF에 담았습니다.
-nextStep: 색 때문에 막힌 것과 크기 때문에 막힌 것을 다르게 보이게 하기
-evidenceLabel: 색 조건 확인 GIF
+verificationNote: 색 조건 때문에 이동이 막히는 장면을 GIF에 담았습니다.
+nextStep: 크기와 색의 실패 이유를 갈라 보이기
+evidenceLabel: 색 조건 GIF
 evidenceHref: /media/devlog-gifs/color-hanoi-rule.gif
 order: 3
 relatedPosts:
@@ -16,10 +16,10 @@ relatedPosts:
 coverImage: /project-covers/color-hanoi.png
 ---
 
-Color Hanoi는 Hanoi에 색 순서를 얹은 실험입니다. 크기만 맞으면 움직이던 퍼즐에 색 조건이 들어오면, 플레이어가 헷갈리는 이유도 하나 더 생깁니다.
+Color Hanoi는 익숙한 Hanoi에 색 순서를 더한 퍼즐입니다. 원반 크기만 보면 될 때보다 막히는 이유가 하나 더 늘어납니다.
 
-그래서 이 프로젝트에서는 성공한 이동보다 실패한 이동을 더 중요하게 봅니다. 왜 안 되는지 화면이 말하지 못하면 색 규칙은 재미가 아니라 방해가 됩니다.
+문제는 실패가 모두 똑같아 보일 때였습니다. 크기 때문에 안 되는지, 색 때문에 안 되는지 알 수 없으면 새 규칙은 재미가 아니라 짜증이 됩니다.
 
-<img src="/media/devlog-gifs/color-hanoi-rule.gif" alt="Color Hanoi 색 조건 GIF" />
+<img src="/media/devlog-gifs/color-hanoi-rule.gif" alt="Color Hanoi에서 색 조건 때문에 이동이 막히는 장면" />
 
-다음 작업은 실패 이유를 분리하는 일입니다. 크기 때문에 안 되는지, 색 때문에 안 되는지, 둘 다 아닌지부터 화면에서 갈라야 합니다.
+이 퍼즐의 중심은 성공한 이동보다 실패한 이동입니다. 막힌 이유가 화면에서 갈라져야 플레이어가 다음 수를 다시 생각할 수 있습니다.
