@@ -83,7 +83,7 @@ export function createMetadata({
           url: resolvedOgImage,
           width: 1200,
           height: 630,
-          alt: `${siteConfig.name} 대표 이미지`,
+          alt: `${siteConfig.name} 공유 이미지`,
         },
       ],
       ...(publishedTime ? { publishedTime } : {}),

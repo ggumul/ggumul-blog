@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} 대표 이미지`,
+        alt: `${siteConfig.name} 공유 이미지`,
       },
     ],
   },
