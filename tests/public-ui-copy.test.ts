@@ -188,6 +188,7 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).toContain('<WandererTurnStrip />');
     expect(turnStrip).toContain('use client');
     expect(turnStrip).toContain('카드 10');
+    expect(turnStrip).toContain('5는 홀수라 남지만, 15보다 작습니다.');
     expect(turnStrip).toContain('10은 홀수 규칙에 맞지 않아 빠집니다.');
     expect(turnStrip).toContain('15가 마지막 비교에 남습니다.');
     expect([projectDetailPage, turnStrip].join('\n')).not.toMatch(/WandererMiniPlay|wanderer-mini-play|#mini-play|mini-play|게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|상대 카드 13|상대는 13/);
