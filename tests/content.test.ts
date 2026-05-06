@@ -34,8 +34,8 @@ describe('content loader', () => {
       'dinner-grocery-price',
       'wanderer-one-card',
       'wanderer-same-turn',
-      'small-games-first-move',
       'wanderer-short-card-game',
+      'small-games-first-move',
       'small-games-rhythm',
     ]);
     expect(posts.filter((post) => post.featured)).toHaveLength(5);
@@ -60,13 +60,13 @@ describe('content loader', () => {
   it('supports url-encoded slugs for writing detail routes', async () => {
     const post = await getWritingBySlug('wanderer-%EC%B4%88%EA%B8%B0-%EC%84%A4%EA%B3%84-%ED%9A%8C%EA%B3%A0');
 
-    expect(post?.title).toBe('왜 Wanderer는 짧은 카드 게임으로 남았나');
+    expect(post?.title).toBe('Wanderer를 짧은 카드 게임으로 줄였습니다');
   });
 
   it('keeps the first runtime writing title framed around a concrete gameplay moment', async () => {
     const post = await getWritingBySlug('runtime-화면-확인-기록');
 
-    expect(post?.title).toBe('10은 왜 먼저 버려졌나');
+    expect(post?.title).toBe('10은 이렇게 먼저 버려집니다');
     expect(post?.summary).toContain('홀수 규칙 때문에 10이 사라지고');
     expect(post?.summary).not.toMatch(/안전해 보이는|좋은 카드가 아니라|자연스럽게 이어지게|정리했습니다|다듬었습니다/);
   });
@@ -98,8 +98,8 @@ describe('content loader', () => {
     expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual([
       'wanderer-one-card',
       'wanderer-same-turn',
-      'small-games-first-move',
       'wanderer-short-card-game',
+      'small-games-first-move',
       'small-games-rhythm',
     ]);
   });
