@@ -48,7 +48,7 @@ function resolvePostHeroFallback(post: { slug: string; category: string }) {
       label: 'Dinner Grocery',
       title: '장보기 전 가격',
       description: '메뉴를 고르고 재료를 적기 전에, 오늘 사도 괜찮은지 가격을 함께 읽습니다.',
-      badge: '장보기 도구',
+      badge: '장보기',
       tone: 'bg-[#182013]',
     };
   }

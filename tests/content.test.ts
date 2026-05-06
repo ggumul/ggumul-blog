@@ -265,7 +265,7 @@ describe('content loader', () => {
     const projectExpectations = new Map([
       ['wanderer', { gif: '/media/devlog-gifs/wanderer-rule-result.gif', caption: '10이 조건 변화 뒤 빠지는 한 턴' }],
       ['hanoi', { gif: '/media/devlog-gifs/hanoi-next-seat.gif', caption: '초록 원반을 열었다가 다시 막습니다' }],
-      ['color-hanoi', { gif: '/media/devlog-gifs/color-hanoi-order.gif', caption: '색 조건이 붙으면 같은 원반 이동도 다른 순서' }],
+      ['color-hanoi', { gif: '/media/devlog-gifs/color-hanoi-rule.gif', caption: '색 순서 규칙 때문에 같은 원반도 다른 자리' }],
       ['trpg', { gif: '/media/devlog-gifs/trpg-theme-choice.gif', caption: '테마 선택까지만 담았습니다' }],
       ['ggumul-dinner-grocery', { gif: '/media/devlog-gifs/dinner-buy-now-later.gif', caption: '오늘 살 것과 나중에 살 것' }],
     ]);

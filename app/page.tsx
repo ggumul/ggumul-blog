@@ -17,7 +17,7 @@ export default async function HomePage() {
   const snapshot = await getHomeArchiveSnapshot();
   const websiteJsonLd = createWebsiteJsonLd();
   const gameProjects = snapshot.worklines.filter((project) => project.slug !== 'ggumul-dinner-grocery');
-  const toolProjects = snapshot.worklines.filter((project) => project.slug === 'ggumul-dinner-grocery');
+  const groceryProjects = snapshot.worklines.filter((project) => project.slug === 'ggumul-dinner-grocery');
   const leadProject = gameProjects.find((project) => project.slug === 'wanderer') ?? gameProjects[0] ?? snapshot.worklines[0] ?? null;
   const otherProjects = gameProjects.filter((project) => project.slug !== leadProject?.slug).slice(0, 3);
   const allPosts = [snapshot.latest, ...snapshot.moreEntries].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
@@ -36,7 +36,7 @@ export default async function HomePage() {
           꼬물은 작은 게임에서 카드가 빠지고 원반이 막히는 순간을 먼저 꺼냅니다.
         </p>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext">
-          왜 10이 빠지고 15가 남았는지, 실제 판에서 보이는 순서대로 올립니다.
+          10이 빠지고 15가 남는 순서를 실제 판에서 보이는 대로 올립니다.
         </p>
       </section>
 
@@ -49,11 +49,11 @@ export default async function HomePage() {
             </div>
           </div>
           <p className="max-w-3xl text-sm leading-7 text-subtext">Wanderer에서 10은 손에 있어도 이번 규칙에서는 바로 빠집니다.</p>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">홀수 규칙 앞에서 10은 빠지고, 5는 낮고, 15가 상대 숫자를 넘깁니다.</p>
+          <p className="max-w-3xl text-sm leading-7 text-subtext">홀수만 남는 판이라 10은 빠지고, 5는 낮고, 15가 상대 숫자를 넘깁니다.</p>
         </section>
       ) : null}
 
-      {otherProjects.length || toolProjects.length ? (
+      {otherProjects.length || groceryProjects.length ? (
         <section className="space-y-4">
           <div className="flex items-end justify-between gap-4">
             <div>
@@ -63,7 +63,7 @@ export default async function HomePage() {
             <Link href="/projects" className="text-sm font-bold text-point hover:text-text">전체 목록</Link>
           </div>
           <div className="article-list">
-            {[...otherProjects, ...toolProjects].map((project) => (
+            {[...otherProjects, ...groceryProjects].map((project) => (
               <Link key={project.slug} href={`/projects/${project.slug}`} className="grid gap-2 py-4 md:grid-cols-[180px_minmax(0,1fr)] md:items-center">
                 <span className="text-sm font-black text-point">{project.title}</span>
                 <span className="text-sm leading-7 text-subtext">{project.summary}</span>

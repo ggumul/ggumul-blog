@@ -15,7 +15,7 @@ export const writingReadingPathSlugs = [
 
 const writingReadingPaths: Record<string, WritingReadingPath> = {
   'wanderer-one-card': {
-    stakes: '손패에 있던 10이 왜 빠지는지부터 시작합니다.',
+    stakes: '손패에 있던 10이 빠지는 순서부터 시작합니다.',
     change: '홀수 규칙 뒤에 10이 빠지고 15가 남는 한 턴입니다.',
     next: '버린 카드 읽기',
   },

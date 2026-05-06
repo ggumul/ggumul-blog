@@ -22,7 +22,7 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
 export function ProjectCard({ project, records = [], compact = false }: ProjectCardProps) {
   const projectHref = `/projects/${project.slug}`;
   const previewRecords = records.slice(0, compact ? 1 : 2);
-  const publicLabel = project.slug === 'ggumul-dinner-grocery' ? '곁가지 도구' : '작은 게임';
+  const publicLabel = project.slug === 'ggumul-dinner-grocery' ? '저녁 장보기' : '작은 게임';
 
   return (
     <article className="space-y-4 rounded-[20px] border border-line/45 bg-white/[0.035] p-4 md:p-5">

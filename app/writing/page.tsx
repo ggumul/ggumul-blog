@@ -31,10 +31,10 @@ export default async function WritingPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">글</p>
         <h1 className="text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          왜 그 선택을 버렸나
+          버린 선택들
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          10이 왜 빠졌는지, 긴 카드 게임을 왜 줄였는지, 가격이 붙으면 저녁 장보기가 어떻게 갈리는지 적습니다.
+          10이 빠지는 순서, 긴 카드 게임을 줄인 까닭, 가격이 붙은 장보기의 갈림을 적습니다.
         </p>
       </section>
 
@@ -60,7 +60,7 @@ export default async function WritingPage() {
       {outsidePosts.length ? (
         <section className="space-y-3">
           <div>
-            <p className="text-[12px] font-black tracking-[0.16em] text-point">도구</p>
+            <p className="text-[12px] font-black tracking-[0.16em] text-point">장보기</p>
             <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">오늘 살까, 미룰까</h2>
           </div>
           <div className="article-list">
