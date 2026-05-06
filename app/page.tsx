@@ -36,7 +36,7 @@ export default async function HomePage() {
           꼬물은 작은 게임에서 카드가 빠지고 원반이 막히는 순간을 먼저 꺼냅니다.
         </p>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext">
-          10이 버림 더미로 가고 15가 턴을 가져가는 순서를 실제 판에서 보이는 대로 올립니다.
+          10이 버림 더미로 가고 15가 턴을 가져가는 순서를 실제 한 턴 순서대로 올립니다.
         </p>
       </section>
 
@@ -81,7 +81,7 @@ export default async function HomePage() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-[12px] font-black tracking-[0.16em] text-point">글</p>
-              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">버린 선택들</h2>
+              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">만드는 동안 바꾼 것들</h2>
             </div>
             <Link href="/writing" className="text-sm font-bold text-point hover:text-text">전체 글</Link>
           </div>

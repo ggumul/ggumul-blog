@@ -142,7 +142,8 @@ describe('public UI copy cleanup', () => {
     expect(aboutPage).not.toMatch(/카드 한 장을 냅니다|손으로 만질 수 있는 것부터/);
     expect(projectsPage).not.toMatch(/안전한 선택이 먼저 틀어집니다|규칙 앞에서|안전해 보|좋아 보|괜찮아 보/);
     expect(projectsPage).toContain('10을 냈는데, 바로 버려졌습니다.');
-    expect(writingPage).toContain('버린 선택들');
+    expect(writingPage).toContain('만드는 동안 바꾼 것들');
+    expect(writingPage).not.toMatch(/Wanderer 01|Wanderer 02|Wanderer 03/);
   });
 
   it('keeps public navigation from falling back to repeated open-arrow CTAs', () => {
@@ -241,7 +242,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/Wanderer부터 고릅니다|결과가 여기에 뜹니다|상대 카드 13|상대는 13|카드 한 장으로 턴을 가져옵니다|한 장을 고르면|한 장만 선택|짝수\/정답\/짝수|볼 수 있는 장면/);
     expect(combined).not.toMatch(/게임이 끊기는 순간을 고칩니다|어떤 순간에 멈추는지 보고 왜 바꿨는지|자세한 제작 이야기|아래에는 퍼즐과 서사 게임도 함께 모았습니다/);
     expect(combined).toContain('지금 고친 것');
-    expect(combined).toContain('게임 글');
+    expect(combined).toContain('만드는 동안 바꾼 것들');
   });
 
   it('keeps the public flow game-first instead of project-status first', () => {
@@ -388,9 +389,8 @@ describe('public UI copy cleanup', () => {
     expect(home).toContain('버림 더미를 먼저 가르고, 그 뒤에 승부 후보만 비교하게 바꿨습니다.');
     expect(home).toContain('10은 먼저 빠지고, 5와 15 중 15가 턴을 가져갑니다.');
 
-    expect(writing).toContain('Wanderer 01');
-    expect(writing).toContain('Wanderer 02');
-    expect(writing).toContain('Wanderer 03');
+    expect(writing).toContain('만드는 동안 바꾼 것들');
+    expect(writing).not.toMatch(/Wanderer 01|Wanderer 02|Wanderer 03/);
 
     expect(detail).toContain('처음엔 10이 왜 사라지는지 늦게 읽혔습니다.');
     expect(detail).toContain('버림 더미를 앞에 두고, 승부 후보는 그 다음에 묶었습니다.');
@@ -452,7 +452,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).toContain('10은 이렇게 먼저 버려집니다');
     expect(combined).toContain('5와 15가 승부 후보가 되고');
     expect(combined).toContain('10은 손에 있어도 이번 규칙에서는 버림 더미로 갑니다');
-    expect(combined).not.toMatch(/같이 볼 글|고른 순간, 승부가 갈립니다|카드를 냈을 때 왜 15가 이기는지|고르면 바로 승부가 갈립니다|장면|감각|붙잡|남깁|둡니다|살핍니다|이어 봅니다|먼저 두고|먼저 보여|안전해 보|좋은 카드가 아니라|목록처럼 읽|게임 밖에서 나온|제작 노트|게임 안에서 나온 기록|선택과 결과가 남은 글|지금 만질|괜찮아 보|좋아 보|중요|재미|선명|흔들|망설|규칙 앞에서|같은 무게|곁가지 도구|\b도구\b/);
+    expect(combined).not.toMatch(/같이 볼 글|고른 순간, 승부가 갈립니다|카드를 냈을 때 왜 15가 이기는지|고르면 바로 승부가 갈립니다|장면|감각|붙잡|남깁|둡니다|살핍니다|이어 봅니다|먼저 두고|먼저 보여|보이는|안전해 보|좋은 카드가 아니라|목록처럼 읽|게임 밖에서 나온|제작 노트|게임 안에서 나온 기록|선택과 결과가 남은 글|지금 만질|괜찮아 보|좋아 보|중요|재미|선명|흔들|망설|규칙 앞에서|같은 무게|곁가지 도구|\b도구\b/);
   });
 
   it('keeps detail/list labels from reading like duplicated archive scaffolding', () => {
@@ -471,7 +471,10 @@ describe('public UI copy cleanup', () => {
     expect(projectDetail).toContain('eyebrow="게임"');
     expect(projectDetail).toContain('title={game.title}');
     expect(writingPage).not.toMatch(/text-point">게임 글<\/p>[\s\S]*>\s*게임 글\s*<\/h1>/);
-    expect(writingPage).toContain('버린 선택들');
+    expect(writingPage).not.toMatch(/Wanderer 01|Wanderer 02|Wanderer 03|버린 선택들/);
+    expect(writingPage).toContain('만드는 동안 바꾼 것들');
+    expect(writingPage).toContain('카드와 퍼즐');
+    expect(writingPage).toContain('저녁 장보기');
     expect(writingDetail).not.toMatch(/\{post\.relatedProjects\.map\(\(project\).*\{project\}/);
     expect(linksPage).not.toMatch(/코드와 메모|게임은 사이트에서 먼저 읽히지만/);
   });
