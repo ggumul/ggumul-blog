@@ -34,7 +34,7 @@ export default async function WritingPage() {
           왜 그 선택을 버렸나
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          안전해 보이는 10을 왜 버렸는지, 긴 카드 게임을 왜 줄였는지, 가격을 모르면 저녁 장보기가 왜 흔들리는지 적습니다.
+          10이 왜 빠졌는지, 긴 카드 게임을 왜 줄였는지, 가격이 붙으면 저녁 장보기가 어떻게 갈리는지 적습니다.
         </p>
       </section>
 

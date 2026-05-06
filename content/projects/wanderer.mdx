@@ -3,11 +3,11 @@ title: "Wanderer"
 slug: "wanderer"
 status: "만드는 중"
 progressStatus: "한 턴"
-verificationNote: "안전해 보이는 10이 먼저 빠집니다"
+verificationNote: "10은 홀수 규칙 앞에서 빠집니다"
 nextStep: "방금 고르던 카드가 끊기지 않게 만듭니다"
 evidenceLabel: "10이 빠지는 판"
 evidenceHref: "/writing/wanderer-one-card"
-summary: "10은 괜찮아 보이지만 이번 판에서는 빠집니다. Wanderer는 좋은 카드를 찾기보다, 살아남지 못하는 카드를 먼저 버리는 모바일 카드 게임입니다."
+summary: "손에 있던 10은 홀수 규칙 앞에서 빠집니다. Wanderer는 손패, 규칙, 탈락 카드, 남은 카드로 한 턴을 끝내는 모바일 카드 게임입니다."
 featured: true
 order: 1
 relatedPosts:
@@ -17,11 +17,13 @@ relatedPosts:
 coverImage: "/project-covers/wanderer.png"
 ---
 
-Wanderer는 손에 든 카드가 규칙 하나 앞에서 갈리는 게임입니다. 숫자가 커 보여도 이번 판과 맞지 않으면 빠지고, 살아남아도 상대를 넘지 못하면 집니다.
+Wanderer는 손에 든 카드 세 장으로 한 턴을 끝내는 모바일 카드 게임입니다. 이번 판의 손패는 5, 10, 15입니다. 손에는 10도 있지만, 이번 규칙은 홀수만 통과합니다.
 
-<img alt="Wanderer 10이 빠지는 한 턴" src="/media/devlog-gifs/wanderer-rule-result.gif" />
+<img alt="Wanderer 조건 변화 GIF" src="/media/devlog-gifs/wanderer-rule-result.gif" />
 <p class="media-caption">손패에 남은 10이 조건 변화 뒤 빠지는 한 턴입니다.</p>
 
-이번 판에서는 10이 먼저 빠집니다. 5는 남지만 약하고, 15만 상대를 넘습니다. 그래서 이 게임의 재미는 좋은 카드를 자랑하는 데 있지 않습니다. 믿었던 카드를 버리고 남은 카드로 승부를 가져오는 데 있습니다.
+10은 큰 숫자가 아니라 짝수 카드로 처리됩니다. 누르기 전에는 손에 남아 있지만, 규칙이 붙는 순간 손에서 빠집니다. 5는 홀수라 남지만 상대 숫자를 넘기에는 낮습니다. 15만 규칙을 지나고 비교도 이깁니다.
 
-Wanderer가 커지더라도 이 순간은 흐려지면 안 됩니다. 카드가 많아질수록 더 먼저 물어야 합니다. 지금 이 카드가 정말 살아남는가.
+이 게임에서 먼저 꺼내는 것은 많은 카드가 아닙니다. 손패, 이번 규칙, 빠지는 카드, 남는 카드입니다. 그 네 가지가 한눈에 이어져야 한 턴이 짧게 끝납니다.
+
+그래서 Wanderer의 첫 모양은 작게 잡았습니다. 카드 종류를 늘리기보다, 한 장이 왜 사라지는지 앞에 놓았습니다. 다음 카드를 누르기 전에 손에 남은 카드가 달라졌다는 점까지 한 턴 안에 들어갑니다.

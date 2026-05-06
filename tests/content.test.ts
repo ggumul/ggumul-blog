@@ -66,9 +66,9 @@ describe('content loader', () => {
   it('keeps the first runtime writing title framed around a concrete gameplay moment', async () => {
     const post = await getWritingBySlug('runtime-화면-확인-기록');
 
-    expect(post?.title).toBe('안전해 보이는 10은 왜 먼저 버려졌나');
-    expect(post?.summary).toContain('좋은 카드가 아니라 죽지 않을 카드를 찾는 한 턴입니다');
-    expect(post?.summary).not.toMatch(/자연스럽게 이어지게|정리했습니다|다듬었습니다/);
+    expect(post?.title).toBe('10은 왜 먼저 버려졌나');
+    expect(post?.summary).toContain('홀수 규칙 때문에 10이 사라지고');
+    expect(post?.summary).not.toMatch(/안전해 보이는|좋은 카드가 아니라|자연스럽게 이어지게|정리했습니다|다듬었습니다/);
   });
 
   it('returns category, tags, and series data for writing taxonomy', async () => {

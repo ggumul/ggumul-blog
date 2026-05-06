@@ -4,7 +4,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '꼬물은 작은 게임에서 선택이 틀어지는 순간을 먼저 꺼냅니다.',
+  description: '꼬물은 작은 게임에서 카드가 빠지고 원반이 막히는 순간을 먼저 꺼냅니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
@@ -30,13 +30,13 @@ export default async function HomePage() {
       <section className="max-w-4xl space-y-6 py-6 md:py-12">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">GGUMUL</p>
         <h1 className="text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[70px] md:leading-[1.04]">
-          안전해 보이는 선택부터 버립니다.
+          10을 냈는데, 바로 버려졌습니다.
         </h1>
         <p className="max-w-2xl text-[16px] leading-8 text-subtext md:text-[18px] md:leading-9">
-          꼬물은 작은 게임에서 선택이 틀어지는 순간을 먼저 꺼냅니다.
+          꼬물은 작은 게임에서 카드가 빠지고 원반이 막히는 순간을 먼저 꺼냅니다.
         </p>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext">
-          왜 10을 버리고 15를 남겼는지, 실패한 선택과 살아남은 선택을 같이 올립니다.
+          왜 10이 빠지고 15가 남았는지, 실제 판에서 보이는 순서대로 올립니다.
         </p>
       </section>
 
@@ -48,8 +48,8 @@ export default async function HomePage() {
               <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.035em] text-text md:text-[42px]">Wanderer</h2>
             </div>
           </div>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">Wanderer에서 10은 안전해 보이지만 이번 규칙에서는 바로 빠집니다.</p>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">좋은 카드가 아니라 죽지 않을 카드를 찾는 게임입니다. 5는 살아도 지고, 15는 살아남고 이깁니다.</p>
+          <p className="max-w-3xl text-sm leading-7 text-subtext">Wanderer에서 10은 손에 있어도 이번 규칙에서는 바로 빠집니다.</p>
+          <p className="max-w-3xl text-sm leading-7 text-subtext">홀수 규칙 앞에서 10은 빠지고, 5는 낮고, 15가 상대 숫자를 넘깁니다.</p>
         </section>
       ) : null}
 

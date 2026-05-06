@@ -15,8 +15,8 @@ export const writingReadingPathSlugs = [
 
 const writingReadingPaths: Record<string, WritingReadingPath> = {
   'wanderer-one-card': {
-    stakes: '안전해 보이는 10이 왜 버려지는지부터 시작합니다.',
-    change: '좋은 카드가 아니라 죽지 않을 카드를 찾는 한 턴입니다.',
+    stakes: '손패에 있던 10이 왜 빠지는지부터 시작합니다.',
+    change: '홀수 규칙 뒤에 10이 빠지고 15가 남는 한 턴입니다.',
     next: '버린 카드 읽기',
   },
   'wanderer-same-turn': {
@@ -35,13 +35,13 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
     next: '게임 배치 읽기',
   },
   'dinner-grocery-price': {
-    stakes: '식단을 추천하려 해도 가격이 언제 바뀌었는지 알 수 없으면 흔들립니다.',
-    change: '식단 옆에서 가격과 재료를 함께 읽게 했습니다.',
+    stakes: '김치찌개 재료가 오늘 살 것과 나중에 살 것으로 갈립니다.',
+    change: '가격을 붙여 돼지고기와 두부의 순서를 다시 나눕니다.',
     next: '가격 이야기 읽기',
   },
   'small-games-rhythm': {
-    stakes: '여러 게임을 오가다 보니 속도보다 무엇을 볼지가 먼저 흔들렸습니다.',
-    change: '여러 게임을 놓치지 않도록 만드는 방향을 다시 잡았습니다.',
+    stakes: '여러 게임을 오가도 다시 잡을 한 칸이 필요했습니다.',
+    change: '카드가 빠지고 원반이 막히는 구간을 글 앞에 놓습니다.',
     next: '만드는 방향 읽기',
   },
 };

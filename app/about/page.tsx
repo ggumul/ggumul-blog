@@ -10,7 +10,7 @@ export const metadata = createMetadata({
 const games = [
   {
     title: 'Wanderer',
-    text: '안전해 보이는 10이 먼저 빠지는 짧은 카드 게임입니다.',
+    text: '10이 홀수 규칙에 맞지 않아 빠지는 짧은 카드 게임입니다.',
     href: '/projects/wanderer',
   },
   {
