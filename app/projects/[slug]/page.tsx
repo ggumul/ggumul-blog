@@ -73,6 +73,13 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 
       <WandererMiniPlay />
 
+      <figure className="overflow-hidden rounded-[24px] border border-line/70 bg-surface/60">
+        <img alt="Wanderer 카드 선택 GIF" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/wanderer-turn.gif" />
+        <figcaption className="border-t border-line/70 px-4 py-3 text-xs font-semibold leading-6 text-subtext">
+          카드를 누르면 대전으로 넘어갑니다.
+        </figcaption>
+      </figure>
+
       <section id="play-video" className="scroll-mt-28 space-y-4 border-t border-line/45 pt-5">
         <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">플레이 영상</p>
         <div className="space-y-0 md:hidden">

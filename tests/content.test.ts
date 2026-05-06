@@ -260,6 +260,29 @@ describe('content loader', () => {
     }
   });
 
+  it('uses short GIF evidence in every project and writing body', async () => {
+    const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
+    const requiredGifs = [
+      '/media/devlog-gifs/wanderer-turn.gif',
+      '/media/devlog-gifs/hanoi-move.gif',
+      '/media/devlog-gifs/color-hanoi-rule.gif',
+      '/media/devlog-gifs/trpg-choice.gif',
+      '/media/devlog-gifs/dinner-grocery-list.gif',
+    ];
+
+    for (const gif of requiredGifs) {
+      expect(fs.existsSync(path.join(process.cwd(), 'public', gif.replace(/^\//, '')))).toBe(true);
+    }
+
+    for (const project of projects) {
+      expect(project.content, `${project.slug} should include a GIF`).toContain('/media/devlog-gifs/');
+    }
+
+    for (const post of posts) {
+      expect(post.content, `${post.slug} should include a GIF`).toContain('/media/devlog-gifs/');
+    }
+  });
+
   it('keeps project/post relationships, cover assets, and operational card metadata resolvable', async () => {
     const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
     const projectSlugs = new Set(projects.map((project) => project.slug));
