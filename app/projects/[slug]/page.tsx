@@ -62,12 +62,13 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             10을 버려야 이기는 턴입니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            이번 턴에서는 짝수 카드를 버림 더미로 보냅니다. 5와 15만 승부 후보가 되고, 15가 턴을 가져갑니다.
+            처음엔 10이 왜 사라지는지 늦게 읽혔습니다. 바꾼 뒤에는 버림 더미를 앞에 두고, 승부 후보는 그 다음에 묶었습니다. 그래서 10은 먼저 빠지고 15가 턴을 가져갑니다.
           </p>
         </div>
-        <div className="max-w-3xl border-t border-line/40 pt-4 text-sm leading-7 text-subtext">
-          이번 판의 손패는 5, 10, 15입니다. 짝수인 10은 버림 더미로 가고, 5와 15만 승부 후보가 됩니다.
-          두 후보를 비교하면 15가 턴을 가져갑니다.
+        <div className="grid max-w-4xl gap-3 border-t border-line/40 pt-4 text-sm leading-7 text-subtext md:grid-cols-3">
+          <p><strong className="block text-text">처음엔</strong>손패와 승부 후보가 한 덩어리라 10이 빠지는 이유가 뒤늦게 보였습니다.</p>
+          <p><strong className="block text-text">바꾼 뒤</strong>버림 더미를 앞에 두고, 승부 후보는 그 다음에 묶었습니다.</p>
+          <p><strong className="block text-text">그래서</strong>10은 먼저 빠지고 15가 턴을 가져갑니다.</p>
         </div>
       </section>
 
@@ -82,9 +83,9 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
         <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">한 턴 순서</p>
         <div className="space-y-0 md:hidden">
           {[
-            ['규칙 읽기', '이번 턴은 짝수 카드를 버림 더미로 보냅니다.'],
-            ['카드 분류', '10은 버림 더미로 가고, 5와 15가 승부 후보가 됩니다.'],
-            ['승부 읽기', '5와 15가 승부 후보이고, 15가 턴을 가져갑니다.'],
+            ['처음엔', '10이 왜 사라지는지 늦게 읽혔습니다.'],
+            ['바꾼 뒤', '버림 더미를 앞에 두고, 승부 후보는 그 다음에 묶었습니다.'],
+            ['그래서', '10은 먼저 빠지고 15가 턴을 가져갑니다.'],
           ].map(([title, body]) => (
             <div key={title} className="border-t border-line/45 py-3 first:border-t-0 first:pt-0">
               <strong className="block text-sm font-black text-text">{title}</strong>
@@ -101,9 +102,9 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">Wanderer</p>
           <h2 className="text-[30px] font-black leading-tight tracking-[-0.03em] text-text md:text-[46px]">버림 더미와 승부 후보가 갈리는 카드 게임</h2>
           <div className="prose max-w-none">
-            <p>Wanderer는 매 턴 규칙이 바뀌는 카드 게임입니다. 먼저 버림 더미로 갈 카드를 가르고, 승부 후보끼리 숫자를 겨룹니다.</p>
-            <p>이번 판에서는 10이 버림 더미로 갑니다. 5는 승부 후보가 되지만 15를 이기지 못합니다. 15가 비교에서 이겨 턴을 가져옵니다.</p>
-            <p>GIF는 그 차이만 담습니다. 10이 버림 더미로 가고, 5와 15가 승부 후보가 된 뒤, 15가 턴을 가져가는 순서만 보여 줍니다.</p>
+            <p>Wanderer는 매 턴 조건이 바뀌는 카드 게임입니다. 이 페이지는 조건 암기보다 한 턴에서 갈라지는 자리부터 읽히게 합니다.</p>
+            <p>처음엔 손패와 승부 후보가 붙어 있어 10이 빠지는 순간이 뒤로 밀렸습니다. 바꾼 뒤에는 10을 버림 더미로 먼저 보내고, 5와 15만 승부 후보로 묶었습니다.</p>
+            <p>그래서 한 턴은 10이 먼저 빠지고 15가 턴을 가져가는 순서로 이어집니다.</p>
           </div>
         </div>
 

@@ -44,12 +44,15 @@ export default async function HomePage() {
         <section className="panel-section space-y-4">
           <div>
             <div>
-              <p className="text-[12px] font-black tracking-[0.16em] text-point">처음 걸리는 선택</p>
+              <p className="text-[12px] font-black tracking-[0.16em] text-point">지금 고친 것</p>
               <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.035em] text-text md:text-[42px]">Wanderer</h2>
             </div>
           </div>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">Wanderer에서 10은 손에 있어도 이번 규칙에서는 버림 더미로 갑니다.</p>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">10은 버림 더미로 가고 5와 15가 승부 후보가 되는 판이라, 5는 낮고, 15가 상대 숫자를 넘깁니다.</p>
+          <div className="grid gap-3 text-sm leading-7 text-subtext md:grid-cols-3">
+            <p><strong className="block text-text">01 처음엔</strong>한 턴에서 왜 10이 빠지는지 늦게 읽혔습니다.</p>
+            <p><strong className="block text-text">02 바꾼 뒤</strong>버림 더미를 먼저 가르고, 그 뒤에 승부 후보만 비교하게 바꿨습니다.</p>
+            <p><strong className="block text-text">03 그래서</strong>10은 먼저 빠지고, 5와 15 중 15가 턴을 가져갑니다.</p>
+          </div>
         </section>
       ) : null}
 

@@ -91,11 +91,11 @@ describe('public UI copy cleanup', () => {
     expect(heroSection).toContain('10이 버림 더미로 가고 15가 턴을 가져가는 순서');
     expect(heroSection).not.toMatch(/고르면 바로 결과가 보이는 게임|카드를 고르고, 막대를 옮기고, 문장을 누르는|글은 게임을 해본 뒤에 읽는 설명|게임 뒤에 읽는 글|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는|큰 세계관보다|글은 그 뒤에 붙습니다/s);
     expect(heroSection).not.toMatch(/Wanderer|카드 한 장|한 장의 카드|카드 한 장 고르기/);
-    expect(leadSection).toContain('처음 걸리는 선택');
+    expect(leadSection).toContain('지금 고친 것');
     expect(leadSection).not.toMatch(/먼저 만져볼 게임|게임 해보기|해보기|카드 한 장 고르기/);
     expect(leadSection).toContain('Wanderer');
-    expect(leadSection).toContain('10은 손에 있어도 이번 규칙에서는 버림 더미로 갑니다');
-    expect(leadSection).toContain('10은 버림 더미로 가고 5와 15가 승부 후보가 되는 판이라');
+    expect(leadSection).toContain('한 턴에서 왜 10이 빠지는지 늦게 읽혔습니다.');
+    expect(leadSection).toContain('버림 더미를 먼저 가르고, 그 뒤에 승부 후보만 비교하게 바꿨습니다.');
   });
 
   it('keeps home focused on one playable turn instead of a generic landing page', () => {
@@ -125,7 +125,7 @@ describe('public UI copy cleanup', () => {
     expect(homeVisibleSources).toContain('10은 이렇게 먼저 버려집니다');
     expect(homeVisibleSources).toContain('5와 15가 승부 후보가 되고');
     expect(homePage).toContain('10을 냈는데, 바로 버려졌습니다.');
-    expect(homePage).toContain('10은 손에 있어도 이번 규칙에서는 버림 더미로 갑니다');
+    expect(homePage).toContain('한 턴에서 왜 10이 빠지는지 늦게 읽혔습니다.');
     expect(homePage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴/);
     expect(homePage).toContain('10이 버림 더미로 가고 15가 턴을 가져가는 순서');
   });
@@ -200,7 +200,7 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).not.toMatch(/지금 확인|지금 보는 이유|다음에 고칠 것|기록 보기|플레이 방식|현재 들어간 것|Wanderer 노트|폰에서 돌린 날/);
     expect(projectDetailPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
     expect(projectDetailPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|카드 한 장으로 턴을 가져옵니다|상대는 13|한 장을 고르면/);
-    expect(projectDetailPage).toContain('이번 턴은 짝수 카드를 버림 더미로 보냅니다');
+    expect(projectDetailPage).toContain('처음엔 10이 왜 사라지는지 늦게 읽혔습니다.');
     expect(projectDetailPage).toContain('10을 버려야 이기는 턴입니다.');
   });
 
@@ -240,7 +240,7 @@ describe('public UI copy cleanup', () => {
     expect(combined).not.toMatch(/한장|한판|한장을/);
     expect(combined).not.toMatch(/Wanderer부터 고릅니다|결과가 여기에 뜹니다|상대 카드 13|상대는 13|카드 한 장으로 턴을 가져옵니다|한 장을 고르면|한 장만 선택|짝수\/정답\/짝수|볼 수 있는 장면/);
     expect(combined).not.toMatch(/게임이 끊기는 순간을 고칩니다|어떤 순간에 멈추는지 보고 왜 바꿨는지|자세한 제작 이야기|아래에는 퍼즐과 서사 게임도 함께 모았습니다/);
-    expect(combined).toContain('처음 걸리는 선택');
+    expect(combined).toContain('지금 고친 것');
     expect(combined).toContain('게임 글');
   });
 
@@ -374,6 +374,33 @@ describe('public UI copy cleanup', () => {
     expect(detail).toContain('md:hidden');
     expect(detail).toContain('hidden max-h-[520px] w-full object-contain md:block');
     expect(detail).toContain('wanderer-rule-result.gif');
+  });
+
+  it('turns Wanderer from a rule explanation into a numbered making-story with cause, change, and result', () => {
+    const home = read('app/page.tsx');
+    const writing = read('app/writing/page.tsx');
+    const detail = read('app/projects/[slug]/page.tsx');
+    const article = read('content/writing/2026-04-26-runtime-화면-확인-기록.mdx');
+    const combined = [home, writing, detail, article].join('\n');
+
+    expect(home).toContain('지금 고친 것');
+    expect(home).toContain('한 턴에서 왜 10이 빠지는지 늦게 읽혔습니다.');
+    expect(home).toContain('버림 더미를 먼저 가르고, 그 뒤에 승부 후보만 비교하게 바꿨습니다.');
+    expect(home).toContain('10은 먼저 빠지고, 5와 15 중 15가 턴을 가져갑니다.');
+
+    expect(writing).toContain('Wanderer 01');
+    expect(writing).toContain('Wanderer 02');
+    expect(writing).toContain('Wanderer 03');
+
+    expect(detail).toContain('처음엔 10이 왜 사라지는지 늦게 읽혔습니다.');
+    expect(detail).toContain('버림 더미를 앞에 두고, 승부 후보는 그 다음에 묶었습니다.');
+    expect(detail).toContain('그래서 10은 먼저 빠지고 15가 턴을 가져갑니다.');
+    expect(detail).toMatch(/처음엔[\s\S]*바꾼 뒤[\s\S]*그래서/);
+
+    expect(article).toContain('처음엔 15가 이긴다는 말이 먼저 나왔습니다.');
+    expect(article).toContain('그래서 10을 버림 더미로 보내는 칸을 승부 후보보다 앞에 뒀습니다.');
+    expect(article).toContain('이제 한 턴은 10이 빠지고, 5와 15만 비교하고, 15가 턴을 가져가는 순서로 읽힙니다.');
+    expect(combined).not.toMatch(/규칙 설명 페이지|답안지|길게 설명하지 않아도|화려한 효과/);
   });
 
   it('states ggumul, games, and game-writing relationship in one plain public frame', () => {

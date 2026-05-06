@@ -29,7 +29,7 @@ export default async function WritingPage() {
   return (
     <div className="archive-surface space-y-6 md:space-y-16">
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
-        <p className="text-[12px] font-black tracking-[0.18em] text-point">글</p>
+        <p className="text-[12px] font-black tracking-[0.18em] text-point">Wanderer 01</p>
         <h1 className="text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
           버린 선택들
         </h1>
@@ -40,7 +40,7 @@ export default async function WritingPage() {
 
       <section aria-label="게임 글" className="space-y-3">
         <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">게임</p>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">Wanderer 02</p>
           <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">버린 카드와 막힌 길</h2>
         </div>
         <div className="article-list">
@@ -60,7 +60,7 @@ export default async function WritingPage() {
       {outsidePosts.length ? (
         <section className="space-y-3">
           <div>
-            <p className="text-[12px] font-black tracking-[0.16em] text-point">장보기</p>
+            <p className="text-[12px] font-black tracking-[0.16em] text-point">Wanderer 03</p>
             <h2 className="mt-2 text-[22px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">오늘 살까, 미룰까</h2>
           </div>
           <div className="article-list">
