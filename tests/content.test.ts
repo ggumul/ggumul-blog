@@ -260,26 +260,41 @@ describe('content loader', () => {
     }
   });
 
-  it('uses short GIF evidence in every project and writing body', async () => {
+  it('pairs each project and writing entry with a GIF that names the specific event in the text', async () => {
     const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
-    const requiredGifs = [
-      '/media/devlog-gifs/wanderer-turn.gif',
-      '/media/devlog-gifs/hanoi-move.gif',
-      '/media/devlog-gifs/color-hanoi-rule.gif',
-      '/media/devlog-gifs/trpg-choice.gif',
-      '/media/devlog-gifs/dinner-grocery-list.gif',
-    ];
+    const projectExpectations = new Map([
+      ['wanderer', { gif: '/media/devlog-gifs/wanderer-rule-result.gif', caption: '10이 조건 변화 뒤 빠지는 한 턴' }],
+      ['hanoi', { gif: '/media/devlog-gifs/hanoi-next-seat.gif', caption: '초록 원반을 열었다가 다시 막습니다' }],
+      ['color-hanoi', { gif: '/media/devlog-gifs/color-hanoi-order.gif', caption: '색 조건이 붙으면 같은 원반 이동도 다른 순서' }],
+      ['trpg', { gif: '/media/devlog-gifs/trpg-theme-choice.gif', caption: '테마 선택까지만 담았습니다' }],
+      ['ggumul-dinner-grocery', { gif: '/media/devlog-gifs/dinner-buy-now-later.gif', caption: '오늘 살 것과 나중에 살 것' }],
+    ]);
+    const postExpectations = new Map([
+      ['small-games-first-move', ['/media/devlog-gifs/wanderer-rule-result.gif', '/media/devlog-gifs/hanoi-next-seat.gif']],
+      ['wanderer-short-card-game', ['/media/devlog-gifs/wanderer-rule-result.gif']],
+      ['small-games-rhythm', ['/media/devlog-gifs/hanoi-next-seat.gif']],
+      ['wanderer-same-turn', ['/media/devlog-gifs/wanderer-rule-result.gif']],
+      ['wanderer-one-card', ['/media/devlog-gifs/wanderer-rule-result.gif']],
+      ['dinner-grocery-price', ['/media/devlog-gifs/dinner-buy-now-later.gif']],
+    ]);
 
-    for (const gif of requiredGifs) {
+    for (const { gif } of Array.from(projectExpectations.values())) {
       expect(fs.existsSync(path.join(process.cwd(), 'public', gif.replace(/^\//, '')))).toBe(true);
     }
 
     for (const project of projects) {
-      expect(project.content, `${project.slug} should include a GIF`).toContain('/media/devlog-gifs/');
+      const expected = projectExpectations.get(project.slug);
+      expect(expected, `${project.slug} should have a pairing rule`).toBeDefined();
+      expect(project.content, `${project.slug} should use its event GIF`).toContain(expected!.gif);
+      expect(project.content, `${project.slug} caption should name the event`).toContain(expected!.caption);
     }
 
     for (const post of posts) {
-      expect(post.content, `${post.slug} should include a GIF`).toContain('/media/devlog-gifs/');
+      const expectedGifs = postExpectations.get(post.slug);
+      expect(expectedGifs, `${post.slug} should have a pairing rule`).toBeDefined();
+      for (const gif of expectedGifs!) {
+        expect(post.content, `${post.slug} should use ${gif}`).toContain(gif);
+      }
     }
   });
 
