@@ -57,7 +57,7 @@ function resolvePostHeroFallback(post: { slug: string; category: string }) {
     label: 'GGUMUL',
     title: post.category,
     description: '게임을 만들며 잡아 둔 방향과 플레이 방식을 짧게 담은 글입니다.',
-    badge: '게임 글',
+    badge: '글',
     tone: 'bg-[#151929]',
   };
 }
@@ -137,7 +137,7 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 
       <Link href="/writing" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
-        게임 글로
+        글 목록으로
       </Link>
 
       <header className="rounded-2xl border border-line/70 bg-surface/70 p-5 md:p-8">

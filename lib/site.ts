@@ -12,7 +12,7 @@ export const siteConfig = {
     '꼬물',
     'ggumul',
     '인디 게임',
-    '게임 글',
+    '제작 과정',
     '게임 프로젝트',
     'Wanderer',
   ],
