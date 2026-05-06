@@ -40,9 +40,9 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {
     next: '장보기 다시 읽기',
   },
   'small-games-rhythm': {
-    stakes: '오래 비운 프로젝트는 큰 목표만으로 다시 시작하기 어려웠습니다.',
-    change: '다시 열었을 때 바로 이어 볼 작은 장면을 골랐습니다.',
-    next: '리듬 다시 읽기',
+    stakes: 'TRPG는 큰 계획보다 첫 테마 선택이 먼저 손에 잡혔습니다.',
+    change: '테마 카드와 첫 문장이 바로 이어지는지부터 다시 봤습니다.',
+    next: '첫 테마 다시 읽기',
   },
 };
 

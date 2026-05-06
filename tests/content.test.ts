@@ -36,8 +36,8 @@ describe('content loader', () => {
       'wanderer-one-card',
       'wanderer-same-turn',
       'wanderer-short-card-game',
-      'small-games-first-move',
       'small-games-rhythm',
+      'small-games-first-move',
     ]);
     expect(posts.every((post) => post.title && post.summary && post.publishedAt)).toBe(true);
   });

@@ -11,13 +11,6 @@ const legacyWritingSlugMap: Record<string, string> = {
   '요즘-이런-게임들을-만들고-있어요': '4\uc6d4-\ud504\ub85c\uc81d\ud2b8-\uac1c\ubc1c-\ud604\ud669',
 };
 
-const projectThumbnails: Record<string, string> = {
-  wanderer: '/media/runtime-checks/wanderer-mobile-current.png',
-  hanoi: '/project-covers/hanoi.png',
-  'color-hanoi': '/project-covers/color-hanoi.png',
-  trpg: '/project-covers/trpg.png',
-};
-
 function resolveLegacyWritingSlug(slug: string) {
   try {
     return legacyWritingSlugMap[decodeURIComponent(slug)] ?? null;
@@ -31,35 +24,6 @@ function extractHeadings(content: string) {
     .split('\n')
     .map((line) => line.match(/^##\s+(.+)$/)?.[1]?.trim())
     .filter((heading): heading is string => Boolean(heading));
-}
-
-function resolvePostImage(post: { slug: string; relatedProjects: string[] }) {
-  if (post.slug === 'wanderer-one-card') {
-    return '/media/runtime-checks/wanderer-mobile-current.png';
-  }
-
-  const firstProject = post.relatedProjects[0];
-  return firstProject ? projectThumbnails[firstProject] : '/studio/wanderer-home.png';
-}
-
-function resolvePostHeroFallback(post: { slug: string; category: string }) {
-  if (post.slug === 'dinner-grocery-price') {
-    return {
-      label: 'Dinner Grocery',
-      title: '장보기 전 가격',
-      description: '메뉴를 고르고 재료를 적기 전에, 오늘 사도 괜찮은지 가격을 함께 읽습니다.',
-      badge: '장보기',
-      tone: 'bg-[#182013]',
-    };
-  }
-
-  return {
-    label: 'GGUMUL',
-    title: post.category,
-    description: '게임을 만들며 잡아 둔 방향과 플레이 방식을 짧게 담은 글입니다.',
-    badge: '글',
-    tone: 'bg-[#151929]',
-  };
 }
 
 export async function generateStaticParams() {
@@ -123,8 +87,6 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
     ? siblingRecords
     : allPosts.filter((entry) => entry.slug !== post.slug && entry.relatedProjects.some((project) => post.relatedProjects.includes(project))).slice(0, 3);
   const headings = extractHeadings(post.content);
-  const heroImage = resolvePostImage(post);
-  const heroFallback = resolvePostHeroFallback({ slug: post.slug, category: post.category });
   const articleJsonLd = createArticleJsonLd({
     title: post.title,
     description: post.summary,
@@ -141,43 +103,17 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
       </Link>
 
       <header className="rounded-2xl border border-line/70 bg-surface/70 p-5 md:p-8">
-        <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
-          <div className="space-y-4">
-            <div className="flex flex-wrap items-center gap-2 text-[12px]">
-              <Pill tone="point">{post.category}</Pill>
-              {post.series ? <Pill>{post.series}</Pill> : null}
-              <Pill>{post.publishedAt}</Pill>
-            </div>
-            <h1 className="text-[36px] font-black leading-[1.05] tracking-[-0.055em] text-text md:text-[62px]">
-              {post.title}
-            </h1>
-            <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">{post.summary}</p>
-            {post.updatedAt !== post.publishedAt ? <p className="text-[12px] text-subtext/80">마지막 수정 {post.updatedAt}</p> : null}
-            <div className="flex flex-wrap gap-2 text-[12px]">
-              {post.relatedProjects.map((slug) => <Pill key={slug}>{relatedProjectLabelMap.get(slug) ?? post.category}</Pill>)}
-            </div>
+        <div className="max-w-3xl space-y-4">
+          <div className="flex flex-wrap items-center gap-2 text-[12px]">
+            <Pill tone="point">{post.category}</Pill>
+            {post.series ? <Pill>{post.series}</Pill> : null}
+            <Pill>{post.publishedAt}</Pill>
           </div>
-
-          <figure className="overflow-hidden rounded-[24px] border border-line/70 bg-surface/60">
-            {heroImage ? (
-              <img alt={`${post.title} 대표 이미지`} className="max-h-[420px] w-full object-cover" src={heroImage} />
-            ) : (
-              <div className={`flex min-h-[280px] flex-col justify-between p-6 ${heroFallback.tone}`}>
-                <div className="flex items-center justify-between gap-3 text-[11px] font-black uppercase tracking-[0.2em] text-white/65">
-                  <span>{heroFallback.label}</span>
-                  <span>{heroFallback.badge}</span>
-                </div>
-                <div className="max-w-sm space-y-3">
-                  <h2 className="text-[30px] font-black leading-[1.02] tracking-[-0.05em] text-white md:text-[46px]">{heroFallback.title}</h2>
-                  <p className="text-[15px] leading-7 text-white/72">{heroFallback.description}</p>
-                </div>
-              </div>
-            )}
-            <figcaption className="flex items-center justify-between gap-3 border-t border-line/70 px-4 py-3 text-xs font-semibold text-subtext">
-              <span>{post.title}</span>
-              <span>{post.category}</span>
-            </figcaption>
-          </figure>
+          <h1 className="text-[36px] font-black leading-[1.05] tracking-[-0.055em] text-text md:text-[62px]">
+            {post.title}
+          </h1>
+          <p className="text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">{post.summary}</p>
+          {post.updatedAt !== post.publishedAt ? <p className="text-[12px] text-subtext/80">마지막 수정 {post.updatedAt}</p> : null}
         </div>
       </header>
 
