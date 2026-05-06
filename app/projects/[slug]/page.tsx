@@ -63,11 +63,12 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             10을 버려야 이기는 턴입니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            이번 턴에서는 홀수만 남습니다. 5는 살아남지만 약하고, 10은 빠지고, 15만 끝까지 남습니다.
+            이번 턴에서는 짝수 카드를 버립니다. 10은 버려지고, 5와 15를 비교해서 15가 이깁니다.
           </p>
         </div>
         <div className="max-w-3xl border-t border-line/40 pt-4 text-sm leading-7 text-subtext">
-          이번 판의 손패는 5, 10, 15입니다. 10은 손에 있어도 홀수 규칙에 맞지 않아 빠지고, 15가 마지막 비교에 남습니다.
+          이번 판의 손패는 5, 10, 15입니다. 홀수인 5와 15만 비교하고, 짝수인 10은 버려집니다.
+          남은 카드끼리 비교하면 15가 이깁니다.
         </div>
       </section>
 
@@ -85,9 +86,9 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
         <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">플레이 영상</p>
         <div className="space-y-0 md:hidden">
           {[
-            ['규칙 읽기', '홀수는 남고 짝수는 빠집니다.'],
-            ['카드 선택', '5, 10, 15 중 이번 규칙을 버틸 카드를 냅니다.'],
-            ['승부 읽기', '15는 살아남고 가장 높은 카드로 남습니다.'],
+            ['규칙 읽기', '이번 턴은 짝수 카드를 버립니다.'],
+            ['카드 선택', '5, 10, 15 중 하나를 냅니다.'],
+            ['승부 읽기', '5와 15를 비교해서 15가 이깁니다.'],
           ].map(([title, body]) => (
             <div key={title} className="border-t border-line/45 py-3 first:border-t-0 first:pt-0">
               <strong className="block text-sm font-black text-text">{title}</strong>
@@ -104,9 +105,9 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
           <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">Wanderer</p>
           <h2 className="text-[30px] font-black leading-tight tracking-[-0.03em] text-text md:text-[46px]">한 턴이 짧아야 살아나는 카드 게임</h2>
           <div className="prose max-w-none">
-            <p>Wanderer는 매 턴 규칙이 바뀌는 카드 게임입니다. 먼저 이번 규칙에서 죽는 카드를 버리고, 남은 카드끼리 숫자를 겨룹니다.</p>
-            <p>이번 판에서는 10이 빠집니다. 5는 남지만 끝까지 이기기에는 낮습니다. 15는 규칙을 통과하고 마지막 비교에서도 앞섭니다.</p>
-            <p>GIF는 그 차이만 담습니다. 10이 빠진 뒤 15가 마지막 비교에 남는 순서만 좁게 보여 줍니다.</p>
+            <p>Wanderer는 매 턴 규칙이 바뀌는 카드 게임입니다. 먼저 이번 규칙에서 버릴 카드를 가르고, 버려지지 않은 카드끼리 숫자를 겨룹니다.</p>
+            <p>이번 판에서는 10이 버려집니다. 5는 비교까지 가지만 15를 이기지 못합니다. 15는 비교에서 이겨 턴을 가져옵니다.</p>
+            <p>GIF는 그 차이만 담습니다. 10이 버려지고, 5와 15를 비교한 뒤, 15가 턴을 가져가는 순서만 보여 줍니다.</p>
           </div>
         </div>
 

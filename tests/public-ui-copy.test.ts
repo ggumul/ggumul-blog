@@ -188,9 +188,9 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).toContain('<WandererTurnStrip />');
     expect(turnStrip).toContain('use client');
     expect(turnStrip).toContain('카드 10');
-    expect(turnStrip).toContain('5는 홀수라 남지만, 15보다 작습니다.');
-    expect(turnStrip).toContain('10은 홀수 규칙에 맞지 않아 빠집니다.');
-    expect(turnStrip).toContain('15가 마지막 비교에 남습니다.');
+    expect(turnStrip).toContain('5는 홀수라 버려지지 않습니다. 하지만 남은 카드끼리 비교하면 15가 이깁니다.');
+    expect(turnStrip).toContain('10은 짝수라 이번 규칙에서 버려집니다.');
+    expect(turnStrip).toContain('15는 홀수라 남고, 마지막 비교에서도 이깁니다.');
     expect([projectDetailPage, turnStrip].join('\n')).not.toMatch(/WandererMiniPlay|wanderer-mini-play|#mini-play|mini-play|게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|상대 카드 13|상대는 13/);
   });
 
@@ -202,7 +202,7 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).not.toMatch(/지금 확인|지금 보는 이유|다음에 고칠 것|기록 보기|플레이 방식|현재 들어간 것|Wanderer 노트|폰에서 돌린 날/);
     expect(projectDetailPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
     expect(projectDetailPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|카드 한 장으로 턴을 가져옵니다|상대는 13|한 장을 고르면/);
-    expect(projectDetailPage).toContain('홀수는 남고 짝수는 빠집니다');
+    expect(projectDetailPage).toContain('이번 턴은 짝수 카드를 버립니다');
     expect(projectDetailPage).toContain('10을 버려야 이기는 턴입니다.');
   });
 
