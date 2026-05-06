@@ -27,7 +27,7 @@ export default async function ProjectsPage() {
           10을 냈는데, 바로 버려졌습니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          Wanderer에서는 10이 손에 있어도 홀수 규칙에 맞지 않아 빠집니다. Hanoi는 방금 옮긴 막대가 다음 길을 막고, 저녁 장보기는 가격 때문에 살 재료가 바뀝니다.
+          Wanderer에서는 10이 손에 있어도 버림 더미로 갑니다. Hanoi는 방금 옮긴 막대가 다음 길을 막고, 저녁 장보기는 가격 때문에 살 재료가 바뀝니다.
         </p>
       </section>
 
@@ -39,7 +39,7 @@ export default async function ProjectsPage() {
               <h2 className="mt-2 text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[46px]">{lead.project.title}</h2>
             </div>
           </div>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">10은 홀수 규칙에 맞지 않아 빠지고, 5는 살아도 낮습니다. Wanderer는 15가 남는 짧은 카드 게임입니다.</p>
+          <p className="max-w-3xl text-sm leading-7 text-subtext">10은 버림 더미로 가고, 5와 15가 승부 후보가 됩니다. Wanderer는 15가 턴을 가져가는 짧은 카드 게임입니다.</p>
           <ProjectCard project={lead.project} records={lead.records} />
         </section>
       ) : null}

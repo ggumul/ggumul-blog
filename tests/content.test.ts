@@ -67,7 +67,7 @@ describe('content loader', () => {
     const post = await getWritingBySlug('runtime-화면-확인-기록');
 
     expect(post?.title).toBe('10은 이렇게 먼저 버려집니다');
-    expect(post?.summary).toContain('홀수 규칙 때문에 10이 사라지고');
+    expect(post?.summary).toContain('10은 이번 판에서 버림 더미로 갑니다');
     expect(post?.summary).not.toMatch(/안전해 보이는|좋은 카드가 아니라|자연스럽게 이어지게|정리했습니다|다듬었습니다/);
   });
 
@@ -263,7 +263,7 @@ describe('content loader', () => {
   it('pairs each project and writing entry with a GIF that names the specific event in the text', async () => {
     const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
     const projectExpectations = new Map([
-      ['wanderer', { gif: '/media/devlog-gifs/wanderer-rule-result.gif', caption: '10이 조건 변화 뒤 빠지는 한 턴' }],
+      ['wanderer', { gif: '/media/devlog-gifs/wanderer-rule-result.gif', caption: '10이 조건 변화 뒤 버림 더미로 가는 한 턴' }],
       ['hanoi', { gif: '/media/devlog-gifs/hanoi-next-seat.gif', caption: '초록 원반을 열었다가 다시 막습니다' }],
       ['color-hanoi', { gif: '/media/devlog-gifs/color-hanoi-rule.gif', caption: '색 순서 규칙 때문에 같은 원반도 다른 자리' }],
       ['trpg', { gif: '/media/devlog-gifs/trpg-theme-choice.gif', caption: '테마 선택까지만 담았습니다' }],

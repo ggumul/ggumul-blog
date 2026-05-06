@@ -6,17 +6,17 @@ const cards = [
   {
     value: 5,
     label: '카드 5',
-    text: '5는 홀수라 버려지지 않습니다. 하지만 남은 카드끼리 비교하면 15가 이깁니다.',
+    text: '5를 내면 버림 더미로 가지 않고 승부 후보가 됩니다. 같은 후보인 15와 비교해서 턴은 15가 가져갑니다.',
   },
   {
     value: 10,
     label: '카드 10',
-    text: '10은 짝수라 이번 규칙에서 버려집니다.',
+    text: '10을 내면 짝수라서 버림 더미로 갑니다. 이 턴의 승부 후보가 아닙니다.',
   },
   {
     value: 15,
     label: '카드 15',
-    text: '15는 홀수라 남고, 마지막 비교에서도 이깁니다.',
+    text: '15를 내면 승부 후보가 되고, 5와 비교해서 이 턴을 가져갑니다.',
   },
 ] as const;
 
@@ -28,9 +28,9 @@ export function WandererTurnStrip() {
       <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div className="space-y-2">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#b98f64]">이번 규칙</p>
-          <h2 className="text-2xl font-semibold tracking-[-0.04em] text-[#fff7ec]">홀수만 남기고 숫자를 비교합니다</h2>
+          <h2 className="text-2xl font-semibold tracking-[-0.04em] text-[#fff7ec]">짝수는 버림 더미로, 홀수는 승부 후보로 갑니다</h2>
           <p className="max-w-2xl text-sm leading-7 text-[#cdbfac]">
-            이번 판의 손패는 5, 10, 15입니다. 홀수는 남고, 짝수는 버려지고, 남은 카드 중 큰 수가 이깁니다.
+            이번 판의 손패는 5, 10, 15입니다. 10은 버림 더미로 가고, 5와 15만 승부 후보가 됩니다.
           </p>
         </div>
       </div>

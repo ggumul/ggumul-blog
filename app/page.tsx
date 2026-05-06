@@ -36,7 +36,7 @@ export default async function HomePage() {
           꼬물은 작은 게임에서 카드가 빠지고 원반이 막히는 순간을 먼저 꺼냅니다.
         </p>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext">
-          10이 빠지고 15가 남는 순서를 실제 판에서 보이는 대로 올립니다.
+          10이 버림 더미로 가고 15가 턴을 가져가는 순서를 실제 판에서 보이는 대로 올립니다.
         </p>
       </section>
 
@@ -48,8 +48,8 @@ export default async function HomePage() {
               <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.035em] text-text md:text-[42px]">Wanderer</h2>
             </div>
           </div>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">Wanderer에서 10은 손에 있어도 이번 규칙에서는 바로 빠집니다.</p>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">홀수만 남는 판이라 10은 빠지고, 5는 낮고, 15가 상대 숫자를 넘깁니다.</p>
+          <p className="max-w-3xl text-sm leading-7 text-subtext">Wanderer에서 10은 손에 있어도 이번 규칙에서는 버림 더미로 갑니다.</p>
+          <p className="max-w-3xl text-sm leading-7 text-subtext">10은 버림 더미로 가고 5와 15가 승부 후보가 되는 판이라, 5는 낮고, 15가 상대 숫자를 넘깁니다.</p>
         </section>
       ) : null}
 

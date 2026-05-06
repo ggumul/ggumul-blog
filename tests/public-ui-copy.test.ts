@@ -78,7 +78,7 @@ describe('public UI copy cleanup', () => {
     expect(projectsPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴/);
     expect(projectsPage).not.toMatch(/안전한 선택이 먼저 틀어집니다|규칙 앞에서|안전해 보|좋아 보|괜찮아 보/);
     expect(projectsPage).toContain('10을 냈는데, 바로 버려졌습니다.');
-    expect(projectsPage).toContain('10은 홀수 규칙에 맞지 않아 빠지고');
+    expect(projectsPage).toContain('10은 버림 더미로 가고');
   });
 
   it('states the real ggumul identity before introducing any single game', () => {
@@ -88,14 +88,14 @@ describe('public UI copy cleanup', () => {
 
     expect(heroSection).toContain('10을 냈는데, 바로 버려졌습니다.');
     expect(heroSection).toContain('꼬물은 작은 게임에서 카드가 빠지고 원반이 막히는 순간을 먼저 꺼냅니다.');
-    expect(heroSection).toContain('10이 빠지고 15가 남는 순서');
+    expect(heroSection).toContain('10이 버림 더미로 가고 15가 턴을 가져가는 순서');
     expect(heroSection).not.toMatch(/고르면 바로 결과가 보이는 게임|카드를 고르고, 막대를 옮기고, 문장을 누르는|글은 게임을 해본 뒤에 읽는 설명|게임 뒤에 읽는 글|작은 선택이 바로 돌아오는|선택이 바로 돌아오는|결과가 바로 돌아오는|큰 세계관보다|글은 그 뒤에 붙습니다/s);
     expect(heroSection).not.toMatch(/Wanderer|카드 한 장|한 장의 카드|카드 한 장 고르기/);
     expect(leadSection).toContain('처음 걸리는 선택');
     expect(leadSection).not.toMatch(/먼저 만져볼 게임|게임 해보기|해보기|카드 한 장 고르기/);
     expect(leadSection).toContain('Wanderer');
-    expect(leadSection).toContain('10은 손에 있어도 이번 규칙에서는 바로 빠집니다');
-    expect(leadSection).toContain('홀수만 남는 판이라 10은 빠지고');
+    expect(leadSection).toContain('10은 손에 있어도 이번 규칙에서는 버림 더미로 갑니다');
+    expect(leadSection).toContain('10은 버림 더미로 가고 5와 15가 승부 후보가 되는 판이라');
   });
 
   it('keeps home focused on one playable turn instead of a generic landing page', () => {
@@ -123,11 +123,11 @@ describe('public UI copy cleanup', () => {
     expect(homeVisibleSources).not.toMatch(/바로 한 턴 해보기|한 턴 가능|플레이 흐름 읽기|카드 선택 뒤 결과|다른 작은 게임들|장보기 보기|한 턴 체험하기|서사 보기|퍼즐 보기|상대보다 높은 카드|글 목록|글 읽기 →|게임이 늘어나자|게임 둘러보기 →/);
 
     expect(homeVisibleSources).toContain('10은 이렇게 먼저 버려집니다');
-    expect(homeVisibleSources).toContain('홀수 규칙 때문에 10이 사라지고');
+    expect(homeVisibleSources).toContain('5와 15가 승부 후보가 되고');
     expect(homePage).toContain('10을 냈는데, 바로 버려졌습니다.');
-    expect(homePage).toContain('10은 손에 있어도 이번 규칙에서는 바로 빠집니다');
+    expect(homePage).toContain('10은 손에 있어도 이번 규칙에서는 버림 더미로 갑니다');
     expect(homePage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴/);
-    expect(homePage).toContain('10이 빠지고 15가 남는 순서');
+    expect(homePage).toContain('10이 버림 더미로 가고 15가 턴을 가져가는 순서');
   });
 
   it('keeps the late-stage public copy fixes from regressing into awkward repeated labels', () => {
@@ -188,10 +188,10 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).toContain('<WandererTurnStrip />');
     expect(turnStrip).toContain('use client');
     expect(turnStrip).toContain('카드 10');
-    expect(turnStrip).toContain('5는 홀수라 버려지지 않습니다. 하지만 남은 카드끼리 비교하면 15가 이깁니다.');
-    expect(turnStrip).toContain('10은 짝수라 이번 규칙에서 버려집니다.');
-    expect(turnStrip).toContain('15는 홀수라 남고, 마지막 비교에서도 이깁니다.');
-    expect([projectDetailPage, turnStrip].join('\n')).not.toMatch(/WandererMiniPlay|wanderer-mini-play|#mini-play|mini-play|게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|상대 카드 13|상대는 13/);
+    expect(turnStrip).toContain('5를 내면 버림 더미로 가지 않고 승부 후보가 됩니다. 같은 후보인 15와 비교해서 턴은 15가 가져갑니다.');
+    expect(turnStrip).toContain('10을 내면 짝수라서 버림 더미로 갑니다. 이 턴의 승부 후보가 아닙니다.');
+    expect(turnStrip).toContain('15를 내면 승부 후보가 되고, 5와 비교해서 이 턴을 가져갑니다.');
+    expect([projectDetailPage, turnStrip].join('\n')).not.toMatch(/WandererMiniPlay|wanderer-mini-play|#mini-play|mini-play|게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|상대 카드 13|상대는 13|남은 카드끼리|홀수라 남|살아남/);
   });
 
   it('keeps the Wanderer detail page focused on play before follow/devlog blocks', () => {
@@ -202,7 +202,7 @@ describe('public UI copy cleanup', () => {
     expect(projectDetailPage).not.toMatch(/지금 확인|지금 보는 이유|다음에 고칠 것|기록 보기|플레이 방식|현재 들어간 것|Wanderer 노트|폰에서 돌린 날/);
     expect(projectDetailPage).not.toMatch(/30초 카드 골라보기|직접 골라보기|조건을 읽고|홀수만 살아남음/);
     expect(projectDetailPage).not.toMatch(/게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|카드 한 장으로 턴을 가져옵니다|상대는 13|한 장을 고르면/);
-    expect(projectDetailPage).toContain('이번 턴은 짝수 카드를 버립니다');
+    expect(projectDetailPage).toContain('이번 턴은 짝수 카드를 버림 더미로 보냅니다');
     expect(projectDetailPage).toContain('10을 버려야 이기는 턴입니다.');
   });
 
@@ -425,8 +425,8 @@ describe('public UI copy cleanup', () => {
 
     expect(combined).toContain('10을 냈는데, 바로 버려졌습니다.');
     expect(combined).toContain('10은 이렇게 먼저 버려집니다');
-    expect(combined).toContain('홀수 규칙 때문에 10이 사라지고');
-    expect(combined).toContain('10은 손에 있어도 이번 규칙에서는 바로 빠집니다');
+    expect(combined).toContain('5와 15가 승부 후보가 되고');
+    expect(combined).toContain('10은 손에 있어도 이번 규칙에서는 버림 더미로 갑니다');
     expect(combined).not.toMatch(/같이 볼 글|고른 순간, 승부가 갈립니다|카드를 냈을 때 왜 15가 이기는지|고르면 바로 승부가 갈립니다|장면|감각|붙잡|남깁|둡니다|살핍니다|이어 봅니다|먼저 두고|먼저 보여|안전해 보|좋은 카드가 아니라|목록처럼 읽|게임 밖에서 나온|제작 노트|게임 안에서 나온 기록|선택과 결과가 남은 글|지금 만질|괜찮아 보|좋아 보|중요|재미|선명|흔들|망설|규칙 앞에서|같은 무게|곁가지 도구|\b도구\b/);
   });
 
@@ -468,6 +468,6 @@ describe('public UI copy cleanup', () => {
     expect(articles).not.toMatch(/## 첫 선택이 게임을 정합니다[\s\S]*## 목록보다 행동|## 작은 판의 힘[\s\S]*## 남길 규칙|## 오래 이어가기 위한 기준[\s\S]*## 다시 돌아오는 방법|## 한 턴이 짧을수록|## 가격을 읽는 순서[\s\S]*## 작은 판단이 모이면/);
     expect(articles).not.toMatch(/Wanderer는 짧게 끝나는 모바일 카드 게임이에요|Hanoi는 하노이 탑 규칙을 바탕으로 만든 퍼즐 게임이에요|Color Hanoi는 하노이 탑 규칙에 색 조건을 더한 퍼즐 변형작이에요|TRPG는 선택에 따라 이야기와 결말이 달라지는 서사 게임입니다/);
     expect(articles).not.toMatch(/이 글은|이 글에서는|기준입니다|기준은|정리했습니다|정리합니다|기록입니다|기록을|문제는|단계|화면/);
-    expect(articles).toContain('Wanderer는 오래 버티는 게임이 아니라 카드를 버리고 남기는 게임입니다.');
+    expect(articles).toContain('Wanderer는 오래 버티는 게임이 아니라 카드를 버림 더미와 승부 후보로 가르는 게임입니다.');
   });
 });
