@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PageHero, Pill } from '@/components/brand-ui';
+import { WandererTurnStrip } from '@/components/wanderer-turn-strip';
 import { getProjectBySlug, getProjects, getWriting, resolveProjectRecords } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
@@ -71,14 +72,16 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       </section>
 
 
-      <figure className="overflow-hidden rounded-[24px] border border-line/70 bg-surface/60">
-        <img alt="Wanderer 10이 빠지는 한 턴 GIF" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/wanderer-rule-result.gif" />
-        <figcaption className="border-t border-line/70 px-4 py-3 text-xs font-semibold leading-6 text-subtext">
-          손패에 남은 10이 조건 변화 뒤 빠지는 한 턴입니다.
-        </figcaption>
-      </figure>
+        <figure className="overflow-hidden rounded-[2rem] border border-[#2d2620] bg-[#17120f] p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
+          <img alt="Wanderer 10이 빠지는 한 턴 GIF" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/wanderer-rule-result.gif" />
+          <figcaption className="px-3 pb-3 pt-4 text-sm text-[#c7b49d]">
+            손패에 남은 10이 조건 변화 뒤 빠지는 한 턴입니다.
+          </figcaption>
+        </figure>
 
-      <section id="play-video" className="scroll-mt-28 space-y-4 border-t border-line/45 pt-5">
+        <WandererTurnStrip />
+
+        <section className="grid gap-4 md:grid-cols-2">
         <p className="text-[11px] font-black uppercase tracking-[0.18em] text-point">플레이 영상</p>
         <div className="space-y-0 md:hidden">
           {[

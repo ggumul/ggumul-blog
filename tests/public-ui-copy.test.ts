@@ -180,6 +180,19 @@ describe('public UI copy cleanup', () => {
     expect(writingPage).toContain('Wanderer');
   });
 
+  it('lets a visitor resolve the Wanderer turn from the public page without bringing back mini-play copy', () => {
+    const projectDetailPage = read('app/projects/[slug]/page.tsx');
+    const turnStrip = read('components/wanderer-turn-strip.tsx');
+
+    expect(projectDetailPage).toContain("import { WandererTurnStrip } from '@/components/wanderer-turn-strip';");
+    expect(projectDetailPage).toContain('<WandererTurnStrip />');
+    expect(turnStrip).toContain('use client');
+    expect(turnStrip).toContain('카드 10');
+    expect(turnStrip).toContain('10은 홀수 규칙에 맞지 않아 빠집니다.');
+    expect(turnStrip).toContain('15가 마지막 비교에 남습니다.');
+    expect([projectDetailPage, turnStrip].join('\n')).not.toMatch(/WandererMiniPlay|wanderer-mini-play|#mini-play|mini-play|게임 해보기|해보기|카드 한 장 고르기|Wanderer 카드 고르기|Wanderer 한 턴|상대 카드 13|상대는 13/);
+  });
+
   it('keeps the Wanderer detail page focused on play before follow/devlog blocks', () => {
     const projectDetailPage = read('app/projects/[slug]/page.tsx');
 
