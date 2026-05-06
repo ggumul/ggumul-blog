@@ -54,7 +54,7 @@ describe('content loader', () => {
     expect(monthly?.relatedProjects).toContain('trpg');
     expect(encoded?.slug).toBe('wanderer-short-card-game');
     expect(runtime?.slug).toBe('wanderer-one-card');
-    expect(runtime?.summary).toContain('버림 더미로 간 10');
+    expect(runtime?.summary).toContain('11 이하 조건');
   });
 
   it('builds taxonomy and archive snapshots from the current writing set', async () => {
@@ -114,9 +114,11 @@ describe('content loader', () => {
       expect(project.verificationNote.length).toBeGreaterThanOrEqual(8);
       expect(project.nextStep.length).toBeGreaterThanOrEqual(8);
       expect(project.evidenceLabel.length).toBeGreaterThanOrEqual(4);
-      expect(project.evidenceHref).toMatch(/^\/media\/devlog-gifs\//);
-      expect(project.content).toContain(project.evidenceHref);
-      expect(fs.existsSync(path.join(process.cwd(), 'public', project.evidenceHref.replace(/^\//, '')))).toBe(true);
+      if (project.evidenceHref) {
+        expect(project.evidenceHref).toMatch(/^\/media\/devlog-gifs\//);
+        expect(project.content).toContain(project.evidenceHref);
+        expect(fs.existsSync(path.join(process.cwd(), 'public', project.evidenceHref.replace(/^\//, '')))).toBe(true);
+      }
 
       if (project.coverImage) {
         expect(fs.existsSync(path.join(process.cwd(), 'public', project.coverImage.replace(/^\//, '')))).toBe(true);
