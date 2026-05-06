@@ -13,7 +13,7 @@ function formatDate(date: string) {
 
 function EvidenceFallback({ project }: { project: ProjectEntry }) {
   return (
-    <div aria-label="처음 부딪히는 선택" className="border-t border-line/30 pt-4">
+    <div className="border-t border-line/30 pt-4">
       <p className="text-[12px] font-black tracking-[0.14em] text-point">{project.evidenceLabel}</p>
     </div>
   );
@@ -22,7 +22,7 @@ function EvidenceFallback({ project }: { project: ProjectEntry }) {
 export function ProjectCard({ project, records = [], compact = false }: ProjectCardProps) {
   const projectHref = `/projects/${project.slug}`;
   const previewRecords = records.slice(0, compact ? 1 : 2);
-  const publicLabel = project.slug === 'ggumul-dinner-grocery' ? '저녁 장보기' : '작은 게임';
+  const publicLabel = project.slug === 'ggumul-dinner-grocery' ? '생활 도구' : '게임';
 
   return (
     <article className="space-y-4 rounded-[20px] border border-line/45 bg-white/[0.035] p-4 md:p-5">
@@ -45,7 +45,6 @@ export function ProjectCard({ project, records = [], compact = false }: ProjectC
             ))}
           </div>
         ) : null}
-
       </div>
 
       <EvidenceFallback project={project} />

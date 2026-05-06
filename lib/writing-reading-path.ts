@@ -15,41 +15,41 @@ export const writingReadingPathSlugs = [
 
 const writingReadingPaths: Record<string, WritingReadingPath> = {
   'wanderer-one-card': {
-    stakes: '손패에 있던 10이 빠지는 순서부터 시작합니다.',
-    change: '10은 버림 더미로 가고 5와 15가 승부 후보가 되는 한 턴입니다.',
-    next: '버린 카드 읽기',
+    stakes: 'Wanderer는 결과보다 사라진 카드가 먼저 설명돼야 했습니다.',
+    change: '한 턴의 문장 순서를 바꾸고, 10이 빠진 뒤 결과를 읽게 했습니다.',
+    next: '빠진 카드 다시 보기',
   },
   'wanderer-same-turn': {
-    stakes: '잠깐 자리를 비워도 고르던 카드와 결과를 다시 볼 수 있습니다.',
-    change: '짧게 즐기고 돌아와도 같은 승부를 만나는 이야기입니다.',
+    stakes: '잠깐 나갔다 돌아오면 방금 보던 턴이 쉽게 끊겼습니다.',
+    change: '앱을 다시 열어도 같은 손패와 같은 결과를 만나게 했습니다.',
     next: '같은 턴 다시 읽기',
   },
   'wanderer-short-card-game': {
-    stakes: '카드 전투가 길어질수록 선택 뒤 결과를 보는 맛이 약해졌습니다.',
-    change: '복잡한 세계관보다 짧은 선택과 빠른 결과를 남기는 쪽으로 방향을 세웠습니다.',
-    next: '짧은 전투 읽기',
+    stakes: '카드와 설정을 많이 붙일수록 한 턴이 늦게 읽혔습니다.',
+    change: '세 장짜리 표본으로 줄이고, 한 턴이 끝나는 느낌부터 다시 잡았습니다.',
+    next: '줄인 이유 다시 읽기',
   },
   'small-games-first-move': {
-    stakes: '게임이 많아져도 지금 해볼 수 있는 일을 쉽게 찾을 수 있습니다.',
-    change: '카드 전투, 퍼즐, 서사 실험을 나눠 놓고 비어 있는 부분을 앞에 드러냈습니다.',
-    next: '게임 배치 읽기',
+    stakes: '프로젝트 이름보다 오늘 고칠 첫 선택이 더 필요했습니다.',
+    change: '카드, 원반, 테마 선택처럼 다시 잡을 수 있는 장면만 남겼습니다.',
+    next: '첫 선택 다시 읽기',
   },
   'dinner-grocery-price': {
-    stakes: '김치찌개 재료가 오늘 살 것과 나중에 살 것으로 갈립니다.',
-    change: '가격을 붙여 돼지고기와 두부의 순서를 다시 나눕니다.',
-    next: '가격 이야기 읽기',
+    stakes: '메뉴를 정해도 장보기 전에 재료를 다시 나눠야 했습니다.',
+    change: '김치찌개 재료 옆에 가격과 구매 시점을 함께 붙였습니다.',
+    next: '장보기 다시 읽기',
   },
   'small-games-rhythm': {
-    stakes: '여러 게임을 오가도 다시 잡을 한 칸이 필요했습니다.',
-    change: '카드가 빠지고 원반이 막히는 구간을 글 앞에 놓습니다.',
-    next: '만드는 방향 읽기',
+    stakes: '오래 비운 프로젝트는 큰 목표만 남으면 다시 잡기 어려웠습니다.',
+    change: '다시 열었을 때 손이 가는 작은 장면을 글에 남겼습니다.',
+    next: '리듬 다시 읽기',
   },
 };
 
 export function getWritingReadingPath(slug: string): WritingReadingPath {
   return writingReadingPaths[slug] ?? {
-    stakes: '무엇을 다루는 글인지 짧게 읽습니다.',
-    change: '글 안에서 달라진 점을 짧게 읽습니다.',
-    next: '글 읽기',
+    stakes: '아직 따로 묶지 않은 글입니다.',
+    change: '본문에서 어떤 일을 고쳤는지 바로 이어 읽습니다.',
+    next: '본문으로 가기',
   };
 }

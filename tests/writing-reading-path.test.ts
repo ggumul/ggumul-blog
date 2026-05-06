@@ -25,9 +25,9 @@ describe('writing reading path', () => {
 
   it('falls back without pretending unknown posts have a fake story arc', () => {
     expect(getWritingReadingPath('unknown-post')).toEqual({
-      stakes: '무엇을 다루는 글인지 짧게 읽습니다.',
-      change: '글 안에서 달라진 점을 짧게 읽습니다.',
-      next: '글 읽기',
+      stakes: '아직 따로 묶지 않은 글입니다.',
+      change: '본문에서 어떤 일을 고쳤는지 바로 이어 읽습니다.',
+      next: '본문으로 가기',
     });
   });
 });

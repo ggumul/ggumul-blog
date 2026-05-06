@@ -1,29 +1,27 @@
 ---
-title: "Wanderer"
-slug: "wanderer"
-status: "만드는 중"
-progressStatus: "한 턴"
-verificationNote: "10은 짝수라 버림 더미로 갑니다"
-nextStep: "방금 고르던 카드가 끊기지 않게 만듭니다"
-evidenceLabel: "10이 빠지는 판"
-evidenceHref: "/writing/wanderer-one-card"
-summary: "손에 있던 10은 짝수라 버림 더미로 갑니다. Wanderer는 손패, 규칙, 버림 더미, 승부 후보로 한 턴을 끝내는 모바일 카드 게임입니다."
+title: Wanderer
+slug: wanderer
+summary: 카드를 많이 설명하기 전에 한 턴이 먼저 읽히는지 보는 모바일 카드 게임입니다.
 featured: true
+status: 세 장짜리 턴 표본
+progressStatus: 한 턴
+verificationNote: 한 턴 GIF와 모바일 화면을 나란히 두었습니다.
+nextStep: 카드가 빠진 뒤 결과 문장을 더 짧게 다듬기
+evidenceLabel: 세 장짜리 턴 GIF
+evidenceHref: /media/devlog-gifs/wanderer-rule-result.gif
 order: 1
 relatedPosts:
-  - "wanderer-one-card"
-  - "wanderer-same-turn"
-  - "wanderer-short-card-game"
-coverImage: "/project-covers/wanderer.png"
+  - wanderer-one-card
+  - wanderer-same-turn
+  - wanderer-short-card-game
+  - small-games-first-move
+coverImage: /project-covers/wanderer.png
 ---
 
-Wanderer는 손에 든 카드 세 장으로 한 턴을 끝내는 모바일 카드 게임입니다. 이번 판의 손패는 5, 10, 15입니다. 10은 손에 있어도 이번 규칙에서는 버림 더미로 갑니다.
+Wanderer는 처음부터 큰 카드 전투로 잡으려던 게임이었습니다. 그런데 효과와 세계관을 먼저 얹으니, 한 턴에서 실제로 무엇을 고르고 무엇이 빠지는지 늦게 보였습니다.
 
-<img alt="Wanderer 조건 변화 GIF" src="/media/devlog-gifs/wanderer-rule-result.gif" />
-<p class="media-caption">손에 있던 10이 조건 변화 뒤 버림 더미로 가는 한 턴입니다.</p>
+그래서 지금은 판을 아주 작게 줄였습니다. 손에 카드가 몇 장 있고, 이번 턴의 조건이 하나 붙고, 조건에 맞지 않는 카드는 빠집니다. 남은 카드가 결과를 만듭니다.
 
-10은 큰 숫자가 아니라 짝수 카드로 처리됩니다. 한 턴 안에서는 손에 있지만, 규칙이 붙는 순간 버림 더미로 갑니다. 5는 승부 후보가 되지만 15를 이기지 못합니다. 15는 비교에서 이겨 턴을 가져옵니다.
+<img src="/media/devlog-gifs/wanderer-rule-result.gif" alt="Wanderer 턴 표본 GIF" />
 
-먼저 읽을 것은 손패, 이번 규칙, 버림 더미로 가는 카드, 승부 후보가 되는 카드입니다. 그 네 가지가 한눈에 이어져야 한 턴이 짧게 끝납니다.
-
-그래서 Wanderer의 첫 모양은 작게 잡았습니다. 카드 종류를 늘리기보다, 10이 버림 더미로 가는 순서를 앞에 놓았습니다. 다음 판정으로 넘어가기 전에 어떤 카드가 승부 후보인지까지 한 턴 안에 들어갑니다.
+이 GIF는 완성 장면이 아니라 현재 기준선입니다. 이 정도 크기에서 턴이 읽히면 그다음에 효과, 캐릭터, 보상을 붙일 수 있습니다. 읽히지 않으면 더 붙일 이유가 없습니다.

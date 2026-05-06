@@ -1,27 +1,25 @@
 ---
-title: "Color Hanoi"
-slug: "color-hanoi"
-status: "만드는 중"
-progressStatus: "색 퍼즐"
-verificationNote: "색 하나가 옮길 순서를 바꿉니다"
-nextStep: "색 때문에 막히는 순간을 더 쉽게 읽히게 만듭니다"
-evidenceLabel: "색이 바꾸는 순서"
-evidenceHref: "/writing/small-games-first-move"
-summary: "크기만 맞으면 되던 Hanoi에 색 순서가 붙습니다. Color Hanoi는 같은 원반도 색 조건 때문에 다른 순서로 옮기게 만드는 퍼즐입니다."
-featured: true
-order: 4
-coverImage: "/project-covers/color-hanoi.png"
+title: Color Hanoi
+slug: color-hanoi
+summary: 크기 규칙만 있던 Hanoi에 색 순서를 더해 막히는 이유를 늘려 본 퍼즐입니다.
+featured: false
+status: 색 조건 실험 중
+progressStatus: 색 퍼즐
+verificationNote: 색 조건에 막힌 이동을 GIF에 담았습니다.
+nextStep: 색 때문에 막힌 것과 크기 때문에 막힌 것을 다르게 보이게 하기
+evidenceLabel: 색 조건 확인 GIF
+evidenceHref: /media/devlog-gifs/color-hanoi-rule.gif
+order: 3
 relatedPosts:
-  - "small-games-first-move"
+  - small-games-first-move
+  - small-games-rhythm
+coverImage: /project-covers/color-hanoi.png
 ---
 
-Color Hanoi는 하노이 탑에 색 순서를 더한 퍼즐입니다. 크기만 맞으면 되던 이동에 색 조건이 붙으면, 같은 원반도 바로 옮길 수 없습니다.
+Color Hanoi는 Hanoi에 색 순서를 얹은 실험입니다. 크기만 맞으면 움직이던 퍼즐에 색 조건이 들어오면, 플레이어가 헷갈리는 이유도 하나 더 생깁니다.
 
-<img alt="Color Hanoi 색 순서 GIF" src="/media/devlog-gifs/color-hanoi-rule.gif" />
-<p class="media-caption">색 순서 규칙 때문에 같은 원반도 다른 자리에서 멈춥니다.</p>
+그래서 이 프로젝트에서는 성공한 이동보다 실패한 이동을 더 중요하게 봅니다. 왜 안 되는지 화면이 말하지 못하면 색 규칙은 재미가 아니라 방해가 됩니다.
 
-GIF에는 많은 풀이를 넣지 않았습니다. 빨강, 노랑, 파랑 같은 색 순서가 붙었을 때 원반 하나의 갈 곳이 달라지는 부분만 남겼습니다. 크기 조건은 통과해도 색 순서가 맞지 않으면 이동은 멈춥니다.
+<img src="/media/devlog-gifs/color-hanoi-rule.gif" alt="Color Hanoi 색 조건 GIF" />
 
-이 퍼즐의 차이는 새 규칙을 많이 붙이는 데 있지 않습니다. 원래 알던 하노이 이동을 한 번 더 의심하게 만드는 데 있습니다. 방금 들 수 있던 원반도 색 순서 때문에 기다려야 합니다.
-
-그래서 Color Hanoi는 Hanoi와 같은 모양에서 출발하지만 다른 손순서를 만듭니다. 플레이어는 크기와 색을 같이 보며 다음 원반을 고르게 됩니다.
+다음 작업은 실패 이유를 분리하는 일입니다. 크기 때문에 안 되는지, 색 때문에 안 되는지, 둘 다 아닌지부터 화면에서 갈라야 합니다.

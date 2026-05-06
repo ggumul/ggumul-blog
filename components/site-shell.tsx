@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 const NAV_ITEMS = [
-  { href: '/projects', label: '게임' },
+  { href: '/projects', label: '만드는 것들' },
   { href: '/writing', label: '글' },
   { href: '/about', label: '소개' },
   { href: '/links', label: '링크' },
@@ -19,7 +19,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </span>
             <span className="leading-tight">
               <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[24px]">ggumul / 꼬물</span>
-              <span className="block text-[11px] font-semibold text-subtext">작은 게임을 천천히 만드는 곳</span>
+              <span className="block text-[11px] font-semibold text-subtext">천천히 만드는 작은 기록</span>
             </span>
           </Link>
 
@@ -45,11 +45,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 text-sm text-subtext md:grid-cols-[minmax(0,1fr)_auto] md:px-8">
           <div>
             <div className="text-lg font-black tracking-[-0.04em] text-text">ggumul / 꼬물</div>
-            <p className="mt-2 max-w-2xl leading-7">꼬물은 작은 게임을 만들고, 만들다 바꾼 이유를 짧게 적습니다.</p>
+            <p className="mt-2 max-w-2xl leading-7">꼬물은 만들던 것을 잊지 않으려고 짧은 글을 남깁니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
             <Link href="/writing" className="transition hover:text-text">글</Link>
-            <Link href="/projects" className="transition hover:text-text">게임</Link>
+            <Link href="/projects" className="transition hover:text-text">만드는 것들</Link>
             <Link href="/about" className="transition hover:text-text">소개</Link>
             <Link href="/links" className="transition hover:text-text">링크</Link>
           </div>

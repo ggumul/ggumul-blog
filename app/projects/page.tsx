@@ -4,8 +4,8 @@ import { getProjectRecordMap } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
-  title: '작은 게임들',
-  description: '작은 게임을 만들며 바꾼 내용을 글과 함께 모았습니다.',
+  title: '만드는 것들',
+  description: '꼬물이 지금 만들고 있는 작은 게임과 생활 도구입니다.',
   path: '/projects',
 });
 
@@ -16,50 +16,51 @@ function formatDate(date: string) {
 export default async function ProjectsPage() {
   const projectRecordMap = await getProjectRecordMap();
   const worklines = Object.values(projectRecordMap).sort((a, b) => a.project.order - b.project.order);
-  const lead = worklines.find(({ project }) => project.slug === 'wanderer') ?? worklines[0];
-  const otherWorklines = worklines.filter(({ project }) => project.slug !== lead?.project.slug);
+  const gameWorklines = worklines.filter(({ project }) => project.slug !== 'ggumul-dinner-grocery');
+  const outsideWorklines = worklines.filter(({ project }) => project.slug === 'ggumul-dinner-grocery');
 
   return (
     <div className="archive-surface space-y-8 md:space-y-16">
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
-        <p className="text-[12px] font-black tracking-[0.18em] text-point">게임</p>
+        <p className="text-[12px] font-black tracking-[0.18em] text-point">만드는 것들</p>
         <h1 className="text-[30px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          작은 게임을 만들며 바꾼 내용을 모았습니다.
+          아직 작은 모양으로 남아 있는 것들.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          Wanderer, Hanoi, TRPG, 저녁 장보기처럼 지금 손대는 작은 판을 모았습니다. 자세한 변경은 각 글에서 읽습니다.
+          여기 있는 것들은 완성된 소개보다 작업 중인 표본에 가깝습니다. 카드 게임, 퍼즐, 짧은 선택지, 저녁 장보기 도구를 조금씩 붙잡고 있습니다.
         </p>
       </section>
 
-      {lead ? (
-        <section className="space-y-5">
-          <div>
-            <div>
-              <p className="text-[12px] font-black tracking-[0.16em] text-point">Wanderer</p>
-              <h2 className="mt-2 text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[46px]">{lead.project.title}</h2>
-            </div>
-          </div>
-          <p className="max-w-3xl text-sm leading-7 text-subtext">Wanderer는 손패, 규칙, 버림 더미, 승부 후보로 한 턴을 끝내는 모바일 카드 게임입니다.</p>
-          <ProjectCard project={lead.project} records={lead.records} />
-        </section>
-      ) : null}
-
-      <section id="other-games" className="space-y-5">
+      <section className="space-y-5">
         <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">다른 판</p>
-          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">막대, 색, 선택지</h2>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">게임</p>
+          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">손으로 줄여 보는 규칙들</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
-          {otherWorklines.map(({ project, records }) => (
+          {gameWorklines.map(({ project, records }) => (
             <ProjectCard key={project.slug} project={project} records={records} compact />
           ))}
         </div>
       </section>
 
+      {outsideWorklines.length ? (
+        <section className="space-y-5">
+          <div>
+            <p className="text-[12px] font-black tracking-[0.16em] text-point">생활 도구</p>
+            <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">저녁을 고른 뒤에 남는 일</h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {outsideWorklines.map(({ project, records }) => (
+              <ProjectCard key={project.slug} project={project} records={records} compact />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className="space-y-4">
         <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">글</p>
-          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">만드는 동안 바꾼 것들</h2>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">최근 글</p>
+          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">각각에서 적은 것</h2>
         </div>
         <div className="space-y-3 border-y border-line/70 py-2">
           {worklines.flatMap(({ project, records }) => records.slice(0, 2).map((post) => ({ project, post }))).map(({ project, post }) => (

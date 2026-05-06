@@ -4,7 +4,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '꼬물은 작은 게임에서 카드가 빠지고 원반이 막히는 순간을 먼저 꺼냅니다.',
+  description: '꼬물은 만들고 있는 작은 게임과 생활 도구를 적어 두는 블로그입니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
@@ -16,11 +16,9 @@ function formatDate(date: string) {
 export default async function HomePage() {
   const snapshot = await getHomeArchiveSnapshot();
   const websiteJsonLd = createWebsiteJsonLd();
-  const gameProjects = snapshot.worklines.filter((project) => project.slug !== 'ggumul-dinner-grocery');
-  const groceryProjects = snapshot.worklines.filter((project) => project.slug === 'ggumul-dinner-grocery');
   const allPosts = [snapshot.latest, ...snapshot.moreEntries].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
   const latestPosts = allPosts.slice(0, 5);
-  const projectLinks = [...gameProjects, ...groceryProjects].slice(0, 5);
+  const projectLinks = snapshot.worklines.slice(0, 5);
 
   return (
     <div className="archive-surface space-y-12 md:space-y-16">
@@ -29,10 +27,10 @@ export default async function HomePage() {
       <section className="max-w-4xl space-y-5 py-4 md:py-8">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">최근 글</p>
         <h1 className="text-[32px] font-black leading-tight tracking-[-0.04em] text-text md:text-[56px] md:leading-[1.08]">
-          꼬물은 작은 게임을 만들며 바꾼 내용을 짧게 적습니다.
+          만들다 막힌 곳을 적어 둡니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-          카드 규칙, 퍼즐 조건, 저녁 장보기처럼 직접 만들고 있는 것에서 생긴 수정만 짧게 적습니다.
+          꼬물은 완성품을 소개하는 페이지보다 제작 중에 남은 노트를 먼저 둡니다. 카드 한 턴, 퍼즐 한 이동, 장보기 목록처럼 지금 실제로 만지고 있는 조각을 짧게 씁니다.
         </p>
       </section>
 
@@ -41,7 +39,7 @@ export default async function HomePage() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-[12px] font-black tracking-[0.16em] text-point">글</p>
-              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">만드는 동안 바꾼 것들</h2>
+              <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">최근에 쓴 것</h2>
             </div>
             <Link href="/writing" className="text-sm font-bold text-point hover:text-text">글 모음</Link>
           </div>
@@ -63,10 +61,10 @@ export default async function HomePage() {
         <section className="space-y-4">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="text-[12px] font-black tracking-[0.16em] text-point">게임</p>
-              <h2 className="mt-2 text-[24px] font-black tracking-[-0.035em] text-text md:text-[34px]">만드는 중인 작은 판</h2>
+              <p className="text-[12px] font-black tracking-[0.16em] text-point">만드는 것</p>
+              <h2 className="mt-2 text-[24px] font-black tracking-[-0.035em] text-text md:text-[34px]">지금 책상 위에 있는 것들</h2>
             </div>
-            <Link href="/projects" className="text-sm font-bold text-point hover:text-text">게임 목록</Link>
+            <Link href="/projects" className="text-sm font-bold text-point hover:text-text">목록</Link>
           </div>
           <div className="article-list">
             {projectLinks.map((project) => (

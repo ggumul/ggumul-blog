@@ -4,8 +4,8 @@ import { createArticleJsonLd, createMetadata, siteConfig, toAbsoluteUrl } from '
 describe('site branding and seo helpers', () => {
   it('exposes ggumul brand identity for metadata defaults', () => {
     expect(siteConfig.name).toBe('ggumul / 꼬물');
-    expect(siteConfig.description).toContain('작은 게임');
-    expect(siteConfig.keywords).toContain('제작 과정');
+    expect(siteConfig.description).toContain('블로그');
+    expect(siteConfig.keywords).toContain('제작 블로그');
     expect(siteConfig.keywords).toContain('Wanderer');
   });
 
