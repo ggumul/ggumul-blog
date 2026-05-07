@@ -88,6 +88,40 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
   );
 }
 
+function HanoiFeaturePage() {
+  return (
+    <article className="archive-surface space-y-10 md:space-y-14">
+      <Link href="/projects" className="text-sm font-semibold text-subtext transition hover:text-point">
+        목록으로 돌아가기
+      </Link>
+
+      <section className="space-y-5 border-b border-line/60 pb-6 md:space-y-7 md:pb-8">
+        <div className="max-w-3xl space-y-3">
+          <p className="text-[12px] font-black uppercase tracking-[0.18em] text-point">Hanoi</p>
+          <h1 className="max-w-4xl text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[64px] md:leading-[1.06]">
+            원반을 옮겨 세 기둥의 순서를 맞추는 퍼즐입니다.
+          </h1>
+          <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
+            작은 원반 위에는 큰 원반을 올릴 수 없습니다. 원반 하나를 옮기면, 다음에 갈 수 있는 기둥이 바로 달라집니다.
+          </p>
+        </div>
+      </section>
+
+      <figure className="overflow-hidden rounded-[2rem] border border-[#2d2620] bg-[#17120f] p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
+        <img alt="Hanoi에서 원반 하나를 옮긴 뒤 갈 수 있는 기둥이 달라지는 장면" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/hanoi-next-seat.gif" />
+        <figcaption className="px-3 pb-3 pt-4 text-sm text-[#c7b49d]">
+          원반 하나를 옮긴 뒤, 다음에 갈 수 있는 기둥이 달라지는 장면입니다.
+        </figcaption>
+      </figure>
+
+      <section className="prose max-w-none">
+        <p>처음에는 이동 뒤에 무엇이 바뀌었는지 잘 보이지 않았습니다.</p>
+        <p>지금은 옮길 수 있는 자리와 막힌 자리를 먼저 보이게 맞추고 있습니다.</p>
+      </section>
+    </article>
+  );
+}
+
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const game = await getProjectBySlug(slug);
@@ -102,6 +136,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   if (game.slug === 'wanderer') {
     return <WandererFeaturePage relatedPosts={relatedPosts} />;
+  }
+
+  if (game.slug === 'hanoi') {
+    return <HanoiFeaturePage />;
   }
 
   return (

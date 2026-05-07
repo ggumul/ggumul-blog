@@ -93,6 +93,17 @@ describe('public copy safety rails', () => {
     expect(projectContent).not.toContain('small-games-first-move');
   });
 
+  it('keeps the Hanoi project page as a plain puzzle description', () => {
+    const projectPage = read('app/projects/[slug]/page.tsx');
+    const projectContent = read('content/projects/hanoi.mdx');
+    const combined = [projectPage, projectContent].join('\n');
+
+    expect(projectPage).toContain('작은 원반 위에는 큰 원반을 올릴 수 없습니다.');
+    expect(projectPage).toContain('원반 하나를 옮기면, 다음에 갈 수 있는 기둥이 바로 달라집니다.');
+    expect(projectContent).not.toContain('small-games-first-move');
+    expect(combined).not.toMatch(/재미있는 순간|어떤 길은 닫히고|새로 열립니다|자리의 차이를 먼저 붙잡|손끝에서 이어집니다|다음 자리 GIF|Hanoi 다음 자리/);
+  });
+
   it('keeps links from exposing raw long URLs as the visible label', () => {
     const linksPage = read('app/links/page.tsx');
 
