@@ -32,7 +32,12 @@ export default async function ProjectsPage() {
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {gameWorklines.map(({ project, records }) => (
-            <ProjectCard key={project.slug} project={project} records={records} compact />
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              records={records.filter((record) => project.relatedPosts.includes(record.slug))}
+              compact
+            />
           ))}
         </div>
       </section>
@@ -45,7 +50,12 @@ export default async function ProjectsPage() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {outsideWorklines.map(({ project, records }) => (
-              <ProjectCard key={project.slug} project={project} records={records} compact />
+              <ProjectCard
+                key={project.slug}
+                project={project}
+                records={records.filter((record) => project.relatedPosts.includes(record.slug))}
+                compact
+              />
             ))}
           </div>
         </section>
