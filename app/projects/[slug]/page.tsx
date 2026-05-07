@@ -72,12 +72,9 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
         </figcaption>
       </figure>
 
-      <section className="grid gap-6 md:grid-cols-[minmax(0,1fr)_320px] md:items-start">
-        <div className="prose max-w-none">
-          <p>처음에는 카드 효과와 설명이 많았습니다. 하지만 한 턴에서 어떤 카드가 가능한지 늦게 보였습니다.</p>
-          <p>그래서 지금은 한 턴을 짧게 줄였습니다. 조건을 보고, 낼 수 있는 카드를 고르고, 결과를 확인하는 순서만 먼저 맞춥니다.</p>
-        </div>
-        <video className="hidden max-h-[520px] w-full object-contain md:block" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
+      <section className="prose max-w-none">
+        <p>처음에는 카드 효과와 설명이 많았습니다. 하지만 한 턴에서 어떤 카드가 가능한지 늦게 보였습니다.</p>
+        <p>그래서 지금은 한 턴을 짧게 줄였습니다. 조건을 보고, 낼 수 있는 카드를 고르고, 결과를 확인하는 순서만 먼저 맞춥니다.</p>
       </section>
 
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
