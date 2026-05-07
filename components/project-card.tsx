@@ -14,14 +14,12 @@ function formatDate(date: string) {
 export function ProjectCard({ project, records = [], compact = false }: ProjectCardProps) {
   const projectHref = `/projects/${project.slug}`;
   const previewRecords = records.slice(0, compact ? 1 : 2);
-  const publicLabel = project.slug === 'ggumul-dinner-grocery' ? '생활 도구' : '게임';
 
   return (
     <article className="space-y-4 rounded-[20px] border border-line/45 bg-white/[0.035] p-4 md:p-5">
       <div className="space-y-4">
         <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">{publicLabel}</p>
-          <h3 className="mt-2 text-[24px] font-black leading-tight tracking-[-0.045em] text-text md:text-[32px]">
+          <h3 className="text-[24px] font-black leading-tight tracking-[-0.045em] text-text md:text-[32px]">
             <Link href={projectHref} className="hover:text-point">{project.title}</Link>
           </h3>
           <p className="mt-3 text-sm leading-7 text-subtext">{project.summary}</p>

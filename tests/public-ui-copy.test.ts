@@ -74,6 +74,13 @@ describe('public copy safety rails', () => {
     expect(sources).not.toMatch(/기록\b|메모\b|흔적|작업 흔적|작업 순서|작업 중/);
   });
 
+  it('keeps project cards from repeating section labels inside each card', () => {
+    const projectCard = read('components/project-card.tsx');
+
+    expect(projectCard).not.toContain('publicLabel');
+    expect(projectCard).not.toContain("project.slug === 'ggumul-dinner-grocery' ? '생활 도구' : '게임'");
+  });
+
   it('keeps links from exposing raw long URLs as the visible label', () => {
     const linksPage = read('app/links/page.tsx');
 
