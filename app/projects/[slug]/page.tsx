@@ -60,7 +60,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             조건에 맞는 카드를 골라 턴을 넘기는 모바일 카드 게임입니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            조건 카드가 먼저 뜨고, 손패에서 낼 수 있는 카드만 남습니다. 예를 들어 11 이하 조건이면 5, 10, 11은 고를 수 있고 13, 14, 15는 빠집니다.
+            조건 카드가 먼저 뜨고, 손패에서 낼 수 있는 카드가 바로 구분됩니다. 예를 들어 11 이하 조건이면 5, 10, 11은 고를 수 있고 13, 14, 15는 고를 수 없습니다.
           </p>
         </div>
       </section>
@@ -68,7 +68,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <figure className="overflow-hidden rounded-[2rem] border border-[#2d2620] bg-[#17120f] p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
         <img alt="Wanderer 턴 표본 GIF" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/wanderer-rule-result.gif" />
         <figcaption className="px-3 pb-3 pt-4 text-sm text-[#c7b49d]">
-          실제 매치 화면. 11 이하 조건 아래에서 5, 10, 11은 고를 수 있고 13, 14, 15는 빠집니다.
+          실제 매치 화면. 11 이하 조건 아래에서 5, 10, 11은 고를 수 있고 13, 14, 15는 고를 수 없습니다.
         </figcaption>
       </figure>
 
