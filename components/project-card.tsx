@@ -11,14 +11,6 @@ function formatDate(date: string) {
   return date.replaceAll('-', '.');
 }
 
-function EvidenceFallback({ project }: { project: ProjectEntry }) {
-  return (
-    <div className="border-t border-line/30 pt-4">
-      <p className="text-[12px] font-black tracking-[0.14em] text-point">{project.evidenceLabel}</p>
-    </div>
-  );
-}
-
 export function ProjectCard({ project, records = [], compact = false }: ProjectCardProps) {
   const projectHref = `/projects/${project.slug}`;
   const previewRecords = records.slice(0, compact ? 1 : 2);
@@ -46,8 +38,6 @@ export function ProjectCard({ project, records = [], compact = false }: ProjectC
           </div>
         ) : null}
       </div>
-
-      <EvidenceFallback project={project} />
     </article>
   );
 }
