@@ -57,10 +57,10 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
         <div className="max-w-3xl space-y-3">
           <p className="text-[12px] font-black uppercase tracking-[0.18em] text-point">Wanderer</p>
           <h1 className="max-w-4xl text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[64px] md:leading-[1.06]">
-            세 장짜리 판으로 줄인 카드 게임.
+            조건에 맞는 카드를 골라 턴을 넘기는 모바일 카드 게임입니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            Wanderer는 큰 카드 전투보다 작은 턴에서 시작합니다. 조건 카드가 뜨고, 손패에서 낼 수 있는 숫자와 뒤로 밀리는 숫자가 바로 갈립니다.
+            조건 카드가 먼저 뜨고, 손패에서 낼 수 있는 카드만 남습니다. 예를 들어 11 이하 조건이면 5, 10, 11은 고를 수 있고 13, 14, 15는 빠집니다.
           </p>
         </div>
       </section>
@@ -68,14 +68,14 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <figure className="overflow-hidden rounded-[2rem] border border-[#2d2620] bg-[#17120f] p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
         <img alt="Wanderer 턴 표본 GIF" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/wanderer-rule-result.gif" />
         <figcaption className="px-3 pb-3 pt-4 text-sm text-[#c7b49d]">
-          실제 매치 화면. 11 이하 조건 아래에서 5, 10, 11은 밝고 13, 14, 15는 뒤로 밀립니다.
+          실제 매치 화면. 11 이하 조건 아래에서 5, 10, 11은 고를 수 있고 13, 14, 15는 빠집니다.
         </figcaption>
       </figure>
 
       <section className="grid gap-6 md:grid-cols-[minmax(0,1fr)_320px] md:items-start">
         <div className="prose max-w-none">
-          <p>처음에는 카드 효과와 설명이 더 많았습니다. 화면은 풍성해졌지만, 정작 이번 턴에서 어떤 카드가 빠졌는지는 늦게 보였습니다.</p>
-          <p>세 장으로 줄이자 순서가 보였습니다. 조건을 먼저 읽고, 그 조건 안에 들어오는 손패와 밀리는 손패를 나눕니다. Wanderer는 그 짧은 흐름이 납득되는지부터 붙잡습니다.</p>
+          <p>처음에는 카드 효과와 설명이 많았습니다. 하지만 한 턴에서 어떤 카드가 가능한지 늦게 보였습니다.</p>
+          <p>그래서 지금은 한 턴을 짧게 줄였습니다. 조건을 보고, 낼 수 있는 카드를 고르고, 결과를 확인하는 순서만 먼저 맞춥니다.</p>
         </div>
         <video className="hidden max-h-[520px] w-full object-contain md:block" src="/media/runtime-checks/wanderer-mobile-demo.mp4" poster="/project-covers/wanderer.png" autoPlay muted loop playsInline />
       </section>
