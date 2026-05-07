@@ -27,7 +27,7 @@ describe('public copy safety rails', () => {
     expect(css).toMatch(/\.korean-keep[\s\S]*word-break:\s*keep-all/);
   });
 
-  it('keeps the home page as a writing-first blog index', () => {
+  it('keeps the home page as a quiet writing-first blog index', () => {
     const homePage = read('app/page.tsx');
     const writingSectionIndex = homePage.indexOf('{latestPosts.length ? (');
     const projectsSectionIndex = homePage.indexOf('{projectLinks.length ? (');
@@ -35,8 +35,18 @@ describe('public copy safety rails', () => {
     expect(writingSectionIndex).toBeGreaterThan(0);
     expect(projectsSectionIndex).toBeGreaterThan(0);
     expect(writingSectionIndex).toBeLessThan(projectsSectionIndex);
-    expect(homePage).toContain('최근 글');
+    expect(homePage).toContain('최근에 쓴 글');
+    expect(homePage).toContain('만들고 있는 것');
     expect(homePage).not.toMatch(/heroLoop|latestGamePath|<video|wanderer-mobile-demo\.mp4/);
+    expect(homePage).not.toMatch(/함께 만드는 것들|카드가 빠지는 순간|다음 자리가 열리는 순간/);
+  });
+
+  it('keeps the writing list from looking like a tag dashboard', () => {
+    const writingPage = read('app/writing/page.tsx');
+
+    expect(writingPage).toContain('날짜순으로 모았습니다');
+    expect(writingPage).toContain('카드와 퍼즐');
+    expect(writingPage).not.toMatch(/projectLabels|rounded-full|게임 글|카드, 퍼즐, 선택지|장면이 먼저 보이는 글들/);
   });
 
   it('does not bring back playable Wanderer UI or mini-play code', () => {
