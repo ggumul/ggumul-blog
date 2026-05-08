@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { Pill } from '@/components/brand-ui';
-import { getProjects, getWriting, getWritingBySlug } from '@/lib/content';
+import { getWriting, getWritingBySlug } from '@/lib/content';
 import { createArticleJsonLd, createMetadata } from '@/lib/site';
 
 const legacyWritingSlugMap: Record<string, string> = {
@@ -19,11 +18,8 @@ function resolveLegacyWritingSlug(slug: string) {
   }
 }
 
-function extractHeadings(content: string) {
-  return content
-    .split('\n')
-    .map((line) => line.match(/^##\s+(.+)$/)?.[1]?.trim())
-    .filter((heading): heading is string => Boolean(heading));
+function formatDate(date: string) {
+  return date.replaceAll('-', '.');
 }
 
 export async function generateStaticParams() {
@@ -79,14 +75,10 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
     notFound();
   }
 
-  const [projects, allPosts] = await Promise.all([getProjects(), getWriting()]);
-  const relatedProjects = projects.filter((project) => post.relatedProjects.includes(project.slug));
-  const relatedProjectLabelMap = new Map(projects.map((project) => [project.slug, project.title]));
-  const siblingRecords = allPosts.filter((entry) => entry.slug !== post.slug && entry.series && entry.series === post.series);
-  const relatedRecords = siblingRecords.length > 0
-    ? siblingRecords
-    : allPosts.filter((entry) => entry.slug !== post.slug && entry.relatedProjects.some((project) => post.relatedProjects.includes(project))).slice(0, 3);
-  const headings = extractHeadings(post.content);
+  const allPosts = await getWriting();
+  const relatedRecords = allPosts
+    .filter((entry) => entry.slug !== post.slug && entry.relatedProjects.some((project) => post.relatedProjects.includes(project)))
+    .slice(0, 3);
   const articleJsonLd = createArticleJsonLd({
     title: post.title,
     description: post.summary,
@@ -102,72 +94,38 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
         글 목록으로
       </Link>
 
-      <header className="rounded-2xl border border-line/70 bg-surface/70 p-5 md:p-8">
-        <div className="max-w-3xl space-y-4">
-          <div className="flex flex-wrap items-center gap-2 text-[12px]">
-            <Pill tone="point">{post.category}</Pill>
-            {post.series ? <Pill>{post.series}</Pill> : null}
-            <Pill>{post.publishedAt}</Pill>
-          </div>
-          <h1 className="text-[36px] font-black leading-[1.05] tracking-[-0.055em] text-text md:text-[62px]">
-            {post.title}
-          </h1>
-          <p className="text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">{post.summary}</p>
-          {post.updatedAt !== post.publishedAt ? <p className="text-[12px] text-subtext/80">마지막 수정 {post.updatedAt}</p> : null}
+      <header className="max-w-3xl space-y-5 py-2 md:py-6">
+        <div className="flex flex-wrap items-center gap-2 text-sm text-subtext">
+          <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+          {post.updatedAt !== post.publishedAt ? (
+            <>
+              <span>/</span>
+              <span>수정 {formatDate(post.updatedAt)}</span>
+            </>
+          ) : null}
         </div>
+        <h1 className="text-[36px] font-black leading-[1.05] tracking-[-0.055em] text-text md:text-[62px]">
+          {post.title}
+        </h1>
+        <p className="text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">{post.summary}</p>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
-        <section className="prose max-w-none lg:max-w-3xl" dangerouslySetInnerHTML={{ __html: post.html }} />
-
-        <aside className="space-y-7 text-sm text-subtext lg:sticky lg:top-24">
-          {headings.length > 0 ? (
-            <div className="space-y-3">
-              <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">목차</div>
-              <ol className="space-y-2 text-[13px] leading-6">
-                {headings.map((heading) => (
-                  <li key={heading} className="border-t border-line/70 py-2 text-text/90">{heading}</li>
-                ))}
-              </ol>
-            </div>
-          ) : null}
-
-          {relatedProjects.length > 0 ? (
-            <div className="space-y-3">
-              <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">관련 프로젝트</div>
-              <div className="divide-y divide-line/70 border-y border-line/70">
-                {relatedProjects.map((project) => (
-                  <Link key={project.slug} href={`/projects/${project.slug}`} className="block py-4 transition hover:text-text">
-                    <div className="font-black tracking-[-0.03em] text-text">{project.title}</div>
-                    <p className="mt-1 text-sm leading-6 text-subtext">{project.summary}</p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ) : null}
-
-          <div>
-            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">이 글에서 보는 것</div>
-            <div className="mt-3 flex flex-wrap gap-2 text-[12px]">
-              {post.tags.map((tag) => (
-                <span key={tag} className="rounded-full border border-line/70 px-2.5 py-1 text-subtext">#{tag}</span>
-              ))}
-            </div>
-          </div>
-        </aside>
-      </div>
+      <section className="prose max-w-none lg:max-w-3xl" dangerouslySetInnerHTML={{ __html: post.html }} />
 
       {relatedRecords.length > 0 ? (
-        <section className="space-y-5">
+        <section className="space-y-4 border-t border-line/60 pt-6">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">다음 글</p>
-            <h2 className="mt-2 text-[30px] font-black leading-tight tracking-[-0.045em] text-text md:text-[46px]">다음에 읽을 이야기</h2>
+            <p className="text-[12px] font-black tracking-[0.18em] text-point">이어지는 글</p>
+            <h2 className="mt-2 text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[38px]">같은 작업선의 다른 날짜</h2>
           </div>
           <div className="divide-y divide-line/70 border-y border-line/70">
-            {relatedRecords.slice(0, 3).map((entry) => (
-              <Link key={entry.slug} href={`/writing/${entry.slug}`} className="block py-4 transition hover:text-text">
-                <h3 className="text-xl font-black tracking-[-0.04em] text-text">{entry.title}</h3>
-                <p className="mt-1 max-w-3xl text-sm leading-7 text-subtext">{entry.summary}</p>
+            {relatedRecords.map((entry) => (
+              <Link key={entry.slug} href={`/writing/${entry.slug}`} className="grid gap-2 py-4 transition hover:text-text md:grid-cols-[110px_minmax(0,1fr)]">
+                <time className="text-sm text-subtext" dateTime={entry.publishedAt}>{formatDate(entry.publishedAt)}</time>
+                <span>
+                  <span className="block text-lg font-black tracking-[-0.04em] text-text">{entry.title}</span>
+                  <span className="mt-1 block text-sm leading-7 text-subtext">{entry.summary}</span>
+                </span>
               </Link>
             ))}
           </div>

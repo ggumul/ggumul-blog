@@ -27,27 +27,34 @@ describe('public copy safety rails', () => {
     expect(css).toMatch(/\.korean-keep[\s\S]*word-break:\s*keep-all/);
   });
 
-  it('keeps the home page as a quiet writing-first blog index', () => {
+  it('keeps the home page led by the latest trace, then dated flow and project worklines', () => {
     const homePage = read('app/page.tsx');
-    const writingSectionIndex = homePage.indexOf('{latestPosts.length ? (');
-    const projectsSectionIndex = homePage.indexOf('{projectLinks.length ? (');
+    const latestTraceIndex = homePage.indexOf('latestTrace');
+    const traceFlowIndex = homePage.indexOf('traceFlow');
+    const projectLinksIndex = homePage.indexOf('projectLinks');
 
-    expect(writingSectionIndex).toBeGreaterThan(0);
-    expect(projectsSectionIndex).toBeGreaterThan(0);
-    expect(writingSectionIndex).toBeLessThan(projectsSectionIndex);
-    expect(homePage).toContain('최근에 쓴 글');
-    expect(homePage).toContain('만들고 있는 것');
+    expect(latestTraceIndex).toBeGreaterThan(0);
+    expect(traceFlowIndex).toBeGreaterThan(latestTraceIndex);
+    expect(projectLinksIndex).toBeGreaterThan(traceFlowIndex);
+    expect(homePage).toContain('최근 작업');
+    expect(homePage).toContain('날짜가 이어지는 글');
+    expect(homePage).toContain('마지막으로 바뀐 순서');
     expect(homePage).not.toMatch(/heroLoop|latestGamePath|<video|wanderer-mobile-demo\.mp4/);
-    expect(homePage).not.toMatch(/함께 만드는 것들|카드가 빠지는 순간|다음 자리가 열리는 순간/);
+    expect(homePage).not.toMatch(/최근에 쓴 글|만들고 있는 것|함께 만드는 것들|카드가 빠지는 순간|다음 자리가 열리는 순간/);
   });
 
-  it('keeps the writing list grouped by actual workline instead of claiming a pure timeline', () => {
+  it('keeps the writing list as a real dated timeline instead of category sections', () => {
     const writingPage = read('app/writing/page.tsx');
+    const content = read('lib/content.ts');
 
-    expect(writingPage).toContain('작업별로 나눠 읽습니다');
-    expect(writingPage).toContain('카드와 퍼즐');
-    expect(writingPage).toContain('저녁을 고른 뒤');
-    expect(writingPage).not.toMatch(/날짜순으로 모았습니다|projectLabels|rounded-full|게임 글|카드, 퍼즐, 선택지|장면이 먼저 보이는 글들/);
+    expect(content).toContain('export type WorkTrace');
+    expect(content).toContain('getWorkTraces');
+    expect(writingPage).toContain('getWorkTraces');
+    expect(writingPage).toContain('trace.projectTitle');
+    expect(writingPage).toContain('trace.type');
+    expect(writingPage).toContain('trace.status');
+    expect(writingPage).toContain('날짜순으로 이어진 작업');
+    expect(writingPage).not.toMatch(/gamePosts|outsidePosts|section aria-label="게임"|카드와 퍼즐|저녁을 고른 뒤|글로 이동/);
   });
 
   it('marks the current top-level navigation item and keeps footer order aligned with the header', () => {
@@ -76,15 +83,37 @@ describe('public copy safety rails', () => {
     expect(footerOrder).toEqual([...footerOrder].sort((a, b) => a - b));
   });
 
-  it('gives project and writing rows visible link affordance without turning them into campaign CTAs', () => {
-    const projectCard = read('components/project-card.tsx');
-    const writingPage = read('app/writing/page.tsx');
-    const projectPage = read('app/projects/page.tsx');
+  it('shows latest trace first on home instead of a generic recent-post index', () => {
+    const homePage = read('app/page.tsx');
 
-    expect(projectCard).toContain('프로젝트로 이동');
-    expect(projectCard).toContain('글로 이동');
-    expect(writingPage).toContain('글로 이동');
-    expect(projectPage).toContain('프로젝트별로 이어 읽기');
+    expect(homePage).toContain('latestTrace');
+    expect(homePage).toContain('traceFlow');
+    expect(homePage).toContain('snapshot.traces');
+    expect(homePage).toContain('최근 작업');
+    expect(homePage).toContain('다음 흐름');
+    expect(homePage).not.toMatch(/최근 글부터 둡니다|latestPosts\.map|최근에 쓴 글|글 전체/);
+  });
+
+  it('shows project workline metadata instead of plain dashboard cards', () => {
+    const projectPage = read('app/projects/page.tsx');
+    const projectCard = read('components/project-card.tsx');
+    const content = read('lib/content.ts');
+
+    expect(content).toContain('lastUpdated');
+    expect(content).toContain('primaryEvidence');
+    expect(projectCard).toContain('project.lastUpdated');
+    expect(projectCard).toContain('project.primaryEvidence');
+    expect(projectCard).toContain('records.length');
+    expect(projectPage).toContain('마지막으로 바뀐 순서');
+    expect(projectPage).not.toMatch(/ProjectCard[\s\S]*compact|Wanderer, Hanoi, Color Hanoi, TRPG를 따로 둡니다|프로젝트로 이동|글로 이동/);
+  });
+
+  it('reduces writing detail scaffolding around the article body', () => {
+    const detailPage = read('app/writing/[slug]/page.tsx');
+
+    expect(detailPage).not.toMatch(/Pill|관련 프로젝트|이 글에서 보는 것|#\{tag\}|다음 글|다음에 읽을 이야기|post\.category|post\.series/);
+    expect(detailPage).toContain('post.publishedAt');
+    expect(detailPage).toContain('이어지는 글');
   });
 
   it('does not bring back playable Wanderer UI or mini-play code', () => {

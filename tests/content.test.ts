@@ -82,6 +82,8 @@ describe('content loader', () => {
     for (const project of projects) {
       expect(project.relatedPosts.every((slug) => postSlugs.has(slug))).toBe(true);
       expect(projectRecordMap[project.slug].project.slug).toBe(project.slug);
+      expect(projectRecordMap[project.slug].project.primaryEvidence.href).toMatch(/^\//);
+      expect(projectRecordMap[project.slug].project.primaryEvidence.label.length).toBeGreaterThanOrEqual(4);
     }
 
     for (const post of posts) {

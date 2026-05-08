@@ -18,10 +18,10 @@ export default function LinksPage() {
     <div className="archive-surface space-y-12 md:space-y-16">
       <PageHero
         eyebrow="링크"
-        title={<>밖에 있는 곳들</>}
-        description="코드는 GitHub에 있고, 글로 묶기 전의 조각은 Notion에 있습니다. 연락은 메일로 받습니다."
+        title={<>코드, 조각, 연락처</>}
+        description="배포된 코드는 GitHub에 있고, 글로 묶기 전의 조각은 Notion에 있습니다. 따로 할 말은 메일로 받습니다."
       >
-        <p>필요한 곳만 짧게 두었습니다.</p>
+        <p>지금 쓰는 세 곳만 둡니다.</p>
       </PageHero>
 
       <section className="space-y-5">

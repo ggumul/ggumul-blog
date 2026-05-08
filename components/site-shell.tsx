@@ -20,7 +20,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </span>
             <span className="leading-tight">
               <span className="block text-[21px] font-black tracking-[-0.045em] md:text-[24px]">ggumul / 꼬물</span>
-              <span className="block text-[11px] font-semibold text-subtext">천천히 만드는 작은 글</span>
+              <span className="block text-[11px] font-semibold text-subtext">작은 게임과 생활 도구</span>
             </span>
           </Link>
 

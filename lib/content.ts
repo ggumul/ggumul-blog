@@ -14,6 +14,12 @@ type BaseEntry = {
   html: string;
 };
 
+export type PrimaryEvidence = {
+  label: string;
+  href: string;
+  note: string;
+};
+
 export type ProjectEntry = BaseEntry & {
   status: string;
   progressStatus: '한 턴' | '미리보기' | '장보기' | '퍼즐' | '색 퍼즐' | '선택 게임' | '쉬는 중';
@@ -21,6 +27,8 @@ export type ProjectEntry = BaseEntry & {
   nextStep: string;
   evidenceLabel: string;
   evidenceHref: string;
+  lastUpdated: string;
+  primaryEvidence: PrimaryEvidence;
   order: number;
   relatedPosts: string[];
   coverImage?: string;
@@ -35,6 +43,19 @@ export type WritingEntry = BaseEntry & {
   series?: string;
   tags: string[];
   relatedProjects: string[];
+};
+
+export type WorkTrace = {
+  slug: string;
+  href: string;
+  title: string;
+  summary: string;
+  publishedAt: string;
+  type: string;
+  status: string;
+  projectSlug: string | null;
+  projectTitle: string;
+  workline: string;
 };
 
 export type WritingTaxonomy = {
@@ -63,6 +84,8 @@ export type WritingArchiveSections = {
 
 export type HomeArchiveSnapshot = {
   latest: WritingEntry | null;
+  latestTrace: WorkTrace | null;
+  traces: WorkTrace[];
   latestProjects: ProjectEntry[];
   worklines: Array<
     ProjectEntry & {
@@ -104,7 +127,7 @@ async function renderMarkdown(content: string) {
 }
 
 function estimateReadingTimeMinutes(content: string) {
-  const plain = content.replace(/[`#*_[\]()>-]/g, ' ').replace(/\s+/g, ' ').trim();
+  const plain = content.replace(/[`#*_\[\]()>-]/g, ' ').replace(/\s+/g, ' ').trim();
   const units = Math.max(plain.length, plain.split(' ').filter(Boolean).length * 4);
   return Math.max(1, Math.ceil(units / 500));
 }
@@ -131,6 +154,51 @@ async function readEntries<T>(dirName: 'projects' | 'writing'): Promise<T[]> {
   );
 
   return entries;
+}
+
+function formatTraceType(post: WritingEntry) {
+  return post.category || post.status || '글';
+}
+
+function deriveWorkTrace(post: WritingEntry, projects: ProjectEntry[]): WorkTrace {
+  const project = projects.find((entry) => post.relatedProjects.includes(entry.slug));
+  return {
+    slug: post.slug,
+    href: `/writing/${post.slug}`,
+    title: post.title,
+    summary: post.summary,
+    publishedAt: post.publishedAt,
+    type: formatTraceType(post),
+    status: post.status,
+    projectSlug: project?.slug ?? null,
+    projectTitle: project?.title ?? '꼬물',
+    workline: project ? `${project.title} · ${project.status}` : post.status,
+  };
+}
+
+function withProjectWorkline(project: ProjectEntry, records: WritingEntry[]): ProjectEntry {
+  const latestRecord = records[0];
+  const lastUpdated = latestRecord?.publishedAt ?? project.lastUpdated ?? '2026-01-01';
+  const evidenceHref = typeof project.evidenceHref === 'string' && project.evidenceHref.trim().length > 0
+    ? project.evidenceHref
+    : `/projects/${project.slug}`;
+  const evidenceLabel = typeof project.evidenceLabel === 'string' && project.evidenceLabel.trim().length > 0
+    ? project.evidenceLabel
+    : `${project.title} 기록`;
+  const evidenceNote = typeof project.verificationNote === 'string' && project.verificationNote.trim().length > 0
+    ? project.verificationNote
+    : project.summary;
+  const primaryEvidence = project.primaryEvidence ?? {
+    label: evidenceLabel,
+    href: evidenceHref,
+    note: evidenceNote,
+  };
+
+  return {
+    ...project,
+    lastUpdated,
+    primaryEvidence,
+  };
 }
 
 export async function getProjects() {
@@ -183,7 +251,8 @@ export async function getProjectRecordMap(): Promise<ProjectRecordMap> {
   const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
 
   const projectRecordEntries = projects.map((project) => {
-    return [project.slug, { project, records: resolveProjectRecords(project, posts) }] as const;
+    const records = resolveProjectRecords(project, posts);
+    return [project.slug, { project: withProjectWorkline(project, records), records }] as const;
   });
 
   return Object.fromEntries(projectRecordEntries);
@@ -209,23 +278,38 @@ export async function getWritingArchiveSections(): Promise<WritingArchiveSection
   };
 }
 
+export async function getWorkTraces(): Promise<WorkTrace[]> {
+  const [posts, projects] = await Promise.all([getWriting(), getProjects()]);
+  return posts.map((post) => deriveWorkTrace(post, projects));
+}
+
 export async function getHomeArchiveSnapshot(): Promise<HomeArchiveSnapshot> {
-  const [projects, posts, projectRecordMap] = await Promise.all([getProjects(), getWriting(), getProjectRecordMap()]);
+  const [projects, posts, projectRecordMap, traces] = await Promise.all([
+    getProjects(),
+    getWriting(),
+    getProjectRecordMap(),
+    getWorkTraces(),
+  ]);
   const [latest, ...moreEntries] = posts;
+  const [latestTrace, ...restTraces] = traces;
 
   const latestProjects = latest
     ? projects.filter((project) => latest.relatedProjects.includes(project.slug))
     : [];
 
-  const worklines = Object.values(projectRecordMap).map(({ project, records }) => ({
-    ...project,
-    recordCount: records.length,
-    latestRecord: records[0] ?? null,
-    previewRecords: records.slice(0, 2),
-  }));
+  const worklines = Object.values(projectRecordMap)
+    .map(({ project, records }) => ({
+      ...project,
+      recordCount: records.length,
+      latestRecord: records[0] ?? null,
+      previewRecords: records.slice(0, 2),
+    }))
+    .sort((a, b) => b.lastUpdated.localeCompare(a.lastUpdated));
 
   return {
     latest: latest ?? null,
+    latestTrace: latestTrace ?? null,
+    traces: restTraces,
     latestProjects,
     worklines,
     moreEntries,

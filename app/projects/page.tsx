@@ -4,64 +4,35 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '만드는 것들',
-  description: '꼬물이 이어 가는 작은 게임과 생활 도구입니다.',
+  description: '작은 게임과 생활 도구가 마지막으로 바뀐 순서입니다.',
   path: '/projects',
 });
 
 export default async function ProjectsPage() {
   const projectRecordMap = await getProjectRecordMap();
-  const worklines = Object.values(projectRecordMap).sort((a, b) => a.project.order - b.project.order);
-  const gameWorklines = worklines.filter(({ project }) => project.slug !== 'ggumul-dinner-grocery');
-  const outsideWorklines = worklines.filter(({ project }) => project.slug === 'ggumul-dinner-grocery');
+  const worklines = Object.values(projectRecordMap).sort((a, b) => b.project.lastUpdated.localeCompare(a.project.lastUpdated));
 
   return (
     <div className="archive-surface space-y-8 md:space-y-16">
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
+        <p className="text-[12px] font-black tracking-[0.18em] text-point">만드는 것들</p>
         <h1 className="text-[30px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          만드는 것들.
+          마지막으로 바뀐 순서
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          작은 게임과 생활 도구를 모아 둔 페이지입니다. 지금 만들고 있는 것만 짧게 적어 둡니다.
+          카드 게임, 퍼즐, 저녁 장보기 도구를 한 줄로 세웁니다. 각 카드에는 최근 날짜와 실제로 이어진 글을 같이 붙였습니다.
         </p>
       </section>
 
-      <section className="space-y-5">
-        <div>
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">게임</p>
-          <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">작은 게임들</h2>
-          <p className="mt-2 text-sm leading-7 text-subtext">프로젝트별로 이어 읽기 좋은 항목만 묶었습니다.</p>
-        </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          {gameWorklines.map(({ project, records }) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              records={records.filter((record) => project.relatedPosts.includes(record.slug))}
-              compact
-            />
-          ))}
-        </div>
+      <section className="grid gap-4 md:grid-cols-2" aria-label="프로젝트 목록">
+        {worklines.map(({ project, records }) => (
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            records={records.filter((record) => project.relatedPosts.includes(record.slug))}
+          />
+        ))}
       </section>
-
-      {outsideWorklines.length ? (
-        <section className="space-y-5">
-          <div>
-            <p className="text-[12px] font-black tracking-[0.16em] text-point">생활 도구</p>
-            <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">저녁 장보기</h2>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {outsideWorklines.map(({ project, records }) => (
-              <ProjectCard
-                key={project.slug}
-                project={project}
-                records={records.filter((record) => project.relatedPosts.includes(record.slug))}
-                compact
-              />
-            ))}
-          </div>
-        </section>
-      ) : null}
-
     </div>
   );
 }

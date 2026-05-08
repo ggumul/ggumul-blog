@@ -3,7 +3,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물 소개',
-  description: '꼬물은 작은 게임과 생활 도구를 천천히 이어 가는 곳입니다.',
+  description: '꼬물이 작은 게임과 생활 도구를 어떤 속도로 다루는지 적어 둔 페이지입니다.',
   path: '/about',
 });
 
@@ -32,10 +32,10 @@ export default function AboutPage() {
         <div className="max-w-4xl space-y-5">
           <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">꼬물</p>
           <h1 className="text-[34px] font-black leading-tight tracking-[-0.05em] text-text md:text-[68px] md:leading-[1.04]">
-            느리지만 장면을 놓치지 않으려고 합니다.
+            작게 줄인 뒤에 다시 봅니다.
           </h1>
           <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-            꼬물이라는 이름은 꾸물거리며 만든다는 뜻에 가깝습니다. 이곳의 글도 그 속도를 닮았습니다. 카드 한 턴, 퍼즐 한 이동, 저녁 재료 한 줄처럼 작지만 실제로 지나간 장면을 붙잡습니다.
+            꼬물은 크게 발표할 만큼 완성된 것보다, 실제로 줄이고 고친 단위를 먼저 둡니다. Wanderer는 한 턴, Hanoi는 원반 하나, 저녁 장보기는 오늘 살 재료처럼 손에 잡히는 크기에서 이어 갑니다.
           </p>
         </div>
       </section>
