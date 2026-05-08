@@ -40,7 +40,6 @@ function RelatedPostRows({ posts }: { posts: Awaited<ReturnType<typeof getWritin
         <Link key={post.slug} href={`/writing/${post.slug}`} className="block py-4 transition hover:text-text">
           <div className="text-lg font-black tracking-[-0.04em] text-text">{post.title}</div>
           <p className="mt-1 max-w-3xl text-sm leading-7 text-subtext">{post.summary}</p>
-          <span className="mt-2 inline-flex text-[12px] font-black text-point">글로 이동 →</span>
         </Link>
       ))}
     </div>

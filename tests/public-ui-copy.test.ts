@@ -108,6 +108,19 @@ describe('public copy safety rails', () => {
     expect(projectPage).not.toMatch(/ProjectCard[\s\S]*compact|Wanderer, Hanoi, Color Hanoi, TRPG를 따로 둡니다|프로젝트로 이동|글로 이동/);
   });
 
+  it('keeps project evidence links from triggering Next route prefetch for media files', () => {
+    const projectCard = read('components/project-card.tsx');
+
+    expect(projectCard).toContain('<a href={project.primaryEvidence.href}');
+    expect(projectCard).not.toContain('<Link href={project.primaryEvidence.href}');
+  });
+
+  it('keeps project detail related rows free of generic CTA labels', () => {
+    const projectDetailPage = read('app/projects/[slug]/page.tsx');
+
+    expect(projectDetailPage).not.toContain('글로 이동');
+  });
+
   it('reduces writing detail scaffolding around the article body', () => {
     const detailPage = read('app/writing/[slug]/page.tsx');
 

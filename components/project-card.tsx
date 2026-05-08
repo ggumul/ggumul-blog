@@ -28,11 +28,11 @@ export function ProjectCard({ project, records = [] }: ProjectCardProps) {
         <p className="text-sm leading-7 text-subtext">{project.summary}</p>
       </div>
 
-      <Link href={project.primaryEvidence.href} className="block rounded-2xl border border-line/50 bg-background/35 p-3 transition hover:border-point/60">
+      <a href={project.primaryEvidence.href} className="block rounded-2xl border border-line/50 bg-background/35 p-3 transition hover:border-point/60">
         <p className="text-[11px] font-black tracking-[0.14em] text-point">근거</p>
         <p className="mt-2 text-sm font-black leading-6 text-text">{project.primaryEvidence.label}</p>
         <p className="mt-1 text-sm leading-6 text-subtext">{project.primaryEvidence.note}</p>
-      </Link>
+      </a>
 
       {previewRecords.length ? (
         <div className="space-y-2 border-t border-line/30 pt-3">
