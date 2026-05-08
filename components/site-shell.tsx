@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { SiteNav } from '@/components/site-nav';
 
 const NAV_ITEMS = [
   { href: '/projects', label: '만드는 것들' },
@@ -24,17 +25,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </Link>
 
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-subtext">
-            <nav className="flex flex-wrap gap-x-3 gap-y-2">
-              {NAV_ITEMS.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="inline-flex min-h-[36px] items-center rounded-full px-2 py-1 font-semibold transition hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-point/40"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+            <SiteNav items={NAV_ITEMS} />
           </div>
         </div>
       </header>
@@ -48,8 +39,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <p className="mt-2 max-w-2xl leading-7">꼬물은 작은 게임과 생활 도구를 만들며 지나간 장면을 글로 남깁니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
-            <Link href="/writing" className="transition hover:text-text">글</Link>
             <Link href="/projects" className="transition hover:text-text">만드는 것들</Link>
+            <Link href="/writing" className="transition hover:text-text">글</Link>
             <Link href="/about" className="transition hover:text-text">소개</Link>
             <Link href="/links" className="transition hover:text-text">링크</Link>
           </div>

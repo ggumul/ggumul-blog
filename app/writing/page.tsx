@@ -23,10 +23,10 @@ export default async function WritingPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">글</p>
         <h1 className="text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          날짜순으로 모았습니다.
+          작업별로 나눠 읽습니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          게임 규칙을 바꾼 날과 저녁 재료를 나눠 적은 날을 날짜순으로 모았습니다. 글마다 그날 실제로 손본 장면 하나만 남깁니다.
+          게임과 생활 도구를 한 줄 타임라인처럼 섞지 않고 작업별로 나눠 둡니다. 각 글은 그날 실제로 손본 장면 하나에서 시작합니다.
         </p>
       </section>
 
@@ -42,6 +42,7 @@ export default async function WritingPage() {
               <span>
                 <span className="block text-lg font-black leading-snug tracking-[-0.04em] text-text">{post.title}</span>
                 <span className="mt-1 block text-[13px] leading-6 text-subtext">{post.summary}</span>
+                <span className="mt-2 inline-flex text-[12px] font-black text-point">글로 이동 →</span>
               </span>
             </Link>
           ))}
@@ -61,6 +62,7 @@ export default async function WritingPage() {
                 <span>
                   <span className="block text-lg font-black leading-snug tracking-[-0.04em] text-text">{post.title}</span>
                   <span className="mt-1 block text-[13px] leading-6 text-subtext">{post.summary}</span>
+                  <span className="mt-2 inline-flex text-[12px] font-black text-point">글로 이동 →</span>
                 </span>
               </Link>
             ))}

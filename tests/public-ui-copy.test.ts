@@ -41,12 +41,50 @@ describe('public copy safety rails', () => {
     expect(homePage).not.toMatch(/함께 만드는 것들|카드가 빠지는 순간|다음 자리가 열리는 순간/);
   });
 
-  it('keeps the writing list from looking like a tag dashboard', () => {
+  it('keeps the writing list grouped by actual workline instead of claiming a pure timeline', () => {
     const writingPage = read('app/writing/page.tsx');
 
-    expect(writingPage).toContain('날짜순으로 모았습니다');
+    expect(writingPage).toContain('작업별로 나눠 읽습니다');
     expect(writingPage).toContain('카드와 퍼즐');
-    expect(writingPage).not.toMatch(/projectLabels|rounded-full|게임 글|카드, 퍼즐, 선택지|장면이 먼저 보이는 글들/);
+    expect(writingPage).toContain('저녁을 고른 뒤');
+    expect(writingPage).not.toMatch(/날짜순으로 모았습니다|projectLabels|rounded-full|게임 글|카드, 퍼즐, 선택지|장면이 먼저 보이는 글들/);
+  });
+
+  it('marks the current top-level navigation item and keeps footer order aligned with the header', () => {
+    const shell = read('components/site-shell.tsx');
+    const nav = read('components/site-nav.tsx');
+
+    expect(shell).toContain('<SiteNav items={NAV_ITEMS} />');
+    expect(nav).toContain('usePathname');
+    expect(nav).toContain('aria-current');
+    expect(nav).toContain('현재 위치');
+
+    const headerOrder = [
+      shell.indexOf("href: '/projects'"),
+      shell.indexOf("href: '/writing'"),
+      shell.indexOf("href: '/about'"),
+      shell.indexOf("href: '/links'"),
+    ];
+    const footerOrder = [
+      shell.indexOf('href="/projects"'),
+      shell.indexOf('href="/writing"'),
+      shell.indexOf('href="/about"'),
+      shell.indexOf('href="/links"'),
+    ];
+
+    expect(headerOrder).toEqual([...headerOrder].sort((a, b) => a - b));
+    expect(footerOrder).toEqual([...footerOrder].sort((a, b) => a - b));
+  });
+
+  it('gives project and writing rows visible link affordance without turning them into campaign CTAs', () => {
+    const projectCard = read('components/project-card.tsx');
+    const writingPage = read('app/writing/page.tsx');
+    const projectPage = read('app/projects/page.tsx');
+
+    expect(projectCard).toContain('프로젝트로 이동');
+    expect(projectCard).toContain('글로 이동');
+    expect(writingPage).toContain('글로 이동');
+    expect(projectPage).toContain('프로젝트별로 이어 읽기');
   });
 
   it('does not bring back playable Wanderer UI or mini-play code', () => {

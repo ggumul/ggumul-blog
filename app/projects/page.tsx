@@ -29,6 +29,7 @@ export default async function ProjectsPage() {
         <div>
           <p className="text-[12px] font-black tracking-[0.16em] text-point">게임</p>
           <h2 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.04em] text-text md:text-[42px]">작은 게임들</h2>
+          <p className="mt-2 text-sm leading-7 text-subtext">프로젝트별로 이어 읽기 좋은 항목만 묶었습니다.</p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {gameWorklines.map(({ project, records }) => (

@@ -40,6 +40,7 @@ function RelatedPostRows({ posts }: { posts: Awaited<ReturnType<typeof getWritin
         <Link key={post.slug} href={`/writing/${post.slug}`} className="block py-4 transition hover:text-text">
           <div className="text-lg font-black tracking-[-0.04em] text-text">{post.title}</div>
           <p className="mt-1 max-w-3xl text-sm leading-7 text-subtext">{post.summary}</p>
+          <span className="mt-2 inline-flex text-[12px] font-black text-point">글로 이동 →</span>
         </Link>
       ))}
     </div>
@@ -49,8 +50,8 @@ function RelatedPostRows({ posts }: { posts: Awaited<ReturnType<typeof getWritin
 function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnType<typeof getWriting>> }) {
   return (
     <article className="archive-surface space-y-10 md:space-y-14">
-      <Link href="/projects" className="text-sm font-semibold text-subtext transition hover:text-point">
-        목록으로 돌아가기
+      <Link href="/projects" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
+        ← 목록으로 돌아가기
       </Link>
 
       <section className="space-y-5 border-b border-line/60 pb-6 md:space-y-7 md:pb-8">
@@ -91,8 +92,8 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
 function HanoiFeaturePage() {
   return (
     <article className="archive-surface space-y-10 md:space-y-14">
-      <Link href="/projects" className="text-sm font-semibold text-subtext transition hover:text-point">
-        목록으로 돌아가기
+      <Link href="/projects" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
+        ← 목록으로 돌아가기
       </Link>
 
       <section className="space-y-5 border-b border-line/60 pb-6 md:space-y-7 md:pb-8">

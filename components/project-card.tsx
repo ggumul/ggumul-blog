@@ -23,6 +23,9 @@ export function ProjectCard({ project, records = [], compact = false }: ProjectC
             <Link href={projectHref} className="hover:text-point">{project.title}</Link>
           </h3>
           <p className="mt-3 text-sm leading-7 text-subtext">{project.summary}</p>
+          <Link href={projectHref} className="mt-3 inline-flex text-[12px] font-black text-point hover:text-text">
+            프로젝트로 이동
+          </Link>
         </div>
 
         {previewRecords.length ? (
@@ -30,7 +33,10 @@ export function ProjectCard({ project, records = [], compact = false }: ProjectC
             {previewRecords.map((record) => (
               <Link key={record.slug} href={`/writing/${record.slug}`} className="grid gap-1 text-sm leading-6 md:grid-cols-[88px_minmax(0,1fr)]">
                 <time className="text-subtext" dateTime={record.publishedAt}>{formatDate(record.publishedAt)}</time>
-                <span className="font-bold text-text hover:text-point">{record.title}</span>
+                <span>
+                  <span className="block font-bold text-text hover:text-point">{record.title}</span>
+                  <span className="mt-1 inline-flex text-[12px] font-black text-point">글로 이동 →</span>
+                </span>
               </Link>
             ))}
           </div>
