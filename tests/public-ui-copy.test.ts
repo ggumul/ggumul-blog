@@ -171,6 +171,7 @@ describe('public copy safety rails', () => {
     expect(sources).not.toMatch(/요즘은|다듬고 있습니다|처음에는 카드 효과|처음에는 이동 뒤|작업물 모두 보기|TINY WORKSHOP|\bcode\b|\bidea\b|\bmail\b/);
     expect(sources).not.toMatch(/흐름입니다|이어지는 흐름|살펴봅니다|만들고 있습니다/);
     expect(sources).not.toMatch(/크기는 맞아도 색 때문에 이동이 막히는 순간|크기만 맞으면 되는 줄|다시 막히는 구조|자주 쓰는 곳만 남겼습니다|생긴 장면을 글로 남깁니다/);
+    expect(sources).not.toMatch(/보는 쪽에 가깝습니다|색 조건을 얹었을 때 퍼즐이 어떻게 달라지는지|Hanoi에 색 조건을 더하는 퍼즐 실험|원반을 옮길 때 크기만 보는 대신/);
     expect(sources).not.toMatch(/첫 문장보다 선택의 부담|테마를 고르면 첫 문장이 바뀌는 게임|쓰는 건 부족했습니다|이 화면을 보고 나니/);
     expect(sources).not.toMatch(/기록\b|메모\b|흔적|작업 흔적|작업 순서|작업 중/);
   });
