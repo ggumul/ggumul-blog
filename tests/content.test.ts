@@ -28,15 +28,27 @@ describe('content loader', () => {
     expect(projects.every((project) => project.title && project.summary && project.nextStep)).toBe(true);
   });
 
-  it('publishes only the rebuilt Wanderer post from runtime evidence and Notion draft', async () => {
+  it('publishes rebuilt posts only after runtime evidence and Notion drafts', async () => {
     const posts = await getWriting();
 
-    expect(posts.map((post) => post.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
-    expect(posts[0].notionSource.pageId).toBe('35c521c1-5180-816c-bea4-c79e959a0e7e');
-    expect(posts[0].notionSource.url).toBe('https://www.notion.so/Wanderer-11-15-35c521c15180816cbea4c79e959a0e7e');
-    expect(posts[0].content).toContain('/media/devlog-gifs/wanderer-rule-result.gif');
-    expect(posts[0].content).toContain('11 이하');
-    expect(posts[0].content).toContain('15는 좋은 카드가 아닙니다');
+    expect(posts.map((post) => post.slug)).toEqual([
+      'hanoi-two-moves-three-towers',
+      'wanderer-11-under-15-not-good-card',
+    ]);
+
+    const hanoi = posts.find((post) => post.slug === 'hanoi-two-moves-three-towers');
+    const wanderer = posts.find((post) => post.slug === 'wanderer-11-under-15-not-good-card');
+
+    expect(hanoi?.notionSource.pageId).toBe('35c521c1-5180-81e9-a4be-d35f134add1f');
+    expect(hanoi?.notionSource.url).toBe('https://www.notion.so/Hanoi-35c521c1518081e9a4bed35f134add1f');
+    expect(hanoi?.content).toContain('/media/hanoi/2026-05-10/hanoi-two-moves-three-towers.png');
+    expect(hanoi?.content).toContain('이동 횟수는 **2**');
+
+    expect(wanderer?.notionSource.pageId).toBe('35c521c1-5180-816c-bea4-c79e959a0e7e');
+    expect(wanderer?.notionSource.url).toBe('https://www.notion.so/Wanderer-11-15-35c521c15180816cbea4c79e959a0e7e');
+    expect(wanderer?.content).toContain('/media/devlog-gifs/wanderer-rule-result.gif');
+    expect(wanderer?.content).toContain('11 이하');
+    expect(wanderer?.content).toContain('15는 좋은 카드가 아닙니다');
   });
 
   it('does not resolve archived AI-slob writing entries as public posts', async () => {
@@ -50,17 +62,17 @@ describe('content loader', () => {
     const snapshot = await getHomeArchiveSnapshot();
     const sections = await getWritingArchiveSections();
 
-    expect(taxonomy.categories).toEqual(['Wanderer']);
-    expect(taxonomy.series).toEqual(['Wanderer']);
-    expect(taxonomy.tags).toEqual(['조건', '카드', '턴']);
-    expect(snapshot.latest?.slug).toBe('wanderer-11-under-15-not-good-card');
-    expect(snapshot.latestTrace?.slug).toBe('wanderer-11-under-15-not-good-card');
-    expect(snapshot.traces).toEqual([]);
-    expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['wanderer']);
+    expect(taxonomy.categories).toEqual(['Hanoi', 'Wanderer']);
+    expect(taxonomy.series).toEqual(['Hanoi', 'Wanderer']);
+    expect(taxonomy.tags).toEqual(['원반', '이동', '조건', '카드', '턴', '퍼즐']);
+    expect(snapshot.latest?.slug).toBe('hanoi-two-moves-three-towers');
+    expect(snapshot.latestTrace?.slug).toBe('hanoi-two-moves-three-towers');
+    expect(snapshot.traces.map((trace) => trace.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
+    expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['hanoi']);
     expect(snapshot.worklines).toHaveLength(5);
-    expect(snapshot.moreEntries).toEqual([]);
-    expect(sections.latest?.slug).toBe('wanderer-11-under-15-not-good-card');
-    expect(sections.timeline).toEqual([]);
+    expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
+    expect(sections.latest?.slug).toBe('hanoi-two-moves-three-towers');
+    expect(sections.timeline.map((trace) => trace.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
   });
 
   it('keeps project relationships resolvable with the rebuilt Wanderer post attached', async () => {
@@ -68,12 +80,18 @@ describe('content loader', () => {
     const projectRecordMap = await getProjectRecordMap();
     const wanderer = projects.find((project) => project.slug === 'wanderer');
 
-    expect(posts.map((post) => post.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
+    expect(posts.map((post) => post.slug)).toEqual([
+      'hanoi-two-moves-three-towers',
+      'wanderer-11-under-15-not-good-card',
+    ]);
     for (const project of projects) {
       expect(projectRecordMap[project.slug].project.slug).toBe(project.slug);
       if (project.slug === 'wanderer') {
         expect(project.relatedPosts).toEqual(['wanderer-11-under-15-not-good-card']);
         expect(projectRecordMap[project.slug].records.map((post) => post.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
+      } else if (project.slug === 'hanoi') {
+        expect(project.relatedPosts).toEqual(['hanoi-two-moves-three-towers']);
+        expect(projectRecordMap[project.slug].records.map((post) => post.slug)).toEqual(['hanoi-two-moves-three-towers']);
       } else {
         expect(project.relatedPosts).toEqual([]);
         expect(projectRecordMap[project.slug].records).toEqual([]);
@@ -114,7 +132,10 @@ describe('content loader', () => {
     const trpg = projects.find((project) => project.slug === 'trpg');
     const publicCorpus = [...projects, ...posts].map((entry) => [entry.title, entry.summary, entry.content].join('\n')).join('\n---\n');
 
-    expect(posts.map((post) => post.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
+    expect(posts.map((post) => post.slug)).toEqual([
+      'hanoi-two-moves-three-towers',
+      'wanderer-11-under-15-not-good-card',
+    ]);
     expect(hanoi?.verificationNote).toContain('원반 위치와 이동 횟수');
     expect(hanoi?.verificationNote).not.toMatch(/다음 자리가 열|막힌 자리/);
     expect(publicCorpus).not.toMatch(/AI Slob|실제 GIF 없음|설명용 GIF|제작 증거|다음 자리가 열리는 장면을 GIF|막힌 자리를 먼저 보이게 맞추고 있습니다/);
