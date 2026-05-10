@@ -32,6 +32,7 @@ describe('content loader', () => {
     const posts = await getWriting();
 
     expect(posts.map((post) => post.slug)).toEqual([
+      'wanderer-5-under-card-value',
       'dinner-grocery-price',
       'wanderer-one-card',
       'wanderer-same-turn',
@@ -68,6 +69,10 @@ describe('content loader', () => {
     expect(encoded?.slug).toBe('wanderer-short-card-game');
     expect(runtime?.slug).toBe('wanderer-one-card');
     expect(runtime?.summary).toContain('11 이하 조건');
+    const fiveUnder = await getWritingBySlug('wanderer-5-under-card-value');
+    expect(fiveUnder?.summary).toContain('5 이하 조건');
+    expect(fiveUnder?.content).toContain('/media/wanderer/2026-05-10/wanderer-card-select.png');
+    expect(fiveUnder?.content).toContain('/media/wanderer/2026-05-10/wanderer-5-under-first-turn.png');
   });
 
   it('builds taxonomy and archive snapshots from the current writing set', async () => {
@@ -78,10 +83,10 @@ describe('content loader', () => {
     expect(taxonomy.categories).toEqual(expect.arrayContaining(['작은 게임', 'Wanderer', '생활 도구']));
     expect(taxonomy.series).toEqual(expect.arrayContaining(['작은 게임들', 'Wanderer 글', 'Dinner Grocery']));
     expect(taxonomy.tags.length).toBeGreaterThanOrEqual(8);
-    expect(snapshot.latest?.slug).toBe('dinner-grocery-price');
-    expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['ggumul-dinner-grocery']);
+    expect(snapshot.latest?.slug).toBe('wanderer-5-under-card-value');
+    expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['wanderer']);
     expect(snapshot.worklines).toHaveLength(5);
-    expect(sections.latest.slug).toBe('dinner-grocery-price');
+    expect(sections.latest.slug).toBe('wanderer-5-under-card-value');
     expect(sections.timeline.map((entry) => entry.slug)).toContain('wanderer-one-card');
   });
 
