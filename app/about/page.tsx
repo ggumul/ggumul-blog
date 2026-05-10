@@ -20,7 +20,7 @@ const games = [
   },
   {
     title: 'TRPG',
-    text: '테마를 고른 뒤 어울리는 첫 장면이 시작되는지 보는 선택 게임입니다.',
+    text: '잔해일지처럼 테마를 고른 뒤 생존 상황을 선택지로 넘기는 텍스트 RPG입니다.',
     href: '/projects/trpg',
   },
 ];

@@ -113,7 +113,7 @@ describe('content loader', () => {
       expect(project.nextStep.length).toBeGreaterThanOrEqual(8);
       expect(project.evidenceLabel.length).toBeGreaterThanOrEqual(4);
       if (project.evidenceHref) {
-        expect(project.evidenceHref).toMatch(/^\/media\/devlog-gifs\//);
+        expect(project.evidenceHref).toMatch(/^\/media\//);
         expect(project.content).toContain(project.evidenceHref);
         expect(fs.existsSync(path.join(process.cwd(), 'public', project.evidenceHref.replace(/^\//, '')))).toBe(true);
       }
@@ -141,6 +141,6 @@ describe('content loader', () => {
     expect(publicCorpus).not.toMatch(/AI Slob|실제 GIF 없음|설명용 GIF|제작 증거|다음 자리가 열리는 장면을 GIF|막힌 자리를 먼저 보이게 맞추고 있습니다/);
     expect(colorHanoi?.evidenceHref).toBeFalsy();
     expect(dinner?.evidenceHref).toBeFalsy();
-    expect(trpg?.evidenceHref).toBeFalsy();
+    expect(trpg?.evidenceHref).toBe('/media/trpg/2026-05-10/wastelog-drone-choice.png');
   });
 });
