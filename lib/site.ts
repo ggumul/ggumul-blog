@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 const SITE_URL = 'https://ggumul-blog.vercel.app';
-const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph-image`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph-image?v=paper-workshop-20260510`;
 
 export const siteConfig = {
   name: 'ggumul / 꼬물',

@@ -6,7 +6,6 @@ export const metadata = createMetadata({
   title: '꼬물',
   description: '꼬물은 작은 게임과 생활 도구를 만들며 남기는 글입니다.',
   path: '/',
-  ogImage: '/project-covers/wanderer.png',
 });
 
 const TRACE_MEDIA: Record<string, { src: string; alt: string; tone: string }> = {
