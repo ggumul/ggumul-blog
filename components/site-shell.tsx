@@ -15,9 +15,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-30 border-b-2 border-line bg-background/92 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-2.5 md:flex-row md:items-center md:justify-between md:px-8 md:py-3">
           <Link href="/" className="inline-flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center overflow-hidden rounded-2xl border-2 border-line bg-butter shadow-[3px_3px_0_#2A2119] md:h-11 md:w-11">
-              <img src="/ggumul-night-snail-icon.png" alt="" className="h-7 w-7 rounded-lg object-cover md:h-8 md:w-8" />
-            </span>
+            <img
+              src="/ggumul-night-snail-icon.png"
+              alt=""
+              className="h-10 w-10 rounded-full border-2 border-line object-cover shadow-[2px_2px_0_#2A2119] md:h-11 md:w-11"
+            />
             <span className="leading-tight">
               <span className="block text-[20px] font-black tracking-[-0.055em] md:text-[25px]">ggumul / 꼬물</span>
               <span className="block text-[11px] font-extrabold text-subtext">작은 게임과 생활 도구</span>

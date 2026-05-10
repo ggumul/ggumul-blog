@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     images: [
       {
-        url: '/opengraph-image',
+        url: '/og/home-real-preview-20260510.png?v=real-home-20260510',
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} 공유 이미지`,
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
-    images: ['/opengraph-image'],
+    images: ['/og/home-real-preview-20260510.png?v=real-home-20260510'],
   },
   robots: {
     index: true,
