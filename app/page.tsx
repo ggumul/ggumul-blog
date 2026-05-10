@@ -4,7 +4,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '꼬물은 작은 게임과 생활 도구를 만들고, 고치며 생긴 장면을 글로 남깁니다.',
+  description: '꼬물은 작은 게임과 생활 도구를 천천히 쌓는 블로그입니다.',
   path: '/',
 });
 
@@ -55,7 +55,7 @@ export default async function HomePage() {
             작은 장면을 만들고, 한 번 더 만져봅니다.
           </h1>
           <p className="mt-3 max-w-2xl text-[14px] leading-7 text-subtext md:mt-4 md:text-[18px] md:leading-8">
-            작은 게임과 생활 도구를 만들고, 고치며 생긴 장면을 글로 남깁니다.
+            카드, 퍼즐, 저녁 장보기처럼 작게 만져 볼 수 있는 것들을 모아 둡니다.
           </p>
         </div>
         <div className="hidden rounded-[28px] border-2 border-line bg-surface p-4 shadow-card md:block">

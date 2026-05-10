@@ -21,7 +21,7 @@ export default function LinksPage() {
         title={<>코드, 아이디어, 연락처</>}
         description="코드는 GitHub에 두고, 아직 글이 되지 않은 아이디어는 따로 모아 둡니다. 따로 할 말은 메일로 받습니다."
       >
-        <p>자주 쓰는 곳만 남겼습니다.</p>
+        <p>필요한 곳만 적어 둡니다.</p>
       </PageHero>
 
       <section className="space-y-5">
