@@ -4,7 +4,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '꼬물은 작은 게임과 생활 도구를 실제 화면으로 다시 확인하며 쓰는 블로그입니다.',
+  description: '꼬물은 작은 게임과 생활 도구를 천천히 만드는 곳입니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
@@ -27,10 +27,10 @@ export default async function HomePage() {
       <section className="max-w-4xl space-y-5 py-4 md:py-8">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">꼬물</p>
         <h1 className="text-[32px] font-black leading-tight tracking-[-0.04em] text-text md:text-[56px] md:leading-[1.08]">
-          다시 쓰는 중입니다.
+          작은 게임과 생활 도구를 만듭니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-          기존 글은 모두 내렸습니다. 게임과 도구를 실제로 실행하고, 화면을 다시 본 뒤에 한 편씩 올립니다.
+          빠르게 크게 만들기보다, 직접 만져 본 장면과 바뀐 이유를 천천히 적습니다.
         </p>
       </section>
 
@@ -51,9 +51,9 @@ export default async function HomePage() {
         </section>
       ) : (
         <section className="rounded-[24px] border border-line/60 bg-white/[0.035] p-5 md:p-7">
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">아직 공개한 글이 없습니다</p>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">첫 글을 준비하고 있습니다</p>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-subtext md:text-base md:leading-8">
-            다음 글은 실행 화면과 Notion 초고를 먼저 맞춘 뒤에 공개합니다.
+            보여줄 만한 장면이 생기면 이곳에 날짜순으로 올릴게요.
           </p>
         </section>
       )}
@@ -86,7 +86,7 @@ export default async function HomePage() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-[12px] font-black tracking-[0.16em] text-point">프로젝트</p>
-              <h2 className="mt-2 text-[24px] font-black tracking-[-0.035em] text-text md:text-[34px]">다시 확인할 것들</h2>
+              <h2 className="mt-2 text-[24px] font-black tracking-[-0.035em] text-text md:text-[34px]">프로젝트</h2>
             </div>
             <Link href="/projects" className="text-sm font-bold text-point hover:text-text">프로젝트 목록</Link>
           </div>

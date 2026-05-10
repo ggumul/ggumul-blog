@@ -36,9 +36,9 @@ describe('public copy safety rails', () => {
     expect(latestTraceIndex).toBeGreaterThan(0);
     expect(traceFlowIndex).toBeGreaterThan(latestTraceIndex);
     expect(projectLinksIndex).toBeGreaterThan(traceFlowIndex);
-    expect(homePage).toContain('다시 쓰는 중입니다.');
-    expect(homePage).toContain('아직 공개한 글이 없습니다');
-    expect(homePage).toContain('다시 확인할 것들');
+    expect(homePage).toContain('작은 게임과 생활 도구를 만듭니다.');
+    expect(homePage).toContain('첫 글을 준비하고 있습니다');
+    expect(homePage).toContain('보여줄 만한 장면이 생기면 이곳에 날짜순으로 올릴게요.');
     expect(homePage).not.toMatch(/heroLoop|latestGamePath|<video|wanderer-mobile-demo\.mp4/);
     expect(homePage).not.toMatch(/최근에 쓴 글|만들고 있는 것|함께 만드는 것들|카드가 빠지는 순간|다음 자리가 열리는 순간/);
   });
@@ -50,9 +50,10 @@ describe('public copy safety rails', () => {
     expect(content).toContain('export type WorkTrace');
     expect(content).toContain('getWorkTraces');
     expect(writingPage).toContain('getWorkTraces');
-    expect(writingPage).toContain('다시 쓰는 중입니다.');
-    expect(writingPage).toContain('아직 공개한 글이 없습니다');
-    expect(writingPage).toContain('Notion 초고');
+    expect(writingPage).toContain('글을 모아 둡니다.');
+    expect(writingPage).toContain('첫 글을 준비하고 있습니다');
+    expect(writingPage).toContain('읽을 만한 장면이 생기면 이곳에 날짜순으로 올릴게요.');
+    expect(writingPage).not.toMatch(/기존 글은 모두 내렸습니다|Notion 초고|실행 화면/);
     expect(writingPage).not.toMatch(/trace\.projectTitle|trace\.type|trace\.status/);
     expect(writingPage).not.toMatch(/gamePosts|outsidePosts|section aria-label="게임"|카드와 퍼즐|저녁을 고른 뒤|글로 이동/);
   });
@@ -87,8 +88,8 @@ describe('public copy safety rails', () => {
     const homePage = read('app/page.tsx');
 
     expect(homePage).toContain('latestTrace');
-    expect(homePage).toContain('아직 공개한 글이 없습니다');
-    expect(homePage).toContain('다시 확인할 것들');
+    expect(homePage).toContain('첫 글을 준비하고 있습니다');
+    expect(homePage).toContain('프로젝트');
     expect(homePage).not.toMatch(/최근 작업|최근 글부터 둡니다|latestPosts\.map|최근에 쓴 글|글 전체/);
   });
 

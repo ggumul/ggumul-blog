@@ -10,8 +10,8 @@ const writingReadingPaths: Record<string, WritingReadingPath> = {};
 
 export function getWritingReadingPath(slug: string): WritingReadingPath {
   return writingReadingPaths[slug] ?? {
-    stakes: '이 글은 실제 실행으로 다시 확인한 뒤 공개합니다.',
-    change: 'Notion 초고와 화면 근거를 먼저 맞춥니다.',
+    stakes: '이 글에서 다루는 장면',
+    change: '만드는 동안 바뀐 점',
     next: '글 목록으로 돌아가기',
   };
 }

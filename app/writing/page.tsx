@@ -4,7 +4,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '글',
-  description: '실제 실행으로 다시 확인한 글만 올리는 곳입니다.',
+  description: '꼬물이 만드는 작은 게임과 생활 도구의 글을 모아 둡니다.',
   path: '/writing',
 });
 
@@ -20,10 +20,10 @@ export default async function WritingPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-8 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">글</p>
         <h1 className="text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          다시 쓰는 중입니다.
+          글을 모아 둡니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          기존 글은 모두 내렸습니다. 게임과 도구를 실제로 실행하고, 화면을 다시 본 뒤에 한 편씩 올립니다.
+          작은 게임을 만들며 바꾼 것, 저녁 장보기를 줄이며 배운 것을 날짜순으로 남깁니다.
         </p>
       </section>
 
@@ -47,9 +47,9 @@ export default async function WritingPage() {
         </section>
       ) : (
         <section className="rounded-[24px] border border-line/60 bg-white/[0.035] p-5 md:p-7">
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">아직 공개한 글이 없습니다</p>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">첫 글을 준비하고 있습니다</p>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-subtext md:text-base md:leading-8">
-            다음 글은 실행 화면과 Notion 초고를 먼저 맞춘 뒤에 공개합니다.
+            읽을 만한 장면이 생기면 이곳에 날짜순으로 올릴게요.
           </p>
         </section>
       )}
