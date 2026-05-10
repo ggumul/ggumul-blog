@@ -90,12 +90,12 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
     <article className="archive-surface space-y-10 md:space-y-14">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 
-      <Link href="/writing" className="inline-flex min-h-[40px] items-center rounded-full border border-line/80 px-4 py-2 text-sm font-semibold text-subtext transition hover:border-point/60 hover:text-text">
+      <Link href="/writing" className="inline-flex min-h-[40px] items-center rounded-full border-2 border-line bg-surface px-4 py-2 text-sm font-bold text-subtext transition hover:bg-butter hover:text-text">
         글 목록으로
       </Link>
 
-      <header className="max-w-3xl space-y-5 py-2 md:py-6">
-        <div className="flex flex-wrap items-center gap-2 text-sm text-subtext">
+      <header className="max-w-[720px] space-y-4 py-1 md:space-y-5 md:py-5">
+        <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-subtext">
           <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
           {post.updatedAt !== post.publishedAt ? (
             <>
@@ -104,13 +104,13 @@ export default async function WritingDetailPage({ params }: { params: Promise<{ 
             </>
           ) : null}
         </div>
-        <h1 className="text-[36px] font-black leading-[1.05] tracking-[-0.055em] text-text md:text-[62px]">
+        <h1 className="text-[32px] font-black leading-[1.08] tracking-[-0.05em] text-text md:text-[54px]">
           {post.title}
         </h1>
-        <p className="text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">{post.summary}</p>
+        <p className="text-[16px] leading-8 text-subtext md:text-[18px] md:leading-8">{post.summary}</p>
       </header>
 
-      <section className="prose max-w-none lg:max-w-3xl" dangerouslySetInnerHTML={{ __html: post.html }} />
+      <section className="prose max-w-[720px]" dangerouslySetInnerHTML={{ __html: post.html }} />
 
       {relatedRecords.length > 0 ? (
         <section className="space-y-4 border-t border-line/60 pt-6">
