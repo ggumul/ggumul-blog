@@ -3,7 +3,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물 소개',
-  description: '꼬물이 작은 게임과 생활 도구를 어떻게 만들고 고치는지 적은 소개입니다.',
+  description: '꼬물이 작은 게임과 생활 도구를 작게 나눠 만들고 고치는 방식입니다.',
   path: '/about',
 });
 
@@ -20,7 +20,7 @@ const games = [
   },
   {
     title: 'TRPG',
-    text: '테마를 고른 뒤 어울리는 첫 문장이 이어지는지 보는 선택 게임입니다.',
+    text: '테마를 고른 뒤 어울리는 첫 장면이 시작되는지 보는 선택 게임입니다.',
     href: '/projects/trpg',
   },
 ];
@@ -35,7 +35,7 @@ export default function AboutPage() {
             작게 만들고, 써 보며 고칩니다.
           </h1>
           <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-            꼬물은 큰 계획보다 손에 잡히는 장면을 먼저 봅니다. Wanderer는 한 턴, Hanoi는 원반 하나, 저녁 장보기는 오늘 살 재료처럼 작은 단위에서 시작합니다.
+            꼬물은 큰 계획보다 먼저 만져 볼 수 있는 작은 단위에서 시작합니다. Wanderer는 한 턴, Hanoi는 원반 하나, 저녁 장보기는 오늘 살 재료처럼 작게 나눠 만들고 고칩니다.
           </p>
         </div>
       </section>

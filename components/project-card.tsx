@@ -7,11 +7,11 @@ type ProjectCardProps = {
 };
 
 const PROJECT_STYLE: Record<string, { cover: string | null; className: string; icon: string }> = {
-  wanderer: { cover: '/project-covers/wanderer.png', className: 'bg-violet text-white', icon: '카드' },
-  hanoi: { cover: '/project-covers/hanoi.png', className: 'bg-butter text-text', icon: '원반' },
-  'color-hanoi': { cover: '/project-covers/color-hanoi.png', className: 'bg-mint text-text', icon: '색' },
-  trpg: { cover: '/project-covers/trpg.png', className: 'bg-peach text-text', icon: '문장' },
-  'ggumul-dinner-grocery': { cover: null, className: 'bg-[#CBEF8F] text-text', icon: '저녁' },
+  wanderer: { cover: '/project-covers/wanderer.png', className: 'bg-violet text-white', icon: '카드 게임' },
+  hanoi: { cover: '/project-covers/hanoi.png', className: 'bg-butter text-text', icon: '퍼즐' },
+  'color-hanoi': { cover: '/project-covers/color-hanoi.png', className: 'bg-mint text-text', icon: '색 퍼즐' },
+  trpg: { cover: '/project-covers/trpg.png', className: 'bg-peach text-text', icon: '선택 이야기' },
+  'ggumul-dinner-grocery': { cover: null, className: 'bg-[#CBEF8F] text-text', icon: '장보기' },
 };
 
 function formatDate(date: string) {

@@ -60,7 +60,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
             조건에 맞는 카드를 골라 턴을 넘기는 모바일 카드 게임입니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            조건 카드가 먼저 뜨고, 손패에서 낼 수 있는 카드가 바로 구분됩니다. 예를 들어 11 이하 조건이면 5, 10, 11은 고를 수 있고 13, 14, 15는 고를 수 없습니다.
+            조건 카드가 먼저 뜨고, 손패는 낼 수 있는 카드와 낼 수 없는 카드로 바로 갈립니다.
           </p>
         </div>
       </section>
@@ -68,13 +68,13 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <figure className="overflow-hidden rounded-[2rem] border border-[#2d2620] bg-[#17120f] p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
         <img alt="Wanderer에서 조건에 따라 낼 수 있는 카드가 갈리는 장면" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/wanderer-rule-result.gif" />
         <figcaption className="px-3 pb-3 pt-4 text-sm text-[#c7b49d]">
-          11 이하 조건 아래에서 5, 10, 11은 고를 수 있고 13, 14, 15는 고를 수 없습니다.
+          11 이하 조건이 뜬 뒤, 13·14·15가 선택지 밖으로 밀려난 장면입니다.
         </figcaption>
       </figure>
 
       <section className="prose max-w-none">
         <p>처음에는 카드 효과와 설명이 많았습니다. 하지만 한 턴에서 어떤 카드가 가능한지 늦게 보였습니다.</p>
-        <p>그래서 한 턴을 짧게 줄였습니다. 조건을 보고, 낼 수 있는 카드를 고르고, 결과를 받는 흐름부터 만듭니다.</p>
+        <p>그래서 한 턴을 짧게 줄였습니다. 조건을 보고, 낼 수 있는 카드를 고른 뒤 바로 턴이 판정되도록 다듬고 있습니다.</p>
       </section>
 
       {relatedPosts.length ? (
@@ -101,7 +101,7 @@ function HanoiFeaturePage() {
         <div className="max-w-3xl space-y-3">
           <p className="text-[12px] font-black uppercase tracking-[0.18em] text-point">Hanoi</p>
           <h1 className="max-w-4xl text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[64px] md:leading-[1.06]">
-            원반을 옮겨 세 기둥의 순서를 맞추는 퍼즐입니다.
+            원반을 규칙에 맞춰 세 기둥 사이로 옮기는 퍼즐입니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
             작은 원반 위에는 큰 원반을 올릴 수 없습니다. 원반을 하나 옮길 때마다 다음 선택지가 달라집니다.
@@ -112,7 +112,7 @@ function HanoiFeaturePage() {
       <figure className="overflow-hidden rounded-[2rem] border border-[#2d2620] bg-[#17120f] p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
         <img alt="Hanoi 화면에서 원반과 세 기둥이 보이는 장면" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/hanoi-next-seat.gif" />
         <figcaption className="px-3 pb-3 pt-4 text-sm text-[#c7b49d]">
-          원반을 옮기면 세 기둥의 상태와 이동 횟수가 함께 바뀝니다.
+          원반 하나를 옮기면 기둥의 모양과 이동 횟수가 함께 바뀝니다.
         </figcaption>
       </figure>
 

@@ -4,7 +4,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '글',
-  description: '꼬물이 작은 게임과 생활 도구를 만들며 쓴 글입니다.',
+  description: '꼬물이 작은 게임과 생활 도구를 만들며 바꾼 것들을 날짜순으로 모았습니다.',
   path: '/writing',
 });
 
@@ -36,7 +36,7 @@ export default async function WritingPage() {
           만들며 쓴 글
         </h1>
         <p className="mt-4 max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-8">
-          작은 게임을 만들며 바꾼 것, 저녁 장보기를 줄이며 배운 것을 날짜순으로 둡니다.
+          작은 게임을 만들며 바꾼 것, 저녁 장보기를 줄이며 배운 것을 날짜순으로 모았습니다.
         </p>
       </section>
 

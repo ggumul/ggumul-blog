@@ -89,7 +89,7 @@ describe('public copy safety rails', () => {
 
     expect(homePage).toContain('latestTrace');
     expect(homePage).toContain('첫 글을 준비하고 있습니다');
-    expect(homePage).toContain('책상 위 작은 것들');
+    expect(homePage).toContain('책상 위의 작은 게임과 도구');
     expect(homePage).not.toMatch(/최근 작업|최근 글부터 둡니다|latestPosts\.map|최근에 쓴 글|글 전체/);
   });
 
@@ -178,8 +178,8 @@ describe('public copy safety rails', () => {
     const combined = [projectPage, projectContent].join('\n');
 
     expect(projectPage).toContain('조건에 맞는 카드를 골라 턴을 넘기는 모바일 카드 게임입니다.');
-    expect(projectPage).toContain('예를 들어 11 이하 조건이면 5, 10, 11은 고를 수 있고 13, 14, 15는 고를 수 없습니다.');
-    expect(combined).not.toMatch(/세 장짜리 판으로 줄인 카드 게임|큰 카드 전투|뒤로 밀리는 숫자|뒤로 밀립니다|밀리는 손패|납득되는지부터 붙잡|그 짧은 흐름|빠집니다/);
+    expect(projectPage).toContain('손패는 낼 수 있는 카드와 낼 수 없는 카드로 바로 갈립니다.');
+    expect(combined).not.toMatch(/세 장짜리 판으로 줄인 카드 게임|큰 카드 전투|뒤로 밀리는 숫자|뒤로 밀립니다|밀리는 손패|납득되는지부터 붙잡|그 짧은 흐름/);
     expect(projectPage).not.toMatch(/wanderer-mobile-demo\.mp4|<video/);
     expect(projectContent).not.toContain('small-games-first-move');
   });

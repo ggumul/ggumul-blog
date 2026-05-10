@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { SiteNav } from '@/components/site-nav';
 
 const NAV_ITEMS = [
-  { href: '/projects', label: '만드는 것들' },
+  { href: '/projects', label: '만든 것들' },
   { href: '/writing', label: '글' },
   { href: '/about', label: '소개' },
   { href: '/links', label: '링크' },
@@ -38,10 +38,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 text-sm text-subtext md:grid-cols-[minmax(0,1fr)_auto] md:px-8">
           <div>
             <div className="text-lg font-black tracking-[-0.04em] text-text">ggumul / 꼬물</div>
-            <p className="mt-2 max-w-2xl leading-7">꼬물은 작은 게임과 생활 도구를 만들며 지나간 장면을 글로 남깁니다.</p>
+            <p className="mt-2 max-w-2xl leading-7">꼬물은 작은 게임과 생활 도구를 만들고, 고치며 생긴 장면을 글로 남깁니다.</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
-            <Link href="/projects" className="transition hover:text-point">만드는 것들</Link>
+            <Link href="/projects" className="transition hover:text-point">만든 것들</Link>
             <Link href="/writing" className="transition hover:text-point">글</Link>
             <Link href="/about" className="transition hover:text-point">소개</Link>
             <Link href="/links" className="transition hover:text-point">링크</Link>
