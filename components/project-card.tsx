@@ -11,7 +11,7 @@ const PROJECT_STYLE: Record<string, { cover: string | null; className: string; i
   hanoi: { cover: '/project-covers/hanoi.png', className: 'bg-butter text-text', icon: '퍼즐' },
   'color-hanoi': { cover: '/project-covers/color-hanoi.png', className: 'bg-mint text-text', icon: '색 퍼즐' },
   trpg: { cover: '/project-covers/trpg.png', className: 'bg-peach text-text', icon: '선택 이야기' },
-  'ggumul-dinner-grocery': { cover: null, className: 'bg-[#CBEF8F] text-text', icon: '장보기' },
+  'ggumul-dinner-grocery': { cover: null, className: 'bg-[#CBEF8F] text-text', icon: '저녁 도구' },
 };
 
 function formatDate(date: string) {

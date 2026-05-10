@@ -48,7 +48,7 @@ export default async function HomePage() {
       <section className="grid gap-5 md:grid-cols-[minmax(0,1fr)_320px] md:items-end">
         <div className="sticker-card relative overflow-hidden p-4 md:p-8">
           <span className="absolute right-4 top-4 rounded-full border-2 border-line bg-butter px-2.5 py-1 text-[10px] font-black tracking-[0.12em] md:right-5 md:top-5 md:px-3 md:text-[11px]">
-            TINY WORKSHOP
+            작은 작업실
           </span>
           <p className="text-[12px] font-black tracking-[0.18em] text-point">꼬물</p>
           <h1 className="mt-3 max-w-3xl text-[30px] font-black leading-tight tracking-[-0.055em] text-text md:mt-4 md:text-[62px] md:leading-[1.02]">
@@ -89,8 +89,8 @@ export default async function HomePage() {
 
           <div className="sticker-card self-start bg-[#FFF0B8] p-5 md:p-6">
             <p className="text-[12px] font-black tracking-[0.16em] text-point">이어서 읽기</p>
-            <h2 className="mt-2 text-[22px] font-black tracking-[-0.04em] text-text md:text-[30px]">같은 날의 다른 글</h2>
-            <p className="mt-2 text-sm leading-7 text-subtext">최근 글 다음에 읽기 좋은 글입니다.</p>
+            <h2 className="mt-2 text-[22px] font-black tracking-[-0.04em] text-text md:text-[30px]">다른 글</h2>
+            <p className="mt-2 text-sm leading-7 text-subtext">같이 읽기 좋은 글입니다.</p>
             <div className="mt-4 space-y-3">
               {traceFlow.map((trace) => (
                 <Link key={trace.slug} href={trace.href} className="block border-t-2 border-line/25 pt-3 hover:text-point">
@@ -118,7 +118,7 @@ export default async function HomePage() {
               <p className="text-[12px] font-black tracking-[0.16em] text-point">만든 것들</p>
               <h2 className="mt-2 text-[24px] font-black tracking-[-0.04em] text-text md:text-[36px]">책상 위의 작은 게임과 도구</h2>
             </div>
-            <Link href="/projects" className="game-button-secondary">작업물 모두 보기</Link>
+            <Link href="/projects" className="game-button-secondary">모두 보기</Link>
           </div>
           <div className="grid gap-4 md:grid-cols-4">
             {projectLinks.map((project) => (

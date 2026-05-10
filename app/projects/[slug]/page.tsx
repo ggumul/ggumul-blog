@@ -73,8 +73,8 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       </figure>
 
       <section className="prose max-w-none">
-        <p>처음에는 카드 효과와 설명이 많았습니다. 하지만 한 턴에서 어떤 카드가 가능한지 늦게 보였습니다.</p>
-        <p>그래서 한 턴을 짧게 줄였습니다. 조건을 보고, 낼 수 있는 카드를 고른 뒤 바로 턴이 판정되도록 다듬고 있습니다.</p>
+        <p>Wanderer의 한 턴은 조건 카드에서 시작합니다. 조건이 뜨면 손패는 낼 수 있는 카드와 낼 수 없는 카드로 바로 갈립니다.</p>
+        <p>11 이하 조건에서는 15처럼 큰 숫자도 선택지 밖으로 빠집니다. 이 게임에서 먼저 보는 것은 가장 큰 카드가 아니라, 이번 조건 안에 들어오는 카드입니다.</p>
       </section>
 
       {relatedPosts.length ? (
@@ -117,8 +117,8 @@ function HanoiFeaturePage() {
       </figure>
 
       <section className="prose max-w-none">
-        <p>처음에는 이동 뒤에 무엇이 바뀌었는지 잘 보이지 않았습니다.</p>
-        <p>퍼즐이 재미있어지는 지점은 원반을 옮긴 직후입니다. 방금 한 선택 때문에 다음에 갈 수 있는 자리가 달라집니다.</p>
+        <p>Hanoi는 원반 하나를 옮길 때마다 세 기둥의 모양이 바뀝니다.</p>
+        <p>방금 옮긴 원반 때문에 다음에 갈 수 있는 자리와 갈 수 없는 자리가 바로 갈립니다.</p>
       </section>
     </article>
   );
@@ -149,7 +149,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         목록으로
       </Link>
 
-      <PageHero eyebrow="만드는 것" title={game.title} description={game.summary} />
+      <PageHero eyebrow="프로젝트" title={game.title} description={game.summary} />
 
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
         <div className="space-y-8">

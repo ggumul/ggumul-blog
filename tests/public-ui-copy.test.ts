@@ -41,6 +41,7 @@ describe('public copy safety rails', () => {
     expect(homePage).toContain('보여줄 만한 장면이 생기면 이곳에 날짜순으로 올릴게요.');
     expect(homePage).not.toMatch(/heroLoop|latestGamePath|<video|wanderer-mobile-demo\.mp4/);
     expect(homePage).not.toMatch(/최근에 쓴 글|만들고 있는 것|함께 만드는 것들|카드가 빠지는 순간|다음 자리가 열리는 순간/);
+    expect(homePage).not.toMatch(/TINY WORKSHOP|작업물 모두 보기|같은 날의 다른 글|최근 글 다음에 읽기 좋은 글/);
   });
 
   it('keeps the writing list as a real dated timeline instead of category sections', () => {
@@ -107,6 +108,7 @@ describe('public copy safety rails', () => {
     expect(projectCard).not.toContain('records.length');
     expect(projectPage).toContain('작은 게임과 생활 도구');
     expect(projectPage).not.toMatch(/마지막으로 바뀐 순서|최근 날짜|실제로 이어진 글|ProjectCard[\s\S]*compact|Wanderer, Hanoi, Color Hanoi, TRPG를 따로 둡니다|프로젝트로 이동|글로 이동/);
+    expect([projectPage, projectCard].join('\n')).not.toMatch(/요즘은|다듬고 있습니다|처음에는 카드 효과|처음에는 이동 뒤|작업물|만드는 것/);
   });
 
   it('does not expose evidence-state labels on project cards', () => {
@@ -166,6 +168,7 @@ describe('public copy safety rails', () => {
 
     expect(sources).not.toMatch(/작업 중인 표본|확인 중|테마 선택 표본|다시 쓴 기록|월간 메모|제작 메모|장보기 메모|연결 문제 기록|설계 회고/);
     expect(sources).not.toMatch(/보고 있습니다|고치고 있습니다|붙여 보려고 합니다|생각입니다|다음 작업|다음에는|계속 갱신하기|더 짧게 다듬기/);
+    expect(sources).not.toMatch(/요즘은|다듬고 있습니다|처음에는 카드 효과|처음에는 이동 뒤|작업물 모두 보기|TINY WORKSHOP|\bcode\b|\bidea\b|\bmail\b/);
     expect(sources).not.toMatch(/첫 문장보다 선택의 부담|테마를 고르면 첫 문장이 바뀌는 게임|쓰는 건 부족했습니다|이 화면을 보고 나니/);
     expect(sources).not.toMatch(/기록\b|메모\b|흔적|작업 흔적|작업 순서|작업 중/);
   });
