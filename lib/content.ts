@@ -34,7 +34,15 @@ export type ProjectEntry = BaseEntry & {
   coverImage?: string;
 };
 
+export type NotionSource = {
+  pageId: string;
+  url: string;
+  title: string;
+  status: string;
+};
+
 export type WritingEntry = BaseEntry & {
+  notionSource: NotionSource;
   publishedAt: string;
   updatedAt: string;
   readingTimeMinutes: number;

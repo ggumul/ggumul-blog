@@ -42,6 +42,19 @@ describe('content loader', () => {
     expect(posts.every((post) => post.title && post.summary && post.publishedAt)).toBe(true);
   });
 
+  it('keeps every public writing entry tied to a Notion draft before MDX publication', async () => {
+    const posts = await getWriting();
+    const notionPageIdPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+
+    for (const post of posts) {
+      expect(post.notionSource, `${post.slug} must keep its Notion draft source`).toBeDefined();
+      expect(post.notionSource.pageId, `${post.slug} notionSource.pageId`).toMatch(notionPageIdPattern);
+      expect(post.notionSource.url, `${post.slug} notionSource.url`).toMatch(/^https:\/\/www\.notion\.so\//);
+      expect(post.notionSource.title, `${post.slug} notionSource.title`).toContain('[초고/');
+      expect(post.notionSource.status, `${post.slug} notionSource.status`).toBeTruthy();
+    }
+  });
+
   it('finds project and writing entries by slug, including encoded slugs', async () => {
     const project = await getProjectBySlug('wanderer');
     const monthly = await getWritingBySlug('4월-프로젝트-개발-현황');

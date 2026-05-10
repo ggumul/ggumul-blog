@@ -19,6 +19,12 @@ npm run dev
 npm test
 ```
 
+## 글 투고 원칙
+
+공개 글은 `content/writing/*.mdx`를 먼저 쓰지 않는다. 먼저 Notion에 `[초고/<프로젝트>] ...` 초고를 투고하고, MDX frontmatter의 `notionSource`에 실제 Notion page ID/URL/title/status를 남긴 뒤 production 콘텐츠로 옮긴다.
+
+자세한 절차: [`docs/publishing/notion-first.md`](docs/publishing/notion-first.md)
+
 ## Build
 ```bash
 npm run build
