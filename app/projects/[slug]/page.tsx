@@ -101,10 +101,10 @@ function HanoiFeaturePage() {
         <div className="max-w-3xl space-y-3">
           <p className="text-[12px] font-black uppercase tracking-[0.18em] text-point">Hanoi</p>
           <h1 className="max-w-4xl text-[34px] font-black leading-tight tracking-[-0.045em] text-text md:text-[64px] md:leading-[1.06]">
-            원반을 규칙에 맞춰 세 기둥 사이로 옮기는 퍼즐입니다.
+            원반을 옮기면 보드와 이동 횟수가 바로 바뀝니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            작은 원반 위에는 큰 원반을 올릴 수 없습니다. 원반을 하나 옮길 때마다 다음 선택지가 달라집니다.
+            익숙한 Hanoi 규칙보다, 이 화면에서는 버튼과 보드가 함께 반응하는 모습을 먼저 봅니다.
           </p>
         </div>
       </section>

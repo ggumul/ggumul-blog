@@ -200,8 +200,8 @@ describe('public copy safety rails', () => {
     const projectContent = read('content/projects/hanoi.mdx');
     const combined = [projectPage, projectContent].join('\n');
 
-    expect(projectPage).toContain('작은 원반 위에는 큰 원반을 올릴 수 없습니다.');
-    expect(projectPage).toContain('원반을 하나 옮길 때마다 다음 선택지가 달라집니다.');
+    expect(projectPage).toContain('원반을 옮기면 보드와 이동 횟수가 바로 바뀝니다.');
+    expect(projectPage).toContain('버튼과 보드가 함께 반응하는 모습을 먼저 봅니다.');
     expect(projectContent).not.toContain('small-games-first-move');
     expect(combined).not.toMatch(/재미있는 순간|어떤 길은 닫히고|새로 열립니다|자리의 차이를 먼저 붙잡|손끝에서 이어집니다|다음 자리 GIF|Hanoi 다음 자리|다음에 갈 수 있는 기둥이 바로 달라집니다|막힌 자리를 먼저 보이게 맞추고 있습니다/);
   });
