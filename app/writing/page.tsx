@@ -4,7 +4,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '글',
-  description: '꼬물이 만드는 작은 게임과 생활 도구의 글을 모아 둡니다.',
+  description: '꼬물이 작은 게임과 생활 도구를 만들며 쓴 글입니다.',
   path: '/writing',
 });
 
@@ -20,10 +20,10 @@ export default async function WritingPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-8 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">글</p>
         <h1 className="text-[26px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          글을 모아 둡니다.
+          만들며 쓴 글
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          작은 게임을 만들며 바꾼 것, 저녁 장보기를 줄이며 배운 것을 날짜순으로 남깁니다.
+          작은 게임을 만들며 바꾼 것, 저녁 장보기를 줄이며 배운 것을 날짜순으로 둡니다.
         </p>
       </section>
 

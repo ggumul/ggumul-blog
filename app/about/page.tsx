@@ -3,24 +3,24 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물 소개',
-  description: '꼬물이 작은 게임과 생활 도구를 어떤 속도로 다루는지 적어 둔 페이지입니다.',
+  description: '꼬물이 작은 게임과 생활 도구를 어떻게 만들고 고치는지 적은 소개입니다.',
   path: '/about',
 });
 
 const games = [
   {
     title: 'Wanderer',
-    text: '카드 게임을 크게 벌리기보다, 카드 한 장이 빠지는 턴부터 세웁니다.',
+    text: '조건 하나가 손패를 어떻게 바꾸는지 보는 모바일 카드 게임입니다.',
     href: '/projects/wanderer',
   },
   {
     title: 'Hanoi',
-    text: '원반 하나를 옮긴 뒤 다음 길이 어떻게 바뀌는지 따라갑니다.',
+    text: '원반 하나를 옮긴 뒤 다음 선택지가 어떻게 달라지는지 보는 퍼즐입니다.',
     href: '/projects/hanoi',
   },
   {
     title: 'TRPG',
-    text: '긴 이야기보다 첫 선택 뒤에 붙는 한 문장을 먼저 고릅니다.',
+    text: '테마를 고른 뒤 어울리는 첫 문장이 이어지는지 보는 선택 게임입니다.',
     href: '/projects/trpg',
   },
 ];
@@ -32,10 +32,10 @@ export default function AboutPage() {
         <div className="max-w-4xl space-y-5">
           <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">꼬물</p>
           <h1 className="text-[34px] font-black leading-tight tracking-[-0.05em] text-text md:text-[68px] md:leading-[1.04]">
-            작게 줄인 뒤에 다시 봅니다.
+            작게 만들고, 써 보며 고칩니다.
           </h1>
           <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-            꼬물은 크게 발표할 만큼 완성된 것보다, 실제로 줄이고 고친 단위를 먼저 둡니다. Wanderer는 한 턴, Hanoi는 원반 하나, 저녁 장보기는 오늘 살 재료처럼 손에 잡히는 크기에서 이어 갑니다.
+            꼬물은 큰 계획보다 손에 잡히는 장면을 먼저 봅니다. Wanderer는 한 턴, Hanoi는 원반 하나, 저녁 장보기는 오늘 살 재료처럼 작은 단위에서 시작합니다.
           </p>
         </div>
       </section>

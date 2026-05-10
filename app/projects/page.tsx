@@ -4,7 +4,7 @@ import { createMetadata } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '만드는 것들',
-  description: '꼬물이 만드는 작은 게임과 생활 도구를 모아 둡니다.',
+  description: '꼬물이 만들고 고치는 작은 게임과 생활 도구입니다.',
   path: '/projects',
 });
 
@@ -17,10 +17,10 @@ export default async function ProjectsPage() {
       <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">만드는 것들</p>
         <h1 className="text-[30px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          작은 게임과 생활 도구
+          지금 손대는 것들
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-          카드 게임, 퍼즐, 저녁 장보기처럼 손에 잡히는 것부터 작게 만듭니다.
+          카드 게임, 퍼즐, 저녁 장보기처럼 직접 만져 볼 수 있는 크기로 줄여 만듭니다.
         </p>
       </section>
 

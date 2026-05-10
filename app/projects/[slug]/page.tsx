@@ -68,13 +68,13 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       <figure className="overflow-hidden rounded-[2rem] border border-[#2d2620] bg-[#17120f] p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
         <img alt="Wanderer에서 조건에 따라 낼 수 있는 카드가 갈리는 장면" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/wanderer-rule-result.gif" />
         <figcaption className="px-3 pb-3 pt-4 text-sm text-[#c7b49d]">
-          실제 매치 화면. 11 이하 조건 아래에서 5, 10, 11은 고를 수 있고 13, 14, 15는 고를 수 없습니다.
+          11 이하 조건 아래에서 5, 10, 11은 고를 수 있고 13, 14, 15는 고를 수 없습니다.
         </figcaption>
       </figure>
 
       <section className="prose max-w-none">
         <p>처음에는 카드 효과와 설명이 많았습니다. 하지만 한 턴에서 어떤 카드가 가능한지 늦게 보였습니다.</p>
-        <p>그래서 지금은 한 턴을 짧게 줄였습니다. 조건을 보고, 낼 수 있는 카드를 고르고, 결과를 확인하는 순서만 먼저 맞춥니다.</p>
+        <p>그래서 한 턴을 짧게 줄였습니다. 조건을 보고, 낼 수 있는 카드를 고르고, 결과를 받는 흐름부터 만듭니다.</p>
       </section>
 
       {relatedPosts.length ? (
@@ -118,7 +118,7 @@ function HanoiFeaturePage() {
 
       <section className="prose max-w-none">
         <p>처음에는 이동 뒤에 무엇이 바뀌었는지 잘 보이지 않았습니다.</p>
-        <p>이후에는 선택한 원반이 어디로 갈 수 있고 어디로 갈 수 없는지 화면에서 직접 보이게 만듭니다.</p>
+        <p>퍼즐이 재미있어지는 지점은 원반을 옮긴 직후입니다. 방금 한 선택 때문에 다음에 갈 수 있는 자리가 달라집니다.</p>
       </section>
     </article>
   );
@@ -149,16 +149,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         목록으로
       </Link>
 
-      <PageHero eyebrow="프로젝트" title={game.title} description={game.summary} />
+      <PageHero eyebrow="만드는 것" title={game.title} description={game.summary} />
 
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
         <div className="space-y-8">
           {game.coverImage ? (
             <figure className="overflow-hidden rounded-[24px] border border-line/70 bg-surface/60">
               <img alt={`${game.title} 이미지`} className="max-h-[560px] w-full object-cover" src={game.coverImage} />
-              <figcaption className="flex items-center justify-between gap-3 border-t border-line/70 px-4 py-3 text-xs font-semibold text-subtext">
-                <span>{game.title}</span>
-              </figcaption>
             </figure>
           ) : null}
 

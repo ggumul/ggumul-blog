@@ -25,9 +25,9 @@ export function ProjectCard({ project, records = [] }: ProjectCardProps) {
 
       {previewRecords.length ? (
         <div className="space-y-2 border-t border-line/30 pt-3">
-          <p className="text-[11px] font-black tracking-[0.14em] text-subtext">이어진 글</p>
+          <p className="text-[11px] font-black tracking-[0.14em] text-subtext">최근 글</p>
           {previewRecords.map((record) => (
-            <Link key={record.slug} href={`/writing/${record.slug}`} className="grid gap-1 text-sm leading-6 md:grid-cols-[88px_minmax(0,1fr)]">
+            <Link key={record.slug} href={`/writing/${record.slug}`} className="grid gap-1 text-sm leading-6 md:grid-cols-[96px_minmax(0,1fr)]">
               <time className="text-subtext" dateTime={record.publishedAt}>{formatDate(record.publishedAt)}</time>
               <span className="block font-bold text-text hover:text-point">{record.title}</span>
             </Link>

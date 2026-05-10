@@ -4,7 +4,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '꼬물은 작은 게임과 생활 도구를 천천히 만드는 곳입니다.',
+  description: '꼬물은 작은 게임과 생활 도구를 만들며 남기는 글입니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
@@ -21,16 +21,16 @@ export default async function HomePage() {
   const projectLinks = snapshot.worklines.slice(0, 4);
 
   return (
-    <div className="archive-surface space-y-12 md:space-y-16">
+    <div className="archive-surface space-y-10 md:space-y-14">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
 
-      <section className="max-w-4xl space-y-5 py-4 md:py-8">
+      <section className="max-w-4xl space-y-4 py-3 md:py-6">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">꼬물</p>
         <h1 className="text-[32px] font-black leading-tight tracking-[-0.04em] text-text md:text-[56px] md:leading-[1.08]">
-          작은 게임과 생활 도구를 만듭니다.
+          작게 만들고, 써 보며 고칩니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-          빠르게 크게 만들기보다, 직접 만져 본 장면과 바뀐 이유를 천천히 적습니다.
+          게임을 만들다가 막힌 점, 생활 도구를 쓰며 바꾼 점을 천천히 적습니다.
         </p>
       </section>
 
@@ -40,7 +40,7 @@ export default async function HomePage() {
           <Link href={latestTrace.href} className="mt-4 block space-y-3 hover:text-text">
             <div className="flex flex-wrap items-center gap-2 text-sm text-subtext">
               <time dateTime={latestTrace.publishedAt}>{formatDate(latestTrace.publishedAt)}</time>
-              <span>/</span>
+              <span>·</span>
               <span>{latestTrace.projectTitle}</span>
             </div>
             <h2 className="text-[28px] font-black leading-tight tracking-[-0.045em] text-text md:text-[44px]">
@@ -85,10 +85,10 @@ export default async function HomePage() {
         <section className="space-y-4">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="text-[12px] font-black tracking-[0.16em] text-point">프로젝트</p>
-              <h2 className="mt-2 text-[24px] font-black tracking-[-0.035em] text-text md:text-[34px]">프로젝트</h2>
+              <p className="text-[12px] font-black tracking-[0.16em] text-point">만드는 것들</p>
+              <h2 className="mt-2 text-[24px] font-black tracking-[-0.035em] text-text md:text-[34px]">지금 손대는 것</h2>
             </div>
-            <Link href="/projects" className="text-sm font-bold text-point hover:text-text">프로젝트 목록</Link>
+            <Link href="/projects" className="text-sm font-bold text-point hover:text-text">모두 보기</Link>
           </div>
           <div className="article-list">
             {projectLinks.map((project) => (

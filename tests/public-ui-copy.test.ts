@@ -36,7 +36,7 @@ describe('public copy safety rails', () => {
     expect(latestTraceIndex).toBeGreaterThan(0);
     expect(traceFlowIndex).toBeGreaterThan(latestTraceIndex);
     expect(projectLinksIndex).toBeGreaterThan(traceFlowIndex);
-    expect(homePage).toContain('작은 게임과 생활 도구를 만듭니다.');
+    expect(homePage).toContain('작게 만들고, 써 보며 고칩니다.');
     expect(homePage).toContain('첫 글을 준비하고 있습니다');
     expect(homePage).toContain('보여줄 만한 장면이 생기면 이곳에 날짜순으로 올릴게요.');
     expect(homePage).not.toMatch(/heroLoop|latestGamePath|<video|wanderer-mobile-demo\.mp4/);
@@ -50,7 +50,7 @@ describe('public copy safety rails', () => {
     expect(content).toContain('export type WorkTrace');
     expect(content).toContain('getWorkTraces');
     expect(writingPage).toContain('getWorkTraces');
-    expect(writingPage).toContain('글을 모아 둡니다.');
+    expect(writingPage).toContain('만들며 쓴 글');
     expect(writingPage).toContain('첫 글을 준비하고 있습니다');
     expect(writingPage).toContain('읽을 만한 장면이 생기면 이곳에 날짜순으로 올릴게요.');
     expect(writingPage).not.toMatch(/기존 글은 모두 내렸습니다|Notion 초고|실행 화면/);
@@ -89,7 +89,7 @@ describe('public copy safety rails', () => {
 
     expect(homePage).toContain('latestTrace');
     expect(homePage).toContain('첫 글을 준비하고 있습니다');
-    expect(homePage).toContain('프로젝트');
+    expect(homePage).toContain('지금 손대는 것');
     expect(homePage).not.toMatch(/최근 작업|최근 글부터 둡니다|latestPosts\.map|최근에 쓴 글|글 전체/);
   });
 
