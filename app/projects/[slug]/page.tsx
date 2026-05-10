@@ -102,21 +102,21 @@ function HanoiFeaturePage() {
             원반을 옮겨 세 기둥의 순서를 맞추는 퍼즐입니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            작은 원반 위에는 큰 원반을 올릴 수 없습니다. 원반 하나를 옮기면, 다음에 갈 수 있는 기둥이 바로 달라집니다.
+            작은 원반 위에는 큰 원반을 올릴 수 없습니다. 현재 근거 화면에서는 원반 위치와 이동 횟수만 확인합니다.
           </p>
         </div>
       </section>
 
       <figure className="overflow-hidden rounded-[2rem] border border-[#2d2620] bg-[#17120f] p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
-        <img alt="Hanoi에서 원반 하나를 옮긴 뒤 갈 수 있는 기둥이 달라지는 장면" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/hanoi-next-seat.gif" />
+        <img alt="Hanoi 화면에서 원반과 세 기둥이 보이는 장면" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/hanoi-next-seat.gif" />
         <figcaption className="px-3 pb-3 pt-4 text-sm text-[#c7b49d]">
-          원반 하나를 옮긴 뒤, 다음에 갈 수 있는 기둥이 달라지는 장면입니다.
+          현재 GIF는 원반 위치와 이동 횟수만 보여 줍니다. 이동 가능 표시는 아직 분리하지 않았습니다.
         </figcaption>
       </figure>
 
       <section className="prose max-w-none">
         <p>처음에는 이동 뒤에 무엇이 바뀌었는지 잘 보이지 않았습니다.</p>
-        <p>지금은 옮길 수 있는 자리와 막힌 자리를 먼저 보이게 맞추고 있습니다.</p>
+        <p>이후에는 선택한 원반이 어디로 갈 수 있고 어디로 갈 수 없는지 화면에서 직접 보이게 만듭니다.</p>
       </section>
     </article>
   );

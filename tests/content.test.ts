@@ -140,4 +140,20 @@ describe('content loader', () => {
       }
     }
   });
+
+  it('does not claim screen evidence beyond what current media actually shows', async () => {
+    const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
+    const hanoi = projects.find((project) => project.slug === 'hanoi');
+    const colorHanoi = projects.find((project) => project.slug === 'color-hanoi');
+    const dinner = projects.find((project) => project.slug === 'ggumul-dinner-grocery');
+    const trpg = projects.find((project) => project.slug === 'trpg');
+    const publicCorpus = [...projects, ...posts].map((entry) => [entry.title, entry.summary, entry.content].join('\n')).join('\n---\n');
+
+    expect(hanoi?.verificationNote).toContain('원반 위치와 이동 횟수');
+    expect(hanoi?.verificationNote).not.toMatch(/다음 자리가 열|막힌 자리/);
+    expect(publicCorpus).not.toMatch(/실제 GIF 없음|설명용 GIF|제작 증거|다음 자리가 열리는 장면을 GIF|막힌 자리를 먼저 보이게 맞추고 있습니다/);
+    expect(colorHanoi?.evidenceHref).toBeFalsy();
+    expect(dinner?.evidenceHref).toBeFalsy();
+    expect(trpg?.evidenceHref).toBeFalsy();
+  });
 });

@@ -25,6 +25,8 @@ npm test
 
 자세한 절차: [`docs/publishing/notion-first.md`](docs/publishing/notion-first.md)
 
+공개 문장은 실제 화면으로 확인한 범위만 말한다. 근거별 허용 문장과 금지 문구는 [`docs/publishing/evidence-first-copy.md`](docs/publishing/evidence-first-copy.md)에 정리한다.
+
 ## Build
 ```bash
 npm run build

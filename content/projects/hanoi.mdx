@@ -1,23 +1,23 @@
 ---
 title: Hanoi
 slug: hanoi
-summary: 원반을 옮겨 세 기둥 사이의 순서를 맞추는 퍼즐입니다.
+summary: 원반을 옮겨 세 기둥의 순서를 맞추는 퍼즐입니다.
 featured: false
 status: 퍼즐
 progressStatus: 퍼즐
-verificationNote: 원반을 옮긴 뒤 다음 자리가 열리는 장면을 GIF에 담았습니다.
-nextStep: 막힌 자리와 열린 자리 구분하기
-evidenceLabel: Hanoi GIF
+verificationNote: 현재 GIF에서는 원반 위치와 이동 횟수만 확인됩니다.
+nextStep: 이동 가능 자리와 막힌 자리 표시를 실제 화면으로 다시 잡기
+evidenceLabel: Hanoi 이동 화면
 evidenceHref: /media/devlog-gifs/hanoi-next-seat.gif
 order: 2
 relatedPosts: []
 coverImage: /project-covers/hanoi.png
 ---
 
-Hanoi는 원반을 옮겨 세 기둥의 순서를 맞추는 퍼즐입니다. 작은 원반 위에는 큰 원반을 올릴 수 없습니다.
+Hanoi는 원반을 세 기둥 사이에서 옮기는 퍼즐입니다. 작은 원반 위에 큰 원반을 올릴 수 없다는 규칙이 기본입니다.
 
-원반 하나를 옮기면, 다음에 갈 수 있는 기둥이 바로 달라집니다. 처음에는 이동 뒤에 무엇이 바뀌었는지 잘 보이지 않았습니다.
+현재 붙인 GIF에서 확인되는 것은 제한적입니다. 하노이 화면, 원반 세 개, 기둥 세 개, 이동 횟수 변화까지입니다. 이동 가능한 자리와 막힌 자리를 따로 강조하는 표시는 아직 보이지 않습니다.
 
-<img src="/media/devlog-gifs/hanoi-next-seat.gif" alt="Hanoi에서 원반 이동 뒤 다음 자리가 열리는 장면" />
+<img src="/media/devlog-gifs/hanoi-next-seat.gif" alt="Hanoi 화면에서 원반과 세 기둥이 보이는 장면" />
 
-지금은 옮길 수 있는 자리와 막힌 자리를 먼저 보이게 맞추고 있습니다.
+그래서 이 프로젝트는 아직 “다음 자리가 열린다”고 말하면 안 됩니다. 이후에는 선택한 원반이 어디로 갈 수 있고 어디로 갈 수 없는지 화면에서 직접 보이게 만듭니다.
