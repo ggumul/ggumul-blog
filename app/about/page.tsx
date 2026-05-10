@@ -35,7 +35,7 @@ export default function AboutPage() {
             작게 만들고, 써 보며 고칩니다.
           </h1>
           <p className="max-w-3xl text-[16px] leading-8 text-subtext md:text-[19px] md:leading-9">
-            꼬물은 큰 계획보다 먼저 만져 볼 수 있는 작은 단위에서 시작합니다. Wanderer는 한 턴, Hanoi는 원반 하나, 저녁 장보기는 오늘 살 재료처럼 작게 나눠 만들고 고칩니다.
+            꼬물은 큰 계획보다 먼저 만져 볼 수 있는 작은 단위에서 시작합니다. Wanderer는 한 턴에서 낼 수 있는 카드를 보고, Hanoi는 원반 하나가 다음 자리를 어떻게 바꾸는지 봅니다. 저녁 장보기는 오늘 살 재료만 따로 떼어 봅니다.
           </p>
         </div>
       </section>

@@ -169,6 +169,7 @@ describe('public copy safety rails', () => {
     expect(sources).not.toMatch(/작업 중인 표본|확인 중|테마 선택 표본|다시 쓴 기록|월간 메모|제작 메모|장보기 메모|연결 문제 기록|설계 회고/);
     expect(sources).not.toMatch(/보고 있습니다|고치고 있습니다|붙여 보려고 합니다|생각입니다|다음 작업|다음에는|계속 갱신하기|더 짧게 다듬기/);
     expect(sources).not.toMatch(/요즘은|다듬고 있습니다|처음에는 카드 효과|처음에는 이동 뒤|작업물 모두 보기|TINY WORKSHOP|\bcode\b|\bidea\b|\bmail\b/);
+    expect(sources).not.toMatch(/흐름입니다|이어지는 흐름|살펴봅니다|만들고 있습니다/);
     expect(sources).not.toMatch(/첫 문장보다 선택의 부담|테마를 고르면 첫 문장이 바뀌는 게임|쓰는 건 부족했습니다|이 화면을 보고 나니/);
     expect(sources).not.toMatch(/기록\b|메모\b|흔적|작업 흔적|작업 순서|작업 중/);
   });

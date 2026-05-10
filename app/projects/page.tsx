@@ -20,7 +20,7 @@ export default async function ProjectsPage() {
           책상 위의 작은 게임과 도구
         </h1>
         <p className="mt-4 max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-8">
-          카드 게임, 퍼즐, 저녁 장보기처럼 손에 잡히는 크기의 것들을 만들고 있습니다.
+          카드 게임, 퍼즐, 저녁 장보기처럼 손에 잡히는 크기의 것들을 모아 둔 페이지입니다.
         </p>
       </section>
 
