@@ -5,14 +5,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0F172A',
-        text: '#F8FAFC',
-        subtext: '#CBD5E1',
-        line: '#334155',
-        point: '#D6A72A',
+        background: '#FFF7E8',
+        text: '#211A14',
+        subtext: '#5F5147',
+        line: '#2A2119',
+        point: '#E85D3F',
+        surface: '#FFFDF7',
+        butter: '#FFD95A',
+        violet: '#6E56CF',
+        mint: '#6ED6A8',
+        peach: '#FFB08A',
       },
       boxShadow: {
-        glow: '0 22px 0 rgba(14, 21, 58, 0.62), 0 28px 70px rgba(43, 92, 190, 0.22)',
+        card: '5px 5px 0 #2A2119',
+        soft: '0 18px 45px rgba(42, 33, 25, 0.12)',
       },
     },
   },

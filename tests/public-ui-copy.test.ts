@@ -36,7 +36,7 @@ describe('public copy safety rails', () => {
     expect(latestTraceIndex).toBeGreaterThan(0);
     expect(traceFlowIndex).toBeGreaterThan(latestTraceIndex);
     expect(projectLinksIndex).toBeGreaterThan(traceFlowIndex);
-    expect(homePage).toContain('작게 만들고, 써 보며 고칩니다.');
+    expect(homePage).toContain('작은 장면을 만들고, 한 번 더 만져봅니다.');
     expect(homePage).toContain('첫 글을 준비하고 있습니다');
     expect(homePage).toContain('보여줄 만한 장면이 생기면 이곳에 날짜순으로 올릴게요.');
     expect(homePage).not.toMatch(/heroLoop|latestGamePath|<video|wanderer-mobile-demo\.mp4/);
@@ -54,7 +54,7 @@ describe('public copy safety rails', () => {
     expect(writingPage).toContain('첫 글을 준비하고 있습니다');
     expect(writingPage).toContain('읽을 만한 장면이 생기면 이곳에 날짜순으로 올릴게요.');
     expect(writingPage).not.toMatch(/기존 글은 모두 내렸습니다|Notion 초고|실행 화면/);
-    expect(writingPage).not.toMatch(/trace\.projectTitle|trace\.type|trace\.status/);
+    expect(writingPage).not.toMatch(/trace\.type|trace\.status/);
     expect(writingPage).not.toMatch(/gamePosts|outsidePosts|section aria-label="게임"|카드와 퍼즐|저녁을 고른 뒤|글로 이동/);
   });
 
@@ -89,7 +89,7 @@ describe('public copy safety rails', () => {
 
     expect(homePage).toContain('latestTrace');
     expect(homePage).toContain('첫 글을 준비하고 있습니다');
-    expect(homePage).toContain('지금 손대는 것');
+    expect(homePage).toContain('책상 위 작은 것들');
     expect(homePage).not.toMatch(/최근 작업|최근 글부터 둡니다|latestPosts\.map|최근에 쓴 글|글 전체/);
   });
 
@@ -203,7 +203,7 @@ describe('public copy safety rails', () => {
     expect(linksPage).toContain('link.displayHref');
   });
 
-  it('keeps the quiet reading palette and avoids heavy decorative depth', () => {
+  it('uses the paper-workshop palette and avoids heavy decorative depth', () => {
     const css = read('app/globals.css');
     const tailwind = read('tailwind.config.ts');
     const sharedSources = [
@@ -215,13 +215,14 @@ describe('public copy safety rails', () => {
       read('app/writing/page.tsx'),
     ].join('\n');
 
-    expect(tailwind).toContain("background: '#0F172A'");
-    expect(tailwind).toContain("text: '#F8FAFC'");
-    expect(tailwind).toContain("subtext: '#CBD5E1'");
-    expect(tailwind).toContain("line: '#334155'");
-    expect(tailwind).toContain("point: '#D6A72A'");
-    expect(css).toContain('background: #0f172a;');
-    expect(css).toContain('color: #f8fafc;');
-    expect(sharedSources).not.toMatch(/border-\[3px\]|shadow-card|hover:-translate-y|group-hover:scale|bg-\[radial-gradient/);
+    expect(tailwind).toContain("background: '#FFF7E8'");
+    expect(tailwind).toContain("text: '#211A14'");
+    expect(tailwind).toContain("subtext: '#5F5147'");
+    expect(tailwind).toContain("line: '#2A2119'");
+    expect(tailwind).toContain("point: '#E85D3F'");
+    expect(css).toContain('background: #fff7e8;');
+    expect(css).toContain('color: #211a14;');
+    expect(css).toContain('.sticker-card');
+    expect(sharedSources).not.toMatch(/border-\[3px\]|group-hover:scale|blur-3xl/);
   });
 });

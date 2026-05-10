@@ -13,13 +13,13 @@ export default async function ProjectsPage() {
   const worklines = Object.values(projectRecordMap).sort((a, b) => b.project.lastUpdated.localeCompare(a.project.lastUpdated));
 
   return (
-    <div className="archive-surface space-y-8 md:space-y-16">
-      <section className="max-w-3xl space-y-3 py-0 md:space-y-5 md:py-10">
+    <div className="archive-surface space-y-8 md:space-y-12">
+      <section className="sticker-card max-w-4xl bg-surface p-5 md:p-8">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">만드는 것들</p>
-        <h1 className="text-[30px] font-black leading-tight tracking-[-0.04em] text-text md:text-[68px] md:leading-[1.04]">
-          지금 손대는 것들
+        <h1 className="mt-3 text-[32px] font-black leading-tight tracking-[-0.055em] text-text md:text-[62px] md:leading-[1.04]">
+          책상 위 작은 것들
         </h1>
-        <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
+        <p className="mt-4 max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-8">
           카드 게임, 퍼즐, 저녁 장보기처럼 직접 만져 볼 수 있는 크기로 줄여 만듭니다.
         </p>
       </section>
