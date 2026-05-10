@@ -70,9 +70,9 @@ describe('content loader', () => {
     expect(runtime?.slug).toBe('wanderer-one-card');
     expect(runtime?.summary).toContain('11 이하 조건');
     const fiveUnder = await getWritingBySlug('wanderer-5-under-card-value');
-    expect(fiveUnder?.summary).toContain('5 이하 조건');
-    expect(fiveUnder?.content).toContain('/media/wanderer/2026-05-10/wanderer-card-select.png');
-    expect(fiveUnder?.content).toContain('/media/wanderer/2026-05-10/wanderer-5-under-first-turn.png');
+    expect(fiveUnder?.summary).toContain('11 이하 조건');
+    expect(fiveUnder?.content).toContain('/media/devlog-gifs/wanderer-rule-result.gif');
+    expect(fiveUnder?.content).not.toContain('/media/wanderer/2026-05-10/');
   });
 
   it('builds taxonomy and archive snapshots from the current writing set', async () => {
