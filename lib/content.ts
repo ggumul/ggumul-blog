@@ -14,21 +14,9 @@ type BaseEntry = {
   html: string;
 };
 
-export type PrimaryEvidence = {
-  label: string;
-  href: string;
-  note: string;
-};
-
 export type ProjectEntry = BaseEntry & {
   status: string;
-  progressStatus: '한 턴' | '미리보기' | '장보기' | '퍼즐' | '색 퍼즐' | '선택 게임' | '쉬는 중';
-  verificationNote: string;
-  nextStep: string;
-  evidenceLabel: string;
-  evidenceHref: string;
   lastUpdated: string;
-  primaryEvidence: PrimaryEvidence;
   order: number;
   relatedPosts: string[];
   coverImage?: string;
@@ -187,25 +175,10 @@ function deriveWorkTrace(post: WritingEntry, projects: ProjectEntry[]): WorkTrac
 function withProjectWorkline(project: ProjectEntry, records: WritingEntry[]): ProjectEntry {
   const latestRecord = records[0];
   const lastUpdated = latestRecord?.publishedAt ?? project.lastUpdated ?? '2026-01-01';
-  const evidenceHref = typeof project.evidenceHref === 'string' && project.evidenceHref.trim().length > 0
-    ? project.evidenceHref
-    : `/projects/${project.slug}`;
-  const evidenceLabel = typeof project.evidenceLabel === 'string' && project.evidenceLabel.trim().length > 0
-    ? project.evidenceLabel
-    : `${project.title} 기록`;
-  const evidenceNote = typeof project.verificationNote === 'string' && project.verificationNote.trim().length > 0
-    ? project.verificationNote
-    : project.summary;
-  const primaryEvidence = project.primaryEvidence ?? {
-    label: evidenceLabel,
-    href: evidenceHref,
-    note: evidenceNote,
-  };
 
   return {
     ...project,
     lastUpdated,
-    primaryEvidence,
   };
 }
 

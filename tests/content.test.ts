@@ -25,7 +25,7 @@ describe('content loader', () => {
       'ggumul-dinner-grocery',
     ]);
     expect(projects).toHaveLength(5);
-    expect(projects.every((project) => project.title && project.summary && project.nextStep)).toBe(true);
+    expect(projects.every((project) => project.title && project.summary && project.slug)).toBe(true);
   });
 
   it('publishes rebuilt posts only after runtime evidence and Notion drafts', async () => {
@@ -107,27 +107,21 @@ describe('content loader', () => {
         expect(project.relatedPosts).toEqual([]);
         expect(projectRecordMap[project.slug].records).toEqual([]);
       }
-      expect(projectRecordMap[project.slug].project.primaryEvidence.href).toMatch(/^\//);
-      expect(projectRecordMap[project.slug].project.primaryEvidence.label.length).toBeGreaterThanOrEqual(4);
     }
 
     expect(wanderer).toBeDefined();
     expect(resolveProjectRecords(wanderer!, posts).map((post) => post.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
   });
 
-  it('keeps project evidence assets and covers resolvable', async () => {
+  it('keeps project covers resolvable without internal evidence-tracking fields', async () => {
     const projects = await getProjects();
 
     for (const project of projects) {
-      expect(project.progressStatus.length).toBeGreaterThanOrEqual(2);
-      expect(project.verificationNote.length).toBeGreaterThanOrEqual(8);
-      expect(project.nextStep.length).toBeGreaterThanOrEqual(8);
-      expect(project.evidenceLabel.length).toBeGreaterThanOrEqual(4);
-      if (project.evidenceHref) {
-        expect(project.evidenceHref).toMatch(/^\/media\//);
-        expect(project.content).toContain(project.evidenceHref);
-        expect(fs.existsSync(path.join(process.cwd(), 'public', project.evidenceHref.replace(/^\//, '')))).toBe(true);
-      }
+      expect(project).not.toHaveProperty('progressStatus');
+      expect(project).not.toHaveProperty('verificationNote');
+      expect(project).not.toHaveProperty('nextStep');
+      expect(project).not.toHaveProperty('evidenceLabel');
+      expect(project).not.toHaveProperty('evidenceHref');
 
       if (project.coverImage) {
         expect(fs.existsSync(path.join(process.cwd(), 'public', project.coverImage.replace(/^\//, '')))).toBe(true);
@@ -137,10 +131,6 @@ describe('content loader', () => {
 
   it('keeps archived writing out of the public content corpus', async () => {
     const [projects, posts] = await Promise.all([getProjects(), getWriting()]);
-    const hanoi = projects.find((project) => project.slug === 'hanoi');
-    const colorHanoi = projects.find((project) => project.slug === 'color-hanoi');
-    const dinner = projects.find((project) => project.slug === 'ggumul-dinner-grocery');
-    const trpg = projects.find((project) => project.slug === 'trpg');
     const publicCorpus = [...projects, ...posts].map((entry) => [entry.title, entry.summary, entry.content].join('\n')).join('\n---\n');
 
     expect(posts.map((post) => post.slug)).toEqual([
@@ -148,11 +138,7 @@ describe('content loader', () => {
       'hanoi-two-moves-three-towers',
       'wanderer-11-under-15-not-good-card',
     ]);
-    expect(hanoi?.verificationNote).toContain('원반 위치와 이동 횟수');
-    expect(hanoi?.verificationNote).not.toMatch(/다음 자리가 열|막힌 자리/);
     expect(publicCorpus).not.toMatch(/AI Slob|실제 GIF 없음|설명용 GIF|제작 증거|다음 자리가 열리는 장면을 GIF|막힌 자리를 먼저 보이게 맞추고 있습니다/);
-    expect(colorHanoi?.evidenceHref).toBeFalsy();
-    expect(dinner?.evidenceHref).toBeFalsy();
-    expect(trpg?.evidenceHref).toBe('/media/trpg/2026-05-10/wastelog-drone-choice.gif');
+    expect(publicCorpus).not.toMatch(/verificationNote|nextStep|evidenceLabel|evidenceHref|progressStatus|primaryEvidence/);
   });
 });

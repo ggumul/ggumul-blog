@@ -99,9 +99,11 @@ describe('public copy safety rails', () => {
     const content = read('lib/content.ts');
 
     expect(content).toContain('lastUpdated');
-    expect(content).toContain('primaryEvidence');
+    expect(content).not.toContain('primaryEvidence');
+    expect(content).not.toContain('verificationNote');
+    expect(content).not.toContain('nextStep');
+    expect(content).not.toContain('evidenceLabel');
     expect(projectCard).not.toContain('project.lastUpdated');
-    expect(projectCard).not.toContain('project.primaryEvidence');
     expect(projectCard).not.toContain('records.length');
     expect(projectPage).toContain('작은 게임과 생활 도구');
     expect(projectPage).not.toMatch(/마지막으로 바뀐 순서|최근 날짜|실제로 이어진 글|ProjectCard[\s\S]*compact|Wanderer, Hanoi, Color Hanoi, TRPG를 따로 둡니다|프로젝트로 이동|글로 이동/);
@@ -114,6 +116,8 @@ describe('public copy safety rails', () => {
     expect(projectCard).not.toContain('primaryEvidence.href');
     expect(projectCard).not.toContain('primaryEvidence.label');
     expect(projectCard).not.toContain('primaryEvidence.note');
+    expect(projectCard).not.toContain('evidenceLabel');
+    expect(projectCard).not.toContain('evidenceHref');
   });
 
   it('keeps project detail related rows free of generic CTA labels', () => {
