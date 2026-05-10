@@ -3,7 +3,7 @@ import { createMetadata } from '@/lib/site';
 
 const links = [
   { label: 'GitHub', href: 'https://github.com/ggomul', displayHref: 'github.com/ggomul', description: '코드와 배포 내역을 볼 수 있습니다', type: 'code' },
-  { label: '아이디어', href: 'https://www.notion.so/348521c1518081e08d81d9215785de15', displayHref: 'notion.so/ggumul', description: '아직 글이 되지 않은 게임 아이디어와 작은 메모를 모아 둡니다', type: 'idea' },
+  { label: '아이디어', href: 'https://www.notion.so/348521c1518081e08d81d9215785de15', displayHref: 'notion.so/ggumul', description: '아직 글이 되지 않은 게임 아이디어를 모아 둡니다', type: 'idea' },
   { label: '메일', href: 'mailto:hwang95903@gmail.com', displayHref: 'hwang95903@gmail.com', description: '따로 할 말이 있으면 여기로 보내 주세요', type: 'mail' },
 ];
 
