@@ -32,17 +32,24 @@ describe('content loader', () => {
     const posts = await getWriting();
 
     expect(posts.map((post) => post.slug)).toEqual([
+      'trpg-wastelog-drone-signal-choice',
       'hanoi-two-moves-three-towers',
       'wanderer-11-under-15-not-good-card',
     ]);
 
     const hanoi = posts.find((post) => post.slug === 'hanoi-two-moves-three-towers');
+    const trpg = posts.find((post) => post.slug === 'trpg-wastelog-drone-signal-choice');
     const wanderer = posts.find((post) => post.slug === 'wanderer-11-under-15-not-good-card');
 
     expect(hanoi?.notionSource.pageId).toBe('35c521c1-5180-81e9-a4be-d35f134add1f');
     expect(hanoi?.notionSource.url).toBe('https://www.notion.so/Hanoi-35c521c1518081e9a4bed35f134add1f');
     expect(hanoi?.content).toContain('/media/hanoi/2026-05-10/hanoi-two-moves-three-towers.png');
     expect(hanoi?.content).toContain('이동 횟수는 **2**');
+
+    expect(trpg?.notionSource.pageId).toBe('35c521c1-5180-81b4-bb12-f01c27ef7bd7');
+    expect(trpg?.notionSource.url).toBe('https://www.notion.so/TRPG-35c521c1518081b4bb12f01c27ef7bd7');
+    expect(trpg?.content).toContain('/media/trpg/2026-05-10/wastelog-drone-choice.png');
+    expect(trpg?.content).toContain('드론 신호를 해킹할지');
 
     expect(wanderer?.notionSource.pageId).toBe('35c521c1-5180-816c-bea4-c79e959a0e7e');
     expect(wanderer?.notionSource.url).toBe('https://www.notion.so/Wanderer-11-15-35c521c15180816cbea4c79e959a0e7e');
@@ -62,17 +69,17 @@ describe('content loader', () => {
     const snapshot = await getHomeArchiveSnapshot();
     const sections = await getWritingArchiveSections();
 
-    expect(taxonomy.categories).toEqual(['Hanoi', 'Wanderer']);
-    expect(taxonomy.series).toEqual(['Hanoi', 'Wanderer']);
-    expect(taxonomy.tags).toEqual(['원반', '이동', '조건', '카드', '턴', '퍼즐']);
-    expect(snapshot.latest?.slug).toBe('hanoi-two-moves-three-towers');
-    expect(snapshot.latestTrace?.slug).toBe('hanoi-two-moves-three-towers');
-    expect(snapshot.traces.map((trace) => trace.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
-    expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['hanoi']);
+    expect(taxonomy.categories).toEqual(['Hanoi', 'TRPG', 'Wanderer']);
+    expect(taxonomy.series).toEqual(['Hanoi', 'TRPG', 'Wanderer']);
+    expect(taxonomy.tags).toEqual(['선택', '원반', '이동', '잔해일지', '조건', '카드', '턴', '퍼즐', 'TRPG']);
+    expect(snapshot.latest?.slug).toBe('trpg-wastelog-drone-signal-choice');
+    expect(snapshot.latestTrace?.slug).toBe('trpg-wastelog-drone-signal-choice');
+    expect(snapshot.traces.map((trace) => trace.slug)).toEqual(['hanoi-two-moves-three-towers', 'wanderer-11-under-15-not-good-card']);
+    expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['trpg']);
     expect(snapshot.worklines).toHaveLength(5);
-    expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
-    expect(sections.latest?.slug).toBe('hanoi-two-moves-three-towers');
-    expect(sections.timeline.map((trace) => trace.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
+    expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual(['hanoi-two-moves-three-towers', 'wanderer-11-under-15-not-good-card']);
+    expect(sections.latest?.slug).toBe('trpg-wastelog-drone-signal-choice');
+    expect(sections.timeline.map((trace) => trace.slug)).toEqual(['hanoi-two-moves-three-towers', 'wanderer-11-under-15-not-good-card']);
   });
 
   it('keeps project relationships resolvable with the rebuilt Wanderer post attached', async () => {
@@ -81,6 +88,7 @@ describe('content loader', () => {
     const wanderer = projects.find((project) => project.slug === 'wanderer');
 
     expect(posts.map((post) => post.slug)).toEqual([
+      'trpg-wastelog-drone-signal-choice',
       'hanoi-two-moves-three-towers',
       'wanderer-11-under-15-not-good-card',
     ]);
@@ -92,6 +100,9 @@ describe('content loader', () => {
       } else if (project.slug === 'hanoi') {
         expect(project.relatedPosts).toEqual(['hanoi-two-moves-three-towers']);
         expect(projectRecordMap[project.slug].records.map((post) => post.slug)).toEqual(['hanoi-two-moves-three-towers']);
+      } else if (project.slug === 'trpg') {
+        expect(project.relatedPosts).toEqual(['trpg-wastelog-drone-signal-choice']);
+        expect(projectRecordMap[project.slug].records.map((post) => post.slug)).toEqual(['trpg-wastelog-drone-signal-choice']);
       } else {
         expect(project.relatedPosts).toEqual([]);
         expect(projectRecordMap[project.slug].records).toEqual([]);
@@ -133,6 +144,7 @@ describe('content loader', () => {
     const publicCorpus = [...projects, ...posts].map((entry) => [entry.title, entry.summary, entry.content].join('\n')).join('\n---\n');
 
     expect(posts.map((post) => post.slug)).toEqual([
+      'trpg-wastelog-drone-signal-choice',
       'hanoi-two-moves-three-towers',
       'wanderer-11-under-15-not-good-card',
     ]);
