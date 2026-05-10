@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { PageHero, Pill } from '@/components/brand-ui';
+import { PageHero } from '@/components/brand-ui';
 import { getProjectBySlug, getProjects, getWriting, resolveProjectRecords } from '@/lib/content';
 import { createMetadata } from '@/lib/site';
 
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 function RelatedPostRows({ posts }: { posts: Awaited<ReturnType<typeof getWriting>> }) {
   if (posts.length === 0) {
-    return <p className="border-t border-line/70 py-4 text-sm leading-7 text-subtext">아직 이어 읽을 글이 많지 않습니다.</p>;
+    return null;
   }
 
   return (
@@ -66,7 +66,7 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
       </section>
 
       <figure className="overflow-hidden rounded-[2rem] border border-[#2d2620] bg-[#17120f] p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
-        <img alt="Wanderer 턴 표본 GIF" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/wanderer-rule-result.gif" />
+        <img alt="Wanderer에서 조건에 따라 낼 수 있는 카드가 갈리는 장면" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/wanderer-rule-result.gif" />
         <figcaption className="px-3 pb-3 pt-4 text-sm text-[#c7b49d]">
           실제 매치 화면. 11 이하 조건 아래에서 5, 10, 11은 고를 수 있고 13, 14, 15는 고를 수 없습니다.
         </figcaption>
@@ -77,13 +77,15 @@ function WandererFeaturePage({ relatedPosts }: { relatedPosts: Awaited<ReturnTyp
         <p>그래서 지금은 한 턴을 짧게 줄였습니다. 조건을 보고, 낼 수 있는 카드를 고르고, 결과를 확인하는 순서만 먼저 맞춥니다.</p>
       </section>
 
-      <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
-        <div className="space-y-5">
-          <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">글</p>
-          <h2 className="text-[30px] font-black leading-tight tracking-[-0.03em] text-text md:text-[46px]">Wanderer에서 나온 글</h2>
-          <RelatedPostRows posts={relatedPosts} />
-        </div>
-      </section>
+      {relatedPosts.length ? (
+        <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
+          <div className="space-y-5">
+            <p className="text-[12px] font-black uppercase tracking-[0.24em] text-point">글</p>
+            <h2 className="text-[30px] font-black leading-tight tracking-[-0.03em] text-text md:text-[46px]">Wanderer에서 나온 글</h2>
+            <RelatedPostRows posts={relatedPosts} />
+          </div>
+        </section>
+      ) : null}
     </article>
   );
 }
@@ -102,7 +104,7 @@ function HanoiFeaturePage() {
             원반을 옮겨 세 기둥의 순서를 맞추는 퍼즐입니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            작은 원반 위에는 큰 원반을 올릴 수 없습니다. 지금 GIF에서는 원반 위치와 이동 횟수가 먼저 보입니다.
+            작은 원반 위에는 큰 원반을 올릴 수 없습니다. 원반을 하나 옮길 때마다 다음 선택지가 달라집니다.
           </p>
         </div>
       </section>
@@ -110,7 +112,7 @@ function HanoiFeaturePage() {
       <figure className="overflow-hidden rounded-[2rem] border border-[#2d2620] bg-[#17120f] p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
         <img alt="Hanoi 화면에서 원반과 세 기둥이 보이는 장면" className="max-h-[520px] w-full object-contain" src="/media/devlog-gifs/hanoi-next-seat.gif" />
         <figcaption className="px-3 pb-3 pt-4 text-sm text-[#c7b49d]">
-          현재 GIF는 원반 위치와 이동 횟수만 보여 줍니다. 이동 가능 표시는 아직 분리하지 않았습니다.
+          원반을 옮기면 세 기둥의 상태와 이동 횟수가 함께 바뀝니다.
         </figcaption>
       </figure>
 
@@ -132,7 +134,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   const posts = await getWriting();
   const relatedPosts = resolveProjectRecords(game, posts);
-  const latestRecord = relatedPosts[0];
 
   if (game.slug === 'wanderer') {
     return <WandererFeaturePage relatedPosts={relatedPosts} />;
@@ -148,12 +149,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         목록으로
       </Link>
 
-      <PageHero eyebrow="만드는 것" title={game.title} description={game.summary}>
-        <div className="space-y-3">
-          <Pill tone="point">{game.status}</Pill>
-          {latestRecord ? <Pill>{latestRecord.publishedAt}</Pill> : null}
-        </div>
-      </PageHero>
+      <PageHero eyebrow="프로젝트" title={game.title} description={game.summary} />
 
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
         <div className="space-y-8">
@@ -162,7 +158,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <img alt={`${game.title} 이미지`} className="max-h-[560px] w-full object-cover" src={game.coverImage} />
               <figcaption className="flex items-center justify-between gap-3 border-t border-line/70 px-4 py-3 text-xs font-semibold text-subtext">
                 <span>{game.title}</span>
-                <span>{game.status}</span>
               </figcaption>
             </figure>
           ) : null}
@@ -170,12 +165,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <section className="prose max-w-none" dangerouslySetInnerHTML={{ __html: game.html }} />
         </div>
 
-        <aside className="space-y-7 text-sm text-subtext lg:sticky lg:top-24">
-          <div className="space-y-3">
-            <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">같이 읽을 글</div>
-            <RelatedPostRows posts={relatedPosts} />
-          </div>
-        </aside>
+        {relatedPosts.length ? (
+          <aside className="space-y-7 text-sm text-subtext lg:sticky lg:top-24">
+            <div className="space-y-3">
+              <div className="text-[11px] font-black uppercase tracking-[0.22em] text-point">같이 읽을 글</div>
+              <RelatedPostRows posts={relatedPosts} />
+            </div>
+          </aside>
+        ) : null}
       </section>
     </article>
   );

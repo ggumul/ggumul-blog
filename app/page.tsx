@@ -94,7 +94,7 @@ export default async function HomePage() {
             {projectLinks.map((project) => (
               <Link key={project.slug} href={`/projects/${project.slug}`} className="grid gap-2 py-4 md:grid-cols-[180px_minmax(0,1fr)] md:items-center">
                 <span className="text-sm font-black text-point">{project.title}</span>
-                <span className="text-sm leading-7 text-subtext">{formatDate(project.lastUpdated)} · {project.primaryEvidence.label}</span>
+                <span className="text-sm leading-7 text-subtext">{project.summary}</span>
               </Link>
             ))}
           </div>

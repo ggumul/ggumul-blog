@@ -93,25 +93,27 @@ describe('public copy safety rails', () => {
     expect(homePage).not.toMatch(/최근 작업|최근 글부터 둡니다|latestPosts\.map|최근에 쓴 글|글 전체/);
   });
 
-  it('shows project workline metadata instead of plain dashboard cards', () => {
+  it('keeps project index cards visitor-facing instead of dashboard cards', () => {
     const projectPage = read('app/projects/page.tsx');
     const projectCard = read('components/project-card.tsx');
     const content = read('lib/content.ts');
 
     expect(content).toContain('lastUpdated');
     expect(content).toContain('primaryEvidence');
-    expect(projectCard).toContain('project.lastUpdated');
-    expect(projectCard).toContain('project.primaryEvidence');
-    expect(projectCard).toContain('records.length');
-    expect(projectPage).toContain('마지막으로 바뀐 순서');
-    expect(projectPage).not.toMatch(/ProjectCard[\s\S]*compact|Wanderer, Hanoi, Color Hanoi, TRPG를 따로 둡니다|프로젝트로 이동|글로 이동/);
+    expect(projectCard).not.toContain('project.lastUpdated');
+    expect(projectCard).not.toContain('project.primaryEvidence');
+    expect(projectCard).not.toContain('records.length');
+    expect(projectPage).toContain('작은 게임과 생활 도구');
+    expect(projectPage).not.toMatch(/마지막으로 바뀐 순서|최근 날짜|실제로 이어진 글|ProjectCard[\s\S]*compact|Wanderer, Hanoi, Color Hanoi, TRPG를 따로 둡니다|프로젝트로 이동|글로 이동/);
   });
 
-  it('keeps project evidence links from triggering Next route prefetch for media files', () => {
+  it('does not expose evidence-state labels on project cards', () => {
     const projectCard = read('components/project-card.tsx');
 
-    expect(projectCard).toContain('<a href={project.primaryEvidence.href}');
-    expect(projectCard).not.toContain('<Link href={project.primaryEvidence.href}');
+    expect(projectCard).not.toContain('지금 볼 장면');
+    expect(projectCard).not.toContain('primaryEvidence.href');
+    expect(projectCard).not.toContain('primaryEvidence.label');
+    expect(projectCard).not.toContain('primaryEvidence.note');
   });
 
   it('keeps project detail related rows free of generic CTA labels', () => {
@@ -188,7 +190,7 @@ describe('public copy safety rails', () => {
     const combined = [projectPage, projectContent].join('\n');
 
     expect(projectPage).toContain('작은 원반 위에는 큰 원반을 올릴 수 없습니다.');
-    expect(projectPage).toContain('지금 GIF에서는 원반 위치와 이동 횟수가 먼저 보입니다.');
+    expect(projectPage).toContain('원반을 하나 옮길 때마다 다음 선택지가 달라집니다.');
     expect(projectContent).not.toContain('small-games-first-move');
     expect(combined).not.toMatch(/재미있는 순간|어떤 길은 닫히고|새로 열립니다|자리의 차이를 먼저 붙잡|손끝에서 이어집니다|다음 자리 GIF|Hanoi 다음 자리|다음에 갈 수 있는 기둥이 바로 달라집니다|막힌 자리를 먼저 보이게 맞추고 있습니다/);
   });
