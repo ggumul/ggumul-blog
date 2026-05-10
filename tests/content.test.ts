@@ -48,8 +48,8 @@ describe('content loader', () => {
 
     expect(trpg?.notionSource.pageId).toBe('35c521c1-5180-81b4-bb12-f01c27ef7bd7');
     expect(trpg?.notionSource.url).toBe('https://www.notion.so/TRPG-35c521c1518081b4bb12f01c27ef7bd7');
-    expect(trpg?.content).toContain('/media/trpg/2026-05-10/wastelog-drone-choice.png');
-    expect(trpg?.content).toContain('드론 신호를 해킹할지');
+    expect(trpg?.content).toContain('/media/trpg/2026-05-10/wastelog-drone-choice.gif');
+    expect(trpg?.content).toContain('드론 신호 선택');
 
     expect(wanderer?.notionSource.pageId).toBe('35c521c1-5180-816c-bea4-c79e959a0e7e');
     expect(wanderer?.notionSource.url).toBe('https://www.notion.so/Wanderer-11-15-35c521c15180816cbea4c79e959a0e7e');
@@ -153,6 +153,6 @@ describe('content loader', () => {
     expect(publicCorpus).not.toMatch(/AI Slob|실제 GIF 없음|설명용 GIF|제작 증거|다음 자리가 열리는 장면을 GIF|막힌 자리를 먼저 보이게 맞추고 있습니다/);
     expect(colorHanoi?.evidenceHref).toBeFalsy();
     expect(dinner?.evidenceHref).toBeFalsy();
-    expect(trpg?.evidenceHref).toBe('/media/trpg/2026-05-10/wastelog-drone-choice.png');
+    expect(trpg?.evidenceHref).toBe('/media/trpg/2026-05-10/wastelog-drone-choice.gif');
   });
 });
