@@ -102,7 +102,7 @@ function HanoiFeaturePage() {
             원반을 옮겨 세 기둥의 순서를 맞추는 퍼즐입니다.
           </h1>
           <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[18px] md:leading-9">
-            작은 원반 위에는 큰 원반을 올릴 수 없습니다. 현재 근거 화면에서는 원반 위치와 이동 횟수만 확인합니다.
+            작은 원반 위에는 큰 원반을 올릴 수 없습니다. 지금 GIF에서는 원반 위치와 이동 횟수가 먼저 보입니다.
           </p>
         </div>
       </section>

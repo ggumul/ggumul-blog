@@ -29,7 +29,7 @@ export function ProjectCard({ project, records = [] }: ProjectCardProps) {
       </div>
 
       <a href={project.primaryEvidence.href} className="block rounded-2xl border border-line/50 bg-background/35 p-3 transition hover:border-point/60">
-        <p className="text-[11px] font-black tracking-[0.14em] text-point">근거</p>
+        <p className="text-[11px] font-black tracking-[0.14em] text-point">지금 볼 장면</p>
         <p className="mt-2 text-sm font-black leading-6 text-text">{project.primaryEvidence.label}</p>
         <p className="mt-1 text-sm leading-6 text-subtext">{project.primaryEvidence.note}</p>
       </a>
