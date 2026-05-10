@@ -80,7 +80,7 @@ export type ProjectRecordLink = {
 export type ProjectRecordMap = Record<string, ProjectRecordLink>;
 
 export type WritingArchiveSections = {
-  latest: WritingEntry;
+  latest: WritingEntry | null;
   timeline: WritingEntry[];
   taxonomy: WritingTaxonomy;
   index: {
@@ -270,12 +270,8 @@ export async function getWritingArchiveSections(): Promise<WritingArchiveSection
   const [posts, taxonomy] = await Promise.all([getWriting(), getWritingTaxonomy()]);
   const [latest, ...timeline] = posts;
 
-  if (!latest) {
-    throw new Error('Writing archive requires at least one post');
-  }
-
   return {
-    latest,
+    latest: latest ?? null,
     timeline,
     taxonomy,
     index: {

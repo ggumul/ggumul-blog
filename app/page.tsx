@@ -4,7 +4,7 @@ import { createMetadata, createWebsiteJsonLd } from '@/lib/site';
 
 export const metadata = createMetadata({
   title: '꼬물',
-  description: '꼬물은 작은 게임과 생활 도구를 만들며 쓴 글을 모아 둔 블로그입니다.',
+  description: '꼬물은 작은 게임과 생활 도구를 실제 화면으로 다시 확인하며 쓰는 블로그입니다.',
   path: '/',
   ogImage: '/project-covers/wanderer.png',
 });
@@ -27,23 +27,21 @@ export default async function HomePage() {
       <section className="max-w-4xl space-y-5 py-4 md:py-8">
         <p className="text-[12px] font-black tracking-[0.18em] text-point">꼬물</p>
         <h1 className="text-[32px] font-black leading-tight tracking-[-0.04em] text-text md:text-[56px] md:leading-[1.08]">
-          최근 작업을 먼저 둡니다.
+          다시 쓰는 중입니다.
         </h1>
         <p className="max-w-2xl text-[15px] leading-7 text-subtext md:text-[17px] md:leading-8">
-          작은 게임과 생활 도구가 어느 날 움직였는지부터 보여줍니다. 한 글을 열면 그날의 선택이 어떤 프로젝트와 이어졌는지 같이 따라갈 수 있습니다.
+          기존 글은 모두 내렸습니다. 게임과 도구를 실제로 실행하고, 화면을 다시 본 뒤에 한 편씩 올립니다.
         </p>
       </section>
 
       {latestTrace ? (
         <section className="rounded-[24px] border border-line/60 bg-white/[0.035] p-5 md:p-7">
-          <p className="text-[12px] font-black tracking-[0.16em] text-point">최근 작업</p>
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">최근 글</p>
           <Link href={latestTrace.href} className="mt-4 block space-y-3 hover:text-text">
             <div className="flex flex-wrap items-center gap-2 text-sm text-subtext">
               <time dateTime={latestTrace.publishedAt}>{formatDate(latestTrace.publishedAt)}</time>
               <span>/</span>
               <span>{latestTrace.projectTitle}</span>
-              <span>/</span>
-              <span>{latestTrace.status}</span>
             </div>
             <h2 className="text-[28px] font-black leading-tight tracking-[-0.045em] text-text md:text-[44px]">
               {latestTrace.title}
@@ -51,7 +49,14 @@ export default async function HomePage() {
             <p className="max-w-3xl text-sm leading-7 text-subtext md:text-base md:leading-8">{latestTrace.summary}</p>
           </Link>
         </section>
-      ) : null}
+      ) : (
+        <section className="rounded-[24px] border border-line/60 bg-white/[0.035] p-5 md:p-7">
+          <p className="text-[12px] font-black tracking-[0.16em] text-point">아직 공개한 글이 없습니다</p>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-subtext md:text-base md:leading-8">
+            다음 글은 실행 화면과 Notion 초고를 먼저 맞춘 뒤에 공개합니다.
+          </p>
+        </section>
+      )}
 
       {traceFlow.length ? (
         <section className="space-y-4">
@@ -60,7 +65,7 @@ export default async function HomePage() {
               <p className="text-[12px] font-black tracking-[0.16em] text-point">다음 흐름</p>
               <h2 className="mt-2 text-[26px] font-black tracking-[-0.035em] text-text md:text-[38px]">날짜가 이어지는 글</h2>
             </div>
-            <Link href="/writing" className="text-sm font-bold text-point hover:text-text">날짜순 목록</Link>
+            <Link href="/writing" className="text-sm font-bold text-point hover:text-text">글 목록</Link>
           </div>
           <div className="article-list">
             {traceFlow.map((trace) => (
@@ -68,7 +73,7 @@ export default async function HomePage() {
                 <time className="text-sm text-subtext" dateTime={trace.publishedAt}>{formatDate(trace.publishedAt)}</time>
                 <span>
                   <span className="block text-lg font-black tracking-[-0.035em] text-text">{trace.title}</span>
-                  <span className="mt-1 block text-sm leading-7 text-subtext">{trace.projectTitle} · {trace.summary}</span>
+                  <span className="mt-1 block text-sm leading-7 text-subtext">{trace.summary}</span>
                 </span>
               </Link>
             ))}
@@ -81,7 +86,7 @@ export default async function HomePage() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-[12px] font-black tracking-[0.16em] text-point">프로젝트</p>
-              <h2 className="mt-2 text-[24px] font-black tracking-[-0.035em] text-text md:text-[34px]">마지막으로 바뀐 순서</h2>
+              <h2 className="mt-2 text-[24px] font-black tracking-[-0.035em] text-text md:text-[34px]">다시 확인할 것들</h2>
             </div>
             <Link href="/projects" className="text-sm font-bold text-point hover:text-text">프로젝트 목록</Link>
           </div>
