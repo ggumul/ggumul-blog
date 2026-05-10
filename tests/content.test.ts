@@ -46,7 +46,8 @@ describe('content loader', () => {
     expect(hanoiDiskCount?.notionSource.pageId).toBe('35c521c1-5180-812a-bf8c-ed1cc5bee611');
     expect(hanoiDiskCount?.notionSource.url).toBe('https://www.notion.so/Hanoi-35c521c15180812abf8ced1cc5bee611');
     expect(hanoiDiskCount?.content).toContain('/media/hanoi/2026-05-11/hanoi-disk-count-3-to-5.gif');
-    expect(hanoiDiskCount?.content).toContain('원판 수는 **5**');
+    expect(hanoiDiskCount?.content).toContain('보드가 어떻게 바뀌는지');
+    expect(hanoiDiskCount?.content).toContain('**5**가 됩니다');
 
     expect(hanoi?.notionSource.pageId).toBe('35c521c1-5180-81e9-a4be-d35f134add1f');
     expect(hanoi?.notionSource.url).toBe('https://www.notion.so/Hanoi-35c521c1518081e9a4bed35f134add1f');
@@ -78,7 +79,7 @@ describe('content loader', () => {
 
     expect(taxonomy.categories).toEqual(['Hanoi', 'TRPG', 'Wanderer']);
     expect(taxonomy.series).toEqual(['Hanoi', 'TRPG', 'Wanderer']);
-    expect(taxonomy.tags).toEqual(['난이도', '선택', '원반', '원판', '이동', '잔해일지', '조건', '카드', '턴', '퍼즐', 'TRPG']);
+    expect(taxonomy.tags).toEqual(['선택', '원반', '원판', '이동', '잔해일지', '조건', '조작', '카드', '턴', '퍼즐', 'TRPG']);
     expect(snapshot.latest?.slug).toBe('hanoi-disk-count-3-to-5');
     expect(snapshot.latestTrace?.slug).toBe('hanoi-disk-count-3-to-5');
     expect(snapshot.traces.map((trace) => trace.slug)).toEqual(['trpg-wastelog-drone-signal-choice', 'hanoi-two-moves-three-towers', 'wanderer-11-under-15-not-good-card']);
