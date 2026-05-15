@@ -32,6 +32,8 @@ describe('content loader', () => {
     const posts = await getWriting();
 
     expect(posts.map((post) => post.slug)).toEqual([
+      'trpg-medieval-scout-costs-focus',
+      'hanoi-disk-count-3-to-5',
       'trpg-wastelog-drone-signal-choice',
       'hanoi-two-moves-three-towers',
       'wanderer-11-under-15-not-good-card',
@@ -62,8 +64,6 @@ describe('content loader', () => {
     await expect(getWritingBySlug('wanderer-5-under-card-value')).resolves.toBeNull();
     await expect(getWritingBySlug('wanderer-one-card')).resolves.toBeNull();
     await expect(getWritingBySlug('dinner-grocery-price')).resolves.toBeNull();
-    await expect(getWritingBySlug('hanoi-disk-count-3-to-5')).resolves.toBeNull();
-    await expect(getWritingBySlug('trpg-medieval-scout-costs-focus')).resolves.toBeNull();
   });
 
   it('builds writing taxonomy and home archive state from the rebuilt post', async () => {
@@ -73,15 +73,30 @@ describe('content loader', () => {
 
     expect(taxonomy.categories).toEqual(['Hanoi', 'TRPG', 'Wanderer']);
     expect(taxonomy.series).toEqual(['Hanoi', 'TRPG', 'Wanderer']);
-    expect(taxonomy.tags).toEqual(['선택', '원반', '이동', '잔해일지', '조건', '카드', '턴', '퍼즐', 'TRPG']);
-    expect(snapshot.latest?.slug).toBe('trpg-wastelog-drone-signal-choice');
-    expect(snapshot.latestTrace?.slug).toBe('trpg-wastelog-drone-signal-choice');
-    expect(snapshot.traces.map((trace) => trace.slug)).toEqual(['hanoi-two-moves-three-towers', 'wanderer-11-under-15-not-good-card']);
+    expect(taxonomy.tags).toEqual(['선택', '왕도 연대기', '원반', '원판', '이동', '잔해일지', '정찰', '조건', '조작', '카드', '턴', '퍼즐', 'TRPG']);
+    expect(snapshot.latest?.slug).toBe('trpg-medieval-scout-costs-focus');
+    expect(snapshot.latestTrace?.slug).toBe('trpg-medieval-scout-costs-focus');
+    expect(snapshot.traces.map((trace) => trace.slug)).toEqual([
+      'hanoi-disk-count-3-to-5',
+      'trpg-wastelog-drone-signal-choice',
+      'hanoi-two-moves-three-towers',
+      'wanderer-11-under-15-not-good-card',
+    ]);
     expect(snapshot.latestProjects.map((project) => project.slug)).toEqual(['trpg']);
     expect(snapshot.worklines).toHaveLength(5);
-    expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual(['hanoi-two-moves-three-towers', 'wanderer-11-under-15-not-good-card']);
-    expect(sections.latest?.slug).toBe('trpg-wastelog-drone-signal-choice');
-    expect(sections.timeline.map((trace) => trace.slug)).toEqual(['hanoi-two-moves-three-towers', 'wanderer-11-under-15-not-good-card']);
+    expect(snapshot.moreEntries.map((entry) => entry.slug)).toEqual([
+      'hanoi-disk-count-3-to-5',
+      'trpg-wastelog-drone-signal-choice',
+      'hanoi-two-moves-three-towers',
+      'wanderer-11-under-15-not-good-card',
+    ]);
+    expect(sections.latest?.slug).toBe('trpg-medieval-scout-costs-focus');
+    expect(sections.timeline.map((trace) => trace.slug)).toEqual([
+      'hanoi-disk-count-3-to-5',
+      'trpg-wastelog-drone-signal-choice',
+      'hanoi-two-moves-three-towers',
+      'wanderer-11-under-15-not-good-card',
+    ]);
   });
 
   it('keeps project relationships resolvable with the rebuilt Wanderer post attached', async () => {
@@ -90,6 +105,8 @@ describe('content loader', () => {
     const wanderer = projects.find((project) => project.slug === 'wanderer');
 
     expect(posts.map((post) => post.slug)).toEqual([
+      'trpg-medieval-scout-costs-focus',
+      'hanoi-disk-count-3-to-5',
       'trpg-wastelog-drone-signal-choice',
       'hanoi-two-moves-three-towers',
       'wanderer-11-under-15-not-good-card',
@@ -100,11 +117,17 @@ describe('content loader', () => {
         expect(project.relatedPosts).toEqual(['wanderer-11-under-15-not-good-card']);
         expect(projectRecordMap[project.slug].records.map((post) => post.slug)).toEqual(['wanderer-11-under-15-not-good-card']);
       } else if (project.slug === 'hanoi') {
-        expect(project.relatedPosts).toEqual(['hanoi-two-moves-three-towers']);
-        expect(projectRecordMap[project.slug].records.map((post) => post.slug)).toEqual(['hanoi-two-moves-three-towers']);
+        expect(project.relatedPosts).toEqual(['hanoi-disk-count-3-to-5', 'hanoi-two-moves-three-towers']);
+        expect(projectRecordMap[project.slug].records.map((post) => post.slug)).toEqual([
+          'hanoi-disk-count-3-to-5',
+          'hanoi-two-moves-three-towers',
+        ]);
       } else if (project.slug === 'trpg') {
-        expect(project.relatedPosts).toEqual(['trpg-wastelog-drone-signal-choice']);
-        expect(projectRecordMap[project.slug].records.map((post) => post.slug)).toEqual(['trpg-wastelog-drone-signal-choice']);
+        expect(project.relatedPosts).toEqual(['trpg-wastelog-drone-signal-choice', 'trpg-medieval-scout-costs-focus']);
+        expect(projectRecordMap[project.slug].records.map((post) => post.slug)).toEqual([
+          'trpg-medieval-scout-costs-focus',
+          'trpg-wastelog-drone-signal-choice',
+        ]);
       } else {
         expect(project.relatedPosts).toEqual([]);
         expect(projectRecordMap[project.slug].records).toEqual([]);
@@ -136,6 +159,8 @@ describe('content loader', () => {
     const publicCorpus = [...projects, ...posts].map((entry) => [entry.title, entry.summary, entry.content].join('\n')).join('\n---\n');
 
     expect(posts.map((post) => post.slug)).toEqual([
+      'trpg-medieval-scout-costs-focus',
+      'hanoi-disk-count-3-to-5',
       'trpg-wastelog-drone-signal-choice',
       'hanoi-two-moves-three-towers',
       'wanderer-11-under-15-not-good-card',
